@@ -2216,7 +2216,7 @@
 0x40006C14 C   FIELD 10w01 TXUDRIE: Tx-Underrun Interrupt Enable The TXUDRIE bit is set and cleared by software.
 0x40006C14 C   FIELD 11w01 TXERRIE: Tx-Error Interrupt Enable The TXERRIE bit is set and cleared by software.
 0x40006C14 C   FIELD 12w01 TXACKIE: Tx-Missing Acknowledge Error Interrupt Enable The TXACKEIE bit is set and cleared by software.
-0x40007400 A PERIPHERAL DAC
+0x40007400 A PERIPHERAL DAC1
 0x40007400 B  REGISTER CR (rw): DAC control register
 0x40007400 C   FIELD 00w01 EN1: DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x40007400 C   FIELD 01w01 TEN1: DAC channel1 trigger enable
@@ -8237,7 +8237,7 @@
 0x400177DC C   FIELD 20w01 TIMxFLTR: HRTIM_FLTxR register update enable
 0x400177F0 B  REGISTER BDMADR (rw): Burst DMA Data register
 0x400177F0 C   FIELD 00w32 BDMADR: Burst DMA Data register
-0x40018000 A PERIPHERAL USART9
+0x40018000 A PERIPHERAL UART9
 0x40018000 B  REGISTER CR1 (rw): Control register 1
 0x40018000 C   FIELD 00w01 UE: USART enable
 0x40018000 C   FIELD 01w01 UESM: USART enable in Stop mode
@@ -8878,365 +8878,6 @@
 0x400200CC C   FIELD 03w03 FS (ro): FIFO status
 0x400200CC C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x400200CC C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020400 A PERIPHERAL DMA2
-0x40020400 B  REGISTER LISR (ro): low interrupt status register
-0x40020400 C   FIELD 00w01 FEIF0: Stream x FIFO error interrupt flag (x=3..0)
-0x40020400 C   FIELD 02w01 DMEIF0: Stream x direct mode error interrupt flag (x=3..0)
-0x40020400 C   FIELD 03w01 TEIF0: Stream x transfer error interrupt flag (x=3..0)
-0x40020400 C   FIELD 04w01 HTIF0: Stream x half transfer interrupt flag (x=3..0)
-0x40020400 C   FIELD 05w01 TCIF0: Stream x transfer complete interrupt flag (x = 3..0)
-0x40020400 C   FIELD 06w01 FEIF1: Stream x FIFO error interrupt flag (x=3..0)
-0x40020400 C   FIELD 08w01 DMEIF1: Stream x direct mode error interrupt flag (x=3..0)
-0x40020400 C   FIELD 09w01 TEIF1: Stream x transfer error interrupt flag (x=3..0)
-0x40020400 C   FIELD 10w01 HTIF1: Stream x half transfer interrupt flag (x=3..0)
-0x40020400 C   FIELD 11w01 TCIF1: Stream x transfer complete interrupt flag (x = 3..0)
-0x40020400 C   FIELD 16w01 FEIF2: Stream x FIFO error interrupt flag (x=3..0)
-0x40020400 C   FIELD 18w01 DMEIF2: Stream x direct mode error interrupt flag (x=3..0)
-0x40020400 C   FIELD 19w01 TEIF2: Stream x transfer error interrupt flag (x=3..0)
-0x40020400 C   FIELD 20w01 HTIF2: Stream x half transfer interrupt flag (x=3..0)
-0x40020400 C   FIELD 21w01 TCIF2: Stream x transfer complete interrupt flag (x = 3..0)
-0x40020400 C   FIELD 22w01 FEIF3: Stream x FIFO error interrupt flag (x=3..0)
-0x40020400 C   FIELD 24w01 DMEIF3: Stream x direct mode error interrupt flag (x=3..0)
-0x40020400 C   FIELD 25w01 TEIF3: Stream x transfer error interrupt flag (x=3..0)
-0x40020400 C   FIELD 26w01 HTIF3: Stream x half transfer interrupt flag (x=3..0)
-0x40020400 C   FIELD 27w01 TCIF3: Stream x transfer complete interrupt flag (x = 3..0)
-0x40020404 B  REGISTER HISR (ro): high interrupt status register
-0x40020404 C   FIELD 00w01 FEIF4: Stream x FIFO error interrupt flag (x=7..4)
-0x40020404 C   FIELD 02w01 DMEIF4: Stream x direct mode error interrupt flag (x=7..4)
-0x40020404 C   FIELD 03w01 TEIF4: Stream x transfer error interrupt flag (x=7..4)
-0x40020404 C   FIELD 04w01 HTIF4: Stream x half transfer interrupt flag (x=7..4)
-0x40020404 C   FIELD 05w01 TCIF4: Stream x transfer complete interrupt flag (x=7..4)
-0x40020404 C   FIELD 06w01 FEIF5: Stream x FIFO error interrupt flag (x=7..4)
-0x40020404 C   FIELD 08w01 DMEIF5: Stream x direct mode error interrupt flag (x=7..4)
-0x40020404 C   FIELD 09w01 TEIF5: Stream x transfer error interrupt flag (x=7..4)
-0x40020404 C   FIELD 10w01 HTIF5: Stream x half transfer interrupt flag (x=7..4)
-0x40020404 C   FIELD 11w01 TCIF5: Stream x transfer complete interrupt flag (x=7..4)
-0x40020404 C   FIELD 16w01 FEIF6: Stream x FIFO error interrupt flag (x=7..4)
-0x40020404 C   FIELD 18w01 DMEIF6: Stream x direct mode error interrupt flag (x=7..4)
-0x40020404 C   FIELD 19w01 TEIF6: Stream x transfer error interrupt flag (x=7..4)
-0x40020404 C   FIELD 20w01 HTIF6: Stream x half transfer interrupt flag (x=7..4)
-0x40020404 C   FIELD 21w01 TCIF6: Stream x transfer complete interrupt flag (x=7..4)
-0x40020404 C   FIELD 22w01 FEIF7: Stream x FIFO error interrupt flag (x=7..4)
-0x40020404 C   FIELD 24w01 DMEIF7: Stream x direct mode error interrupt flag (x=7..4)
-0x40020404 C   FIELD 25w01 TEIF7: Stream x transfer error interrupt flag (x=7..4)
-0x40020404 C   FIELD 26w01 HTIF7: Stream x half transfer interrupt flag (x=7..4)
-0x40020404 C   FIELD 27w01 TCIF7: Stream x transfer complete interrupt flag (x=7..4)
-0x40020408 B  REGISTER LIFCR (wo): low interrupt flag clear register
-0x40020408 C   FIELD 00w01 CFEIF0: Stream x clear FIFO error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 02w01 CDMEIF0: Stream x clear direct mode error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 03w01 CTEIF0: Stream x clear transfer error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 04w01 CHTIF0: Stream x clear half transfer interrupt flag (x = 3..0)
-0x40020408 C   FIELD 05w01 CTCIF0: Stream x clear transfer complete interrupt flag (x = 3..0)
-0x40020408 C   FIELD 06w01 CFEIF1: Stream x clear FIFO error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 08w01 CDMEIF1: Stream x clear direct mode error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 09w01 CTEIF1: Stream x clear transfer error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 10w01 CHTIF1: Stream x clear half transfer interrupt flag (x = 3..0)
-0x40020408 C   FIELD 11w01 CTCIF1: Stream x clear transfer complete interrupt flag (x = 3..0)
-0x40020408 C   FIELD 16w01 CFEIF2: Stream x clear FIFO error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 18w01 CDMEIF2: Stream x clear direct mode error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 19w01 CTEIF2: Stream x clear transfer error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 20w01 CHTIF2: Stream x clear half transfer interrupt flag (x = 3..0)
-0x40020408 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020408 C   FIELD 21w01 CTCIF2: Stream x clear transfer complete interrupt flag (x = 3..0)
-0x40020408 C   FIELD 22w01 CFEIF3: Stream x clear FIFO error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 24w01 CDMEIF3: Stream x clear direct mode error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 25w01 CTEIF3: Stream x clear transfer error interrupt flag (x = 3..0)
-0x40020408 C   FIELD 26w01 CHTIF3: Stream x clear half transfer interrupt flag (x = 3..0)
-0x40020408 C   FIELD 27w01 CTCIF3: Stream x clear transfer complete interrupt flag (x = 3..0)
-0x4002040C B  REGISTER HIFCR (wo): high interrupt flag clear register
-0x4002040C C   FIELD 00w01 CFEIF4: Stream x clear FIFO error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 02w01 CDMEIF4: Stream x clear direct mode error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 03w01 CTEIF4: Stream x clear transfer error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 04w01 CHTIF4: Stream x clear half transfer interrupt flag (x = 7..4)
-0x4002040C C   FIELD 05w01 CTCIF4: Stream x clear transfer complete interrupt flag (x = 7..4)
-0x4002040C C   FIELD 06w01 CFEIF5: Stream x clear FIFO error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 08w01 CDMEIF5: Stream x clear direct mode error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 09w01 CTEIF5: Stream x clear transfer error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 10w01 CHTIF5: Stream x clear half transfer interrupt flag (x = 7..4)
-0x4002040C C   FIELD 11w01 CTCIF5: Stream x clear transfer complete interrupt flag (x = 7..4)
-0x4002040C C   FIELD 16w01 CFEIF6: Stream x clear FIFO error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 18w01 CDMEIF6: Stream x clear direct mode error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 19w01 CTEIF6: Stream x clear transfer error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 20w01 CHTIF6: Stream x clear half transfer interrupt flag (x = 7..4)
-0x4002040C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x4002040C C   FIELD 21w01 CTCIF6: Stream x clear transfer complete interrupt flag (x = 7..4)
-0x4002040C C   FIELD 22w01 CFEIF7: Stream x clear FIFO error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 24w01 CDMEIF7: Stream x clear direct mode error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
-0x4002040C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
-0x4002040C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
-0x40020410 B  REGISTER CR0 (rw): stream x configuration register
-0x40020410 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x40020410 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x40020410 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x40020410 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x40020410 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x40020410 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x40020410 C   FIELD 06w02 DIR: Data transfer direction
-0x40020410 C   FIELD 08w01 CIRC: Circular mode
-0x40020410 C   FIELD 09w01 PINC: Peripheral increment mode
-0x40020410 C   FIELD 10w01 MINC: Memory increment mode
-0x40020410 C   FIELD 11w02 PSIZE: Peripheral data size
-0x40020410 C   FIELD 13w02 MSIZE: Memory data size
-0x40020410 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x40020410 C   FIELD 16w02 PL: Priority level
-0x40020410 C   FIELD 18w01 DBM: Double buffer mode
-0x40020410 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40020410 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020410 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x40020410 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40020414 B  REGISTER NDTR0 (rw): stream x number of data register
-0x40020414 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40020418 B  REGISTER PAR0 (rw): stream x peripheral address register
-0x40020418 C   FIELD 00w32 PA: Peripheral address
-0x4002041C B  REGISTER M0AR0 (rw): stream x memory 0 address register
-0x4002041C C   FIELD 00w32 M0A: Memory 0 address
-0x40020420 B  REGISTER M1AR0 (rw): stream x memory 1 address register
-0x40020420 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40020424 B  REGISTER FCR0: stream x FIFO control register
-0x40020424 C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x40020424 C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x40020424 C   FIELD 03w03 FS (ro): FIFO status
-0x40020424 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40020424 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020428 B  REGISTER CR1 (rw): stream x configuration register
-0x40020428 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x40020428 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x40020428 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x40020428 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x40020428 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x40020428 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x40020428 C   FIELD 06w02 DIR: Data transfer direction
-0x40020428 C   FIELD 08w01 CIRC: Circular mode
-0x40020428 C   FIELD 09w01 PINC: Peripheral increment mode
-0x40020428 C   FIELD 10w01 MINC: Memory increment mode
-0x40020428 C   FIELD 11w02 PSIZE: Peripheral data size
-0x40020428 C   FIELD 13w02 MSIZE: Memory data size
-0x40020428 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x40020428 C   FIELD 16w02 PL: Priority level
-0x40020428 C   FIELD 18w01 DBM: Double buffer mode
-0x40020428 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40020428 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020428 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x40020428 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x4002042C B  REGISTER NDTR1 (rw): stream x number of data register
-0x4002042C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40020430 B  REGISTER PAR1 (rw): stream x peripheral address register
-0x40020430 C   FIELD 00w32 PA: Peripheral address
-0x40020434 B  REGISTER M0AR1 (rw): stream x memory 0 address register
-0x40020434 C   FIELD 00w32 M0A: Memory 0 address
-0x40020438 B  REGISTER M1AR1 (rw): stream x memory 1 address register
-0x40020438 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002043C B  REGISTER FCR1: stream x FIFO control register
-0x4002043C C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x4002043C C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x4002043C C   FIELD 03w03 FS (ro): FIFO status
-0x4002043C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x4002043C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020440 B  REGISTER CR2 (rw): stream x configuration register
-0x40020440 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x40020440 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x40020440 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x40020440 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x40020440 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x40020440 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x40020440 C   FIELD 06w02 DIR: Data transfer direction
-0x40020440 C   FIELD 08w01 CIRC: Circular mode
-0x40020440 C   FIELD 09w01 PINC: Peripheral increment mode
-0x40020440 C   FIELD 10w01 MINC: Memory increment mode
-0x40020440 C   FIELD 11w02 PSIZE: Peripheral data size
-0x40020440 C   FIELD 13w02 MSIZE: Memory data size
-0x40020440 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x40020440 C   FIELD 16w02 PL: Priority level
-0x40020440 C   FIELD 18w01 DBM: Double buffer mode
-0x40020440 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40020440 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020440 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x40020440 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40020444 B  REGISTER NDTR2 (rw): stream x number of data register
-0x40020444 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40020448 B  REGISTER PAR2 (rw): stream x peripheral address register
-0x40020448 C   FIELD 00w32 PA: Peripheral address
-0x4002044C B  REGISTER M0AR2 (rw): stream x memory 0 address register
-0x4002044C C   FIELD 00w32 M0A: Memory 0 address
-0x40020450 B  REGISTER M1AR2 (rw): stream x memory 1 address register
-0x40020450 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40020454 B  REGISTER FCR2: stream x FIFO control register
-0x40020454 C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x40020454 C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x40020454 C   FIELD 03w03 FS (ro): FIFO status
-0x40020454 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40020454 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020458 B  REGISTER CR3 (rw): stream x configuration register
-0x40020458 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x40020458 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x40020458 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x40020458 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x40020458 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x40020458 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x40020458 C   FIELD 06w02 DIR: Data transfer direction
-0x40020458 C   FIELD 08w01 CIRC: Circular mode
-0x40020458 C   FIELD 09w01 PINC: Peripheral increment mode
-0x40020458 C   FIELD 10w01 MINC: Memory increment mode
-0x40020458 C   FIELD 11w02 PSIZE: Peripheral data size
-0x40020458 C   FIELD 13w02 MSIZE: Memory data size
-0x40020458 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x40020458 C   FIELD 16w02 PL: Priority level
-0x40020458 C   FIELD 18w01 DBM: Double buffer mode
-0x40020458 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40020458 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020458 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x40020458 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x4002045C B  REGISTER NDTR3 (rw): stream x number of data register
-0x4002045C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40020460 B  REGISTER PAR3 (rw): stream x peripheral address register
-0x40020460 C   FIELD 00w32 PA: Peripheral address
-0x40020464 B  REGISTER M0AR3 (rw): stream x memory 0 address register
-0x40020464 C   FIELD 00w32 M0A: Memory 0 address
-0x40020468 B  REGISTER M1AR3 (rw): stream x memory 1 address register
-0x40020468 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002046C B  REGISTER FCR3: stream x FIFO control register
-0x4002046C C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x4002046C C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x4002046C C   FIELD 03w03 FS (ro): FIFO status
-0x4002046C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x4002046C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020470 B  REGISTER CR4 (rw): stream x configuration register
-0x40020470 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x40020470 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x40020470 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x40020470 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x40020470 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x40020470 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x40020470 C   FIELD 06w02 DIR: Data transfer direction
-0x40020470 C   FIELD 08w01 CIRC: Circular mode
-0x40020470 C   FIELD 09w01 PINC: Peripheral increment mode
-0x40020470 C   FIELD 10w01 MINC: Memory increment mode
-0x40020470 C   FIELD 11w02 PSIZE: Peripheral data size
-0x40020470 C   FIELD 13w02 MSIZE: Memory data size
-0x40020470 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x40020470 C   FIELD 16w02 PL: Priority level
-0x40020470 C   FIELD 18w01 DBM: Double buffer mode
-0x40020470 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40020470 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020470 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x40020470 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40020474 B  REGISTER NDTR4 (rw): stream x number of data register
-0x40020474 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40020478 B  REGISTER PAR4 (rw): stream x peripheral address register
-0x40020478 C   FIELD 00w32 PA: Peripheral address
-0x4002047C B  REGISTER M0AR4 (rw): stream x memory 0 address register
-0x4002047C C   FIELD 00w32 M0A: Memory 0 address
-0x40020480 B  REGISTER M1AR4 (rw): stream x memory 1 address register
-0x40020480 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40020484 B  REGISTER FCR4: stream x FIFO control register
-0x40020484 C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x40020484 C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x40020484 C   FIELD 03w03 FS (ro): FIFO status
-0x40020484 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40020484 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020488 B  REGISTER CR5 (rw): stream x configuration register
-0x40020488 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x40020488 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x40020488 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x40020488 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x40020488 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x40020488 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x40020488 C   FIELD 06w02 DIR: Data transfer direction
-0x40020488 C   FIELD 08w01 CIRC: Circular mode
-0x40020488 C   FIELD 09w01 PINC: Peripheral increment mode
-0x40020488 C   FIELD 10w01 MINC: Memory increment mode
-0x40020488 C   FIELD 11w02 PSIZE: Peripheral data size
-0x40020488 C   FIELD 13w02 MSIZE: Memory data size
-0x40020488 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x40020488 C   FIELD 16w02 PL: Priority level
-0x40020488 C   FIELD 18w01 DBM: Double buffer mode
-0x40020488 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40020488 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x40020488 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x40020488 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x4002048C B  REGISTER NDTR5 (rw): stream x number of data register
-0x4002048C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40020490 B  REGISTER PAR5 (rw): stream x peripheral address register
-0x40020490 C   FIELD 00w32 PA: Peripheral address
-0x40020494 B  REGISTER M0AR5 (rw): stream x memory 0 address register
-0x40020494 C   FIELD 00w32 M0A: Memory 0 address
-0x40020498 B  REGISTER M1AR5 (rw): stream x memory 1 address register
-0x40020498 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002049C B  REGISTER FCR5: stream x FIFO control register
-0x4002049C C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x4002049C C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x4002049C C   FIELD 03w03 FS (ro): FIFO status
-0x4002049C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x4002049C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x400204A0 B  REGISTER CR6 (rw): stream x configuration register
-0x400204A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x400204A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x400204A0 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x400204A0 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x400204A0 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x400204A0 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x400204A0 C   FIELD 06w02 DIR: Data transfer direction
-0x400204A0 C   FIELD 08w01 CIRC: Circular mode
-0x400204A0 C   FIELD 09w01 PINC: Peripheral increment mode
-0x400204A0 C   FIELD 10w01 MINC: Memory increment mode
-0x400204A0 C   FIELD 11w02 PSIZE: Peripheral data size
-0x400204A0 C   FIELD 13w02 MSIZE: Memory data size
-0x400204A0 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x400204A0 C   FIELD 16w02 PL: Priority level
-0x400204A0 C   FIELD 18w01 DBM: Double buffer mode
-0x400204A0 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x400204A0 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x400204A0 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x400204A0 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x400204A4 B  REGISTER NDTR6 (rw): stream x number of data register
-0x400204A4 C   FIELD 00w16 NDT: Number of data items to transfer
-0x400204A8 B  REGISTER PAR6 (rw): stream x peripheral address register
-0x400204A8 C   FIELD 00w32 PA: Peripheral address
-0x400204AC B  REGISTER M0AR6 (rw): stream x memory 0 address register
-0x400204AC C   FIELD 00w32 M0A: Memory 0 address
-0x400204B0 B  REGISTER M1AR6 (rw): stream x memory 1 address register
-0x400204B0 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x400204B4 B  REGISTER FCR6: stream x FIFO control register
-0x400204B4 C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x400204B4 C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x400204B4 C   FIELD 03w03 FS (ro): FIFO status
-0x400204B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x400204B4 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x400204B8 B  REGISTER CR7 (rw): stream x configuration register
-0x400204B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
-0x400204B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
-0x400204B8 C   FIELD 02w01 TEIE: Transfer error interrupt enable
-0x400204B8 C   FIELD 03w01 HTIE: Half transfer interrupt enable
-0x400204B8 C   FIELD 04w01 TCIE: Transfer complete interrupt enable
-0x400204B8 C   FIELD 05w01 PFCTRL: Peripheral flow controller
-0x400204B8 C   FIELD 06w02 DIR: Data transfer direction
-0x400204B8 C   FIELD 08w01 CIRC: Circular mode
-0x400204B8 C   FIELD 09w01 PINC: Peripheral increment mode
-0x400204B8 C   FIELD 10w01 MINC: Memory increment mode
-0x400204B8 C   FIELD 11w02 PSIZE: Peripheral data size
-0x400204B8 C   FIELD 13w02 MSIZE: Memory data size
-0x400204B8 C   FIELD 15w01 PINCOS: Peripheral increment offset size
-0x400204B8 C   FIELD 16w02 PL: Priority level
-0x400204B8 C   FIELD 18w01 DBM: Double buffer mode
-0x400204B8 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x400204B8 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
-0x400204B8 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
-0x400204B8 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x400204BC B  REGISTER NDTR7 (rw): stream x number of data register
-0x400204BC C   FIELD 00w16 NDT: Number of data items to transfer
-0x400204C0 B  REGISTER PAR7 (rw): stream x peripheral address register
-0x400204C0 C   FIELD 00w32 PA: Peripheral address
-0x400204C4 B  REGISTER M0AR7 (rw): stream x memory 0 address register
-0x400204C4 C   FIELD 00w32 M0A: Memory 0 address
-0x400204C8 B  REGISTER M1AR7 (rw): stream x memory 1 address register
-0x400204C8 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x400204CC B  REGISTER FCR7: stream x FIFO control register
-0x400204CC C   FIELD 00w02 FTH (rw): FIFO threshold selection
-0x400204CC C   FIELD 02w01 DMDIS (rw): Direct mode disable
-0x400204CC C   FIELD 03w03 FS (ro): FIFO status
-0x400204CC C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x400204CC C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
 0x40020800 A PERIPHERAL DMAMUX1
 0x40020800 B  REGISTER CCR0 (rw): DMAMux - DMA request line multiplexer channel x control register
 0x40020800 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
@@ -22415,14 +22056,14 @@ INTERRUPT 052: UART4 (USART6): UART4 global interrupt
 INTERRUPT 053: UART5 (UART7): UART5 global interrupt
 INTERRUPT 054: TIM6_DAC (NVIC): TIM6 global interrupt
 INTERRUPT 055: TIM7 (MPU): TIM7 global interrupt
-INTERRUPT 056: DMA2_STR0 (DMA2): DMA2 Stream0
-INTERRUPT 057: DMA2_STR1 (DMA2): DMA2 Stream1
-INTERRUPT 058: DMA2_STR2 (DMA2): DMA2 Stream2
-INTERRUPT 059: DMA2_STR3 (DMA2): DMA2 Stream3
-INTERRUPT 060: DMA2_STR4 (DMA2): DMA2 Stream4
-INTERRUPT 068: DMA2_STR5 (DMA2): DMA2 Stream5
-INTERRUPT 069: DMA2_STR6 (DMA2): DMA2 Stream6
-INTERRUPT 070: DMA2_STR7 (DMA2): DMA2 Stream7
+INTERRUPT 056: DMA2_STR0 (HRTIM_TIMA): DMA2 Stream0 interrupt
+INTERRUPT 057: DMA2_STR1 (HRTIM_TIMA): DMA2 Stream1 interrupt
+INTERRUPT 058: DMA2_STR2 (HRTIM_TIMA): DMA2 Stream2 interrupt
+INTERRUPT 059: DMA2_STR3 (HRTIM_TIMA): DMA2 Stream3 interrupt
+INTERRUPT 060: DMA2_STR4 (HRTIM_TIMA): DMA2 Stream4 interrupt
+INTERRUPT 068: DMA2_STR5 (HRTIM_TIMA): DMA2 Stream5 interrupt
+INTERRUPT 069: DMA2_STR6 (HRTIM_TIMA): DMA2 Stream6 interrupt
+INTERRUPT 070: DMA2_STR7 (HRTIM_TIMA): DMA2 Stream7 interrupt
 INTERRUPT 071: USART6 (UART8): USART6 global interrupt
 INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
 INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
@@ -22434,11 +22075,12 @@ INTERRUPT 078: DCMI (OTG2_HS_GLOBAL): DCMI global interrupt
 INTERRUPT 079: CRYP (OTG1_HS_GLOBAL): CRYP global interrupt
 INTERRUPT 080: HASH_RNG (DCMI): HASH and RNG
 INTERRUPT 081: FPU (PF): Floating point unit interrupt
-INTERRUPT 082: UART7 (USART9): UART7 global interrupt
-INTERRUPT 083: UART8 (USART10): UART8 global interrupt
+INTERRUPT 082: UART7 (UART9): UART7 global interrupt
+INTERRUPT 083: UART8 (UART9): UART8 global interrupt
 INTERRUPT 084: SPI4 (SPI5): SPI4 global interrupt
 INTERRUPT 085: SPI5 (SPI6): SPI5 global interrupt
 INTERRUPT 086: SPI6 (LTDC): SPI6 global interrupt
+INTERRUPT 087: SAI1 (SAI1): SAI1 global interrupt
 INTERRUPT 088: LTDC (SPDIFRX): LCD-TFT global interrupt
 INTERRUPT 089: LTDC_ER (SPDIFRX): LCD-TFT error interrupt
 INTERRUPT 090: DMA2D (DMA2D): DMA2D global interrupt
@@ -22448,6 +22090,7 @@ INTERRUPT 093: LPTIM1 (LPTIM2): LPTIM1 global interrupt
 INTERRUPT 094: CEC (CEC): HDMI-CEC global interrupt
 INTERRUPT 095: I2C4_EV (I2C4): I2C4 event interrupt
 INTERRUPT 096: I2C4_ER (I2C4): I2C4 error interrupt
+INTERRUPT 097: SPDIFRX (SPDIFRX): SPDIFRX global interrupt
 INTERRUPT 102: DMAMUX1_OV (CRC): DMAMUX1 overrun interrupt
 INTERRUPT 110: DFSDM1_FLT0 (TIM17): DFSDM1 filter 0 interrupt
 INTERRUPT 111: DFSDM1_FLT1 (TIM17): DFSDM1 filter 1 interrupt
@@ -22463,7 +22106,6 @@ INTERRUPT 121: JPEG (JPEG): JPEG global interrupt
 INTERRUPT 122: MDMA (MDMA): MDMA
 INTERRUPT 124: SDMMC (SDMMC2): SDMMC global interrupt
 INTERRUPT 125: HSEM0 (HSEM): HSEM global interrupt 1
-INTERRUPT 127: ADC3 (ADC1): ADC3 global interrupt
 INTERRUPT 128: DMAMUX2_OVR (DMAMUX2): DMAMUX2 overrun interrupt
 INTERRUPT 129: BDMA_CH1 (BDMA1): BDMA channel 1 interrupt
 INTERRUPT 130: BDMA_CH2 (BDMA1): BDMA channel 2 interrupt
@@ -22476,9 +22118,12 @@ INTERRUPT 136: BDMA_CH8 (BDMA1): BDMA channel 8 interrupt
 INTERRUPT 137: COMP (COMP1): COMP1 and COMP2
 INTERRUPT 138: LPTIM2 (LPTIM3): LPTIM2 timer interrupt
 INTERRUPT 139: LPTIM3 (LPUART1): LPTIM2 timer interrupt
+INTERRUPT 140: UART9 (UART9): UART9 global interrupt
+INTERRUPT 141: USART10 (USART10): USART10 global interrupt
 INTERRUPT 142: LPUART (SYSCFG): LPUART global interrupt
 INTERRUPT 143: WWDG1_RST (PWR): Window Watchdog interrupt
 INTERRUPT 144: CRS (CRS): Clock Recovery System globa
+INTERRUPT 145: RAMECC (RAMECC): ECC diagnostic global interrupt
 INTERRUPT 149: WKUP (DELAY_Block_SDMMC1): WKUP1 to WKUP6 pins
 INTERRUPT 150: OCTOSPI2 (OCTOSPI2): OCTOSPI2 global interrupt
 INTERRUPT 151: OTFDEC1 (OTFDEC1): OTFDEC1 interrupt
