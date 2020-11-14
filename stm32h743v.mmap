@@ -14016,27 +14016,28 @@
 0x52000000 C   FIELD 13w01 GIF13: Channel x global interrupt flag (x=...) This bit is set and reset by hardware. It is a logical OR of all the Channel x interrupt flags (CTCIFx, BTIFx, BRTIFx, TEIFx) which are enabled in the interrupt mask register (CTCIEx, BTIEx, BRTIEx, TEIEx)
 0x52000000 C   FIELD 14w01 GIF14: Channel x global interrupt flag (x=...) This bit is set and reset by hardware. It is a logical OR of all the Channel x interrupt flags (CTCIFx, BTIFx, BRTIFx, TEIFx) which are enabled in the interrupt mask register (CTCIEx, BTIEx, BRTIEx, TEIEx)
 0x52000000 C   FIELD 15w01 GIF15: Channel x global interrupt flag (x=...) This bit is set and reset by hardware. It is a logical OR of all the Channel x interrupt flags (CTCIFx, BTIFx, BRTIFx, TEIFx) which are enabled in the interrupt mask register (CTCIEx, BTIEx, BRTIEx, TEIEx)
-0x52000040 B  REGISTER C0ISR (ro): MDMA channel x interrupt/status register
-0x52000040 C   FIELD 00w01 TEIF0: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000040 C   FIELD 01w01 CTCIF0: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000040 C   FIELD 02w01 BRTIF0: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000040 C   FIELD 03w01 BTIF0: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000040 C   FIELD 04w01 TCIF0: channel x buffer transfer complete
-0x52000040 C   FIELD 16w01 CRQA0: channel x request active flag
-0x52000044 B  REGISTER C0IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000044 C   FIELD 00w01 CTEIF0: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000044 C   FIELD 01w01 CCTCIF0: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000044 C   FIELD 02w01 CBRTIF0: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000044 C   FIELD 03w01 CBTIF0: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000044 C   FIELD 04w01 CLTCIF0: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000048 B  REGISTER C0ESR (ro): MDMA Channel x error status register
+0x52000040 B  CLUSTER CH0: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000040 B  REGISTER ISR0 (ro): MDMA channel x interrupt/status register
+0x52000040 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000040 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000040 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000040 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000040 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000040 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000044 B  REGISTER IFCR0 (wo): MDMA channel x interrupt flag clear register
+0x52000044 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000044 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000044 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000044 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000044 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000048 B  REGISTER ESR0 (ro): MDMA Channel x error status register
 0x52000048 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000048 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000048 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000048 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000048 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000048 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200004C B  REGISTER C0CR: This register is used to control the concerned channel.
+0x5200004C B  REGISTER CR0: This register is used to control the concerned channel.
 0x5200004C C   FIELD 00w01 EN (rw): channel enable
 0x5200004C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200004C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14048,7 +14049,7 @@
 0x5200004C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200004C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200004C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000050 B  REGISTER C0TCR (rw): This register is used to configure the concerned channel.
+0x52000050 B  REGISTER TCR0 (rw): This register is used to configure the concerned channel.
 0x52000050 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000050 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000050 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14063,49 +14064,50 @@
 0x52000050 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000050 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000050 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000054 B  REGISTER C0BNDTR (rw): MDMA Channel x block number of data register
+0x52000054 B  REGISTER BNDTR0 (rw): MDMA Channel x block number of data register
 0x52000054 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000054 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000054 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000054 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000058 B  REGISTER C0SAR (rw): MDMA channel x source address register
+0x52000058 B  REGISTER SAR0 (rw): MDMA channel x source address register
 0x52000058 C   FIELD 00w32 SAR: source adr base
-0x5200005C B  REGISTER C0DAR (rw): MDMA channel x destination address register
+0x5200005C B  REGISTER DAR0 (rw): MDMA channel x destination address register
 0x5200005C C   FIELD 00w32 DAR: Destination adr base
-0x52000060 B  REGISTER C0BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000060 B  REGISTER BRUR0 (rw): MDMA channel x Block Repeat address Update register
 0x52000060 C   FIELD 00w16 SUV: source adresse update value
 0x52000060 C   FIELD 16w16 DUV: destination address update
-0x52000064 B  REGISTER C0LAR (rw): MDMA channel x Link Address register
+0x52000064 B  REGISTER LAR0 (rw): MDMA channel x Link Address register
 0x52000064 C   FIELD 00w32 LAR: Link address register
-0x52000068 B  REGISTER C0TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000068 B  REGISTER TBR0 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000068 C   FIELD 00w06 TSEL: Trigger selection
 0x52000068 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000068 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000070 B  REGISTER C0MAR (rw): MDMA channel x Mask address register
+0x52000070 B  REGISTER MAR0 (rw): MDMA channel x Mask address register
 0x52000070 C   FIELD 00w32 MAR: Mask address
-0x52000074 B  REGISTER C0MDR (rw): MDMA channel x Mask Data register
+0x52000074 B  REGISTER MDR0 (rw): MDMA channel x Mask Data register
 0x52000074 C   FIELD 00w32 MDR: Mask data
-0x52000080 B  REGISTER C1ISR (ro): MDMA channel x interrupt/status register
-0x52000080 C   FIELD 00w01 TEIF1: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000080 C   FIELD 01w01 CTCIF1: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000080 C   FIELD 02w01 BRTIF1: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000080 C   FIELD 03w01 BTIF1: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000080 C   FIELD 04w01 TCIF1: channel x buffer transfer complete
-0x52000080 C   FIELD 16w01 CRQA1: channel x request active flag
-0x52000084 B  REGISTER C1IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000084 C   FIELD 00w01 CTEIF1: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000084 C   FIELD 01w01 CCTCIF1: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000084 C   FIELD 02w01 CBRTIF1: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000084 C   FIELD 03w01 CBTIF1: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000084 C   FIELD 04w01 CLTCIF1: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000088 B  REGISTER C1ESR (ro): MDMA Channel x error status register
+0x52000080 B  CLUSTER CH1: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000080 B  REGISTER ISR1 (ro): MDMA channel x interrupt/status register
+0x52000080 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000080 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000080 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000080 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000080 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000080 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000084 B  REGISTER IFCR1 (wo): MDMA channel x interrupt flag clear register
+0x52000084 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000084 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000084 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000084 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000084 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000088 B  REGISTER ESR1 (ro): MDMA Channel x error status register
 0x52000088 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000088 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000088 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000088 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000088 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000088 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200008C B  REGISTER C1CR: This register is used to control the concerned channel.
+0x5200008C B  REGISTER CR1: This register is used to control the concerned channel.
 0x5200008C C   FIELD 00w01 EN (rw): channel enable
 0x5200008C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200008C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14117,7 +14119,7 @@
 0x5200008C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200008C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200008C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000090 B  REGISTER C1TCR (rw): This register is used to configure the concerned channel.
+0x52000090 B  REGISTER TCR1 (rw): This register is used to configure the concerned channel.
 0x52000090 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000090 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000090 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14132,49 +14134,50 @@
 0x52000090 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000090 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000090 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000094 B  REGISTER C1BNDTR (rw): MDMA Channel x block number of data register
+0x52000094 B  REGISTER BNDTR1 (rw): MDMA Channel x block number of data register
 0x52000094 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000094 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000094 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000094 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000098 B  REGISTER C1SAR (rw): MDMA channel x source address register
+0x52000098 B  REGISTER SAR1 (rw): MDMA channel x source address register
 0x52000098 C   FIELD 00w32 SAR: source adr base
-0x5200009C B  REGISTER C1DAR (rw): MDMA channel x destination address register
+0x5200009C B  REGISTER DAR1 (rw): MDMA channel x destination address register
 0x5200009C C   FIELD 00w32 DAR: Destination adr base
-0x520000A0 B  REGISTER C1BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520000A0 B  REGISTER BRUR1 (rw): MDMA channel x Block Repeat address Update register
 0x520000A0 C   FIELD 00w16 SUV: source adresse update value
 0x520000A0 C   FIELD 16w16 DUV: destination address update
-0x520000A4 B  REGISTER C1LAR (rw): MDMA channel x Link Address register
+0x520000A4 B  REGISTER LAR1 (rw): MDMA channel x Link Address register
 0x520000A4 C   FIELD 00w32 LAR: Link address register
-0x520000A8 B  REGISTER C1TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520000A8 B  REGISTER TBR1 (rw): MDMA channel x Trigger and Bus selection Register
 0x520000A8 C   FIELD 00w06 TSEL: Trigger selection
 0x520000A8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520000A8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520000B0 B  REGISTER C1MAR (rw): MDMA channel x Mask address register
+0x520000B0 B  REGISTER MAR1 (rw): MDMA channel x Mask address register
 0x520000B0 C   FIELD 00w32 MAR: Mask address
-0x520000B4 B  REGISTER C1MDR (rw): MDMA channel x Mask Data register
+0x520000B4 B  REGISTER MDR1 (rw): MDMA channel x Mask Data register
 0x520000B4 C   FIELD 00w32 MDR: Mask data
-0x520000C0 B  REGISTER C2ISR (ro): MDMA channel x interrupt/status register
-0x520000C0 C   FIELD 00w01 TEIF2: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520000C0 C   FIELD 01w01 CTCIF2: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x520000C0 C   FIELD 02w01 BRTIF2: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520000C0 C   FIELD 03w01 BTIF2: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520000C0 C   FIELD 04w01 TCIF2: channel x buffer transfer complete
-0x520000C0 C   FIELD 16w01 CRQA2: channel x request active flag
-0x520000C4 B  REGISTER C2IFCR (wo): MDMA channel x interrupt flag clear register
-0x520000C4 C   FIELD 00w01 CTEIF2: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x520000C4 C   FIELD 01w01 CCTCIF2: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x520000C4 C   FIELD 02w01 CBRTIF2: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x520000C4 C   FIELD 03w01 CBTIF2: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x520000C4 C   FIELD 04w01 CLTCIF2: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x520000C8 B  REGISTER C2ESR (ro): MDMA Channel x error status register
+0x520000C0 B  CLUSTER CH2: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x520000C0 B  REGISTER ISR2 (ro): MDMA channel x interrupt/status register
+0x520000C0 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520000C0 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x520000C0 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520000C0 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520000C0 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x520000C0 C   FIELD 16w01 CRQA: channel x request active flag
+0x520000C4 B  REGISTER IFCR2 (wo): MDMA channel x interrupt flag clear register
+0x520000C4 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x520000C4 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x520000C4 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x520000C4 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x520000C4 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x520000C8 B  REGISTER ESR2 (ro): MDMA Channel x error status register
 0x520000C8 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x520000C8 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x520000C8 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520000C8 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520000C8 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520000C8 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x520000CC B  REGISTER C2CR: This register is used to control the concerned channel.
+0x520000CC B  REGISTER CR2: This register is used to control the concerned channel.
 0x520000CC C   FIELD 00w01 EN (rw): channel enable
 0x520000CC C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x520000CC C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14186,7 +14189,7 @@
 0x520000CC C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x520000CC C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x520000CC C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x520000D0 B  REGISTER C2TCR (rw): This register is used to configure the concerned channel.
+0x520000D0 B  REGISTER TCR2 (rw): This register is used to configure the concerned channel.
 0x520000D0 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x520000D0 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x520000D0 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14201,49 +14204,50 @@
 0x520000D0 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x520000D0 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x520000D0 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x520000D4 B  REGISTER C2BNDTR (rw): MDMA Channel x block number of data register
+0x520000D4 B  REGISTER BNDTR2 (rw): MDMA Channel x block number of data register
 0x520000D4 C   FIELD 00w17 BNDT: block number of data to transfer
 0x520000D4 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x520000D4 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x520000D4 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x520000D8 B  REGISTER C2SAR (rw): MDMA channel x source address register
+0x520000D8 B  REGISTER SAR2 (rw): MDMA channel x source address register
 0x520000D8 C   FIELD 00w32 SAR: source adr base
-0x520000DC B  REGISTER C2DAR (rw): MDMA channel x destination address register
+0x520000DC B  REGISTER DAR2 (rw): MDMA channel x destination address register
 0x520000DC C   FIELD 00w32 DAR: Destination adr base
-0x520000E0 B  REGISTER C2BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520000E0 B  REGISTER BRUR2 (rw): MDMA channel x Block Repeat address Update register
 0x520000E0 C   FIELD 00w16 SUV: source adresse update value
 0x520000E0 C   FIELD 16w16 DUV: destination address update
-0x520000E4 B  REGISTER C2LAR (rw): MDMA channel x Link Address register
+0x520000E4 B  REGISTER LAR2 (rw): MDMA channel x Link Address register
 0x520000E4 C   FIELD 00w32 LAR: Link address register
-0x520000E8 B  REGISTER C2TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520000E8 B  REGISTER TBR2 (rw): MDMA channel x Trigger and Bus selection Register
 0x520000E8 C   FIELD 00w06 TSEL: Trigger selection
 0x520000E8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520000E8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520000F0 B  REGISTER C2MAR (rw): MDMA channel x Mask address register
+0x520000F0 B  REGISTER MAR2 (rw): MDMA channel x Mask address register
 0x520000F0 C   FIELD 00w32 MAR: Mask address
-0x520000F4 B  REGISTER C2MDR (rw): MDMA channel x Mask Data register
+0x520000F4 B  REGISTER MDR2 (rw): MDMA channel x Mask Data register
 0x520000F4 C   FIELD 00w32 MDR: Mask data
-0x52000100 B  REGISTER C3ISR (ro): MDMA channel x interrupt/status register
-0x52000100 C   FIELD 00w01 TEIF3: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000100 C   FIELD 01w01 CTCIF3: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000100 C   FIELD 02w01 BRTIF3: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000100 C   FIELD 03w01 BTIF3: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000100 C   FIELD 04w01 TCIF3: channel x buffer transfer complete
-0x52000100 C   FIELD 16w01 CRQA3: channel x request active flag
-0x52000104 B  REGISTER C3IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000104 C   FIELD 00w01 CTEIF3: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000104 C   FIELD 01w01 CCTCIF3: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000104 C   FIELD 02w01 CBRTIF3: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000104 C   FIELD 03w01 CBTIF3: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000104 C   FIELD 04w01 CLTCIF3: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000108 B  REGISTER C3ESR (ro): MDMA Channel x error status register
+0x52000100 B  CLUSTER CH3: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000100 B  REGISTER ISR3 (ro): MDMA channel x interrupt/status register
+0x52000100 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000100 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000100 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000100 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000100 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000100 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000104 B  REGISTER IFCR3 (wo): MDMA channel x interrupt flag clear register
+0x52000104 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000104 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000104 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000104 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000104 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000108 B  REGISTER ESR3 (ro): MDMA Channel x error status register
 0x52000108 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000108 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000108 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000108 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000108 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000108 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200010C B  REGISTER C3CR: This register is used to control the concerned channel.
+0x5200010C B  REGISTER CR3: This register is used to control the concerned channel.
 0x5200010C C   FIELD 00w01 EN (rw): channel enable
 0x5200010C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200010C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14255,7 +14259,7 @@
 0x5200010C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200010C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200010C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000110 B  REGISTER C3TCR (rw): This register is used to configure the concerned channel.
+0x52000110 B  REGISTER TCR3 (rw): This register is used to configure the concerned channel.
 0x52000110 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000110 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000110 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14270,49 +14274,50 @@
 0x52000110 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000110 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000110 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000114 B  REGISTER C3BNDTR (rw): MDMA Channel x block number of data register
+0x52000114 B  REGISTER BNDTR3 (rw): MDMA Channel x block number of data register
 0x52000114 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000114 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000114 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000114 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000118 B  REGISTER C3SAR (rw): MDMA channel x source address register
+0x52000118 B  REGISTER SAR3 (rw): MDMA channel x source address register
 0x52000118 C   FIELD 00w32 SAR: source adr base
-0x5200011C B  REGISTER C3DAR (rw): MDMA channel x destination address register
+0x5200011C B  REGISTER DAR3 (rw): MDMA channel x destination address register
 0x5200011C C   FIELD 00w32 DAR: Destination adr base
-0x52000120 B  REGISTER C3BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000120 B  REGISTER BRUR3 (rw): MDMA channel x Block Repeat address Update register
 0x52000120 C   FIELD 00w16 SUV: source adresse update value
 0x52000120 C   FIELD 16w16 DUV: destination address update
-0x52000124 B  REGISTER C3LAR (rw): MDMA channel x Link Address register
+0x52000124 B  REGISTER LAR3 (rw): MDMA channel x Link Address register
 0x52000124 C   FIELD 00w32 LAR: Link address register
-0x52000128 B  REGISTER C3TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000128 B  REGISTER TBR3 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000128 C   FIELD 00w06 TSEL: Trigger selection
 0x52000128 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000128 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000130 B  REGISTER C3MAR (rw): MDMA channel x Mask address register
+0x52000130 B  REGISTER MAR3 (rw): MDMA channel x Mask address register
 0x52000130 C   FIELD 00w32 MAR: Mask address
-0x52000134 B  REGISTER C3MDR (rw): MDMA channel x Mask Data register
+0x52000134 B  REGISTER MDR3 (rw): MDMA channel x Mask Data register
 0x52000134 C   FIELD 00w32 MDR: Mask data
-0x52000140 B  REGISTER C4ISR (ro): MDMA channel x interrupt/status register
-0x52000140 C   FIELD 00w01 TEIF4: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000140 C   FIELD 01w01 CTCIF4: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000140 C   FIELD 02w01 BRTIF4: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000140 C   FIELD 03w01 BTIF4: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000140 C   FIELD 04w01 TCIF4: channel x buffer transfer complete
-0x52000140 C   FIELD 16w01 CRQA4: channel x request active flag
-0x52000144 B  REGISTER C4IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000144 C   FIELD 00w01 CTEIF4: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000144 C   FIELD 01w01 CCTCIF4: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000144 C   FIELD 02w01 CBRTIF4: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000144 C   FIELD 03w01 CBTIF4: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000144 C   FIELD 04w01 CLTCIF4: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000148 B  REGISTER C4ESR (ro): MDMA Channel x error status register
+0x52000140 B  CLUSTER CH4: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000140 B  REGISTER ISR4 (ro): MDMA channel x interrupt/status register
+0x52000140 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000140 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000140 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000140 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000140 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000140 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000144 B  REGISTER IFCR4 (wo): MDMA channel x interrupt flag clear register
+0x52000144 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000144 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000144 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000144 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000144 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000148 B  REGISTER ESR4 (ro): MDMA Channel x error status register
 0x52000148 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000148 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000148 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000148 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000148 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000148 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200014C B  REGISTER C4CR: This register is used to control the concerned channel.
+0x5200014C B  REGISTER CR4: This register is used to control the concerned channel.
 0x5200014C C   FIELD 00w01 EN (rw): channel enable
 0x5200014C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200014C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14324,7 +14329,7 @@
 0x5200014C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200014C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200014C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000150 B  REGISTER C4TCR (rw): This register is used to configure the concerned channel.
+0x52000150 B  REGISTER TCR4 (rw): This register is used to configure the concerned channel.
 0x52000150 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000150 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000150 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14339,49 +14344,50 @@
 0x52000150 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000150 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000150 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000154 B  REGISTER C4BNDTR (rw): MDMA Channel x block number of data register
+0x52000154 B  REGISTER BNDTR4 (rw): MDMA Channel x block number of data register
 0x52000154 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000154 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000154 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000154 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000158 B  REGISTER C4SAR (rw): MDMA channel x source address register
+0x52000158 B  REGISTER SAR4 (rw): MDMA channel x source address register
 0x52000158 C   FIELD 00w32 SAR: source adr base
-0x5200015C B  REGISTER C4DAR (rw): MDMA channel x destination address register
+0x5200015C B  REGISTER DAR4 (rw): MDMA channel x destination address register
 0x5200015C C   FIELD 00w32 DAR: Destination adr base
-0x52000160 B  REGISTER C4BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000160 B  REGISTER BRUR4 (rw): MDMA channel x Block Repeat address Update register
 0x52000160 C   FIELD 00w16 SUV: source adresse update value
 0x52000160 C   FIELD 16w16 DUV: destination address update
-0x52000164 B  REGISTER C4LAR (rw): MDMA channel x Link Address register
+0x52000164 B  REGISTER LAR4 (rw): MDMA channel x Link Address register
 0x52000164 C   FIELD 00w32 LAR: Link address register
-0x52000168 B  REGISTER C4TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000168 B  REGISTER TBR4 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000168 C   FIELD 00w06 TSEL: Trigger selection
 0x52000168 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000168 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000170 B  REGISTER C4MAR (rw): MDMA channel x Mask address register
+0x52000170 B  REGISTER MAR4 (rw): MDMA channel x Mask address register
 0x52000170 C   FIELD 00w32 MAR: Mask address
-0x52000174 B  REGISTER C4MDR (rw): MDMA channel x Mask Data register
+0x52000174 B  REGISTER MDR4 (rw): MDMA channel x Mask Data register
 0x52000174 C   FIELD 00w32 MDR: Mask data
-0x52000180 B  REGISTER C5ISR (ro): MDMA channel x interrupt/status register
-0x52000180 C   FIELD 00w01 TEIF5: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000180 C   FIELD 01w01 CTCIF5: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000180 C   FIELD 02w01 BRTIF5: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000180 C   FIELD 03w01 BTIF5: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000180 C   FIELD 04w01 TCIF5: channel x buffer transfer complete
-0x52000180 C   FIELD 16w01 CRQA5: channel x request active flag
-0x52000184 B  REGISTER C5IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000184 C   FIELD 00w01 CTEIF5: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000184 C   FIELD 01w01 CCTCIF5: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000184 C   FIELD 02w01 CBRTIF5: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000184 C   FIELD 03w01 CBTIF5: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000184 C   FIELD 04w01 CLTCIF5: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000188 B  REGISTER C5ESR (ro): MDMA Channel x error status register
+0x52000180 B  CLUSTER CH5: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000180 B  REGISTER ISR5 (ro): MDMA channel x interrupt/status register
+0x52000180 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000180 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000180 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000180 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000180 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000180 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000184 B  REGISTER IFCR5 (wo): MDMA channel x interrupt flag clear register
+0x52000184 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000184 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000184 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000184 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000184 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000188 B  REGISTER ESR5 (ro): MDMA Channel x error status register
 0x52000188 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000188 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000188 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000188 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000188 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000188 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200018C B  REGISTER C5CR: This register is used to control the concerned channel.
+0x5200018C B  REGISTER CR5: This register is used to control the concerned channel.
 0x5200018C C   FIELD 00w01 EN (rw): channel enable
 0x5200018C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200018C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14393,7 +14399,7 @@
 0x5200018C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200018C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200018C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000190 B  REGISTER C5TCR (rw): This register is used to configure the concerned channel.
+0x52000190 B  REGISTER TCR5 (rw): This register is used to configure the concerned channel.
 0x52000190 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000190 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000190 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14408,49 +14414,50 @@
 0x52000190 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000190 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000190 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000194 B  REGISTER C5BNDTR (rw): MDMA Channel x block number of data register
+0x52000194 B  REGISTER BNDTR5 (rw): MDMA Channel x block number of data register
 0x52000194 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000194 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000194 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000194 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000198 B  REGISTER C5SAR (rw): MDMA channel x source address register
+0x52000198 B  REGISTER SAR5 (rw): MDMA channel x source address register
 0x52000198 C   FIELD 00w32 SAR: source adr base
-0x5200019C B  REGISTER C5DAR (rw): MDMA channel x destination address register
+0x5200019C B  REGISTER DAR5 (rw): MDMA channel x destination address register
 0x5200019C C   FIELD 00w32 DAR: Destination adr base
-0x520001A0 B  REGISTER C5BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520001A0 B  REGISTER BRUR5 (rw): MDMA channel x Block Repeat address Update register
 0x520001A0 C   FIELD 00w16 SUV: source adresse update value
 0x520001A0 C   FIELD 16w16 DUV: destination address update
-0x520001A4 B  REGISTER C5LAR (rw): MDMA channel x Link Address register
+0x520001A4 B  REGISTER LAR5 (rw): MDMA channel x Link Address register
 0x520001A4 C   FIELD 00w32 LAR: Link address register
-0x520001A8 B  REGISTER C5TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520001A8 B  REGISTER TBR5 (rw): MDMA channel x Trigger and Bus selection Register
 0x520001A8 C   FIELD 00w06 TSEL: Trigger selection
 0x520001A8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520001A8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520001B0 B  REGISTER C5MAR (rw): MDMA channel x Mask address register
+0x520001B0 B  REGISTER MAR5 (rw): MDMA channel x Mask address register
 0x520001B0 C   FIELD 00w32 MAR: Mask address
-0x520001B4 B  REGISTER C5MDR (rw): MDMA channel x Mask Data register
+0x520001B4 B  REGISTER MDR5 (rw): MDMA channel x Mask Data register
 0x520001B4 C   FIELD 00w32 MDR: Mask data
-0x520001C0 B  REGISTER C6ISR (ro): MDMA channel x interrupt/status register
-0x520001C0 C   FIELD 00w01 TEIF6: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520001C0 C   FIELD 01w01 CTCIF6: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x520001C0 C   FIELD 02w01 BRTIF6: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520001C0 C   FIELD 03w01 BTIF6: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520001C0 C   FIELD 04w01 TCIF6: channel x buffer transfer complete
-0x520001C0 C   FIELD 16w01 CRQA6: channel x request active flag
-0x520001C4 B  REGISTER C6IFCR (wo): MDMA channel x interrupt flag clear register
-0x520001C4 C   FIELD 00w01 CTEIF6: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x520001C4 C   FIELD 01w01 CCTCIF6: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x520001C4 C   FIELD 02w01 CBRTIF6: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x520001C4 C   FIELD 03w01 CBTIF6: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x520001C4 C   FIELD 04w01 CLTCIF6: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x520001C8 B  REGISTER C6ESR (ro): MDMA Channel x error status register
+0x520001C0 B  CLUSTER CH6: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x520001C0 B  REGISTER ISR6 (ro): MDMA channel x interrupt/status register
+0x520001C0 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520001C0 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x520001C0 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520001C0 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520001C0 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x520001C0 C   FIELD 16w01 CRQA: channel x request active flag
+0x520001C4 B  REGISTER IFCR6 (wo): MDMA channel x interrupt flag clear register
+0x520001C4 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x520001C4 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x520001C4 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x520001C4 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x520001C4 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x520001C8 B  REGISTER ESR6 (ro): MDMA Channel x error status register
 0x520001C8 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x520001C8 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x520001C8 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520001C8 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520001C8 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520001C8 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x520001CC B  REGISTER C6CR: This register is used to control the concerned channel.
+0x520001CC B  REGISTER CR6: This register is used to control the concerned channel.
 0x520001CC C   FIELD 00w01 EN (rw): channel enable
 0x520001CC C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x520001CC C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14462,7 +14469,7 @@
 0x520001CC C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x520001CC C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x520001CC C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x520001D0 B  REGISTER C6TCR (rw): This register is used to configure the concerned channel.
+0x520001D0 B  REGISTER TCR6 (rw): This register is used to configure the concerned channel.
 0x520001D0 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x520001D0 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x520001D0 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14477,49 +14484,50 @@
 0x520001D0 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x520001D0 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x520001D0 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x520001D4 B  REGISTER C6BNDTR (rw): MDMA Channel x block number of data register
+0x520001D4 B  REGISTER BNDTR6 (rw): MDMA Channel x block number of data register
 0x520001D4 C   FIELD 00w17 BNDT: block number of data to transfer
 0x520001D4 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x520001D4 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
-0x520001D4 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0
-0x520001D8 B  REGISTER C6SAR (rw): MDMA channel x source address register
+0x520001D4 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
+0x520001D8 B  REGISTER SAR6 (rw): MDMA channel x source address register
 0x520001D8 C   FIELD 00w32 SAR: source adr base
-0x520001DC B  REGISTER C6DAR (rw): MDMA channel x destination address register
+0x520001DC B  REGISTER DAR6 (rw): MDMA channel x destination address register
 0x520001DC C   FIELD 00w32 DAR: Destination adr base
-0x520001E0 B  REGISTER C6BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520001E0 B  REGISTER BRUR6 (rw): MDMA channel x Block Repeat address Update register
 0x520001E0 C   FIELD 00w16 SUV: source adresse update value
 0x520001E0 C   FIELD 16w16 DUV: destination address update
-0x520001E4 B  REGISTER C6LAR (rw): MDMA channel x Link Address register
+0x520001E4 B  REGISTER LAR6 (rw): MDMA channel x Link Address register
 0x520001E4 C   FIELD 00w32 LAR: Link address register
-0x520001E8 B  REGISTER C6TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520001E8 B  REGISTER TBR6 (rw): MDMA channel x Trigger and Bus selection Register
 0x520001E8 C   FIELD 00w06 TSEL: Trigger selection
 0x520001E8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520001E8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520001F0 B  REGISTER C6MAR (rw): MDMA channel x Mask address register
+0x520001F0 B  REGISTER MAR6 (rw): MDMA channel x Mask address register
 0x520001F0 C   FIELD 00w32 MAR: Mask address
-0x520001F4 B  REGISTER C6MDR (rw): MDMA channel x Mask Data register
+0x520001F4 B  REGISTER MDR6 (rw): MDMA channel x Mask Data register
 0x520001F4 C   FIELD 00w32 MDR: Mask data
-0x52000200 B  REGISTER C7ISR (ro): MDMA channel x interrupt/status register
-0x52000200 C   FIELD 00w01 TEIF7: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000200 C   FIELD 01w01 CTCIF7: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000200 C   FIELD 02w01 BRTIF7: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000200 C   FIELD 03w01 BTIF7: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000200 C   FIELD 04w01 TCIF7: channel x buffer transfer complete
-0x52000200 C   FIELD 16w01 CRQA7: channel x request active flag
-0x52000204 B  REGISTER C7IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000204 C   FIELD 00w01 CTEIF7: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000204 C   FIELD 01w01 CCTCIF7: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000204 C   FIELD 02w01 CBRTIF7: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000204 C   FIELD 03w01 CBTIF7: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000204 C   FIELD 04w01 CLTCIF7: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000208 B  REGISTER C7ESR (ro): MDMA Channel x error status register
+0x52000200 B  CLUSTER CH7: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000200 B  REGISTER ISR7 (ro): MDMA channel x interrupt/status register
+0x52000200 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000200 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000200 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000200 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000200 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000200 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000204 B  REGISTER IFCR7 (wo): MDMA channel x interrupt flag clear register
+0x52000204 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000204 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000204 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000204 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000204 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000208 B  REGISTER ESR7 (ro): MDMA Channel x error status register
 0x52000208 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000208 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000208 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000208 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000208 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000208 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200020C B  REGISTER C7CR: This register is used to control the concerned channel.
+0x5200020C B  REGISTER CR7: This register is used to control the concerned channel.
 0x5200020C C   FIELD 00w01 EN (rw): channel enable
 0x5200020C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200020C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14531,7 +14539,7 @@
 0x5200020C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200020C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200020C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000210 B  REGISTER C7TCR (rw): This register is used to configure the concerned channel.
+0x52000210 B  REGISTER TCR7 (rw): This register is used to configure the concerned channel.
 0x52000210 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000210 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000210 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14546,49 +14554,50 @@
 0x52000210 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000210 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000210 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000214 B  REGISTER C7BNDTR (rw): MDMA Channel x block number of data register
+0x52000214 B  REGISTER BNDTR7 (rw): MDMA Channel x block number of data register
 0x52000214 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000214 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000214 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000214 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000218 B  REGISTER C7SAR (rw): MDMA channel x source address register
+0x52000218 B  REGISTER SAR7 (rw): MDMA channel x source address register
 0x52000218 C   FIELD 00w32 SAR: source adr base
-0x5200021C B  REGISTER C7DAR (rw): MDMA channel x destination address register
+0x5200021C B  REGISTER DAR7 (rw): MDMA channel x destination address register
 0x5200021C C   FIELD 00w32 DAR: Destination adr base
-0x52000220 B  REGISTER C7BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000220 B  REGISTER BRUR7 (rw): MDMA channel x Block Repeat address Update register
 0x52000220 C   FIELD 00w16 SUV: source adresse update value
 0x52000220 C   FIELD 16w16 DUV: destination address update
-0x52000224 B  REGISTER C7LAR (rw): MDMA channel x Link Address register
+0x52000224 B  REGISTER LAR7 (rw): MDMA channel x Link Address register
 0x52000224 C   FIELD 00w32 LAR: Link address register
-0x52000228 B  REGISTER C7TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000228 B  REGISTER TBR7 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000228 C   FIELD 00w06 TSEL: Trigger selection
 0x52000228 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000228 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000230 B  REGISTER C7MAR (rw): MDMA channel x Mask address register
+0x52000230 B  REGISTER MAR7 (rw): MDMA channel x Mask address register
 0x52000230 C   FIELD 00w32 MAR: Mask address
-0x52000234 B  REGISTER C7MDR (rw): MDMA channel x Mask Data register
+0x52000234 B  REGISTER MDR7 (rw): MDMA channel x Mask Data register
 0x52000234 C   FIELD 00w32 MDR: Mask data
-0x52000240 B  REGISTER C8ISR (ro): MDMA channel x interrupt/status register
-0x52000240 C   FIELD 00w01 TEIF8: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000240 C   FIELD 01w01 CTCIF8: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000240 C   FIELD 02w01 BRTIF8: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000240 C   FIELD 03w01 BTIF8: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000240 C   FIELD 04w01 TCIF8: channel x buffer transfer complete
-0x52000240 C   FIELD 16w01 CRQA8: channel x request active flag
-0x52000244 B  REGISTER C8IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000244 C   FIELD 00w01 CTEIF8: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000244 C   FIELD 01w01 CCTCIF8: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000244 C   FIELD 02w01 CBRTIF8: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000244 C   FIELD 03w01 CBTIF8: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000244 C   FIELD 04w01 CLTCIF8: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000248 B  REGISTER C8ESR (ro): MDMA Channel x error status register
+0x52000240 B  CLUSTER CH8: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000240 B  REGISTER ISR8 (ro): MDMA channel x interrupt/status register
+0x52000240 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000240 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000240 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000240 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000240 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000240 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000244 B  REGISTER IFCR8 (wo): MDMA channel x interrupt flag clear register
+0x52000244 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000244 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000244 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000244 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000244 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000248 B  REGISTER ESR8 (ro): MDMA Channel x error status register
 0x52000248 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000248 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000248 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000248 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000248 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000248 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200024C B  REGISTER C8CR: This register is used to control the concerned channel.
+0x5200024C B  REGISTER CR8: This register is used to control the concerned channel.
 0x5200024C C   FIELD 00w01 EN (rw): channel enable
 0x5200024C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200024C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14600,7 +14609,7 @@
 0x5200024C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200024C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200024C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000250 B  REGISTER C8TCR (rw): This register is used to configure the concerned channel.
+0x52000250 B  REGISTER TCR8 (rw): This register is used to configure the concerned channel.
 0x52000250 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000250 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000250 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14615,49 +14624,50 @@
 0x52000250 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000250 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000250 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000254 B  REGISTER C8BNDTR (rw): MDMA Channel x block number of data register
+0x52000254 B  REGISTER BNDTR8 (rw): MDMA Channel x block number of data register
 0x52000254 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000254 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000254 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000254 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000258 B  REGISTER C8SAR (rw): MDMA channel x source address register
+0x52000258 B  REGISTER SAR8 (rw): MDMA channel x source address register
 0x52000258 C   FIELD 00w32 SAR: source adr base
-0x5200025C B  REGISTER C8DAR (rw): MDMA channel x destination address register
+0x5200025C B  REGISTER DAR8 (rw): MDMA channel x destination address register
 0x5200025C C   FIELD 00w32 DAR: Destination adr base
-0x52000260 B  REGISTER C8BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000260 B  REGISTER BRUR8 (rw): MDMA channel x Block Repeat address Update register
 0x52000260 C   FIELD 00w16 SUV: source adresse update value
 0x52000260 C   FIELD 16w16 DUV: destination address update
-0x52000264 B  REGISTER C8LAR (rw): MDMA channel x Link Address register
+0x52000264 B  REGISTER LAR8 (rw): MDMA channel x Link Address register
 0x52000264 C   FIELD 00w32 LAR: Link address register
-0x52000268 B  REGISTER C8TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000268 B  REGISTER TBR8 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000268 C   FIELD 00w06 TSEL: Trigger selection
 0x52000268 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000268 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000270 B  REGISTER C8MAR (rw): MDMA channel x Mask address register
+0x52000270 B  REGISTER MAR8 (rw): MDMA channel x Mask address register
 0x52000270 C   FIELD 00w32 MAR: Mask address
-0x52000274 B  REGISTER C8MDR (rw): MDMA channel x Mask Data register
+0x52000274 B  REGISTER MDR8 (rw): MDMA channel x Mask Data register
 0x52000274 C   FIELD 00w32 MDR: Mask data
-0x52000280 B  REGISTER C9ISR (ro): MDMA channel x interrupt/status register
-0x52000280 C   FIELD 00w01 TEIF9: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000280 C   FIELD 01w01 CTCIF9: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000280 C   FIELD 02w01 BRTIF9: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000280 C   FIELD 03w01 BTIF9: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000280 C   FIELD 04w01 TCIF9: channel x buffer transfer complete
-0x52000280 C   FIELD 16w01 CRQA9: channel x request active flag
-0x52000284 B  REGISTER C9IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000284 C   FIELD 00w01 CTEIF9: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000284 C   FIELD 01w01 CCTCIF9: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000284 C   FIELD 02w01 CBRTIF9: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000284 C   FIELD 03w01 CBTIF9: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000284 C   FIELD 04w01 CLTCIF9: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000288 B  REGISTER C9ESR (ro): MDMA Channel x error status register
+0x52000280 B  CLUSTER CH9: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000280 B  REGISTER ISR9 (ro): MDMA channel x interrupt/status register
+0x52000280 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000280 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000280 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000280 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000280 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000280 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000284 B  REGISTER IFCR9 (wo): MDMA channel x interrupt flag clear register
+0x52000284 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000284 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000284 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000284 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000284 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000288 B  REGISTER ESR9 (ro): MDMA Channel x error status register
 0x52000288 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000288 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000288 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000288 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000288 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000288 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200028C B  REGISTER C9CR: This register is used to control the concerned channel.
+0x5200028C B  REGISTER CR9: This register is used to control the concerned channel.
 0x5200028C C   FIELD 00w01 EN (rw): channel enable
 0x5200028C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200028C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14669,7 +14679,7 @@
 0x5200028C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200028C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200028C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000290 B  REGISTER C9TCR (rw): This register is used to configure the concerned channel.
+0x52000290 B  REGISTER TCR9 (rw): This register is used to configure the concerned channel.
 0x52000290 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000290 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000290 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14684,49 +14694,50 @@
 0x52000290 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000290 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000290 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000294 B  REGISTER C9BNDTR (rw): MDMA Channel x block number of data register
+0x52000294 B  REGISTER BNDTR9 (rw): MDMA Channel x block number of data register
 0x52000294 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000294 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000294 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000294 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000298 B  REGISTER C9SAR (rw): MDMA channel x source address register
+0x52000298 B  REGISTER SAR9 (rw): MDMA channel x source address register
 0x52000298 C   FIELD 00w32 SAR: source adr base
-0x5200029C B  REGISTER C9DAR (rw): MDMA channel x destination address register
+0x5200029C B  REGISTER DAR9 (rw): MDMA channel x destination address register
 0x5200029C C   FIELD 00w32 DAR: Destination adr base
-0x520002A0 B  REGISTER C9BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520002A0 B  REGISTER BRUR9 (rw): MDMA channel x Block Repeat address Update register
 0x520002A0 C   FIELD 00w16 SUV: source adresse update value
 0x520002A0 C   FIELD 16w16 DUV: destination address update
-0x520002A4 B  REGISTER C9LAR (rw): MDMA channel x Link Address register
+0x520002A4 B  REGISTER LAR9 (rw): MDMA channel x Link Address register
 0x520002A4 C   FIELD 00w32 LAR: Link address register
-0x520002A8 B  REGISTER C9TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520002A8 B  REGISTER TBR9 (rw): MDMA channel x Trigger and Bus selection Register
 0x520002A8 C   FIELD 00w06 TSEL: Trigger selection
 0x520002A8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520002A8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520002B0 B  REGISTER C9MAR (rw): MDMA channel x Mask address register
+0x520002B0 B  REGISTER MAR9 (rw): MDMA channel x Mask address register
 0x520002B0 C   FIELD 00w32 MAR: Mask address
-0x520002B4 B  REGISTER C9MDR (rw): MDMA channel x Mask Data register
+0x520002B4 B  REGISTER MDR9 (rw): MDMA channel x Mask Data register
 0x520002B4 C   FIELD 00w32 MDR: Mask data
-0x520002C0 B  REGISTER C10ISR (ro): MDMA channel x interrupt/status register
-0x520002C0 C   FIELD 00w01 TEIF10: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520002C0 C   FIELD 01w01 CTCIF10: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x520002C0 C   FIELD 02w01 BRTIF10: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520002C0 C   FIELD 03w01 BTIF10: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520002C0 C   FIELD 04w01 TCIF10: channel x buffer transfer complete
-0x520002C0 C   FIELD 16w01 CRQA10: channel x request active flag
-0x520002C4 B  REGISTER C10IFCR (wo): MDMA channel x interrupt flag clear register
-0x520002C4 C   FIELD 00w01 CTEIF10: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x520002C4 C   FIELD 01w01 CCTCIF10: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x520002C4 C   FIELD 02w01 CBRTIF10: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x520002C4 C   FIELD 03w01 CBTIF10: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x520002C4 C   FIELD 04w01 CLTCIF10: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x520002C8 B  REGISTER C10ESR (ro): MDMA Channel x error status register
+0x520002C0 B  CLUSTER CH10: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x520002C0 B  REGISTER ISR10 (ro): MDMA channel x interrupt/status register
+0x520002C0 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520002C0 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x520002C0 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520002C0 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520002C0 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x520002C0 C   FIELD 16w01 CRQA: channel x request active flag
+0x520002C4 B  REGISTER IFCR10 (wo): MDMA channel x interrupt flag clear register
+0x520002C4 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x520002C4 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x520002C4 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x520002C4 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x520002C4 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x520002C8 B  REGISTER ESR10 (ro): MDMA Channel x error status register
 0x520002C8 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x520002C8 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x520002C8 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520002C8 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520002C8 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520002C8 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x520002CC B  REGISTER C10CR: This register is used to control the concerned channel.
+0x520002CC B  REGISTER CR10: This register is used to control the concerned channel.
 0x520002CC C   FIELD 00w01 EN (rw): channel enable
 0x520002CC C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x520002CC C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14738,7 +14749,7 @@
 0x520002CC C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x520002CC C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x520002CC C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x520002D0 B  REGISTER C10TCR (rw): This register is used to configure the concerned channel.
+0x520002D0 B  REGISTER TCR10 (rw): This register is used to configure the concerned channel.
 0x520002D0 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x520002D0 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x520002D0 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14753,49 +14764,50 @@
 0x520002D0 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x520002D0 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x520002D0 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x520002D4 B  REGISTER C10BNDTR (rw): MDMA Channel x block number of data register
+0x520002D4 B  REGISTER BNDTR10 (rw): MDMA Channel x block number of data register
 0x520002D4 C   FIELD 00w17 BNDT: block number of data to transfer
 0x520002D4 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x520002D4 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x520002D4 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x520002D8 B  REGISTER C10SAR (rw): MDMA channel x source address register
+0x520002D8 B  REGISTER SAR10 (rw): MDMA channel x source address register
 0x520002D8 C   FIELD 00w32 SAR: source adr base
-0x520002DC B  REGISTER C10DAR (rw): MDMA channel x destination address register
+0x520002DC B  REGISTER DAR10 (rw): MDMA channel x destination address register
 0x520002DC C   FIELD 00w32 DAR: Destination adr base
-0x520002E0 B  REGISTER C10BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520002E0 B  REGISTER BRUR10 (rw): MDMA channel x Block Repeat address Update register
 0x520002E0 C   FIELD 00w16 SUV: source adresse update value
 0x520002E0 C   FIELD 16w16 DUV: destination address update
-0x520002E4 B  REGISTER C10LAR (rw): MDMA channel x Link Address register
+0x520002E4 B  REGISTER LAR10 (rw): MDMA channel x Link Address register
 0x520002E4 C   FIELD 00w32 LAR: Link address register
-0x520002E8 B  REGISTER C10TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520002E8 B  REGISTER TBR10 (rw): MDMA channel x Trigger and Bus selection Register
 0x520002E8 C   FIELD 00w06 TSEL: Trigger selection
 0x520002E8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520002E8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520002F0 B  REGISTER C10MAR (rw): MDMA channel x Mask address register
+0x520002F0 B  REGISTER MAR10 (rw): MDMA channel x Mask address register
 0x520002F0 C   FIELD 00w32 MAR: Mask address
-0x520002F4 B  REGISTER C10MDR (rw): MDMA channel x Mask Data register
+0x520002F4 B  REGISTER MDR10 (rw): MDMA channel x Mask Data register
 0x520002F4 C   FIELD 00w32 MDR: Mask data
-0x52000300 B  REGISTER C11ISR (ro): MDMA channel x interrupt/status register
-0x52000300 C   FIELD 00w01 TEIF11: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000300 C   FIELD 01w01 CTCIF11: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000300 C   FIELD 02w01 BRTIF11: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000300 C   FIELD 03w01 BTIF11: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000300 C   FIELD 04w01 TCIF11: channel x buffer transfer complete
-0x52000300 C   FIELD 16w01 CRQA11: channel x request active flag
-0x52000304 B  REGISTER C11IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000304 C   FIELD 00w01 CTEIF11: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000304 C   FIELD 01w01 CCTCIF11: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000304 C   FIELD 02w01 CBRTIF11: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000304 C   FIELD 03w01 CBTIF11: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000304 C   FIELD 04w01 CLTCIF11: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000308 B  REGISTER C11ESR (ro): MDMA Channel x error status register
+0x52000300 B  CLUSTER CH11: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000300 B  REGISTER ISR11 (ro): MDMA channel x interrupt/status register
+0x52000300 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000300 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000300 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000300 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000300 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000300 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000304 B  REGISTER IFCR11 (wo): MDMA channel x interrupt flag clear register
+0x52000304 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000304 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000304 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000304 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000304 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000308 B  REGISTER ESR11 (ro): MDMA Channel x error status register
 0x52000308 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000308 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000308 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000308 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000308 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000308 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200030C B  REGISTER C11CR: This register is used to control the concerned channel.
+0x5200030C B  REGISTER CR11: This register is used to control the concerned channel.
 0x5200030C C   FIELD 00w01 EN (rw): channel enable
 0x5200030C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200030C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14807,7 +14819,7 @@
 0x5200030C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200030C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200030C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000310 B  REGISTER C11TCR (rw): This register is used to configure the concerned channel.
+0x52000310 B  REGISTER TCR11 (rw): This register is used to configure the concerned channel.
 0x52000310 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000310 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000310 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14822,49 +14834,50 @@
 0x52000310 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000310 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000310 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000314 B  REGISTER C11BNDTR (rw): MDMA Channel x block number of data register
+0x52000314 B  REGISTER BNDTR11 (rw): MDMA Channel x block number of data register
 0x52000314 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000314 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000314 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000314 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000318 B  REGISTER C11SAR (rw): MDMA channel x source address register
+0x52000318 B  REGISTER SAR11 (rw): MDMA channel x source address register
 0x52000318 C   FIELD 00w32 SAR: source adr base
-0x5200031C B  REGISTER C11DAR (rw): MDMA channel x destination address register
+0x5200031C B  REGISTER DAR11 (rw): MDMA channel x destination address register
 0x5200031C C   FIELD 00w32 DAR: Destination adr base
-0x52000320 B  REGISTER C11BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000320 B  REGISTER BRUR11 (rw): MDMA channel x Block Repeat address Update register
 0x52000320 C   FIELD 00w16 SUV: source adresse update value
 0x52000320 C   FIELD 16w16 DUV: destination address update
-0x52000324 B  REGISTER C11LAR (rw): MDMA channel x Link Address register
+0x52000324 B  REGISTER LAR11 (rw): MDMA channel x Link Address register
 0x52000324 C   FIELD 00w32 LAR: Link address register
-0x52000328 B  REGISTER C11TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000328 B  REGISTER TBR11 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000328 C   FIELD 00w06 TSEL: Trigger selection
 0x52000328 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000328 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000330 B  REGISTER C11MAR (rw): MDMA channel x Mask address register
+0x52000330 B  REGISTER MAR11 (rw): MDMA channel x Mask address register
 0x52000330 C   FIELD 00w32 MAR: Mask address
-0x52000334 B  REGISTER C11MDR (rw): MDMA channel x Mask Data register
+0x52000334 B  REGISTER MDR11 (rw): MDMA channel x Mask Data register
 0x52000334 C   FIELD 00w32 MDR: Mask data
-0x52000340 B  REGISTER C12ISR (ro): MDMA channel x interrupt/status register
-0x52000340 C   FIELD 00w01 TEIF12: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000340 C   FIELD 01w01 CTCIF12: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000340 C   FIELD 02w01 BRTIF12: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000340 C   FIELD 03w01 BTIF12: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000340 C   FIELD 04w01 TCIF12: channel x buffer transfer complete
-0x52000340 C   FIELD 16w01 CRQA12: channel x request active flag
-0x52000344 B  REGISTER C12IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000344 C   FIELD 00w01 CTEIF12: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000344 C   FIELD 01w01 CCTCIF12: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000344 C   FIELD 02w01 CBRTIF12: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000344 C   FIELD 03w01 CBTIF12: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000344 C   FIELD 04w01 CLTCIF12: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000348 B  REGISTER C12ESR (ro): MDMA Channel x error status register
+0x52000340 B  CLUSTER CH12: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000340 B  REGISTER ISR12 (ro): MDMA channel x interrupt/status register
+0x52000340 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000340 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000340 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000340 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000340 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000340 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000344 B  REGISTER IFCR12 (wo): MDMA channel x interrupt flag clear register
+0x52000344 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000344 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000344 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000344 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000344 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000348 B  REGISTER ESR12 (ro): MDMA Channel x error status register
 0x52000348 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000348 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000348 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000348 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000348 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000348 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200034C B  REGISTER C12CR: This register is used to control the concerned channel.
+0x5200034C B  REGISTER CR12: This register is used to control the concerned channel.
 0x5200034C C   FIELD 00w01 EN (rw): channel enable
 0x5200034C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200034C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14876,7 +14889,7 @@
 0x5200034C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200034C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200034C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000350 B  REGISTER C12TCR (rw): This register is used to configure the concerned channel.
+0x52000350 B  REGISTER TCR12 (rw): This register is used to configure the concerned channel.
 0x52000350 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000350 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000350 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14891,49 +14904,50 @@
 0x52000350 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000350 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000350 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000354 B  REGISTER C12BNDTR (rw): MDMA Channel x block number of data register
+0x52000354 B  REGISTER BNDTR12 (rw): MDMA Channel x block number of data register
 0x52000354 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000354 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000354 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000354 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000358 B  REGISTER C12SAR (rw): MDMA channel x source address register
+0x52000358 B  REGISTER SAR12 (rw): MDMA channel x source address register
 0x52000358 C   FIELD 00w32 SAR: source adr base
-0x5200035C B  REGISTER C12DAR (rw): MDMA channel x destination address register
+0x5200035C B  REGISTER DAR12 (rw): MDMA channel x destination address register
 0x5200035C C   FIELD 00w32 DAR: Destination adr base
-0x52000360 B  REGISTER C12BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000360 B  REGISTER BRUR12 (rw): MDMA channel x Block Repeat address Update register
 0x52000360 C   FIELD 00w16 SUV: source adresse update value
 0x52000360 C   FIELD 16w16 DUV: destination address update
-0x52000364 B  REGISTER C12LAR (rw): MDMA channel x Link Address register
+0x52000364 B  REGISTER LAR12 (rw): MDMA channel x Link Address register
 0x52000364 C   FIELD 00w32 LAR: Link address register
-0x52000368 B  REGISTER C12TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000368 B  REGISTER TBR12 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000368 C   FIELD 00w06 TSEL: Trigger selection
 0x52000368 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000368 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000370 B  REGISTER C12MAR (rw): MDMA channel x Mask address register
+0x52000370 B  REGISTER MAR12 (rw): MDMA channel x Mask address register
 0x52000370 C   FIELD 00w32 MAR: Mask address
-0x52000374 B  REGISTER C12MDR (rw): MDMA channel x Mask Data register
+0x52000374 B  REGISTER MDR12 (rw): MDMA channel x Mask Data register
 0x52000374 C   FIELD 00w32 MDR: Mask data
-0x52000380 B  REGISTER C13ISR (ro): MDMA channel x interrupt/status register
-0x52000380 C   FIELD 00w01 TEIF13: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000380 C   FIELD 01w01 CTCIF13: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000380 C   FIELD 02w01 BRTIF13: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000380 C   FIELD 03w01 BTIF13: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000380 C   FIELD 04w01 TCIF13: channel x buffer transfer complete
-0x52000380 C   FIELD 16w01 CRQA13: channel x request active flag
-0x52000384 B  REGISTER C13IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000384 C   FIELD 00w01 CTEIF13: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000384 C   FIELD 01w01 CCTCIF13: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000384 C   FIELD 02w01 CBRTIF13: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000384 C   FIELD 03w01 CBTIF13: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000384 C   FIELD 04w01 CLTCIF13: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000388 B  REGISTER C13ESR (ro): MDMA Channel x error status register
+0x52000380 B  CLUSTER CH13: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000380 B  REGISTER ISR13 (ro): MDMA channel x interrupt/status register
+0x52000380 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000380 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000380 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000380 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000380 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000380 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000384 B  REGISTER IFCR13 (wo): MDMA channel x interrupt flag clear register
+0x52000384 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000384 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000384 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000384 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000384 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000388 B  REGISTER ESR13 (ro): MDMA Channel x error status register
 0x52000388 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000388 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000388 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000388 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000388 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000388 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200038C B  REGISTER C13CR: This register is used to control the concerned channel.
+0x5200038C B  REGISTER CR13: This register is used to control the concerned channel.
 0x5200038C C   FIELD 00w01 EN (rw): channel enable
 0x5200038C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200038C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -14945,7 +14959,7 @@
 0x5200038C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200038C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200038C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000390 B  REGISTER C13TCR (rw): This register is used to configure the concerned channel.
+0x52000390 B  REGISTER TCR13 (rw): This register is used to configure the concerned channel.
 0x52000390 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000390 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000390 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -14960,49 +14974,50 @@
 0x52000390 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000390 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000390 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000394 B  REGISTER C13BNDTR (rw): MDMA Channel x block number of data register
+0x52000394 B  REGISTER BNDTR13 (rw): MDMA Channel x block number of data register
 0x52000394 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000394 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000394 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000394 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000398 B  REGISTER C13SAR (rw): MDMA channel x source address register
+0x52000398 B  REGISTER SAR13 (rw): MDMA channel x source address register
 0x52000398 C   FIELD 00w32 SAR: source adr base
-0x5200039C B  REGISTER C13DAR (rw): MDMA channel x destination address register
+0x5200039C B  REGISTER DAR13 (rw): MDMA channel x destination address register
 0x5200039C C   FIELD 00w32 DAR: Destination adr base
-0x520003A0 B  REGISTER C13BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520003A0 B  REGISTER BRUR13 (rw): MDMA channel x Block Repeat address Update register
 0x520003A0 C   FIELD 00w16 SUV: source adresse update value
 0x520003A0 C   FIELD 16w16 DUV: destination address update
-0x520003A4 B  REGISTER C13LAR (rw): MDMA channel x Link Address register
+0x520003A4 B  REGISTER LAR13 (rw): MDMA channel x Link Address register
 0x520003A4 C   FIELD 00w32 LAR: Link address register
-0x520003A8 B  REGISTER C13TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520003A8 B  REGISTER TBR13 (rw): MDMA channel x Trigger and Bus selection Register
 0x520003A8 C   FIELD 00w06 TSEL: Trigger selection
 0x520003A8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520003A8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520003B0 B  REGISTER C13MAR (rw): MDMA channel x Mask address register
+0x520003B0 B  REGISTER MAR13 (rw): MDMA channel x Mask address register
 0x520003B0 C   FIELD 00w32 MAR: Mask address
-0x520003B4 B  REGISTER C13MDR (rw): MDMA channel x Mask Data register
+0x520003B4 B  REGISTER MDR13 (rw): MDMA channel x Mask Data register
 0x520003B4 C   FIELD 00w32 MDR: Mask data
-0x520003C0 B  REGISTER C14ISR (ro): MDMA channel x interrupt/status register
-0x520003C0 C   FIELD 00w01 TEIF14: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520003C0 C   FIELD 01w01 CTCIF14: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x520003C0 C   FIELD 02w01 BRTIF14: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520003C0 C   FIELD 03w01 BTIF14: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x520003C0 C   FIELD 04w01 TCIF14: channel x buffer transfer complete
-0x520003C0 C   FIELD 16w01 CRQA14: channel x request active flag
-0x520003C4 B  REGISTER C14IFCR (wo): MDMA channel x interrupt flag clear register
-0x520003C4 C   FIELD 00w01 CTEIF14: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x520003C4 C   FIELD 01w01 CCTCIF14: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x520003C4 C   FIELD 02w01 CBRTIF14: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x520003C4 C   FIELD 03w01 CBTIF14: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x520003C4 C   FIELD 04w01 CLTCIF14: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x520003C8 B  REGISTER C14ESR (ro): MDMA Channel x error status register
+0x520003C0 B  CLUSTER CH14: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x520003C0 B  REGISTER ISR14 (ro): MDMA channel x interrupt/status register
+0x520003C0 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520003C0 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x520003C0 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520003C0 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x520003C0 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x520003C0 C   FIELD 16w01 CRQA: channel x request active flag
+0x520003C4 B  REGISTER IFCR14 (wo): MDMA channel x interrupt flag clear register
+0x520003C4 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x520003C4 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x520003C4 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x520003C4 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x520003C4 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x520003C8 B  REGISTER ESR14 (ro): MDMA Channel x error status register
 0x520003C8 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x520003C8 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x520003C8 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520003C8 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520003C8 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x520003C8 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x520003CC B  REGISTER C14CR: This register is used to control the concerned channel.
+0x520003CC B  REGISTER CR14: This register is used to control the concerned channel.
 0x520003CC C   FIELD 00w01 EN (rw): channel enable
 0x520003CC C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x520003CC C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -15014,7 +15029,7 @@
 0x520003CC C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x520003CC C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x520003CC C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x520003D0 B  REGISTER C14TCR (rw): This register is used to configure the concerned channel.
+0x520003D0 B  REGISTER TCR14 (rw): This register is used to configure the concerned channel.
 0x520003D0 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x520003D0 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x520003D0 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -15029,49 +15044,50 @@
 0x520003D0 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x520003D0 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x520003D0 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x520003D4 B  REGISTER C14BNDTR (rw): MDMA Channel x block number of data register
+0x520003D4 B  REGISTER BNDTR14 (rw): MDMA Channel x block number of data register
 0x520003D4 C   FIELD 00w17 BNDT: block number of data to transfer
 0x520003D4 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x520003D4 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x520003D4 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x520003D8 B  REGISTER C14SAR (rw): MDMA channel x source address register
+0x520003D8 B  REGISTER SAR14 (rw): MDMA channel x source address register
 0x520003D8 C   FIELD 00w32 SAR: source adr base
-0x520003DC B  REGISTER C14DAR (rw): MDMA channel x destination address register
+0x520003DC B  REGISTER DAR14 (rw): MDMA channel x destination address register
 0x520003DC C   FIELD 00w32 DAR: Destination adr base
-0x520003E0 B  REGISTER C14BRUR (rw): MDMA channel x Block Repeat address Update register
+0x520003E0 B  REGISTER BRUR14 (rw): MDMA channel x Block Repeat address Update register
 0x520003E0 C   FIELD 00w16 SUV: source adresse update value
 0x520003E0 C   FIELD 16w16 DUV: destination address update
-0x520003E4 B  REGISTER C14LAR (rw): MDMA channel x Link Address register
+0x520003E4 B  REGISTER LAR14 (rw): MDMA channel x Link Address register
 0x520003E4 C   FIELD 00w32 LAR: Link address register
-0x520003E8 B  REGISTER C14TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x520003E8 B  REGISTER TBR14 (rw): MDMA channel x Trigger and Bus selection Register
 0x520003E8 C   FIELD 00w06 TSEL: Trigger selection
 0x520003E8 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x520003E8 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x520003F0 B  REGISTER C14MAR (rw): MDMA channel x Mask address register
+0x520003F0 B  REGISTER MAR14 (rw): MDMA channel x Mask address register
 0x520003F0 C   FIELD 00w32 MAR: Mask address
-0x520003F4 B  REGISTER C14MDR (rw): MDMA channel x Mask Data register
+0x520003F4 B  REGISTER MDR14 (rw): MDMA channel x Mask Data register
 0x520003F4 C   FIELD 00w32 MDR: Mask data
-0x52000400 B  REGISTER C15ISR (ro): MDMA channel x interrupt/status register
-0x52000400 C   FIELD 00w01 TEIF15: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000400 C   FIELD 01w01 CTCIF15: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-0x52000400 C   FIELD 02w01 BRTIF15: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000400 C   FIELD 03w01 BTIF15: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-0x52000400 C   FIELD 04w01 TCIF15: channel x buffer transfer complete
-0x52000400 C   FIELD 16w01 CRQA15: channel x request active flag
-0x52000404 B  REGISTER C15IFCR (wo): MDMA channel x interrupt flag clear register
-0x52000404 C   FIELD 00w01 CTEIF15: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-0x52000404 C   FIELD 01w01 CCTCIF15: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-0x52000404 C   FIELD 02w01 CBRTIF15: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-0x52000404 C   FIELD 03w01 CBTIF15: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-0x52000404 C   FIELD 04w01 CLTCIF15: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-0x52000408 B  REGISTER C15ESR (ro): MDMA Channel x error status register
+0x52000400 B  CLUSTER CH15: Channel cluster: C?ISR, C?IFCR, C?ESR, C?CR, C?TCR, C?BNDTR, C?SAR, C?DAR, C?BRUR, C?LAR, C?TBR, C?MAR and C?MDR registers
+0x52000400 B  REGISTER ISR15 (ro): MDMA channel x interrupt/status register
+0x52000400 C   FIELD 00w01 TEIF: Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000400 C   FIELD 01w01 CTCIF: Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
+0x52000400 C   FIELD 02w01 BRTIF: Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000400 C   FIELD 03w01 BTIF: Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
+0x52000400 C   FIELD 04w01 TCIF: channel x buffer transfer complete
+0x52000400 C   FIELD 16w01 CRQA: channel x request active flag
+0x52000404 B  REGISTER IFCR15 (wo): MDMA channel x interrupt flag clear register
+0x52000404 C   FIELD 00w01 CTEIF: Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
+0x52000404 C   FIELD 01w01 CCTCIF: Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
+0x52000404 C   FIELD 02w01 CBRTIF: Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
+0x52000404 C   FIELD 03w01 CBTIF: Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
+0x52000404 C   FIELD 04w01 CLTCIF: CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
+0x52000408 B  REGISTER ESR15 (ro): MDMA Channel x error status register
 0x52000408 C   FIELD 00w07 TEA: Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
 0x52000408 C   FIELD 07w01 TED: Transfer Error Direction These bit is set and cleared by HW, in case of an MDMA data transfer error.
 0x52000408 C   FIELD 08w01 TELD: Transfer Error Link Data These bit is set by HW, in case of a transfer error while reading the block link data structure. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000408 C   FIELD 09w01 TEMD: Transfer Error Mask Data These bit is set by HW, in case of a transfer error while writing the Mask Data. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000408 C   FIELD 10w01 ASE: Address/Size Error These bit is set by HW, when the programmed address is not aligned with the data size. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
 0x52000408 C   FIELD 11w01 BSE: Block Size Error These bit is set by HW, when the block size is not an integer multiple of the data size either for source or destination. TED will indicate whether the problem is on the source or destination. It is cleared by software writing 1 to the CTEIFx bit in the DMA_IFCRy register.
-0x5200040C B  REGISTER C15CR: This register is used to control the concerned channel.
+0x5200040C B  REGISTER CR15: This register is used to control the concerned channel.
 0x5200040C C   FIELD 00w01 EN (rw): channel enable
 0x5200040C C   FIELD 01w01 TEIE (rw): Transfer error interrupt enable This bit is set and cleared by software.
 0x5200040C C   FIELD 02w01 CTCIE (rw): Channel Transfer Complete interrupt enable This bit is set and cleared by software.
@@ -15083,7 +15099,7 @@
 0x5200040C C   FIELD 13w01 HEX (rw): Half word Endianes exchange
 0x5200040C C   FIELD 14w01 WEX (rw): Word Endianness exchange
 0x5200040C C   FIELD 16w01 SWRQ (wo): SW ReQuest Writing a 1 into this bit sets the CRQAx in MDMA_ISRy register, activating the request on Channel x Note: Either the whole CxCR register or the 8-bit/16-bit register @ Address offset: 0x4E + 0x40 chn may be used for SWRQ activation. In case of a SW request, acknowledge is not generated (neither HW signal, nor CxMAR write access).
-0x52000410 B  REGISTER C15TCR (rw): This register is used to configure the concerned channel.
+0x52000410 B  REGISTER TCR15 (rw): This register is used to configure the concerned channel.
 0x52000410 C   FIELD 00w02 SINC: Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR[31:0] + 0x00).
 0x52000410 C   FIELD 02w02 DINC: Destination increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When destination is AHB (DBUS=1), DINC = 00 is forbidden.
 0x52000410 C   FIELD 04w02 SSIZE: Source data size These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: If a value of 11 is programmed for the TCM access/AHB port, a transfer error will occur (TEIF bit set) If SINCOS &lt; SSIZE and SINC &#8800; 00, the result will be unpredictable. Note: SSIZE = 11 (double-word) is forbidden when source is TCM/AHB bus (SBUS=1).
@@ -15098,27 +15114,27 @@
 0x52000410 C   FIELD 28w02 TRGM: Trigger Mode These bits are set and cleared by software. Note: If TRGM is 11 for the current block, all the values loaded at the end of the current block through the linked list mechanism must keep the same value (TRGM=11) and the same SWRM value, otherwise the result is undefined. These bits are protected and can be written only if EN is 0.
 0x52000410 C   FIELD 30w01 SWRM: SW Request Mode This bit is set and cleared by software. If a HW or SW request is currently active, the bit change will be delayed until the current transfer is completed. If the CxMAR contains a valid address, the CxMDR value will also be written @ CxMAR address. This bit is protected and can be written only if EN is 0.
 0x52000410 C   FIELD 31w01 BWM: Bufferable Write Mode This bit is set and cleared by software. This bit is protected and can be written only if EN is 0. Note: All MDMA destination accesses are non-cacheable.
-0x52000414 B  REGISTER C15BNDTR (rw): MDMA Channel x block number of data register
+0x52000414 B  REGISTER BNDTR15 (rw): MDMA Channel x block number of data register
 0x52000414 C   FIELD 00w17 BNDT: block number of data to transfer
 0x52000414 C   FIELD 18w01 BRSUM: Block Repeat Source address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000414 C   FIELD 19w01 BRDUM: Block Repeat Destination address Update Mode These bits are protected and can be written only if EN is 0.
 0x52000414 C   FIELD 20w12 BRC: Block Repeat Count This field contains the number of repetitions of the current block (0 to 4095). When the channel is enabled, this register is read-only, indicating the remaining number of blocks, excluding the current one. This register decrements after each complete block transfer. Once the last block transfer has completed, this register can either stay at zero or be reloaded automatically from memory (in Linked List mode - i.e. Link Address valid). These bits are protected and can be written only if EN is 0.
-0x52000418 B  REGISTER C15SAR (rw): MDMA channel x source address register
+0x52000418 B  REGISTER SAR15 (rw): MDMA channel x source address register
 0x52000418 C   FIELD 00w32 SAR: source adr base
-0x5200041C B  REGISTER C15DAR (rw): MDMA channel x destination address register
+0x5200041C B  REGISTER DAR15 (rw): MDMA channel x destination address register
 0x5200041C C   FIELD 00w32 DAR: Destination adr base
-0x52000420 B  REGISTER C15BRUR (rw): MDMA channel x Block Repeat address Update register
+0x52000420 B  REGISTER BRUR15 (rw): MDMA channel x Block Repeat address Update register
 0x52000420 C   FIELD 00w16 SUV: source adresse update value
 0x52000420 C   FIELD 16w16 DUV: destination address update
-0x52000424 B  REGISTER C15LAR (rw): MDMA channel x Link Address register
+0x52000424 B  REGISTER LAR15 (rw): MDMA channel x Link Address register
 0x52000424 C   FIELD 00w32 LAR: Link address register
-0x52000428 B  REGISTER C15TBR (rw): MDMA channel x Trigger and Bus selection Register
+0x52000428 B  REGISTER TBR15 (rw): MDMA channel x Trigger and Bus selection Register
 0x52000428 C   FIELD 00w06 TSEL: Trigger selection
 0x52000428 C   FIELD 16w01 SBUS: Source BUS select This bit is protected and can be written only if EN is 0.
 0x52000428 C   FIELD 17w01 DBUS: Destination BUS slect This bit is protected and can be written only if EN is 0.
-0x52000430 B  REGISTER C15MAR (rw): MDMA channel x Mask address register
+0x52000430 B  REGISTER MAR15 (rw): MDMA channel x Mask address register
 0x52000430 C   FIELD 00w32 MAR: Mask address
-0x52000434 B  REGISTER C15MDR (rw): MDMA channel x Mask Data register
+0x52000434 B  REGISTER MDR15 (rw): MDMA channel x Mask Data register
 0x52000434 C   FIELD 00w32 MDR: Mask data
 0x52001000 A PERIPHERAL DMA2D
 0x52001000 B  REGISTER CR (rw): DMA2D control register
