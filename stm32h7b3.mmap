@@ -2216,7 +2216,7 @@
 0x40006C14 C   FIELD 10w01 TXUDRIE: Tx-Underrun Interrupt Enable The TXUDRIE bit is set and cleared by software.
 0x40006C14 C   FIELD 11w01 TXERRIE: Tx-Error Interrupt Enable The TXERRIE bit is set and cleared by software.
 0x40006C14 C   FIELD 12w01 TXACKIE: Tx-Missing Acknowledge Error Interrupt Enable The TXACKEIE bit is set and cleared by software.
-0x40007400 A PERIPHERAL DAC
+0x40007400 A PERIPHERAL DAC1
 0x40007400 B  REGISTER CR (rw): DAC control register
 0x40007400 C   FIELD 00w01 EN1: DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x40007400 C   FIELD 01w01 TEN1: DAC channel1 trigger enable
@@ -8237,7 +8237,7 @@
 0x400177DC C   FIELD 20w01 TIMxFLTR: HRTIM_FLTxR register update enable
 0x400177F0 B  REGISTER BDMADR (rw): Burst DMA Data register
 0x400177F0 C   FIELD 00w32 BDMADR: Burst DMA Data register
-0x40018000 A PERIPHERAL USART9
+0x40018000 A PERIPHERAL UART9
 0x40018000 B  REGISTER CR1 (rw): Control register 1
 0x40018000 C   FIELD 00w01 UE: USART enable
 0x40018000 C   FIELD 01w01 UESM: USART enable in Stop mode
@@ -18236,6 +18236,75 @@
 0x5800281C C   FIELD 00w16 CNT: Counter value
 0x58002824 B  REGISTER CFGR2 (rw): LPTIM configuration register 2
 0x58002824 C   FIELD 00w02 IN1SEL: LPTIM Input 1 selection
+0x58003400 A PERIPHERAL DAC2
+0x58003400 B  REGISTER CR (rw): DAC control register
+0x58003400 C   FIELD 00w01 EN1: DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
+0x58003400 C   FIELD 01w01 TEN1: DAC channel1 trigger enable
+0x58003400 C   FIELD 02w03 TSEL1: DAC channel1 trigger selection These bits select the external event used to trigger DAC channel1. Note: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
+0x58003400 C   FIELD 06w02 WAVE1: DAC channel1 noise/triangle wave generation enable These bits are set and cleared by software. Note: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
+0x58003400 C   FIELD 08w04 MAMP1: DAC channel1 mask/amplitude selector These bits are written by software to select mask in wave generation mode or amplitude in triangle generation mode. = 1011: Unmask bits[11:0] of LFSR/ triangle amplitude equal to 4095
+0x58003400 C   FIELD 12w01 DMAEN1: DAC channel1 DMA enable This bit is set and cleared by software.
+0x58003400 C   FIELD 13w01 DMAUDRIE1: DAC channel1 DMA Underrun Interrupt enable This bit is set and cleared by software.
+0x58003400 C   FIELD 14w01 CEN1: DAC Channel 1 calibration enable This bit is set and cleared by software to enable/disable DAC channel 1 calibration, it can be written only if bit EN1=0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored.
+0x58003400 C   FIELD 16w01 EN2: DAC channel2 enable This bit is set and cleared by software to enable/disable DAC channel2.
+0x58003400 C   FIELD 17w01 TEN2: DAC channel2 trigger enable
+0x58003400 C   FIELD 18w03 TSEL2: DAC channel2 trigger selection These bits select the external event used to trigger DAC channel2 Note: Only used if bit TEN2 = 1 (DAC channel2 trigger enabled).
+0x58003400 C   FIELD 22w02 WAVE2: DAC channel2 noise/triangle wave generation enable These bits are set/reset by software. 1x: Triangle wave generation enabled Note: Only used if bit TEN2 = 1 (DAC channel2 trigger enabled)
+0x58003400 C   FIELD 24w04 MAMP2: DAC channel2 mask/amplitude selector These bits are written by software to select mask in wave generation mode or amplitude in triangle generation mode. = 1011: Unmask bits[11:0] of LFSR/ triangle amplitude equal to 4095
+0x58003400 C   FIELD 28w01 DMAEN2: DAC channel2 DMA enable This bit is set and cleared by software.
+0x58003400 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable This bit is set and cleared by software.
+0x58003400 C   FIELD 30w01 CEN2: DAC Channel 2 calibration enable This bit is set and cleared by software to enable/disable DAC channel 2 calibration, it can be written only if bit EN2=0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored.
+0x58003404 B  REGISTER SWTRGR (wo): DAC software trigger register
+0x58003404 C   FIELD 00w01 SWTRIG1: DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
+0x58003404 C   FIELD 01w01 SWTRIG2: DAC channel2 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR2 register value has been loaded into the DAC_DOR2 register.
+0x58003408 B  REGISTER DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
+0x58003408 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
+0x5800340C B  REGISTER DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
+0x5800340C C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
+0x58003410 B  REGISTER DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
+0x58003410 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
+0x58003414 B  REGISTER DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
+0x58003414 C   FIELD 00w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
+0x58003418 B  REGISTER DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
+0x58003418 C   FIELD 04w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
+0x5800341C B  REGISTER DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
+0x5800341C C   FIELD 00w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
+0x58003420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x58003420 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
+0x58003420 C   FIELD 16w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
+0x58003424 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x58003424 C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
+0x58003424 C   FIELD 20w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
+0x58003428 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x58003428 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
+0x58003428 C   FIELD 08w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
+0x5800342C B  REGISTER DOR1 (ro): DAC channel1 data output register
+0x5800342C C   FIELD 00w12 DACC1DOR: DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
+0x58003430 B  REGISTER DOR2 (ro): DAC channel2 data output register
+0x58003430 C   FIELD 00w12 DACC2DOR: DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
+0x58003434 B  REGISTER SR: DAC status register
+0x58003434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
+0x58003434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC Channel 1 calibration offset status This bit is set and cleared by hardware
+0x58003434 C   FIELD 15w01 BWST1 (ro): DAC Channel 1 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3LSI periods of synchronization).
+0x58003434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
+0x58003434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC Channel 2 calibration offset status This bit is set and cleared by hardware
+0x58003434 C   FIELD 31w01 BWST2 (ro): DAC Channel 2 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR2, It is cleared by hardware when the write operation of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization).
+0x58003438 B  REGISTER CCR (rw): DAC calibration control register
+0x58003438 C   FIELD 00w05 OTRIM1: DAC Channel 1 offset trimming value
+0x58003438 C   FIELD 16w05 OTRIM2: DAC Channel 2 offset trimming value
+0x5800343C B  REGISTER MCR (rw): DAC mode control register
+0x5800343C C   FIELD 00w03 MODE1: DAC Channel 1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 1 mode: DAC Channel 1 in normal Mode DAC Channel 1 in sample &amp; hold mode
+0x5800343C C   FIELD 16w03 MODE2: DAC Channel 2 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 2 mode: DAC Channel 2 in normal Mode DAC Channel 2 in sample &amp; hold mode
+0x58003440 B  REGISTER SHSR1 (rw): DAC Sample and Hold sample time register 1
+0x58003440 C   FIELD 00w10 TSAMPLE1: DAC Channel 1 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, If BWSTx=1, the write operation is ignored.
+0x58003444 B  REGISTER SHSR2 (rw): DAC Sample and Hold sample time register 2
+0x58003444 C   FIELD 00w10 TSAMPLE2: DAC Channel 2 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, if BWSTx=1, the write operation is ignored.
+0x58003448 B  REGISTER SHHR (rw): DAC Sample and Hold hold time register
+0x58003448 C   FIELD 00w10 THOLD1: DAC Channel 1 hold Time (only valid in sample &amp; hold mode) Hold time= (THOLD[9:0]) x T LSI
+0x58003448 C   FIELD 16w10 THOLD2: DAC Channel 2 hold time (only valid in sample &amp; hold mode). Hold time= (THOLD[9:0]) x T LSI
+0x5800344C B  REGISTER SHRR (rw): DAC Sample and Hold refresh time register
+0x5800344C C   FIELD 00w08 TREFRESH1: DAC Channel 1 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
+0x5800344C C   FIELD 16w08 TREFRESH2: DAC Channel 2 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x58003800 A PERIPHERAL COMP1
 0x58003800 B  REGISTER COMP1_SR (ro): Comparator status register
 0x58003800 C   FIELD 00w01 C1VAL: COMP channel 1 output status bit
@@ -22434,11 +22503,12 @@ INTERRUPT 078: DCMI (OTG2_HS_GLOBAL): DCMI global interrupt
 INTERRUPT 079: CRYP (OTG1_HS_GLOBAL): CRYP global interrupt
 INTERRUPT 080: HASH_RNG (DCMI): HASH and RNG
 INTERRUPT 081: FPU (PF): Floating point unit interrupt
-INTERRUPT 082: UART7 (USART9): UART7 global interrupt
-INTERRUPT 083: UART8 (USART10): UART8 global interrupt
+INTERRUPT 082: UART7 (UART9): UART7 global interrupt
+INTERRUPT 083: UART8 (UART9): UART8 global interrupt
 INTERRUPT 084: SPI4 (SPI5): SPI4 global interrupt
 INTERRUPT 085: SPI5 (SPI6): SPI5 global interrupt
 INTERRUPT 086: SPI6 (LTDC): SPI6 global interrupt
+INTERRUPT 087: SAI1 (SAI1): SAI1 global interrupt
 INTERRUPT 088: LTDC (SPDIFRX): LCD-TFT global interrupt
 INTERRUPT 089: LTDC_ER (SPDIFRX): LCD-TFT error interrupt
 INTERRUPT 090: DMA2D (DMA2D): DMA2D global interrupt
@@ -22448,6 +22518,7 @@ INTERRUPT 093: LPTIM1 (LPTIM2): LPTIM1 global interrupt
 INTERRUPT 094: CEC (CEC): HDMI-CEC global interrupt
 INTERRUPT 095: I2C4_EV (I2C4): I2C4 event interrupt
 INTERRUPT 096: I2C4_ER (I2C4): I2C4 error interrupt
+INTERRUPT 097: SPDIFRX (SPDIFRX): SPDIFRX global interrupt
 INTERRUPT 102: DMAMUX1_OV (CRC): DMAMUX1 overrun interrupt
 INTERRUPT 110: DFSDM1_FLT0 (TIM17): DFSDM1 filter 0 interrupt
 INTERRUPT 111: DFSDM1_FLT1 (TIM17): DFSDM1 filter 1 interrupt
@@ -22463,7 +22534,7 @@ INTERRUPT 121: JPEG (JPEG): JPEG global interrupt
 INTERRUPT 122: MDMA (MDMA): MDMA
 INTERRUPT 124: SDMMC (SDMMC2): SDMMC global interrupt
 INTERRUPT 125: HSEM0 (HSEM): HSEM global interrupt 1
-INTERRUPT 127: ADC3 (ADC1): ADC3 global interrupt
+INTERRUPT 127: DAC2 (DAC2): DAC2 underrun interrupt
 INTERRUPT 128: DMAMUX2_OVR (DMAMUX2): DMAMUX2 overrun interrupt
 INTERRUPT 129: BDMA_CH1 (BDMA1): BDMA channel 1 interrupt
 INTERRUPT 130: BDMA_CH2 (BDMA1): BDMA channel 2 interrupt
@@ -22476,9 +22547,12 @@ INTERRUPT 136: BDMA_CH8 (BDMA1): BDMA channel 8 interrupt
 INTERRUPT 137: COMP (COMP1): COMP1 and COMP2
 INTERRUPT 138: LPTIM2 (LPTIM3): LPTIM2 timer interrupt
 INTERRUPT 139: LPTIM3 (LPUART1): LPTIM2 timer interrupt
+INTERRUPT 140: UART9 (UART9): UART9 global interrupt
+INTERRUPT 141: USART10 (USART10): USART10 global interrupt
 INTERRUPT 142: LPUART (SYSCFG): LPUART global interrupt
 INTERRUPT 143: WWDG1_RST (PWR): Window Watchdog interrupt
 INTERRUPT 144: CRS (CRS): Clock Recovery System globa
+INTERRUPT 145: RAMECC (RAMECC): ECC diagnostic global interrupt
 INTERRUPT 149: WKUP (DELAY_Block_SDMMC1): WKUP1 to WKUP6 pins
 INTERRUPT 150: OCTOSPI2 (OCTOSPI2): OCTOSPI2 global interrupt
 INTERRUPT 151: OTFDEC1 (OTFDEC1): OTFDEC1 interrupt
