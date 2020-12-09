@@ -6577,18 +6577,42 @@
 0x48001C24 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48001C24 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
 0x50040000 A PERIPHERAL ADC
+0x50040000 A PERIPHERAL ADC_Common
+0x50040000 B  REGISTER CSR (ro): ADC common status register
 0x50040000 B  REGISTER ISR (rw): interrupt and status register
 0x50040000 C   FIELD 00w01 ADRDY: ADRDY
+0x50040000 C   FIELD 00w01 ADRDY_MST: master ADC ready
 0x50040000 C   FIELD 01w01 EOSMP: EOSMP
+0x50040000 C   FIELD 01w01 EOSMP_MST: End of Sampling phase flag of the master ADC
 0x50040000 C   FIELD 02w01 EOC: EOC
+0x50040000 C   FIELD 02w01 EOC_MST: End of regular conversion flag of the master ADC
 0x50040000 C   FIELD 03w01 EOS: EOS
+0x50040000 C   FIELD 03w01 EOS_MST: End of regular sequence flag of the master ADC
 0x50040000 C   FIELD 04w01 OVR: OVR
+0x50040000 C   FIELD 04w01 OVR_MST: Overrun flag of the master ADC
 0x50040000 C   FIELD 05w01 JEOC: JEOC
+0x50040000 C   FIELD 05w01 JEOC_MST: End of injected conversion flag of the master ADC
 0x50040000 C   FIELD 06w01 JEOS: JEOS
+0x50040000 C   FIELD 06w01 JEOS_MST: End of injected sequence flag of the master ADC
 0x50040000 C   FIELD 07w01 AWD1: AWD1
+0x50040000 C   FIELD 07w01 AWD1_MST: Analog watchdog 1 flag of the master ADC
 0x50040000 C   FIELD 08w01 AWD2: AWD2
+0x50040000 C   FIELD 08w01 AWD2_MST: Analog watchdog 2 flag of the master ADC
 0x50040000 C   FIELD 09w01 AWD3: AWD3
+0x50040000 C   FIELD 09w01 AWD3_MST: Analog watchdog 3 flag of the master ADC
 0x50040000 C   FIELD 10w01 JQOVF: JQOVF
+0x50040000 C   FIELD 10w01 JQOVF_MST: Injected Context Queue Overflow flag of the master ADC
+0x50040000 C   FIELD 16w01 ADRDY_SLV: Slave ADC ready
+0x50040000 C   FIELD 17w01 EOSMP_SLV: End of Sampling phase flag of the slave ADC
+0x50040000 C   FIELD 18w01 EOC_SLV: End of regular conversion flag of the slave ADC
+0x50040000 C   FIELD 19w01 EOS_SLV: End of regular sequence flag of the slave ADC
+0x50040000 C   FIELD 20w01 OVR_SLV: Overrun flag of the slave ADC
+0x50040000 C   FIELD 21w01 JEOC_SLV: End of injected conversion flag of the slave ADC
+0x50040000 C   FIELD 22w01 JEOS_SLV: End of injected sequence flag of the slave ADC
+0x50040000 C   FIELD 23w01 AWD1_SLV: Analog watchdog 1 flag of the slave ADC
+0x50040000 C   FIELD 24w01 AWD2_SLV: Analog watchdog 2 flag of the slave ADC
+0x50040000 C   FIELD 25w01 AWD3_SLV: Analog watchdog 3 flag of the slave ADC
+0x50040000 C   FIELD 26w01 JQOVF_SLV: Injected Context Queue Overflow flag of the slave ADC
 0x50040004 B  REGISTER IER (rw): interrupt enable register
 0x50040004 C   FIELD 00w01 ADRDYIE: ADRDYIE
 0x50040004 C   FIELD 01w01 EOSMPIE: EOSMPIE
@@ -6601,19 +6625,31 @@
 0x50040004 C   FIELD 08w01 AWD2IE: AWD2IE
 0x50040004 C   FIELD 09w01 AWD3IE: AWD3IE
 0x50040004 C   FIELD 10w01 JQOVFIE: JQOVFIE
+0x50040008 B  REGISTER CCR (rw): ADC common control register
 0x50040008 B  REGISTER CR (rw): control register
 0x50040008 C   FIELD 00w01 ADEN: ADEN
+0x50040008 C   FIELD 00w04 DUAL: Dual ADC mode selection
 0x50040008 C   FIELD 01w01 ADDIS: ADDIS
 0x50040008 C   FIELD 02w01 ADSTART: ADSTART
 0x50040008 C   FIELD 03w01 JADSTART: JADSTART
 0x50040008 C   FIELD 04w01 ADSTP: ADSTP
 0x50040008 C   FIELD 05w01 JADSTP: JADSTP
+0x50040008 C   FIELD 08w04 DELAY: Delay between 2 sampling phases
+0x50040008 C   FIELD 13w01 DMACFG: DMA configuration (for dual ADC mode)
+0x50040008 C   FIELD 14w02 MDMA: Direct memory access mode for dual ADC mode
+0x50040008 C   FIELD 16w02 CKMODE: ADC clock mode
+0x50040008 C   FIELD 18w04 PRESC: ADC prescaler
+0x50040008 C   FIELD 22w01 VREFEN: Vrefint enable
+0x50040008 C   FIELD 23w01 CH17SEL: CH17 selection (temperature)
+0x50040008 C   FIELD 24w01 CH18SEL: CH18 selection (Vbat)
 0x50040008 C   FIELD 28w01 ADVREGEN: ADVREGEN
 0x50040008 C   FIELD 29w01 DEEPPWD: DEEPPWD
 0x50040008 C   FIELD 30w01 ADCALDIF: ADCALDIF
 0x50040008 C   FIELD 31w01 ADCAL: ADCAL
+0x5004000C B  REGISTER CDR (ro): ADC common regular data register for dual mode
 0x5004000C B  REGISTER CFGR (rw): configuration register
 0x5004000C C   FIELD 00w01 DMAEN: DMAEN
+0x5004000C C   FIELD 00w16 RDATA_MST: Regular data of the master ADC
 0x5004000C C   FIELD 01w01 DMACFG: DMACFG
 0x5004000C C   FIELD 03w02 RES: RES
 0x5004000C C   FIELD 05w01 ALIGN: ALIGN
@@ -6624,6 +6660,7 @@
 0x5004000C C   FIELD 14w01 AUTDLY: AUTDLY
 0x5004000C C   FIELD 15w01 AUTOFF: AUTOFF
 0x5004000C C   FIELD 16w01 DISCEN: DISCEN
+0x5004000C C   FIELD 16w16 RDATA_SLV: Regular data of the slave ADC
 0x5004000C C   FIELD 17w03 DISCNUM: DISCNUM
 0x5004000C C   FIELD 20w01 JDISCEN: JDISCEN
 0x5004000C C   FIELD 21w01 JQM: JQM
