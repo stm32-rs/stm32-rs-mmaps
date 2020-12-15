@@ -5059,16 +5059,16 @@
 0x40016800 A PERIPHERAL LTDC
 0x40016808 B  REGISTER SSCR (rw): Synchronization Size Configuration Register
 0x40016808 C   FIELD 00w11 VSH: Vertical Synchronization Height (in units of horizontal scan line)
-0x40016808 C   FIELD 16w10 HSW: Horizontal Synchronization Width (in units of pixel clock period)
+0x40016808 C   FIELD 16w12 HSW: Horizontal Synchronization Width (in units of pixel clock period)
 0x4001680C B  REGISTER BPCR (rw): Back Porch Configuration Register
 0x4001680C C   FIELD 00w11 AVBP: Accumulated Vertical back porch (in units of horizontal scan line)
-0x4001680C C   FIELD 16w10 AHBP: Accumulated Horizontal back porch (in units of pixel clock period)
+0x4001680C C   FIELD 16w12 AHBP: Accumulated Horizontal back porch (in units of pixel clock period)
 0x40016810 B  REGISTER AWCR (rw): Active Width Configuration Register
 0x40016810 C   FIELD 00w11 AAH: Accumulated Active Height (in units of horizontal scan line)
-0x40016810 C   FIELD 16w10 AAW: Accumulated Active Width (in units of pixel clock period)
+0x40016810 C   FIELD 16w12 AAW: Accumulated Active Width (in units of pixel clock period)
 0x40016814 B  REGISTER TWCR (rw): Total Width Configuration Register
 0x40016814 C   FIELD 00w11 TOTALH: Total Height (in units of horizontal scan line)
-0x40016814 C   FIELD 16w10 TOTALW: Total Width (in units of pixel clock period)
+0x40016814 C   FIELD 16w12 TOTALW: Total Width (in units of pixel clock period)
 0x40016818 B  REGISTER GCR: Global Control Register
 0x40016818 C   FIELD 00w01 LTDCEN (rw): LCD-TFT controller enable bit
 0x40016818 C   FIELD 04w03 DBW (ro): Dither Blue Width
@@ -5083,7 +5083,9 @@
 0x40016824 C   FIELD 00w01 IMR: Immediate Reload
 0x40016824 C   FIELD 01w01 VBR: Vertical Blanking Reload
 0x4001682C B  REGISTER BCCR (rw): Background Color Configuration Register
-0x4001682C C   FIELD 00w24 BC: Background Color Red value
+0x4001682C C   FIELD 00w08 BCBLUE: Background color blue value
+0x4001682C C   FIELD 08w08 BCGREEN: Background color green value
+0x4001682C C   FIELD 16w08 BCRED: Background color red value
 0x40016834 B  REGISTER IER (rw): Interrupt Enable Register
 0x40016834 C   FIELD 00w01 LIE: Line Interrupt Enable
 0x40016834 C   FIELD 01w01 FUIE: FIFO Underrun Interrupt Enable
