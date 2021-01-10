@@ -2852,18 +2852,18 @@
 0x4000A000 C   FIELD 28w04 REL: Core release
 0x4000A004 B  REGISTER ENDN (ro): FDCAN Core Release Register
 0x4000A004 C   FIELD 00w32 ETV: Endiannes Test Value
-0x4000A00C B  REGISTER DBTP (ro): FDCAN Data Bit Timing and Prescaler Register
+0x4000A00C B  REGISTER DBTP (rw): FDCAN Data Bit Timing and Prescaler Register
 0x4000A00C C   FIELD 00w04 DSJW: Synchronization Jump Width
 0x4000A00C C   FIELD 04w04 DTSEG2: Data time segment after sample point
 0x4000A00C C   FIELD 08w05 DTSEG1: Data time segment after sample point
 0x4000A00C C   FIELD 16w05 DBRP: Data BIt Rate Prescaler
 0x4000A00C C   FIELD 23w01 TDC: Transceiver Delay Compensation
 0x4000A010 B  REGISTER TEST (ro): FDCAN Test Register
-0x4000A010 C   FIELD 04w01 LBCK: Loop Back mode
-0x4000A010 C   FIELD 05w02 TX: Loop Back mode
+0x4000A010 C   FIELD 04w01 LBCK (rw): Loop Back mode
+0x4000A010 C   FIELD 05w02 TX (rw): Loop Back mode
 0x4000A010 C   FIELD 07w01 RX: Control of Transmit Pin
 0x4000A014 B  REGISTER RWD (ro): FDCAN RAM Watchdog Register
-0x4000A014 C   FIELD 00w08 WDC: Watchdog configuration
+0x4000A014 C   FIELD 00w08 WDC (rw): Watchdog configuration
 0x4000A014 C   FIELD 08w08 WDV: Watchdog value
 0x4000A018 B  REGISTER CCCR (rw): FDCAN CC Control Register
 0x4000A018 C   FIELD 00w01 INIT: Initialization
@@ -2881,7 +2881,7 @@
 0x4000A018 C   FIELD 14w01 TXP: TXP
 0x4000A018 C   FIELD 15w01 NISO: Non ISO Operation
 0x4000A01C B  REGISTER NBTP (rw): FDCAN Nominal Bit Timing and Prescaler Register
-0x4000A01C C   FIELD 00w07 TSEG2: Nominal Time segment after sample point
+0x4000A01C C   FIELD 00w07 NTSEG2: Nominal Time segment after sample point
 0x4000A01C C   FIELD 08w08 NTSEG1: Nominal Time segment before sample point
 0x4000A01C C   FIELD 16w09 NBRP: Bit Rate Prescaler
 0x4000A01C C   FIELD 25w07 NSJW: NSJW: Nominal (Re)Synchronization Jump Width
@@ -2898,7 +2898,7 @@
 0x4000A02C C   FIELD 00w16 TOC: Timeout Counter
 0x4000A040 B  REGISTER ECR (rw): FDCAN Error Counter Register
 0x4000A040 C   FIELD 00w08 TEC: Transmit Error Counter
-0x4000A040 C   FIELD 08w07 TREC: Receive Error Counter
+0x4000A040 C   FIELD 08w07 REC: Receive Error Counter
 0x4000A040 C   FIELD 15w01 RP: Receive Error Passive
 0x4000A040 C   FIELD 16w08 CEL: AN Error Logging
 0x4000A044 B  REGISTER PSR (rw): FDCAN Protocol Status Register
@@ -2913,10 +2913,10 @@
 0x4000A044 C   FIELD 13w01 REDL: Received FDCAN Message
 0x4000A044 C   FIELD 14w01 PXE: Protocol Exception Event
 0x4000A044 C   FIELD 16w07 TDCV: Transmitter Delay Compensation Value
-0x4000A048 B  REGISTER TDCR (ro): FDCAN Transmitter Delay Compensation Register
+0x4000A048 B  REGISTER TDCR (rw): FDCAN Transmitter Delay Compensation Register
 0x4000A048 C   FIELD 00w07 TDCF: Transmitter Delay Compensation Filter Window Length
 0x4000A048 C   FIELD 08w07 TDCO: Transmitter Delay Compensation Offset
-0x4000A050 B  REGISTER IR (ro): FDCAN Interrupt Register
+0x4000A050 B  REGISTER IR (rw): FDCAN Interrupt Register
 0x4000A050 C   FIELD 00w01 RF0N: Rx FIFO 0 New Message
 0x4000A050 C   FIELD 01w01 RF0W: Rx FIFO 0 Full
 0x4000A050 C   FIELD 02w01 RF0F: Rx FIFO 0 Full
@@ -2945,7 +2945,7 @@
 0x4000A050 C   FIELD 27w01 PEA: Protocol Error in Arbitration Phase (Nominal Bit Time is used)
 0x4000A050 C   FIELD 28w01 PED: Protocol Error in Data Phase (Data Bit Time is used)
 0x4000A050 C   FIELD 29w01 ARA: Access to Reserved Address
-0x4000A054 B  REGISTER IE (ro): FDCAN Interrupt Enable Register
+0x4000A054 B  REGISTER IE (rw): FDCAN Interrupt Enable Register
 0x4000A054 C   FIELD 00w01 RF0NE: Rx FIFO 0 New Message Enable
 0x4000A054 C   FIELD 01w01 RF0WE: Rx FIFO 0 Full Enable
 0x4000A054 C   FIELD 02w01 RF0FE: Rx FIFO 0 Full Enable
@@ -2976,7 +2976,7 @@
 0x4000A054 C   FIELD 27w01 PEAE: Protocol Error in Arbitration Phase Enable
 0x4000A054 C   FIELD 28w01 PEDE: Protocol Error in Data Phase Enable
 0x4000A054 C   FIELD 29w01 ARAE: Access to Reserved Address Enable
-0x4000A058 B  REGISTER ILS (ro): FDCAN Interrupt Line Select Register
+0x4000A058 B  REGISTER ILS (rw): FDCAN Interrupt Line Select Register
 0x4000A058 C   FIELD 00w01 RF0NL: Rx FIFO 0 New Message Interrupt Line
 0x4000A058 C   FIELD 01w01 RF0WL: Rx FIFO 0 Watermark Reached Interrupt Line
 0x4000A058 C   FIELD 02w01 RF0FL: Rx FIFO 0 Full Interrupt Line
@@ -3028,7 +3028,7 @@
 0x4000A094 C   FIELD 06w02 MSI: Message Storage Indicator
 0x4000A094 C   FIELD 08w07 FIDX: Filter Index
 0x4000A094 C   FIELD 15w01 FLST: Filter List
-0x4000A098 B  REGISTER NDAT1 (ro): FDCAN New Data 1 Register
+0x4000A098 B  REGISTER NDAT1 (rw): FDCAN New Data 1 Register
 0x4000A098 C   FIELD 00w01 ND0: New data
 0x4000A098 C   FIELD 01w01 ND1: New data
 0x4000A098 C   FIELD 02w01 ND2: New data
@@ -3061,7 +3061,7 @@
 0x4000A098 C   FIELD 29w01 ND29: New data
 0x4000A098 C   FIELD 30w01 ND30: New data
 0x4000A098 C   FIELD 31w01 ND31: New data
-0x4000A09C B  REGISTER NDAT2 (ro): FDCAN New Data 2 Register
+0x4000A09C B  REGISTER NDAT2 (rw): FDCAN New Data 2 Register
 0x4000A09C C   FIELD 00w01 ND32: New data
 0x4000A09C C   FIELD 01w01 ND33: New data
 0x4000A09C C   FIELD 02w01 ND34: New data
@@ -3096,22 +3096,24 @@
 0x4000A09C C   FIELD 31w01 ND63: New data
 0x4000A0A0 B  REGISTER RXF0C (rw): FDCAN Rx FIFO 0 Configuration Register
 0x4000A0A0 C   FIELD 02w14 F0SA: Rx FIFO 0 Start Address
-0x4000A0A0 C   FIELD 16w08 F0S: Rx FIFO 0 Size
-0x4000A0A0 C   FIELD 24w08 F0WM: FIFO 0 Watermark
+0x4000A0A0 C   FIELD 16w07 F0S: Rx FIFO 0 Size
+0x4000A0A0 C   FIELD 24w07 F0WM: FIFO 0 Watermark
+0x4000A0A0 C   FIELD 31w01 F0OM: FIFO 0 operation mode
 0x4000A0A4 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
 0x4000A0A4 C   FIELD 00w07 F0FL: Rx FIFO 0 Fill Level
-0x4000A0A4 C   FIELD 08w06 F0G: Rx FIFO 0 Get Index
-0x4000A0A4 C   FIELD 16w06 F0P: Rx FIFO 0 Put Index
+0x4000A0A4 C   FIELD 08w06 F0GI: Rx FIFO 0 Get Index
+0x4000A0A4 C   FIELD 16w06 F0PI: Rx FIFO 0 Put Index
 0x4000A0A4 C   FIELD 24w01 F0F: Rx FIFO 0 Full
 0x4000A0A4 C   FIELD 25w01 RF0L: Rx FIFO 0 Message Lost
 0x4000A0A8 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
-0x4000A0A8 C   FIELD 00w06 FA01: Rx FIFO 0 Acknowledge Index
+0x4000A0A8 C   FIELD 00w06 F0AI: Rx FIFO 0 Acknowledge Index
 0x4000A0AC B  REGISTER RXBC (rw): FDCAN Rx Buffer Configuration Register
 0x4000A0AC C   FIELD 02w14 RBSA: Rx Buffer Start Address
 0x4000A0B0 B  REGISTER RXF1C (rw): FDCAN Rx FIFO 1 Configuration Register
 0x4000A0B0 C   FIELD 02w14 F1SA: Rx FIFO 1 Start Address
 0x4000A0B0 C   FIELD 16w07 F1S: Rx FIFO 1 Size
 0x4000A0B0 C   FIELD 24w07 F1WM: Rx FIFO 1 Watermark
+0x4000A0B0 C   FIELD 31w01 F1OM: FIFO 1 operation mode
 0x4000A0B4 B  REGISTER RXF1S (rw): FDCAN Rx FIFO 1 Status Register
 0x4000A0B4 C   FIELD 00w07 F1FL: Rx FIFO 1 Fill Level
 0x4000A0B4 C   FIELD 08w07 F1GI: Rx FIFO 1 Get Index
@@ -3158,6 +3160,7 @@
 0x4000A0F4 B  REGISTER TXEFS (rw): FDCAN Tx Event FIFO Status Register
 0x4000A0F4 C   FIELD 00w06 EFFL: Event FIFO Fill Level
 0x4000A0F4 C   FIELD 08w05 EFGI: Event FIFO Get Index.
+0x4000A0F4 C   FIELD 16w05 EFPI: Event FIFO put index
 0x4000A0F4 C   FIELD 24w01 EFF: Event FIFO Full.
 0x4000A0F4 C   FIELD 25w01 TEFL: Tx Event FIFO Element Lost.
 0x4000A0F8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
@@ -3203,7 +3206,7 @@
 0x4000A114 C   FIELD 12w01 NIG: Next is Gap
 0x4000A114 C   FIELD 13w01 ESCN: External Synchronization Control
 0x4000A114 C   FIELD 15w01 LCKC: TT Operation Control Register Locked
-0x4000A118 B  REGISTER CAN_TTGTP (rw): FDCAN TT Global Time Preset Register
+0x4000A118 B  REGISTER TTGTP (rw): FDCAN TT Global Time Preset Register
 0x4000A118 C   FIELD 00w16 NCL: Time Preset
 0x4000A118 C   FIELD 16w16 CTP: Cycle Time Target Phase
 0x4000A11C B  REGISTER TTTMK (rw): FDCAN TT Time Mark Register
@@ -3274,7 +3277,7 @@
 0x4000A12C C   FIELD 00w02 EL: Error Level
 0x4000A12C C   FIELD 02w02 MS: Master State.
 0x4000A12C C   FIELD 04w02 SYS: Synchronization State
-0x4000A12C C   FIELD 06w01 GTP: Quality of Global Time Phase
+0x4000A12C C   FIELD 06w01 QGTP: Quality of Global Time Phase
 0x4000A12C C   FIELD 07w01 QCS: Quality of Clock Speed
 0x4000A12C C   FIELD 08w08 RTO: Reference Trigger Offset
 0x4000A12C C   FIELD 22w01 WGTD: Wait for Global Time Discontinuity
@@ -3294,7 +3297,7 @@
 0x4000A138 C   FIELD 00w16 CT: Cycle Time
 0x4000A138 C   FIELD 16w06 CC: Cycle Count
 0x4000A13C B  REGISTER TTCPT (ro): FDCAN TT Capture Time Register
-0x4000A13C C   FIELD 00w06 CT: Cycle Count Value
+0x4000A13C C   FIELD 00w06 CCV: Cycle Count Value
 0x4000A13C C   FIELD 16w16 SWV: Stop Watch Value
 0x4000A140 B  REGISTER TTCSM (ro): FDCAN TT Cycle Sync Mark Register
 0x4000A140 C   FIELD 00w16 CSM: Cycle Sync Mark
@@ -3311,18 +3314,18 @@
 0x4000A400 C   FIELD 28w04 REL: Core release
 0x4000A404 B  REGISTER ENDN (ro): FDCAN Core Release Register
 0x4000A404 C   FIELD 00w32 ETV: Endiannes Test Value
-0x4000A40C B  REGISTER DBTP (ro): FDCAN Data Bit Timing and Prescaler Register
+0x4000A40C B  REGISTER DBTP (rw): FDCAN Data Bit Timing and Prescaler Register
 0x4000A40C C   FIELD 00w04 DSJW: Synchronization Jump Width
 0x4000A40C C   FIELD 04w04 DTSEG2: Data time segment after sample point
 0x4000A40C C   FIELD 08w05 DTSEG1: Data time segment after sample point
 0x4000A40C C   FIELD 16w05 DBRP: Data BIt Rate Prescaler
 0x4000A40C C   FIELD 23w01 TDC: Transceiver Delay Compensation
 0x4000A410 B  REGISTER TEST (ro): FDCAN Test Register
-0x4000A410 C   FIELD 04w01 LBCK: Loop Back mode
-0x4000A410 C   FIELD 05w02 TX: Loop Back mode
+0x4000A410 C   FIELD 04w01 LBCK (rw): Loop Back mode
+0x4000A410 C   FIELD 05w02 TX (rw): Loop Back mode
 0x4000A410 C   FIELD 07w01 RX: Control of Transmit Pin
 0x4000A414 B  REGISTER RWD (ro): FDCAN RAM Watchdog Register
-0x4000A414 C   FIELD 00w08 WDC: Watchdog configuration
+0x4000A414 C   FIELD 00w08 WDC (rw): Watchdog configuration
 0x4000A414 C   FIELD 08w08 WDV: Watchdog value
 0x4000A418 B  REGISTER CCCR (rw): FDCAN CC Control Register
 0x4000A418 C   FIELD 00w01 INIT: Initialization
@@ -3340,7 +3343,7 @@
 0x4000A418 C   FIELD 14w01 TXP: TXP
 0x4000A418 C   FIELD 15w01 NISO: Non ISO Operation
 0x4000A41C B  REGISTER NBTP (rw): FDCAN Nominal Bit Timing and Prescaler Register
-0x4000A41C C   FIELD 00w07 TSEG2: Nominal Time segment after sample point
+0x4000A41C C   FIELD 00w07 NTSEG2: Nominal Time segment after sample point
 0x4000A41C C   FIELD 08w08 NTSEG1: Nominal Time segment before sample point
 0x4000A41C C   FIELD 16w09 NBRP: Bit Rate Prescaler
 0x4000A41C C   FIELD 25w07 NSJW: NSJW: Nominal (Re)Synchronization Jump Width
@@ -3357,7 +3360,7 @@
 0x4000A42C C   FIELD 00w16 TOC: Timeout Counter
 0x4000A440 B  REGISTER ECR (rw): FDCAN Error Counter Register
 0x4000A440 C   FIELD 00w08 TEC: Transmit Error Counter
-0x4000A440 C   FIELD 08w07 TREC: Receive Error Counter
+0x4000A440 C   FIELD 08w07 REC: Receive Error Counter
 0x4000A440 C   FIELD 15w01 RP: Receive Error Passive
 0x4000A440 C   FIELD 16w08 CEL: AN Error Logging
 0x4000A444 B  REGISTER PSR (rw): FDCAN Protocol Status Register
@@ -3372,10 +3375,10 @@
 0x4000A444 C   FIELD 13w01 REDL: Received FDCAN Message
 0x4000A444 C   FIELD 14w01 PXE: Protocol Exception Event
 0x4000A444 C   FIELD 16w07 TDCV: Transmitter Delay Compensation Value
-0x4000A448 B  REGISTER TDCR (ro): FDCAN Transmitter Delay Compensation Register
+0x4000A448 B  REGISTER TDCR (rw): FDCAN Transmitter Delay Compensation Register
 0x4000A448 C   FIELD 00w07 TDCF: Transmitter Delay Compensation Filter Window Length
 0x4000A448 C   FIELD 08w07 TDCO: Transmitter Delay Compensation Offset
-0x4000A450 B  REGISTER IR (ro): FDCAN Interrupt Register
+0x4000A450 B  REGISTER IR (rw): FDCAN Interrupt Register
 0x4000A450 C   FIELD 00w01 RF0N: Rx FIFO 0 New Message
 0x4000A450 C   FIELD 01w01 RF0W: Rx FIFO 0 Full
 0x4000A450 C   FIELD 02w01 RF0F: Rx FIFO 0 Full
@@ -3404,7 +3407,7 @@
 0x4000A450 C   FIELD 27w01 PEA: Protocol Error in Arbitration Phase (Nominal Bit Time is used)
 0x4000A450 C   FIELD 28w01 PED: Protocol Error in Data Phase (Data Bit Time is used)
 0x4000A450 C   FIELD 29w01 ARA: Access to Reserved Address
-0x4000A454 B  REGISTER IE (ro): FDCAN Interrupt Enable Register
+0x4000A454 B  REGISTER IE (rw): FDCAN Interrupt Enable Register
 0x4000A454 C   FIELD 00w01 RF0NE: Rx FIFO 0 New Message Enable
 0x4000A454 C   FIELD 01w01 RF0WE: Rx FIFO 0 Full Enable
 0x4000A454 C   FIELD 02w01 RF0FE: Rx FIFO 0 Full Enable
@@ -3435,7 +3438,7 @@
 0x4000A454 C   FIELD 27w01 PEAE: Protocol Error in Arbitration Phase Enable
 0x4000A454 C   FIELD 28w01 PEDE: Protocol Error in Data Phase Enable
 0x4000A454 C   FIELD 29w01 ARAE: Access to Reserved Address Enable
-0x4000A458 B  REGISTER ILS (ro): FDCAN Interrupt Line Select Register
+0x4000A458 B  REGISTER ILS (rw): FDCAN Interrupt Line Select Register
 0x4000A458 C   FIELD 00w01 RF0NL: Rx FIFO 0 New Message Interrupt Line
 0x4000A458 C   FIELD 01w01 RF0WL: Rx FIFO 0 Watermark Reached Interrupt Line
 0x4000A458 C   FIELD 02w01 RF0FL: Rx FIFO 0 Full Interrupt Line
@@ -3487,7 +3490,7 @@
 0x4000A494 C   FIELD 06w02 MSI: Message Storage Indicator
 0x4000A494 C   FIELD 08w07 FIDX: Filter Index
 0x4000A494 C   FIELD 15w01 FLST: Filter List
-0x4000A498 B  REGISTER NDAT1 (ro): FDCAN New Data 1 Register
+0x4000A498 B  REGISTER NDAT1 (rw): FDCAN New Data 1 Register
 0x4000A498 C   FIELD 00w01 ND0: New data
 0x4000A498 C   FIELD 01w01 ND1: New data
 0x4000A498 C   FIELD 02w01 ND2: New data
@@ -3520,7 +3523,7 @@
 0x4000A498 C   FIELD 29w01 ND29: New data
 0x4000A498 C   FIELD 30w01 ND30: New data
 0x4000A498 C   FIELD 31w01 ND31: New data
-0x4000A49C B  REGISTER NDAT2 (ro): FDCAN New Data 2 Register
+0x4000A49C B  REGISTER NDAT2 (rw): FDCAN New Data 2 Register
 0x4000A49C C   FIELD 00w01 ND32: New data
 0x4000A49C C   FIELD 01w01 ND33: New data
 0x4000A49C C   FIELD 02w01 ND34: New data
@@ -3555,22 +3558,24 @@
 0x4000A49C C   FIELD 31w01 ND63: New data
 0x4000A4A0 B  REGISTER RXF0C (rw): FDCAN Rx FIFO 0 Configuration Register
 0x4000A4A0 C   FIELD 02w14 F0SA: Rx FIFO 0 Start Address
-0x4000A4A0 C   FIELD 16w08 F0S: Rx FIFO 0 Size
-0x4000A4A0 C   FIELD 24w08 F0WM: FIFO 0 Watermark
+0x4000A4A0 C   FIELD 16w07 F0S: Rx FIFO 0 Size
+0x4000A4A0 C   FIELD 24w07 F0WM: FIFO 0 Watermark
+0x4000A4A0 C   FIELD 31w01 F0OM: FIFO 0 operation mode
 0x4000A4A4 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
 0x4000A4A4 C   FIELD 00w07 F0FL: Rx FIFO 0 Fill Level
-0x4000A4A4 C   FIELD 08w06 F0G: Rx FIFO 0 Get Index
-0x4000A4A4 C   FIELD 16w06 F0P: Rx FIFO 0 Put Index
+0x4000A4A4 C   FIELD 08w06 F0GI: Rx FIFO 0 Get Index
+0x4000A4A4 C   FIELD 16w06 F0PI: Rx FIFO 0 Put Index
 0x4000A4A4 C   FIELD 24w01 F0F: Rx FIFO 0 Full
 0x4000A4A4 C   FIELD 25w01 RF0L: Rx FIFO 0 Message Lost
 0x4000A4A8 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
-0x4000A4A8 C   FIELD 00w06 FA01: Rx FIFO 0 Acknowledge Index
+0x4000A4A8 C   FIELD 00w06 F0AI: Rx FIFO 0 Acknowledge Index
 0x4000A4AC B  REGISTER RXBC (rw): FDCAN Rx Buffer Configuration Register
 0x4000A4AC C   FIELD 02w14 RBSA: Rx Buffer Start Address
 0x4000A4B0 B  REGISTER RXF1C (rw): FDCAN Rx FIFO 1 Configuration Register
 0x4000A4B0 C   FIELD 02w14 F1SA: Rx FIFO 1 Start Address
 0x4000A4B0 C   FIELD 16w07 F1S: Rx FIFO 1 Size
 0x4000A4B0 C   FIELD 24w07 F1WM: Rx FIFO 1 Watermark
+0x4000A4B0 C   FIELD 31w01 F1OM: FIFO 1 operation mode
 0x4000A4B4 B  REGISTER RXF1S (rw): FDCAN Rx FIFO 1 Status Register
 0x4000A4B4 C   FIELD 00w07 F1FL: Rx FIFO 1 Fill Level
 0x4000A4B4 C   FIELD 08w07 F1GI: Rx FIFO 1 Get Index
@@ -3617,6 +3622,7 @@
 0x4000A4F4 B  REGISTER TXEFS (rw): FDCAN Tx Event FIFO Status Register
 0x4000A4F4 C   FIELD 00w06 EFFL: Event FIFO Fill Level
 0x4000A4F4 C   FIELD 08w05 EFGI: Event FIFO Get Index.
+0x4000A4F4 C   FIELD 16w05 EFPI: Event FIFO put index
 0x4000A4F4 C   FIELD 24w01 EFF: Event FIFO Full.
 0x4000A4F4 C   FIELD 25w01 TEFL: Tx Event FIFO Element Lost.
 0x4000A4F8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
@@ -3662,7 +3668,7 @@
 0x4000A514 C   FIELD 12w01 NIG: Next is Gap
 0x4000A514 C   FIELD 13w01 ESCN: External Synchronization Control
 0x4000A514 C   FIELD 15w01 LCKC: TT Operation Control Register Locked
-0x4000A518 B  REGISTER CAN_TTGTP (rw): FDCAN TT Global Time Preset Register
+0x4000A518 B  REGISTER TTGTP (rw): FDCAN TT Global Time Preset Register
 0x4000A518 C   FIELD 00w16 NCL: Time Preset
 0x4000A518 C   FIELD 16w16 CTP: Cycle Time Target Phase
 0x4000A51C B  REGISTER TTTMK (rw): FDCAN TT Time Mark Register
@@ -3733,7 +3739,7 @@
 0x4000A52C C   FIELD 00w02 EL: Error Level
 0x4000A52C C   FIELD 02w02 MS: Master State.
 0x4000A52C C   FIELD 04w02 SYS: Synchronization State
-0x4000A52C C   FIELD 06w01 GTP: Quality of Global Time Phase
+0x4000A52C C   FIELD 06w01 QGTP: Quality of Global Time Phase
 0x4000A52C C   FIELD 07w01 QCS: Quality of Clock Speed
 0x4000A52C C   FIELD 08w08 RTO: Reference Trigger Offset
 0x4000A52C C   FIELD 22w01 WGTD: Wait for Global Time Discontinuity
@@ -3753,7 +3759,7 @@
 0x4000A538 C   FIELD 00w16 CT: Cycle Time
 0x4000A538 C   FIELD 16w06 CC: Cycle Count
 0x4000A53C B  REGISTER TTCPT (ro): FDCAN TT Capture Time Register
-0x4000A53C C   FIELD 00w06 CT: Cycle Count Value
+0x4000A53C C   FIELD 00w06 CCV: Cycle Count Value
 0x4000A53C C   FIELD 16w16 SWV: Stop Watch Value
 0x4000A540 B  REGISTER TTCSM (ro): FDCAN TT Cycle Sync Mark Register
 0x4000A540 C   FIELD 00w16 CSM: Cycle Sync Mark
