@@ -1380,28 +1380,28 @@
 0x4000285C C   FIELD 04w01 CTSOVF: CTSOVF
 0x4000285C C   FIELD 05w01 CITSF: CITSF
 0x40002C00 A PERIPHERAL WWDG
-0x40002C00 B  REGISTER KR (wo): Key register
-0x40002C00 C   FIELD 00w16 KEY: Key value (write only, read 0x0000)
-0x40002C04 B  REGISTER PR (rw): Prescaler register
-0x40002C04 C   FIELD 00w03 PR: Prescaler divider
-0x40002C08 B  REGISTER RLR (rw): Reload register
-0x40002C08 C   FIELD 00w12 RL: Watchdog counter reload value
-0x40002C0C B  REGISTER SR (ro): Status register
-0x40002C0C C   FIELD 00w01 PVU: Watchdog prescaler value update
-0x40002C0C C   FIELD 01w01 RVU: Watchdog counter reload value update
-0x40002C0C C   FIELD 02w01 WVU: Watchdog counter window value update
-0x40002C10 B  REGISTER WINR (rw): Window register
-0x40002C10 C   FIELD 00w12 WIN: Watchdog counter window value
+0x40002C00 B  REGISTER CR (rw): Control register
+0x40002C00 C   FIELD 00w07 T: 7-bit counter (MSB to LSB)
+0x40002C00 C   FIELD 07w01 WDGA: Activation bit
+0x40002C04 B  REGISTER CFR (rw): Configuration register
+0x40002C04 C   FIELD 00w07 W: 7-bit window value
+0x40002C04 C   FIELD 09w01 EWI: Early wakeup interrupt
+0x40002C04 C   FIELD 11w03 WDGTB: Timer base
+0x40002C08 B  REGISTER SR (rw): Status register
+0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt
 0x40003000 A PERIPHERAL IWDG
-0x40003000 B  REGISTER CR (rw): Control register
-0x40003000 C   FIELD 00w07 T: 7-bit counter (MSB to LSB)
-0x40003000 C   FIELD 07w01 WDGA: Activation bit
-0x40003004 B  REGISTER CFR (rw): Configuration register
-0x40003004 C   FIELD 00w07 W: 7-bit window value
-0x40003004 C   FIELD 09w01 EWI: Early wakeup interrupt
-0x40003004 C   FIELD 11w03 WDGTB: Timer base
-0x40003008 B  REGISTER SR (rw): Status register
-0x40003008 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
+0x40003000 B  REGISTER KR (wo): Key register
+0x40003000 C   FIELD 00w16 KEY: Key value (write only, read 0x0000)
+0x40003004 B  REGISTER PR (rw): Prescaler register
+0x40003004 C   FIELD 00w03 PR: Prescaler divider
+0x40003008 B  REGISTER RLR (rw): Reload register
+0x40003008 C   FIELD 00w12 RL: Watchdog counter reload value
+0x4000300C B  REGISTER SR (ro): Status register
+0x4000300C C   FIELD 00w01 PVU: Watchdog prescaler value update
+0x4000300C C   FIELD 01w01 RVU: Watchdog counter reload update
+0x4000300C C   FIELD 02w01 WVU: Watchdog counter window update
+0x40003010 B  REGISTER WINR (rw): Window register
+0x40003010 C   FIELD 00w12 WIN: Watchdog counter window value
 0x40003800 A PERIPHERAL SPI2
 0x40003800 B  REGISTER CR1 (rw): control register 1
 0x40003800 C   FIELD 00w01 CPHA: Clock phase
