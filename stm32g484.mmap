@@ -1388,7 +1388,7 @@
 0x40002C04 C   FIELD 09w01 EWI: Early wakeup interrupt
 0x40002C04 C   FIELD 11w03 WDGTB: Timer base
 0x40002C08 B  REGISTER SR (rw): Status register
-0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt
+0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
 0x40003000 A PERIPHERAL IWDG
 0x40003000 B  REGISTER KR (wo): Key register
 0x40003000 C   FIELD 00w16 KEY: Key value (write only, read 0x0000)
@@ -1398,8 +1398,8 @@
 0x40003008 C   FIELD 00w12 RL: Watchdog counter reload value
 0x4000300C B  REGISTER SR (ro): Status register
 0x4000300C C   FIELD 00w01 PVU: Watchdog prescaler value update
-0x4000300C C   FIELD 01w01 RVU: Watchdog counter reload update
-0x4000300C C   FIELD 02w01 WVU: Watchdog counter window update
+0x4000300C C   FIELD 01w01 RVU: Watchdog counter reload value update
+0x4000300C C   FIELD 02w01 WVU: Watchdog counter window value update
 0x40003010 B  REGISTER WINR (rw): Window register
 0x40003010 C   FIELD 00w12 WIN: Watchdog counter window value
 0x40003800 A PERIPHERAL SPI2
@@ -5468,6 +5468,8 @@
 0x40014460 C   FIELD 13w01 BKCMP4P: BRK COMP4 input polarity
 0x40014464 B  REGISTER AF2 (rw): TIM alternate function option register 2
 0x40014464 C   FIELD 16w03 OCRSEL: OCREF_CLR source selection
+0x40014468 B  REGISTER OR1 (rw): TIM option register 1
+0x40014468 C   FIELD 00w01 HSE32EN: HSE Divided by 32 enable
 0x400147DC B  REGISTER DCR (rw): DMA control register
 0x400147DC C   FIELD 00w05 DBA: DMA base address
 0x400147DC C   FIELD 08w05 DBL: DMA burst length
@@ -5568,6 +5570,8 @@
 0x40014860 C   FIELD 13w01 BKCMP4P: BRK COMP4 input polarity
 0x40014864 B  REGISTER AF2 (rw): TIM alternate function option register 2
 0x40014864 C   FIELD 16w03 OCRSEL: OCREF_CLR source selection
+0x40014868 B  REGISTER OR1 (rw): TIM option register 1
+0x40014868 C   FIELD 00w01 HSE32EN: HSE Divided by 32 enable
 0x40014BDC B  REGISTER DCR (rw): DMA control register
 0x40014BDC C   FIELD 00w05 DBA: DMA base address
 0x40014BDC C   FIELD 08w05 DBL: DMA burst length
@@ -12002,43 +12006,43 @@
 0x500001B4 C   FIELD 16w07 CALFACT_D: Calibration Factors in differential mode
 0x500001C0 B  REGISTER GCOMP (rw): Gain compensation Register
 0x500001C0 C   FIELD 00w14 GCOMPCOEFF: Gain compensation coefficient
-0x50000200 A PERIPHERAL ADC12_Common
-0x50000200 B  REGISTER CSR (ro): ADC Common status register
-0x50000200 C   FIELD 00w01 ADDRDY_MST: ADDRDY_MST
-0x50000200 C   FIELD 01w01 EOSMP_MST: EOSMP_MST
-0x50000200 C   FIELD 02w01 EOC_MST: EOC_MST
-0x50000200 C   FIELD 03w01 EOS_MST: EOS_MST
-0x50000200 C   FIELD 04w01 OVR_MST: OVR_MST
-0x50000200 C   FIELD 05w01 JEOC_MST: JEOC_MST
-0x50000200 C   FIELD 06w01 JEOS_MST: JEOS_MST
-0x50000200 C   FIELD 07w01 AWD1_MST: AWD1_MST
-0x50000200 C   FIELD 08w01 AWD2_MST: AWD2_MST
-0x50000200 C   FIELD 09w01 AWD3_MST: AWD3_MST
-0x50000200 C   FIELD 10w01 JQOVF_MST: JQOVF_MST
-0x50000200 C   FIELD 16w01 ADRDY_SLV: ADRDY_SLV
-0x50000200 C   FIELD 17w01 EOSMP_SLV: EOSMP_SLV
-0x50000200 C   FIELD 18w01 EOC_SLV: End of regular conversion of the slave ADC
-0x50000200 C   FIELD 19w01 EOS_SLV: End of regular sequence flag of the slave ADC
-0x50000200 C   FIELD 20w01 OVR_SLV: Overrun flag of the slave ADC
-0x50000200 C   FIELD 21w01 JEOC_SLV: End of injected conversion flag of the slave ADC
-0x50000200 C   FIELD 22w01 JEOS_SLV: End of injected sequence flag of the slave ADC
-0x50000200 C   FIELD 23w01 AWD1_SLV: Analog watchdog 1 flag of the slave ADC
-0x50000200 C   FIELD 24w01 AWD2_SLV: Analog watchdog 2 flag of the slave ADC
-0x50000200 C   FIELD 25w01 AWD3_SLV: Analog watchdog 3 flag of the slave ADC
-0x50000200 C   FIELD 26w01 JQOVF_SLV: Injected Context Queue Overflow flag of the slave ADC
-0x50000208 B  REGISTER CCR (rw): ADC common control register
-0x50000208 C   FIELD 00w05 DUAL: Dual ADC mode selection
-0x50000208 C   FIELD 08w04 DELAY: Delay between 2 sampling phases
-0x50000208 C   FIELD 13w01 DMACFG: DMA configuration (for multi-ADC mode)
-0x50000208 C   FIELD 14w02 MDMA: Direct memory access mode for multi ADC mode
-0x50000208 C   FIELD 16w02 CKMODE: ADC clock mode
-0x50000208 C   FIELD 18w04 PRESC: ADC prescaler
-0x50000208 C   FIELD 22w01 VREFEN: VREFINT enable
-0x50000208 C   FIELD 23w01 VSENSESEL: V_TS temperature sensor channel selection
-0x50000208 C   FIELD 24w01 VBATSEL: V_BAT battery voltage channel selection
-0x5000020C B  REGISTER CDR (ro): ADC common regular data register for dual and triple modes
-0x5000020C C   FIELD 00w16 RDATA_MST: Regular data of the master ADC
-0x5000020C C   FIELD 16w16 RDATA_SLV: Regular data of the slave ADC
+0x50000300 A PERIPHERAL ADC12_Common
+0x50000300 B  REGISTER CSR (ro): ADC Common status register
+0x50000300 C   FIELD 00w01 ADDRDY_MST: ADDRDY_MST
+0x50000300 C   FIELD 01w01 EOSMP_MST: EOSMP_MST
+0x50000300 C   FIELD 02w01 EOC_MST: EOC_MST
+0x50000300 C   FIELD 03w01 EOS_MST: EOS_MST
+0x50000300 C   FIELD 04w01 OVR_MST: OVR_MST
+0x50000300 C   FIELD 05w01 JEOC_MST: JEOC_MST
+0x50000300 C   FIELD 06w01 JEOS_MST: JEOS_MST
+0x50000300 C   FIELD 07w01 AWD1_MST: AWD1_MST
+0x50000300 C   FIELD 08w01 AWD2_MST: AWD2_MST
+0x50000300 C   FIELD 09w01 AWD3_MST: AWD3_MST
+0x50000300 C   FIELD 10w01 JQOVF_MST: JQOVF_MST
+0x50000300 C   FIELD 16w01 ADRDY_SLV: ADRDY_SLV
+0x50000300 C   FIELD 17w01 EOSMP_SLV: EOSMP_SLV
+0x50000300 C   FIELD 18w01 EOC_SLV: End of regular conversion of the slave ADC
+0x50000300 C   FIELD 19w01 EOS_SLV: End of regular sequence flag of the slave ADC
+0x50000300 C   FIELD 20w01 OVR_SLV: Overrun flag of the slave ADC
+0x50000300 C   FIELD 21w01 JEOC_SLV: End of injected conversion flag of the slave ADC
+0x50000300 C   FIELD 22w01 JEOS_SLV: End of injected sequence flag of the slave ADC
+0x50000300 C   FIELD 23w01 AWD1_SLV: Analog watchdog 1 flag of the slave ADC
+0x50000300 C   FIELD 24w01 AWD2_SLV: Analog watchdog 2 flag of the slave ADC
+0x50000300 C   FIELD 25w01 AWD3_SLV: Analog watchdog 3 flag of the slave ADC
+0x50000300 C   FIELD 26w01 JQOVF_SLV: Injected Context Queue Overflow flag of the slave ADC
+0x50000308 B  REGISTER CCR (rw): ADC common control register
+0x50000308 C   FIELD 00w05 DUAL: Dual ADC mode selection
+0x50000308 C   FIELD 08w04 DELAY: Delay between 2 sampling phases
+0x50000308 C   FIELD 13w01 DMACFG: DMA configuration (for multi-ADC mode)
+0x50000308 C   FIELD 14w02 MDMA: Direct memory access mode for multi ADC mode
+0x50000308 C   FIELD 16w02 CKMODE: ADC clock mode
+0x50000308 C   FIELD 18w04 PRESC: ADC prescaler
+0x50000308 C   FIELD 22w01 VREFEN: VREFINT enable
+0x50000308 C   FIELD 23w01 VSENSESEL: VTS selection
+0x50000308 C   FIELD 24w01 VBATSEL: VBAT selection
+0x5000030C B  REGISTER CDR (ro): ADC common regular data register for dual and triple modes
+0x5000030C C   FIELD 00w16 RDATA_MST: Regular data of the master ADC
+0x5000030C C   FIELD 16w16 RDATA_SLV: Regular data of the slave ADC
 0x50000400 A PERIPHERAL ADC3
 0x50000400 B  REGISTER ISR (rw): interrupt and status register
 0x50000400 C   FIELD 00w01 ADRDY: ADC ready
@@ -12752,8 +12756,8 @@
 0x50000708 C   FIELD 16w02 CKMODE: ADC clock mode
 0x50000708 C   FIELD 18w04 PRESC: ADC prescaler
 0x50000708 C   FIELD 22w01 VREFEN: VREFINT enable
-0x50000708 C   FIELD 23w01 VSENSESEL: V_TS temperature sensor channel selection
-0x50000708 C   FIELD 24w01 VBATSEL: V_BAT battery voltage channel selection
+0x50000708 C   FIELD 23w01 VSENSESEL: VTS selection
+0x50000708 C   FIELD 24w01 VBATSEL: VBAT selection
 0x5000070C B  REGISTER CDR (ro): ADC common regular data register for dual and triple modes
 0x5000070C C   FIELD 00w16 RDATA_MST: Regular data of the master ADC
 0x5000070C C   FIELD 16w16 RDATA_SLV: Regular data of the slave ADC
@@ -13474,7 +13478,7 @@
 0xA000102C C   FIELD 00w16 INTERVAL: Polling interval
 0xA0001030 B  REGISTER LPTR (rw): low-power timeout register
 0xA0001030 C   FIELD 00w16 TIMEOUT: Timeout period
-0xE000E008 A PERIPHERAL SCB_ACTRL
+0xE000E008 A PERIPHERAL SCB_ACTLR
 0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
 0xE000E008 C   FIELD 00w01 DISMCYCINT: DISMCYCINT
 0xE000E008 C   FIELD 01w01 DISDEFWBUF: DISDEFWBUF
@@ -13495,102 +13499,12 @@
 0xE000E01C C   FIELD 00w24 TENMS: Calibration value
 0xE000E01C C   FIELD 30w01 SKEW: SKEW flag: Indicates whether the TENMS value is exact
 0xE000E01C C   FIELD 31w01 NOREF: NOREF flag. Reads as zero
-0xE000E040 A PERIPHERAL SCB
-0xE000E040 B  REGISTER CPUID (ro): CPUID base register
-0xE000E040 C   FIELD 00w04 Revision: Revision number
-0xE000E040 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000E040 C   FIELD 16w04 Constant: Reads as 0xF
-0xE000E040 C   FIELD 20w04 Variant: Variant number
-0xE000E040 C   FIELD 24w08 Implementer: Implementer code
-0xE000E044 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000E044 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000E044 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000E044 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000E044 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000E044 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000E044 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000E044 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000E044 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000E044 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000E048 B  REGISTER VTOR (rw): Vector table offset register
-0xE000E048 C   FIELD 09w21 TBLOFF: Vector table base offset field
-0xE000E04C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000E04C C   FIELD 00w01 VECTRESET: VECTRESET
-0xE000E04C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000E04C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000E04C C   FIELD 08w03 PRIGROUP: PRIGROUP
-0xE000E04C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000E04C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000E050 B  REGISTER SCR (rw): System control register
-0xE000E050 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000E050 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000E050 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000E054 B  REGISTER CCR (rw): Configuration and control register
-0xE000E054 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000E054 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000E054 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000E054 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000E054 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000E054 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000E058 B  REGISTER SHPR1 (rw): System handler priority registers
-0xE000E058 C   FIELD 00w08 PRI_4: Priority of system handler 4
-0xE000E058 C   FIELD 08w08 PRI_5: Priority of system handler 5
-0xE000E058 C   FIELD 16w08 PRI_6: Priority of system handler 6
-0xE000E05C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000E05C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000E060 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000E060 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000E060 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000E064 B  REGISTER SHCRS (rw): System handler control and state register
-0xE000E064 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
-0xE000E064 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
-0xE000E064 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
-0xE000E064 C   FIELD 07w01 SVCALLACT: SVC call active bit
-0xE000E064 C   FIELD 08w01 MONITORACT: Debug monitor active bit
-0xE000E064 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
-0xE000E064 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
-0xE000E064 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
-0xE000E064 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
-0xE000E064 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
-0xE000E064 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
-0xE000E064 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
-0xE000E064 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
-0xE000E064 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
-0xE000E068 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
-0xE000E068 C   FIELD 01w01 IACCVIOL: Instruction access violation flag
-0xE000E068 C   FIELD 03w01 MUNSTKERR: Memory manager fault on unstacking for a return from exception
-0xE000E068 C   FIELD 04w01 MSTKERR: Memory manager fault on stacking for exception entry.
-0xE000E068 C   FIELD 05w01 MLSPERR: MLSPERR
-0xE000E068 C   FIELD 07w01 MMARVALID: Memory Management Fault Address Register (MMAR) valid flag
-0xE000E068 C   FIELD 08w01 IBUSERR: Instruction bus error
-0xE000E068 C   FIELD 09w01 PRECISERR: Precise data bus error
-0xE000E068 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
-0xE000E068 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
-0xE000E068 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
-0xE000E068 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
-0xE000E068 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
-0xE000E068 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
-0xE000E068 C   FIELD 17w01 INVSTATE: Invalid state usage fault
-0xE000E068 C   FIELD 18w01 INVPC: Invalid PC load usage fault
-0xE000E068 C   FIELD 19w01 NOCP: No coprocessor usage fault.
-0xE000E068 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
-0xE000E068 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
-0xE000E06C B  REGISTER HFSR (rw): Hard fault status register
-0xE000E06C C   FIELD 01w01 VECTTBL: Vector table hard fault
-0xE000E06C C   FIELD 30w01 FORCED: Forced hard fault
-0xE000E06C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
-0xE000E074 B  REGISTER MMFAR (rw): Memory management fault address register
-0xE000E074 C   FIELD 00w32 MMFAR: Memory management fault address
-0xE000E078 B  REGISTER BFAR (rw): Bus fault address register
-0xE000E078 C   FIELD 00w32 BFAR: Bus fault address
-0xE000E07C B  REGISTER AFSR (rw): Auxiliary fault status register
-0xE000E07C C   FIELD 00w32 IMPDEF: Implementation defined
 0xE000E084 A PERIPHERAL MPU
 0xE000E084 B  REGISTER TYPER (ro): MPU type register
 0xE000E084 C   FIELD 00w01 SEPARATE: Separate flag
 0xE000E084 C   FIELD 08w08 DREGION: Number of MPU data regions
 0xE000E084 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000E088 B  REGISTER CTRL (ro): MPU control register
+0xE000E088 B  REGISTER CTRL (rw): MPU control register
 0xE000E088 C   FIELD 00w01 ENABLE: Enables the MPU
 0xE000E088 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
 0xE000E088 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
@@ -13761,11 +13675,102 @@
 0xE000E45C B  REGISTER IPR23 (rw): Interrupt Priority Register
 0xE000E460 B  REGISTER IPR24 (rw): Interrupt Priority Register
 0xE000E464 B  REGISTER IPR25 (rw): Interrupt Priority Register
+0xE000ED00 A PERIPHERAL SCB
+0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
+0xE000ED00 C   FIELD 00w04 Revision: Revision number
+0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
+0xE000ED00 C   FIELD 16w04 Constant: Reads as 0xF
+0xE000ED00 C   FIELD 20w04 Variant: Variant number
+0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
+0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
+0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
+0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
+0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
+0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
+0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
+0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
+0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
+0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
+0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
+0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
+0xE000ED08 C   FIELD 09w21 TBLOFF: Vector table base offset field
+0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
+0xE000ED0C C   FIELD 00w01 VECTRESET: VECTRESET
+0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
+0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
+0xE000ED0C C   FIELD 08w03 PRIGROUP: PRIGROUP
+0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
+0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
+0xE000ED10 B  REGISTER SCR (rw): System control register
+0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
+0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
+0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
+0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
+0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
+0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
+0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
+0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
+0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
+0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
+0xE000ED18 B  REGISTER SHPR1 (rw): System handler priority registers
+0xE000ED18 C   FIELD 00w08 PRI_4: Priority of system handler 4
+0xE000ED18 C   FIELD 08w08 PRI_5: Priority of system handler 5
+0xE000ED18 C   FIELD 16w08 PRI_6: Priority of system handler 6
+0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
+0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
+0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
+0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
+0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
+0xE000ED24 B  REGISTER SHCSR (rw): System handler control and state register
+0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
+0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
+0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
+0xE000ED24 C   FIELD 07w01 SVCALLACT: SVC call active bit
+0xE000ED24 C   FIELD 08w01 MONITORACT: Debug monitor active bit
+0xE000ED24 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
+0xE000ED24 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
+0xE000ED24 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
+0xE000ED24 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
+0xE000ED24 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
+0xE000ED24 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
+0xE000ED24 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
+0xE000ED24 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
+0xE000ED24 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
+0xE000ED28 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
+0xE000ED28 C   FIELD 01w01 IACCVIOL: Instruction access violation flag
+0xE000ED28 C   FIELD 03w01 MUNSTKERR: Memory manager fault on unstacking for a return from exception
+0xE000ED28 C   FIELD 04w01 MSTKERR: Memory manager fault on stacking for exception entry.
+0xE000ED28 C   FIELD 05w01 MLSPERR: MLSPERR
+0xE000ED28 C   FIELD 07w01 MMARVALID: Memory Management Fault Address Register (MMAR) valid flag
+0xE000ED28 C   FIELD 08w01 IBUSERR: Instruction bus error
+0xE000ED28 C   FIELD 09w01 PRECISERR: Precise data bus error
+0xE000ED28 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
+0xE000ED28 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
+0xE000ED28 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
+0xE000ED28 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
+0xE000ED28 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
+0xE000ED28 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
+0xE000ED28 C   FIELD 17w01 INVSTATE: Invalid state usage fault
+0xE000ED28 C   FIELD 18w01 INVPC: Invalid PC load usage fault
+0xE000ED28 C   FIELD 19w01 NOCP: No coprocessor usage fault.
+0xE000ED28 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
+0xE000ED28 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
+0xE000ED2C B  REGISTER HFSR (rw): Hard fault status register
+0xE000ED2C C   FIELD 01w01 VECTTBL: Vector table hard fault
+0xE000ED2C C   FIELD 30w01 FORCED: Forced hard fault
+0xE000ED2C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
+0xE000ED34 B  REGISTER MMFAR (rw): Memory management fault address register
+0xE000ED34 C   FIELD 00w32 MMFAR: Memory management fault address
+0xE000ED38 B  REGISTER BFAR (rw): Bus fault address register
+0xE000ED38 C   FIELD 00w32 BFAR: Bus fault address
+0xE000ED3C B  REGISTER AFSR (rw): Auxiliary fault status register
+0xE000ED3C C   FIELD 00w32 IMPDEF: Implementation defined
+0xE000ED88 A PERIPHERAL FPU_CPACR
+0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
+0xE000ED88 C   FIELD 20w04 CP: CP
+0xE000EF00 A PERIPHERAL NVIC_STIR
 0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
 0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
-0xE000EF08 A PERIPHERAL FPU_CPACR
-0xE000EF08 B  REGISTER CPACR (rw): Coprocessor access control register
-0xE000EF08 C   FIELD 20w04 CP: CP
 0xE000EF34 A PERIPHERAL FPU
 0xE000EF34 B  REGISTER FPCCR (rw): Floating-point context control register
 0xE000EF34 C   FIELD 00w01 LSPACT: LSPACT
