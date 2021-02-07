@@ -4375,7 +4375,8 @@
 0x40015400 B  REGISTER GCR (rw): Global configuration register
 0x40015400 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x40015400 C   FIELD 04w02 SYNCOUT: Synchronization outputs
-0x40015404 B  REGISTER ACR1 (rw): AConfiguration register 1
+0x40015404 B  CLUSTER CHA: Cluster CH%s, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
+0x40015404 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015404 C   FIELD 00w02 MODE: Audio block mode
 0x40015404 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x40015404 C   FIELD 05w03 DS: Data size
@@ -4383,41 +4384,41 @@
 0x40015404 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x40015404 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x40015404 C   FIELD 12w01 MONO: Mono mode
-0x40015404 C   FIELD 13w01 OutDri: Output drive
-0x40015404 C   FIELD 16w01 SAIAEN: Audio block A enable
+0x40015404 C   FIELD 13w01 OUTDRIV: Output drive
+0x40015404 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015404 C   FIELD 17w01 DMAEN: DMA enable
 0x40015404 C   FIELD 19w01 NODIV: No divider
-0x40015404 C   FIELD 20w04 MCJDIV: Master clock divider
+0x40015404 C   FIELD 20w04 MCKDIV: Master clock divider
 0x40015404 C   FIELD 26w01 OSR: OSR
-0x40015408 B  REGISTER ACR2 (rw): AConfiguration register 2
+0x40015408 B  REGISTER CR2A (rw): AConfiguration register 2
 0x40015408 C   FIELD 00w03 FTH: FIFO threshold
-0x40015408 C   FIELD 03w01 FFLUS: FIFO flush
+0x40015408 C   FIELD 03w01 FFLUSH: FIFO flush
 0x40015408 C   FIELD 04w01 TRIS: Tristate management on data line
 0x40015408 C   FIELD 05w01 MUTE: Mute
 0x40015408 C   FIELD 06w01 MUTEVAL: Mute value
 0x40015408 C   FIELD 07w06 MUTECN: Mute counter
 0x40015408 C   FIELD 13w01 CPL: Complement bit
 0x40015408 C   FIELD 14w02 COMP: Companding mode
-0x4001540C B  REGISTER AFRCR (rw): AFRCR
+0x4001540C B  REGISTER FRCRA (rw): AFRCR
 0x4001540C C   FIELD 00w08 FRL: Frame length
 0x4001540C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x4001540C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x4001540C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x4001540C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x40015410 B  REGISTER ASLOTR (rw): ASlot register
+0x40015410 B  REGISTER SLOTRA (rw): ASlot register
 0x40015410 C   FIELD 00w05 FBOFF: First bit offset
 0x40015410 C   FIELD 06w02 SLOTSZ: Slot size
 0x40015410 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x40015410 C   FIELD 16w16 SLOTEN: Slot enable
-0x40015414 B  REGISTER AIM (rw): AInterrupt mask register2
+0x40015414 B  REGISTER IMA (rw): AInterrupt mask register2
 0x40015414 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x40015414 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x40015414 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x40015414 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x40015414 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x40015414 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x40015414 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x40015414 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
-0x40015414 C   FIELD 06w01 LFSDET: Late frame synchronization detection interrupt enable
-0x40015418 B  REGISTER ASR (rw): AStatus register
+0x40015414 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
+0x40015418 B  REGISTER SRA (rw): AStatus register
 0x40015418 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x40015418 C   FIELD 01w01 MUTEDET: Mute detection
 0x40015418 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
@@ -4426,16 +4427,17 @@
 0x40015418 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x40015418 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x40015418 C   FIELD 16w03 FLVL: FIFO level threshold
-0x4001541C B  REGISTER ACLRFR (rw): AClear flag register
-0x4001541C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x4001541C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x4001541C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x4001541C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x4001541C B  REGISTER CLRFRA (rw): AClear flag register
+0x4001541C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x4001541C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x4001541C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x4001541C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x4001541C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x4001541C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x40015420 B  REGISTER ADR (rw): AData register
+0x4001541C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x40015420 B  REGISTER DRA (rw): AData register
 0x40015420 C   FIELD 00w32 DATA: Data
-0x40015424 B  REGISTER BCR1 (rw): BConfiguration register 1
+0x40015424 B  CLUSTER CHB: Cluster CH%s, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
+0x40015424 B  REGISTER CR1B (rw): AConfiguration register 1
 0x40015424 C   FIELD 00w02 MODE: Audio block mode
 0x40015424 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x40015424 C   FIELD 05w03 DS: Data size
@@ -4443,57 +4445,57 @@
 0x40015424 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x40015424 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x40015424 C   FIELD 12w01 MONO: Mono mode
-0x40015424 C   FIELD 13w01 OutDri: Output drive
-0x40015424 C   FIELD 16w01 SAIBEN: Audio block B enable
+0x40015424 C   FIELD 13w01 OUTDRIV: Output drive
+0x40015424 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015424 C   FIELD 17w01 DMAEN: DMA enable
 0x40015424 C   FIELD 19w01 NODIV: No divider
-0x40015424 C   FIELD 20w04 MCJDIV: Master clock divider
-0x40015424 C   FIELD 26w01 OSR: Oversampling ratio for master clock
-0x40015428 B  REGISTER BCR2 (rw): BConfiguration register 2
+0x40015424 C   FIELD 20w04 MCKDIV: Master clock divider
+0x40015424 C   FIELD 26w01 OSR: OSR
+0x40015428 B  REGISTER CR2B (rw): AConfiguration register 2
 0x40015428 C   FIELD 00w03 FTH: FIFO threshold
-0x40015428 C   FIELD 03w01 FFLUS: FIFO flush
+0x40015428 C   FIELD 03w01 FFLUSH: FIFO flush
 0x40015428 C   FIELD 04w01 TRIS: Tristate management on data line
 0x40015428 C   FIELD 05w01 MUTE: Mute
 0x40015428 C   FIELD 06w01 MUTEVAL: Mute value
 0x40015428 C   FIELD 07w06 MUTECN: Mute counter
 0x40015428 C   FIELD 13w01 CPL: Complement bit
 0x40015428 C   FIELD 14w02 COMP: Companding mode
-0x4001542C B  REGISTER BFRCR (rw): BFRCR
+0x4001542C B  REGISTER FRCRB (rw): AFRCR
 0x4001542C C   FIELD 00w08 FRL: Frame length
 0x4001542C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x4001542C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x4001542C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x4001542C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x40015430 B  REGISTER BSLOTR (rw): BSlot register
+0x40015430 B  REGISTER SLOTRB (rw): ASlot register
 0x40015430 C   FIELD 00w05 FBOFF: First bit offset
 0x40015430 C   FIELD 06w02 SLOTSZ: Slot size
 0x40015430 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x40015430 C   FIELD 16w16 SLOTEN: Slot enable
-0x40015434 B  REGISTER BIM (rw): BInterrupt mask register2
+0x40015434 B  REGISTER IMB (rw): AInterrupt mask register2
 0x40015434 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x40015434 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x40015434 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x40015434 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x40015434 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x40015434 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x40015434 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x40015434 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
 0x40015434 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
-0x40015438 B  REGISTER BSR (ro): BStatus register
+0x40015438 B  REGISTER SRB (rw): AStatus register
 0x40015438 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x40015438 C   FIELD 01w01 MUTEDET: Mute detection
-0x40015438 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag
+0x40015438 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
 0x40015438 C   FIELD 03w01 FREQ: FIFO request
 0x40015438 C   FIELD 04w01 CNRDY: Codec not ready
 0x40015438 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x40015438 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x40015438 C   FIELD 16w03 FLVL: FIFO level threshold
-0x4001543C B  REGISTER BCLRFR (wo): BClear flag register
-0x4001543C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x4001543C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x4001543C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x4001543C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x4001543C B  REGISTER CLRFRB (rw): AClear flag register
+0x4001543C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x4001543C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x4001543C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x4001543C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x4001543C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x4001543C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x40015440 B  REGISTER BDR (rw): BData register
+0x4001543C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x40015440 B  REGISTER DRB (rw): AData register
 0x40015440 C   FIELD 00w32 DATA: Data
 0x40015444 B  REGISTER PDMCR (rw): PDM control register
 0x40015444 C   FIELD 00w01 PDMEN: PDM enable
@@ -4513,7 +4515,7 @@
 0x40015800 B  REGISTER GCR (rw): Global configuration register
 0x40015800 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x40015800 C   FIELD 04w02 SYNCOUT: Synchronization outputs
-0x40015804 B  REGISTER ACR1 (rw): AConfiguration register 1
+0x40015804 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015804 C   FIELD 00w02 MODE: Audio block mode
 0x40015804 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x40015804 C   FIELD 05w03 DS: Data size
@@ -4521,41 +4523,41 @@
 0x40015804 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x40015804 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x40015804 C   FIELD 12w01 MONO: Mono mode
-0x40015804 C   FIELD 13w01 OutDri: Output drive
-0x40015804 C   FIELD 16w01 SAIAEN: Audio block A enable
+0x40015804 C   FIELD 13w01 OUTDRIV: Output drive
+0x40015804 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015804 C   FIELD 17w01 DMAEN: DMA enable
 0x40015804 C   FIELD 19w01 NODIV: No divider
-0x40015804 C   FIELD 20w04 MCJDIV: Master clock divider
+0x40015804 C   FIELD 20w04 MCKDIV: Master clock divider
 0x40015804 C   FIELD 26w01 OSR: OSR
-0x40015808 B  REGISTER ACR2 (rw): AConfiguration register 2
+0x40015808 B  REGISTER CR2A (rw): AConfiguration register 2
 0x40015808 C   FIELD 00w03 FTH: FIFO threshold
-0x40015808 C   FIELD 03w01 FFLUS: FIFO flush
+0x40015808 C   FIELD 03w01 FFLUSH: FIFO flush
 0x40015808 C   FIELD 04w01 TRIS: Tristate management on data line
 0x40015808 C   FIELD 05w01 MUTE: Mute
 0x40015808 C   FIELD 06w01 MUTEVAL: Mute value
 0x40015808 C   FIELD 07w06 MUTECN: Mute counter
 0x40015808 C   FIELD 13w01 CPL: Complement bit
 0x40015808 C   FIELD 14w02 COMP: Companding mode
-0x4001580C B  REGISTER AFRCR (rw): AFRCR
+0x4001580C B  REGISTER FRCRA (rw): AFRCR
 0x4001580C C   FIELD 00w08 FRL: Frame length
 0x4001580C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x4001580C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x4001580C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x4001580C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x40015810 B  REGISTER ASLOTR (rw): ASlot register
+0x40015810 B  REGISTER SLOTRA (rw): ASlot register
 0x40015810 C   FIELD 00w05 FBOFF: First bit offset
 0x40015810 C   FIELD 06w02 SLOTSZ: Slot size
 0x40015810 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x40015810 C   FIELD 16w16 SLOTEN: Slot enable
-0x40015814 B  REGISTER AIM (rw): AInterrupt mask register2
+0x40015814 B  REGISTER IMA (rw): AInterrupt mask register2
 0x40015814 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x40015814 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x40015814 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x40015814 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x40015814 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x40015814 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x40015814 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x40015814 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
-0x40015814 C   FIELD 06w01 LFSDET: Late frame synchronization detection interrupt enable
-0x40015818 B  REGISTER ASR (rw): AStatus register
+0x40015814 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
+0x40015818 B  REGISTER SRA (rw): AStatus register
 0x40015818 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x40015818 C   FIELD 01w01 MUTEDET: Mute detection
 0x40015818 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
@@ -4564,16 +4566,16 @@
 0x40015818 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x40015818 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x40015818 C   FIELD 16w03 FLVL: FIFO level threshold
-0x4001581C B  REGISTER ACLRFR (rw): AClear flag register
-0x4001581C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x4001581C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x4001581C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x4001581C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x4001581C B  REGISTER CLRFRA (rw): AClear flag register
+0x4001581C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x4001581C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x4001581C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x4001581C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x4001581C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x4001581C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x40015820 B  REGISTER ADR (rw): AData register
+0x4001581C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x40015820 B  REGISTER DRA (rw): AData register
 0x40015820 C   FIELD 00w32 DATA: Data
-0x40015824 B  REGISTER BCR1 (rw): BConfiguration register 1
+0x40015824 B  REGISTER CR1B (rw): AConfiguration register 1
 0x40015824 C   FIELD 00w02 MODE: Audio block mode
 0x40015824 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x40015824 C   FIELD 05w03 DS: Data size
@@ -4581,57 +4583,57 @@
 0x40015824 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x40015824 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x40015824 C   FIELD 12w01 MONO: Mono mode
-0x40015824 C   FIELD 13w01 OutDri: Output drive
-0x40015824 C   FIELD 16w01 SAIBEN: Audio block B enable
+0x40015824 C   FIELD 13w01 OUTDRIV: Output drive
+0x40015824 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015824 C   FIELD 17w01 DMAEN: DMA enable
 0x40015824 C   FIELD 19w01 NODIV: No divider
-0x40015824 C   FIELD 20w04 MCJDIV: Master clock divider
-0x40015824 C   FIELD 26w01 OSR: Oversampling ratio for master clock
-0x40015828 B  REGISTER BCR2 (rw): BConfiguration register 2
+0x40015824 C   FIELD 20w04 MCKDIV: Master clock divider
+0x40015824 C   FIELD 26w01 OSR: OSR
+0x40015828 B  REGISTER CR2B (rw): AConfiguration register 2
 0x40015828 C   FIELD 00w03 FTH: FIFO threshold
-0x40015828 C   FIELD 03w01 FFLUS: FIFO flush
+0x40015828 C   FIELD 03w01 FFLUSH: FIFO flush
 0x40015828 C   FIELD 04w01 TRIS: Tristate management on data line
 0x40015828 C   FIELD 05w01 MUTE: Mute
 0x40015828 C   FIELD 06w01 MUTEVAL: Mute value
 0x40015828 C   FIELD 07w06 MUTECN: Mute counter
 0x40015828 C   FIELD 13w01 CPL: Complement bit
 0x40015828 C   FIELD 14w02 COMP: Companding mode
-0x4001582C B  REGISTER BFRCR (rw): BFRCR
+0x4001582C B  REGISTER FRCRB (rw): AFRCR
 0x4001582C C   FIELD 00w08 FRL: Frame length
 0x4001582C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x4001582C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x4001582C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x4001582C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x40015830 B  REGISTER BSLOTR (rw): BSlot register
+0x40015830 B  REGISTER SLOTRB (rw): ASlot register
 0x40015830 C   FIELD 00w05 FBOFF: First bit offset
 0x40015830 C   FIELD 06w02 SLOTSZ: Slot size
 0x40015830 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x40015830 C   FIELD 16w16 SLOTEN: Slot enable
-0x40015834 B  REGISTER BIM (rw): BInterrupt mask register2
+0x40015834 B  REGISTER IMB (rw): AInterrupt mask register2
 0x40015834 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x40015834 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x40015834 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x40015834 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x40015834 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x40015834 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x40015834 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x40015834 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
 0x40015834 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
-0x40015838 B  REGISTER BSR (ro): BStatus register
+0x40015838 B  REGISTER SRB (rw): AStatus register
 0x40015838 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x40015838 C   FIELD 01w01 MUTEDET: Mute detection
-0x40015838 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag
+0x40015838 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
 0x40015838 C   FIELD 03w01 FREQ: FIFO request
 0x40015838 C   FIELD 04w01 CNRDY: Codec not ready
 0x40015838 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x40015838 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x40015838 C   FIELD 16w03 FLVL: FIFO level threshold
-0x4001583C B  REGISTER BCLRFR (wo): BClear flag register
-0x4001583C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x4001583C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x4001583C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x4001583C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x4001583C B  REGISTER CLRFRB (rw): AClear flag register
+0x4001583C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x4001583C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x4001583C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x4001583C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x4001583C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x4001583C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x40015840 B  REGISTER BDR (rw): BData register
+0x4001583C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x40015840 B  REGISTER DRB (rw): AData register
 0x40015840 C   FIELD 00w32 DATA: Data
 0x40015844 B  REGISTER PDMCR (rw): PDM control register
 0x40015844 C   FIELD 00w01 PDMEN: PDM enable
@@ -18519,7 +18521,7 @@
 0x50015400 B  REGISTER GCR (rw): Global configuration register
 0x50015400 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x50015400 C   FIELD 04w02 SYNCOUT: Synchronization outputs
-0x50015404 B  REGISTER ACR1 (rw): AConfiguration register 1
+0x50015404 B  REGISTER CR1A (rw): AConfiguration register 1
 0x50015404 C   FIELD 00w02 MODE: Audio block mode
 0x50015404 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x50015404 C   FIELD 05w03 DS: Data size
@@ -18527,41 +18529,41 @@
 0x50015404 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x50015404 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x50015404 C   FIELD 12w01 MONO: Mono mode
-0x50015404 C   FIELD 13w01 OutDri: Output drive
-0x50015404 C   FIELD 16w01 SAIAEN: Audio block A enable
+0x50015404 C   FIELD 13w01 OUTDRIV: Output drive
+0x50015404 C   FIELD 16w01 SAIEN: Audio block A enable
 0x50015404 C   FIELD 17w01 DMAEN: DMA enable
 0x50015404 C   FIELD 19w01 NODIV: No divider
-0x50015404 C   FIELD 20w04 MCJDIV: Master clock divider
+0x50015404 C   FIELD 20w04 MCKDIV: Master clock divider
 0x50015404 C   FIELD 26w01 OSR: OSR
-0x50015408 B  REGISTER ACR2 (rw): AConfiguration register 2
+0x50015408 B  REGISTER CR2A (rw): AConfiguration register 2
 0x50015408 C   FIELD 00w03 FTH: FIFO threshold
-0x50015408 C   FIELD 03w01 FFLUS: FIFO flush
+0x50015408 C   FIELD 03w01 FFLUSH: FIFO flush
 0x50015408 C   FIELD 04w01 TRIS: Tristate management on data line
 0x50015408 C   FIELD 05w01 MUTE: Mute
 0x50015408 C   FIELD 06w01 MUTEVAL: Mute value
 0x50015408 C   FIELD 07w06 MUTECN: Mute counter
 0x50015408 C   FIELD 13w01 CPL: Complement bit
 0x50015408 C   FIELD 14w02 COMP: Companding mode
-0x5001540C B  REGISTER AFRCR (rw): AFRCR
+0x5001540C B  REGISTER FRCRA (rw): AFRCR
 0x5001540C C   FIELD 00w08 FRL: Frame length
 0x5001540C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x5001540C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x5001540C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x5001540C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x50015410 B  REGISTER ASLOTR (rw): ASlot register
+0x50015410 B  REGISTER SLOTRA (rw): ASlot register
 0x50015410 C   FIELD 00w05 FBOFF: First bit offset
 0x50015410 C   FIELD 06w02 SLOTSZ: Slot size
 0x50015410 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x50015410 C   FIELD 16w16 SLOTEN: Slot enable
-0x50015414 B  REGISTER AIM (rw): AInterrupt mask register2
+0x50015414 B  REGISTER IMA (rw): AInterrupt mask register2
 0x50015414 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x50015414 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x50015414 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x50015414 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x50015414 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x50015414 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x50015414 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x50015414 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
-0x50015414 C   FIELD 06w01 LFSDET: Late frame synchronization detection interrupt enable
-0x50015418 B  REGISTER ASR (rw): AStatus register
+0x50015414 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
+0x50015418 B  REGISTER SRA (rw): AStatus register
 0x50015418 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x50015418 C   FIELD 01w01 MUTEDET: Mute detection
 0x50015418 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
@@ -18570,16 +18572,16 @@
 0x50015418 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x50015418 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x50015418 C   FIELD 16w03 FLVL: FIFO level threshold
-0x5001541C B  REGISTER ACLRFR (rw): AClear flag register
-0x5001541C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x5001541C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x5001541C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x5001541C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x5001541C B  REGISTER CLRFRA (rw): AClear flag register
+0x5001541C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x5001541C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x5001541C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x5001541C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x5001541C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x5001541C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x50015420 B  REGISTER ADR (rw): AData register
+0x5001541C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x50015420 B  REGISTER DRA (rw): AData register
 0x50015420 C   FIELD 00w32 DATA: Data
-0x50015424 B  REGISTER BCR1 (rw): BConfiguration register 1
+0x50015424 B  REGISTER CR1B (rw): AConfiguration register 1
 0x50015424 C   FIELD 00w02 MODE: Audio block mode
 0x50015424 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x50015424 C   FIELD 05w03 DS: Data size
@@ -18587,57 +18589,57 @@
 0x50015424 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x50015424 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x50015424 C   FIELD 12w01 MONO: Mono mode
-0x50015424 C   FIELD 13w01 OutDri: Output drive
-0x50015424 C   FIELD 16w01 SAIBEN: Audio block B enable
+0x50015424 C   FIELD 13w01 OUTDRIV: Output drive
+0x50015424 C   FIELD 16w01 SAIEN: Audio block A enable
 0x50015424 C   FIELD 17w01 DMAEN: DMA enable
 0x50015424 C   FIELD 19w01 NODIV: No divider
-0x50015424 C   FIELD 20w04 MCJDIV: Master clock divider
-0x50015424 C   FIELD 26w01 OSR: Oversampling ratio for master clock
-0x50015428 B  REGISTER BCR2 (rw): BConfiguration register 2
+0x50015424 C   FIELD 20w04 MCKDIV: Master clock divider
+0x50015424 C   FIELD 26w01 OSR: OSR
+0x50015428 B  REGISTER CR2B (rw): AConfiguration register 2
 0x50015428 C   FIELD 00w03 FTH: FIFO threshold
-0x50015428 C   FIELD 03w01 FFLUS: FIFO flush
+0x50015428 C   FIELD 03w01 FFLUSH: FIFO flush
 0x50015428 C   FIELD 04w01 TRIS: Tristate management on data line
 0x50015428 C   FIELD 05w01 MUTE: Mute
 0x50015428 C   FIELD 06w01 MUTEVAL: Mute value
 0x50015428 C   FIELD 07w06 MUTECN: Mute counter
 0x50015428 C   FIELD 13w01 CPL: Complement bit
 0x50015428 C   FIELD 14w02 COMP: Companding mode
-0x5001542C B  REGISTER BFRCR (rw): BFRCR
+0x5001542C B  REGISTER FRCRB (rw): AFRCR
 0x5001542C C   FIELD 00w08 FRL: Frame length
 0x5001542C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x5001542C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x5001542C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x5001542C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x50015430 B  REGISTER BSLOTR (rw): BSlot register
+0x50015430 B  REGISTER SLOTRB (rw): ASlot register
 0x50015430 C   FIELD 00w05 FBOFF: First bit offset
 0x50015430 C   FIELD 06w02 SLOTSZ: Slot size
 0x50015430 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x50015430 C   FIELD 16w16 SLOTEN: Slot enable
-0x50015434 B  REGISTER BIM (rw): BInterrupt mask register2
+0x50015434 B  REGISTER IMB (rw): AInterrupt mask register2
 0x50015434 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x50015434 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x50015434 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x50015434 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x50015434 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x50015434 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x50015434 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x50015434 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
 0x50015434 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
-0x50015438 B  REGISTER BSR (ro): BStatus register
+0x50015438 B  REGISTER SRB (rw): AStatus register
 0x50015438 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x50015438 C   FIELD 01w01 MUTEDET: Mute detection
-0x50015438 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag
+0x50015438 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
 0x50015438 C   FIELD 03w01 FREQ: FIFO request
 0x50015438 C   FIELD 04w01 CNRDY: Codec not ready
 0x50015438 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x50015438 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x50015438 C   FIELD 16w03 FLVL: FIFO level threshold
-0x5001543C B  REGISTER BCLRFR (wo): BClear flag register
-0x5001543C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x5001543C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x5001543C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x5001543C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x5001543C B  REGISTER CLRFRB (rw): AClear flag register
+0x5001543C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x5001543C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x5001543C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x5001543C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x5001543C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x5001543C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x50015440 B  REGISTER BDR (rw): BData register
+0x5001543C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x50015440 B  REGISTER DRB (rw): AData register
 0x50015440 C   FIELD 00w32 DATA: Data
 0x50015444 B  REGISTER PDMCR (rw): PDM control register
 0x50015444 C   FIELD 00w01 PDMEN: PDM enable
@@ -18657,7 +18659,7 @@
 0x50015800 B  REGISTER GCR (rw): Global configuration register
 0x50015800 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x50015800 C   FIELD 04w02 SYNCOUT: Synchronization outputs
-0x50015804 B  REGISTER ACR1 (rw): AConfiguration register 1
+0x50015804 B  REGISTER CR1A (rw): AConfiguration register 1
 0x50015804 C   FIELD 00w02 MODE: Audio block mode
 0x50015804 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x50015804 C   FIELD 05w03 DS: Data size
@@ -18665,41 +18667,41 @@
 0x50015804 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x50015804 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x50015804 C   FIELD 12w01 MONO: Mono mode
-0x50015804 C   FIELD 13w01 OutDri: Output drive
-0x50015804 C   FIELD 16w01 SAIAEN: Audio block A enable
+0x50015804 C   FIELD 13w01 OUTDRIV: Output drive
+0x50015804 C   FIELD 16w01 SAIEN: Audio block A enable
 0x50015804 C   FIELD 17w01 DMAEN: DMA enable
 0x50015804 C   FIELD 19w01 NODIV: No divider
-0x50015804 C   FIELD 20w04 MCJDIV: Master clock divider
+0x50015804 C   FIELD 20w04 MCKDIV: Master clock divider
 0x50015804 C   FIELD 26w01 OSR: OSR
-0x50015808 B  REGISTER ACR2 (rw): AConfiguration register 2
+0x50015808 B  REGISTER CR2A (rw): AConfiguration register 2
 0x50015808 C   FIELD 00w03 FTH: FIFO threshold
-0x50015808 C   FIELD 03w01 FFLUS: FIFO flush
+0x50015808 C   FIELD 03w01 FFLUSH: FIFO flush
 0x50015808 C   FIELD 04w01 TRIS: Tristate management on data line
 0x50015808 C   FIELD 05w01 MUTE: Mute
 0x50015808 C   FIELD 06w01 MUTEVAL: Mute value
 0x50015808 C   FIELD 07w06 MUTECN: Mute counter
 0x50015808 C   FIELD 13w01 CPL: Complement bit
 0x50015808 C   FIELD 14w02 COMP: Companding mode
-0x5001580C B  REGISTER AFRCR (rw): AFRCR
+0x5001580C B  REGISTER FRCRA (rw): AFRCR
 0x5001580C C   FIELD 00w08 FRL: Frame length
 0x5001580C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x5001580C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x5001580C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x5001580C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x50015810 B  REGISTER ASLOTR (rw): ASlot register
+0x50015810 B  REGISTER SLOTRA (rw): ASlot register
 0x50015810 C   FIELD 00w05 FBOFF: First bit offset
 0x50015810 C   FIELD 06w02 SLOTSZ: Slot size
 0x50015810 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x50015810 C   FIELD 16w16 SLOTEN: Slot enable
-0x50015814 B  REGISTER AIM (rw): AInterrupt mask register2
+0x50015814 B  REGISTER IMA (rw): AInterrupt mask register2
 0x50015814 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x50015814 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x50015814 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x50015814 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x50015814 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x50015814 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x50015814 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x50015814 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
-0x50015814 C   FIELD 06w01 LFSDET: Late frame synchronization detection interrupt enable
-0x50015818 B  REGISTER ASR (rw): AStatus register
+0x50015814 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
+0x50015818 B  REGISTER SRA (rw): AStatus register
 0x50015818 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x50015818 C   FIELD 01w01 MUTEDET: Mute detection
 0x50015818 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
@@ -18708,16 +18710,16 @@
 0x50015818 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x50015818 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x50015818 C   FIELD 16w03 FLVL: FIFO level threshold
-0x5001581C B  REGISTER ACLRFR (rw): AClear flag register
-0x5001581C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x5001581C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x5001581C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x5001581C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x5001581C B  REGISTER CLRFRA (rw): AClear flag register
+0x5001581C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x5001581C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x5001581C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x5001581C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x5001581C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x5001581C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x50015820 B  REGISTER ADR (rw): AData register
+0x5001581C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x50015820 B  REGISTER DRA (rw): AData register
 0x50015820 C   FIELD 00w32 DATA: Data
-0x50015824 B  REGISTER BCR1 (rw): BConfiguration register 1
+0x50015824 B  REGISTER CR1B (rw): AConfiguration register 1
 0x50015824 C   FIELD 00w02 MODE: Audio block mode
 0x50015824 C   FIELD 02w02 PRTCFG: Protocol configuration
 0x50015824 C   FIELD 05w03 DS: Data size
@@ -18725,57 +18727,57 @@
 0x50015824 C   FIELD 09w01 CKSTR: Clock strobing edge
 0x50015824 C   FIELD 10w02 SYNCEN: Synchronization enable
 0x50015824 C   FIELD 12w01 MONO: Mono mode
-0x50015824 C   FIELD 13w01 OutDri: Output drive
-0x50015824 C   FIELD 16w01 SAIBEN: Audio block B enable
+0x50015824 C   FIELD 13w01 OUTDRIV: Output drive
+0x50015824 C   FIELD 16w01 SAIEN: Audio block A enable
 0x50015824 C   FIELD 17w01 DMAEN: DMA enable
 0x50015824 C   FIELD 19w01 NODIV: No divider
-0x50015824 C   FIELD 20w04 MCJDIV: Master clock divider
-0x50015824 C   FIELD 26w01 OSR: Oversampling ratio for master clock
-0x50015828 B  REGISTER BCR2 (rw): BConfiguration register 2
+0x50015824 C   FIELD 20w04 MCKDIV: Master clock divider
+0x50015824 C   FIELD 26w01 OSR: OSR
+0x50015828 B  REGISTER CR2B (rw): AConfiguration register 2
 0x50015828 C   FIELD 00w03 FTH: FIFO threshold
-0x50015828 C   FIELD 03w01 FFLUS: FIFO flush
+0x50015828 C   FIELD 03w01 FFLUSH: FIFO flush
 0x50015828 C   FIELD 04w01 TRIS: Tristate management on data line
 0x50015828 C   FIELD 05w01 MUTE: Mute
 0x50015828 C   FIELD 06w01 MUTEVAL: Mute value
 0x50015828 C   FIELD 07w06 MUTECN: Mute counter
 0x50015828 C   FIELD 13w01 CPL: Complement bit
 0x50015828 C   FIELD 14w02 COMP: Companding mode
-0x5001582C B  REGISTER BFRCR (rw): BFRCR
+0x5001582C B  REGISTER FRCRB (rw): AFRCR
 0x5001582C C   FIELD 00w08 FRL: Frame length
 0x5001582C C   FIELD 08w07 FSALL: Frame synchronization active level length
 0x5001582C C   FIELD 16w01 FSDEF: Frame synchronization definition
 0x5001582C C   FIELD 17w01 FSPOL: Frame synchronization polarity
 0x5001582C C   FIELD 18w01 FSOFF: Frame synchronization offset
-0x50015830 B  REGISTER BSLOTR (rw): BSlot register
+0x50015830 B  REGISTER SLOTRB (rw): ASlot register
 0x50015830 C   FIELD 00w05 FBOFF: First bit offset
 0x50015830 C   FIELD 06w02 SLOTSZ: Slot size
 0x50015830 C   FIELD 08w04 NBSLOT: Number of slots in an audio frame
 0x50015830 C   FIELD 16w16 SLOTEN: Slot enable
-0x50015834 B  REGISTER BIM (rw): BInterrupt mask register2
+0x50015834 B  REGISTER IMB (rw): AInterrupt mask register2
 0x50015834 C   FIELD 00w01 OVRUDRIE: Overrun/underrun interrupt enable
-0x50015834 C   FIELD 01w01 MUTEDET: Mute detection interrupt enable
-0x50015834 C   FIELD 02w01 WCKCFG: Wrong clock configuration interrupt enable
+0x50015834 C   FIELD 01w01 MUTEDETIE: Mute detection interrupt enable
+0x50015834 C   FIELD 02w01 WCKCFGIE: Wrong clock configuration interrupt enable
 0x50015834 C   FIELD 03w01 FREQIE: FIFO request interrupt enable
 0x50015834 C   FIELD 04w01 CNRDYIE: Codec not ready interrupt enable
 0x50015834 C   FIELD 05w01 AFSDETIE: Anticipated frame synchronization detection interrupt enable
 0x50015834 C   FIELD 06w01 LFSDETIE: Late frame synchronization detection interrupt enable
-0x50015838 B  REGISTER BSR (ro): BStatus register
+0x50015838 B  REGISTER SRB (rw): AStatus register
 0x50015838 C   FIELD 00w01 OVRUDR: Overrun / underrun
 0x50015838 C   FIELD 01w01 MUTEDET: Mute detection
-0x50015838 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag
+0x50015838 C   FIELD 02w01 WCKCFG: Wrong clock configuration flag. This bit is read only
 0x50015838 C   FIELD 03w01 FREQ: FIFO request
 0x50015838 C   FIELD 04w01 CNRDY: Codec not ready
 0x50015838 C   FIELD 05w01 AFSDET: Anticipated frame synchronization detection
 0x50015838 C   FIELD 06w01 LFSDET: Late frame synchronization detection
 0x50015838 C   FIELD 16w03 FLVL: FIFO level threshold
-0x5001583C B  REGISTER BCLRFR (wo): BClear flag register
-0x5001583C C   FIELD 00w01 OVRUDR: Clear overrun / underrun
-0x5001583C C   FIELD 01w01 MUTEDET: Mute detection flag
-0x5001583C C   FIELD 02w01 WCKCFG: Clear wrong clock configuration flag
-0x5001583C C   FIELD 04w01 CNRDY: Clear codec not ready flag
+0x5001583C B  REGISTER CLRFRB (rw): AClear flag register
+0x5001583C C   FIELD 00w01 COVRUDR: Clear overrun / underrun
+0x5001583C C   FIELD 01w01 CMUTEDET: Mute detection flag
+0x5001583C C   FIELD 02w01 CWCKCFG: Clear wrong clock configuration flag
+0x5001583C C   FIELD 04w01 CCNRDY: Clear codec not ready flag
 0x5001583C C   FIELD 05w01 CAFSDET: Clear anticipated frame synchronization detection flag
-0x5001583C C   FIELD 06w01 LFSDET: Clear late frame synchronization detection flag
-0x50015840 B  REGISTER BDR (rw): BData register
+0x5001583C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
+0x50015840 B  REGISTER DRB (rw): AData register
 0x50015840 C   FIELD 00w32 DATA: Data
 0x50015844 B  REGISTER PDMCR (rw): PDM control register
 0x50015844 C   FIELD 00w01 PDMEN: PDM enable
