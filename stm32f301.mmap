@@ -4209,7 +4209,7 @@
 0x4001003C C   FIELD 30w01 OUTCAL (ro): OPAMP ouput status flag
 0x4001003C C   FIELD 31w01 LOCK (rw): OPAMP lock
 0x40010400 A PERIPHERAL EXTI
-0x40010400 B  REGISTER IMR (rw): Interrupt mask register (EXTI_IMR)
+0x40010400 B  REGISTER IMR1 (rw): Interrupt mask register
 0x40010400 C   FIELD 00w01 MR0: Interrupt Mask on line 0
 0x40010400 C   FIELD 01w01 MR1: Interrupt Mask on line 1
 0x40010400 C   FIELD 02w01 MR2: Interrupt Mask on line 2
@@ -4239,7 +4239,10 @@
 0x40010400 C   FIELD 26w01 MR26: Interrupt Mask on line 26
 0x40010400 C   FIELD 27w01 MR27: Interrupt Mask on line 27
 0x40010400 C   FIELD 28w01 MR28: Interrupt Mask on line 28
-0x40010404 B  REGISTER EMR (rw): Event mask register (EXTI_EMR)
+0x40010400 C   FIELD 29w01 MR29: Interrupt Mask on line 29
+0x40010400 C   FIELD 30w01 MR30: Interrupt Mask on line 30
+0x40010400 C   FIELD 31w01 MR31: Interrupt Mask on line 31
+0x40010404 B  REGISTER EMR1 (rw): Event mask register
 0x40010404 C   FIELD 00w01 MR0: Event Mask on line 0
 0x40010404 C   FIELD 01w01 MR1: Event Mask on line 1
 0x40010404 C   FIELD 02w01 MR2: Event Mask on line 2
@@ -4269,7 +4272,10 @@
 0x40010404 C   FIELD 26w01 MR26: Event Mask on line 26
 0x40010404 C   FIELD 27w01 MR27: Event Mask on line 27
 0x40010404 C   FIELD 28w01 MR28: Event Mask on line 28
-0x40010408 B  REGISTER RTSR (rw): Rising Trigger selection register (EXTI_RTSR)
+0x40010404 C   FIELD 29w01 MR29: Event Mask on line 29
+0x40010404 C   FIELD 30w01 MR30: Event Mask on line 30
+0x40010404 C   FIELD 31w01 MR31: Event Mask on line 31
+0x40010408 B  REGISTER RTSR1 (rw): Rising Trigger selection register
 0x40010408 C   FIELD 00w01 TR0: Rising trigger event configuration of line 0
 0x40010408 C   FIELD 01w01 TR1: Rising trigger event configuration of line 1
 0x40010408 C   FIELD 02w01 TR2: Rising trigger event configuration of line 2
@@ -4288,8 +4294,15 @@
 0x40010408 C   FIELD 15w01 TR15: Rising trigger event configuration of line 15
 0x40010408 C   FIELD 16w01 TR16: Rising trigger event configuration of line 16
 0x40010408 C   FIELD 17w01 TR17: Rising trigger event configuration of line 17
+0x40010408 C   FIELD 18w01 TR18: Rising trigger event configuration of line 18
 0x40010408 C   FIELD 19w01 TR19: Rising trigger event configuration of line 19
-0x4001040C B  REGISTER FTSR (rw): Falling Trigger selection register (EXTI_FTSR)
+0x40010408 C   FIELD 20w01 TR20: Rising trigger event configuration of line 20
+0x40010408 C   FIELD 21w01 TR21: Rising trigger event configuration of line 21
+0x40010408 C   FIELD 22w01 TR22: Rising trigger event configuration of line 22
+0x40010408 C   FIELD 29w01 TR29: Rising trigger event configuration of line 29
+0x40010408 C   FIELD 30w01 TR30: Rising trigger event configuration of line 30
+0x40010408 C   FIELD 31w01 TR31: Rising trigger event configuration of line 31
+0x4001040C B  REGISTER FTSR1 (rw): Falling Trigger selection register
 0x4001040C C   FIELD 00w01 TR0: Falling trigger event configuration of line 0
 0x4001040C C   FIELD 01w01 TR1: Falling trigger event configuration of line 1
 0x4001040C C   FIELD 02w01 TR2: Falling trigger event configuration of line 2
@@ -4308,8 +4321,15 @@
 0x4001040C C   FIELD 15w01 TR15: Falling trigger event configuration of line 15
 0x4001040C C   FIELD 16w01 TR16: Falling trigger event configuration of line 16
 0x4001040C C   FIELD 17w01 TR17: Falling trigger event configuration of line 17
+0x4001040C C   FIELD 18w01 TR18: Falling trigger event configuration of line 18
 0x4001040C C   FIELD 19w01 TR19: Falling trigger event configuration of line 19
-0x40010410 B  REGISTER SWIER (rw): Software interrupt event register (EXTI_SWIER)
+0x4001040C C   FIELD 20w01 TR20: Falling trigger event configuration of line 20
+0x4001040C C   FIELD 21w01 TR21: Falling trigger event configuration of line 21
+0x4001040C C   FIELD 22w01 TR22: Falling trigger event configuration of line 22
+0x4001040C C   FIELD 29w01 TR29: Falling trigger event configuration of line 29
+0x4001040C C   FIELD 30w01 TR30: Falling trigger event configuration of line 30.
+0x4001040C C   FIELD 31w01 TR31: Falling trigger event configuration of line 31
+0x40010410 B  REGISTER SWIER1 (rw): Software interrupt event register
 0x40010410 C   FIELD 00w01 SWIER0: Software Interrupt on line 0
 0x40010410 C   FIELD 01w01 SWIER1: Software Interrupt on line 1
 0x40010410 C   FIELD 02w01 SWIER2: Software Interrupt on line 2
@@ -4328,8 +4348,15 @@
 0x40010410 C   FIELD 15w01 SWIER15: Software Interrupt on line 15
 0x40010410 C   FIELD 16w01 SWIER16: Software Interrupt on line 16
 0x40010410 C   FIELD 17w01 SWIER17: Software Interrupt on line 17
+0x40010410 C   FIELD 18w01 SWIER18: Software Interrupt on line 18
 0x40010410 C   FIELD 19w01 SWIER19: Software Interrupt on line 19
-0x40010414 B  REGISTER PR (rw): Pending register (EXTI_PR)
+0x40010410 C   FIELD 20w01 SWIER20: Software Interrupt on line 20
+0x40010410 C   FIELD 21w01 SWIER21: Software Interrupt on line 21
+0x40010410 C   FIELD 22w01 SWIER22: Software Interrupt on line 22
+0x40010410 C   FIELD 29w01 SWIER29: Software Interrupt on line 29
+0x40010410 C   FIELD 30w01 SWIER30: Software Interrupt on line 309
+0x40010410 C   FIELD 31w01 SWIER31: Software Interrupt on line 319
+0x40010414 B  REGISTER PR1 (rw): Pending register
 0x40010414 C   FIELD 00w01 PR0: Pending bit 0
 0x40010414 C   FIELD 01w01 PR1: Pending bit 1
 0x40010414 C   FIELD 02w01 PR2: Pending bit 2
@@ -4348,7 +4375,36 @@
 0x40010414 C   FIELD 15w01 PR15: Pending bit 15
 0x40010414 C   FIELD 16w01 PR16: Pending bit 16
 0x40010414 C   FIELD 17w01 PR17: Pending bit 17
+0x40010414 C   FIELD 18w01 PR18: Pending bit 18
 0x40010414 C   FIELD 19w01 PR19: Pending bit 19
+0x40010414 C   FIELD 20w01 PR20: Pending bit 20
+0x40010414 C   FIELD 21w01 PR21: Pending bit 21
+0x40010414 C   FIELD 22w01 PR22: Pending bit 22
+0x40010414 C   FIELD 29w01 PR29: Pending bit 29
+0x40010414 C   FIELD 30w01 PR30: Pending bit 30
+0x40010414 C   FIELD 31w01 PR31: Pending bit 31
+0x40010420 B  REGISTER IMR2 (rw): Interrupt mask register
+0x40010420 C   FIELD 00w01 MR32: Interrupt Mask on external/internal line 32
+0x40010420 C   FIELD 01w01 MR33: Interrupt Mask on external/internal line 33
+0x40010420 C   FIELD 02w01 MR34: Interrupt Mask on external/internal line 34
+0x40010420 C   FIELD 03w01 MR35: Interrupt Mask on external/internal line 35
+0x40010424 B  REGISTER EMR2 (rw): Event mask register
+0x40010424 C   FIELD 00w01 MR32: Event mask on external/internal line 32
+0x40010424 C   FIELD 01w01 MR33: Event mask on external/internal line 33
+0x40010424 C   FIELD 02w01 MR34: Event mask on external/internal line 34
+0x40010424 C   FIELD 03w01 MR35: Event mask on external/internal line 35
+0x40010428 B  REGISTER RTSR2 (rw): Rising Trigger selection register
+0x40010428 C   FIELD 00w01 TR32: Rising trigger event configuration bit of line 32
+0x40010428 C   FIELD 01w01 TR33: Rising trigger event configuration bit of line 33
+0x4001042C B  REGISTER FTSR2 (rw): Falling Trigger selection register
+0x4001042C C   FIELD 00w01 TR32: Falling trigger event configuration bit of line 32
+0x4001042C C   FIELD 01w01 TR33: Falling trigger event configuration bit of line 33
+0x40010430 B  REGISTER SWIER2 (rw): Software interrupt event register
+0x40010430 C   FIELD 00w01 SWIER32: Software interrupt on line 32
+0x40010430 C   FIELD 01w01 SWIER33: Software interrupt on line 33
+0x40010434 B  REGISTER PR2 (rw): Pending register
+0x40010434 C   FIELD 00w01 PR32: Pending bit on line 32
+0x40010434 C   FIELD 01w01 PR33: Pending bit on line 33
 0x40012C00 A PERIPHERAL TIM1
 0x40012C00 B  REGISTER CR1 (rw): control register 1
 0x40012C00 C   FIELD 00w01 CEN: Counter enable
@@ -7827,16 +7883,16 @@
 0xE004200C C   FIELD 04w01 DBG_TIM17_STO: Debug Timer 17 stopped when Core is halted
 0xE004200C C   FIELD 05w01 DBG_TIM19_STOP: Debug Timer 19 stopped when Core is halted
 INTERRUPT 000: WWDG_IRQ (WWDG): Window Watchdog interrupt
-INTERRUPT 001: PVD_IRQ (EXTI): Power voltage detector through EXTI line detection interrupt
-INTERRUPT 002: TAMP (EXTI): Tamper and timestamp through EXTI19 line
+INTERRUPT 001: PVD (PWR): PVD through EXTI line detection interrupt
+INTERRUPT 002: TAMP_STAMP (EXTI): Tamper and TimeStamp interrupts
 INTERRUPT 003: RTC_WKUP_IRQ (RTC): RTC
 INTERRUPT 004: FLASH (FLASH): Flash global interrupt
 INTERRUPT 005: RCC (RCC): RCC global interrupt
-INTERRUPT 006: EXTI0_IRQ (EXTI): EXTI Line 0 interrupt
-INTERRUPT 007: EXTI1_IRQ (EXTI): EXTI Line1 interrupt
-INTERRUPT 008: EXTI2_RI_IRQ (EXTI): EXTI Line 2 and routing interface interrupt
-INTERRUPT 009: EXTI3_IRQ (EXTI): EXTI Line1 interrupt
-INTERRUPT 010: EXTI4_IRQ (EXTI): EXTI Line4 interrupt
+INTERRUPT 006: EXTI0 (EXTI): EXTI Line0 interrupt
+INTERRUPT 007: EXTI1 (EXTI): EXTI Line3 interrupt
+INTERRUPT 008: EXTI2_TSC (EXTI): EXTI Line2 and Touch sensing interrupts
+INTERRUPT 009: EXTI3 (EXTI): EXTI Line3 interrupt
+INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
 INTERRUPT 011: DMA1_CH1 (DMA1): DMA1 channel 1 interrupt
 INTERRUPT 012: DMA1_CH2 (DMA1): DMA1 channel 2 interrupt
 INTERRUPT 013: DMA1_CH3 (DMA1): DMA1 channel 3 interrupt
@@ -7849,7 +7905,7 @@ INTERRUPT 019: CAN_TX_IRQ (CAN): USB high priority/CAN_TX interrupt
 INTERRUPT 020: CAN_RXD_IRQ (CAN): USB low priority/CAN_RXD interrupt
 INTERRUPT 021: CAN_RXI_IRQ (CAN): CAN_RXI interrupt
 INTERRUPT 022: CAN_SCE_IRQ (CAN): CAN_SCE interrupt
-INTERRUPT 023: EXTI5_9_IRQ (EXTI): EXTI Line[9:5] interrupts
+INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line5 to Line9 interrupts
 INTERRUPT 024: TIM15_IRQ (TIM15): Timer 15 global interrupt
 INTERRUPT 025: TIM16_IRQ (TIM16): Timer 16 global interrupt
 INTERRUPT 026: TIM17_IRQ (TIM17): Timer 17 global interrupt
@@ -7857,16 +7913,16 @@ INTERRUPT 027: TIM1_CC (TIM1): TIM1 capture compare interrupt
 INTERRUPT 028: TIM2 (TIM2): Timer 2 global interrupt
 INTERRUPT 029: TIM3_IRQ (TIM3): Timer 3 global interrupt
 INTERRUPT 030: TIM4_IRQ (TIM4): Timer 4 global interrupt
-INTERRUPT 031: I2C1_EV_IRQ (I2C1): I2C1_EV global interrupt/EXTI Line[3:2] interrupts
+INTERRUPT 031: I2C1_EV_EXTI23 (EXTI): I2C1 event interrupt and EXTI Line23 interrupt
 INTERRUPT 032: I2C1_ER_IRQ (I2C1): I2C1_ER
 INTERRUPT 033: I2C2_EV_IRQ (I2C2): I2C2_EV global interrupt/EXTI Line[4:2] interrupts
 INTERRUPT 034: I2C2_ER_IRQ (I2C2): I2C2_ER
 INTERRUPT 035: SPI1_IRQ (SPI1): SPI1 global interrupt
 INTERRUPT 036: SPI2_IRQ (SPI2): SPI2 global interrupt
-INTERRUPT 037: USART1_IRQ (USART1): USART1 global interrupt/EXTI25 (USART1 wakeup event)
-INTERRUPT 038: USART2_IRQ (USART2): USART2 global interrupt/EXTI26 (USART1 wakeup event)
-INTERRUPT 039: USART3_IRQ (USART3): USART3 global interrupt/EXTI28 (USART1 wakeup event)
-INTERRUPT 040: EXTI15_10_IRQ (EXTI): EXTI Line[15:10] interrupts
+INTERRUPT 037: USART1_EXTI25 (EXTI): USART1 global interrupt and EXTI Line 25 interrupt
+INTERRUPT 038: USART2_EXTI26 (EXTI): USART2 global interrupt and EXTI Line 26 interrupt
+INTERRUPT 039: USART3_EXTI28 (EXTI): USART3 global interrupt and EXTI Line 28 interrupt
+INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line15 to Line10 interrupts
 INTERRUPT 041: RTC_ALARM_IT_IRQ (RTC): RTC alarm interrupt
 INTERRUPT 042: CEC_IRQ (CEC): CEC interrupt
 INTERRUPT 043: TIM12_IRQ (TIM12): Timer 12 global interrupt
@@ -7885,6 +7941,6 @@ INTERRUPT 072: I2C3_EV_IRQ (I2C3): I2C3 event interrupt / EXTI Line27 interrupt
 INTERRUPT 073: I2C3_ER_IRQ (I2C3): I2C3 error interrupt
 INTERRUPT 074: USB_HP_IRQ (USB): USB high priority interrupt
 INTERRUPT 075: USB_LP_IRQ (USB): USB low priority interrupt
-INTERRUPT 076: USB_WAKEUP_IRQ (USB): USB wakeup interrupt
+INTERRUPT 076: USB_WKUP_EXTI (EXTI): USB wakeup from Suspend and EXTI Line 18
 INTERRUPT 078: TIM19_IRQ (TIM19): Timer 19 global interrupt
 INTERRUPT 081: FPU (FPU): Floating point unit interrupt
