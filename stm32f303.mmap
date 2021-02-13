@@ -3891,7 +3891,7 @@
 0x40007004 C   FIELD 08w01 EWUP1 (rw): Enable WKUP1 pin
 0x40007004 C   FIELD 09w01 EWUP2 (rw): Enable WKUP2 pin
 0x40007004 C   FIELD 10w01 EWUP3 (rw): Enable WKUP3 pin
-0x40007400 A PERIPHERAL DAC
+0x40007400 A PERIPHERAL DAC1
 0x40007400 B  REGISTER CR (rw): control register
 0x40007400 C   FIELD 00w01 EN1: DAC channel1 enable
 0x40007400 C   FIELD 01w01 BOFF1: DAC channel1 output buffer disable
@@ -4029,6 +4029,55 @@
 0x40007824 C   FIELD 00w08 RXDATA: 8-bit receive data
 0x40007828 B  REGISTER TXDR (rw): Transmit data register
 0x40007828 C   FIELD 00w08 TXDATA: 8-bit transmit data
+0x40009800 A PERIPHERAL DAC2
+0x40009800 B  REGISTER CR (rw): control register
+0x40009800 C   FIELD 00w01 EN1: DAC channel1 enable
+0x40009800 C   FIELD 01w01 BOFF1: DAC channel1 output buffer disable
+0x40009800 C   FIELD 02w01 TEN1: DAC channel1 trigger enable
+0x40009800 C   FIELD 03w03 TSEL1: DAC channel1 trigger selection
+0x40009800 C   FIELD 06w02 WAVE1: DAC channel1 noise/triangle wave generation enable
+0x40009800 C   FIELD 08w04 MAMP1: DAC channel1 mask/amplitude selector
+0x40009800 C   FIELD 12w01 DMAEN1: DAC channel1 DMA enable
+0x40009800 C   FIELD 13w01 DMAUDRIE1: DAC channel1 DMA Underrun Interrupt enable
+0x40009800 C   FIELD 16w01 EN2: DAC channel2 enable
+0x40009800 C   FIELD 17w01 BOFF2: DAC channel2 output buffer disable
+0x40009800 C   FIELD 18w01 TEN2: DAC channel2 trigger enable
+0x40009800 C   FIELD 19w03 TSEL2: DAC channel2 trigger selection
+0x40009800 C   FIELD 22w02 WAVE2: DAC channel2 noise/triangle wave generation enable
+0x40009800 C   FIELD 24w04 MAMP2: DAC channel2 mask/amplitude selector
+0x40009800 C   FIELD 28w01 DMAEN2: DAC channel2 DMA enable
+0x40009800 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable
+0x40009804 B  REGISTER SWTRIGR (wo): software trigger register
+0x40009804 C   FIELD 00w01 SWTRIG1: DAC channel1 software trigger
+0x40009804 C   FIELD 01w01 SWTRIG2: DAC channel2 software trigger
+0x40009808 B  REGISTER DHR12R1 (rw): channel1 12-bit right-aligned data holding register
+0x40009808 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data
+0x4000980C B  REGISTER DHR12L1 (rw): channel1 12-bit left aligned data holding register
+0x4000980C C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data
+0x40009810 B  REGISTER DHR8R1 (rw): channel1 8-bit right aligned data holding register
+0x40009810 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data
+0x40009814 B  REGISTER DHR12R2 (rw): channel2 12-bit right aligned data holding register
+0x40009814 C   FIELD 00w12 DACC2DHR: DAC channel2 12-bit right-aligned data
+0x40009818 B  REGISTER DHR12L2 (rw): channel2 12-bit left aligned data holding register
+0x40009818 C   FIELD 04w12 DACC2DHR: DAC channel2 12-bit left-aligned data
+0x4000981C B  REGISTER DHR8R2 (rw): channel2 8-bit right-aligned data holding register
+0x4000981C C   FIELD 00w08 DACC2DHR: DAC channel2 8-bit right-aligned data
+0x40009820 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x40009820 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data
+0x40009820 C   FIELD 16w12 DACC2DHR: DAC channel2 12-bit right-aligned data
+0x40009824 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x40009824 C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data
+0x40009824 C   FIELD 20w12 DACC2DHR: DAC channel2 12-bit left-aligned data
+0x40009828 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x40009828 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data
+0x40009828 C   FIELD 08w08 DACC2DHR: DAC channel2 8-bit right-aligned data
+0x4000982C B  REGISTER DOR1 (ro): channel1 data output register
+0x4000982C C   FIELD 00w12 DACC1DOR: DAC channel1 data output
+0x40009830 B  REGISTER DOR2 (ro): channel2 data output register
+0x40009830 C   FIELD 00w12 DACC2DOR: DAC channel2 data output
+0x40009834 B  REGISTER SR (rw): status register
+0x40009834 C   FIELD 13w01 DMAUDR1: DAC channel1 DMA underrun flag
+0x40009834 C   FIELD 29w01 DMAUDR2: DAC channel2 DMA underrun flag
 0x40010000 A PERIPHERAL COMP
 0x40010000 A PERIPHERAL OPAMP
 0x40010000 A PERIPHERAL SYSCFG
@@ -9357,7 +9406,7 @@ INTERRUPT 048: FMC (FMC): FSMC global interrupt
 INTERRUPT 051: SPI3 (SPI4): SPI3 global interrupt
 INTERRUPT 052: UART4_EXTI34 (EXTI): UART4 global and EXTI Line 34 interrupts
 INTERRUPT 053: UART5_EXTI35 (EXTI): UART5 global and EXTI Line 35 interrupts
-INTERRUPT 054: TIM6_DACUNDER (DAC): TIM6 global and DAC12 underrun interrupts
+INTERRUPT 054: TIM6_DACUNDER (DAC1): TIM6 global and DAC12 underrun interrupts
 INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 056: DMA2_CH1 (DMA2): DMA2 channel1 global interrupt
 INTERRUPT 057: DMA2_CH2 (DMA2): DMA2 channel2 global interrupt
