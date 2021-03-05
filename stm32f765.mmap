@@ -3272,52 +3272,52 @@
 0x40006B1C B  REGISTER FR227 (rw): Filter bank 0 register 2
 0x40006B1C C   FIELD 00w32 FB: Filter bits
 0x40006C00 A PERIPHERAL CEC
-0x40006C00 B  REGISTER CR (rw): control register
-0x40006C00 C   FIELD 00w01 CECEN: CEC Enable
+0x40006C00 B  REGISTER CR (rw): CEC control register
+0x40006C00 C   FIELD 00w01 CECEN: CEC enable
 0x40006C00 C   FIELD 01w01 TXSOM: Tx start of message
-0x40006C00 C   FIELD 02w01 TXEOM: Tx End Of Message
-0x40006C04 B  REGISTER CFGR (rw): configuration register
-0x40006C04 C   FIELD 00w03 SFT: Signal Free Time
-0x40006C04 C   FIELD 03w01 RXTOL: Rx-Tolerance
-0x40006C04 C   FIELD 04w01 BRESTP: Rx-stop on bit rising error
-0x40006C04 C   FIELD 05w01 BREGEN: Generate error-bit on bit rising error
-0x40006C04 C   FIELD 06w01 LBPEGEN: Generate Error-Bit on Long Bit Period Error
-0x40006C04 C   FIELD 07w01 BRDNOGEN: Avoid Error-Bit Generation in Broadcast
-0x40006C04 C   FIELD 08w01 SFTOP: SFT Option Bit
-0x40006C04 C   FIELD 16w15 OAR: Own addresses configuration
+0x40006C00 C   FIELD 02w01 TXEOM: Tx end of message
+0x40006C04 B  REGISTER CFGR (rw): CEC configuration register
+0x40006C04 C   FIELD 00w03 SFT: Signal free time
+0x40006C04 C   FIELD 03w01 RXTOL: Rx tolerance
+0x40006C04 C   FIELD 04w01 BRESTP: Rx stop on bit rising error
+0x40006C04 C   FIELD 05w01 BREGEN: Generate error bit on bit rising error
+0x40006C04 C   FIELD 06w01 LBPEGEN: Generate error bit on long bit period error
+0x40006C04 C   FIELD 07w01 BRDNOGEN: Avoid error bit generation in broadcast
+0x40006C04 C   FIELD 08w01 SFTOP: SFT option bit
+0x40006C04 C   FIELD 16w15 OAR: Own address configuration
 0x40006C04 C   FIELD 31w01 LSTN: Listen mode
-0x40006C08 B  REGISTER TXDR (wo): Tx data register
-0x40006C08 C   FIELD 00w08 TXD: Tx Data register
-0x40006C0C B  REGISTER RXDR (ro): Rx Data Register
-0x40006C0C C   FIELD 00w08 RXDR: CEC Rx Data Register
-0x40006C10 B  REGISTER ISR (rw): Interrupt and Status Register
-0x40006C10 C   FIELD 00w01 RXBR: Rx-Byte Received
-0x40006C10 C   FIELD 01w01 RXEND: End Of Reception
-0x40006C10 C   FIELD 02w01 RXOVR: Rx-Overrun
-0x40006C10 C   FIELD 03w01 BRE: Rx-Bit rising error
-0x40006C10 C   FIELD 04w01 SBPE: Rx-Short Bit period error
-0x40006C10 C   FIELD 05w01 LBPE: Rx-Long Bit Period Error
-0x40006C10 C   FIELD 06w01 RXACKE: Rx-Missing Acknowledge
-0x40006C10 C   FIELD 07w01 ARBLST: Arbitration Lost
-0x40006C10 C   FIELD 08w01 TXBR: Tx-Byte Request
-0x40006C10 C   FIELD 09w01 TXEND: End of Transmission
-0x40006C10 C   FIELD 10w01 TXUDR: Tx-Buffer Underrun
-0x40006C10 C   FIELD 11w01 TXERR: Tx-Error
-0x40006C10 C   FIELD 12w01 TXACKE: Tx-Missing acknowledge error
-0x40006C14 B  REGISTER IER (rw): interrupt enable register
-0x40006C14 C   FIELD 00w01 RXBRIE: Rx-Byte Received Interrupt Enable
-0x40006C14 C   FIELD 01w01 RXENDIE: End Of Reception Interrupt Enable
-0x40006C14 C   FIELD 02w01 RXOVRIE: Rx-Buffer Overrun Interrupt Enable
-0x40006C14 C   FIELD 03w01 BREIE: Bit Rising Error Interrupt Enable
-0x40006C14 C   FIELD 04w01 SBPEIE: Short Bit Period Error Interrupt Enable
-0x40006C14 C   FIELD 05w01 LBPEIE: Long Bit Period Error Interrupt Enable
-0x40006C14 C   FIELD 06w01 RXACKIE: Rx-Missing Acknowledge Error Interrupt Enable
-0x40006C14 C   FIELD 07w01 ARBLSTIE: Arbitration Lost Interrupt Enable
-0x40006C14 C   FIELD 08w01 TXBRIE: Tx-Byte Request Interrupt Enable
-0x40006C14 C   FIELD 09w01 TXENDIE: Tx-End of message interrupt enable
-0x40006C14 C   FIELD 10w01 TXUDRIE: Tx-Underrun interrupt enable
-0x40006C14 C   FIELD 11w01 TXERRIE: Tx-Error Interrupt Enable
-0x40006C14 C   FIELD 12w01 TXACKIE: Tx-Missing Acknowledge Error Interrupt Enable
+0x40006C08 B  REGISTER TXDR (wo): CEC Tx data register
+0x40006C08 C   FIELD 00w08 TXD: Tx data
+0x40006C0C B  REGISTER RXDR (ro): CEC Rx data register
+0x40006C0C C   FIELD 00w08 RXD: Rx data
+0x40006C10 B  REGISTER ISR (rw): CEC interrupt and status register
+0x40006C10 C   FIELD 00w01 RXBR: Rx byte received flag
+0x40006C10 C   FIELD 01w01 RXEND: Rx end of reception flag
+0x40006C10 C   FIELD 02w01 RXOVR: Rx overrun flag
+0x40006C10 C   FIELD 03w01 BRE: Rx bit rising error
+0x40006C10 C   FIELD 04w01 SBPE: Rx short bit period error
+0x40006C10 C   FIELD 05w01 LBPE: Rx long bit period error
+0x40006C10 C   FIELD 06w01 RXACKE: Rx missing acknowledge error
+0x40006C10 C   FIELD 07w01 ARBLST: Arbitration lost flag
+0x40006C10 C   FIELD 08w01 TXBR: Tx byte request flag
+0x40006C10 C   FIELD 09w01 TXEND: End of transmission flag
+0x40006C10 C   FIELD 10w01 TXUDR: Tx buffer underrun flag
+0x40006C10 C   FIELD 11w01 TXERR: Tx error
+0x40006C10 C   FIELD 12w01 TXACKE: Tx missing acknowledge error
+0x40006C14 B  REGISTER IER (rw): CEC interrupt enable register
+0x40006C14 C   FIELD 00w01 RXBRIE: Rx byte received interrupt enable
+0x40006C14 C   FIELD 01w01 RXENDIE: Rx end of reception interrupt enable
+0x40006C14 C   FIELD 02w01 RXOVRIE: Rx buffer overrun interrupt enable
+0x40006C14 C   FIELD 03w01 BREIE: Bit rising error interrupt enable
+0x40006C14 C   FIELD 04w01 SBPEIE: Short bit period error interrupt enable
+0x40006C14 C   FIELD 05w01 LBPEIE: Long bit period error interrupt enable
+0x40006C14 C   FIELD 06w01 RXACKIE: Rx missing acknowledge error interrupt enable
+0x40006C14 C   FIELD 07w01 ARBLSTIE: Arbitration lost interrupt enable
+0x40006C14 C   FIELD 08w01 TXBRIE: Tx byte request interrupt enable
+0x40006C14 C   FIELD 09w01 TXENDIE: Tx end of message interrupt enable
+0x40006C14 C   FIELD 10w01 TXUDRIE: Tx underrun interrupt enable
+0x40006C14 C   FIELD 11w01 TXERRIE: Tx error interrupt enable
+0x40006C14 C   FIELD 12w01 TXACKIE: Tx missing acknowledge error interrupt enable
 0x40007000 A PERIPHERAL PWR
 0x40007000 B  REGISTER CR1 (rw): power control register
 0x40007000 C   FIELD 00w01 LPDS: Low-power deep sleep
@@ -15057,7 +15057,7 @@ INTERRUPT 090: DMA2D (DMA2D): DMA2D global interrupt
 INTERRUPT 091: SAI2 (SAI2): SAI2 global interrupt
 INTERRUPT 092: QuadSPI (QUADSPI): QuadSPI global interrupt
 INTERRUPT 093: LP_Timer1 (LPTIM1): LP Timer1 global interrupt
-INTERRUPT 094: HDMI_CEC (CEC): HDMI-CEC global interrupt
+INTERRUPT 094: CEC (CEC): HDMI-CEC global interrupt
 INTERRUPT 095: I2C4_EV (I2C4): I2C4 event interrupt
 INTERRUPT 096: I2C4_ER (I2C4): I2C4 Error interrupt
 INTERRUPT 097: SPDIFRX (SPDIFRX): SPDIFRX

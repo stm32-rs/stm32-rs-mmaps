@@ -2596,53 +2596,53 @@
 0x400153F8 C   FIELD 00w32 ID: ID
 0x400153FC B  REGISTER I2C_SIDR (ro): I2C size identification register
 0x400153FC C   FIELD 00w32 SID: SID
-0x40016000 A PERIPHERAL HDMI_CEC
-0x40016000 B  REGISTER CEC_CR (rw): CEC control register
-0x40016000 C   FIELD 00w01 CECEN (rw): CECEN
-0x40016000 C   FIELD 01w01 TXSOM (rw): TXSOM
-0x40016000 C   FIELD 02w01 TXEOM (rw): TXEOM
-0x40016004 B  REGISTER CEC_CFGR (rw): This register is used to configure the HDMI-CEC controller. It is mandatory to write CEC_CFGR only when CECEN=0.
-0x40016004 C   FIELD 00w03 SFT (rw): SFT
-0x40016004 C   FIELD 03w01 RXTOL (rw): RXTOL
-0x40016004 C   FIELD 04w01 BRESTP (rw): BRESTP
-0x40016004 C   FIELD 05w01 BREGEN (rw): BREGEN
-0x40016004 C   FIELD 06w01 LBPEGEN (rw): LBPEGEN
-0x40016004 C   FIELD 07w01 BRDNOGEN (rw): BRDNOGEN
-0x40016004 C   FIELD 08w01 SFTOP (rw): SFTOP
-0x40016004 C   FIELD 16w15 OAR (rw): OAR
-0x40016004 C   FIELD 31w01 LSTN (rw): LSTN
-0x40016008 B  REGISTER CEC_TXDR (rw): CEC Tx data register
-0x40016008 C   FIELD 00w08 TXD (wo): TXD
-0x4001600C B  REGISTER CEC_RXDR (ro): CEC Rx data register
-0x4001600C C   FIELD 00w08 RXD (ro): RXD
-0x40016010 B  REGISTER CEC_ISR (rw): CEC Interrupt and Status Register
-0x40016010 C   FIELD 00w01 RXBR (rw): RXBR
-0x40016010 C   FIELD 01w01 RXEND (rw): RXEND
-0x40016010 C   FIELD 02w01 RXOVR (rw): RXOVR
-0x40016010 C   FIELD 03w01 BRE (rw): BRE
-0x40016010 C   FIELD 04w01 SBPE (rw): SBPE
-0x40016010 C   FIELD 05w01 LBPE (rw): LBPE
-0x40016010 C   FIELD 06w01 RXACKE (rw): RXACKE
-0x40016010 C   FIELD 07w01 ARBLST (rw): ARBLST
-0x40016010 C   FIELD 08w01 TXBR (rw): TXBR
-0x40016010 C   FIELD 09w01 TXEND (rw): TXEND
-0x40016010 C   FIELD 10w01 TXUDR (rw): TXUDR
-0x40016010 C   FIELD 11w01 TXERR (rw): TXERR
-0x40016010 C   FIELD 12w01 TXACKE (rw): TXACKE
-0x40016014 B  REGISTER CEC_IER (rw): CEC interrupt enable register
-0x40016014 C   FIELD 00w01 RXBRIE (rw): RXBRIE
-0x40016014 C   FIELD 01w01 RXENDIE (rw): RXENDIE
-0x40016014 C   FIELD 02w01 RXOVRIE (rw): RXOVRIE
-0x40016014 C   FIELD 03w01 BREIE (rw): BREIE
-0x40016014 C   FIELD 04w01 SBPEIE (rw): SBPEIE
-0x40016014 C   FIELD 05w01 LBPEIE (rw): LBPEIE
-0x40016014 C   FIELD 06w01 RXACKIE (rw): RXACKIE
-0x40016014 C   FIELD 07w01 ARBLSTIE (rw): ARBLSTIE
-0x40016014 C   FIELD 08w01 TXBRIE (rw): TXBRIE
-0x40016014 C   FIELD 09w01 TXENDIE (rw): TXENDIE
-0x40016014 C   FIELD 10w01 TXUDRIE (rw): TXUDRIE
-0x40016014 C   FIELD 11w01 TXERRIE (rw): TXERRIE
-0x40016014 C   FIELD 12w01 TXACKIE (rw): TXACKIE
+0x40016000 A PERIPHERAL CEC
+0x40016000 B  REGISTER CR (rw): CEC control register
+0x40016000 C   FIELD 00w01 CECEN: CEC enable
+0x40016000 C   FIELD 01w01 TXSOM: Tx start of message
+0x40016000 C   FIELD 02w01 TXEOM: Tx end of message
+0x40016004 B  REGISTER CFGR (rw): CEC configuration register
+0x40016004 C   FIELD 00w03 SFT: Signal free time
+0x40016004 C   FIELD 03w01 RXTOL: Rx tolerance
+0x40016004 C   FIELD 04w01 BRESTP: Rx stop on bit rising error
+0x40016004 C   FIELD 05w01 BREGEN: Generate error bit on bit rising error
+0x40016004 C   FIELD 06w01 LBPEGEN: Generate error bit on long bit period error
+0x40016004 C   FIELD 07w01 BRDNOGEN: Avoid error bit generation in broadcast
+0x40016004 C   FIELD 08w01 SFTOP: SFT option bit
+0x40016004 C   FIELD 16w15 OAR: Own address configuration
+0x40016004 C   FIELD 31w01 LSTN: Listen mode
+0x40016008 B  REGISTER TXDR (wo): CEC Tx data register
+0x40016008 C   FIELD 00w08 TXD: Tx data
+0x4001600C B  REGISTER RXDR (ro): CEC Rx data register
+0x4001600C C   FIELD 00w08 RXD: Rx data
+0x40016010 B  REGISTER ISR (rw): CEC interrupt and status register
+0x40016010 C   FIELD 00w01 RXBR: Rx byte received flag
+0x40016010 C   FIELD 01w01 RXEND: Rx end of reception flag
+0x40016010 C   FIELD 02w01 RXOVR: Rx overrun flag
+0x40016010 C   FIELD 03w01 BRE: Rx bit rising error
+0x40016010 C   FIELD 04w01 SBPE: Rx short bit period error
+0x40016010 C   FIELD 05w01 LBPE: Rx long bit period error
+0x40016010 C   FIELD 06w01 RXACKE: Rx missing acknowledge error
+0x40016010 C   FIELD 07w01 ARBLST: Arbitration lost flag
+0x40016010 C   FIELD 08w01 TXBR: Tx byte request flag
+0x40016010 C   FIELD 09w01 TXEND: End of transmission flag
+0x40016010 C   FIELD 10w01 TXUDR: Tx buffer underrun flag
+0x40016010 C   FIELD 11w01 TXERR: Tx error
+0x40016010 C   FIELD 12w01 TXACKE: Tx missing acknowledge error
+0x40016014 B  REGISTER IER (rw): CEC interrupt enable register
+0x40016014 C   FIELD 00w01 RXBRIE: Rx byte received interrupt enable
+0x40016014 C   FIELD 01w01 RXENDIE: Rx end of reception interrupt enable
+0x40016014 C   FIELD 02w01 RXOVRIE: Rx buffer overrun interrupt enable
+0x40016014 C   FIELD 03w01 BREIE: Bit rising error interrupt enable
+0x40016014 C   FIELD 04w01 SBPEIE: Short bit period error interrupt enable
+0x40016014 C   FIELD 05w01 LBPEIE: Long bit period error interrupt enable
+0x40016014 C   FIELD 06w01 RXACKIE: Rx missing acknowledge error interrupt enable
+0x40016014 C   FIELD 07w01 ARBLSTIE: Arbitration lost interrupt enable
+0x40016014 C   FIELD 08w01 TXBRIE: Tx byte request interrupt enable
+0x40016014 C   FIELD 09w01 TXENDIE: Tx end of message interrupt enable
+0x40016014 C   FIELD 10w01 TXUDRIE: Tx underrun interrupt enable
+0x40016014 C   FIELD 11w01 TXERRIE: Tx error interrupt enable
+0x40016014 C   FIELD 12w01 TXACKIE: Tx missing acknowledge error interrupt enable
 0x40017000 A PERIPHERAL DAC1
 0x40017000 B  REGISTER DAC_CR (rw): DAC control register
 0x40017000 C   FIELD 00w01 EN1: EN1
@@ -25431,7 +25431,7 @@ INTERRUPT 090: ADC2 (ADC2): ADC2 global interrupt
 INTERRUPT 091: SAI2 (SAI2): SAI2 global interrupt
 INTERRUPT 092: QUADSPI (QUADSPI): QUADSPI global interrupt
 INTERRUPT 093: LPTIM1 (LPTIM1): LPTIMER1 global interrupt
-INTERRUPT 094: CEC (HDMI_CEC): HDMI-CEC global interrupt
+INTERRUPT 094: CEC (CEC): HDMI-CEC global interrupt
 INTERRUPT 095: I2C4_EVT (I2C4): I2C4 event interrupt
 INTERRUPT 096: I2C4_ERR (I2C4): I2C4 global error interrupt
 INTERRUPT 097: SPDIFRX (SPDIFRX): SPDIFRX global interrupt

@@ -3619,50 +3619,52 @@
 0x40007434 C   FIELD 13w01 DMAUDR1: DAC channel1 DMA underrun flag
 0x40007434 C   FIELD 29w01 DMAUDR2: DAC channel2 DMA underrun flag
 0x40007800 A PERIPHERAL CEC
-0x40007800 B  REGISTER CR (rw): control register
-0x40007800 C   FIELD 00w01 CECEN: CEC Enable
+0x40007800 B  REGISTER CR (rw): CEC control register
+0x40007800 C   FIELD 00w01 CECEN: CEC enable
 0x40007800 C   FIELD 01w01 TXSOM: Tx start of message
-0x40007800 C   FIELD 02w01 TXEOM: Tx End Of Message
-0x40007804 B  REGISTER CFGR (rw): configuration register
-0x40007804 C   FIELD 00w04 OAR: Own Address
-0x40007804 C   FIELD 04w01 LSTN: Listen mode
-0x40007804 C   FIELD 05w03 SFT: Signal Free Time
-0x40007804 C   FIELD 08w01 RXTOL: Rx-Tolerance
-0x40007804 C   FIELD 09w01 BRESTP: Rx-stop on bit rising error
-0x40007804 C   FIELD 10w01 BREGEN: Generate error-bit on bit rising error
-0x40007804 C   FIELD 11w01 LBPEGEN: Generate Error-Bit on Long Bit Period Error
-0x40007808 B  REGISTER TXDR (wo): Tx data register
-0x40007808 C   FIELD 00w08 TXD: Tx Data register
-0x4000780C B  REGISTER RXDR (ro): Rx Data Register
-0x4000780C C   FIELD 00w08 RXDR: CEC Rx Data Register
-0x40007810 B  REGISTER ISR (rw): Interrupt and Status Register
-0x40007810 C   FIELD 00w01 RXBR: Rx-Byte Received
-0x40007810 C   FIELD 01w01 RXEND: End Of Reception
-0x40007810 C   FIELD 02w01 RXOVR: Rx-Overrun
-0x40007810 C   FIELD 03w01 BRE: Rx-Bit rising error
-0x40007810 C   FIELD 04w01 SBPE: Rx-Short Bit period error
-0x40007810 C   FIELD 05w01 LBPE: Rx-Long Bit Period Error
-0x40007810 C   FIELD 06w01 RXACKE: Rx-Missing Acknowledge
-0x40007810 C   FIELD 07w01 ARBLST: Arbitration Lost
-0x40007810 C   FIELD 08w01 TXBR: Tx-Byte Request
-0x40007810 C   FIELD 09w01 TXEND: End of Transmission
-0x40007810 C   FIELD 10w01 TXUDR: Tx-Buffer Underrun
-0x40007810 C   FIELD 11w01 TXERR: Tx-Error
-0x40007810 C   FIELD 12w01 TXACKE: Tx-Missing acknowledge error
-0x40007814 B  REGISTER IER (rw): interrupt enable register
-0x40007814 C   FIELD 00w01 RXBRIE: Rx-Byte Received Interrupt Enable
-0x40007814 C   FIELD 01w01 RXENDIE: End Of Reception Interrupt Enable
-0x40007814 C   FIELD 02w01 RXOVRIE: Rx-Buffer Overrun Interrupt Enable
-0x40007814 C   FIELD 03w01 BREIE: Bit Rising Error Interrupt Enable
-0x40007814 C   FIELD 04w01 SBPEIE: Short Bit Period Error Interrupt Enable
-0x40007814 C   FIELD 05w01 LBPEIE: Long Bit Period Error Interrupt Enable
-0x40007814 C   FIELD 06w01 RXACKIE: Rx-Missing Acknowledge Error Interrupt Enable
-0x40007814 C   FIELD 07w01 ARBLSTIE: Arbitration Lost Interrupt Enable
-0x40007814 C   FIELD 08w01 TXBRIE: Tx-Byte Request Interrupt Enable
-0x40007814 C   FIELD 09w01 TXENDIE: Tx-End of message interrupt enable
-0x40007814 C   FIELD 10w01 TXUDRIE: Tx-Underrun interrupt enable
-0x40007814 C   FIELD 11w01 TXERRIE: Tx-Error Interrupt Enable
-0x40007814 C   FIELD 12w01 TXACKIE: Tx-Missing Acknowledge Error Interrupt Enable
+0x40007800 C   FIELD 02w01 TXEOM: Tx end of message
+0x40007804 B  REGISTER CFGR (rw): CEC configuration register
+0x40007804 C   FIELD 00w03 SFT: Signal free time
+0x40007804 C   FIELD 03w01 RXTOL: Rx tolerance
+0x40007804 C   FIELD 04w01 BRESTP: Rx stop on bit rising error
+0x40007804 C   FIELD 05w01 BREGEN: Generate error bit on bit rising error
+0x40007804 C   FIELD 06w01 LBPEGEN: Generate error bit on long bit period error
+0x40007804 C   FIELD 07w01 BRDNOGEN: Avoid error bit generation in broadcast
+0x40007804 C   FIELD 08w01 SFTOP: SFT option bit
+0x40007804 C   FIELD 16w15 OAR: Own address configuration
+0x40007804 C   FIELD 31w01 LSTN: Listen mode
+0x40007808 B  REGISTER TXDR (wo): CEC Tx data register
+0x40007808 C   FIELD 00w08 TXD: Tx data
+0x4000780C B  REGISTER RXDR (ro): CEC Rx data register
+0x4000780C C   FIELD 00w08 RXD: Rx data
+0x40007810 B  REGISTER ISR (rw): CEC interrupt and status register
+0x40007810 C   FIELD 00w01 RXBR: Rx byte received flag
+0x40007810 C   FIELD 01w01 RXEND: Rx end of reception flag
+0x40007810 C   FIELD 02w01 RXOVR: Rx overrun flag
+0x40007810 C   FIELD 03w01 BRE: Rx bit rising error
+0x40007810 C   FIELD 04w01 SBPE: Rx short bit period error
+0x40007810 C   FIELD 05w01 LBPE: Rx long bit period error
+0x40007810 C   FIELD 06w01 RXACKE: Rx missing acknowledge error
+0x40007810 C   FIELD 07w01 ARBLST: Arbitration lost flag
+0x40007810 C   FIELD 08w01 TXBR: Tx byte request flag
+0x40007810 C   FIELD 09w01 TXEND: End of transmission flag
+0x40007810 C   FIELD 10w01 TXUDR: Tx buffer underrun flag
+0x40007810 C   FIELD 11w01 TXERR: Tx error
+0x40007810 C   FIELD 12w01 TXACKE: Tx missing acknowledge error
+0x40007814 B  REGISTER IER (rw): CEC interrupt enable register
+0x40007814 C   FIELD 00w01 RXBRIE: Rx byte received interrupt enable
+0x40007814 C   FIELD 01w01 RXENDIE: Rx end of reception interrupt enable
+0x40007814 C   FIELD 02w01 RXOVRIE: Rx buffer overrun interrupt enable
+0x40007814 C   FIELD 03w01 BREIE: Bit rising error interrupt enable
+0x40007814 C   FIELD 04w01 SBPEIE: Short bit period error interrupt enable
+0x40007814 C   FIELD 05w01 LBPEIE: Long bit period error interrupt enable
+0x40007814 C   FIELD 06w01 RXACKIE: Rx missing acknowledge error interrupt enable
+0x40007814 C   FIELD 07w01 ARBLSTIE: Arbitration lost interrupt enable
+0x40007814 C   FIELD 08w01 TXBRIE: Tx byte request interrupt enable
+0x40007814 C   FIELD 09w01 TXENDIE: Tx end of message interrupt enable
+0x40007814 C   FIELD 10w01 TXUDRIE: Tx underrun interrupt enable
+0x40007814 C   FIELD 11w01 TXERRIE: Tx error interrupt enable
+0x40007814 C   FIELD 12w01 TXACKIE: Tx missing acknowledge error interrupt enable
 0x40010000 A PERIPHERAL COMP
 0x40010000 A PERIPHERAL SYSCFG
 0x40010000 B  REGISTER CFGR1 (rw): configuration register 1
@@ -6927,5 +6929,5 @@ INTERRUPT 026: SPI2 (SPI2): SPI2 global interrupt
 INTERRUPT 027: USART1 (USART1): USART1 global interrupt
 INTERRUPT 028: USART2 (USART2): USART2 global interrupt
 INTERRUPT 029: USART3_4_5_6_7_8 (USART7): USART3, USART4, USART5, USART6, USART7, USART8 global interrupt
-INTERRUPT 030: CEC_CAN (CEC): CEC and CAN global interrupt
+INTERRUPT 030: CEC_CAN (CEC): HDMI-CEC and CAN global interrupt
 INTERRUPT 031: USB (USB): USB global interrupt

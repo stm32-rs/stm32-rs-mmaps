@@ -3939,16 +3939,11 @@
 0x40007434 B  REGISTER SR (rw): status register
 0x40007434 C   FIELD 13w01 DMAUDR1: DAC channel1 DMA underrun flag
 0x40007434 C   FIELD 29w01 DMAUDR2: DAC channel2 DMA underrun flag
-0x40007800 A PERIPHERAL CEC
 0x40007800 A PERIPHERAL I2C3
-0x40007800 B  REGISTER CR (rw): control register
 0x40007800 B  REGISTER CR1: Control register 1
-0x40007800 C   FIELD 00w01 CECEN: CEC Enable
 0x40007800 C   FIELD 00w01 PE (rw): Peripheral enable
 0x40007800 C   FIELD 01w01 TXIE (rw): TX Interrupt enable
-0x40007800 C   FIELD 01w01 TXSOM: Tx start of message
 0x40007800 C   FIELD 02w01 RXIE (rw): RX Interrupt enable
-0x40007800 C   FIELD 02w01 TXEOM: Tx End Of Message
 0x40007800 C   FIELD 03w01 ADDRIE (rw): Address match interrupt enable (slave only)
 0x40007800 C   FIELD 04w01 NACKIE (rw): Not acknowledge received interrupt enable
 0x40007800 C   FIELD 05w01 STOPIE (rw): STOP detection Interrupt enable
@@ -3967,18 +3962,10 @@
 0x40007800 C   FIELD 21w01 SMBDEN (rw): SMBus Device Default address enable
 0x40007800 C   FIELD 22w01 ALERTEN (rw): SMBUS alert enable
 0x40007800 C   FIELD 23w01 PECEN (rw): PEC enable
-0x40007804 B  REGISTER CFGR (rw): configuration register
 0x40007804 B  REGISTER CR2 (rw): Control register 2
-0x40007804 C   FIELD 00w04 OAR: Own Address
 0x40007804 C   FIELD 00w10 SADD: Slave address bit 9:8 (master mode)
-0x40007804 C   FIELD 04w01 LSTN: Listen mode
-0x40007804 C   FIELD 05w03 SFT: Signal Free Time
-0x40007804 C   FIELD 08w01 RXTOL: Rx-Tolerance
-0x40007804 C   FIELD 09w01 BRESTP: Rx-stop on bit rising error
-0x40007804 C   FIELD 10w01 BREGEN: Generate error-bit on bit rising error
 0x40007804 C   FIELD 10w01 RD_WRN: Transfer direction (master mode)
 0x40007804 C   FIELD 11w01 ADD10: 10-bit addressing mode (master mode)
-0x40007804 C   FIELD 11w01 LBPEGEN: Generate Error-Bit on Long Bit Period Error
 0x40007804 C   FIELD 12w01 HEAD10R: 10-bit address header only read direction (master receiver mode)
 0x40007804 C   FIELD 13w01 START: Start generation
 0x40007804 C   FIELD 14w01 STOP: Stop generation (master mode)
@@ -3988,54 +3975,22 @@
 0x40007804 C   FIELD 25w01 AUTOEND: Automatic end mode (master mode)
 0x40007804 C   FIELD 26w01 PECBYTE: Packet error checking byte
 0x40007808 B  REGISTER OAR1 (rw): Own address register 1
-0x40007808 B  REGISTER TXDR (wo): Tx data register
-0x40007808 C   FIELD 00w08 TXD: Tx Data register
 0x40007808 C   FIELD 00w10 OA1: Interface address
 0x40007808 C   FIELD 10w01 OA1MODE: Own Address 1 10-bit mode
 0x40007808 C   FIELD 15w01 OA1EN: Own Address 1 enable
 0x4000780C B  REGISTER OAR2 (rw): Own address register 2
-0x4000780C B  REGISTER RXDR (ro): Rx Data Register
-0x4000780C C   FIELD 00w08 RXDR: CEC Rx Data Register
 0x4000780C C   FIELD 01w07 OA2: Interface address
 0x4000780C C   FIELD 08w03 OA2MSK: Own Address 2 masks
 0x4000780C C   FIELD 15w01 OA2EN: Own Address 2 enable
-0x40007810 B  REGISTER ISR (rw): Interrupt and Status Register
 0x40007810 B  REGISTER TIMINGR (rw): Timing register
-0x40007810 C   FIELD 00w01 RXBR: Rx-Byte Received
 0x40007810 C   FIELD 00w08 SCLL: SCL low period (master mode)
-0x40007810 C   FIELD 01w01 RXEND: End Of Reception
-0x40007810 C   FIELD 02w01 RXOVR: Rx-Overrun
-0x40007810 C   FIELD 03w01 BRE: Rx-Bit rising error
-0x40007810 C   FIELD 04w01 SBPE: Rx-Short Bit period error
-0x40007810 C   FIELD 05w01 LBPE: Rx-Long Bit Period Error
-0x40007810 C   FIELD 06w01 RXACKE: Rx-Missing Acknowledge
-0x40007810 C   FIELD 07w01 ARBLST: Arbitration Lost
-0x40007810 C   FIELD 08w01 TXBR: Tx-Byte Request
 0x40007810 C   FIELD 08w08 SCLH: SCL high period (master mode)
-0x40007810 C   FIELD 09w01 TXEND: End of Transmission
-0x40007810 C   FIELD 10w01 TXUDR: Tx-Buffer Underrun
-0x40007810 C   FIELD 11w01 TXERR: Tx-Error
-0x40007810 C   FIELD 12w01 TXACKE: Tx-Missing acknowledge error
 0x40007810 C   FIELD 16w04 SDADEL: Data hold time
 0x40007810 C   FIELD 20w04 SCLDEL: Data setup time
 0x40007810 C   FIELD 28w04 PRESC: Timing prescaler
-0x40007814 B  REGISTER IER (rw): interrupt enable register
 0x40007814 B  REGISTER TIMEOUTR (rw): Status register 1
-0x40007814 C   FIELD 00w01 RXBRIE: Rx-Byte Received Interrupt Enable
 0x40007814 C   FIELD 00w12 TIMEOUTA: Bus timeout A
-0x40007814 C   FIELD 01w01 RXENDIE: End Of Reception Interrupt Enable
-0x40007814 C   FIELD 02w01 RXOVRIE: Rx-Buffer Overrun Interrupt Enable
-0x40007814 C   FIELD 03w01 BREIE: Bit Rising Error Interrupt Enable
-0x40007814 C   FIELD 04w01 SBPEIE: Short Bit Period Error Interrupt Enable
-0x40007814 C   FIELD 05w01 LBPEIE: Long Bit Period Error Interrupt Enable
-0x40007814 C   FIELD 06w01 RXACKIE: Rx-Missing Acknowledge Error Interrupt Enable
-0x40007814 C   FIELD 07w01 ARBLSTIE: Arbitration Lost Interrupt Enable
-0x40007814 C   FIELD 08w01 TXBRIE: Tx-Byte Request Interrupt Enable
-0x40007814 C   FIELD 09w01 TXENDIE: Tx-End of message interrupt enable
-0x40007814 C   FIELD 10w01 TXUDRIE: Tx-Underrun interrupt enable
-0x40007814 C   FIELD 11w01 TXERRIE: Tx-Error Interrupt Enable
 0x40007814 C   FIELD 12w01 TIDLE: Idle clock timeout detection
-0x40007814 C   FIELD 12w01 TXACKIE: Tx-Missing Acknowledge Error Interrupt Enable
 0x40007814 C   FIELD 15w01 TIMOUTEN: Clock timeout enable
 0x40007814 C   FIELD 16w12 TIMEOUTB: Bus timeout B
 0x40007814 C   FIELD 31w01 TEXTEN: Extended clock timeout enable
@@ -7924,7 +7879,6 @@ INTERRUPT 038: USART2_EXTI26 (EXTI): USART2 global interrupt and EXTI Line 26 in
 INTERRUPT 039: USART3_EXTI28 (EXTI): USART3 global interrupt and EXTI Line 28 interrupt
 INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line15 to Line10 interrupts
 INTERRUPT 041: RTC_ALARM_IT_IRQ (RTC): RTC alarm interrupt
-INTERRUPT 042: CEC_IRQ (CEC): CEC interrupt
 INTERRUPT 043: TIM12_IRQ (TIM12): Timer 12 global interrupt
 INTERRUPT 044: TIM13_IRQ (TIM13): Timer 13 global interrupt
 INTERRUPT 045: TIM14_IRQ (TIM14): Timer 14 global interrupt

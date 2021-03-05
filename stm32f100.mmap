@@ -1265,15 +1265,15 @@
 0x40007434 C   FIELD 13w01 DMAUDR1: DAC channel1 DMA underrun flag
 0x40007434 C   FIELD 29w01 DMAUDR2: DAC channel2 DMA underrun flag
 0x40007800 A PERIPHERAL CEC
-0x40007800 B  REGISTER CFGR (rw): configuration register
+0x40007800 B  REGISTER CFGR (rw): CEC configuration register
 0x40007800 C   FIELD 00w01 PE: Peripheral enable
-0x40007800 C   FIELD 01w01 IE: Interrupt enable
+0x40007800 C   FIELD 01w01 IE: CEC interrupt enable
 0x40007800 C   FIELD 02w01 BTEM: Bit timing error mode
 0x40007800 C   FIELD 03w01 BPEM: Bit period error mode
 0x40007804 B  REGISTER OAR (rw): CEC own address register
 0x40007804 C   FIELD 00w04 OA: Own address
-0x40007808 B  REGISTER PRES (rw): Rx Data Register
-0x40007808 C   FIELD 00w14 PRESC: CEC Rx Data Register
+0x40007808 B  REGISTER PRES (rw): CEC prescalar register
+0x40007808 C   FIELD 00w14 PRESC: Prescalar counter value
 0x4000780C B  REGISTER ESR (ro): CEC error status register
 0x4000780C C   FIELD 00w01 BTE: Bit timing error
 0x4000780C C   FIELD 01w01 BPE: Bit period error
@@ -1286,13 +1286,13 @@
 0x40007810 C   FIELD 00w01 TSOM: Tx start of message
 0x40007810 C   FIELD 01w01 TEOM: Tx end of message
 0x40007810 C   FIELD 02w01 TERR: Tx error
-0x40007810 C   FIELD 03w01 TBTRF: Tx byte transfer request or block transfer finished
-0x40007810 C   FIELD 04w01 RSOM: Rx start of message
-0x40007810 C   FIELD 05w01 REOM: Rx end of message
+0x40007810 C   FIELD 03w01 TBTRF: Tx byte transfer request or block transfer finished flag
+0x40007810 C   FIELD 04w01 RSOM: Rx start of message flag
+0x40007810 C   FIELD 05w01 REOM: Rx end of message flag
 0x40007810 C   FIELD 06w01 RERR: Rx error
-0x40007810 C   FIELD 07w01 RBTF: Rx byte/block transfer finished
+0x40007810 C   FIELD 07w01 RBTF: Rx byte/block transfer finished flag
 0x40007814 B  REGISTER TXD (rw): CEC Tx data register
-0x40007814 C   FIELD 00w08 TXD: Tx Data register
+0x40007814 C   FIELD 00w08 TXD: Tx data
 0x40007818 B  REGISTER RXD (ro): CEC Rx data register
 0x40007818 C   FIELD 00w08 RXD: Rx data
 0x40010000 A PERIPHERAL AFIO
@@ -4014,7 +4014,7 @@ INTERRUPT 038: USART2 (USART2): USART2 global interrupt
 INTERRUPT 039: USART3 (USART3): USART3 global interrupt
 INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line[15:10] interrupts
 INTERRUPT 041: RTCAlarm (RTC): RTC Alarms through EXTI line interrupt
-INTERRUPT 042: CEC (CEC): CEC global interrupt
+INTERRUPT 042: CEC (CEC): HDMI-CEC global interrupt
 INTERRUPT 043: TIM12 (TIM12): TIM12 global interrupt
 INTERRUPT 044: TIM13 (TIM13): TIM13 global interrupt
 INTERRUPT 045: TIM14 (TIM14): TIM14 global interrupt
