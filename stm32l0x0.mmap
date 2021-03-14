@@ -1,0 +1,2867 @@
+0x40000000 A PERIPHERAL TIM2
+0x40000000 B  REGISTER CR1 (rw): control register 1
+0x40000000 C   FIELD 00w01 CEN: Counter enable
+0x40000000 C   FIELD 01w01 UDIS: Update disable
+0x40000000 C   FIELD 02w01 URS: Update request source
+0x40000000 C   FIELD 03w01 OPM: One-pulse mode
+0x40000000 C   FIELD 04w01 DIR: Direction
+0x40000000 C   FIELD 05w02 CMS: Center-aligned mode selection
+0x40000000 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40000000 C   FIELD 08w02 CKD: Clock division
+0x40000004 B  REGISTER CR2 (rw): control register 2
+0x40000004 C   FIELD 03w01 CCDS: Capture/compare DMA selection
+0x40000004 C   FIELD 04w03 MMS: Master mode selection
+0x40000004 C   FIELD 07w01 TI1S: TI1 selection
+0x40000008 B  REGISTER SMCR (rw): slave mode control register
+0x40000008 C   FIELD 00w03 SMS: Slave mode selection
+0x40000008 C   FIELD 04w03 TS: Trigger selection
+0x40000008 C   FIELD 07w01 MSM: Master/Slave mode
+0x40000008 C   FIELD 08w04 ETF: External trigger filter
+0x40000008 C   FIELD 12w02 ETPS: External trigger prescaler
+0x40000008 C   FIELD 14w01 ECE: External clock enable
+0x40000008 C   FIELD 15w01 ETP: External trigger polarity
+0x4000000C B  REGISTER DIER (rw): DMA/Interrupt enable register
+0x4000000C C   FIELD 00w01 UIE: Update interrupt enable
+0x4000000C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
+0x4000000C C   FIELD 02w01 CC2IE: Capture/Compare 2 interrupt enable
+0x4000000C C   FIELD 03w01 CC3IE: Capture/Compare 3 interrupt enable
+0x4000000C C   FIELD 04w01 CC4IE: Capture/Compare 4 interrupt enable
+0x4000000C C   FIELD 06w01 TIE: Trigger interrupt enable
+0x4000000C C   FIELD 08w01 UDE: Update DMA request enable
+0x4000000C C   FIELD 09w01 CC1DE: Capture/Compare 1 DMA request enable
+0x4000000C C   FIELD 10w01 CC2DE: Capture/Compare 2 DMA request enable
+0x4000000C C   FIELD 11w01 CC3DE: Capture/Compare 3 DMA request enable
+0x4000000C C   FIELD 12w01 CC4DE: Capture/Compare 4 DMA request enable
+0x4000000C C   FIELD 14w01 TDE: Trigger DMA request enable
+0x40000010 B  REGISTER SR (rw): status register
+0x40000010 C   FIELD 00w01 UIF: Update interrupt flag
+0x40000010 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
+0x40000010 C   FIELD 02w01 CC2IF: Capture/Compare 2 interrupt flag
+0x40000010 C   FIELD 03w01 CC3IF: Capture/Compare 3 interrupt flag
+0x40000010 C   FIELD 04w01 CC4IF: Capture/Compare 4 interrupt flag
+0x40000010 C   FIELD 06w01 TIF: Trigger interrupt flag
+0x40000010 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
+0x40000010 C   FIELD 10w01 CC2OF: Capture/compare 2 overcapture flag
+0x40000010 C   FIELD 11w01 CC3OF: Capture/Compare 3 overcapture flag
+0x40000010 C   FIELD 12w01 CC4OF: Capture/Compare 4 overcapture flag
+0x40000014 B  REGISTER EGR (wo): event generation register
+0x40000014 C   FIELD 00w01 UG: Update generation
+0x40000014 C   FIELD 01w01 CC1G: Capture/compare 1 generation
+0x40000014 C   FIELD 02w01 CC2G: Capture/compare 2 generation
+0x40000014 C   FIELD 03w01 CC3G: Capture/compare 3 generation
+0x40000014 C   FIELD 04w01 CC4G: Capture/compare 4 generation
+0x40000014 C   FIELD 06w01 TG: Trigger generation
+0x40000018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
+0x40000018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
+0x40000018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40000018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40000018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
+0x40000018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
+0x40000018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40000018 C   FIELD 04w03 OC1M: Output compare 1 mode
+0x40000018 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40000018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
+0x40000018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40000018 C   FIELD 08w02 CC2S: Capture/compare 2 selection
+0x40000018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
+0x40000018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
+0x40000018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40000018 C   FIELD 12w03 OC2M: Output compare 2 mode
+0x40000018 C   FIELD 12w04 IC2F: Input capture 2 filter
+0x40000018 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
+0x4000001C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
+0x4000001C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
+0x4000001C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
+0x4000001C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
+0x4000001C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
+0x4000001C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
+0x4000001C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
+0x4000001C C   FIELD 04w03 OC3M: Output compare 3 mode
+0x4000001C C   FIELD 04w04 IC3F: Input capture 3 filter
+0x4000001C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
+0x4000001C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4000001C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4000001C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
+0x4000001C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
+0x4000001C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
+0x4000001C C   FIELD 12w03 OC4M: Output compare 4 mode
+0x4000001C C   FIELD 12w04 IC4F: Input capture 4 filter
+0x4000001C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
+0x40000020 B  REGISTER CCER (rw): capture/compare enable register
+0x40000020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
+0x40000020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
+0x40000020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40000020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
+0x40000020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
+0x40000020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x40000020 C   FIELD 08w01 CC3E: Capture/Compare 3 output enable
+0x40000020 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
+0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
+0x40000024 B  REGISTER CNT: TIMx counter
+0x40000024 C   FIELD 00w16 CNT: Low counter value
+0x40000028 B  REGISTER PSC (rw): prescaler
+0x40000028 C   FIELD 00w16 PSC: Prescaler value
+0x4000002C B  REGISTER ARR: TIMx auto-reload register
+0x4000002C C   FIELD 00w16 ARR: Low Auto-reload value
+0x40000034 B  REGISTER CCR1: TIMx capture/compare register 1
+0x40000034 C   FIELD 00w16 CCR: Low Capture/Compare 1 value
+0x40000038 B  REGISTER CCR2: TIMx capture/compare register 1
+0x40000038 C   FIELD 00w16 CCR: Low Capture/Compare 1 value
+0x4000003C B  REGISTER CCR3: TIMx capture/compare register 1
+0x4000003C C   FIELD 00w16 CCR: Low Capture/Compare 1 value
+0x40000040 B  REGISTER CCR4: TIMx capture/compare register 1
+0x40000040 C   FIELD 00w16 CCR: Low Capture/Compare 1 value
+0x40000048 B  REGISTER DCR (rw): DMA control register
+0x40000048 C   FIELD 00w05 DBA: DMA base address
+0x40000048 C   FIELD 08w05 DBL: DMA burst length
+0x4000004C B  REGISTER DMAR (rw): DMA address for full transfer
+0x4000004C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x40000050 B  REGISTER OR (rw): TIM2 option register
+0x40000050 C   FIELD 00w03 ETR_RMP: Timer2 ETR remap
+0x40000050 C   FIELD 03w02 TI4_RMP: Internal trigger
+0x40002800 A PERIPHERAL RTC
+0x40002800 B  REGISTER TR (rw): RTC time register
+0x40002800 C   FIELD 00w04 SU: Second units in BCD format
+0x40002800 C   FIELD 04w03 ST: Second tens in BCD format
+0x40002800 C   FIELD 08w04 MNU: Minute units in BCD format
+0x40002800 C   FIELD 12w03 MNT: Minute tens in BCD format
+0x40002800 C   FIELD 16w04 HU: Hour units in BCD format
+0x40002800 C   FIELD 20w02 HT: Hour tens in BCD format
+0x40002800 C   FIELD 22w01 PM: AM/PM notation
+0x40002804 B  REGISTER DR (rw): RTC date register
+0x40002804 C   FIELD 00w04 DU: Date units in BCD format
+0x40002804 C   FIELD 04w02 DT: Date tens in BCD format
+0x40002804 C   FIELD 08w04 MU: Month units in BCD format
+0x40002804 C   FIELD 12w01 MT: Month tens in BCD format
+0x40002804 C   FIELD 13w03 WDU: Week day units
+0x40002804 C   FIELD 16w04 YU: Year units in BCD format
+0x40002804 C   FIELD 20w04 YT: Year tens in BCD format
+0x40002808 B  REGISTER CR: RTC control register
+0x40002808 C   FIELD 00w03 WUCKSEL (rw): Wakeup clock selection
+0x40002808 C   FIELD 03w01 TSEDGE (rw): Time-stamp event active edge
+0x40002808 C   FIELD 04w01 REFCKON (rw): RTC_REFIN reference clock detection enable (50 or 60 Hz)
+0x40002808 C   FIELD 05w01 BYPSHAD (rw): Bypass the shadow registers
+0x40002808 C   FIELD 06w01 FMT (rw): Hour format
+0x40002808 C   FIELD 08w01 ALRAE (rw): Alarm A enable
+0x40002808 C   FIELD 09w01 ALRBE (rw): Alarm B enable
+0x40002808 C   FIELD 10w01 WUTE (rw): Wakeup timer enable
+0x40002808 C   FIELD 11w01 TSE (rw): timestamp enable
+0x40002808 C   FIELD 12w01 ALRAIE (rw): Alarm A interrupt enable
+0x40002808 C   FIELD 13w01 ALRBIE (rw): Alarm B interrupt enable
+0x40002808 C   FIELD 14w01 WUTIE (rw): Wakeup timer interrupt enable
+0x40002808 C   FIELD 15w01 TSIE (rw): Time-stamp interrupt enable
+0x40002808 C   FIELD 16w01 ADD1H (wo): Add 1 hour (summer time change)
+0x40002808 C   FIELD 17w01 SUB1H (wo): Subtract 1 hour (winter time change)
+0x40002808 C   FIELD 18w01 BKP (rw): Backup
+0x40002808 C   FIELD 19w01 COSEL (rw): Calibration output selection
+0x40002808 C   FIELD 20w01 POL (rw): Output polarity
+0x40002808 C   FIELD 21w02 OSEL (rw): Output selection
+0x40002808 C   FIELD 23w01 COE (rw): Calibration output enable
+0x4000280C B  REGISTER ISR: RTC initialization and status register
+0x4000280C C   FIELD 00w01 ALRAWF (ro): Alarm A write flag
+0x4000280C C   FIELD 01w01 ALRBWF (ro): Alarm B write flag
+0x4000280C C   FIELD 02w01 WUTWF (ro): Wakeup timer write flag
+0x4000280C C   FIELD 03w01 SHPF (ro): Shift operation pending
+0x4000280C C   FIELD 04w01 INITS (ro): Initialization status flag
+0x4000280C C   FIELD 05w01 RSF (rw): Registers synchronization flag
+0x4000280C C   FIELD 06w01 INITF (ro): Initialization flag
+0x4000280C C   FIELD 07w01 INIT (rw): Initialization mode
+0x4000280C C   FIELD 08w01 ALRAF (rw): Alarm A flag
+0x4000280C C   FIELD 09w01 ALRBF (rw): Alarm B flag
+0x4000280C C   FIELD 10w01 WUTF (rw): Wakeup timer flag
+0x4000280C C   FIELD 11w01 TSF (rw): Time-stamp flag
+0x4000280C C   FIELD 12w01 TSOVF (rw): Time-stamp overflow flag
+0x4000280C C   FIELD 13w01 TAMP1F (rw): RTC_TAMP1 detection flag
+0x4000280C C   FIELD 14w01 TAMP2F (rw): RTC_TAMP2 detection flag
+0x4000280C C   FIELD 15w01 TAMP3F: RTC_TAMP3 detection flag
+0x4000280C C   FIELD 16w01 RECALPF: Recalibration pending flag
+0x40002810 B  REGISTER PRER (rw): RTC prescaler register
+0x40002810 C   FIELD 00w16 PREDIV_S: Synchronous prescaler factor
+0x40002810 C   FIELD 16w07 PREDIV_A: Asynchronous prescaler factor
+0x40002814 B  REGISTER WUTR (rw): RTC wakeup timer register
+0x40002814 C   FIELD 00w16 WUT: Wakeup auto-reload value bits
+0x4000281C B  REGISTER ALRMAR (rw): RTC alarm A register
+0x4000281C C   FIELD 00w04 SU: Second units in BCD format.
+0x4000281C C   FIELD 04w03 ST: Second tens in BCD format.
+0x4000281C C   FIELD 07w01 MSK1: Alarm A seconds mask
+0x4000281C C   FIELD 08w04 MNU: Minute units in BCD format.
+0x4000281C C   FIELD 12w03 MNT: Minute tens in BCD format.
+0x4000281C C   FIELD 15w01 MSK2: Alarm A minutes mask
+0x4000281C C   FIELD 16w04 HU: Hour units in BCD format.
+0x4000281C C   FIELD 20w02 HT: Hour tens in BCD format.
+0x4000281C C   FIELD 22w01 PM: AM/PM notation
+0x4000281C C   FIELD 23w01 MSK3: Alarm A hours mask
+0x4000281C C   FIELD 24w04 DU: Date units or day in BCD format.
+0x4000281C C   FIELD 28w02 DT: Date tens in BCD format.
+0x4000281C C   FIELD 30w01 WDSEL: Week day selection
+0x4000281C C   FIELD 31w01 MSK4: Alarm A date mask
+0x40002820 B  REGISTER ALRMBR (rw): RTC alarm B register
+0x40002820 C   FIELD 00w04 SU: Second units in BCD format
+0x40002820 C   FIELD 04w03 ST: Second tens in BCD format
+0x40002820 C   FIELD 07w01 MSK1: Alarm B seconds mask
+0x40002820 C   FIELD 08w04 MNU: Minute units in BCD format
+0x40002820 C   FIELD 12w03 MNT: Minute tens in BCD format
+0x40002820 C   FIELD 15w01 MSK2: Alarm B minutes mask
+0x40002820 C   FIELD 16w04 HU: Hour units in BCD format
+0x40002820 C   FIELD 20w02 HT: Hour tens in BCD format
+0x40002820 C   FIELD 22w01 PM: AM/PM notation
+0x40002820 C   FIELD 23w01 MSK3: Alarm B hours mask
+0x40002820 C   FIELD 24w04 DU: Date units or day in BCD format
+0x40002820 C   FIELD 28w02 DT: Date tens in BCD format
+0x40002820 C   FIELD 30w01 WDSEL: Week day selection
+0x40002820 C   FIELD 31w01 MSK4: Alarm B date mask
+0x40002824 B  REGISTER WPR (wo): write protection register
+0x40002824 C   FIELD 00w08 KEY: Write protection key
+0x40002828 B  REGISTER SSR (ro): RTC sub second register
+0x40002828 C   FIELD 00w16 SS: Sub second value
+0x4000282C B  REGISTER SHIFTR (wo): RTC shift control register
+0x4000282C C   FIELD 00w15 SUBFS: Subtract a fraction of a second
+0x4000282C C   FIELD 31w01 ADD1S: Add one second
+0x40002830 B  REGISTER TSTR (ro): RTC timestamp time register
+0x40002830 C   FIELD 00w04 SU: Second units in BCD format.
+0x40002830 C   FIELD 04w03 ST: Second tens in BCD format.
+0x40002830 C   FIELD 08w04 MNU: Minute units in BCD format.
+0x40002830 C   FIELD 12w03 MNT: Minute tens in BCD format.
+0x40002830 C   FIELD 16w04 HU: Hour units in BCD format.
+0x40002830 C   FIELD 20w02 HT: Hour tens in BCD format.
+0x40002830 C   FIELD 22w01 PM: AM/PM notation
+0x40002834 B  REGISTER TSDR (ro): RTC timestamp date register
+0x40002834 C   FIELD 00w04 DU: Date units in BCD format
+0x40002834 C   FIELD 04w02 DT: Date tens in BCD format
+0x40002834 C   FIELD 08w04 MU: Month units in BCD format
+0x40002834 C   FIELD 12w01 MT: Month tens in BCD format
+0x40002834 C   FIELD 13w03 WDU: Week day units
+0x40002838 B  REGISTER TSSSR (ro): RTC time-stamp sub second register
+0x40002838 C   FIELD 00w16 SS: Sub second value
+0x4000283C B  REGISTER CALR (rw): RTC calibration register
+0x4000283C C   FIELD 00w09 CALM: Calibration minus
+0x4000283C C   FIELD 13w01 CALW16: Use a 16-second calibration cycle period
+0x4000283C C   FIELD 14w01 CALW8: Use an 8-second calibration cycle period
+0x4000283C C   FIELD 15w01 CALP: Increase frequency of RTC by 488.5 ppm
+0x40002840 B  REGISTER TAMPCR (rw): RTC tamper configuration register
+0x40002840 C   FIELD 00w01 TAMP1E: RTC_TAMP1 input detection enable
+0x40002840 C   FIELD 01w01 TAMP1TRG: Active level for RTC_TAMP1 input
+0x40002840 C   FIELD 02w01 TAMPIE: Tamper interrupt enable
+0x40002840 C   FIELD 03w01 TAMP2E: RTC_TAMP2 input detection enable
+0x40002840 C   FIELD 04w01 TAMP2TRG: Active level for RTC_TAMP2 input
+0x40002840 C   FIELD 05w01 TAMP3E: RTC_TAMP3 detection enable
+0x40002840 C   FIELD 06w01 TAMP3TRG: Active level for RTC_TAMP3 input
+0x40002840 C   FIELD 07w01 TAMPTS: Activate timestamp on tamper detection event
+0x40002840 C   FIELD 08w03 TAMPFREQ: Tamper sampling frequency
+0x40002840 C   FIELD 11w02 TAMPFLT: RTC_TAMPx filter count
+0x40002840 C   FIELD 13w02 TAMPPRCH: RTC_TAMPx precharge duration
+0x40002840 C   FIELD 15w01 TAMPPUDIS: RTC_TAMPx pull-up disable
+0x40002840 C   FIELD 16w01 TAMP1IE: Tamper 1 interrupt enable
+0x40002840 C   FIELD 17w01 TAMP1NOERASE: Tamper 1 no erase
+0x40002840 C   FIELD 18w01 TAMP1MF: Tamper 1 mask flag
+0x40002840 C   FIELD 19w01 TAMP2IE: Tamper 2 interrupt enable
+0x40002840 C   FIELD 20w01 TAMP2NOERASE: Tamper 2 no erase
+0x40002840 C   FIELD 21w01 TAMP2MF: Tamper 2 mask flag
+0x40002840 C   FIELD 22w01 TAMP3IE: Tamper 3 interrupt enable
+0x40002840 C   FIELD 23w01 TAMP3NOERASE: Tamper 3 no erase
+0x40002840 C   FIELD 24w01 TAMP3MF: Tamper 3 mask flag
+0x40002844 B  REGISTER ALRMASSR (rw): RTC alarm A sub second register
+0x40002844 C   FIELD 00w15 SS: Sub seconds value
+0x40002844 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
+0x40002848 B  REGISTER ALRMBSSR (rw): RTC alarm B sub second register
+0x40002848 C   FIELD 00w15 SS: Sub seconds value
+0x40002848 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
+0x4000284C B  REGISTER OR (rw): option register
+0x4000284C C   FIELD 00w01 RTC_ALARM_TYPE: RTC_ALARM on PC13 output type
+0x4000284C C   FIELD 01w01 RTC_OUT_RMP: RTC_ALARM on PC13 output type
+0x40002850 B  REGISTER BKP0R (rw): RTC backup registers
+0x40002850 C   FIELD 00w32 BKP: BKP
+0x40002854 B  REGISTER BKP1R (rw): RTC backup registers
+0x40002854 C   FIELD 00w32 BKP: BKP
+0x40002858 B  REGISTER BKP2R (rw): RTC backup registers
+0x40002858 C   FIELD 00w32 BKP: BKP
+0x4000285C B  REGISTER BKP3R (rw): RTC backup registers
+0x4000285C C   FIELD 00w32 BKP: BKP
+0x40002860 B  REGISTER BKP4R (rw): RTC backup registers
+0x40002860 C   FIELD 00w32 BKP: BKP
+0x40002C00 A PERIPHERAL WWDG
+0x40002C00 B  REGISTER CR (rw): Control register
+0x40002C00 C   FIELD 00w07 T: 7-bit counter (MSB to LSB)
+0x40002C00 C   FIELD 07w01 WDGA: Activation bit
+0x40002C04 B  REGISTER CFR (rw): Configuration register
+0x40002C04 C   FIELD 00w07 W: 7-bit window value
+0x40002C04 C   FIELD 07w02 WDGTB: Timer base
+0x40002C04 C   FIELD 09w01 EWI: Early wakeup interrupt
+0x40002C08 B  REGISTER SR (rw): Status register
+0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
+0x40003000 A PERIPHERAL IWDG
+0x40003000 B  REGISTER KR (wo): Key register
+0x40003000 C   FIELD 00w16 KEY: Key value (write only, read 0x0000)
+0x40003004 B  REGISTER PR (rw): Prescaler register
+0x40003004 C   FIELD 00w03 PR: Prescaler divider
+0x40003008 B  REGISTER RLR (rw): Reload register
+0x40003008 C   FIELD 00w12 RL: Watchdog counter reload value
+0x4000300C B  REGISTER SR (ro): Status register
+0x4000300C C   FIELD 00w01 PVU: Watchdog prescaler value update
+0x4000300C C   FIELD 01w01 RVU: Watchdog counter reload value update
+0x4000300C C   FIELD 02w01 WVU: Watchdog counter window value update
+0x40003010 B  REGISTER WINR (rw): Window register
+0x40003010 C   FIELD 00w12 WIN: Watchdog counter window value
+0x40004400 A PERIPHERAL USART2
+0x40004400 B  REGISTER CR1 (rw): Control register 1
+0x40004400 C   FIELD 00w01 UE: USART enable
+0x40004400 C   FIELD 01w01 UESM: USART enable in Stop mode
+0x40004400 C   FIELD 02w01 RE: Receiver enable
+0x40004400 C   FIELD 03w01 TE: Transmitter enable
+0x40004400 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
+0x40004400 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
+0x40004400 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
+0x40004400 C   FIELD 07w01 TXEIE: interrupt enable
+0x40004400 C   FIELD 08w01 PEIE: PE interrupt enable
+0x40004400 C   FIELD 09w01 PS: Parity selection
+0x40004400 C   FIELD 10w01 PCE: Parity control enable
+0x40004400 C   FIELD 11w01 WAKE: Receiver wakeup method
+0x40004400 C   FIELD 12w01 M0: Word length
+0x40004400 C   FIELD 13w01 MME: Mute mode enable
+0x40004400 C   FIELD 14w01 CMIE: Character match interrupt enable
+0x40004400 C   FIELD 15w01 OVER8: Oversampling mode
+0x40004400 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40004400 C   FIELD 21w05 DEAT: Driver Enable assertion time
+0x40004400 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
+0x40004400 C   FIELD 27w01 EOBIE: End of Block interrupt enable
+0x40004400 C   FIELD 28w01 M1: Word length
+0x40004404 B  REGISTER CR2 (rw): Control register 2
+0x40004404 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
+0x40004404 C   FIELD 05w01 LBDL: LIN break detection length
+0x40004404 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
+0x40004404 C   FIELD 08w01 LBCL: Last bit clock pulse
+0x40004404 C   FIELD 09w01 CPHA: Clock phase
+0x40004404 C   FIELD 10w01 CPOL: Clock polarity
+0x40004404 C   FIELD 11w01 CLKEN: Clock enable
+0x40004404 C   FIELD 12w02 STOP: STOP bits
+0x40004404 C   FIELD 14w01 LINEN: LIN mode enable
+0x40004404 C   FIELD 15w01 SWAP: Swap TX/RX pins
+0x40004404 C   FIELD 16w01 RXINV: RX pin active level inversion
+0x40004404 C   FIELD 17w01 TXINV: TX pin active level inversion
+0x40004404 C   FIELD 18w01 DATAINV: Binary data inversion
+0x40004404 C   FIELD 19w01 MSBFIRST: Most significant bit first
+0x40004404 C   FIELD 20w01 ABREN: Auto baud rate enable
+0x40004404 C   FIELD 21w02 ABRMOD: Auto baud rate mode
+0x40004404 C   FIELD 23w01 RTOEN: Receiver timeout enable
+0x40004404 C   FIELD 24w08 ADD: Address of the USART node
+0x40004408 B  REGISTER CR3 (rw): Control register 3
+0x40004408 C   FIELD 00w01 EIE: Error interrupt enable
+0x40004408 C   FIELD 01w01 IREN: Ir mode enable
+0x40004408 C   FIELD 02w01 IRLP: Ir low-power
+0x40004408 C   FIELD 03w01 HDSEL: Half-duplex selection
+0x40004408 C   FIELD 04w01 NACK: Smartcard NACK enable
+0x40004408 C   FIELD 05w01 SCEN: Smartcard mode enable
+0x40004408 C   FIELD 06w01 DMAR: DMA enable receiver
+0x40004408 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40004408 C   FIELD 08w01 RTSE: RTS enable
+0x40004408 C   FIELD 09w01 CTSE: CTS enable
+0x40004408 C   FIELD 10w01 CTSIE: CTS interrupt enable
+0x40004408 C   FIELD 11w01 ONEBIT: One sample bit method enable
+0x40004408 C   FIELD 12w01 OVRDIS: Overrun Disable
+0x40004408 C   FIELD 13w01 DDRE: DMA Disable on Reception Error
+0x40004408 C   FIELD 14w01 DEM: Driver enable mode
+0x40004408 C   FIELD 15w01 DEP: Driver enable polarity selection
+0x40004408 C   FIELD 17w03 SCARCNT: Smartcard auto-retry count
+0x40004408 C   FIELD 20w02 WUS: Wakeup from Stop mode interrupt flag selection
+0x40004408 C   FIELD 22w01 WUFIE: Wakeup from Stop mode interrupt enable
+0x4000440C B  REGISTER BRR (rw): Baud rate register
+0x4000440C C   FIELD 00w16 BRR: DIV_Mantissa
+0x40004410 B  REGISTER GTPR (rw): Guard time and prescaler register
+0x40004410 C   FIELD 00w08 PSC: Prescaler value
+0x40004410 C   FIELD 08w08 GT: Guard time value
+0x40004414 B  REGISTER RTOR (rw): Receiver timeout register
+0x40004414 C   FIELD 00w24 RTO: Receiver timeout value
+0x40004414 C   FIELD 24w08 BLEN: Block Length
+0x40004418 B  REGISTER RQR (wo): Request register
+0x40004418 C   FIELD 00w01 ABRRQ: Auto baud rate request
+0x40004418 C   FIELD 01w01 SBKRQ: Send break request
+0x40004418 C   FIELD 02w01 MMRQ: Mute mode request
+0x40004418 C   FIELD 03w01 RXFRQ: Receive data flush request
+0x40004418 C   FIELD 04w01 TXFRQ: Transmit data flush request
+0x4000441C B  REGISTER ISR (ro): Interrupt & status register
+0x4000441C C   FIELD 00w01 PE: PE
+0x4000441C C   FIELD 01w01 FE: FE
+0x4000441C C   FIELD 02w01 NF: NF
+0x4000441C C   FIELD 03w01 ORE: ORE
+0x4000441C C   FIELD 04w01 IDLE: IDLE
+0x4000441C C   FIELD 05w01 RXNE: RXNE
+0x4000441C C   FIELD 06w01 TC: TC
+0x4000441C C   FIELD 07w01 TXE: TXE
+0x4000441C C   FIELD 08w01 LBDF: LBDF
+0x4000441C C   FIELD 09w01 CTSIF: CTSIF
+0x4000441C C   FIELD 10w01 CTS: CTS
+0x4000441C C   FIELD 11w01 RTOF: RTOF
+0x4000441C C   FIELD 12w01 EOBF: EOBF
+0x4000441C C   FIELD 14w01 ABRE: ABRE
+0x4000441C C   FIELD 15w01 ABRF: ABRF
+0x4000441C C   FIELD 16w01 BUSY: BUSY
+0x4000441C C   FIELD 17w01 CMF: CMF
+0x4000441C C   FIELD 18w01 SBKF: SBKF
+0x4000441C C   FIELD 19w01 RWU: RWU
+0x4000441C C   FIELD 20w01 WUF: WUF
+0x4000441C C   FIELD 21w01 TEACK: TEACK
+0x4000441C C   FIELD 22w01 REACK: REACK
+0x40004420 B  REGISTER ICR (wo): Interrupt flag clear register
+0x40004420 C   FIELD 00w01 PECF: Parity error clear flag
+0x40004420 C   FIELD 01w01 FECF: Framing error clear flag
+0x40004420 C   FIELD 02w01 NCF: Noise detected clear flag
+0x40004420 C   FIELD 03w01 ORECF: Overrun error clear flag
+0x40004420 C   FIELD 04w01 IDLECF: Idle line detected clear flag
+0x40004420 C   FIELD 06w01 TCCF: Transmission complete clear flag
+0x40004420 C   FIELD 08w01 LBDCF: LIN break detection clear flag
+0x40004420 C   FIELD 09w01 CTSCF: CTS clear flag
+0x40004420 C   FIELD 11w01 RTOCF: Receiver timeout clear flag
+0x40004420 C   FIELD 12w01 EOBCF: End of block clear flag
+0x40004420 C   FIELD 17w01 CMCF: Character match clear flag
+0x40004420 C   FIELD 20w01 WUCF: Wakeup from Stop mode clear flag
+0x40004424 B  REGISTER RDR (ro): Receive data register
+0x40004424 C   FIELD 00w09 RDR: Receive data value
+0x40004428 B  REGISTER TDR (rw): Transmit data register
+0x40004428 C   FIELD 00w09 TDR: Transmit data value
+0x40004800 A PERIPHERAL LPUART1
+0x40004800 B  REGISTER CR1 (rw): Control register 1
+0x40004800 C   FIELD 00w01 UE: USART enable
+0x40004800 C   FIELD 01w01 UESM: USART enable in Stop mode
+0x40004800 C   FIELD 02w01 RE: Receiver enable
+0x40004800 C   FIELD 03w01 TE: Transmitter enable
+0x40004800 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
+0x40004800 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
+0x40004800 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
+0x40004800 C   FIELD 07w01 TXEIE: interrupt enable
+0x40004800 C   FIELD 08w01 PEIE: PE interrupt enable
+0x40004800 C   FIELD 09w01 PS: Parity selection
+0x40004800 C   FIELD 10w01 PCE: Parity control enable
+0x40004800 C   FIELD 11w01 WAKE: Receiver wakeup method
+0x40004800 C   FIELD 12w01 M0: Word length
+0x40004800 C   FIELD 13w01 MME: Mute mode enable
+0x40004800 C   FIELD 14w01 CMIE: Character match interrupt enable
+0x40004800 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40004800 C   FIELD 21w05 DEAT: Driver Enable assertion time
+0x40004800 C   FIELD 28w01 M1: Word length
+0x40004804 B  REGISTER CR2 (rw): Control register 2
+0x40004804 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
+0x40004804 C   FIELD 11w01 CLKEN: Clock enable
+0x40004804 C   FIELD 12w02 STOP: STOP bits
+0x40004804 C   FIELD 15w01 SWAP: Swap TX/RX pins
+0x40004804 C   FIELD 16w01 RXINV: RX pin active level inversion
+0x40004804 C   FIELD 17w01 TXINV: TX pin active level inversion
+0x40004804 C   FIELD 18w01 DATAINV: Binary data inversion
+0x40004804 C   FIELD 19w01 MSBFIRST: Most significant bit first
+0x40004804 C   FIELD 24w08 ADD: Address of the USART node
+0x40004808 B  REGISTER CR3 (rw): Control register 3
+0x40004808 C   FIELD 00w01 EIE: Error interrupt enable
+0x40004808 C   FIELD 03w01 HDSEL: Half-duplex selection
+0x40004808 C   FIELD 06w01 DMAR: DMA enable receiver
+0x40004808 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40004808 C   FIELD 08w01 RTSE: RTS enable
+0x40004808 C   FIELD 09w01 CTSE: CTS enable
+0x40004808 C   FIELD 10w01 CTSIE: CTS interrupt enable
+0x40004808 C   FIELD 12w01 OVRDIS: Overrun Disable
+0x40004808 C   FIELD 13w01 DDRE: DMA Disable on Reception Error
+0x40004808 C   FIELD 14w01 DEM: Driver enable mode
+0x40004808 C   FIELD 15w01 DEP: Driver enable polarity selection
+0x40004808 C   FIELD 20w02 WUS: Wakeup from Stop mode interrupt flag selection
+0x40004808 C   FIELD 22w01 WUFIE: Wakeup from Stop mode interrupt enable
+0x4000480C B  REGISTER BRR (rw): Baud rate register
+0x4000480C C   FIELD 00w20 BRR: BRR
+0x40004818 B  REGISTER RQR (wo): Request register
+0x40004818 C   FIELD 01w01 SBKRQ: Send break request
+0x40004818 C   FIELD 02w01 MMRQ: Mute mode request
+0x40004818 C   FIELD 03w01 RXFRQ: Receive data flush request
+0x4000481C B  REGISTER ISR (ro): Interrupt & status register
+0x4000481C C   FIELD 00w01 PE: PE
+0x4000481C C   FIELD 01w01 FE: FE
+0x4000481C C   FIELD 02w01 NF: NF
+0x4000481C C   FIELD 03w01 ORE: ORE
+0x4000481C C   FIELD 04w01 IDLE: IDLE
+0x4000481C C   FIELD 05w01 RXNE: RXNE
+0x4000481C C   FIELD 06w01 TC: TC
+0x4000481C C   FIELD 07w01 TXE: TXE
+0x4000481C C   FIELD 09w01 CTSIF: CTSIF
+0x4000481C C   FIELD 10w01 CTS: CTS
+0x4000481C C   FIELD 16w01 BUSY: BUSY
+0x4000481C C   FIELD 17w01 CMF: CMF
+0x4000481C C   FIELD 18w01 SBKF: SBKF
+0x4000481C C   FIELD 19w01 RWU: RWU
+0x4000481C C   FIELD 20w01 WUF: WUF
+0x4000481C C   FIELD 21w01 TEACK: TEACK
+0x4000481C C   FIELD 22w01 REACK: REACK
+0x40004820 B  REGISTER ICR (wo): Interrupt flag clear register
+0x40004820 C   FIELD 00w01 PECF: Parity error clear flag
+0x40004820 C   FIELD 01w01 FECF: Framing error clear flag
+0x40004820 C   FIELD 02w01 NCF: Noise detected clear flag
+0x40004820 C   FIELD 03w01 ORECF: Overrun error clear flag
+0x40004820 C   FIELD 04w01 IDLECF: Idle line detected clear flag
+0x40004820 C   FIELD 06w01 TCCF: Transmission complete clear flag
+0x40004820 C   FIELD 09w01 CTSCF: CTS clear flag
+0x40004820 C   FIELD 17w01 CMCF: Character match clear flag
+0x40004820 C   FIELD 20w01 WUCF: Wakeup from Stop mode clear flag
+0x40004824 B  REGISTER RDR (ro): Receive data register
+0x40004824 C   FIELD 00w09 RDR: Receive data value
+0x40004828 B  REGISTER TDR (rw): Transmit data register
+0x40004828 C   FIELD 00w09 TDR: Transmit data value
+0x40005400 A PERIPHERAL I2C1
+0x40005400 B  REGISTER CR1 (rw): Control register 1
+0x40005400 C   FIELD 00w01 PE: Peripheral enable
+0x40005400 C   FIELD 01w01 TXIE: TX Interrupt enable
+0x40005400 C   FIELD 02w01 RXIE: RX Interrupt enable
+0x40005400 C   FIELD 03w01 ADDRIE: Address match interrupt enable (slave only)
+0x40005400 C   FIELD 04w01 NACKIE: Not acknowledge received interrupt enable
+0x40005400 C   FIELD 05w01 STOPIE: STOP detection Interrupt enable
+0x40005400 C   FIELD 06w01 TCIE: Transfer Complete interrupt enable
+0x40005400 C   FIELD 07w01 ERRIE: Error interrupts enable
+0x40005400 C   FIELD 08w04 DNF: Digital noise filter
+0x40005400 C   FIELD 12w01 ANFOFF: Analog noise filter OFF
+0x40005400 C   FIELD 14w01 TXDMAEN: DMA transmission requests enable
+0x40005400 C   FIELD 15w01 RXDMAEN: DMA reception requests enable
+0x40005400 C   FIELD 16w01 SBC: Slave byte control
+0x40005400 C   FIELD 17w01 NOSTRETCH: Clock stretching disable
+0x40005400 C   FIELD 18w01 WUPEN: Wakeup from STOP enable
+0x40005400 C   FIELD 19w01 GCEN: General call enable
+0x40005400 C   FIELD 20w01 SMBHEN: SMBus Host address enable
+0x40005400 C   FIELD 21w01 SMBDEN: SMBus Device Default address enable
+0x40005400 C   FIELD 22w01 ALERTEN: SMBUS alert enable
+0x40005400 C   FIELD 23w01 PECEN: PEC enable
+0x40005404 B  REGISTER CR2 (rw): Control register 2
+0x40005404 C   FIELD 00w10 SADD: Slave address bit (master mode)
+0x40005404 C   FIELD 10w01 RD_WRN: Transfer direction (master mode)
+0x40005404 C   FIELD 11w01 ADD10: 10-bit addressing mode (master mode)
+0x40005404 C   FIELD 12w01 HEAD10R: 10-bit address header only read direction (master receiver mode)
+0x40005404 C   FIELD 13w01 START: Start generation
+0x40005404 C   FIELD 14w01 STOP: Stop generation (master mode)
+0x40005404 C   FIELD 15w01 NACK: NACK generation (slave mode)
+0x40005404 C   FIELD 16w08 NBYTES: Number of bytes
+0x40005404 C   FIELD 24w01 RELOAD: NBYTES reload mode
+0x40005404 C   FIELD 25w01 AUTOEND: Automatic end mode (master mode)
+0x40005404 C   FIELD 26w01 PECBYTE: Packet error checking byte
+0x40005408 B  REGISTER OAR1 (rw): Own address register 1
+0x40005408 C   FIELD 00w10 OA1: Interface address
+0x40005408 C   FIELD 10w01 OA1MODE: Own Address 1 10-bit mode
+0x40005408 C   FIELD 15w01 OA1EN: Own Address 1 enable
+0x4000540C B  REGISTER OAR2 (rw): Own address register 2
+0x4000540C C   FIELD 01w07 OA2: Interface address
+0x4000540C C   FIELD 08w03 OA2MSK: Own Address 2 masks
+0x4000540C C   FIELD 15w01 OA2EN: Own Address 2 enable
+0x40005410 B  REGISTER TIMINGR (rw): Timing register
+0x40005410 C   FIELD 00w08 SCLL: SCL low period (master mode)
+0x40005410 C   FIELD 08w08 SCLH: SCL high period (master mode)
+0x40005410 C   FIELD 16w04 SDADEL: Data hold time
+0x40005410 C   FIELD 20w04 SCLDEL: Data setup time
+0x40005410 C   FIELD 28w04 PRESC: Timing prescaler
+0x40005414 B  REGISTER TIMEOUTR (rw): Status register 1
+0x40005414 C   FIELD 00w12 TIMEOUTA: Bus timeout A
+0x40005414 C   FIELD 12w01 TIDLE: Idle clock timeout detection
+0x40005414 C   FIELD 15w01 TIMOUTEN: Clock timeout enable
+0x40005414 C   FIELD 16w12 TIMEOUTB: Bus timeout B
+0x40005414 C   FIELD 31w01 TEXTEN: Extended clock timeout enable
+0x40005418 B  REGISTER ISR: Interrupt and Status register
+0x40005418 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters)
+0x40005418 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters)
+0x40005418 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers)
+0x40005418 C   FIELD 03w01 ADDR (ro): Address matched (slave mode)
+0x40005418 C   FIELD 04w01 NACKF (ro): Not acknowledge received flag
+0x40005418 C   FIELD 05w01 STOPF (ro): Stop detection flag
+0x40005418 C   FIELD 06w01 TC (ro): Transfer Complete (master mode)
+0x40005418 C   FIELD 07w01 TCR (ro): Transfer Complete Reload
+0x40005418 C   FIELD 08w01 BERR (ro): Bus error
+0x40005418 C   FIELD 09w01 ARLO (ro): Arbitration lost
+0x40005418 C   FIELD 10w01 OVR (ro): Overrun/Underrun (slave mode)
+0x40005418 C   FIELD 11w01 PECERR (ro): PEC Error in reception
+0x40005418 C   FIELD 12w01 TIMEOUT (ro): Timeout or t_low detection flag
+0x40005418 C   FIELD 13w01 ALERT (ro): SMBus alert
+0x40005418 C   FIELD 15w01 BUSY (ro): Bus busy
+0x40005418 C   FIELD 16w01 DIR (ro): Transfer direction (Slave mode)
+0x40005418 C   FIELD 17w07 ADDCODE (ro): Address match code (Slave mode)
+0x4000541C B  REGISTER ICR (wo): Interrupt clear register
+0x4000541C C   FIELD 03w01 ADDRCF: Address Matched flag clear
+0x4000541C C   FIELD 04w01 NACKCF: Not Acknowledge flag clear
+0x4000541C C   FIELD 05w01 STOPCF: Stop detection flag clear
+0x4000541C C   FIELD 08w01 BERRCF: Bus error flag clear
+0x4000541C C   FIELD 09w01 ARLOCF: Arbitration lost flag clear
+0x4000541C C   FIELD 10w01 OVRCF: Overrun/Underrun flag clear
+0x4000541C C   FIELD 11w01 PECCF: PEC Error flag clear
+0x4000541C C   FIELD 12w01 TIMOUTCF: Timeout detection flag clear
+0x4000541C C   FIELD 13w01 ALERTCF: Alert flag clear
+0x40005420 B  REGISTER PECR (ro): PEC register
+0x40005420 C   FIELD 00w08 PEC: Packet error checking register
+0x40005424 B  REGISTER RXDR (ro): Receive data register
+0x40005424 C   FIELD 00w08 RXDATA: 8-bit receive data
+0x40005428 B  REGISTER TXDR (rw): Transmit data register
+0x40005428 C   FIELD 00w08 TXDATA: 8-bit transmit data
+0x40007000 A PERIPHERAL PWR
+0x40007000 B  REGISTER CR (rw): power control register
+0x40007000 C   FIELD 00w01 LPSDSR: Low-power deepsleep/Sleep/Low-power run
+0x40007000 C   FIELD 01w01 PDDS: Power down deepsleep
+0x40007000 C   FIELD 02w01 CWUF: Clear wakeup flag
+0x40007000 C   FIELD 03w01 CSBF: Clear standby flag
+0x40007000 C   FIELD 04w01 PVDE: Power voltage detector enable
+0x40007000 C   FIELD 05w03 PLS: PVD level selection
+0x40007000 C   FIELD 08w01 DBP: Disable backup domain write protection
+0x40007000 C   FIELD 09w01 ULP: Ultra-low-power mode
+0x40007000 C   FIELD 10w01 FWU: Fast wakeup
+0x40007000 C   FIELD 11w02 VOS: Voltage scaling range selection
+0x40007000 C   FIELD 13w01 DS_EE_KOFF: Deep sleep mode with Flash memory kept off
+0x40007000 C   FIELD 14w01 LPRUN: Low power run mode
+0x40007000 C   FIELD 16w01 LPDS: Regulator in Low-power deepsleep mode
+0x40007004 B  REGISTER CSR: power control/status register
+0x40007004 C   FIELD 00w01 WUF (ro): Wakeup flag
+0x40007004 C   FIELD 01w01 SBF (ro): Standby flag
+0x40007004 C   FIELD 02w01 PVDO (ro): PVD output
+0x40007004 C   FIELD 03w01 VREFINTRDYF (ro): Internal voltage reference ready flag
+0x40007004 C   FIELD 04w01 VOSF (ro): Voltage Scaling select flag
+0x40007004 C   FIELD 05w01 REGLPF (ro): Regulator LP flag
+0x40007004 C   FIELD 08w01 EWUP1 (rw): Enable WKUP pin 1
+0x40007004 C   FIELD 09w01 EWUP2 (rw): Enable WKUP pin 2
+0x40007004 C   FIELD 10w01 EWUP3: Enable WKUP pin 3
+0x40007C00 A PERIPHERAL LPTIM
+0x40007C00 B  REGISTER ISR (ro): Interrupt and Status Register
+0x40007C00 C   FIELD 00w01 CMPM: Compare match
+0x40007C00 C   FIELD 01w01 ARRM: Autoreload match
+0x40007C00 C   FIELD 02w01 EXTTRIG: External trigger edge event
+0x40007C00 C   FIELD 03w01 CMPOK: Compare register update OK
+0x40007C00 C   FIELD 04w01 ARROK: Autoreload register update OK
+0x40007C00 C   FIELD 05w01 UP: Counter direction change down to up
+0x40007C00 C   FIELD 06w01 DOWN: Counter direction change up to down
+0x40007C04 B  REGISTER ICR (wo): Interrupt Clear Register
+0x40007C04 C   FIELD 00w01 CMPMCF: compare match Clear Flag
+0x40007C04 C   FIELD 01w01 ARRMCF: Autoreload match Clear Flag
+0x40007C04 C   FIELD 02w01 EXTTRIGCF: External trigger valid edge Clear Flag
+0x40007C04 C   FIELD 03w01 CMPOKCF: Compare register update OK Clear Flag
+0x40007C04 C   FIELD 04w01 ARROKCF: Autoreload register update OK Clear Flag
+0x40007C04 C   FIELD 05w01 UPCF: Direction change to UP Clear Flag
+0x40007C04 C   FIELD 06w01 DOWNCF: Direction change to down Clear Flag
+0x40007C08 B  REGISTER IER (rw): Interrupt Enable Register
+0x40007C08 C   FIELD 00w01 CMPMIE: Compare match Interrupt Enable
+0x40007C08 C   FIELD 01w01 ARRMIE: Autoreload match Interrupt Enable
+0x40007C08 C   FIELD 02w01 EXTTRIGIE: External trigger valid edge Interrupt Enable
+0x40007C08 C   FIELD 03w01 CMPOKIE: Compare register update OK Interrupt Enable
+0x40007C08 C   FIELD 04w01 ARROKIE: Autoreload register update OK Interrupt Enable
+0x40007C08 C   FIELD 05w01 UPIE: Direction change to UP Interrupt Enable
+0x40007C08 C   FIELD 06w01 DOWNIE: Direction change to down Interrupt Enable
+0x40007C0C B  REGISTER CFGR (rw): Configuration Register
+0x40007C0C C   FIELD 00w01 CKSEL: Clock selector
+0x40007C0C C   FIELD 01w02 CKPOL: Clock Polarity
+0x40007C0C C   FIELD 03w02 CKFLT: Configurable digital filter for external clock
+0x40007C0C C   FIELD 06w02 TRGFLT: Configurable digital filter for trigger
+0x40007C0C C   FIELD 09w03 PRESC: Clock prescaler
+0x40007C0C C   FIELD 13w03 TRIGSEL: Trigger selector
+0x40007C0C C   FIELD 17w02 TRIGEN: Trigger enable and polarity
+0x40007C0C C   FIELD 19w01 TIMOUT: Timeout enable
+0x40007C0C C   FIELD 20w01 WAVE: Waveform shape
+0x40007C0C C   FIELD 21w01 WAVPOL: Waveform shape polarity
+0x40007C0C C   FIELD 22w01 PRELOAD: Registers update mode
+0x40007C0C C   FIELD 23w01 COUNTMODE: counter mode enabled
+0x40007C0C C   FIELD 24w01 ENC: Encoder mode enable
+0x40007C10 B  REGISTER CR (rw): Control Register
+0x40007C10 C   FIELD 00w01 ENABLE: LPTIM Enable
+0x40007C10 C   FIELD 01w01 SNGSTRT: LPTIM start in single mode
+0x40007C10 C   FIELD 02w01 CNTSTRT: Timer start in continuous mode
+0x40007C14 B  REGISTER CMP (rw): Compare Register
+0x40007C14 C   FIELD 00w16 CMP: Compare value.
+0x40007C18 B  REGISTER ARR (rw): Autoreload Register
+0x40007C18 C   FIELD 00w16 ARR: Auto reload value.
+0x40007C1C B  REGISTER CNT (ro): Counter Register
+0x40007C1C C   FIELD 00w16 CNT: Counter value.
+0x40010000 A PERIPHERAL SYSCFG
+0x40010000 B  REGISTER CFGR1: SYSCFG configuration register 1
+0x40010000 C   FIELD 00w02 MEM_MODE (rw): Memory mapping selection bits
+0x40010000 C   FIELD 08w02 BOOT_MODE (ro): Boot mode selected by the boot pins status bits
+0x40010004 B  REGISTER CFGR2 (rw): SYSCFG configuration register 2
+0x40010004 C   FIELD 00w01 FWDIS: Firewall disable bit
+0x40010004 C   FIELD 01w03 CAPA: Configuration of internal VLCD rail connection to optional external capacitor
+0x40010004 C   FIELD 08w01 I2C_PB6_FMP: Fm+ drive capability on PB6 enable bit
+0x40010004 C   FIELD 09w01 I2C_PB7_FMP: Fm+ drive capability on PB7 enable bit
+0x40010004 C   FIELD 10w01 I2C_PB8_FMP: Fm+ drive capability on PB8 enable bit
+0x40010004 C   FIELD 11w01 I2C_PB9_FMP: Fm+ drive capability on PB9 enable bit
+0x40010004 C   FIELD 12w01 I2C1_FMP: I2C1 Fm+ drive capability enable bit
+0x40010004 C   FIELD 13w01 I2C2_FMP: I2C2 Fm+ drive capability enable bit
+0x40010008 B  REGISTER EXTICR1 (rw): external interrupt configuration register 1
+0x40010008 C   FIELD 00w04 EXTI0: EXTI x configuration (x = 0 to 3)
+0x40010008 C   FIELD 04w04 EXTI1: EXTI x configuration (x = 0 to 3)
+0x40010008 C   FIELD 08w04 EXTI2: EXTI x configuration (x = 0 to 3)
+0x40010008 C   FIELD 12w04 EXTI3: EXTI x configuration (x = 0 to 3)
+0x4001000C B  REGISTER EXTICR2 (rw): external interrupt configuration register 2
+0x4001000C C   FIELD 00w04 EXTI4: EXTI x configuration (x = 4 to 7)
+0x4001000C C   FIELD 04w04 EXTI5: EXTI x configuration (x = 4 to 7)
+0x4001000C C   FIELD 08w04 EXTI6: EXTI x configuration (x = 4 to 7)
+0x4001000C C   FIELD 12w04 EXTI7: EXTI x configuration (x = 4 to 7)
+0x40010010 B  REGISTER EXTICR3 (rw): external interrupt configuration register 3
+0x40010010 C   FIELD 00w04 EXTI8: EXTI x configuration (x = 8 to 11)
+0x40010010 C   FIELD 04w04 EXTI9: EXTI x configuration (x = 8 to 11)
+0x40010010 C   FIELD 08w04 EXTI10: EXTI10
+0x40010010 C   FIELD 12w04 EXTI11: EXTI x configuration (x = 8 to 11)
+0x40010014 B  REGISTER EXTICR4 (rw): external interrupt configuration register 4
+0x40010014 C   FIELD 00w04 EXTI12: EXTI12
+0x40010014 C   FIELD 04w04 EXTI13: EXTI13
+0x40010014 C   FIELD 08w04 EXTI14: EXTI14
+0x40010014 C   FIELD 12w04 EXTI15: EXTI x configuration (x = 12 to 15)
+0x40010020 B  REGISTER CFGR3: SYSCFG configuration register 3
+0x40010020 C   FIELD 00w01 EN_BGAP (rw): Vref Enable bit
+0x40010020 C   FIELD 04w02 SEL_VREF_OUT (rw): BGAP_ADC connection bit
+0x40010020 C   FIELD 08w01 ENBUF_BGAP_ADC (rw): VREFINT reference for ADC enable bit
+0x40010020 C   FIELD 09w01 ENBUF_SENSOR_ADC (rw): Sensor reference for ADC enable bit
+0x40010020 C   FIELD 12w01 ENBUF_VREFINT_COMP (rw): VREFINT reference for comparator 2 enable bit
+0x40010020 C   FIELD 13w01 ENREF_RC48MHz (rw): VREFINT reference for 48 MHz RC oscillator enable bit
+0x40010020 C   FIELD 26w01 REF_RC48MHz_RDYF (ro): VREFINT for 48 MHz RC oscillator ready flag
+0x40010020 C   FIELD 27w01 SENSOR_ADC_RDYF (ro): Sensor for ADC ready flag
+0x40010020 C   FIELD 28w01 VREFINT_ADC_RDYF (ro): VREFINT for ADC ready flag
+0x40010020 C   FIELD 29w01 VREFINT_COMP_RDYF (ro): VREFINT for comparator ready flag
+0x40010020 C   FIELD 30w01 VREFINT_RDYF (ro): VREFINT ready flag
+0x40010020 C   FIELD 31w01 REF_LOCK (wo): REF_CTRL lock bit
+0x40010400 A PERIPHERAL EXTI
+0x40010400 B  REGISTER IMR (rw): Interrupt mask register (EXTI_IMR)
+0x40010400 C   FIELD 00w01 IM0: Interrupt Mask on line 0
+0x40010400 C   FIELD 01w01 IM1: Interrupt Mask on line 1
+0x40010400 C   FIELD 02w01 IM2: Interrupt Mask on line 2
+0x40010400 C   FIELD 03w01 IM3: Interrupt Mask on line 3
+0x40010400 C   FIELD 04w01 IM4: Interrupt Mask on line 4
+0x40010400 C   FIELD 05w01 IM5: Interrupt Mask on line 5
+0x40010400 C   FIELD 06w01 IM6: Interrupt Mask on line 6
+0x40010400 C   FIELD 07w01 IM7: Interrupt Mask on line 7
+0x40010400 C   FIELD 08w01 IM8: Interrupt Mask on line 8
+0x40010400 C   FIELD 09w01 IM9: Interrupt Mask on line 9
+0x40010400 C   FIELD 10w01 IM10: Interrupt Mask on line 10
+0x40010400 C   FIELD 11w01 IM11: Interrupt Mask on line 11
+0x40010400 C   FIELD 12w01 IM12: Interrupt Mask on line 12
+0x40010400 C   FIELD 13w01 IM13: Interrupt Mask on line 13
+0x40010400 C   FIELD 14w01 IM14: Interrupt Mask on line 14
+0x40010400 C   FIELD 15w01 IM15: Interrupt Mask on line 15
+0x40010400 C   FIELD 16w01 IM16: Interrupt Mask on line 16
+0x40010400 C   FIELD 17w01 IM17: Interrupt Mask on line 17
+0x40010400 C   FIELD 18w01 IM18: Interrupt Mask on line 18
+0x40010400 C   FIELD 19w01 IM19: Interrupt Mask on line 19
+0x40010400 C   FIELD 20w01 IM20: Interrupt Mask on line 20
+0x40010400 C   FIELD 21w01 IM21: Interrupt Mask on line 21
+0x40010400 C   FIELD 22w01 IM22: Interrupt Mask on line 22
+0x40010400 C   FIELD 23w01 IM23: Interrupt Mask on line 23
+0x40010400 C   FIELD 24w01 IM24: Interrupt Mask on line 24
+0x40010400 C   FIELD 25w01 IM25: Interrupt Mask on line 25
+0x40010400 C   FIELD 26w01 IM26: Interrupt Mask on line 27
+0x40010400 C   FIELD 28w01 IM28: Interrupt Mask on line 27
+0x40010400 C   FIELD 29w01 IM29: Interrupt Mask on line 27
+0x40010404 B  REGISTER EMR (rw): Event mask register (EXTI_EMR)
+0x40010404 C   FIELD 00w01 EM0: Event Mask on line 0
+0x40010404 C   FIELD 01w01 EM1: Event Mask on line 1
+0x40010404 C   FIELD 02w01 EM2: Event Mask on line 2
+0x40010404 C   FIELD 03w01 EM3: Event Mask on line 3
+0x40010404 C   FIELD 04w01 EM4: Event Mask on line 4
+0x40010404 C   FIELD 05w01 EM5: Event Mask on line 5
+0x40010404 C   FIELD 06w01 EM6: Event Mask on line 6
+0x40010404 C   FIELD 07w01 EM7: Event Mask on line 7
+0x40010404 C   FIELD 08w01 EM8: Event Mask on line 8
+0x40010404 C   FIELD 09w01 EM9: Event Mask on line 9
+0x40010404 C   FIELD 10w01 EM10: Event Mask on line 10
+0x40010404 C   FIELD 11w01 EM11: Event Mask on line 11
+0x40010404 C   FIELD 12w01 EM12: Event Mask on line 12
+0x40010404 C   FIELD 13w01 EM13: Event Mask on line 13
+0x40010404 C   FIELD 14w01 EM14: Event Mask on line 14
+0x40010404 C   FIELD 15w01 EM15: Event Mask on line 15
+0x40010404 C   FIELD 16w01 EM16: Event Mask on line 16
+0x40010404 C   FIELD 17w01 EM17: Event Mask on line 17
+0x40010404 C   FIELD 18w01 EM18: Event Mask on line 18
+0x40010404 C   FIELD 19w01 EM19: Event Mask on line 19
+0x40010404 C   FIELD 20w01 EM20: Event Mask on line 20
+0x40010404 C   FIELD 21w01 EM21: Event Mask on line 21
+0x40010404 C   FIELD 22w01 EM22: Event Mask on line 22
+0x40010404 C   FIELD 23w01 EM23: Event Mask on line 23
+0x40010404 C   FIELD 24w01 EM24: Event Mask on line 24
+0x40010404 C   FIELD 25w01 EM25: Event Mask on line 25
+0x40010404 C   FIELD 26w01 EM26: Event Mask on line 26
+0x40010404 C   FIELD 28w01 EM28: Event Mask on line 28
+0x40010404 C   FIELD 29w01 EM29: Event Mask on line 29
+0x40010408 B  REGISTER RTSR (rw): Rising Trigger selection register (EXTI_RTSR)
+0x40010408 C   FIELD 00w01 RT0: Rising trigger event configuration of line 0
+0x40010408 C   FIELD 01w01 RT1: Rising trigger event configuration of line 1
+0x40010408 C   FIELD 02w01 RT2: Rising trigger event configuration of line 2
+0x40010408 C   FIELD 03w01 RT3: Rising trigger event configuration of line 3
+0x40010408 C   FIELD 04w01 RT4: Rising trigger event configuration of line 4
+0x40010408 C   FIELD 05w01 RT5: Rising trigger event configuration of line 5
+0x40010408 C   FIELD 06w01 RT6: Rising trigger event configuration of line 6
+0x40010408 C   FIELD 07w01 RT7: Rising trigger event configuration of line 7
+0x40010408 C   FIELD 08w01 RT8: Rising trigger event configuration of line 8
+0x40010408 C   FIELD 09w01 RT9: Rising trigger event configuration of line 9
+0x40010408 C   FIELD 10w01 RT10: Rising trigger event configuration of line 10
+0x40010408 C   FIELD 11w01 RT11: Rising trigger event configuration of line 11
+0x40010408 C   FIELD 12w01 RT12: Rising trigger event configuration of line 12
+0x40010408 C   FIELD 13w01 RT13: Rising trigger event configuration of line 13
+0x40010408 C   FIELD 14w01 RT14: Rising trigger event configuration of line 14
+0x40010408 C   FIELD 15w01 RT15: Rising trigger event configuration of line 15
+0x40010408 C   FIELD 16w01 RT16: Rising trigger event configuration of line 16
+0x40010408 C   FIELD 17w01 RT17: Rising trigger event configuration of line 17
+0x40010408 C   FIELD 19w01 RT19: Rising trigger event configuration of line 19
+0x40010408 C   FIELD 20w01 RT20: Rising trigger event configuration of line 20
+0x40010408 C   FIELD 21w01 RT21: Rising trigger event configuration of line 21
+0x40010408 C   FIELD 22w01 RT22: Rising trigger event configuration of line 22
+0x4001040C B  REGISTER FTSR (rw): Falling Trigger selection register (EXTI_FTSR)
+0x4001040C C   FIELD 00w01 FT0: Falling trigger event configuration of line 0
+0x4001040C C   FIELD 01w01 FT1: Falling trigger event configuration of line 1
+0x4001040C C   FIELD 02w01 FT2: Falling trigger event configuration of line 2
+0x4001040C C   FIELD 03w01 FT3: Falling trigger event configuration of line 3
+0x4001040C C   FIELD 04w01 FT4: Falling trigger event configuration of line 4
+0x4001040C C   FIELD 05w01 FT5: Falling trigger event configuration of line 5
+0x4001040C C   FIELD 06w01 FT6: Falling trigger event configuration of line 6
+0x4001040C C   FIELD 07w01 FT7: Falling trigger event configuration of line 7
+0x4001040C C   FIELD 08w01 FT8: Falling trigger event configuration of line 8
+0x4001040C C   FIELD 09w01 FT9: Falling trigger event configuration of line 9
+0x4001040C C   FIELD 10w01 FT10: Falling trigger event configuration of line 10
+0x4001040C C   FIELD 11w01 FT11: Falling trigger event configuration of line 11
+0x4001040C C   FIELD 12w01 FT12: Falling trigger event configuration of line 12
+0x4001040C C   FIELD 13w01 FT13: Falling trigger event configuration of line 13
+0x4001040C C   FIELD 14w01 FT14: Falling trigger event configuration of line 14
+0x4001040C C   FIELD 15w01 FT15: Falling trigger event configuration of line 15
+0x4001040C C   FIELD 16w01 FT16: Falling trigger event configuration of line 16
+0x4001040C C   FIELD 17w01 FT17: Falling trigger event configuration of line 17
+0x4001040C C   FIELD 19w01 FT19: Falling trigger event configuration of line 19
+0x4001040C C   FIELD 20w01 FT20: Falling trigger event configuration of line 20
+0x4001040C C   FIELD 21w01 FT21: Falling trigger event configuration of line 21
+0x4001040C C   FIELD 22w01 FT22: Falling trigger event configuration of line 22
+0x40010410 B  REGISTER SWIER (rw): Software interrupt event register (EXTI_SWIER)
+0x40010410 C   FIELD 00w01 SWI0: Software Interrupt on line 0
+0x40010410 C   FIELD 01w01 SWI1: Software Interrupt on line 1
+0x40010410 C   FIELD 02w01 SWI2: Software Interrupt on line 2
+0x40010410 C   FIELD 03w01 SWI3: Software Interrupt on line 3
+0x40010410 C   FIELD 04w01 SWI4: Software Interrupt on line 4
+0x40010410 C   FIELD 05w01 SWI5: Software Interrupt on line 5
+0x40010410 C   FIELD 06w01 SWI6: Software Interrupt on line 6
+0x40010410 C   FIELD 07w01 SWI7: Software Interrupt on line 7
+0x40010410 C   FIELD 08w01 SWI8: Software Interrupt on line 8
+0x40010410 C   FIELD 09w01 SWI9: Software Interrupt on line 9
+0x40010410 C   FIELD 10w01 SWI10: Software Interrupt on line 10
+0x40010410 C   FIELD 11w01 SWI11: Software Interrupt on line 11
+0x40010410 C   FIELD 12w01 SWI12: Software Interrupt on line 12
+0x40010410 C   FIELD 13w01 SWI13: Software Interrupt on line 13
+0x40010410 C   FIELD 14w01 SWI14: Software Interrupt on line 14
+0x40010410 C   FIELD 15w01 SWI15: Software Interrupt on line 15
+0x40010410 C   FIELD 16w01 SWI16: Software Interrupt on line 16
+0x40010410 C   FIELD 17w01 SWI17: Software Interrupt on line 17
+0x40010410 C   FIELD 19w01 SWI19: Software Interrupt on line 19
+0x40010410 C   FIELD 20w01 SWI20: Software Interrupt on line 20
+0x40010410 C   FIELD 21w01 SWI21: Software Interrupt on line 21
+0x40010410 C   FIELD 22w01 SWI22: Software Interrupt on line 22
+0x40010414 B  REGISTER PR (rw): Pending register (EXTI_PR)
+0x40010414 C   FIELD 00w01 PIF0: Pending bit 0
+0x40010414 C   FIELD 01w01 PIF1: Pending bit 1
+0x40010414 C   FIELD 02w01 PIF2: Pending bit 2
+0x40010414 C   FIELD 03w01 PIF3: Pending bit 3
+0x40010414 C   FIELD 04w01 PIF4: Pending bit 4
+0x40010414 C   FIELD 05w01 PIF5: Pending bit 5
+0x40010414 C   FIELD 06w01 PIF6: Pending bit 6
+0x40010414 C   FIELD 07w01 PIF7: Pending bit 7
+0x40010414 C   FIELD 08w01 PIF8: Pending bit 8
+0x40010414 C   FIELD 09w01 PIF9: Pending bit 9
+0x40010414 C   FIELD 10w01 PIF10: Pending bit 10
+0x40010414 C   FIELD 11w01 PIF11: Pending bit 11
+0x40010414 C   FIELD 12w01 PIF12: Pending bit 12
+0x40010414 C   FIELD 13w01 PIF13: Pending bit 13
+0x40010414 C   FIELD 14w01 PIF14: Pending bit 14
+0x40010414 C   FIELD 15w01 PIF15: Pending bit 15
+0x40010414 C   FIELD 16w01 PIF16: Pending bit 16
+0x40010414 C   FIELD 17w01 PIF17: Pending bit 17
+0x40010414 C   FIELD 19w01 PIF19: Pending bit 19
+0x40010414 C   FIELD 20w01 PIF20: Pending bit 20
+0x40010414 C   FIELD 21w01 PIF21: Pending bit 21
+0x40010414 C   FIELD 22w01 PIF22: Pending bit 22
+0x40010800 A PERIPHERAL TIM21
+0x40010800 B  REGISTER CR1 (rw): control register 1
+0x40010800 C   FIELD 00w01 CEN: Counter enable
+0x40010800 C   FIELD 01w01 UDIS: Update disable
+0x40010800 C   FIELD 02w01 URS: Update request source
+0x40010800 C   FIELD 03w01 OPM: One-pulse mode
+0x40010800 C   FIELD 04w01 DIR: Direction
+0x40010800 C   FIELD 05w02 CMS: Center-aligned mode selection
+0x40010800 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40010800 C   FIELD 08w02 CKD: Clock division
+0x40010804 B  REGISTER CR2 (rw): control register 2
+0x40010804 C   FIELD 04w03 MMS: Master mode selection
+0x40010808 B  REGISTER SMCR (rw): slave mode control register
+0x40010808 C   FIELD 00w03 SMS: Slave mode selection
+0x40010808 C   FIELD 04w03 TS: Trigger selection
+0x40010808 C   FIELD 07w01 MSM: Master/Slave mode
+0x40010808 C   FIELD 08w04 ETF: External trigger filter
+0x40010808 C   FIELD 12w02 ETPS: External trigger prescaler
+0x40010808 C   FIELD 14w01 ECE: External clock enable
+0x40010808 C   FIELD 15w01 ETP: External trigger polarity
+0x4001080C B  REGISTER DIER (rw): DMA/Interrupt enable register
+0x4001080C C   FIELD 00w01 UIE: Update interrupt enable
+0x4001080C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
+0x4001080C C   FIELD 02w01 CC2IE: Capture/Compare 2 interrupt enable
+0x4001080C C   FIELD 06w01 TIE: Trigger interrupt enable
+0x40010810 B  REGISTER SR (rw): status register
+0x40010810 C   FIELD 00w01 UIF: Update interrupt flag
+0x40010810 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
+0x40010810 C   FIELD 02w01 CC2IF: Capture/Compare 2 interrupt flag
+0x40010810 C   FIELD 06w01 TIF: Trigger interrupt flag
+0x40010810 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
+0x40010810 C   FIELD 10w01 CC2OF: Capture/compare 2 overcapture flag
+0x40010814 B  REGISTER EGR (wo): event generation register
+0x40010814 C   FIELD 00w01 UG: Update generation
+0x40010814 C   FIELD 01w01 CC1G: Capture/compare 1 generation
+0x40010814 C   FIELD 02w01 CC2G: Capture/compare 2 generation
+0x40010814 C   FIELD 06w01 TG: Trigger generation
+0x40010818 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
+0x40010818 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
+0x40010818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40010818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40010818 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40010818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
+0x40010818 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
+0x40010818 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40010818 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40010818 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40010818 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40010818 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
+0x40010818 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
+0x40010818 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
+0x40010818 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40010818 C   FIELD 12w04 IC2F: Input capture 2 filter
+0x40010820 B  REGISTER CCER (rw): capture/compare enable register
+0x40010820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
+0x40010820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
+0x40010820 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40010820 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
+0x40010820 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
+0x40010820 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x40010824 B  REGISTER CNT (rw): counter
+0x40010824 C   FIELD 00w16 CNT: counter value
+0x40010828 B  REGISTER PSC (rw): prescaler
+0x40010828 C   FIELD 00w16 PSC: Prescaler value
+0x4001082C B  REGISTER ARR (rw): auto-reload register
+0x4001082C C   FIELD 00w16 ARR: Auto-reload value
+0x40010834 B  REGISTER CCR1 (rw): capture/compare register 1
+0x40010834 C   FIELD 00w16 CCR: Capture/Compare 1 value
+0x40010838 B  REGISTER CCR2 (rw): capture/compare register 1
+0x40010838 C   FIELD 00w16 CCR: Capture/Compare 1 value
+0x40010850 B  REGISTER OR (rw): TIM21 option register
+0x40010850 C   FIELD 00w02 ETR_RMP: Timer21 ETR remap
+0x40010850 C   FIELD 02w03 TI1_RMP: Timer21 TI1
+0x40010850 C   FIELD 05w01 TI2_RMP: Timer21 TI2
+0x40011400 A PERIPHERAL TIM22
+0x40011400 B  REGISTER CR1 (rw): control register 1
+0x40011400 C   FIELD 00w01 CEN: Counter enable
+0x40011400 C   FIELD 01w01 UDIS: Update disable
+0x40011400 C   FIELD 02w01 URS: Update request source
+0x40011400 C   FIELD 03w01 OPM: One-pulse mode
+0x40011400 C   FIELD 04w01 DIR: Direction
+0x40011400 C   FIELD 05w02 CMS: Center-aligned mode selection
+0x40011400 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40011400 C   FIELD 08w02 CKD: Clock division
+0x40011404 B  REGISTER CR2 (rw): control register 2
+0x40011404 C   FIELD 04w03 MMS: Master mode selection
+0x40011408 B  REGISTER SMCR (rw): slave mode control register
+0x40011408 C   FIELD 00w03 SMS: Slave mode selection
+0x40011408 C   FIELD 04w03 TS: Trigger selection
+0x40011408 C   FIELD 07w01 MSM: Master/Slave mode
+0x40011408 C   FIELD 08w04 ETF: External trigger filter
+0x40011408 C   FIELD 12w02 ETPS: External trigger prescaler
+0x40011408 C   FIELD 14w01 ECE: External clock enable
+0x40011408 C   FIELD 15w01 ETP: External trigger polarity
+0x4001140C B  REGISTER DIER (rw): DMA/Interrupt enable register
+0x4001140C C   FIELD 00w01 UIE: Update interrupt enable
+0x4001140C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
+0x4001140C C   FIELD 02w01 CC2IE: Capture/Compare 2 interrupt enable
+0x4001140C C   FIELD 06w01 TIE: Trigger interrupt enable
+0x40011410 B  REGISTER SR (rw): status register
+0x40011410 C   FIELD 00w01 UIF: Update interrupt flag
+0x40011410 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
+0x40011410 C   FIELD 02w01 CC2IF: Capture/Compare 2 interrupt flag
+0x40011410 C   FIELD 06w01 TIF: Trigger interrupt flag
+0x40011410 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
+0x40011410 C   FIELD 10w01 CC2OF: Capture/compare 2 overcapture flag
+0x40011414 B  REGISTER EGR (wo): event generation register
+0x40011414 C   FIELD 00w01 UG: Update generation
+0x40011414 C   FIELD 01w01 CC1G: Capture/compare 1 generation
+0x40011414 C   FIELD 02w01 CC2G: Capture/compare 2 generation
+0x40011414 C   FIELD 06w01 TG: Trigger generation
+0x40011418 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
+0x40011418 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
+0x40011418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40011418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40011418 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40011418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
+0x40011418 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
+0x40011418 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40011418 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40011418 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40011418 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40011418 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
+0x40011418 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
+0x40011418 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
+0x40011418 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40011418 C   FIELD 12w04 IC2F: Input capture 2 filter
+0x40011420 B  REGISTER CCER (rw): capture/compare enable register
+0x40011420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
+0x40011420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
+0x40011420 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40011420 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
+0x40011420 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
+0x40011420 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x40011424 B  REGISTER CNT (rw): counter
+0x40011424 C   FIELD 00w16 CNT: counter value
+0x40011428 B  REGISTER PSC (rw): prescaler
+0x40011428 C   FIELD 00w16 PSC: Prescaler value
+0x4001142C B  REGISTER ARR (rw): auto-reload register
+0x4001142C C   FIELD 00w16 ARR: Auto-reload value
+0x40011434 B  REGISTER CCR1 (rw): capture/compare register 1
+0x40011434 C   FIELD 00w16 CCR: Capture/Compare 1 value
+0x40011438 B  REGISTER CCR2 (rw): capture/compare register 1
+0x40011438 C   FIELD 00w16 CCR: Capture/Compare 1 value
+0x40011450 B  REGISTER OR (rw): TIM22 option register
+0x40011450 C   FIELD 00w02 ETR_RMP: Timer22 ETR remap
+0x40011450 C   FIELD 02w02 TI1_RMP: Timer22 TI1
+0x40011C00 A PERIPHERAL FW
+0x40011C00 B  REGISTER CSSA (rw): Code segment start address
+0x40011C00 C   FIELD 08w16 ADD: code segment start address
+0x40011C04 B  REGISTER CSL (rw): Code segment length
+0x40011C04 C   FIELD 08w14 LENG: code segment length
+0x40011C08 B  REGISTER NVDSSA (rw): Non-volatile data segment start address
+0x40011C08 C   FIELD 08w16 ADD: Non-volatile data segment start address
+0x40011C0C B  REGISTER NVDSL (rw): Non-volatile data segment length
+0x40011C0C C   FIELD 08w14 LENG: Non-volatile data segment length
+0x40011C10 B  REGISTER VDSSA (rw): Volatile data segment start address
+0x40011C10 C   FIELD 06w10 ADD: Volatile data segment start address
+0x40011C14 B  REGISTER VDSL (rw): Volatile data segment length
+0x40011C14 C   FIELD 06w10 LENG: Non-volatile data segment length
+0x40011C20 B  REGISTER CR (rw): Configuration register
+0x40011C20 C   FIELD 00w01 FPA: Firewall pre alarm
+0x40011C20 C   FIELD 01w01 VDS: Volatile data shared
+0x40011C20 C   FIELD 02w01 VDE: Volatile data execution
+0x40012400 A PERIPHERAL ADC
+0x40012400 B  REGISTER ISR (rw): interrupt and status register
+0x40012400 C   FIELD 00w01 ADRDY: ADC ready
+0x40012400 C   FIELD 01w01 EOSMP: End of sampling flag
+0x40012400 C   FIELD 02w01 EOC: End of conversion flag
+0x40012400 C   FIELD 03w01 EOS: End of sequence flag
+0x40012400 C   FIELD 04w01 OVR: ADC overrun
+0x40012400 C   FIELD 07w01 AWD: Analog watchdog flag
+0x40012400 C   FIELD 11w01 EOCAL: End Of Calibration flag
+0x40012404 B  REGISTER IER (rw): interrupt enable register
+0x40012404 C   FIELD 00w01 ADRDYIE: ADC ready interrupt enable
+0x40012404 C   FIELD 01w01 EOSMPIE: End of sampling flag interrupt enable
+0x40012404 C   FIELD 02w01 EOCIE: End of conversion interrupt enable
+0x40012404 C   FIELD 03w01 EOSIE: End of conversion sequence interrupt enable
+0x40012404 C   FIELD 04w01 OVRIE: Overrun interrupt enable
+0x40012404 C   FIELD 07w01 AWDIE: Analog watchdog interrupt enable
+0x40012404 C   FIELD 11w01 EOCALIE: End of calibration interrupt enable
+0x40012408 B  REGISTER CR (rw): control register
+0x40012408 C   FIELD 00w01 ADEN: ADC enable command
+0x40012408 C   FIELD 01w01 ADDIS: ADC disable command
+0x40012408 C   FIELD 02w01 ADSTART: ADC start conversion command
+0x40012408 C   FIELD 04w01 ADSTP: ADC stop conversion command
+0x40012408 C   FIELD 28w01 ADVREGEN: ADC Voltage Regulator Enable
+0x40012408 C   FIELD 31w01 ADCAL: ADC calibration
+0x4001240C B  REGISTER CFGR1 (rw): configuration register 1
+0x4001240C C   FIELD 00w01 DMAEN: Direct memory access enable
+0x4001240C C   FIELD 01w01 DMACFG: Direct memery access configuration
+0x4001240C C   FIELD 02w01 SCANDIR: Scan sequence direction
+0x4001240C C   FIELD 03w02 RES: Data resolution
+0x4001240C C   FIELD 05w01 ALIGN: Data alignment
+0x4001240C C   FIELD 06w03 EXTSEL: External trigger selection
+0x4001240C C   FIELD 10w02 EXTEN: External trigger enable and polarity selection
+0x4001240C C   FIELD 12w01 OVRMOD: Overrun management mode
+0x4001240C C   FIELD 13w01 CONT: Single / continuous conversion mode
+0x4001240C C   FIELD 14w01 WAIT: Auto-delayed conversion mode
+0x4001240C C   FIELD 15w01 AUTOFF: Auto-off mode
+0x4001240C C   FIELD 16w01 DISCEN: Discontinuous mode
+0x4001240C C   FIELD 22w01 AWDSGL: Enable the watchdog on a single channel or on all channels
+0x4001240C C   FIELD 23w01 AWDEN: Analog watchdog enable
+0x4001240C C   FIELD 26w05 AWDCH: Analog watchdog channel selection
+0x40012410 B  REGISTER CFGR2 (rw): configuration register 2
+0x40012410 C   FIELD 00w01 OVSE: Oversampler Enable
+0x40012410 C   FIELD 02w03 OVSR: Oversampling ratio
+0x40012410 C   FIELD 05w04 OVSS: Oversampling shift
+0x40012410 C   FIELD 09w01 TOVS: Triggered Oversampling
+0x40012410 C   FIELD 30w02 CKMODE: ADC clock mode
+0x40012414 B  REGISTER SMPR (rw): sampling time register
+0x40012414 C   FIELD 00w03 SMP: Sampling time selection
+0x40012420 B  REGISTER TR (rw): watchdog threshold register
+0x40012420 C   FIELD 00w12 LT: Analog watchdog lower threshold
+0x40012420 C   FIELD 16w12 HT: Analog watchdog higher threshold
+0x40012428 B  REGISTER CHSELR (rw): channel selection register
+0x40012428 C   FIELD 00w01 CHSEL0: Channel-x selection
+0x40012428 C   FIELD 01w01 CHSEL1: Channel-x selection
+0x40012428 C   FIELD 02w01 CHSEL2: Channel-x selection
+0x40012428 C   FIELD 03w01 CHSEL3: Channel-x selection
+0x40012428 C   FIELD 04w01 CHSEL4: Channel-x selection
+0x40012428 C   FIELD 05w01 CHSEL5: Channel-x selection
+0x40012428 C   FIELD 06w01 CHSEL6: Channel-x selection
+0x40012428 C   FIELD 07w01 CHSEL7: Channel-x selection
+0x40012428 C   FIELD 08w01 CHSEL8: Channel-x selection
+0x40012428 C   FIELD 09w01 CHSEL9: Channel-x selection
+0x40012428 C   FIELD 10w01 CHSEL10: Channel-x selection
+0x40012428 C   FIELD 11w01 CHSEL11: Channel-x selection
+0x40012428 C   FIELD 12w01 CHSEL12: Channel-x selection
+0x40012428 C   FIELD 13w01 CHSEL13: Channel-x selection
+0x40012428 C   FIELD 14w01 CHSEL14: Channel-x selection
+0x40012428 C   FIELD 15w01 CHSEL15: Channel-x selection
+0x40012428 C   FIELD 16w01 CHSEL16: Channel-x selection
+0x40012428 C   FIELD 17w01 CHSEL17: Channel-x selection
+0x40012428 C   FIELD 18w01 CHSEL18: Channel-x selection
+0x40012440 B  REGISTER DR (ro): data register
+0x40012440 C   FIELD 00w16 DATA: Converted data
+0x400124B4 B  REGISTER CALFACT (rw): ADC Calibration factor
+0x400124B4 C   FIELD 00w07 CALFACT: Calibration factor
+0x40012708 B  REGISTER CCR (rw): ADC common configuration register
+0x40012708 C   FIELD 18w04 PRESC: ADC prescaler
+0x40012708 C   FIELD 22w01 VREFEN: VREFINT enable
+0x40012708 C   FIELD 23w01 TSEN: Temperature sensor enable
+0x40012708 C   FIELD 24w01 VLCDEN: VLCD enable
+0x40012708 C   FIELD 25w01 LFMEN: Low Frequency Mode enable
+0x40013000 A PERIPHERAL SPI1
+0x40013000 B  REGISTER CR1 (rw): control register 1
+0x40013000 C   FIELD 00w01 CPHA: Clock phase
+0x40013000 C   FIELD 01w01 CPOL: Clock polarity
+0x40013000 C   FIELD 02w01 MSTR: Master selection
+0x40013000 C   FIELD 03w03 BR: Baud rate control
+0x40013000 C   FIELD 06w01 SPE: SPI enable
+0x40013000 C   FIELD 07w01 LSBFIRST: Frame format
+0x40013000 C   FIELD 08w01 SSI: Internal slave select
+0x40013000 C   FIELD 09w01 SSM: Software slave management
+0x40013000 C   FIELD 10w01 RXONLY: Receive only
+0x40013000 C   FIELD 11w01 DFF: Data frame format
+0x40013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
+0x40013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
+0x40013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
+0x40013000 C   FIELD 15w01 BIDIMODE: Bidirectional data mode enable
+0x40013004 B  REGISTER CR2 (rw): control register 2
+0x40013004 C   FIELD 00w01 RXDMAEN: Rx buffer DMA enable
+0x40013004 C   FIELD 01w01 TXDMAEN: Tx buffer DMA enable
+0x40013004 C   FIELD 02w01 SSOE: SS output enable
+0x40013004 C   FIELD 04w01 FRF: Frame format
+0x40013004 C   FIELD 05w01 ERRIE: Error interrupt enable
+0x40013004 C   FIELD 06w01 RXNEIE: RX buffer not empty interrupt enable
+0x40013004 C   FIELD 07w01 TXEIE: Tx buffer empty interrupt enable
+0x40013008 B  REGISTER SR: status register
+0x40013008 C   FIELD 00w01 RXNE (ro): Receive buffer not empty
+0x40013008 C   FIELD 01w01 TXE (ro): Transmit buffer empty
+0x40013008 C   FIELD 02w01 CHSIDE (ro): Channel side
+0x40013008 C   FIELD 03w01 UDR (ro): Underrun flag
+0x40013008 C   FIELD 04w01 CRCERR (rw): CRC error flag
+0x40013008 C   FIELD 05w01 MODF (ro): Mode fault
+0x40013008 C   FIELD 06w01 OVR (ro): Overrun flag
+0x40013008 C   FIELD 07w01 BSY (ro): Busy flag
+0x40013008 C   FIELD 08w01 FRE (ro): TI frame format error
+0x4001300C B  REGISTER DR (rw): data register
+0x4001300C C   FIELD 00w16 DR: Data register
+0x40013010 B  REGISTER CRCPR (rw): CRC polynomial register
+0x40013010 C   FIELD 00w16 CRCPOLY: CRC polynomial register
+0x40013014 B  REGISTER RXCRCR (ro): RX CRC register
+0x40013014 C   FIELD 00w16 RxCRC: Rx CRC register
+0x40013018 B  REGISTER TXCRCR (ro): TX CRC register
+0x40013018 C   FIELD 00w16 TxCRC: Tx CRC register
+0x4001301C B  REGISTER I2SCFGR (rw): I2S configuration register
+0x4001301C C   FIELD 00w01 CHLEN: Channel length (number of bits per audio channel)
+0x4001301C C   FIELD 01w02 DATLEN: Data length to be transferred
+0x4001301C C   FIELD 03w01 CKPOL: Steady state clock polarity
+0x4001301C C   FIELD 04w02 I2SSTD: I2S standard selection
+0x4001301C C   FIELD 07w01 PCMSYNC: PCM frame synchronization
+0x4001301C C   FIELD 08w02 I2SCFG: I2S configuration mode
+0x4001301C C   FIELD 10w01 I2SE: I2S Enable
+0x4001301C C   FIELD 11w01 I2SMOD: I2S mode selection
+0x40013020 B  REGISTER I2SPR (rw): I2S prescaler register
+0x40013020 C   FIELD 00w08 I2SDIV: I2S Linear prescaler
+0x40013020 C   FIELD 08w01 ODD: Odd factor for the prescaler
+0x40013020 C   FIELD 09w01 MCKOE: Master clock output enable
+0x40015800 A PERIPHERAL DBG
+0x40015800 B  REGISTER IDCODE (ro): MCU Device ID Code Register
+0x40015800 C   FIELD 00w12 DEV_ID: Device Identifier
+0x40015800 C   FIELD 16w16 REV_ID: Revision Identifier
+0x40015804 B  REGISTER CR (rw): Debug MCU Configuration Register
+0x40015804 C   FIELD 00w01 DBG_SLEEP: Debug Sleep Mode
+0x40015804 C   FIELD 01w01 DBG_STOP: Debug Stop Mode
+0x40015804 C   FIELD 02w01 DBG_STANDBY: Debug Standby Mode
+0x40015808 B  REGISTER APB1_FZ (rw): APB Low Freeze Register
+0x40015808 C   FIELD 00w01 DBG_TIMER2_STOP: Debug Timer 2 stopped when Core is halted
+0x40015808 C   FIELD 04w01 DBG_TIMER6_STOP: Debug Timer 6 stopped when Core is halted
+0x40015808 C   FIELD 10w01 DBG_RTC_STOP: Debug RTC stopped when Core is halted
+0x40015808 C   FIELD 11w01 DBG_WWDG_STOP: Debug Window Wachdog stopped when Core is halted
+0x40015808 C   FIELD 12w01 DBG_IWDG_STOP: Debug Independent Wachdog stopped when Core is halted
+0x40015808 C   FIELD 21w01 DBG_I2C1_STOP: I2C1 SMBUS timeout mode stopped when core is halted
+0x40015808 C   FIELD 22w01 DBG_I2C2_STOP: I2C2 SMBUS timeout mode stopped when core is halted
+0x40015808 C   FIELD 31w01 DBG_LPTIMER_STOP: LPTIM1 counter stopped when core is halted
+0x4001580C B  REGISTER APB2_FZ (rw): APB High Freeze Register
+0x4001580C C   FIELD 02w01 DBG_TIMER21_STOP: Debug Timer 21 stopped when Core is halted
+0x4001580C C   FIELD 06w01 DBG_TIMER22_STO: Debug Timer 22 stopped when Core is halted
+0x40020000 A PERIPHERAL DMA1
+0x40020000 B  REGISTER ISR (ro): interrupt status register
+0x40020000 C   FIELD 00w01 GIF1: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 01w01 TCIF1: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 02w01 HTIF1: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 03w01 TEIF1: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 04w01 GIF2: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 05w01 TCIF2: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 06w01 HTIF2: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 07w01 TEIF2: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 08w01 GIF3: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 09w01 TCIF3: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 10w01 HTIF3: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 11w01 TEIF3: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 12w01 GIF4: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 13w01 TCIF4: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 14w01 HTIF4: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 15w01 TEIF4: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 16w01 GIF5: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 17w01 TCIF5: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 18w01 HTIF5: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 19w01 TEIF5: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 20w01 GIF6: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 21w01 TCIF6: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 22w01 HTIF6: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 23w01 TEIF6: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 24w01 GIF7: Channel x global interrupt flag (x = 1 ..7)
+0x40020000 C   FIELD 25w01 TCIF7: Channel x transfer complete flag (x = 1 ..7)
+0x40020000 C   FIELD 26w01 HTIF7: Channel x half transfer flag (x = 1 ..7)
+0x40020000 C   FIELD 27w01 TEIF7: Channel x transfer error flag (x = 1 ..7)
+0x40020004 B  REGISTER IFCR (wo): interrupt flag clear register
+0x40020004 C   FIELD 00w01 CGIF1: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 01w01 CTCIF1: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 02w01 CHTIF1: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 03w01 CTEIF1: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 04w01 CGIF2: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 05w01 CTCIF2: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 06w01 CHTIF2: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 07w01 CTEIF2: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 08w01 CGIF3: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 09w01 CTCIF3: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 10w01 CHTIF3: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 11w01 CTEIF3: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 12w01 CGIF4: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 13w01 CTCIF4: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 14w01 CHTIF4: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 15w01 CTEIF4: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 16w01 CGIF5: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 17w01 CTCIF5: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 18w01 CHTIF5: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 19w01 CTEIF5: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 20w01 CGIF6: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 21w01 CTCIF6: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 22w01 CHTIF6: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 23w01 CTEIF6: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 24w01 CGIF7: Channel x global interrupt clear (x = 1 ..7)
+0x40020004 C   FIELD 25w01 CTCIF7: Channel x transfer complete clear (x = 1 ..7)
+0x40020004 C   FIELD 26w01 CHTIF7: Channel x half transfer clear (x = 1 ..7)
+0x40020004 C   FIELD 27w01 CTEIF7: Channel x transfer error clear (x = 1 ..7)
+0x40020008 B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020008 B  REGISTER CR1 (rw): channel x configuration register
+0x40020008 C   FIELD 00w01 EN: Channel enable
+0x40020008 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x40020008 C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x40020008 C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x40020008 C   FIELD 04w01 DIR: Data transfer direction
+0x40020008 C   FIELD 05w01 CIRC: Circular mode
+0x40020008 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020008 C   FIELD 07w01 MINC: Memory increment mode
+0x40020008 C   FIELD 08w02 PSIZE: Peripheral size
+0x40020008 C   FIELD 10w02 MSIZE: Memory size
+0x40020008 C   FIELD 12w02 PL: Channel priority level
+0x40020008 C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x4002000C B  REGISTER NDTR1 (rw): channel x number of data register
+0x4002000C C   FIELD 00w16 NDT: Number of data to transfer
+0x40020010 B  REGISTER PAR1 (rw): channel x peripheral address register
+0x40020010 C   FIELD 00w32 PA: Peripheral address
+0x40020014 B  REGISTER MAR1 (rw): channel x memory address register
+0x40020014 C   FIELD 00w32 MA: Memory address
+0x4002001C B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x4002001C B  REGISTER CR2 (rw): channel x configuration register
+0x4002001C C   FIELD 00w01 EN: Channel enable
+0x4002001C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x4002001C C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x4002001C C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x4002001C C   FIELD 04w01 DIR: Data transfer direction
+0x4002001C C   FIELD 05w01 CIRC: Circular mode
+0x4002001C C   FIELD 06w01 PINC: Peripheral increment mode
+0x4002001C C   FIELD 07w01 MINC: Memory increment mode
+0x4002001C C   FIELD 08w02 PSIZE: Peripheral size
+0x4002001C C   FIELD 10w02 MSIZE: Memory size
+0x4002001C C   FIELD 12w02 PL: Channel priority level
+0x4002001C C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x40020020 B  REGISTER NDTR2 (rw): channel x number of data register
+0x40020020 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020024 B  REGISTER PAR2 (rw): channel x peripheral address register
+0x40020024 C   FIELD 00w32 PA: Peripheral address
+0x40020028 B  REGISTER MAR2 (rw): channel x memory address register
+0x40020028 C   FIELD 00w32 MA: Memory address
+0x40020030 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020030 B  REGISTER CR3 (rw): channel x configuration register
+0x40020030 C   FIELD 00w01 EN: Channel enable
+0x40020030 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x40020030 C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x40020030 C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x40020030 C   FIELD 04w01 DIR: Data transfer direction
+0x40020030 C   FIELD 05w01 CIRC: Circular mode
+0x40020030 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020030 C   FIELD 07w01 MINC: Memory increment mode
+0x40020030 C   FIELD 08w02 PSIZE: Peripheral size
+0x40020030 C   FIELD 10w02 MSIZE: Memory size
+0x40020030 C   FIELD 12w02 PL: Channel priority level
+0x40020030 C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x40020034 B  REGISTER NDTR3 (rw): channel x number of data register
+0x40020034 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020038 B  REGISTER PAR3 (rw): channel x peripheral address register
+0x40020038 C   FIELD 00w32 PA: Peripheral address
+0x4002003C B  REGISTER MAR3 (rw): channel x memory address register
+0x4002003C C   FIELD 00w32 MA: Memory address
+0x40020044 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020044 B  REGISTER CR4 (rw): channel x configuration register
+0x40020044 C   FIELD 00w01 EN: Channel enable
+0x40020044 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x40020044 C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x40020044 C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x40020044 C   FIELD 04w01 DIR: Data transfer direction
+0x40020044 C   FIELD 05w01 CIRC: Circular mode
+0x40020044 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020044 C   FIELD 07w01 MINC: Memory increment mode
+0x40020044 C   FIELD 08w02 PSIZE: Peripheral size
+0x40020044 C   FIELD 10w02 MSIZE: Memory size
+0x40020044 C   FIELD 12w02 PL: Channel priority level
+0x40020044 C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x40020048 B  REGISTER NDTR4 (rw): channel x number of data register
+0x40020048 C   FIELD 00w16 NDT: Number of data to transfer
+0x4002004C B  REGISTER PAR4 (rw): channel x peripheral address register
+0x4002004C C   FIELD 00w32 PA: Peripheral address
+0x40020050 B  REGISTER MAR4 (rw): channel x memory address register
+0x40020050 C   FIELD 00w32 MA: Memory address
+0x40020058 B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020058 B  REGISTER CR5 (rw): channel x configuration register
+0x40020058 C   FIELD 00w01 EN: Channel enable
+0x40020058 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x40020058 C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x40020058 C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x40020058 C   FIELD 04w01 DIR: Data transfer direction
+0x40020058 C   FIELD 05w01 CIRC: Circular mode
+0x40020058 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020058 C   FIELD 07w01 MINC: Memory increment mode
+0x40020058 C   FIELD 08w02 PSIZE: Peripheral size
+0x40020058 C   FIELD 10w02 MSIZE: Memory size
+0x40020058 C   FIELD 12w02 PL: Channel priority level
+0x40020058 C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x4002005C B  REGISTER NDTR5 (rw): channel x number of data register
+0x4002005C C   FIELD 00w16 NDT: Number of data to transfer
+0x40020060 B  REGISTER PAR5 (rw): channel x peripheral address register
+0x40020060 C   FIELD 00w32 PA: Peripheral address
+0x40020064 B  REGISTER MAR5 (rw): channel x memory address register
+0x40020064 C   FIELD 00w32 MA: Memory address
+0x4002006C B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x4002006C B  REGISTER CR6 (rw): channel x configuration register
+0x4002006C C   FIELD 00w01 EN: Channel enable
+0x4002006C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x4002006C C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x4002006C C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x4002006C C   FIELD 04w01 DIR: Data transfer direction
+0x4002006C C   FIELD 05w01 CIRC: Circular mode
+0x4002006C C   FIELD 06w01 PINC: Peripheral increment mode
+0x4002006C C   FIELD 07w01 MINC: Memory increment mode
+0x4002006C C   FIELD 08w02 PSIZE: Peripheral size
+0x4002006C C   FIELD 10w02 MSIZE: Memory size
+0x4002006C C   FIELD 12w02 PL: Channel priority level
+0x4002006C C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x40020070 B  REGISTER NDTR6 (rw): channel x number of data register
+0x40020070 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020074 B  REGISTER PAR6 (rw): channel x peripheral address register
+0x40020074 C   FIELD 00w32 PA: Peripheral address
+0x40020078 B  REGISTER MAR6 (rw): channel x memory address register
+0x40020078 C   FIELD 00w32 MA: Memory address
+0x40020080 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020080 B  REGISTER CR7 (rw): channel x configuration register
+0x40020080 C   FIELD 00w01 EN: Channel enable
+0x40020080 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
+0x40020080 C   FIELD 02w01 HTIE: Half transfer interrupt enable
+0x40020080 C   FIELD 03w01 TEIE: Transfer error interrupt enable
+0x40020080 C   FIELD 04w01 DIR: Data transfer direction
+0x40020080 C   FIELD 05w01 CIRC: Circular mode
+0x40020080 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020080 C   FIELD 07w01 MINC: Memory increment mode
+0x40020080 C   FIELD 08w02 PSIZE: Peripheral size
+0x40020080 C   FIELD 10w02 MSIZE: Memory size
+0x40020080 C   FIELD 12w02 PL: Channel priority level
+0x40020080 C   FIELD 14w01 MEM2MEM: Memory to memory mode
+0x40020084 B  REGISTER NDTR7 (rw): channel x number of data register
+0x40020084 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020088 B  REGISTER PAR7 (rw): channel x peripheral address register
+0x40020088 C   FIELD 00w32 PA: Peripheral address
+0x4002008C B  REGISTER MAR7 (rw): channel x memory address register
+0x4002008C C   FIELD 00w32 MA: Memory address
+0x400200A8 B  REGISTER CSELR (rw): channel selection register
+0x400200A8 C   FIELD 00w04 C1S: DMA channel 1 selection
+0x400200A8 C   FIELD 04w04 C2S: DMA channel 2 selection
+0x400200A8 C   FIELD 08w04 C3S: DMA channel 3 selection
+0x400200A8 C   FIELD 12w04 C4S: DMA channel 4 selection
+0x400200A8 C   FIELD 16w04 C5S: DMA channel 5 selection
+0x400200A8 C   FIELD 20w04 C6S: DMA channel 6 selection
+0x400200A8 C   FIELD 24w04 C7S: DMA channel 7 selection
+0x40021000 A PERIPHERAL RCC
+0x40021000 B  REGISTER CR: Clock control register
+0x40021000 C   FIELD 00w01 HSI16ON (rw): 16 MHz high-speed internal clock enable
+0x40021000 C   FIELD 01w01 HSI16KERON (ro): High-speed internal clock enable bit for some IP kernels
+0x40021000 C   FIELD 02w01 HSI16RDYF (rw): Internal high-speed clock ready flag
+0x40021000 C   FIELD 03w01 HSI16DIVEN (rw): HSI16DIVEN
+0x40021000 C   FIELD 04w01 HSI16DIVF (ro): HSI16DIVF
+0x40021000 C   FIELD 05w01 HSI16OUTEN (rw): 16 MHz high-speed internal clock output enable
+0x40021000 C   FIELD 08w01 MSION (rw): MSI clock enable bit
+0x40021000 C   FIELD 09w01 MSIRDY (ro): MSI clock ready flag
+0x40021000 C   FIELD 16w01 HSEON (rw): HSE clock enable bit
+0x40021000 C   FIELD 17w01 HSERDY (ro): HSE clock ready flag
+0x40021000 C   FIELD 18w01 HSEBYP (rw): HSE clock bypass bit
+0x40021000 C   FIELD 19w01 CSSHSEON (rw): Clock security system on HSE enable bit
+0x40021000 C   FIELD 20w02 RTCPRE (rw): TC/LCD prescaler
+0x40021000 C   FIELD 24w01 PLLON (rw): PLL enable bit
+0x40021000 C   FIELD 25w01 PLLRDY (ro): PLL clock ready flag
+0x40021004 B  REGISTER ICSCR: Internal clock sources calibration register
+0x40021004 C   FIELD 00w08 HSI16CAL (ro): nternal high speed clock calibration
+0x40021004 C   FIELD 08w05 HSI16TRIM (rw): High speed internal clock trimming
+0x40021004 C   FIELD 13w03 MSIRANGE (rw): MSI clock ranges
+0x40021004 C   FIELD 16w08 MSICAL (ro): MSI clock calibration
+0x40021004 C   FIELD 24w08 MSITRIM (rw): MSI clock trimming
+0x4002100C B  REGISTER CFGR: Clock configuration register
+0x4002100C C   FIELD 00w02 SW (rw): System clock switch
+0x4002100C C   FIELD 02w02 SWS (ro): System clock switch status
+0x4002100C C   FIELD 04w04 HPRE (rw): AHB prescaler
+0x4002100C C   FIELD 08w03 PPRE1 (rw): APB low-speed prescaler (APB1)
+0x4002100C C   FIELD 11w03 PPRE2 (rw): APB high-speed prescaler (APB2)
+0x4002100C C   FIELD 15w01 STOPWUCK (rw): Wake-up from stop clock selection
+0x4002100C C   FIELD 16w01 PLLSRC (rw): PLL entry clock source
+0x4002100C C   FIELD 18w04 PLLMUL (rw): PLL multiplication factor
+0x4002100C C   FIELD 22w02 PLLDIV (rw): PLL output division
+0x4002100C C   FIELD 24w03 MCOSEL (rw): Microcontroller clock output selection
+0x4002100C C   FIELD 28w03 MCOPRE (rw): Microcontroller clock output prescaler
+0x40021010 B  REGISTER CIER (ro): Clock interrupt enable register
+0x40021010 C   FIELD 00w01 LSIRDYIE: LSI ready interrupt flag
+0x40021010 C   FIELD 01w01 LSERDYIE: LSE ready interrupt flag
+0x40021010 C   FIELD 02w01 HSI16RDYIE: HSI16 ready interrupt flag
+0x40021010 C   FIELD 03w01 HSERDYIE: HSE ready interrupt flag
+0x40021010 C   FIELD 04w01 PLLRDYIE: PLL ready interrupt flag
+0x40021010 C   FIELD 05w01 MSIRDYIE: MSI ready interrupt flag
+0x40021010 C   FIELD 07w01 CSSLSE: LSE CSS interrupt flag
+0x40021014 B  REGISTER CIFR (ro): Clock interrupt flag register
+0x40021014 C   FIELD 00w01 LSIRDYF: LSI ready interrupt flag
+0x40021014 C   FIELD 01w01 LSERDYF: LSE ready interrupt flag
+0x40021014 C   FIELD 02w01 HSI16RDYF: HSI16 ready interrupt flag
+0x40021014 C   FIELD 03w01 HSERDYF: HSE ready interrupt flag
+0x40021014 C   FIELD 04w01 PLLRDYF: PLL ready interrupt flag
+0x40021014 C   FIELD 05w01 MSIRDYF: MSI ready interrupt flag
+0x40021014 C   FIELD 07w01 CSSLSEF: LSE Clock Security System Interrupt flag
+0x40021014 C   FIELD 08w01 CSSHSEF: Clock Security System Interrupt flag
+0x40021018 B  REGISTER CICR (ro): Clock interrupt clear register
+0x40021018 C   FIELD 00w01 LSIRDYC: LSI ready Interrupt clear
+0x40021018 C   FIELD 01w01 LSERDYC: LSE ready Interrupt clear
+0x40021018 C   FIELD 02w01 HSI16RDYC: HSI16 ready Interrupt clear
+0x40021018 C   FIELD 03w01 HSERDYC: HSE ready Interrupt clear
+0x40021018 C   FIELD 04w01 PLLRDYC: PLL ready Interrupt clear
+0x40021018 C   FIELD 05w01 MSIRDYC: MSI ready Interrupt clear
+0x40021018 C   FIELD 07w01 CSSLSEC: LSE Clock Security System Interrupt clear
+0x40021018 C   FIELD 08w01 CSSHSEC: Clock Security System Interrupt clear
+0x4002101C B  REGISTER IOPRSTR (rw): GPIO reset register
+0x4002101C C   FIELD 00w01 IOPARST: I/O port A reset
+0x4002101C C   FIELD 01w01 IOPBRST: I/O port B reset
+0x4002101C C   FIELD 02w01 IOPCRST: I/O port A reset
+0x4002101C C   FIELD 03w01 IOPDRST: I/O port D reset
+0x4002101C C   FIELD 04w01 IOPERST: I/O port E reset
+0x4002101C C   FIELD 07w01 IOPHRST: I/O port H reset
+0x40021020 B  REGISTER AHBRSTR (rw): AHB peripheral reset register
+0x40021020 C   FIELD 00w01 DMARST: DMA reset
+0x40021020 C   FIELD 08w01 MIFRST: Memory interface reset
+0x40021020 C   FIELD 12w01 CRCRST: Test integration module reset
+0x40021020 C   FIELD 24w01 CRYPRST: Crypto module reset
+0x40021024 B  REGISTER APB2RSTR (rw): APB2 peripheral reset register
+0x40021024 C   FIELD 00w01 SYSCFGRST: System configuration controller reset
+0x40021024 C   FIELD 02w01 TIM21RST: TIM21 timer reset
+0x40021024 C   FIELD 05w01 TIM22RST: TIM22 timer reset
+0x40021024 C   FIELD 09w01 ADCRST: ADC interface reset
+0x40021024 C   FIELD 12w01 SPI1RST: SPI 1 reset
+0x40021024 C   FIELD 14w01 USART1RST: USART1 reset
+0x40021024 C   FIELD 22w01 DBGRST: DBG reset
+0x40021028 B  REGISTER APB1RSTR (rw): APB1 peripheral reset register
+0x40021028 C   FIELD 00w01 TIM2RST: Timer 2 reset
+0x40021028 C   FIELD 01w01 TIM3RST: Timer 3 reset
+0x40021028 C   FIELD 04w01 TIM6RST: Timer 6 reset
+0x40021028 C   FIELD 05w01 TIM7RST: Timer 7 reset
+0x40021028 C   FIELD 11w01 WWDGRST: Window watchdog reset
+0x40021028 C   FIELD 14w01 SPI2RST: SPI2 reset
+0x40021028 C   FIELD 17w01 USART2RST: USART2 reset
+0x40021028 C   FIELD 18w01 LPUART1RST: LPUART1 reset
+0x40021028 C   FIELD 19w01 USART4RST: USART4 reset
+0x40021028 C   FIELD 20w01 USART5RST: USART5 reset
+0x40021028 C   FIELD 21w01 I2C1RST: I2C1 reset
+0x40021028 C   FIELD 22w01 I2C2RST: I2C2 reset
+0x40021028 C   FIELD 27w01 CRCRST: CRC reset
+0x40021028 C   FIELD 28w01 PWRRST: Power interface reset
+0x40021028 C   FIELD 30w01 I2C3: I2C3 reset
+0x40021028 C   FIELD 31w01 LPTIM1RST: Low power timer reset
+0x4002102C B  REGISTER IOPENR (rw): GPIO clock enable register
+0x4002102C C   FIELD 00w01 IOPAEN: IO port A clock enable bit
+0x4002102C C   FIELD 01w01 IOPBEN: IO port B clock enable bit
+0x4002102C C   FIELD 02w01 IOPCEN: IO port A clock enable bit
+0x4002102C C   FIELD 03w01 IOPDEN: I/O port D clock enable bit
+0x4002102C C   FIELD 04w01 IOPEEN: IO port E clock enable bit
+0x4002102C C   FIELD 07w01 IOPHEN: I/O port H clock enable bit
+0x40021030 B  REGISTER AHBENR (rw): AHB peripheral clock enable register
+0x40021030 C   FIELD 00w01 DMAEN: DMA clock enable bit
+0x40021030 C   FIELD 08w01 MIFEN: NVM interface clock enable bit
+0x40021030 C   FIELD 12w01 CRCEN: CRC clock enable bit
+0x40021030 C   FIELD 24w01 CRYPEN: Crypto clock enable bit
+0x40021034 B  REGISTER APB2ENR (rw): APB2 peripheral clock enable register
+0x40021034 C   FIELD 00w01 SYSCFGEN: System configuration controller clock enable bit
+0x40021034 C   FIELD 02w01 TIM21EN: TIM21 timer clock enable bit
+0x40021034 C   FIELD 05w01 TIM22EN: TIM22 timer clock enable bit
+0x40021034 C   FIELD 07w01 FWEN: Firewall clock enable bit
+0x40021034 C   FIELD 09w01 ADCEN: ADC clock enable bit
+0x40021034 C   FIELD 12w01 SPI1EN: SPI1 clock enable bit
+0x40021034 C   FIELD 14w01 USART1EN: USART1 clock enable bit
+0x40021034 C   FIELD 22w01 DBGEN: DBG clock enable bit
+0x40021038 B  REGISTER APB1ENR (rw): APB1 peripheral clock enable register
+0x40021038 C   FIELD 00w01 TIM2EN: Timer2 clock enable bit
+0x40021038 C   FIELD 04w01 TIM6EN: Timer 6 clock enable bit
+0x40021038 C   FIELD 05w01 TIM7EN: Timer 7 clock enable bit
+0x40021038 C   FIELD 11w01 WWDGEN: Window watchdog clock enable bit
+0x40021038 C   FIELD 14w01 SPI2EN: SPI2 clock enable bit
+0x40021038 C   FIELD 17w01 USART2EN: UART2 clock enable bit
+0x40021038 C   FIELD 18w01 LPUART1EN: LPUART1 clock enable bit
+0x40021038 C   FIELD 19w01 USART4EN: USART4 clock enable bit
+0x40021038 C   FIELD 20w01 USART5EN: USART5 clock enable bit
+0x40021038 C   FIELD 21w01 I2C1EN: I2C1 clock enable bit
+0x40021038 C   FIELD 22w01 I2C2EN: I2C2 clock enable bit
+0x40021038 C   FIELD 28w01 PWREN: Power interface clock enable bit
+0x40021038 C   FIELD 30w01 I2C3EN: I2C3 clock enable bit
+0x40021038 C   FIELD 31w01 LPTIM1EN: Low power timer clock enable bit
+0x4002103C B  REGISTER IOPSMEN (rw): GPIO clock enable in sleep mode register
+0x4002103C C   FIELD 00w01 IOPASMEN: Port A clock enable during Sleep mode bit
+0x4002103C C   FIELD 01w01 IOPBSMEN: Port B clock enable during Sleep mode bit
+0x4002103C C   FIELD 02w01 IOPCSMEN: Port C clock enable during Sleep mode bit
+0x4002103C C   FIELD 03w01 IOPDSMEN: Port D clock enable during Sleep mode bit
+0x4002103C C   FIELD 04w01 IOPESMEN: Port E clock enable during Sleep mode bit
+0x4002103C C   FIELD 07w01 IOPHSMEN: Port H clock enable during Sleep mode bit
+0x40021040 B  REGISTER AHBSMENR (rw): AHB peripheral clock enable in sleep mode register
+0x40021040 C   FIELD 00w01 DMASMEN: DMA clock enable during sleep mode bit
+0x40021040 C   FIELD 08w01 MIFSMEN: NVM interface clock enable during sleep mode bit
+0x40021040 C   FIELD 09w01 SRAMSMEN: SRAM interface clock enable during sleep mode bit
+0x40021040 C   FIELD 12w01 CRCSMEN: CRC clock enable during sleep mode bit
+0x40021044 B  REGISTER APB2SMENR (rw): APB2 peripheral clock enable in sleep mode register
+0x40021044 C   FIELD 00w01 SYSCFGSMEN: System configuration controller clock enable during sleep mode bit
+0x40021044 C   FIELD 02w01 TIM21SMEN: TIM21 timer clock enable during sleep mode bit
+0x40021044 C   FIELD 05w01 TIM22SMEN: TIM22 timer clock enable during sleep mode bit
+0x40021044 C   FIELD 09w01 ADCSMEN: ADC clock enable during sleep mode bit
+0x40021044 C   FIELD 12w01 SPI1SMEN: SPI1 clock enable during sleep mode bit
+0x40021044 C   FIELD 14w01 USART1SMEN: USART1 clock enable during sleep mode bit
+0x40021044 C   FIELD 22w01 DBGSMEN: DBG clock enable during sleep mode bit
+0x40021048 B  REGISTER APB1SMENR (rw): APB1 peripheral clock enable in sleep mode register
+0x40021048 C   FIELD 00w01 TIM2SMEN: Timer2 clock enable during sleep mode bit
+0x40021048 C   FIELD 01w01 TIM3SMEN: Timer 3 clock enable during sleep mode bit
+0x40021048 C   FIELD 04w01 TIM6SMEN: Timer 6 clock enable during sleep mode bit
+0x40021048 C   FIELD 05w01 TIM7SMEN: Timer 7 clock enable during sleep mode bit
+0x40021048 C   FIELD 11w01 WWDGSMEN: Window watchdog clock enable during sleep mode bit
+0x40021048 C   FIELD 14w01 SPI2SMEN: SPI2 clock enable during sleep mode bit
+0x40021048 C   FIELD 17w01 USART2SMEN: UART2 clock enable during sleep mode bit
+0x40021048 C   FIELD 18w01 LPUART1SMEN: LPUART1 clock enable during sleep mode bit
+0x40021048 C   FIELD 19w01 USART4SMEN: USART4 clock enabe during sleep mode bit
+0x40021048 C   FIELD 20w01 USART5SMEN: USART5 clock enable during sleep mode bit
+0x40021048 C   FIELD 21w01 I2C1SMEN: I2C1 clock enable during sleep mode bit
+0x40021048 C   FIELD 22w01 I2C2SMEN: I2C2 clock enable during sleep mode bit
+0x40021048 C   FIELD 27w01 CRSSMEN: Clock recovery system clock enable during sleep mode bit
+0x40021048 C   FIELD 28w01 PWRSMEN: Power interface clock enable during sleep mode bit
+0x40021048 C   FIELD 30w01 I2C3SMEN: I2C3 clock enable during sleep mode bit
+0x40021048 C   FIELD 31w01 LPTIM1SMEN: Low power timer clock enable during sleep mode bit
+0x4002104C B  REGISTER CCIPR (rw): Clock configuration register
+0x4002104C C   FIELD 00w02 USART1SEL: USART1 clock source selection bits
+0x4002104C C   FIELD 02w02 USART2SEL: USART2 clock source selection bits
+0x4002104C C   FIELD 10w02 LPUART1SEL: LPUART1 clock source selection bits
+0x4002104C C   FIELD 12w02 I2C1SEL: I2C1 clock source selection bits
+0x4002104C C   FIELD 16w02 I2C3SEL: I2C3 clock source selection bits
+0x4002104C C   FIELD 18w02 LPTIM1SEL: Low Power Timer clock source selection bits
+0x40021050 B  REGISTER CSR: Control and status register
+0x40021050 C   FIELD 00w01 LSION (rw): Internal low-speed oscillator enable
+0x40021050 C   FIELD 01w01 LSIRDY (ro): Internal low-speed oscillator ready bit
+0x40021050 C   FIELD 08w01 LSEON (rw): External low-speed oscillator enable bit
+0x40021050 C   FIELD 09w01 LSERDY (ro): External low-speed oscillator ready bit
+0x40021050 C   FIELD 10w01 LSEBYP (rw): External low-speed oscillator bypass bit
+0x40021050 C   FIELD 11w02 LSEDRV (rw): LSEDRV
+0x40021050 C   FIELD 13w01 CSSLSEON (rw): CSSLSEON
+0x40021050 C   FIELD 14w01 CSSLSED (rw): CSS on LSE failure detection flag
+0x40021050 C   FIELD 16w02 RTCSEL (rw): RTC and LCD clock source selection bits
+0x40021050 C   FIELD 18w01 RTCEN (rw): RTC clock enable bit
+0x40021050 C   FIELD 19w01 RTCRST (rw): RTC software reset bit
+0x40021050 C   FIELD 23w01 RMVF (rw): Remove reset flag
+0x40021050 C   FIELD 24w01 FWRSTF (rw): Firewall reset flag
+0x40021050 C   FIELD 25w01 OBLRSTF (rw): OBLRSTF
+0x40021050 C   FIELD 26w01 PINRSTF (rw): PIN reset flag
+0x40021050 C   FIELD 27w01 PORRSTF (rw): POR/PDR reset flag
+0x40021050 C   FIELD 28w01 SFTRSTF (rw): Software reset flag
+0x40021050 C   FIELD 29w01 IWDGRSTF (rw): Independent watchdog reset flag
+0x40021050 C   FIELD 30w01 WWDGRSTF (rw): Window watchdog reset flag
+0x40021050 C   FIELD 31w01 LPWRRSTF (rw): Low-power reset flag
+0x40022000 A PERIPHERAL FLASH
+0x40022000 B  REGISTER ACR (rw): Access control register
+0x40022000 C   FIELD 00w01 LATENCY: Latency
+0x40022000 C   FIELD 01w01 PRFTEN: Prefetch enable
+0x40022000 C   FIELD 03w01 SLEEP_PD: Flash mode during Sleep
+0x40022000 C   FIELD 04w01 RUN_PD: Flash mode during Run
+0x40022000 C   FIELD 05w01 DISAB_BUF: Disable Buffer
+0x40022000 C   FIELD 06w01 PRE_READ: Pre-read data address
+0x40022004 B  REGISTER PECR (rw): Program/erase control register
+0x40022004 C   FIELD 00w01 PELOCK: FLASH_PECR and data EEPROM lock
+0x40022004 C   FIELD 01w01 PRGLOCK: Program memory lock
+0x40022004 C   FIELD 02w01 OPTLOCK: Option bytes block lock
+0x40022004 C   FIELD 03w01 PROG: Program memory selection
+0x40022004 C   FIELD 04w01 DATA: Data EEPROM selection
+0x40022004 C   FIELD 08w01 FIX: Fixed time data write for Byte, Half Word and Word programming
+0x40022004 C   FIELD 09w01 ERASE: Page or Double Word erase mode
+0x40022004 C   FIELD 10w01 FPRG: Half Page/Double Word programming mode
+0x40022004 C   FIELD 15w01 PARALLELBANK: Parallel bank mode
+0x40022004 C   FIELD 16w01 EOPIE: End of programming interrupt enable
+0x40022004 C   FIELD 17w01 ERRIE: Error interrupt enable
+0x40022004 C   FIELD 18w01 OBL_LAUNCH: Launch the option byte loading
+0x40022004 C   FIELD 23w01 NZDISABLE: Non-Zero check notification disable
+0x40022008 B  REGISTER PDKEYR (wo): Power down key register
+0x40022008 C   FIELD 00w32 PDKEYR: RUN_PD in FLASH_ACR key
+0x4002200C B  REGISTER PEKEYR (wo): Program/erase key register
+0x4002200C C   FIELD 00w32 PEKEYR: FLASH_PEC and data EEPROM key
+0x40022010 B  REGISTER PRGKEYR (wo): Program memory key register
+0x40022010 C   FIELD 00w32 PRGKEYR: Program memory key
+0x40022014 B  REGISTER OPTKEYR (wo): Option byte key register
+0x40022014 C   FIELD 00w32 OPTKEYR: Option byte key
+0x40022018 B  REGISTER SR: Status register
+0x40022018 C   FIELD 00w01 BSY (ro): Write/erase operations in progress
+0x40022018 C   FIELD 01w01 EOP (ro): End of operation
+0x40022018 C   FIELD 02w01 ENDHV (ro): End of high voltage
+0x40022018 C   FIELD 03w01 READY (ro): Flash memory module ready after low power mode
+0x40022018 C   FIELD 08w01 WRPERR (rw): Write protected error
+0x40022018 C   FIELD 09w01 PGAERR (rw): Programming alignment error
+0x40022018 C   FIELD 10w01 SIZERR (rw): Size error
+0x40022018 C   FIELD 11w01 OPTVERR (rw): Option validity error
+0x40022018 C   FIELD 13w01 RDERR (rw): RDERR
+0x40022018 C   FIELD 16w01 NOTZEROERR (rw): NOTZEROERR
+0x40022018 C   FIELD 17w01 FWWERR (rw): FWWERR
+0x4002201C B  REGISTER OPTR (ro): Option byte register
+0x4002201C C   FIELD 00w08 RDPROT: Read protection
+0x4002201C C   FIELD 08w01 WPRMOD: WPRMOD
+0x4002201C C   FIELD 16w04 BOR_LEV: BOR_LEV
+0x4002201C C   FIELD 20w01 WDG_SW: WDG_SW
+0x4002201C C   FIELD 21w01 nRST_STOP: nRST_STOP
+0x4002201C C   FIELD 22w01 nRST_STDBY: nRST_STDBY
+0x4002201C C   FIELD 23w01 BFB2: BFB2
+0x4002201C C   FIELD 31w01 nBOOT1: nBOOT1
+0x40022020 B  REGISTER WRPROT1 (ro): Write protection register
+0x40022020 C   FIELD 00w32 WRPROT1: Write protection
+0x40022080 B  REGISTER WRPROT2 (ro): Write protection register
+0x40022080 C   FIELD 00w16 WRPROT2: Write protection
+0x40023000 A PERIPHERAL CRC
+0x40023000 B  REGISTER DR (rw): Data register
+0x40023000 B  REGISTER DR16 (rw): Data register - half-word sized
+0x40023000 B  REGISTER DR8 (rw): Data register - byte sized
+0x40023000 C   FIELD 00w08 DR8: Data register bits
+0x40023000 C   FIELD 00w16 DR16: Data register bits
+0x40023000 C   FIELD 00w32 DR: Data register bits
+0x40023004 B  REGISTER IDR (rw): Independent data register
+0x40023004 C   FIELD 00w08 IDR: General-purpose 8-bit data register bits
+0x40023008 B  REGISTER CR: Control register
+0x40023008 C   FIELD 00w01 RESET (wo): RESET bit
+0x40023008 C   FIELD 03w02 POLYSIZE (rw): Polynomial size
+0x40023008 C   FIELD 05w02 REV_IN (rw): Reverse input data
+0x40023008 C   FIELD 07w01 REV_OUT (rw): Reverse output data
+0x40023010 B  REGISTER INIT (rw): Initial CRC value
+0x40023010 C   FIELD 00w32 INIT: Programmable initial CRC value
+0x40023014 B  REGISTER POL (rw): polynomial
+0x40023014 C   FIELD 00w32 POL: Programmable polynomial
+0x50000000 A PERIPHERAL GPIOA
+0x50000000 B  REGISTER MODER (rw): GPIO port mode register
+0x50000000 C   FIELD 00w02 MODE0: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 02w02 MODE1: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 04w02 MODE2: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 06w02 MODE3: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 08w02 MODE4: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 10w02 MODE5: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 12w02 MODE6: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 14w02 MODE7: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 16w02 MODE8: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 18w02 MODE9: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 20w02 MODE10: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 22w02 MODE11: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 24w02 MODE12: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 26w02 MODE13: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 28w02 MODE14: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 30w02 MODE15: Port x configuration bits (y = 0..15)
+0x50000004 B  REGISTER OTYPER (rw): GPIO port output type register
+0x50000004 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000008 B  REGISTER OSPEEDR (rw): GPIO port output speed register
+0x50000008 C   FIELD 00w02 OSPEED0: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 02w02 OSPEED1: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 04w02 OSPEED2: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 06w02 OSPEED3: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 08w02 OSPEED4: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 10w02 OSPEED5: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 12w02 OSPEED6: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 14w02 OSPEED7: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 16w02 OSPEED8: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 18w02 OSPEED9: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 20w02 OSPEED10: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 22w02 OSPEED11: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 24w02 OSPEED12: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 26w02 OSPEED13: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 28w02 OSPEED14: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 30w02 OSPEED15: Port x configuration bits (y = 0..15)
+0x5000000C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
+0x5000000C C   FIELD 00w02 PUPD0: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 02w02 PUPD1: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 04w02 PUPD2: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 06w02 PUPD3: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 08w02 PUPD4: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 10w02 PUPD5: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 12w02 PUPD6: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 14w02 PUPD7: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 16w02 PUPD8: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 18w02 PUPD9: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 20w02 PUPD10: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 22w02 PUPD11: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 24w02 PUPD12: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 26w02 PUPD13: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 28w02 PUPD14: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 30w02 PUPD15: Port x configuration bits (y = 0..15)
+0x50000010 B  REGISTER IDR (ro): GPIO port input data register
+0x50000010 C   FIELD 00w01 ID0: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 01w01 ID1: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 02w01 ID2: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 03w01 ID3: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 04w01 ID4: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 05w01 ID5: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 06w01 ID6: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 07w01 ID7: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 08w01 ID8: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 09w01 ID9: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 10w01 ID10: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 11w01 ID11: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 12w01 ID12: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 13w01 ID13: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 14w01 ID14: Port input data bit (y = 0..15)
+0x50000010 C   FIELD 15w01 ID15: Port input data bit (y = 0..15)
+0x50000014 B  REGISTER ODR (rw): GPIO port output data register
+0x50000014 C   FIELD 00w01 OD0: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 01w01 OD1: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 02w01 OD2: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 03w01 OD3: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 04w01 OD4: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 05w01 OD5: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 06w01 OD6: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 07w01 OD7: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 08w01 OD8: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 09w01 OD9: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 10w01 OD10: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 11w01 OD11: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 12w01 OD12: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 13w01 OD13: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 14w01 OD14: Port output data bit (y = 0..15)
+0x50000014 C   FIELD 15w01 OD15: Port output data bit (y = 0..15)
+0x50000018 B  REGISTER BSRR (wo): GPIO port bit set/reset register
+0x50000018 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
+0x50000018 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x5000001C B  REGISTER LCKR (rw): GPIO port configuration lock register
+0x5000001C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
+0x50000020 B  REGISTER AFRL (rw): GPIO alternate function low register
+0x50000020 C   FIELD 00w04 AFSEL0: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 04w04 AFSEL1: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 08w04 AFSEL2: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 12w04 AFSEL3: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 16w04 AFSEL4: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 20w04 AFSEL5: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 24w04 AFSEL6: Alternate function selection for port x pin y (y = 0..7)
+0x50000020 C   FIELD 28w04 AFSEL7: Alternate function selection for port x pin y (y = 0..7)
+0x50000024 B  REGISTER AFRH (rw): GPIO alternate function high register
+0x50000024 C   FIELD 00w04 AFSEL8: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 04w04 AFSEL9: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 08w04 AFSEL10: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 12w04 AFSEL11: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 16w04 AFSEL12: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 20w04 AFSEL13: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 24w04 AFSEL14: Alternate function selection for port x pin y (y = 8..15)
+0x50000024 C   FIELD 28w04 AFSEL15: Alternate function selection for port x pin y (y = 8..15)
+0x50000028 B  REGISTER BRR (wo): GPIO port bit reset register
+0x50000028 C   FIELD 00w01 BR0: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 01w01 BR1: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 02w01 BR2: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 03w01 BR3: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 04w01 BR4: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 05w01 BR5: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 06w01 BR6: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 07w01 BR7: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 08w01 BR8: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 09w01 BR9: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 10w01 BR10: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 11w01 BR11: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 12w01 BR12: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 13w01 BR13: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 14w01 BR14: Port x Reset bit y (y= 0 .. 15)
+0x50000028 C   FIELD 15w01 BR15: Port x Reset bit y (y= 0 .. 15)
+0x50000400 A PERIPHERAL GPIOB
+0x50000400 B  REGISTER MODER (rw): GPIO port mode register
+0x50000400 C   FIELD 00w02 MODE0: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 02w02 MODE1: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 04w02 MODE2: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 06w02 MODE3: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 08w02 MODE4: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 10w02 MODE5: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 12w02 MODE6: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 14w02 MODE7: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 16w02 MODE8: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 18w02 MODE9: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 20w02 MODE10: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 22w02 MODE11: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 24w02 MODE12: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 26w02 MODE13: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 28w02 MODE14: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 30w02 MODE15: Port x configuration bits (y = 0..15)
+0x50000404 B  REGISTER OTYPER (rw): GPIO port output type register
+0x50000404 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000408 B  REGISTER OSPEEDR (rw): GPIO port output speed register
+0x50000408 C   FIELD 00w02 OSPEED0: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 02w02 OSPEED1: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 04w02 OSPEED2: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 06w02 OSPEED3: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 08w02 OSPEED4: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 10w02 OSPEED5: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 12w02 OSPEED6: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 14w02 OSPEED7: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 16w02 OSPEED8: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 18w02 OSPEED9: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 20w02 OSPEED10: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 22w02 OSPEED11: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 24w02 OSPEED12: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 26w02 OSPEED13: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 28w02 OSPEED14: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 30w02 OSPEED15: Port x configuration bits (y = 0..15)
+0x5000040C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
+0x5000040C C   FIELD 00w02 PUPD0: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 02w02 PUPD1: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 04w02 PUPD2: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 06w02 PUPD3: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 08w02 PUPD4: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 10w02 PUPD5: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 12w02 PUPD6: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 14w02 PUPD7: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 16w02 PUPD8: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 18w02 PUPD9: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 20w02 PUPD10: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 22w02 PUPD11: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 24w02 PUPD12: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 26w02 PUPD13: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 28w02 PUPD14: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 30w02 PUPD15: Port x configuration bits (y = 0..15)
+0x50000410 B  REGISTER IDR (ro): GPIO port input data register
+0x50000410 C   FIELD 00w01 ID0: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 01w01 ID1: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 02w01 ID2: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 03w01 ID3: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 04w01 ID4: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 05w01 ID5: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 06w01 ID6: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 07w01 ID7: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 08w01 ID8: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 09w01 ID9: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 10w01 ID10: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 11w01 ID11: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 12w01 ID12: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 13w01 ID13: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 14w01 ID14: Port input data bit (y = 0..15)
+0x50000410 C   FIELD 15w01 ID15: Port input data bit (y = 0..15)
+0x50000414 B  REGISTER ODR (rw): GPIO port output data register
+0x50000414 C   FIELD 00w01 OD0: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 01w01 OD1: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 02w01 OD2: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 03w01 OD3: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 04w01 OD4: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 05w01 OD5: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 06w01 OD6: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 07w01 OD7: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 08w01 OD8: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 09w01 OD9: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 10w01 OD10: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 11w01 OD11: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 12w01 OD12: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 13w01 OD13: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 14w01 OD14: Port output data bit (y = 0..15)
+0x50000414 C   FIELD 15w01 OD15: Port output data bit (y = 0..15)
+0x50000418 B  REGISTER BSRR (wo): GPIO port bit set/reset register
+0x50000418 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
+0x50000418 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x5000041C B  REGISTER LCKR (rw): GPIO port configuration lock register
+0x5000041C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
+0x50000420 B  REGISTER AFRL (rw): GPIO alternate function low register
+0x50000420 C   FIELD 00w04 AFSEL0: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 04w04 AFSEL1: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 08w04 AFSEL2: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 12w04 AFSEL3: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 16w04 AFSEL4: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 20w04 AFSEL5: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 24w04 AFSEL6: Alternate function selection for port x pin y (y = 0..7)
+0x50000420 C   FIELD 28w04 AFSEL7: Alternate function selection for port x pin y (y = 0..7)
+0x50000424 B  REGISTER AFRH (rw): GPIO alternate function high register
+0x50000424 C   FIELD 00w04 AFSEL8: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 04w04 AFSEL9: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 08w04 AFSEL10: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 12w04 AFSEL11: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 16w04 AFSEL12: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 20w04 AFSEL13: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 24w04 AFSEL14: Alternate function selection for port x pin y (y = 8..15)
+0x50000424 C   FIELD 28w04 AFSEL15: Alternate function selection for port x pin y (y = 8..15)
+0x50000428 B  REGISTER BRR (wo): GPIO port bit reset register
+0x50000428 C   FIELD 00w01 BR0: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 01w01 BR1: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 02w01 BR2: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 03w01 BR3: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 04w01 BR4: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 05w01 BR5: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 06w01 BR6: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 07w01 BR7: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 08w01 BR8: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 09w01 BR9: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 10w01 BR10: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 11w01 BR11: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 12w01 BR12: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 13w01 BR13: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 14w01 BR14: Port x Reset bit y (y= 0 .. 15)
+0x50000428 C   FIELD 15w01 BR15: Port x Reset bit y (y= 0 .. 15)
+0x50000800 A PERIPHERAL GPIOC
+0x50000800 B  REGISTER MODER (rw): GPIO port mode register
+0x50000800 C   FIELD 00w02 MODE0: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 02w02 MODE1: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 04w02 MODE2: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 06w02 MODE3: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 08w02 MODE4: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 10w02 MODE5: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 12w02 MODE6: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 14w02 MODE7: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 16w02 MODE8: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 18w02 MODE9: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 20w02 MODE10: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 22w02 MODE11: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 24w02 MODE12: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 26w02 MODE13: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 28w02 MODE14: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 30w02 MODE15: Port x configuration bits (y = 0..15)
+0x50000804 B  REGISTER OTYPER (rw): GPIO port output type register
+0x50000804 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000808 B  REGISTER OSPEEDR (rw): GPIO port output speed register
+0x50000808 C   FIELD 00w02 OSPEED0: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 02w02 OSPEED1: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 04w02 OSPEED2: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 06w02 OSPEED3: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 08w02 OSPEED4: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 10w02 OSPEED5: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 12w02 OSPEED6: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 14w02 OSPEED7: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 16w02 OSPEED8: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 18w02 OSPEED9: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 20w02 OSPEED10: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 22w02 OSPEED11: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 24w02 OSPEED12: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 26w02 OSPEED13: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 28w02 OSPEED14: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 30w02 OSPEED15: Port x configuration bits (y = 0..15)
+0x5000080C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
+0x5000080C C   FIELD 00w02 PUPD0: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 02w02 PUPD1: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 04w02 PUPD2: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 06w02 PUPD3: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 08w02 PUPD4: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 10w02 PUPD5: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 12w02 PUPD6: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 14w02 PUPD7: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 16w02 PUPD8: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 18w02 PUPD9: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 20w02 PUPD10: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 22w02 PUPD11: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 24w02 PUPD12: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 26w02 PUPD13: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 28w02 PUPD14: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 30w02 PUPD15: Port x configuration bits (y = 0..15)
+0x50000810 B  REGISTER IDR (ro): GPIO port input data register
+0x50000810 C   FIELD 00w01 ID0: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 01w01 ID1: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 02w01 ID2: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 03w01 ID3: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 04w01 ID4: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 05w01 ID5: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 06w01 ID6: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 07w01 ID7: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 08w01 ID8: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 09w01 ID9: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 10w01 ID10: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 11w01 ID11: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 12w01 ID12: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 13w01 ID13: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 14w01 ID14: Port input data bit (y = 0..15)
+0x50000810 C   FIELD 15w01 ID15: Port input data bit (y = 0..15)
+0x50000814 B  REGISTER ODR (rw): GPIO port output data register
+0x50000814 C   FIELD 00w01 OD0: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 01w01 OD1: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 02w01 OD2: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 03w01 OD3: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 04w01 OD4: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 05w01 OD5: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 06w01 OD6: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 07w01 OD7: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 08w01 OD8: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 09w01 OD9: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 10w01 OD10: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 11w01 OD11: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 12w01 OD12: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 13w01 OD13: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 14w01 OD14: Port output data bit (y = 0..15)
+0x50000814 C   FIELD 15w01 OD15: Port output data bit (y = 0..15)
+0x50000818 B  REGISTER BSRR (wo): GPIO port bit set/reset register
+0x50000818 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
+0x50000818 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x5000081C B  REGISTER LCKR (rw): GPIO port configuration lock register
+0x5000081C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
+0x50000820 B  REGISTER AFRL (rw): GPIO alternate function low register
+0x50000820 C   FIELD 00w04 AFSEL0: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 04w04 AFSEL1: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 08w04 AFSEL2: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 12w04 AFSEL3: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 16w04 AFSEL4: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 20w04 AFSEL5: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 24w04 AFSEL6: Alternate function selection for port x pin y (y = 0..7)
+0x50000820 C   FIELD 28w04 AFSEL7: Alternate function selection for port x pin y (y = 0..7)
+0x50000824 B  REGISTER AFRH (rw): GPIO alternate function high register
+0x50000824 C   FIELD 00w04 AFSEL8: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 04w04 AFSEL9: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 08w04 AFSEL10: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 12w04 AFSEL11: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 16w04 AFSEL12: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 20w04 AFSEL13: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 24w04 AFSEL14: Alternate function selection for port x pin y (y = 8..15)
+0x50000824 C   FIELD 28w04 AFSEL15: Alternate function selection for port x pin y (y = 8..15)
+0x50000828 B  REGISTER BRR (wo): GPIO port bit reset register
+0x50000828 C   FIELD 00w01 BR0: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 01w01 BR1: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 02w01 BR2: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 03w01 BR3: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 04w01 BR4: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 05w01 BR5: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 06w01 BR6: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 07w01 BR7: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 08w01 BR8: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 09w01 BR9: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 10w01 BR10: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 11w01 BR11: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 12w01 BR12: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 13w01 BR13: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 14w01 BR14: Port x Reset bit y (y= 0 .. 15)
+0x50000828 C   FIELD 15w01 BR15: Port x Reset bit y (y= 0 .. 15)
+0x50000C00 A PERIPHERAL GPIOD
+0x50000C00 B  REGISTER MODER (rw): GPIO port mode register
+0x50000C00 C   FIELD 00w02 MODE0: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 02w02 MODE1: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 04w02 MODE2: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 06w02 MODE3: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 08w02 MODE4: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 10w02 MODE5: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 12w02 MODE6: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 14w02 MODE7: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 16w02 MODE8: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 18w02 MODE9: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 20w02 MODE10: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 22w02 MODE11: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 24w02 MODE12: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 26w02 MODE13: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 28w02 MODE14: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 30w02 MODE15: Port x configuration bits (y = 0..15)
+0x50000C04 B  REGISTER OTYPER (rw): GPIO port output type register
+0x50000C04 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000C08 B  REGISTER OSPEEDR (rw): GPIO port output speed register
+0x50000C08 C   FIELD 00w02 OSPEED0: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 02w02 OSPEED1: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 04w02 OSPEED2: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 06w02 OSPEED3: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 08w02 OSPEED4: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 10w02 OSPEED5: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 12w02 OSPEED6: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 14w02 OSPEED7: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 16w02 OSPEED8: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 18w02 OSPEED9: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 20w02 OSPEED10: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 22w02 OSPEED11: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 24w02 OSPEED12: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 26w02 OSPEED13: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 28w02 OSPEED14: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 30w02 OSPEED15: Port x configuration bits (y = 0..15)
+0x50000C0C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
+0x50000C0C C   FIELD 00w02 PUPD0: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 02w02 PUPD1: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 04w02 PUPD2: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 06w02 PUPD3: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 08w02 PUPD4: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 10w02 PUPD5: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 12w02 PUPD6: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 14w02 PUPD7: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 16w02 PUPD8: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 18w02 PUPD9: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 20w02 PUPD10: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 22w02 PUPD11: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 24w02 PUPD12: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 26w02 PUPD13: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 28w02 PUPD14: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 30w02 PUPD15: Port x configuration bits (y = 0..15)
+0x50000C10 B  REGISTER IDR (ro): GPIO port input data register
+0x50000C10 C   FIELD 00w01 ID0: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 01w01 ID1: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 02w01 ID2: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 03w01 ID3: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 04w01 ID4: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 05w01 ID5: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 06w01 ID6: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 07w01 ID7: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 08w01 ID8: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 09w01 ID9: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 10w01 ID10: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 11w01 ID11: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 12w01 ID12: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 13w01 ID13: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 14w01 ID14: Port input data bit (y = 0..15)
+0x50000C10 C   FIELD 15w01 ID15: Port input data bit (y = 0..15)
+0x50000C14 B  REGISTER ODR (rw): GPIO port output data register
+0x50000C14 C   FIELD 00w01 OD0: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 01w01 OD1: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 02w01 OD2: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 03w01 OD3: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 04w01 OD4: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 05w01 OD5: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 06w01 OD6: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 07w01 OD7: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 08w01 OD8: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 09w01 OD9: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 10w01 OD10: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 11w01 OD11: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 12w01 OD12: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 13w01 OD13: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 14w01 OD14: Port output data bit (y = 0..15)
+0x50000C14 C   FIELD 15w01 OD15: Port output data bit (y = 0..15)
+0x50000C18 B  REGISTER BSRR (wo): GPIO port bit set/reset register
+0x50000C18 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
+0x50000C18 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50000C1C B  REGISTER LCKR (rw): GPIO port configuration lock register
+0x50000C1C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
+0x50000C20 B  REGISTER AFRL (rw): GPIO alternate function low register
+0x50000C20 C   FIELD 00w04 AFSEL0: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 04w04 AFSEL1: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 08w04 AFSEL2: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 12w04 AFSEL3: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 16w04 AFSEL4: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 20w04 AFSEL5: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 24w04 AFSEL6: Alternate function selection for port x pin y (y = 0..7)
+0x50000C20 C   FIELD 28w04 AFSEL7: Alternate function selection for port x pin y (y = 0..7)
+0x50000C24 B  REGISTER AFRH (rw): GPIO alternate function high register
+0x50000C24 C   FIELD 00w04 AFSEL8: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 04w04 AFSEL9: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 08w04 AFSEL10: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 12w04 AFSEL11: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 16w04 AFSEL12: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 20w04 AFSEL13: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 24w04 AFSEL14: Alternate function selection for port x pin y (y = 8..15)
+0x50000C24 C   FIELD 28w04 AFSEL15: Alternate function selection for port x pin y (y = 8..15)
+0x50000C28 B  REGISTER BRR (wo): GPIO port bit reset register
+0x50000C28 C   FIELD 00w01 BR0: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 01w01 BR1: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 02w01 BR2: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 03w01 BR3: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 04w01 BR4: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 05w01 BR5: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 06w01 BR6: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 07w01 BR7: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 08w01 BR8: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 09w01 BR9: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 10w01 BR10: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 11w01 BR11: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 12w01 BR12: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 13w01 BR13: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 14w01 BR14: Port x Reset bit y (y= 0 .. 15)
+0x50000C28 C   FIELD 15w01 BR15: Port x Reset bit y (y= 0 .. 15)
+0x50001000 A PERIPHERAL GPIOE
+0x50001000 B  REGISTER MODER (rw): GPIO port mode register
+0x50001000 C   FIELD 00w02 MODE0: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 02w02 MODE1: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 04w02 MODE2: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 06w02 MODE3: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 08w02 MODE4: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 10w02 MODE5: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 12w02 MODE6: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 14w02 MODE7: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 16w02 MODE8: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 18w02 MODE9: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 20w02 MODE10: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 22w02 MODE11: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 24w02 MODE12: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 26w02 MODE13: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 28w02 MODE14: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 30w02 MODE15: Port x configuration bits (y = 0..15)
+0x50001004 B  REGISTER OTYPER (rw): GPIO port output type register
+0x50001004 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50001008 B  REGISTER OSPEEDR (rw): GPIO port output speed register
+0x50001008 C   FIELD 00w02 OSPEED0: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 02w02 OSPEED1: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 04w02 OSPEED2: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 06w02 OSPEED3: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 08w02 OSPEED4: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 10w02 OSPEED5: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 12w02 OSPEED6: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 14w02 OSPEED7: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 16w02 OSPEED8: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 18w02 OSPEED9: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 20w02 OSPEED10: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 22w02 OSPEED11: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 24w02 OSPEED12: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 26w02 OSPEED13: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 28w02 OSPEED14: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 30w02 OSPEED15: Port x configuration bits (y = 0..15)
+0x5000100C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
+0x5000100C C   FIELD 00w02 PUPD0: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 02w02 PUPD1: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 04w02 PUPD2: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 06w02 PUPD3: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 08w02 PUPD4: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 10w02 PUPD5: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 12w02 PUPD6: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 14w02 PUPD7: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 16w02 PUPD8: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 18w02 PUPD9: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 20w02 PUPD10: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 22w02 PUPD11: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 24w02 PUPD12: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 26w02 PUPD13: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 28w02 PUPD14: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 30w02 PUPD15: Port x configuration bits (y = 0..15)
+0x50001010 B  REGISTER IDR (ro): GPIO port input data register
+0x50001010 C   FIELD 00w01 ID0: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 01w01 ID1: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 02w01 ID2: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 03w01 ID3: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 04w01 ID4: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 05w01 ID5: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 06w01 ID6: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 07w01 ID7: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 08w01 ID8: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 09w01 ID9: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 10w01 ID10: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 11w01 ID11: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 12w01 ID12: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 13w01 ID13: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 14w01 ID14: Port input data bit (y = 0..15)
+0x50001010 C   FIELD 15w01 ID15: Port input data bit (y = 0..15)
+0x50001014 B  REGISTER ODR (rw): GPIO port output data register
+0x50001014 C   FIELD 00w01 OD0: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 01w01 OD1: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 02w01 OD2: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 03w01 OD3: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 04w01 OD4: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 05w01 OD5: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 06w01 OD6: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 07w01 OD7: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 08w01 OD8: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 09w01 OD9: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 10w01 OD10: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 11w01 OD11: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 12w01 OD12: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 13w01 OD13: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 14w01 OD14: Port output data bit (y = 0..15)
+0x50001014 C   FIELD 15w01 OD15: Port output data bit (y = 0..15)
+0x50001018 B  REGISTER BSRR (wo): GPIO port bit set/reset register
+0x50001018 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
+0x50001018 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x5000101C B  REGISTER LCKR (rw): GPIO port configuration lock register
+0x5000101C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
+0x50001020 B  REGISTER AFRL (rw): GPIO alternate function low register
+0x50001020 C   FIELD 00w04 AFSEL0: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 04w04 AFSEL1: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 08w04 AFSEL2: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 12w04 AFSEL3: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 16w04 AFSEL4: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 20w04 AFSEL5: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 24w04 AFSEL6: Alternate function selection for port x pin y (y = 0..7)
+0x50001020 C   FIELD 28w04 AFSEL7: Alternate function selection for port x pin y (y = 0..7)
+0x50001024 B  REGISTER AFRH (rw): GPIO alternate function high register
+0x50001024 C   FIELD 00w04 AFSEL8: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 04w04 AFSEL9: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 08w04 AFSEL10: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 12w04 AFSEL11: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 16w04 AFSEL12: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 20w04 AFSEL13: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 24w04 AFSEL14: Alternate function selection for port x pin y (y = 8..15)
+0x50001024 C   FIELD 28w04 AFSEL15: Alternate function selection for port x pin y (y = 8..15)
+0x50001028 B  REGISTER BRR (wo): GPIO port bit reset register
+0x50001028 C   FIELD 00w01 BR0: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 01w01 BR1: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 02w01 BR2: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 03w01 BR3: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 04w01 BR4: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 05w01 BR5: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 06w01 BR6: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 07w01 BR7: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 08w01 BR8: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 09w01 BR9: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 10w01 BR10: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 11w01 BR11: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 12w01 BR12: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 13w01 BR13: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 14w01 BR14: Port x Reset bit y (y= 0 .. 15)
+0x50001028 C   FIELD 15w01 BR15: Port x Reset bit y (y= 0 .. 15)
+0x50001C00 A PERIPHERAL GPIOH
+0x50001C00 B  REGISTER MODER (rw): GPIO port mode register
+0x50001C00 C   FIELD 00w02 MODE0: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 02w02 MODE1: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 04w02 MODE2: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 06w02 MODE3: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 08w02 MODE4: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 10w02 MODE5: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 12w02 MODE6: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 14w02 MODE7: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 16w02 MODE8: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 18w02 MODE9: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 20w02 MODE10: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 22w02 MODE11: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 24w02 MODE12: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 26w02 MODE13: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 28w02 MODE14: Port x configuration bits (y = 0..15)
+0x50001C00 C   FIELD 30w02 MODE15: Port x configuration bits (y = 0..15)
+0x50001C04 B  REGISTER OTYPER (rw): GPIO port output type register
+0x50001C04 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
+0x50001C04 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50001C08 B  REGISTER OSPEEDR (rw): GPIO port output speed register
+0x50001C08 C   FIELD 00w02 OSPEED0: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 02w02 OSPEED1: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 04w02 OSPEED2: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 06w02 OSPEED3: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 08w02 OSPEED4: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 10w02 OSPEED5: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 12w02 OSPEED6: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 14w02 OSPEED7: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 16w02 OSPEED8: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 18w02 OSPEED9: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 20w02 OSPEED10: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 22w02 OSPEED11: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 24w02 OSPEED12: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 26w02 OSPEED13: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 28w02 OSPEED14: Port x configuration bits (y = 0..15)
+0x50001C08 C   FIELD 30w02 OSPEED15: Port x configuration bits (y = 0..15)
+0x50001C0C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
+0x50001C0C C   FIELD 00w02 PUPD0: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 02w02 PUPD1: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 04w02 PUPD2: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 06w02 PUPD3: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 08w02 PUPD4: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 10w02 PUPD5: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 12w02 PUPD6: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 14w02 PUPD7: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 16w02 PUPD8: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 18w02 PUPD9: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 20w02 PUPD10: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 22w02 PUPD11: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 24w02 PUPD12: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 26w02 PUPD13: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 28w02 PUPD14: Port x configuration bits (y = 0..15)
+0x50001C0C C   FIELD 30w02 PUPD15: Port x configuration bits (y = 0..15)
+0x50001C10 B  REGISTER IDR (ro): GPIO port input data register
+0x50001C10 C   FIELD 00w01 ID0: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 01w01 ID1: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 02w01 ID2: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 03w01 ID3: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 04w01 ID4: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 05w01 ID5: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 06w01 ID6: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 07w01 ID7: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 08w01 ID8: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 09w01 ID9: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 10w01 ID10: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 11w01 ID11: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 12w01 ID12: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 13w01 ID13: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 14w01 ID14: Port input data bit (y = 0..15)
+0x50001C10 C   FIELD 15w01 ID15: Port input data bit (y = 0..15)
+0x50001C14 B  REGISTER ODR (rw): GPIO port output data register
+0x50001C14 C   FIELD 00w01 OD0: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 01w01 OD1: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 02w01 OD2: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 03w01 OD3: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 04w01 OD4: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 05w01 OD5: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 06w01 OD6: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 07w01 OD7: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 08w01 OD8: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 09w01 OD9: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 10w01 OD10: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 11w01 OD11: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 12w01 OD12: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 13w01 OD13: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 14w01 OD14: Port output data bit (y = 0..15)
+0x50001C14 C   FIELD 15w01 OD15: Port output data bit (y = 0..15)
+0x50001C18 B  REGISTER BSRR (wo): GPIO port bit set/reset register
+0x50001C18 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
+0x50001C18 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
+0x50001C18 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50001C1C B  REGISTER LCKR (rw): GPIO port configuration lock register
+0x50001C1C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x50001C1C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
+0x50001C20 B  REGISTER AFRL (rw): GPIO alternate function low register
+0x50001C20 C   FIELD 00w04 AFSEL0: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 04w04 AFSEL1: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 08w04 AFSEL2: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 12w04 AFSEL3: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 16w04 AFSEL4: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 20w04 AFSEL5: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 24w04 AFSEL6: Alternate function selection for port x pin y (y = 0..7)
+0x50001C20 C   FIELD 28w04 AFSEL7: Alternate function selection for port x pin y (y = 0..7)
+0x50001C24 B  REGISTER AFRH (rw): GPIO alternate function high register
+0x50001C24 C   FIELD 00w04 AFSEL8: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 04w04 AFSEL9: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 08w04 AFSEL10: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 12w04 AFSEL11: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 16w04 AFSEL12: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 20w04 AFSEL13: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 24w04 AFSEL14: Alternate function selection for port x pin y (y = 8..15)
+0x50001C24 C   FIELD 28w04 AFSEL15: Alternate function selection for port x pin y (y = 8..15)
+0x50001C28 B  REGISTER BRR (wo): GPIO port bit reset register
+0x50001C28 C   FIELD 00w01 BR0: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 01w01 BR1: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 02w01 BR2: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 03w01 BR3: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 04w01 BR4: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 05w01 BR5: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 06w01 BR6: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 07w01 BR7: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 08w01 BR8: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 09w01 BR9: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 10w01 BR10: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 11w01 BR11: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 12w01 BR12: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 13w01 BR13: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 14w01 BR14: Port x Reset bit y (y= 0 .. 15)
+0x50001C28 C   FIELD 15w01 BR15: Port x Reset bit y (y= 0 .. 15)
+0xE000E100 A PERIPHERAL NVIC
+0xE000E100 B  REGISTER ISER (rw): Interrupt Set Enable Register
+0xE000E100 C   FIELD 00w32 SETENA: SETENA
+0xE000E180 B  REGISTER ICER (rw): Interrupt Clear Enable Register
+0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
+0xE000E200 B  REGISTER ISPR (rw): Interrupt Set-Pending Register
+0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
+0xE000E280 B  REGISTER ICPR (rw): Interrupt Clear-Pending Register
+0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
+0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register 0
+0xE000E400 C   FIELD 00w08 PRI_0: priority for interrupt 0
+0xE000E400 C   FIELD 08w08 PRI_1: priority for interrupt 1
+0xE000E400 C   FIELD 16w08 PRI_2: priority for interrupt 2
+0xE000E400 C   FIELD 24w08 PRI_3: priority for interrupt 3
+0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register 1
+0xE000E404 C   FIELD 00w08 PRI_4: priority for interrupt n
+0xE000E404 C   FIELD 08w08 PRI_5: priority for interrupt n
+0xE000E404 C   FIELD 16w08 PRI_6: priority for interrupt n
+0xE000E404 C   FIELD 24w08 PRI_7: priority for interrupt n
+0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register 2
+0xE000E408 C   FIELD 00w08 PRI_8: priority for interrupt n
+0xE000E408 C   FIELD 08w08 PRI_9: priority for interrupt n
+0xE000E408 C   FIELD 16w08 PRI_10: priority for interrupt n
+0xE000E408 C   FIELD 24w08 PRI_11: priority for interrupt n
+0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register 3
+0xE000E40C C   FIELD 00w08 PRI_12: priority for interrupt n
+0xE000E40C C   FIELD 08w08 PRI_13: priority for interrupt n
+0xE000E40C C   FIELD 16w08 PRI_14: priority for interrupt n
+0xE000E40C C   FIELD 24w08 PRI_15: priority for interrupt n
+0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register 4
+0xE000E410 C   FIELD 00w08 PRI_16: priority for interrupt n
+0xE000E410 C   FIELD 08w08 PRI_17: priority for interrupt n
+0xE000E410 C   FIELD 16w08 PRI_18: priority for interrupt n
+0xE000E410 C   FIELD 24w08 PRI_19: priority for interrupt n
+0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register 5
+0xE000E414 C   FIELD 00w08 PRI_20: priority for interrupt n
+0xE000E414 C   FIELD 08w08 PRI_21: priority for interrupt n
+0xE000E414 C   FIELD 16w08 PRI_22: priority for interrupt n
+0xE000E414 C   FIELD 24w08 PRI_23: priority for interrupt n
+0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register 6
+0xE000E418 C   FIELD 00w08 PRI_24: priority for interrupt n
+0xE000E418 C   FIELD 08w08 PRI_25: priority for interrupt n
+0xE000E418 C   FIELD 16w08 PRI_26: priority for interrupt n
+0xE000E418 C   FIELD 24w08 PRI_27: priority for interrupt n
+0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register 7
+0xE000E41C C   FIELD 00w08 PRI_28: priority for interrupt n
+0xE000E41C C   FIELD 08w08 PRI_29: priority for interrupt n
+0xE000E41C C   FIELD 16w08 PRI_30: priority for interrupt n
+0xE000E41C C   FIELD 24w08 PRI_31: priority for interrupt n
+INTERRUPT 000: WWDG (FW): Window Watchdog interrupt
+INTERRUPT 002: RTC (RTC): RTC global interrupt
+INTERRUPT 003: FLASH (EXTI): Flash global interrupt
+INTERRUPT 004: RCC (SYSCFG): RCC global interrupt
+INTERRUPT 005: EXTI0_1 (ADC): EXTI Line[1:0] interrupts
+INTERRUPT 006: EXTI2_3 (ADC): EXTI Line[3:2] interrupts
+INTERRUPT 007: EXTI4_15 (ADC): EXTI Line15 and EXTI4 interrupts
+INTERRUPT 009: DMA1_Channel1 (DMA1): DMA1 Channel1 global interrupt
+INTERRUPT 010: DMA1_Channel2_3 (DMA1): DMA1 Channel2 and 3 interrupts
+INTERRUPT 011: DMA1_Channel4_7 (DMA1): DMA1 Channel4 to 7 interrupts
+INTERRUPT 012: ADC (DBG): ADC
+INTERRUPT 013: LPTIM1 (LPTIM): LPTIMER1 interrupt through EXTI29
+INTERRUPT 015: TIM2 (TIM21): TIM2 global interrupt
+INTERRUPT 020: TIM21 (TIM22): TIMER21 global interrupt
+INTERRUPT 022: TIM22 (LPUART1): TIMER22 global interrupt
+INTERRUPT 023: I2C1 (PWR): I2C1 global interrupt
+INTERRUPT 025: SPI1 (I2C1): SPI1_global_interrupt
+INTERRUPT 028: USART2 (IWDG): USART2 global interrupt
+INTERRUPT 029: LPUART1 (NVIC): LPUART1 global interrupt through
