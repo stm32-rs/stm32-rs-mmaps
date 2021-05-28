@@ -497,7 +497,7 @@
 0x40000C4C B  REGISTER DMAR (rw): DMA address for full transfer
 0x40000C4C C   FIELD 00w16 DMAB: DMA register for burst accesses
 0x40000C50 B  REGISTER OR (rw): TIM5 option register
-0x40000C50 C   FIELD 06w02 IT4_RMP: Timer Input 4 remap
+0x40000C50 C   FIELD 10w02 ITR1_RMP: Timer Input 4 remap
 0x40001000 A PERIPHERAL TIM6
 0x40001000 B  REGISTER CR1 (rw): control register 1
 0x40001000 C   FIELD 00w01 CEN: Counter enable
@@ -554,6 +554,8 @@
 0x40001800 C   FIELD 03w01 OPM: One-pulse mode
 0x40001800 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40001800 C   FIELD 08w02 CKD: Clock division
+0x40001804 B  REGISTER CR2 (rw): control register 2
+0x40001804 C   FIELD 04w03 MMS: Master mode selection
 0x40001808 B  REGISTER SMCR (rw): slave mode control register
 0x40001808 C   FIELD 00w03 SMS: Slave mode selection
 0x40001808 C   FIELD 04w03 TS: Trigger selection
@@ -576,7 +578,7 @@
 0x40001814 C   FIELD 02w01 CC2G: Capture/compare 2 generation
 0x40001814 C   FIELD 06w01 TG: Trigger generation
 0x40001818 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
-0x40001818 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
+0x40001818 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40001818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001818 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
@@ -589,8 +591,8 @@
 0x40001818 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
 0x40001818 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
 0x40001818 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
+0x40001818 C   FIELD 12w03 IC2F: Input capture 2 filter
 0x40001818 C   FIELD 12w03 OC2M: Output Compare 2 mode
-0x40001818 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40001820 B  REGISTER CCER (rw): capture/compare enable register
 0x40001820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40001820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -625,11 +627,11 @@
 0x40001C14 B  REGISTER EGR (wo): event generation register
 0x40001C14 C   FIELD 00w01 UG: Update generation
 0x40001C14 C   FIELD 01w01 CC1G: Capture/compare 1 generation
-0x40001C18 B  REGISTER CCMR1_Input (rw): capture/compare mode register (input mode)
-0x40001C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
+0x40001C18 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
+0x40001C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40001C18 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
+0x40001C18 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
 0x40001C18 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40001C18 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40001C18 C   FIELD 04w03 OC1M: Output Compare 1 mode
@@ -663,11 +665,11 @@
 0x40002014 B  REGISTER EGR (wo): event generation register
 0x40002014 C   FIELD 00w01 UG: Update generation
 0x40002014 C   FIELD 01w01 CC1G: Capture/compare 1 generation
-0x40002018 B  REGISTER CCMR1_Input (rw): capture/compare mode register (input mode)
-0x40002018 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
+0x40002018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
+0x40002018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40002018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
+0x40002018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
 0x40002018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40002018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40002018 C   FIELD 04w03 OC1M: Output Compare 1 mode
@@ -1607,12 +1609,12 @@
 0x40006408 C   FIELD 29w01 LOW0 (ro): Lowest priority flag for mailbox 0
 0x40006408 C   FIELD 30w01 LOW1 (ro): Lowest priority flag for mailbox 1
 0x40006408 C   FIELD 31w01 LOW2 (ro): Lowest priority flag for mailbox 2
-0x4000640C B  REGISTER RF0R: receive FIFO 0 register
+0x4000640C B  REGISTER RF0R: receive FIFO %s register
 0x4000640C C   FIELD 00w02 FMP (ro): FMP0
 0x4000640C C   FIELD 03w01 FULL (rw): FULL0
 0x4000640C C   FIELD 04w01 FOVR (rw): FOVR0
 0x4000640C C   FIELD 05w01 RFOM (rw): RFOM0
-0x40006410 B  REGISTER RF1R: receive FIFO 0 register
+0x40006410 B  REGISTER RF1R: receive FIFO %s register
 0x40006410 C   FIELD 00w02 FMP (ro): FMP0
 0x40006410 C   FIELD 03w01 FULL (rw): FULL0
 0x40006410 C   FIELD 04w01 FOVR (rw): FOVR0
@@ -2053,12 +2055,12 @@
 0x40006808 C   FIELD 29w01 LOW0 (ro): Lowest priority flag for mailbox 0
 0x40006808 C   FIELD 30w01 LOW1 (ro): Lowest priority flag for mailbox 1
 0x40006808 C   FIELD 31w01 LOW2 (ro): Lowest priority flag for mailbox 2
-0x4000680C B  REGISTER RF0R: receive FIFO 0 register
+0x4000680C B  REGISTER RF0R: receive FIFO %s register
 0x4000680C C   FIELD 00w02 FMP (ro): FMP0
 0x4000680C C   FIELD 03w01 FULL (rw): FULL0
 0x4000680C C   FIELD 04w01 FOVR (rw): FOVR0
 0x4000680C C   FIELD 05w01 RFOM (rw): RFOM0
-0x40006810 B  REGISTER RF1R: receive FIFO 0 register
+0x40006810 B  REGISTER RF1R: receive FIFO %s register
 0x40006810 C   FIELD 00w02 FMP (ro): FMP0
 0x40006810 C   FIELD 03w01 FULL (rw): FULL0
 0x40006810 C   FIELD 04w01 FOVR (rw): FOVR0
@@ -2466,12 +2468,12 @@
 0x40006C08 C   FIELD 29w01 LOW0 (ro): Lowest priority flag for mailbox 0
 0x40006C08 C   FIELD 30w01 LOW1 (ro): Lowest priority flag for mailbox 1
 0x40006C08 C   FIELD 31w01 LOW2 (ro): Lowest priority flag for mailbox 2
-0x40006C0C B  REGISTER RF0R: receive FIFO 0 register
+0x40006C0C B  REGISTER RF0R: receive FIFO %s register
 0x40006C0C C   FIELD 00w02 FMP (ro): FMP0
 0x40006C0C C   FIELD 03w01 FULL (rw): FULL0
 0x40006C0C C   FIELD 04w01 FOVR (rw): FOVR0
 0x40006C0C C   FIELD 05w01 RFOM (rw): RFOM0
-0x40006C10 B  REGISTER RF1R: receive FIFO 0 register
+0x40006C10 B  REGISTER RF1R: receive FIFO %s register
 0x40006C10 C   FIELD 00w02 FMP (ro): FMP0
 0x40006C10 C   FIELD 03w01 FULL (rw): FULL0
 0x40006C10 C   FIELD 04w01 FOVR (rw): FOVR0
@@ -4217,8 +4219,6 @@
 0x4001482C C   FIELD 00w16 ARR: Auto-reload value
 0x40014834 B  REGISTER CCR1 (rw): capture/compare register 1
 0x40014834 C   FIELD 00w16 CCR: Capture/Compare 1 value
-0x40014850 B  REGISTER OR (rw): option register
-0x40014850 C   FIELD 00w02 RMP: Input 1 remapping capability
 0x40015000 A PERIPHERAL SPI5
 0x40015000 B  REGISTER CR1 (rw): control register 1
 0x40015000 C   FIELD 00w01 CPHA: Clock phase
