@@ -248,7 +248,6 @@
 0x40000804 C   FIELD 07w01 TI1S: TI1 selection
 0x40000808 B  REGISTER SMCR (rw): slave mode control register
 0x40000808 C   FIELD 00w03 SMS: Slave mode selection
-0x40000808 C   FIELD 03w01 OCCS: OCREF clear selection
 0x40000808 C   FIELD 04w03 TS: Trigger selection
 0x40000808 C   FIELD 07w01 MSM: Master/Slave mode
 0x40000808 C   FIELD 08w04 ETF: External trigger filter
@@ -366,7 +365,6 @@
 0x40000C04 C   FIELD 07w01 TI1S: TI1 selection
 0x40000C08 B  REGISTER SMCR (rw): slave mode control register
 0x40000C08 C   FIELD 00w03 SMS: Slave mode selection
-0x40000C08 C   FIELD 03w01 OCCS: OCREF clear selection
 0x40000C08 C   FIELD 04w03 TS: Trigger selection
 0x40000C08 C   FIELD 07w01 MSM: Master/Slave mode
 0x40000C08 C   FIELD 08w04 ETF: External trigger filter
@@ -583,6 +581,8 @@
 0x40001C00 C   FIELD 02w01 URS: Update request source
 0x40001C00 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40001C00 C   FIELD 08w02 CKD: Clock division
+0x40001C04 B  REGISTER CR2 (rw): control register 2
+0x40001C04 C   FIELD 04w03 MMS: Master mode selection
 0x40001C0C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x40001C0C C   FIELD 00w01 UIE: Update interrupt enable
 0x40001C0C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -597,7 +597,6 @@
 0x40001C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40001C18 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40001C18 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40001C18 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40001C18 C   FIELD 04w03 OC1M: Output Compare 1 mode
@@ -621,6 +620,8 @@
 0x40002000 C   FIELD 02w01 URS: Update request source
 0x40002000 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40002000 C   FIELD 08w02 CKD: Clock division
+0x40002004 B  REGISTER CR2 (rw): control register 2
+0x40002004 C   FIELD 04w03 MMS: Master mode selection
 0x4000200C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x4000200C C   FIELD 00w01 UIE: Update interrupt enable
 0x4000200C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -635,7 +636,6 @@
 0x40002018 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40002018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40002018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40002018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40002018 C   FIELD 04w03 OC1M: Output Compare 1 mode
@@ -1270,12 +1270,12 @@
 0x40006408 C   FIELD 29w01 LOW0 (ro): Lowest priority flag for mailbox 0
 0x40006408 C   FIELD 30w01 LOW1 (ro): Lowest priority flag for mailbox 1
 0x40006408 C   FIELD 31w01 LOW2 (ro): Lowest priority flag for mailbox 2
-0x4000640C B  REGISTER RF0R: CAN_RF0R
+0x4000640C B  REGISTER RF0R: CAN_RF%sR
 0x4000640C C   FIELD 00w02 FMP (ro): FMP0
 0x4000640C C   FIELD 03w01 FULL (rw): FULL0
 0x4000640C C   FIELD 04w01 FOVR (rw): FOVR0
 0x4000640C C   FIELD 05w01 RFOM (rw): RFOM0
-0x40006410 B  REGISTER RF1R: CAN_RF0R
+0x40006410 B  REGISTER RF1R: CAN_RF%sR
 0x40006410 C   FIELD 00w02 FMP (ro): FMP0
 0x40006410 C   FIELD 03w01 FULL (rw): FULL0
 0x40006410 C   FIELD 04w01 FOVR (rw): FOVR0
@@ -1589,12 +1589,12 @@
 0x40006808 C   FIELD 29w01 LOW0 (ro): Lowest priority flag for mailbox 0
 0x40006808 C   FIELD 30w01 LOW1 (ro): Lowest priority flag for mailbox 1
 0x40006808 C   FIELD 31w01 LOW2 (ro): Lowest priority flag for mailbox 2
-0x4000680C B  REGISTER RF0R: CAN_RF0R
+0x4000680C B  REGISTER RF0R: CAN_RF%sR
 0x4000680C C   FIELD 00w02 FMP (ro): FMP0
 0x4000680C C   FIELD 03w01 FULL (rw): FULL0
 0x4000680C C   FIELD 04w01 FOVR (rw): FOVR0
 0x4000680C C   FIELD 05w01 RFOM (rw): RFOM0
-0x40006810 B  REGISTER RF1R: CAN_RF0R
+0x40006810 B  REGISTER RF1R: CAN_RF%sR
 0x40006810 C   FIELD 00w02 FMP (ro): FMP0
 0x40006810 C   FIELD 03w01 FULL (rw): FULL0
 0x40006810 C   FIELD 04w01 FOVR (rw): FOVR0
