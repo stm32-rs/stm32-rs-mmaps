@@ -140,7 +140,7 @@
 0x40000068 C   FIELD 00w04 TI1SEL: TI1SEL
 0x40000068 C   FIELD 08w04 TI2SEL: TI2SEL
 0x40002800 A PERIPHERAL RTC
-0x40002800 B  REGISTER TR (rw): TR
+0x40002800 B  REGISTER TR (rw): Time register
 0x40002800 C   FIELD 00w04 SU: Second units in BCD format
 0x40002800 C   FIELD 04w03 ST: Second tens in BCD format
 0x40002800 C   FIELD 08w04 MNU: Minute units in BCD format
@@ -148,7 +148,7 @@
 0x40002800 C   FIELD 16w04 HU: Hour units in BCD format
 0x40002800 C   FIELD 20w02 HT: Hour tens in BCD format
 0x40002800 C   FIELD 22w01 PM: AM/PM notation
-0x40002804 B  REGISTER DR (rw): DR
+0x40002804 B  REGISTER DR (rw): Date register
 0x40002804 C   FIELD 00w04 DU: Date units in BCD format
 0x40002804 C   FIELD 04w02 DT: Date tens in BCD format
 0x40002804 C   FIELD 08w04 MU: Month units in BCD format
@@ -156,9 +156,9 @@
 0x40002804 C   FIELD 13w03 WDU: Week day units
 0x40002804 C   FIELD 16w04 YU: Year units in BCD format
 0x40002804 C   FIELD 20w04 YT: Year tens in BCD format
-0x40002808 B  REGISTER SSR (ro): SSR
+0x40002808 B  REGISTER SSR (ro): Sub second register
 0x40002808 C   FIELD 00w32 SS: Synchronous binary counter
-0x4000280C B  REGISTER ICSR: ICSR
+0x4000280C B  REGISTER ICSR: Initialization control and status register
 0x4000280C C   FIELD 02w01 WUTWF (ro): Wakeup timer write flag
 0x4000280C C   FIELD 03w01 SHPF (ro): Shift operation pending
 0x4000280C C   FIELD 04w01 INITS (ro): Initialization status flag
@@ -168,13 +168,13 @@
 0x4000280C C   FIELD 08w02 BIN (rw): Binary mode
 0x4000280C C   FIELD 10w03 BCDU (rw): BCD update
 0x4000280C C   FIELD 16w01 RECALPF (ro): Recalibration pending Flag
-0x40002810 B  REGISTER PRER (rw): PRER
+0x40002810 B  REGISTER PRER (rw): Pre-scaler register
 0x40002810 C   FIELD 00w15 PREDIV_S: Synchronous prescaler factor
 0x40002810 C   FIELD 16w07 PREDIV_A: Asynchronous prescaler factor
-0x40002814 B  REGISTER WUTR (rw): WUTR
+0x40002814 B  REGISTER WUTR (rw): Wakeup timer register
 0x40002814 C   FIELD 00w16 WUT: Wakeup auto-reload value bits
 0x40002814 C   FIELD 16w16 WUTOCLR: Wakeup auto-reload output clear value
-0x40002818 B  REGISTER CR: CR
+0x40002818 B  REGISTER CR: Control register
 0x40002818 C   FIELD 00w03 WUCKSEL (rw): Wakeup clock selection
 0x40002818 C   FIELD 03w01 TSEDGE (rw): Timestamp event active edge
 0x40002818 C   FIELD 04w01 REFCKON (rw): RTC_REFIN reference clock detection enable (50 or 60 Hz)
@@ -202,18 +202,18 @@
 0x40002818 C   FIELD 29w01 TAMPALRM_PU (rw): TAMPALRM pull-up enable
 0x40002818 C   FIELD 30w01 TAMPALRM_TYPE (rw): TAMPALRM output type
 0x40002818 C   FIELD 31w01 OUT2EN (rw): RTC_OUT2 output enable
-0x40002824 B  REGISTER WPR (wo): write protection register
+0x40002824 B  REGISTER WPR (wo): Write protection register
 0x40002824 C   FIELD 00w08 KEY: Write protection key
-0x40002828 B  REGISTER CALR (rw): CALR
+0x40002828 B  REGISTER CALR (rw): Calibration register
 0x40002828 C   FIELD 00w09 CALM: Calibration minus
 0x40002828 C   FIELD 12w01 LPCAL: Calibration low-power mode
 0x40002828 C   FIELD 13w01 CALW16: CALW16
 0x40002828 C   FIELD 14w01 CALW8: Use a 16-second calibration cycle period
 0x40002828 C   FIELD 15w01 CALP: Use an 8-second calibration cycle period
-0x4000282C B  REGISTER SHIFTR (wo): SHIFTR
+0x4000282C B  REGISTER SHIFTR (wo): Shift control register
 0x4000282C C   FIELD 00w15 SUBFS: Subtract a fraction of a second
 0x4000282C C   FIELD 31w01 ADD1S: Add one second
-0x40002830 B  REGISTER TSTR (ro): TSTR
+0x40002830 B  REGISTER TSTR (ro): Timestamp time register
 0x40002830 C   FIELD 00w04 SU: Second units in BCD format.
 0x40002830 C   FIELD 04w03 ST: Second tens in BCD format.
 0x40002830 C   FIELD 08w04 MNU: Minute units in BCD format.
@@ -221,15 +221,15 @@
 0x40002830 C   FIELD 16w04 HU: Hour units in BCD format.
 0x40002830 C   FIELD 20w02 HT: Hour tens in BCD format.
 0x40002830 C   FIELD 22w01 PM: AM/PM notation
-0x40002834 B  REGISTER TSDR (ro): TSDR
+0x40002834 B  REGISTER TSDR (ro): Timestamp date register
 0x40002834 C   FIELD 00w04 DU: Date units in BCD format
 0x40002834 C   FIELD 04w02 DT: Date tens in BCD format
 0x40002834 C   FIELD 08w04 MU: Month units in BCD format
 0x40002834 C   FIELD 12w01 MT: Month tens in BCD format
 0x40002834 C   FIELD 13w03 WDU: Week day units
-0x40002838 B  REGISTER TSSSR (ro): TSSSR
+0x40002838 B  REGISTER TSSSR (ro): Timestamp sub second register
 0x40002838 C   FIELD 00w32 SS: Sub second value
-0x40002840 B  REGISTER ALRMAR (rw): ALRMAR
+0x40002840 B  REGISTER ALRMAR (rw): Alarm A register
 0x40002840 C   FIELD 00w04 SU: Second units in BCD format.
 0x40002840 C   FIELD 04w03 ST: Second tens in BCD format.
 0x40002840 C   FIELD 07w01 MSK1: Alarm A seconds mask
@@ -244,11 +244,11 @@
 0x40002840 C   FIELD 28w02 DT: Date tens in BCD format
 0x40002840 C   FIELD 30w01 WDSEL: Week day selection
 0x40002840 C   FIELD 31w01 MSK4: Alarm A date mask
-0x40002844 B  REGISTER ALRMASSR (rw): ALRMASSR
+0x40002844 B  REGISTER ALRMASSR (rw): Alarm A sub second register
 0x40002844 C   FIELD 00w15 SS: Sub seconds value
 0x40002844 C   FIELD 24w06 MASKSS: Mask the most-significant bits starting at this bit
 0x40002844 C   FIELD 31w01 SSCLR: Clear synchronous counter on alarm (Binary mode only)
-0x40002848 B  REGISTER ALRMBR (rw): ALRMBR
+0x40002848 B  REGISTER ALRMBR (rw): Alarm B register
 0x40002848 C   FIELD 00w04 SU: Second units in BCD format
 0x40002848 C   FIELD 04w03 ST: Second tens in BCD format
 0x40002848 C   FIELD 07w01 MSK1: Alarm B seconds mask
@@ -263,11 +263,11 @@
 0x40002848 C   FIELD 28w02 DT: Date tens in BCD format
 0x40002848 C   FIELD 30w01 WDSEL: Week day selection
 0x40002848 C   FIELD 31w01 MSK4: Alarm B date mask
-0x4000284C B  REGISTER ALRMBSSR (rw): ALRMBSSR
+0x4000284C B  REGISTER ALRMBSSR (rw): Alarm B sub second register
 0x4000284C C   FIELD 00w15 SS: Sub seconds value
 0x4000284C C   FIELD 24w06 MASKSS: Mask the most-significant bits starting at this bit
 0x4000284C C   FIELD 31w01 SSCLR: Clear synchronous counter on alarm (Binary mode only)
-0x40002850 B  REGISTER SR (ro): SR
+0x40002850 B  REGISTER SR (ro): Status register (interrupts)
 0x40002850 C   FIELD 00w01 ALRAF: Alarm A flag
 0x40002850 C   FIELD 01w01 ALRBF: Alarm B flag
 0x40002850 C   FIELD 02w01 WUTF: Wakeup timer flag
@@ -275,7 +275,7 @@
 0x40002850 C   FIELD 04w01 TSOVF: Timestamp overflow flag
 0x40002850 C   FIELD 05w01 ITSF: Internal timestamp flag
 0x40002850 C   FIELD 06w01 SSRUF: SSR underflow flag
-0x40002854 B  REGISTER MISR (ro): MISR
+0x40002854 B  REGISTER MISR (ro): Masked interrupt status register
 0x40002854 C   FIELD 00w01 ALRAMF: Alarm A masked flag
 0x40002854 C   FIELD 01w01 ALRBMF: Alarm B masked flag
 0x40002854 C   FIELD 02w01 WUTMF: Wakeup timer masked flag
@@ -283,7 +283,7 @@
 0x40002854 C   FIELD 04w01 TSOVMF: Timestamp overflow masked flag
 0x40002854 C   FIELD 05w01 ITSMF: Internal timestamp masked flag
 0x40002854 C   FIELD 06w01 SSRUMF: SSR underflow masked flag
-0x4000285C B  REGISTER SCR (wo): SCR
+0x4000285C B  REGISTER SCR (wo): Status clear register (interrupts)
 0x4000285C C   FIELD 00w01 CALRAF: Clear alarm A flag
 0x4000285C C   FIELD 01w01 CALRBF: Clear alarm B flag
 0x4000285C C   FIELD 02w01 CWUTF: Clear wakeup timer flag
@@ -329,7 +329,7 @@
 0x40003800 C   FIELD 08w01 SSI: Internal slave select
 0x40003800 C   FIELD 09w01 SSM: Software slave management
 0x40003800 C   FIELD 10w01 RXONLY: Receive only
-0x40003800 C   FIELD 11w01 DFF: Data frame format
+0x40003800 C   FIELD 11w01 CRCL: CRC length
 0x40003800 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003800 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003800 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -356,7 +356,7 @@
 0x40003808 C   FIELD 05w01 MODF (ro): Mode fault
 0x40003808 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40003808 C   FIELD 07w01 BSY (ro): Busy flag
-0x40003808 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x40003808 C   FIELD 08w01 FRE (ro): Frame format error
 0x40003808 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40003808 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4000380C B  REGISTER DR (rw): data register
@@ -1486,13 +1486,8 @@
 0x4001240C C   FIELD 26w05 AWD1CH: AWD1CH
 0x40012410 B  REGISTER CFGR2 (rw): ADC configuration register 2
 0x40012410 C   FIELD 00w01 OVSE: OVSE
-0x40012410 C   FIELD 02w01 OVSR0: OVSR0
-0x40012410 C   FIELD 03w01 OVSR1: OVSR1
-0x40012410 C   FIELD 04w01 OVSR2: OVSR2
-0x40012410 C   FIELD 05w01 OVSS0: OVSS0
-0x40012410 C   FIELD 06w01 OVSS1: OVSS1
-0x40012410 C   FIELD 07w01 OVSS2: OVSS2
-0x40012410 C   FIELD 08w01 OVSS3: OVSS3
+0x40012410 C   FIELD 02w03 OVSR: OVSR0
+0x40012410 C   FIELD 05w04 OVSS: OVSS0
 0x40012410 C   FIELD 09w01 TOVS: TOVS
 0x40012410 C   FIELD 29w01 LFTRIG: LFTRIG
 0x40012410 C   FIELD 30w02 CKMODE: CKMODE
@@ -1529,10 +1524,7 @@
 0x400124B4 B  REGISTER CALFACT (rw): ADC Calibration factor
 0x400124B4 C   FIELD 00w07 CALFACT: CALFACT
 0x40012708 B  REGISTER CCR (rw): ADC common configuration register
-0x40012708 C   FIELD 18w01 PRESC0: PRESC0
-0x40012708 C   FIELD 19w01 PRESC1: PRESC1
-0x40012708 C   FIELD 20w01 PRESC2: PRESC2
-0x40012708 C   FIELD 21w01 PRESC3: PRESC3
+0x40012708 C   FIELD 18w04 PRESC: PRESC0
 0x40012708 C   FIELD 22w01 VREFEN: VREFEN
 0x40012708 C   FIELD 23w01 TSEN: TSEN
 0x40012708 C   FIELD 24w01 VBATEN: VBATEN
@@ -1767,7 +1759,7 @@
 0x40013000 C   FIELD 08w01 SSI: Internal slave select
 0x40013000 C   FIELD 09w01 SSM: Software slave management
 0x40013000 C   FIELD 10w01 RXONLY: Receive only
-0x40013000 C   FIELD 11w01 DFF: Data frame format
+0x40013000 C   FIELD 11w01 CRCL: CRC length
 0x40013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -1794,7 +1786,7 @@
 0x40013008 C   FIELD 05w01 MODF (ro): Mode fault
 0x40013008 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40013008 C   FIELD 07w01 BSY (ro): Busy flag
-0x40013008 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x40013008 C   FIELD 08w01 FRE (ro): Frame format error
 0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4001300C B  REGISTER DR (rw): data register
@@ -2761,6 +2753,10 @@
 0x40020944 C   FIELD 03w01 COF3: Clear trigger overrun event flag
 0x40023000 A PERIPHERAL CRC
 0x40023000 B  REGISTER DR (rw): Data register
+0x40023000 B  REGISTER DR16 (rw): Data register - half-word sized
+0x40023000 B  REGISTER DR8 (rw): Data register - byte sized
+0x40023000 C   FIELD 00w08 DR8: Data register bits
+0x40023000 C   FIELD 00w16 DR16: Data register bits
 0x40023000 C   FIELD 00w32 DR: Data register bits
 0x40023004 B  REGISTER IDR (rw): Independent data register
 0x40023004 C   FIELD 00w32 IDR: General-purpose 32-bit data register bits
@@ -2770,7 +2766,7 @@
 0x40023008 C   FIELD 05w02 REV_IN: Reverse input data
 0x40023008 C   FIELD 07w01 REV_OUT: Reverse output data
 0x40023010 B  REGISTER INIT (rw): Initial CRC value
-0x40023010 C   FIELD 00w32 CRC_INIT: Programmable initial CRC value
+0x40023010 C   FIELD 00w32 INIT: Programmable initial CRC value
 0x40023014 B  REGISTER POL (rw): polynomial
 0x40023014 C   FIELD 00w32 POL: Programmable polynomial
 0x48000000 A PERIPHERAL GPIOA
@@ -3713,17 +3709,85 @@
 0x58000490 C   FIELD 15w01 NSS: sub-GHz SPI NSS control
 0x58000800 A PERIPHERAL EXTI
 0x58000800 B  REGISTER RTSR1 (rw): rising trigger selection register
-0x58000800 C   FIELD 00w17 RT: Rising trigger event configuration bit of Configurable Event input
-0x58000800 C   FIELD 21w02 RT21: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 00w01 RT0: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 01w01 RT1: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 02w01 RT2: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 03w01 RT3: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 04w01 RT4: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 05w01 RT5: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 06w01 RT6: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 07w01 RT7: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 08w01 RT8: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 09w01 RT9: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 10w01 RT10: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 11w01 RT11: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 12w01 RT12: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 13w01 RT13: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 14w01 RT14: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 15w01 RT15: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 16w01 RT16: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 21w01 RT21: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 22w01 RT22 (rw): Rising trigger event configuration bit of Configurable Event input
 0x58000804 B  REGISTER FTSR1 (rw): falling trigger selection register
-0x58000804 C   FIELD 00w17 FT: Falling trigger event configuration bit of Configurable Event input
-0x58000804 C   FIELD 21w02 FT21: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 00w01 FT0: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 01w01 FT1: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 02w01 FT2: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 03w01 FT3: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 04w01 FT4: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 05w01 FT5: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 06w01 FT6: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 07w01 FT7: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 08w01 FT8: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 09w01 FT9: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 10w01 FT10: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 11w01 FT11: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 12w01 FT12: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 13w01 FT13: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 14w01 FT14: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 15w01 FT15: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 16w01 FT16: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 21w01 FT21: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 22w01 FT22 (rw): Falling trigger event configuration bit of Configurable Event input
 0x58000808 B  REGISTER SWIER1 (rw): software interrupt event register
-0x58000808 C   FIELD 00w17 SWI: Software interrupt on event
-0x58000808 C   FIELD 21w02 SWI21: Software interrupt on event
+0x58000808 C   FIELD 00w01 SWI0: Software interrupt on event
+0x58000808 C   FIELD 01w01 SWI1: Software interrupt on event
+0x58000808 C   FIELD 02w01 SWI2: Software interrupt on event
+0x58000808 C   FIELD 03w01 SWI3: Software interrupt on event
+0x58000808 C   FIELD 04w01 SWI4: Software interrupt on event
+0x58000808 C   FIELD 05w01 SWI5: Software interrupt on event
+0x58000808 C   FIELD 06w01 SWI6: Software interrupt on event
+0x58000808 C   FIELD 07w01 SWI7: Software interrupt on event
+0x58000808 C   FIELD 08w01 SWI8: Software interrupt on event
+0x58000808 C   FIELD 09w01 SWI9: Software interrupt on event
+0x58000808 C   FIELD 10w01 SWI10: Software interrupt on event
+0x58000808 C   FIELD 11w01 SWI11: Software interrupt on event
+0x58000808 C   FIELD 12w01 SWI12: Software interrupt on event
+0x58000808 C   FIELD 13w01 SWI13: Software interrupt on event
+0x58000808 C   FIELD 14w01 SWI14: Software interrupt on event
+0x58000808 C   FIELD 15w01 SWI15: Software interrupt on event
+0x58000808 C   FIELD 16w01 SWI16: Software interrupt on event
+0x58000808 C   FIELD 21w01 SWI21: Software interrupt on event
+0x58000808 C   FIELD 22w01 SWI22 (rw): Software interrupt on event
 0x5800080C B  REGISTER PR1 (rw): EXTI pending register
-0x5800080C C   FIELD 00w17 PIF: Configurable event inputs Pending bit
-0x5800080C C   FIELD 21w02 PIF21: Configurable event inputs Pending bit
+0x5800080C C   FIELD 00w01 PIF0: Configurable event inputs Pending bit
+0x5800080C C   FIELD 01w01 PIF1: Configurable event inputs Pending bit
+0x5800080C C   FIELD 02w01 PIF2: Configurable event inputs Pending bit
+0x5800080C C   FIELD 03w01 PIF3: Configurable event inputs Pending bit
+0x5800080C C   FIELD 04w01 PIF4: Configurable event inputs Pending bit
+0x5800080C C   FIELD 05w01 PIF5: Configurable event inputs Pending bit
+0x5800080C C   FIELD 06w01 PIF6: Configurable event inputs Pending bit
+0x5800080C C   FIELD 07w01 PIF7: Configurable event inputs Pending bit
+0x5800080C C   FIELD 08w01 PIF8: Configurable event inputs Pending bit
+0x5800080C C   FIELD 09w01 PIF9: Configurable event inputs Pending bit
+0x5800080C C   FIELD 10w01 PIF10: Configurable event inputs Pending bit
+0x5800080C C   FIELD 11w01 PIF11: Configurable event inputs Pending bit
+0x5800080C C   FIELD 12w01 PIF12: Configurable event inputs Pending bit
+0x5800080C C   FIELD 13w01 PIF13: Configurable event inputs Pending bit
+0x5800080C C   FIELD 14w01 PIF14: Configurable event inputs Pending bit
+0x5800080C C   FIELD 15w01 PIF15: Configurable event inputs Pending bit
+0x5800080C C   FIELD 16w01 PIF16: Configurable event inputs Pending bit
+0x5800080C C   FIELD 21w01 PIF21: Configurable event inputs Pending bit
+0x5800080C C   FIELD 22w01 PIF22 (rw): Configurable event inputs Pending bit
 0x58000820 B  REGISTER RTSR2 (rw): rising trigger selection register
 0x58000820 C   FIELD 02w01 RT34: Rising trigger event configuration bit of Configurable Event input
 0x58000820 C   FIELD 13w01 RT45: Rising trigger event configuration bit of Configurable Event input
@@ -3737,7 +3801,38 @@
 0x5800082C C   FIELD 02w01 PIF34: Configurable event inputs 33 Pending bit.
 0x5800082C C   FIELD 13w01 PIF45: Configurable event inputs 45 Pending bit.
 0x58000880 B  REGISTER IMR1 (rw): interrupt mask register
-0x58000880 C   FIELD 00w32 IM: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 00w01 IM0: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 01w01 IM1: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 02w01 IM2: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 03w01 IM3: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 04w01 IM4: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 05w01 IM5: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 06w01 IM6: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 07w01 IM7: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 08w01 IM8: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 09w01 IM9: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 10w01 IM10: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 11w01 IM11: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 12w01 IM12: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 13w01 IM13: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 14w01 IM14: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 15w01 IM15: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 16w01 IM16: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 17w01 IM17: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 18w01 IM18: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 19w01 IM19: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 20w01 IM20: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 21w01 IM21: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 22w01 IM22: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 23w01 IM23: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 24w01 IM24: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 25w01 IM25: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 26w01 IM26: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 27w01 IM27: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 28w01 IM28: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 29w01 IM29: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 30w01 IM30: wakeup with interrupt Mask on event input
+0x58000880 C   FIELD 31w01 IM31: wakeup with interrupt Mask on event input
 0x58000884 B  REGISTER EMR1 (rw): event mask register
 0x58000884 C   FIELD 00w01 EM0: Wakeup with event generation Mask on Event input
 0x58000884 C   FIELD 01w01 EM1: Wakeup with event generation Mask on Event input
@@ -3764,7 +3859,11 @@
 0x58000890 B  REGISTER IMR2 (rw): interrupt mask register
 0x58000890 C   FIELD 02w01 IM34: CPUm Wakeup with interrupt Mask on Event input
 0x58000890 C   FIELD 06w01 IM38: CPUm Wakeup with interrupt Mask on Event input
-0x58000890 C   FIELD 10w05 IM42: CPUm Wakeup with interrupt Mask on Event input
+0x58000890 C   FIELD 10w01 IM42: CPUm Wakeup with interrupt Mask on Event input
+0x58000890 C   FIELD 11w01 IM43 (rw): CPUm Wakeup with interrupt Mask on Event input
+0x58000890 C   FIELD 12w01 IM44 (rw): CPUm Wakeup with interrupt Mask on Event input
+0x58000890 C   FIELD 13w01 IM45 (rw): CPUm Wakeup with interrupt Mask on Event input
+0x58000890 C   FIELD 14w01 IM46 (rw): CPUm Wakeup with interrupt Mask on Event input
 0x58001000 A PERIPHERAL RNG
 0x58001000 B  REGISTER CR (rw): control register
 0x58001000 C   FIELD 02w01 RNGEN: True random number generator enable
@@ -4002,7 +4101,7 @@
 0x58001800 C   FIELD 11w01 DMAINEN: Enable DMA management of data input phase
 0x58001800 C   FIELD 12w01 DMAOUTEN: Enable DMA management of data output phase
 0x58001800 C   FIELD 13w02 GCMPH: Used only for GCM, CCM and GMAC algorithms and has no effect when other algorithms are selected
-0x58001800 C   FIELD 16w01 CHMOD2: AES chaining mode Bit2
+0x58001800 C   FIELD 16w01 CHMOD: AES chaining mode Bit2
 0x58001800 C   FIELD 18w01 KEYSIZE: Key size selection
 0x58001800 C   FIELD 20w04 NPBLB: Number of padding bytes in last block of payload
 0x58001804 B  REGISTER SR (ro): status register
@@ -4011,49 +4110,49 @@
 0x58001804 C   FIELD 02w01 WRERR: Write error flag
 0x58001804 C   FIELD 03w01 BUSY: Busy flag
 0x58001808 B  REGISTER DINR (rw): data input register
-0x58001808 C   FIELD 00w32 AES_DINR: Data Input Register
+0x58001808 C   FIELD 00w32 DIN: Data Input Register
 0x5800180C B  REGISTER DOUTR (ro): data output register
-0x5800180C C   FIELD 00w32 AES_DOUTR: Data output register
+0x5800180C C   FIELD 00w32 DOUT: Data output register
 0x58001810 B  REGISTER KEYR0 (wo): key register 0
-0x58001810 C   FIELD 00w32 AES_KEYR0: Data Output Register (LSB key [31:0])
+0x58001810 C   FIELD 00w32 KEY: Data Output Register (LSB key [31:0])
 0x58001814 B  REGISTER KEYR1 (wo): key register 1
-0x58001814 C   FIELD 00w32 AES_KEYR1: AES key register (key [63:32])
+0x58001814 C   FIELD 00w32 KEY: AES key register (key [63:32])
 0x58001818 B  REGISTER KEYR2 (wo): key register 2
-0x58001818 C   FIELD 00w32 AES_KEYR2: AES key register (key [95:64])
+0x58001818 C   FIELD 00w32 KEY: AES key register (key [95:64])
 0x5800181C B  REGISTER KEYR3 (wo): key register 3
-0x5800181C C   FIELD 00w32 AES_KEYR3: AES key register (MSB key [127:96])
+0x5800181C C   FIELD 00w32 KEY: AES key register (MSB key [127:96])
 0x58001820 B  REGISTER IVR0 (rw): initialization vector register 0
-0x58001820 C   FIELD 00w32 AES_IVR0: initialization vector register (LSB IVR [31:0])
+0x58001820 C   FIELD 00w32 IVI: initialization vector register (LSB IVR [31:0])
 0x58001824 B  REGISTER IVR1 (rw): initialization vector register 1
-0x58001824 C   FIELD 00w32 AES_IVR1: Initialization Vector Register (IVR [63:32])
+0x58001824 C   FIELD 00w32 IVI: Initialization Vector Register (IVR [63:32])
 0x58001828 B  REGISTER IVR2 (rw): initialization vector register 2
-0x58001828 C   FIELD 00w32 AES_IVR2: Initialization Vector Register (IVR [95:64])
+0x58001828 C   FIELD 00w32 IVI: Initialization Vector Register (IVR [95:64])
 0x5800182C B  REGISTER IVR3 (rw): initialization vector register 3
-0x5800182C C   FIELD 00w32 AES_IVR3: Initialization Vector Register (MSB IVR [127:96])
+0x5800182C C   FIELD 00w32 IVI: Initialization Vector Register (MSB IVR [127:96])
 0x58001830 B  REGISTER KEYR4 (wo): key register 4
-0x58001830 C   FIELD 00w32 AES_KEYR4: AES key register (MSB key [159:128])
+0x58001830 C   FIELD 00w32 KEY: AES key register (MSB key [159:128])
 0x58001834 B  REGISTER KEYR5 (wo): key register 5
-0x58001834 C   FIELD 00w32 AES_KEYR5: AES key register (MSB key [191:160])
+0x58001834 C   FIELD 00w32 KEY: AES key register (MSB key [191:160])
 0x58001838 B  REGISTER KEYR6 (wo): key register 6
-0x58001838 C   FIELD 00w32 AES_KEYR6: AES key register (MSB key [223:192])
+0x58001838 C   FIELD 00w32 KEY: AES key register (MSB key [223:192])
 0x5800183C B  REGISTER KEYR7 (wo): key register 7
-0x5800183C C   FIELD 00w32 AES_KEYR7: AES key register (MSB key [255:224])
+0x5800183C C   FIELD 00w32 KEY: AES key register (MSB key [255:224])
 0x58001840 B  REGISTER SUSP0R (rw): AES suspend register 0
-0x58001840 C   FIELD 00w32 AES_SUSP0R: AES suspend register 0
+0x58001840 C   FIELD 00w32 SUSP: AES suspend register 0
 0x58001844 B  REGISTER SUSP1R (rw): AES suspend register 1
-0x58001844 C   FIELD 00w32 AES_SUSP1R: AES suspend register 1
+0x58001844 C   FIELD 00w32 SUSP: AES suspend register 1
 0x58001848 B  REGISTER SUSP2R (rw): AES suspend register 2
-0x58001848 C   FIELD 00w32 AES_SUSP2R: AES suspend register 2
+0x58001848 C   FIELD 00w32 SUSP: AES suspend register 2
 0x5800184C B  REGISTER SUSP3R (rw): AES suspend register 3
-0x5800184C C   FIELD 00w32 AES_SUSP3R: AES suspend register 3
+0x5800184C C   FIELD 00w32 SUSP: AES suspend register 3
 0x58001850 B  REGISTER SUSP4R (rw): AES suspend register 4
-0x58001850 C   FIELD 00w32 AES_SUSP4R: AES suspend register 4
+0x58001850 C   FIELD 00w32 SUSP: AES suspend register 4
 0x58001854 B  REGISTER SUSP5R (rw): AES suspend register 5
-0x58001854 C   FIELD 00w32 AES_SUSP5R: AES suspend register 5
+0x58001854 C   FIELD 00w32 SUSP: AES suspend register 5
 0x58001858 B  REGISTER SUSP6R (rw): AES suspend register 6
-0x58001858 C   FIELD 00w32 AES_SUSP6R: AES suspend register 6
+0x58001858 C   FIELD 00w32 SUSP: AES suspend register 6
 0x5800185C B  REGISTER SUSP7R (rw): AES suspend register 7
-0x5800185C C   FIELD 00w32 AES_SUSP7R: AES suspend register 7
+0x5800185C C   FIELD 00w32 SUSP: AES suspend register 7
 0x58002000 A PERIPHERAL PKA
 0x58002000 B  REGISTER CR (rw): control register
 0x58002000 C   FIELD 00w01 EN: PKA enable.
@@ -4093,9 +4192,9 @@
 0x58004010 C   FIELD 05w01 PGAERR (rw): Programming alignment error
 0x58004010 C   FIELD 06w01 SIZERR (rw): Size error
 0x58004010 C   FIELD 07w01 PGSERR (rw): Programming sequence error
-0x58004010 C   FIELD 08w01 MISERR (rw): Fast programming data miss error
+0x58004010 C   FIELD 08w01 MISSERR (rw): Fast programming data miss error
 0x58004010 C   FIELD 09w01 FASTERR (rw): Fast programming error
-0x58004010 C   FIELD 13w01 OPTVN (ro): User Option OPTIVAL indication
+0x58004010 C   FIELD 13w01 OPTNV (ro): User Option OPTIVAL indication
 0x58004010 C   FIELD 14w01 RDERR (rw): PCROP read error
 0x58004010 C   FIELD 15w01 OPTVERR (rw): Option validity error
 0x58004010 C   FIELD 16w01 BSY (ro): Busy
@@ -4134,7 +4233,7 @@
 0x58004020 C   FIELD 19w01 WWDG_SW: Window watchdog selection
 0x58004020 C   FIELD 23w01 nBOOT1: Boot configuration
 0x58004020 C   FIELD 24w01 SRAM2_PE: SRAM2 parity check enable
-0x58004020 C   FIELD 25w01 SRAM2_RST: SRAM2 Erase when system reset
+0x58004020 C   FIELD 25w01 SRAM_RST: SRAM2 Erase when system reset
 0x58004020 C   FIELD 26w01 nSWBOOT0: Software BOOT0 selection
 0x58004020 C   FIELD 27w01 nBOOT0: nBOOT0 option bit
 0x58004020 C   FIELD 30w01 BOOT_LOCK: CPU1 CM4 Unique Boot entry enable option bit
@@ -4164,7 +4263,7 @@
 0x58010000 C   FIELD 08w01 SSI: Internal slave select
 0x58010000 C   FIELD 09w01 SSM: Software slave management
 0x58010000 C   FIELD 10w01 RXONLY: Receive only
-0x58010000 C   FIELD 11w01 DFF: Data frame format
+0x58010000 C   FIELD 11w01 CRCL: CRC length
 0x58010000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x58010000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x58010000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -4191,7 +4290,7 @@
 0x58010008 C   FIELD 05w01 MODF (ro): Mode fault
 0x58010008 C   FIELD 06w01 OVR (ro): Overrun flag
 0x58010008 C   FIELD 07w01 BSY (ro): Busy flag
-0x58010008 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x58010008 C   FIELD 08w01 FRE (ro): Frame format error
 0x58010008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x58010008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x5801000C B  REGISTER DR (rw): data register
