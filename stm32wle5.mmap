@@ -157,7 +157,7 @@
 0x40002804 C   FIELD 16w04 YU: Year units in BCD format
 0x40002804 C   FIELD 20w04 YT: Year tens in BCD format
 0x40002808 B  REGISTER SSR (ro): SSR
-0x40002808 C   FIELD 00w32 SS: Synchronous binary counter
+0x40002808 C   FIELD 00w32 SS: Sub second value
 0x4000280C B  REGISTER ICSR: ICSR
 0x4000280C C   FIELD 02w01 WUTWF (ro): Wakeup timer write flag
 0x4000280C C   FIELD 03w01 SHPF (ro): Shift operation pending
@@ -169,7 +169,7 @@
 0x4000280C C   FIELD 10w03 BCDU (rw): BCD update
 0x4000280C C   FIELD 16w01 RECALPF (ro): Recalibration pending Flag
 0x40002810 B  REGISTER PRER (rw): PRER
-0x40002810 C   FIELD 00w15 PREDIV_S: Synchronous prescaler factor
+0x40002810 C   FIELD 00w16 PREDIV_S: Synchronous prescaler factor
 0x40002810 C   FIELD 16w07 PREDIV_A: Asynchronous prescaler factor
 0x40002814 B  REGISTER WUTR (rw): WUTR
 0x40002814 C   FIELD 00w16 WUT: Wakeup auto-reload value bits
@@ -898,57 +898,35 @@
 0x40007C28 B  REGISTER RCR (rw): repetition register
 0x40007C28 C   FIELD 00w08 REP: Repetition register value
 0x40008000 A PERIPHERAL LPUART
-0x40008000 B  REGISTER CR1_disabled (rw): Control register 1
-0x40008000 B  REGISTER CR1_enabled (rw): Control register 1
-0x40008000 C   FIELD 00w01 UE: USART enable
+0x40008000 B  REGISTER CR1 (rw): Control register 1
 0x40008000 C   FIELD 00w01 UE: USART enable
 0x40008000 C   FIELD 01w01 UESM: USART enable in Stop mode
-0x40008000 C   FIELD 01w01 UESM: USART enable in Stop mode
-0x40008000 C   FIELD 02w01 RE: Receiver enable
 0x40008000 C   FIELD 02w01 RE: Receiver enable
 0x40008000 C   FIELD 03w01 TE: Transmitter enable
-0x40008000 C   FIELD 03w01 TE: Transmitter enable
 0x40008000 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
-0x40008000 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
-0x40008000 C   FIELD 05w01 RXFNEIE: RXFIFO not empty interrupt enable
 0x40008000 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
 0x40008000 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
-0x40008000 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
-0x40008000 C   FIELD 07w01 TXEIE: Transmit data register empty
-0x40008000 C   FIELD 07w01 TXFNFIE: interrupt enable
-0x40008000 C   FIELD 08w01 PEIE: PE interrupt enable
+0x40008000 C   FIELD 07w01 TXEIE: interrupt enable
 0x40008000 C   FIELD 08w01 PEIE: PE interrupt enable
 0x40008000 C   FIELD 09w01 PS: Parity selection
-0x40008000 C   FIELD 09w01 PS: Parity selection
-0x40008000 C   FIELD 10w01 PCE: Parity control enable
 0x40008000 C   FIELD 10w01 PCE: Parity control enable
 0x40008000 C   FIELD 11w01 WAKE: Receiver wakeup method
-0x40008000 C   FIELD 11w01 WAKE: Receiver wakeup method
-0x40008000 C   FIELD 12w01 M0: Word length
 0x40008000 C   FIELD 12w01 M0: Word length
 0x40008000 C   FIELD 13w01 MME: Mute mode enable
-0x40008000 C   FIELD 13w01 MME: Mute mode enable
-0x40008000 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40008000 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40008000 C   FIELD 16w05 DEDT: DEDT
-0x40008000 C   FIELD 16w05 DEDT: DEDT
 0x40008000 C   FIELD 21w05 DEAT: DEAT
-0x40008000 C   FIELD 21w05 DEAT: DEAT
-0x40008000 C   FIELD 28w01 M1: Word length
 0x40008000 C   FIELD 28w01 M1: Word length
 0x40008000 C   FIELD 29w01 FIFOEN: FIFO mode enable
-0x40008000 C   FIELD 29w01 FIFOEN: FIFOEN
-0x40008000 C   FIELD 30w01 TXFEIE: TXFIFO empty interrupt enable
-0x40008000 C   FIELD 31w01 RXFFIE: RXFIFO Full interrupt enable
 0x40008004 B  REGISTER CR2 (rw): Control register 2
 0x40008004 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
 0x40008004 C   FIELD 12w02 STOP: STOP bits
 0x40008004 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40008004 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40008004 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40008004 C   FIELD 18w01 DATAINV: Binary data inversion
+0x40008004 C   FIELD 18w01 TAINV: Binary data inversion
 0x40008004 C   FIELD 19w01 MSBFIRST: Most significant bit first
-0x40008004 C   FIELD 24w08 ADD: Address of the LPUART node
+0x40008004 C   FIELD 24w08 ADD: Address of the USART node
 0x40008008 B  REGISTER CR3 (rw): Control register 3
 0x40008008 C   FIELD 00w01 EIE: Error interrupt enable
 0x40008008 C   FIELD 03w01 HDSEL: Half-duplex selection
@@ -974,41 +952,23 @@
 0x40008018 C   FIELD 02w01 MMRQ: Mute mode request
 0x40008018 C   FIELD 03w01 RXFRQ: Receive data flush request
 0x40008018 C   FIELD 04w01 TXFRQ: Transmit data flush request
-0x4000801C B  REGISTER ISR_disabled (ro): Interrupt and status register
-0x4000801C B  REGISTER ISR_enabled (ro): Interrupt and status register
-0x4000801C C   FIELD 00w01 PE: PE
+0x4000801C B  REGISTER ISR (ro): Interrupt & status register
 0x4000801C C   FIELD 00w01 PE: PE
 0x4000801C C   FIELD 01w01 FE: FE
-0x4000801C C   FIELD 01w01 FE: FE
-0x4000801C C   FIELD 02w01 NE: NE
-0x4000801C C   FIELD 02w01 NE: NE
-0x4000801C C   FIELD 03w01 ORE: ORE
+0x4000801C C   FIELD 02w01 NF: NF
 0x4000801C C   FIELD 03w01 ORE: ORE
 0x4000801C C   FIELD 04w01 IDLE: IDLE
-0x4000801C C   FIELD 04w01 IDLE: IDLE
-0x4000801C C   FIELD 05w01 RXFNE: RXFNE
-0x4000801C C   FIELD 05w01 RXFNE: RXFNE
-0x4000801C C   FIELD 06w01 TC: TC
+0x4000801C C   FIELD 05w01 RXNE: RXNE
 0x4000801C C   FIELD 06w01 TC: TC
 0x4000801C C   FIELD 07w01 TXE: TXE
-0x4000801C C   FIELD 07w01 TXFNF: TXFNF
-0x4000801C C   FIELD 09w01 CTSIF: CTSIF
 0x4000801C C   FIELD 09w01 CTSIF: CTSIF
 0x4000801C C   FIELD 10w01 CTS: CTS
-0x4000801C C   FIELD 10w01 CTS: CTS
-0x4000801C C   FIELD 16w01 BUSY: BUSY
 0x4000801C C   FIELD 16w01 BUSY: BUSY
 0x4000801C C   FIELD 17w01 CMF: CMF
-0x4000801C C   FIELD 17w01 CMF: CMF
-0x4000801C C   FIELD 18w01 SBKF: SBKF
 0x4000801C C   FIELD 18w01 SBKF: SBKF
 0x4000801C C   FIELD 19w01 RWU: RWU
-0x4000801C C   FIELD 19w01 RWU: RWU
-0x4000801C C   FIELD 20w01 WUF: WUF
 0x4000801C C   FIELD 20w01 WUF: WUF
 0x4000801C C   FIELD 21w01 TEACK: TEACK
-0x4000801C C   FIELD 21w01 TEACK: TEACK
-0x4000801C C   FIELD 22w01 REACK: REACK
 0x4000801C C   FIELD 22w01 REACK: REACK
 0x4000801C C   FIELD 23w01 TXFE: TXFIFO Empty
 0x4000801C C   FIELD 24w01 RXFF: RXFIFO Full
@@ -1017,7 +977,7 @@
 0x40008020 B  REGISTER ICR (wo): Interrupt flag clear register
 0x40008020 C   FIELD 00w01 PECF: Parity error clear flag
 0x40008020 C   FIELD 01w01 FECF: Framing error clear flag
-0x40008020 C   FIELD 02w01 NECF: Noise detected clear flag
+0x40008020 C   FIELD 02w01 NCF: Noise detected clear flag
 0x40008020 C   FIELD 03w01 ORECF: Overrun error clear flag
 0x40008020 C   FIELD 04w01 IDLECF: Idle line detected clear flag
 0x40008020 C   FIELD 06w01 TCCF: Transmission complete clear flag
@@ -3317,7 +3277,7 @@
 0x58000000 C   FIELD 00w01 MSION (rw): MSI clock enable
 0x58000000 C   FIELD 01w01 MSIRDY (ro): MSI clock ready flag (After reset this bit will be read 1 once the MSI is ready)
 0x58000000 C   FIELD 02w01 MSIPLLEN (rw): MSI clock PLL enable
-0x58000000 C   FIELD 03w01 MSIRGSEL (rw): MSI range control selection
+0x58000000 C   FIELD 03w01 MSIRGSEL (wo): MSI range control selection
 0x58000000 C   FIELD 04w04 MSIRANGE (rw): MSI clock ranges
 0x58000000 C   FIELD 08w01 HSION (rw): HSI16 clock enable
 0x58000000 C   FIELD 09w01 HSIKERON (rw): HSI16 always enable for peripheral kernel clocks.
@@ -3326,7 +3286,8 @@
 0x58000000 C   FIELD 12w01 HSIKERDY (ro): HSI16 kernel clock ready flag for peripherals requests.
 0x58000000 C   FIELD 16w01 HSEON (rw): HSE32 clock enable
 0x58000000 C   FIELD 17w01 HSERDY (ro): HSE32 clock ready flag
-0x58000000 C   FIELD 19w01 CSSON (rw): HSE32 Clock security system enable
+0x58000000 C   FIELD 18w01 HSEBYP (rw): HSE32 crystal oscillator bypass
+0x58000000 C   FIELD 19w01 CSSON (wo): HSE32 Clock security system enable
 0x58000000 C   FIELD 20w01 HSEPRE (rw): HSE32 sysclk prescaler
 0x58000000 C   FIELD 21w01 HSEBYPPWR (rw): Enable HSE32 VDDTCXO output on package pin PB0-VDDTCXO.
 0x58000000 C   FIELD 24w01 PLLON (rw): Main PLL enable
@@ -3399,6 +3360,7 @@
 0x58000030 C   FIELD 17w01 AESRST: AESRST
 0x58000030 C   FIELD 18w01 RNGRST: RNGRST
 0x58000030 C   FIELD 19w01 HSEMRST: HSEMRST
+0x58000030 C   FIELD 20w01 IPCCRST: IPCCRST.
 0x58000030 C   FIELD 25w01 FLASHRST: Flash interface reset
 0x58000038 B  REGISTER APB1RSTR1 (rw): APB1 peripheral reset register 1
 0x58000038 C   FIELD 00w01 TIM2RST: TIM2 timer reset
@@ -3407,7 +3369,7 @@
 0x58000038 C   FIELD 21w01 I2C1RST: I2C1 reset
 0x58000038 C   FIELD 22w01 I2C2RST: I2C2 reset
 0x58000038 C   FIELD 23w01 I2C3RST: I2C3 reset
-0x58000038 C   FIELD 29w01 DACRST: DAC reset
+0x58000038 C   FIELD 29w01 DAC1RST: DAC1 reset
 0x58000038 C   FIELD 31w01 LPTIM1RST: Low Power Timer 1 reset
 0x5800003C B  REGISTER APB1RSTR2 (rw): APB1 peripheral reset register 2
 0x5800003C C   FIELD 00w01 LPUART1RST: Low-power UART 1 reset
@@ -3437,11 +3399,12 @@
 0x58000050 C   FIELD 17w01 AESEN: AESEN
 0x58000050 C   FIELD 18w01 RNGEN: RNGEN
 0x58000050 C   FIELD 19w01 HSEMEN: HSEMEN
+0x58000050 C   FIELD 20w01 IPCCEN: IPCCEN
 0x58000050 C   FIELD 25w01 FLASHEN: CPU1 Flash interface clock enable
 0x58000058 B  REGISTER APB1ENR1: APB1 peripheral clock enable register 1
 0x58000058 C   FIELD 00w01 TIM2EN (rw): CPU1 TIM2 timer clock enable
 0x58000058 C   FIELD 10w01 RTCAPBEN (rw): CPU1 RTC APB clock enable
-0x58000058 C   FIELD 11w01 WWDGEN (rw): CPU1 Window watchdog clock enable
+0x58000058 C   FIELD 11w01 WWDGEN (wo): CPU1 Window watchdog clock enable
 0x58000058 C   FIELD 14w01 SPI2S2EN (rw): CPU1 SPI2S2 clock enable
 0x58000058 C   FIELD 17w01 USART2EN (rw): CPU1 USART2 clock enable
 0x58000058 C   FIELD 21w01 I2C1EN (rw): CPU1 I2C1 clocks enable
@@ -3488,7 +3451,7 @@
 0x58000078 C   FIELD 21w01 I2C1SMEN: I2C1 clock enable during CPU1 Csleep and CStop modes
 0x58000078 C   FIELD 22w01 I2C2SMEN: I2C2 clock enable during CPU1 Csleep and CStop modes
 0x58000078 C   FIELD 23w01 I2C3SMEN: I2C3 clock enable during CPU1 Csleep and CStop modes
-0x58000078 C   FIELD 29w01 DACSMEN: DAC clock enable during CPU1 CSleep mode.
+0x58000078 C   FIELD 29w01 DAC1SMEN: DAC1 clock enable during CPU1 CSleep mode.
 0x58000078 C   FIELD 31w01 LPTIM1SMEN: Low power timer 1 clock enable during CPU1 Csleep and CStop mode
 0x5800007C B  REGISTER APB1SMENR2 (rw): APB1 peripheral clocks enable in Sleep mode register 2
 0x5800007C C   FIELD 00w01 LPUART1SMEN: Low power UART 1 clock enable during CPU1 Csleep and CStop modes.
@@ -3572,6 +3535,7 @@
 0x58000408 C   FIELD 10w01 APC: Apply pull-up and pull-down configuration from CPU1
 0x58000408 C   FIELD 11w01 EWRFBUSY: Enable Radio BUSY Wakeup from Standby for CPU1
 0x58000408 C   FIELD 13w01 EWRFIRQ: akeup for CPU1
+0x58000408 C   FIELD 14w01 EC2H: nable CPU2 Hold interrupt for CPU1
 0x58000408 C   FIELD 15w01 EIWUL: Enable internal wakeup line for CPU1
 0x5800040C B  REGISTER CR4 (rw): Power control register 4
 0x5800040C C   FIELD 00w01 WP1: Wakeup pin WKUP1 polarity
@@ -3580,14 +3544,17 @@
 0x5800040C C   FIELD 08w01 VBE: VBAT battery charging enable
 0x5800040C C   FIELD 09w01 VBRS: VBAT battery charging resistor selection
 0x5800040C C   FIELD 11w01 WRFBUSYP: Wakeup Radio BUSY polarity
+0x5800040C C   FIELD 15w01 C2BOOT: oot CPU2 after reset or wakeup from Stop or Standby modes.
 0x58000410 B  REGISTER SR1 (ro): Power status register 1
 0x58000410 C   FIELD 00w01 WUF1: Wakeup flag 1
 0x58000410 C   FIELD 01w01 WUF2: Wakeup flag 2
 0x58000410 C   FIELD 02w01 WUF3: Wakeup flag 3
 0x58000410 C   FIELD 08w01 WPVDF: Wakeup PVD flag
 0x58000410 C   FIELD 11w01 WRFBUSYF: Radio BUSY wakeup flag
+0x58000410 C   FIELD 14w01 C2HF: PU2 Hold interrupt flag
 0x58000410 C   FIELD 15w01 WUFI: Internal wakeup interrupt flag
 0x58000414 B  REGISTER SR2 (ro): Power status register 2
+0x58000414 C   FIELD 00w01 C2BOOTS: PU2 boot/wakeup request source information
 0x58000414 C   FIELD 01w01 RFBUSYS: Radio BUSY signal status
 0x58000414 C   FIELD 02w01 RFBUSYMS: Radio BUSY masked signal status
 0x58000414 C   FIELD 03w01 SMPSRDY: SMPS ready flag
@@ -3606,6 +3573,7 @@
 0x58000418 C   FIELD 02w01 CWUF3: Clear wakeup flag 3
 0x58000418 C   FIELD 08w01 CWPVDF: Clear wakeup PVD interrupt flag
 0x58000418 C   FIELD 11w01 CWRFBUSYF: Clear wakeup Radio BUSY flag
+0x58000418 C   FIELD 14w01 CC2HF: lear CPU2 Hold interrupt flag
 0x5800041C B  REGISTER CR5 (rw): Power control register 5
 0x5800041C C   FIELD 14w01 RFEOLEN: Enable Radio End Of Life detector enabled
 0x5800041C C   FIELD 15w01 SMPSEN: Enable SMPS Step Down converter SMPS mode enabled.
@@ -3700,15 +3668,35 @@
 0x58000434 C   FIELD 14w01 PD14: PD14
 0x58000434 C   FIELD 15w01 PD15: Port PC[y] pull-down (y=13 to 15)
 0x58000458 B  REGISTER PUCRH (rw): Power Port H pull-up control register
-0x58000458 C   FIELD 03w01 PU3: pull-up
+0x58000458 C   FIELD 03w01 PU3: ull-up
 0x5800045C B  REGISTER PDCRH (rw): Power Port H pull-down control register
-0x5800045C C   FIELD 03w01 PD3: pull-down
+0x5800045C C   FIELD 03w01 PD3: ull-down
+0x58000480 B  REGISTER C2CR1 (rw): Power CPU2 control register 1 [dual core device only]
+0x58000480 C   FIELD 00w03 LPMS: Low-power mode selection for CPU2
+0x58000480 C   FIELD 04w01 FPDR: Flash memory power down mode during LPRun for CPU2
+0x58000480 C   FIELD 05w01 FPDS: Flash memory power down mode during LPSleep for CPU2
+0x58000484 B  REGISTER C2CR3 (rw): Power CPU2 control register 3 [dual core device only]
+0x58000484 C   FIELD 00w01 EWUP1: Enable Wakeup pin WKUP1 for CPU2
+0x58000484 C   FIELD 01w01 EWUP2: Enable Wakeup pin WKUP2 for CPU2
+0x58000484 C   FIELD 02w01 EWUP3: Enable Wakeup pin WKUP3 for CPU2
+0x58000484 C   FIELD 08w01 EWPVD: Enable wakeup PVD for CPU2
+0x58000484 C   FIELD 10w01 APC: Apply pull-up and pull-down configuration for CPU2
+0x58000484 C   FIELD 11w01 EWRFBUSY: EWRFBUSY
+0x58000484 C   FIELD 13w01 EWRFIRQ: akeup for CPU2
+0x58000484 C   FIELD 15w01 EIWUL: Enable internal wakeup line for CPU2
 0x58000488 B  REGISTER EXTSCR: Power extended status and status clear register
 0x58000488 C   FIELD 00w01 C1CSSF (wo): Clear CPU1 Stop Standby flags
+0x58000488 C   FIELD 01w01 C2CSSF (wo): lear CPU2 Stop Standby flags
 0x58000488 C   FIELD 08w01 C1SBF (ro): System Standby flag for CPU1. (no core states retained)
 0x58000488 C   FIELD 09w01 C1STOP2F (ro): System Stop2 flag for CPU1. (partial core states retained)
 0x58000488 C   FIELD 10w01 C1STOPF (ro): System Stop0, 1 flag for CPU1. (All core states retained)
+0x58000488 C   FIELD 11w01 C2SBF (ro): ystem Standby flag for CPU2. (no core states retained)
+0x58000488 C   FIELD 12w01 C2STOP2F (ro): ystem Stop2 flag for CPU2. (partial core states retained)
+0x58000488 C   FIELD 13w01 C2STOPF (ro): ystem Stop0, 1 flag for CPU2. (All core states retained)
 0x58000488 C   FIELD 14w01 C1DS (ro): CPU1 deepsleep mode
+0x58000488 C   FIELD 15w01 C2DS (ro): PU2 deepsleep mode
+0x5800048C B  REGISTER SECCFGR (rw): Power security configuration register [dual core device only]
+0x5800048C C   FIELD 15w01 C2EWILA: wakeup on CPU2 illegal access interrupt enable
 0x58000490 B  REGISTER SUBGHZSPICR (rw): Power SPI3 control register
 0x58000490 C   FIELD 15w01 NSS: sub-GHz SPI NSS control
 0x58000800 A PERIPHERAL EXTI
@@ -3738,29 +3726,9 @@
 0x5800082C C   FIELD 13w01 PIF45: Configurable event inputs 45 Pending bit.
 0x58000880 B  REGISTER IMR1 (rw): interrupt mask register
 0x58000880 C   FIELD 00w32 IM: wakeup with interrupt Mask on event input
-0x58000884 B  REGISTER EMR1 (rw): event mask register
-0x58000884 C   FIELD 00w01 EM0: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 01w01 EM1: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 02w01 EM2: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 03w01 EM3: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 04w01 EM4: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 05w01 EM5: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 06w01 EM6: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 07w01 EM7: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 08w01 EM8: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 09w01 EM9: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 10w01 EM10: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 11w01 EM11: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 12w01 EM12: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 13w01 EM13: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 14w01 EM14: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 15w01 EM15: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 17w01 EM17: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 18w01 EM18: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 19w01 EM19: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 20w01 EM20: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 21w01 EM21: Wakeup with event generation Mask on Event input
-0x58000884 C   FIELD 22w01 EM22: Wakeup with event generation Mask on Event input
+0x58000884 B  REGISTER EMR1 (rw): event mas register
+0x58000884 C   FIELD 00w16 EM: CPU(m) Wakeup with event generation Mask on Event input
+0x58000884 C   FIELD 17w06 EM17: CPU(m) Wakeup with event generation Mask on Event input
 0x58000890 B  REGISTER IMR2 (rw): interrupt mask register
 0x58000890 C   FIELD 02w01 IM34: CPUm Wakeup with interrupt Mask on Event input
 0x58000890 C   FIELD 06w01 IM38: CPUm Wakeup with interrupt Mask on Event input
@@ -3769,9 +3737,8 @@
 0x58001000 B  REGISTER CR (rw): control register
 0x58001000 C   FIELD 02w01 RNGEN: True random number generator enable
 0x58001000 C   FIELD 03w01 IE: Interrupt Enable
-0x58001000 C   FIELD 05w01 CED: Interrupt Enable
 0x58001000 C   FIELD 08w04 RNG_CONFIG3: RNG_CONFIG3
-0x58001000 C   FIELD 12w01 NISTC: NISTC
+0x58001000 C   FIELD 12w01 NISTN: NISTN
 0x58001000 C   FIELD 13w03 RNG_CONFIG2: RNG_CONFIG2
 0x58001000 C   FIELD 16w04 CLKDIV: CLKDIV
 0x58001000 C   FIELD 20w06 RNG_CONFIG1: RNG_CONFIG1
@@ -4084,7 +4051,7 @@
 0x58004008 B  REGISTER KEYR (wo): Flash key register
 0x58004008 C   FIELD 00w32 KEY: KEY
 0x5800400C B  REGISTER OPTKEYR (wo): Option byte key register
-0x5800400C C   FIELD 00w32 OPTKEY: Option byte key
+0x5800400C C   FIELD 00w32 OPTKEYR: Option byte key
 0x58004010 B  REGISTER SR: Status register
 0x58004010 C   FIELD 00w01 EOP (rw): End of operation
 0x58004010 C   FIELD 01w01 OPERR (rw): Operation error
@@ -4138,7 +4105,7 @@
 0x58004020 C   FIELD 26w01 nSWBOOT0: Software BOOT0 selection
 0x58004020 C   FIELD 27w01 nBOOT0: nBOOT0 option bit
 0x58004020 C   FIELD 30w01 BOOT_LOCK: CPU1 CM4 Unique Boot entry enable option bit
-0x58004024 B  REGISTER PCROP1ASR (rw): Flash PCROP zone A Start address register
+0x58004024 B  REGISTER PCROP1ASR (ro): Flash PCROP zone A Start address register
 0x58004024 C   FIELD 00w08 PCROP1A_STRT: PCROP1A area start offset
 0x58004028 B  REGISTER PCROP1AER: Flash PCROP zone A End address register
 0x58004028 C   FIELD 00w08 PCROP1A_END (rw): PCROP area end offset
@@ -4394,7 +4361,7 @@
 0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
 0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
 0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED24 B  REGISTER SHCSR (rw): System handler control and state register
+0xE000ED24 B  REGISTER SHCRS (rw): System handler control and state register
 0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
 0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
 0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
@@ -4467,7 +4434,7 @@
 0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
 0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
 0xE0042000 A PERIPHERAL DBGMCU
-0xE0042000 B  REGISTER IDCODER (ro): DBGMCU Identity Code Register
+0xE0042000 B  REGISTER IDCODE (ro): DBGMCU Identity Code Register
 0xE0042000 C   FIELD 00w12 DEV_ID: Device ID
 0xE0042000 C   FIELD 16w16 REV_ID: Revision
 0xE0042004 B  REGISTER CR (rw): DBGMCU Configuration Register
@@ -4483,68 +4450,84 @@
 0xE004203C C   FIELD 22w01 DBG_I2C2_STOP: I2C2 SMBUS timeout stop in CPU1 debug
 0xE004203C C   FIELD 23w01 DBG_I2C3_STOP: I2C3 SMBUS timeout stop in CPU1 debug
 0xE004203C C   FIELD 31w01 DBG_LPTIM1_STOP: LPTIM1 stop in CPU1 debug
+0xE0042040 B  REGISTER C2APB1FZR1 (rw): DBGMCU CPU2 APB1 Peripheral Freeze Register 1 [dual core device
+0xE0042040 C   FIELD 00w01 DBG_TIM2_STOP: DBG_TIM2_STOP
+0xE0042040 C   FIELD 10w01 DBG_RTC_STOP: DBG_RTC_STOP
+0xE0042040 C   FIELD 12w01 DBG_IWDG_STOP: DBG_IWDG_STOP
+0xE0042040 C   FIELD 21w01 DBG_I2C1_STOP: DBG_I2C1_STOP
+0xE0042040 C   FIELD 22w01 DBG_I2C2_STOP: DBG_I2C2_STOP
+0xE0042040 C   FIELD 23w01 DBG_I2C3_STOP: DBG_I2C3_STOP
+0xE0042040 C   FIELD 31w01 DBG_LPTIM1_STOP: DBG_LPTIM1_STOP
 0xE0042044 B  REGISTER APB1FZR2 (rw): DBGMCU CPU1 APB1 Peripheral Freeze Register 2
 0xE0042044 C   FIELD 05w01 DBG_LPTIM2_STOP: DBG_LPTIM2_STOP
 0xE0042044 C   FIELD 06w01 DBG_LPTIM3_STOP: DBG_LPTIM3_STOP
+0xE0042048 B  REGISTER C2APB1FZR2 (rw): DBGMCU CPU2 APB1 Peripheral Freeze Register 2 [dual core device
+0xE0042048 C   FIELD 05w01 DBG_LPTIM2_STOP: DBG_LPTIM2_STOP
+0xE0042048 C   FIELD 06w01 DBG_LPTIM3_STOP: DBG_LPTIM3_STOP
 0xE004204C B  REGISTER APB2FZR (rw): DBGMCU CPU1 APB2 Peripheral Freeze Register
 0xE004204C C   FIELD 11w01 DBG_TIM1_STOP: DBG_TIM1_STOP
 0xE004204C C   FIELD 17w01 DBG_TIM16_STOP: DBG_TIM16_STOP
 0xE004204C C   FIELD 18w01 DBG_TIM17_STOP: DBG_TIM17_STOP
-INTERRUPT 000: WWDG (WWDG): Window watchdog early wakeup interrupt
-INTERRUPT 001: PVD_PVM_3 (EXTI): PVD through EXTI[16], PVM[3] through EXTI[34]
-INTERRUPT 002: TAMP_RTCSTAMP_LSECSS_RTCSSRU (RTC): Tamper, TimeStamp, LSECSS,RTC_SSRU interrupt
-INTERRUPT 003: RTC_WKUP (RTC): RTC wakeup interrupt
-INTERRUPT 004: FLASH (FLASH): Flash memory global interrupt and Flash memory ECC single error interrupt
+0xE0042050 B  REGISTER C2APB2FZR (rw): DBGMCU CPU2 APB2 Peripheral Freeze Register [dual core device
+0xE0042050 C   FIELD 11w01 DBG_TIM1_STOP: DBG_TIM1_STOP
+0xE0042050 C   FIELD 17w01 DBG_TIM16_STOP: DBG_TIM16_STOP
+0xE0042050 C   FIELD 18w01 DBG_TIM17_STOP: DBG_TIM17_STOP
+INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
+INTERRUPT 001: PVD (EXTI): PVD through EXTI
+INTERRUPT 002: TAMP_RTC_STAMP_LSECSS_SSRU (RTC): Tamper, TimeStamp, LSECSS interrupt through
+INTERRUPT 003: RTC_WKUP (RTC): RTC wakeup interrupt through EXTI[19]
+INTERRUPT 004: Flash (FLASH): Flash memory global interrupt and Flash memory ECC
 INTERRUPT 005: RCC (RCC): RCC global interrupt
 INTERRUPT 006: EXTI0 (EXTI): EXTI line 0 interrupt through EXTI
 INTERRUPT 007: EXTI1 (EXTI): EXTI line 1 interrupt through EXTI
 INTERRUPT 008: EXTI2 (EXTI): EXTI line 2 interrupt through EXTI
 INTERRUPT 009: EXTI3 (EXTI): EXTI line 3 interrupt through EXTI
 INTERRUPT 010: EXTI4 (EXTI): EXTI line 4 interrupt through EXTI
-INTERRUPT 011: DMA1_CH1 (DMA1): DMA1 channel 1 non-secure interrupt
-INTERRUPT 012: DMA1_CH2 (DMA1): DMA1 channel 2 non-secure interrupt
-INTERRUPT 013: DMA1_CH3 (DMA1): DMA1 channel 3 non-secure interrupt
-INTERRUPT 014: DMA1_CH4 (DMA1): DMA1 channel 4 non-secure interrupt
-INTERRUPT 015: DMA1_CH5 (DMA1): DMA1 channel 5 non-secure interrupt
-INTERRUPT 016: DMA1_CH6 (DMA1): DMA1 channel 6 non-secure interrupt
-INTERRUPT 017: DMA1_CH7 (DMA1): DMA1 channel 7 non-secure interrupt
-INTERRUPT 018: ADC (ADC): ADC global interrupt
+INTERRUPT 011: DMA1_Channel1 (DMA1): DMA1 Channel1 global interrupt
+INTERRUPT 012: DMA1_Channel2 (DMA1): DMA1 Channel2 global interrupt
+INTERRUPT 013: DMA1_Channel3 (DMA1): DMA1 Channel3 interrupt
+INTERRUPT 014: DMA1_Channel4 (DMA1): DMA1 Channel4 interrupt
+INTERRUPT 015: DMA1_Channel5 (DMA1): DMA1 Channel5 interrupt
+INTERRUPT 016: DMA1_Channel6 (DMA1): DMA1 Channel6 interrupt
+INTERRUPT 017: DMA1_Channel7 (DMA1): DMA1 Channel 7 interrupt
+INTERRUPT 018: ADC1 (ADC): ADC1 global interrupt
 INTERRUPT 019: DAC (DAC): DAC global interrupt
-INTERRUPT 021: COMP (COMP): COMP2 and COMP1 interrupt through EXTI[22:21]
+INTERRUPT 021: COMP (COMP): COMP2 and COMP1 interrupt through
 INTERRUPT 022: EXTI9_5 (EXTI): EXTI line 9_5 interrupt through EXTI
 INTERRUPT 023: TIM1_BRK (TIM1): Timer 1 break interrupt
 INTERRUPT 024: TIM1_UP (TIM1): Timer 1 Update
 INTERRUPT 025: TIM1_TRG_COM (TIM1): Timer 1 trigger and communication
 INTERRUPT 026: TIM1_CC (TIM1): Timer 1 capture compare interrupt
-INTERRUPT 027: TIM2 (TIM2): Timer 2 global interrupt
+INTERRUPT 027: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 028: TIM16 (TIM16): Timer 16 global interrupt
 INTERRUPT 029: TIM17 (TIM17): Timer 17 global interrupt
 INTERRUPT 030: I2C1_EV (I2C1): I2C1 event interrupt
 INTERRUPT 031: I2C1_ER (I2C1): I2C1 event interrupt
-INTERRUPT 032: I2C2_EV (I2C2): I2C2 event interrupt
+INTERRUPT 032: I2C2_EV (I2C2): I2C2 error interrupt
 INTERRUPT 033: I2C2_ER (I2C2): I2C2 error interrupt
 INTERRUPT 034: SPI1 (SPI1): SPI 1 global interrupt
-INTERRUPT 035: SPI2S2 (SPI2): SPI2S2 global interrupt
+INTERRUPT 035: SPI2 (SPI2): SPI2 global interrupt
 INTERRUPT 036: USART1 (USART1): USART1 global interrupt
 INTERRUPT 037: USART2 (USART2): USART2 global interrupt
 INTERRUPT 038: LPUART1 (LPUART): LPUART1 global interrupt
 INTERRUPT 039: LPTIM1 (LPTIM1): LPtimer 1 global interrupt
 INTERRUPT 040: LPTIM2 (LPTIM2): LPtimer 2 global interrupt
 INTERRUPT 041: EXTI15_10 (EXTI): EXTI line 15_10] interrupt through EXTI
-INTERRUPT 042: RTC_ALARM (RTC): RTC alarms A and B interrupt
+INTERRUPT 042: RTC_ALARM (RTC): RTC Alarms A & B interrupt
 INTERRUPT 043: LPTIM3 (LPTIM3): LPtimer 3 global interrupt
-INTERRUPT 047: HSEM (HSEM): Semaphore interrupt 0 to CPU
+INTERRUPT 044: SPI3 (SPI3): SPI3 global interrupt
+INTERRUPT 047: HSEM (HSEM): Semaphore interrupt 0 to CPU1
 INTERRUPT 048: I2C3_EV (I2C3): I2C3 event interrupt
 INTERRUPT 049: I2C3_ER (I2C3): I2C3 error interrupt
-INTERRUPT 050: Radio_IRQ_Busy (EXTI): Radio IRQs, RFBUSY interrupt through EXTI
+INTERRUPT 050: Radio_Busy (EXTI): Radio IRQs RFBUSY interrupt through EXTI
 INTERRUPT 051: AES (AES): AES global interrupt
 INTERRUPT 052: True_RNG (RNG): True random number generator interrupt
 INTERRUPT 053: PKA (PKA): Private key accelerator interrupt
-INTERRUPT 054: DMA2_CH1 (DMA2): DMA2 channel 1 non-secure interrupt
-INTERRUPT 055: DMA2_CH2 (DMA2): DMA2 channel 2 non-secure interrupt
-INTERRUPT 056: DMA2_CH3 (DMA2): DMA2 channel 3 non-secure interrupt
-INTERRUPT 057: DMA2_CH4 (DMA2): DMA2 channel 4 non-secure interrupt
-INTERRUPT 058: DMA2_CH5 (DMA2): DMA2 channel 5 non-secure interrupt
-INTERRUPT 059: DMA2_CH6 (DMA2): DMA2 channel 6 non-secure interrupt
-INTERRUPT 060: DMA2_CH7 (DMA2): DMA2 channel 7 non-secure interrupt
-INTERRUPT 061: DMAMUX1_OVR (DMAMUX): DMAMUX1 overrun interrupt
+INTERRUPT 054: DMA2_CH1 (DMA2): DMA2 channel 1 interrupt
+INTERRUPT 055: DMA2_CH2 (DMA2): DMA2 channel 2 interrupt
+INTERRUPT 056: DMA2_CH3 (DMA2): DMA2 channel 3 interrupt
+INTERRUPT 057: DMA2_CH4 (DMA2): DMA2 channel 4 interrupt
+INTERRUPT 058: DMA2_CH5 (DMA2): DMA2 channel 5 interrupt
+INTERRUPT 059: DMA2_CH6 (DMA2): DMA2 channel 6 interrupt
+INTERRUPT 060: DMA2_CH7 (DMA2): DMA2 channel 7 interrupt
+INTERRUPT 061: DMAMUX_OVR (DMAMUX): DMAMUX overrun interrupt

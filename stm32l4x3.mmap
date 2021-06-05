@@ -708,7 +708,7 @@
 0x40003800 C   FIELD 08w01 SSI: Internal slave select
 0x40003800 C   FIELD 09w01 SSM: Software slave management
 0x40003800 C   FIELD 10w01 RXONLY: Receive only
-0x40003800 C   FIELD 11w01 CRCL: CRC length
+0x40003800 C   FIELD 11w01 DFF: Data frame format
 0x40003800 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003800 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003800 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -733,7 +733,7 @@
 0x40003808 C   FIELD 05w01 MODF (ro): Mode fault
 0x40003808 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40003808 C   FIELD 07w01 BSY (ro): Busy flag
-0x40003808 C   FIELD 08w01 FRE (ro): Frame format error
+0x40003808 C   FIELD 08w01 TIFRFE (ro): TI frame format error
 0x40003808 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40003808 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4000380C B  REGISTER DR (rw): data register
@@ -755,7 +755,7 @@
 0x40003C00 C   FIELD 08w01 SSI: Internal slave select
 0x40003C00 C   FIELD 09w01 SSM: Software slave management
 0x40003C00 C   FIELD 10w01 RXONLY: Receive only
-0x40003C00 C   FIELD 11w01 CRCL: CRC length
+0x40003C00 C   FIELD 11w01 DFF: Data frame format
 0x40003C00 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003C00 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003C00 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -780,7 +780,7 @@
 0x40003C08 C   FIELD 05w01 MODF (ro): Mode fault
 0x40003C08 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40003C08 C   FIELD 07w01 BSY (ro): Busy flag
-0x40003C08 C   FIELD 08w01 FRE (ro): Frame format error
+0x40003C08 C   FIELD 08w01 TIFRFE (ro): TI frame format error
 0x40003C08 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40003C08 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x40003C0C B  REGISTER DR (rw): data register
@@ -3050,7 +3050,7 @@
 0x40013000 C   FIELD 08w01 SSI: Internal slave select
 0x40013000 C   FIELD 09w01 SSM: Software slave management
 0x40013000 C   FIELD 10w01 RXONLY: Receive only
-0x40013000 C   FIELD 11w01 CRCL: CRC length
+0x40013000 C   FIELD 11w01 DFF: Data frame format
 0x40013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -3075,7 +3075,7 @@
 0x40013008 C   FIELD 05w01 MODF (ro): Mode fault
 0x40013008 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40013008 C   FIELD 07w01 BSY (ro): Busy flag
-0x40013008 C   FIELD 08w01 FRE (ro): Frame format error
+0x40013008 C   FIELD 08w01 TIFRFE (ro): TI frame format error
 0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4001300C B  REGISTER DR (rw): data register
@@ -3978,7 +3978,7 @@
 0x40021028 C   FIELD 00w01 DMA1RST: DMA1 reset
 0x40021028 C   FIELD 01w01 DMA2RST: DMA2 reset
 0x40021028 C   FIELD 08w01 FLASHRST: Flash memory interface reset
-0x40021028 C   FIELD 12w01 CRCRST: CRC reset
+0x40021028 C   FIELD 11w01 CRCRST: CRC reset
 0x40021028 C   FIELD 16w01 TSCRST: Touch Sensing Controller reset
 0x4002102C B  REGISTER AHB2RSTR (rw): AHB2 peripheral reset register
 0x4002102C C   FIELD 00w01 GPIOARST: IO port A reset
@@ -4007,7 +4007,6 @@
 0x40021038 C   FIELD 22w01 I2C2RST: I2C2 reset
 0x40021038 C   FIELD 23w01 I2C3RST: I2C3 reset
 0x40021038 C   FIELD 25w01 CAN1RST: CAN1 reset
-0x40021038 C   FIELD 26w01 USBFSRST: USB FS reset
 0x40021038 C   FIELD 28w01 PWRRST: Power interface reset
 0x40021038 C   FIELD 29w01 DAC1RST: DAC1 interface reset
 0x40021038 C   FIELD 30w01 OPAMPRST: OPAMP interface reset
@@ -4029,7 +4028,7 @@
 0x40021048 C   FIELD 00w01 DMA1EN: DMA1 clock enable
 0x40021048 C   FIELD 01w01 DMA2EN: DMA2 clock enable
 0x40021048 C   FIELD 08w01 FLASHEN: Flash memory interface clock enable
-0x40021048 C   FIELD 12w01 CRCEN: CRC clock enable
+0x40021048 C   FIELD 11w01 CRCEN: CRC clock enable
 0x40021048 C   FIELD 16w01 TSCEN: Touch Sensing Controller clock enable
 0x4002104C B  REGISTER AHB2ENR (rw): AHB2 peripheral clock enable register
 0x4002104C C   FIELD 00w01 GPIOAEN: IO port A clock enable
@@ -4083,7 +4082,7 @@
 0x40021068 C   FIELD 01w01 DMA2SMEN: DMA2 clocks enable during Sleep and Stop modes
 0x40021068 C   FIELD 08w01 FLASHSMEN: Flash memory interface clocks enable during Sleep and Stop modes
 0x40021068 C   FIELD 09w01 SRAM1SMEN: SRAM1 interface clocks enable during Sleep and Stop modes
-0x40021068 C   FIELD 12w01 CRCSMEN: CRCSMEN
+0x40021068 C   FIELD 11w01 CRCSMEN: CRCSMEN
 0x40021068 C   FIELD 16w01 TSCSMEN: Touch Sensing Controller clocks enable during Sleep and Stop modes
 0x4002106C B  REGISTER AHB2SMENR (rw): AHB2 peripheral clocks enable in Sleep and Stop modes register
 0x4002106C C   FIELD 00w01 GPIOASMEN: IO port A clocks enable during Sleep and Stop modes
@@ -5595,7 +5594,7 @@
 0x50040028 C   FIELD 00w08 LT3: LT3
 0x50040028 C   FIELD 16w08 HT3: HT3
 0x50040030 B  REGISTER SQR1 (rw): regular sequence register 1
-0x50040030 C   FIELD 00w04 L: Regular channel sequence length
+0x50040030 C   FIELD 00w04 L3: L3
 0x50040030 C   FIELD 06w05 SQ1: SQ1
 0x50040030 C   FIELD 12w05 SQ2: SQ2
 0x50040030 C   FIELD 18w05 SQ3: SQ3
