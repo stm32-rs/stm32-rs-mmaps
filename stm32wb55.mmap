@@ -1972,12 +1972,13 @@
 0x4001382C C   FIELD 00w04 PRESCALER: Clock prescaler
 0x40014400 A PERIPHERAL TIM16
 0x40014400 B  REGISTER CR1 (rw): control register 1
-0x40014400 C   FIELD 00w01 BKINE: BRK BKIN input enable
-0x40014400 C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
-0x40014400 C   FIELD 02w01 BKCMP2E: BRK COMP2 enable
-0x40014400 C   FIELD 09w01 BKINP: BRK BKIN input polarity
-0x40014400 C   FIELD 10w01 BKCMP1P: BRK COMP1 input polarity
-0x40014400 C   FIELD 11w01 BKCMP2P: BRK COMP2 input polarit
+0x40014400 C   FIELD 00w01 CEN: Counter enable.
+0x40014400 C   FIELD 01w01 UDIS: Update disable.
+0x40014400 C   FIELD 02w01 URS: Update request source.
+0x40014400 C   FIELD 03w01 OPM: One pulse mode.
+0x40014400 C   FIELD 07w01 ARPE: Auto-reload preload enable.
+0x40014400 C   FIELD 08w02 CKD: Clock division.
+0x40014400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping.
 0x40014404 B  REGISTER CR2 (rw): control register 2
 0x40014404 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x40014404 C   FIELD 02w01 CCUS: Capture/compare control update selection
@@ -1985,12 +1986,12 @@
 0x40014404 C   FIELD 08w01 OIS1: Output Idle state 1
 0x40014404 C   FIELD 09w01 OIS1N: Output Idle state 1
 0x4001440C B  REGISTER DIER (rw): DMA/Interrupt enable register
-0x4001440C C   FIELD 00w01 BKINE: BRK BKIN input enable
-0x4001440C C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
-0x4001440C C   FIELD 02w01 BKCMP2E: BRK COMP2 enable
-0x4001440C C   FIELD 09w01 BKINP: BRK BKIN input polarity
-0x4001440C C   FIELD 10w01 BKCMP1P: BRK COMP1 input polarity
-0x4001440C C   FIELD 11w01 BKCMP2P: BRK COMP2 input polarit
+0x4001440C C   FIELD 00w01 UIE: Update interrupt enable.
+0x4001440C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable.
+0x4001440C C   FIELD 05w01 COMIE: COM interrupt enable.
+0x4001440C C   FIELD 08w01 BIE: Break interrupt enable.
+0x4001440C C   FIELD 08w01 UDE: Update DMA request enable.
+0x4001440C C   FIELD 09w02 CC1DE: Capture/Compare 1 DMA request enable.
 0x40014410 B  REGISTER SR (rw): status register
 0x40014410 C   FIELD 00w01 UIF: Update interrupt flag
 0x40014410 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
@@ -2070,12 +2071,12 @@
 0x40014804 C   FIELD 08w01 OIS1: Output Idle state 1
 0x40014804 C   FIELD 09w01 OIS1N: Output Idle state 1
 0x40014808 B  REGISTER DIER (rw): DMA/Interrupt enable register
-0x40014808 C   FIELD 00w01 BKINE: BRK BKIN input enable
-0x40014808 C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
-0x40014808 C   FIELD 02w01 BKCMP2E: BRK COMP2 enable
-0x40014808 C   FIELD 09w01 BKINP: BRK BKIN input polarity
-0x40014808 C   FIELD 10w01 BKCMP1P: BRK COMP1 input polarity
-0x40014808 C   FIELD 11w01 BKCMP2P: BRK COMP2 input polarit
+0x40014808 C   FIELD 00w01 UIE: Update interrupt enable.
+0x40014808 C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable.
+0x40014808 C   FIELD 05w01 COMIE: COM interrupt enable.
+0x40014808 C   FIELD 08w01 BIE: Break interrupt enable.
+0x40014808 C   FIELD 08w01 UDE: Update DMA request enable.
+0x40014808 C   FIELD 09w02 CC1DE: Capture/Compare 1 DMA request enable.
 0x4001480C B  REGISTER SR (rw): status register
 0x4001480C C   FIELD 00w01 UIF: Update interrupt flag
 0x4001480C C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
@@ -4798,10 +4799,56 @@
 0x58000488 C   FIELD 15w01 C2DS (ro): CPU2 deepsleep mode
 0x58000800 A PERIPHERAL EXTI
 0x58000800 B  REGISTER RTSR1 (rw): rising trigger selection register
+0x58000800 C   FIELD 00w01 RT0: Rising trigger event configuration bit of configurable Event input 0.
 0x58000800 C   FIELD 00w22 RT: Rising trigger event configuration bit of Configurable Event input
+0x58000800 C   FIELD 01w01 RT1: Rising trigger event configuration bit of configurable Event input 1.
+0x58000800 C   FIELD 02w01 RT2: Rising trigger event configuration bit of configurable Event input 2.
+0x58000800 C   FIELD 03w01 RT3: Rising trigger event configuration bit of configurable Event input 3.
+0x58000800 C   FIELD 04w01 RT4: Rising trigger event configuration bit of configurable Event input 4.
+0x58000800 C   FIELD 05w01 RT5: Rising trigger event configuration bit of configurable Event input 5.
+0x58000800 C   FIELD 06w01 RT6: Rising trigger event configuration bit of configurable Event input 6.
+0x58000800 C   FIELD 07w01 RT7: Rising trigger event configuration bit of configurable Event input 7.
+0x58000800 C   FIELD 08w01 RT8: Rising trigger event configuration bit of configurable Event input 8.
+0x58000800 C   FIELD 09w01 RT9: Rising trigger event configuration bit of configurable Event input 9.
+0x58000800 C   FIELD 10w01 RT10: Rising trigger event configuration bit of configurable Event input 10.
+0x58000800 C   FIELD 11w01 RT11: Rising trigger event configuration bit of configurable Event input 11.
+0x58000800 C   FIELD 12w01 RT12: Rising trigger event configuration bit of configurable Event input 12.
+0x58000800 C   FIELD 13w01 RT13: Rising trigger event configuration bit of configurable Event input 13.
+0x58000800 C   FIELD 14w01 RT14: Rising trigger event configuration bit of configurable Event input 14.
+0x58000800 C   FIELD 15w01 RT15: Rising trigger event configuration bit of configurable Event input 15.
+0x58000800 C   FIELD 16w01 RT16: Rising trigger event configuration bit of configurable Event input 16.
+0x58000800 C   FIELD 17w01 RT17: Rising trigger event configuration bit of configurable Event input 17.
+0x58000800 C   FIELD 18w01 RT18: Rising trigger event configuration bit of configurable Event input 18.
+0x58000800 C   FIELD 19w01 RT19: Rising trigger event configuration bit of configurable Event input 19.
+0x58000800 C   FIELD 20w01 RT20: Rising trigger event configuration bit of configurable Event input 20.
+0x58000800 C   FIELD 21w01 RT21: Rising trigger event configuration bit of configurable Event input 21.
+0x58000800 C   FIELD 31w01 RT31: Rising trigger event configuration bit of configurable Event input 31.
 0x58000800 C   FIELD 31w01 RT_31: Rising trigger event configuration bit of Configurable Event input
 0x58000804 B  REGISTER FTSR1 (rw): falling trigger selection register
+0x58000804 C   FIELD 00w01 FT0: Falling trigger event configuration bit of configurable Event input 0.
 0x58000804 C   FIELD 00w22 FT: Falling trigger event configuration bit of Configurable Event input
+0x58000804 C   FIELD 01w01 FT1: Falling trigger event configuration bit of configurable Event input 1.
+0x58000804 C   FIELD 02w01 FT2: Falling trigger event configuration bit of configurable Event input 2.
+0x58000804 C   FIELD 03w01 FT3: Falling trigger event configuration bit of configurable Event input 3.
+0x58000804 C   FIELD 04w01 FT4: Falling trigger event configuration bit of configurable Event input 4.
+0x58000804 C   FIELD 05w01 FT5: Falling trigger event configuration bit of configurable Event input 5.
+0x58000804 C   FIELD 06w01 FT6: Falling trigger event configuration bit of configurable Event input 6.
+0x58000804 C   FIELD 07w01 FT7: Falling trigger event configuration bit of configurable Event input 7.
+0x58000804 C   FIELD 08w01 FT8: Falling trigger event configuration bit of configurable Event input 8.
+0x58000804 C   FIELD 09w01 FT9: Falling trigger event configuration bit of configurable Event input 9.
+0x58000804 C   FIELD 10w01 FT10: Falling trigger event configuration bit of configurable Event input 10.
+0x58000804 C   FIELD 11w01 FT11: Falling trigger event configuration bit of configurable Event input 11.
+0x58000804 C   FIELD 12w01 FT12: Falling trigger event configuration bit of configurable Event input 12.
+0x58000804 C   FIELD 13w01 FT13: Falling trigger event configuration bit of configurable Event input 13.
+0x58000804 C   FIELD 14w01 FT14: Falling trigger event configuration bit of configurable Event input 14.
+0x58000804 C   FIELD 15w01 FT15: Falling trigger event configuration bit of configurable Event input 15.
+0x58000804 C   FIELD 16w01 FT16: Falling trigger event configuration bit of configurable Event input 16.
+0x58000804 C   FIELD 17w01 FT17: Falling trigger event configuration bit of configurable Event input 17.
+0x58000804 C   FIELD 18w01 FT18: Falling trigger event configuration bit of configurable Event input 18.
+0x58000804 C   FIELD 19w01 FT19: Falling trigger event configuration bit of configurable Event input 19.
+0x58000804 C   FIELD 20w01 FT20: Falling trigger event configuration bit of configurable Event input 20.
+0x58000804 C   FIELD 21w01 FT21: Falling trigger event configuration bit of configurable Event input 21.
+0x58000804 C   FIELD 31w01 FT31: Falling trigger event configuration bit of configurable Event input 31.
 0x58000804 C   FIELD 31w01 FT_31: Falling trigger event configuration bit of Configurable Event input
 0x58000808 B  REGISTER SWIER1 (rw): software interrupt event register
 0x58000808 C   FIELD 00w22 SWI: Software interrupt on event
@@ -4822,7 +4869,39 @@
 0x5800082C C   FIELD 01w01 PIF33: Configurable event inputs x+32 Pending bit.
 0x5800082C C   FIELD 08w02 PIF40_41: Configurable event inputs x+32 Pending bit.
 0x58000880 B  REGISTER C1IMR1 (rw): CPUm wakeup with interrupt mask register
+0x58000880 C   FIELD 00w01 IM0: CPU wakeup with interrupt mask on event input 0.
 0x58000880 C   FIELD 00w32 IM: CPU(m) wakeup with interrupt Mask on Event input
+0x58000880 C   FIELD 01w01 IM1: CPU wakeup with interrupt mask on event input 1.
+0x58000880 C   FIELD 02w01 IM2: CPU wakeup with interrupt mask on event input 2.
+0x58000880 C   FIELD 03w01 IM3: CPU wakeup with interrupt mask on event input 3.
+0x58000880 C   FIELD 04w01 IM4: CPU wakeup with interrupt mask on event input 4.
+0x58000880 C   FIELD 05w01 IM5: CPU wakeup with interrupt mask on event input 5.
+0x58000880 C   FIELD 06w01 IM6: CPU wakeup with interrupt mask on event input 6.
+0x58000880 C   FIELD 07w01 IM7: CPU wakeup with interrupt mask on event input 7.
+0x58000880 C   FIELD 08w01 IM8: CPU wakeup with interrupt mask on event input 8.
+0x58000880 C   FIELD 09w01 IM9: CPU wakeup with interrupt mask on event input 9.
+0x58000880 C   FIELD 10w01 IM10: CPU wakeup with interrupt mask on event input 10.
+0x58000880 C   FIELD 11w01 IM11: CPU wakeup with interrupt mask on event input 11.
+0x58000880 C   FIELD 12w01 IM12: CPU wakeup with interrupt mask on event input 12.
+0x58000880 C   FIELD 13w01 IM13: CPU wakeup with interrupt mask on event input 13.
+0x58000880 C   FIELD 14w01 IM14: CPU wakeup with interrupt mask on event input 14.
+0x58000880 C   FIELD 15w01 IM15: CPU wakeup with interrupt mask on event input 15.
+0x58000880 C   FIELD 16w01 IM16: CPU wakeup with interrupt mask on event input 16.
+0x58000880 C   FIELD 17w01 IM17: CPU wakeup with interrupt mask on event input 17.
+0x58000880 C   FIELD 18w01 IM18: CPU wakeup with interrupt mask on event input 18.
+0x58000880 C   FIELD 19w01 IM19: CPU wakeup with interrupt mask on event input 19.
+0x58000880 C   FIELD 20w01 IM20: CPU wakeup with interrupt mask on event input 20.
+0x58000880 C   FIELD 21w01 IM21: CPU wakeup with interrupt mask on event input 21.
+0x58000880 C   FIELD 22w01 IM22: CPU wakeup with interrupt mask on event input 22.
+0x58000880 C   FIELD 23w01 IM23: CPU wakeup with interrupt mask on event input 23.
+0x58000880 C   FIELD 24w01 IM24: CPU wakeup with interrupt mask on event input 24.
+0x58000880 C   FIELD 25w01 IM25: CPU wakeup with interrupt mask on event input 25.
+0x58000880 C   FIELD 26w01 IM26: CPU wakeup with interrupt mask on event input 26.
+0x58000880 C   FIELD 27w01 IM27: CPU wakeup with interrupt mask on event input 27.
+0x58000880 C   FIELD 28w01 IM28: CPU wakeup with interrupt mask on event input 28.
+0x58000880 C   FIELD 29w01 IM29: CPU wakeup with interrupt mask on event input 29.
+0x58000880 C   FIELD 30w01 IM30: CPU wakeup with interrupt mask on event input 30.
+0x58000880 C   FIELD 31w01 IM31: CPU wakeup with interrupt mask on event input 31.
 0x58000884 B  REGISTER C1EMR1 (rw): CPUm wakeup with event mask register
 0x58000884 C   FIELD 00w16 EM0_15: CPU(m) Wakeup with event generation Mask on Event input
 0x58000884 C   FIELD 17w05 EM17_21: CPU(m) Wakeup with event generation Mask on Event input
