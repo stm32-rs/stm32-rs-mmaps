@@ -1667,42 +1667,26 @@
 0x40012010 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
 0x40012010 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
 0x40012014 B  REGISTER JOFR1 (rw): injected channel data offset register x
-0x40012014 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
+0x40012014 C   FIELD 00w12 JOFFSET1: Data offset for injected channel x
 0x40012018 B  REGISTER JOFR2 (rw): injected channel data offset register x
-0x40012018 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
+0x40012018 C   FIELD 00w12 JOFFSET2: Data offset for injected channel x
 0x4001201C B  REGISTER JOFR3 (rw): injected channel data offset register x
-0x4001201C C   FIELD 00w12 JOFFSET: Data offset for injected channel x
+0x4001201C C   FIELD 00w12 JOFFSET3: Data offset for injected channel x
 0x40012020 B  REGISTER JOFR4 (rw): injected channel data offset register x
-0x40012020 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
+0x40012020 C   FIELD 00w12 JOFFSET4: Data offset for injected channel x
 0x40012024 B  REGISTER HTR (rw): watchdog higher threshold register
 0x40012024 C   FIELD 00w12 HT: Analog watchdog higher threshold
 0x40012028 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40012028 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x4001202C B  REGISTER SQR1 (rw): regular sequence register 1
-0x4001202C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x4001202C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x4001202C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x4001202C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x4001202C C   FIELD 00w05 SQ%s: %sth conversion in regular sequence
 0x4001202C C   FIELD 20w04 L: Regular channel sequence length
 0x40012030 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40012030 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40012030 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40012030 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40012030 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40012030 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40012030 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40012030 C   FIELD 00w05 SQ%s: %sth conversion in regular sequence
 0x40012034 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40012034 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40012034 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40012034 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40012034 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40012034 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40012034 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40012034 C   FIELD 00w05 SQ%s: %sst conversion in regular sequence
 0x40012038 B  REGISTER JSQR (rw): injected sequence register
-0x40012038 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40012038 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40012038 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40012038 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40012038 C   FIELD 00w05 JSQ%s: %sst conversion in injected sequence
 0x40012038 C   FIELD 20w02 JL: Injected sequence length
 0x4001203C B  REGISTER JDR1 (ro): injected data register x
 0x4001203C C   FIELD 00w16 JDATA: Injected data
@@ -2263,22 +2247,7 @@
 0x40014850 C   FIELD 00w02 RMP: Input 1 remapping capability
 0x40020000 A PERIPHERAL GPIOA
 0x40020000 B  REGISTER MODER (rw): GPIO port mode register
-0x40020000 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x40020000 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x40020000 C   FIELD 00w02 MODE%s: Port x configuration bits (y = 0..15)
 0x40020004 B  REGISTER OTYPER (rw): GPIO port output type register
 0x40020004 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
 0x40020004 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
@@ -2435,22 +2404,7 @@
 0x40020024 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
 0x40020400 A PERIPHERAL GPIOB
 0x40020400 B  REGISTER MODER (rw): GPIO port mode register
-0x40020400 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x40020400 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x40020400 C   FIELD 00w02 MODE%s: Port x configuration bits (y = 0..15)
 0x40020404 B  REGISTER OTYPER (rw): GPIO port output type register
 0x40020404 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
 0x40020404 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
@@ -2607,22 +2561,7 @@
 0x40020424 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
 0x40020800 A PERIPHERAL GPIOC
 0x40020800 B  REGISTER MODER (rw): GPIO port mode register
-0x40020800 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x40020800 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x40020800 C   FIELD 00w02 MODE%s: Port x configuration bits (y = 0..15)
 0x40020804 B  REGISTER OTYPER (rw): GPIO port output type register
 0x40020804 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
 0x40020804 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
@@ -2779,22 +2718,7 @@
 0x40020824 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
 0x40020C00 A PERIPHERAL GPIOD
 0x40020C00 B  REGISTER MODER (rw): GPIO port mode register
-0x40020C00 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x40020C00 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x40020C00 C   FIELD 00w02 MODE%s: Port x configuration bits (y = 0..15)
 0x40020C04 B  REGISTER OTYPER (rw): GPIO port output type register
 0x40020C04 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
 0x40020C04 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
@@ -2951,22 +2875,7 @@
 0x40020C24 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
 0x40021000 A PERIPHERAL GPIOE
 0x40021000 B  REGISTER MODER (rw): GPIO port mode register
-0x40021000 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x40021000 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x40021000 C   FIELD 00w02 MODE%s: Port x configuration bits (y = 0..15)
 0x40021004 B  REGISTER OTYPER (rw): GPIO port output type register
 0x40021004 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
 0x40021004 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
@@ -3123,22 +3032,7 @@
 0x40021024 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
 0x40021C00 A PERIPHERAL GPIOH
 0x40021C00 B  REGISTER MODER (rw): GPIO port mode register
-0x40021C00 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x40021C00 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x40021C00 C   FIELD 00w02 MODE%s: Port x configuration bits (y = 0..15)
 0x40021C04 B  REGISTER OTYPER (rw): GPIO port output type register
 0x40021C04 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
 0x40021C04 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
