@@ -1729,15 +1729,9 @@
 0x40006584 C   FIELD 08w01 TGT: TGT
 0x40006584 C   FIELD 16w16 TIME: TIME
 0x40006588 B  REGISTER TDLR0 (rw): mailbox data low register
-0x40006588 C   FIELD 00w08 DATA0: DATA0
-0x40006588 C   FIELD 08w08 DATA1: DATA1
-0x40006588 C   FIELD 16w08 DATA2: DATA2
-0x40006588 C   FIELD 24w08 DATA3: DATA3
+0x40006588 C   FIELD 00w08 DATA%s: DATA%s
 0x4000658C B  REGISTER TDHR0 (rw): mailbox data high register
-0x4000658C C   FIELD 00w08 DATA4: DATA4
-0x4000658C C   FIELD 08w08 DATA5: DATA5
-0x4000658C C   FIELD 16w08 DATA6: DATA6
-0x4000658C C   FIELD 24w08 DATA7: DATA7
+0x4000658C C   FIELD 00w08 DATA%s: DATA%s
 0x40006590 B  CLUSTER TX1: CAN Transmit cluster
 0x40006590 B  REGISTER TIR1 (rw): TX mailbox identifier register
 0x40006590 C   FIELD 00w01 TXRQ: TXRQ
@@ -1750,15 +1744,9 @@
 0x40006594 C   FIELD 08w01 TGT: TGT
 0x40006594 C   FIELD 16w16 TIME: TIME
 0x40006598 B  REGISTER TDLR1 (rw): mailbox data low register
-0x40006598 C   FIELD 00w08 DATA0: DATA0
-0x40006598 C   FIELD 08w08 DATA1: DATA1
-0x40006598 C   FIELD 16w08 DATA2: DATA2
-0x40006598 C   FIELD 24w08 DATA3: DATA3
+0x40006598 C   FIELD 00w08 DATA%s: DATA%s
 0x4000659C B  REGISTER TDHR1 (rw): mailbox data high register
-0x4000659C C   FIELD 00w08 DATA4: DATA4
-0x4000659C C   FIELD 08w08 DATA5: DATA5
-0x4000659C C   FIELD 16w08 DATA6: DATA6
-0x4000659C C   FIELD 24w08 DATA7: DATA7
+0x4000659C C   FIELD 00w08 DATA%s: DATA%s
 0x400065A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400065A0 B  REGISTER TIR2 (rw): TX mailbox identifier register
 0x400065A0 C   FIELD 00w01 TXRQ: TXRQ
@@ -1771,15 +1759,9 @@
 0x400065A4 C   FIELD 08w01 TGT: TGT
 0x400065A4 C   FIELD 16w16 TIME: TIME
 0x400065A8 B  REGISTER TDLR2 (rw): mailbox data low register
-0x400065A8 C   FIELD 00w08 DATA0: DATA0
-0x400065A8 C   FIELD 08w08 DATA1: DATA1
-0x400065A8 C   FIELD 16w08 DATA2: DATA2
-0x400065A8 C   FIELD 24w08 DATA3: DATA3
+0x400065A8 C   FIELD 00w08 DATA%s: DATA%s
 0x400065AC B  REGISTER TDHR2 (rw): mailbox data high register
-0x400065AC C   FIELD 00w08 DATA4: DATA4
-0x400065AC C   FIELD 08w08 DATA5: DATA5
-0x400065AC C   FIELD 16w08 DATA6: DATA6
-0x400065AC C   FIELD 24w08 DATA7: DATA7
+0x400065AC C   FIELD 00w08 DATA%s: DATA%s
 0x400065B0 B  CLUSTER RX0: CAN Receive cluster
 0x400065B0 B  REGISTER RIR0 (ro): receive FIFO mailbox identifier register
 0x400065B0 C   FIELD 01w01 RTR: RTR
@@ -5162,63 +5144,15 @@
 0x40017030 C   FIELD 24w01 REGEN: Regulator Enable
 0x40020000 A PERIPHERAL DMA1
 0x40020000 B  REGISTER ISR (ro): interrupt status register
-0x40020000 C   FIELD 00w01 GIF1: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 01w01 TCIF1: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 02w01 HTIF1: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 03w01 TEIF1: Channel x transfer error flag (x = 1 ..7)
-0x40020000 C   FIELD 04w01 GIF2: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 05w01 TCIF2: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 06w01 HTIF2: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 07w01 TEIF2: Channel x transfer error flag (x = 1 ..7)
-0x40020000 C   FIELD 08w01 GIF3: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 09w01 TCIF3: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 10w01 HTIF3: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 11w01 TEIF3: Channel x transfer error flag (x = 1 ..7)
-0x40020000 C   FIELD 12w01 GIF4: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 13w01 TCIF4: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 14w01 HTIF4: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 15w01 TEIF4: Channel x transfer error flag (x = 1 ..7)
-0x40020000 C   FIELD 16w01 GIF5: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 17w01 TCIF5: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 18w01 HTIF5: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 19w01 TEIF5: Channel x transfer error flag (x = 1 ..7)
-0x40020000 C   FIELD 20w01 GIF6: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 21w01 TCIF6: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 22w01 HTIF6: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 23w01 TEIF6: Channel x transfer error flag (x = 1 ..7)
-0x40020000 C   FIELD 24w01 GIF7: Channel x global interrupt flag (x = 1 ..7)
-0x40020000 C   FIELD 25w01 TCIF7: Channel x transfer complete flag (x = 1 ..7)
-0x40020000 C   FIELD 26w01 HTIF7: Channel x half transfer flag (x = 1 ..7)
-0x40020000 C   FIELD 27w01 TEIF7: Channel x transfer error flag (x = 1 ..7)
+0x40020000 C   FIELD 00w01 GIF%s: Channel x global interrupt flag (x = %s ..7)
+0x40020000 C   FIELD 01w01 TCIF%s: Channel x transfer complete flag (x = %s ..7)
+0x40020000 C   FIELD 02w01 HTIF%s: Channel x half transfer flag (x = %s ..7)
+0x40020000 C   FIELD 03w01 TEIF%s: Channel x transfer error flag (x = %s ..7)
 0x40020004 B  REGISTER IFCR (wo): interrupt flag clear register
-0x40020004 C   FIELD 00w01 CGIF1: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 01w01 CTCIF1: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 02w01 CHTIF1: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 03w01 CTEIF1: Channel x transfer error clear (x = 1 ..7)
-0x40020004 C   FIELD 04w01 CGIF2: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 05w01 CTCIF2: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 06w01 CHTIF2: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 07w01 CTEIF2: Channel x transfer error clear (x = 1 ..7)
-0x40020004 C   FIELD 08w01 CGIF3: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 09w01 CTCIF3: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 10w01 CHTIF3: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 11w01 CTEIF3: Channel x transfer error clear (x = 1 ..7)
-0x40020004 C   FIELD 12w01 CGIF4: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 13w01 CTCIF4: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 14w01 CHTIF4: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 15w01 CTEIF4: Channel x transfer error clear (x = 1 ..7)
-0x40020004 C   FIELD 16w01 CGIF5: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 17w01 CTCIF5: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 18w01 CHTIF5: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 19w01 CTEIF5: Channel x transfer error clear (x = 1 ..7)
-0x40020004 C   FIELD 20w01 CGIF6: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 21w01 CTCIF6: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 22w01 CHTIF6: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 23w01 CTEIF6: Channel x transfer error clear (x = 1 ..7)
-0x40020004 C   FIELD 24w01 CGIF7: Channel x global interrupt clear (x = 1 ..7)
-0x40020004 C   FIELD 25w01 CTCIF7: Channel x transfer complete clear (x = 1 ..7)
-0x40020004 C   FIELD 26w01 CHTIF7: Channel x half transfer clear (x = 1 ..7)
-0x40020004 C   FIELD 27w01 CTEIF7: Channel x transfer error clear (x = 1 ..7)
+0x40020004 C   FIELD 00w01 CGIF%s: Channel x global interrupt clear (x = %s ..7)
+0x40020004 C   FIELD 01w01 CTCIF%s: Channel x transfer complete clear (x = %s ..7)
+0x40020004 C   FIELD 02w01 CHTIF%s: Channel x half transfer clear (x = %s ..7)
+0x40020004 C   FIELD 03w01 CTEIF%s: Channel x transfer error clear (x = %s ..7)
 0x40020008 B  REGISTER CCR1 (rw): channel x configuration register
 0x40020008 C   FIELD 00w01 EN: Channel enable
 0x40020008 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5354,63 +5288,15 @@
 0x4002008C C   FIELD 00w32 MA: Memory address
 0x40020400 A PERIPHERAL DMA2
 0x40020400 B  REGISTER ISR (ro): interrupt status register
-0x40020400 C   FIELD 00w01 GIF1: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 01w01 TCIF1: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 02w01 HTIF1: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 03w01 TEIF1: Channel x transfer error flag (x = 1 ..7)
-0x40020400 C   FIELD 04w01 GIF2: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 05w01 TCIF2: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 06w01 HTIF2: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 07w01 TEIF2: Channel x transfer error flag (x = 1 ..7)
-0x40020400 C   FIELD 08w01 GIF3: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 09w01 TCIF3: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 10w01 HTIF3: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 11w01 TEIF3: Channel x transfer error flag (x = 1 ..7)
-0x40020400 C   FIELD 12w01 GIF4: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 13w01 TCIF4: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 14w01 HTIF4: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 15w01 TEIF4: Channel x transfer error flag (x = 1 ..7)
-0x40020400 C   FIELD 16w01 GIF5: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 17w01 TCIF5: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 18w01 HTIF5: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 19w01 TEIF5: Channel x transfer error flag (x = 1 ..7)
-0x40020400 C   FIELD 20w01 GIF6: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 21w01 TCIF6: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 22w01 HTIF6: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 23w01 TEIF6: Channel x transfer error flag (x = 1 ..7)
-0x40020400 C   FIELD 24w01 GIF7: Channel x global interrupt flag (x = 1 ..7)
-0x40020400 C   FIELD 25w01 TCIF7: Channel x transfer complete flag (x = 1 ..7)
-0x40020400 C   FIELD 26w01 HTIF7: Channel x half transfer flag (x = 1 ..7)
-0x40020400 C   FIELD 27w01 TEIF7: Channel x transfer error flag (x = 1 ..7)
+0x40020400 C   FIELD 00w01 GIF%s: Channel x global interrupt flag (x = %s ..7)
+0x40020400 C   FIELD 01w01 TCIF%s: Channel x transfer complete flag (x = %s ..7)
+0x40020400 C   FIELD 02w01 HTIF%s: Channel x half transfer flag (x = %s ..7)
+0x40020400 C   FIELD 03w01 TEIF%s: Channel x transfer error flag (x = %s ..7)
 0x40020404 B  REGISTER IFCR (wo): interrupt flag clear register
-0x40020404 C   FIELD 00w01 CGIF1: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 01w01 CTCIF1: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 02w01 CHTIF1: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 03w01 CTEIF1: Channel x transfer error clear (x = 1 ..7)
-0x40020404 C   FIELD 04w01 CGIF2: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 05w01 CTCIF2: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 06w01 CHTIF2: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 07w01 CTEIF2: Channel x transfer error clear (x = 1 ..7)
-0x40020404 C   FIELD 08w01 CGIF3: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 09w01 CTCIF3: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 10w01 CHTIF3: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 11w01 CTEIF3: Channel x transfer error clear (x = 1 ..7)
-0x40020404 C   FIELD 12w01 CGIF4: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 13w01 CTCIF4: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 14w01 CHTIF4: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 15w01 CTEIF4: Channel x transfer error clear (x = 1 ..7)
-0x40020404 C   FIELD 16w01 CGIF5: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 17w01 CTCIF5: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 18w01 CHTIF5: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 19w01 CTEIF5: Channel x transfer error clear (x = 1 ..7)
-0x40020404 C   FIELD 20w01 CGIF6: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 21w01 CTCIF6: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 22w01 CHTIF6: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 23w01 CTEIF6: Channel x transfer error clear (x = 1 ..7)
-0x40020404 C   FIELD 24w01 CGIF7: Channel x global interrupt clear (x = 1 ..7)
-0x40020404 C   FIELD 25w01 CTCIF7: Channel x transfer complete clear (x = 1 ..7)
-0x40020404 C   FIELD 26w01 CHTIF7: Channel x half transfer clear (x = 1 ..7)
-0x40020404 C   FIELD 27w01 CTEIF7: Channel x transfer error clear (x = 1 ..7)
+0x40020404 C   FIELD 00w01 CGIF%s: Channel x global interrupt clear (x = %s ..7)
+0x40020404 C   FIELD 01w01 CTCIF%s: Channel x transfer complete clear (x = %s ..7)
+0x40020404 C   FIELD 02w01 CHTIF%s: Channel x half transfer clear (x = %s ..7)
+0x40020404 C   FIELD 03w01 CTEIF%s: Channel x transfer error clear (x = %s ..7)
 0x40020408 B  REGISTER CCR1 (rw): channel x configuration register
 0x40020408 C   FIELD 00w01 EN: Channel enable
 0x40020408 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
