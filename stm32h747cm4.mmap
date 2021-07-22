@@ -14371,7 +14371,7 @@
 0x50001048 C   FIELD 01w01 HDES: Horizontal Data Enable display Status
 0x50001048 C   FIELD 02w01 VSYNCS: Vertical Synchronization display Status
 0x50001048 C   FIELD 03w01 HSYNCS: Horizontal Synchronization display Status
-0x50001084 B  CLUSTER LAYER1: Cluster LAYER%s, containing L?CR, L?WHPCR, L?WVPCR, L?CKCR, L?PFCR, L?CACR, L?DCCR, L?BFCR, L?CFBAR, L?CFBLR, L?CFBLNR, L?CLUTWR
+0x50001084 B  CLUSTER LAYER1: Cluster LAYER1, containing L?CR, L?WHPCR, L?WVPCR, L?CKCR, L?PFCR, L?CACR, L?DCCR, L?BFCR, L?CFBAR, L?CFBLR, L?CFBLNR, L?CLUTWR
 0x50001084 B  REGISTER CR1 (rw): Layerx Control Register
 0x50001084 C   FIELD 00w01 LEN: Layer Enable
 0x50001084 C   FIELD 01w01 COLKEN: Color Keying Enable
@@ -14410,7 +14410,7 @@
 0x500010C4 C   FIELD 08w08 GREEN: Green value
 0x500010C4 C   FIELD 16w08 RED: Red value
 0x500010C4 C   FIELD 24w08 CLUTADD: CLUT Address
-0x50001104 B  CLUSTER LAYER2: Cluster LAYER%s, containing L?CR, L?WHPCR, L?WVPCR, L?CKCR, L?PFCR, L?CACR, L?DCCR, L?BFCR, L?CFBAR, L?CFBLR, L?CFBLNR, L?CLUTWR
+0x50001104 B  CLUSTER LAYER2: Cluster LAYER2, containing L?CR, L?WHPCR, L?WVPCR, L?CKCR, L?PFCR, L?CACR, L?DCCR, L?BFCR, L?CFBAR, L?CFBLR, L?CFBLNR, L?CLUTWR
 0x50001104 B  REGISTER CR2 (rw): Layerx Control Register
 0x50001104 C   FIELD 00w01 LEN: Layer Enable
 0x50001104 C   FIELD 01w01 COLKEN: Color Keying Enable
@@ -15805,7 +15805,7 @@
 0x52002000 B  REGISTER ACR: FLASH access control register
 0x52002000 C   FIELD 00w04 LATENCY: Read latency
 0x52002000 C   FIELD 04w02 WRHIGHFREQ: Flash signal delay
-0x52002004 B  CLUSTER BANK1: Cluster BANK%s, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
+0x52002004 B  CLUSTER BANK1: Cluster BANK1, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
 0x52002004 B  REGISTER KEYR1 (wo): FLASH key register for bank 1
 0x52002004 C   FIELD 00w32 KEYR: Bank access configuration unlock key
 0x52002008 B  REGISTER OPTKEYR (wo): FLASH option key register
@@ -15955,7 +15955,7 @@
 0x5200205C C   FIELD 00w32 CRC_DATA: CRC result
 0x52002060 B  REGISTER FAR1: FLASH ECC fail address for bank 1
 0x52002060 C   FIELD 00w15 FAIL_ECC_ADDR: Bank 1 ECC error address
-0x52002104 B  CLUSTER BANK2: Cluster BANK%s, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
+0x52002104 B  CLUSTER BANK2: Cluster BANK2, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
 0x52002104 B  REGISTER KEYR2 (wo): FLASH key register for bank 1
 0x52002104 C   FIELD 00w32 KEYR: Bank access configuration unlock key
 0x5200210C B  REGISTER CR2: FLASH control register for bank 1
@@ -16275,7 +16275,7 @@
 0x5200411C C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x5200411C C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x5200411C C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x52004140 B  CLUSTER SDBANK1: Cluster SDBANK%s, containing SDTR?, SDCR?
+0x52004140 B  CLUSTER SDBANK1: Cluster SDBANK1, containing SDTR?, SDCR?
 0x52004140 B  REGISTER SDCR1 (rw): This register contains the control parameters for each SDRAM memory bank
 0x52004140 C   FIELD 00w02 NC: Number of column address bits These bits define the number of bits of a column address.
 0x52004140 C   FIELD 02w02 NR: Number of row address bits These bits define the number of bits of a row address.
@@ -16286,7 +16286,7 @@
 0x52004140 C   FIELD 10w02 SDCLK: SDRAM clock configuration These bits define the SDRAM clock period for both SDRAM banks and allow disabling the clock before changing the frequency. In this case the SDRAM must be re-initialized. Note: The corresponding bits in the FMC_SDCR2 register is read only.
 0x52004140 C   FIELD 12w01 RBURST: Burst read This bit enables burst read mode. The SDRAM controller anticipates the next read commands during the CAS latency and stores data in the Read FIFO. Note: The corresponding bit in the FMC_SDCR2 register is read only.
 0x52004140 C   FIELD 13w02 RPIPE: Read pipe These bits define the delay, in KCK_FMC clock cycles, for reading data after CAS latency. Note: The corresponding bits in the FMC_SDCR2 register is read only.
-0x52004144 B  CLUSTER SDBANK2: Cluster SDBANK%s, containing SDTR?, SDCR?
+0x52004144 B  CLUSTER SDBANK2: Cluster SDBANK2, containing SDTR?, SDCR?
 0x52004144 B  REGISTER SDCR2 (rw): This register contains the control parameters for each SDRAM memory bank
 0x52004144 C   FIELD 00w02 NC: Number of column address bits These bits define the number of bits of a column address.
 0x52004144 C   FIELD 02w02 NR: Number of row address bits These bits define the number of bits of a row address.
@@ -18142,7 +18142,7 @@
 0x58005400 B  REGISTER GCR (rw): Global configuration register
 0x58005400 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x58005400 C   FIELD 04w02 SYNCOUT: Synchronization outputs These bits are set and cleared by software.
-0x58005404 B  CLUSTER CHA: Cluster CH%s, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
+0x58005404 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x58005404 B  REGISTER CR1A (rw): Configuration register 1
 0x58005404 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x58005404 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -18204,7 +18204,7 @@
 0x5800541C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag. This bit is write only. Programming this bit to 1 clears the LFSDET flag in the SAI_xSR register. This bit is not used in AC97or SPDIF mode Reading this bit always returns the value 0.
 0x58005420 B  REGISTER DRA (rw): Data register
 0x58005420 C   FIELD 00w32 DATA: Data A write to this register loads the FIFO provided the FIFO is not full. A read from this register empties the FIFO if the FIFO is not empty.
-0x58005424 B  CLUSTER CHB: Cluster CH%s, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
+0x58005424 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x58005424 B  REGISTER CR1B (rw): Configuration register 1
 0x58005424 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x58005424 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
