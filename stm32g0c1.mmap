@@ -2920,7 +2920,7 @@
 0x40025008 B  REGISTER RNG_DR (ro): data register
 0x40025008 C   FIELD 00w32 RNDATA: Random data
 0x40026000 A PERIPHERAL AES
-0x40026000 B  REGISTER AES_CR: AES control register
+0x40026000 B  REGISTER CR: AES control register
 0x40026000 C   FIELD 00w01 EN (rw): AES enable This bit enables/disables the AES peripheral: At any moment, clearing then setting the bit re-initializes the AES peripheral. This bit is automatically cleared by hardware upon the completion of the key preparation (Mode 2) and upon the completion of GCM/GMAC/CCM initial phase.
 0x40026000 C   FIELD 01w02 DATATYPE (rw): Data type selection This bitfield defines the format of data written in the AES_DINR register or read from the AES_DOUTR register, through selecting the mode of data swapping: For more details, refer to . Attempts to write the bitfield are ignored when the EN bit of the AES_CR register is set before the write access and it is not cleared by that write access.
 0x40026000 C   FIELD 03w02 MODE (rw): AES operating mode This bitfield selects the AES operating mode: Attempts to write the bitfield are ignored when the EN bit of the AES_CR register is set before the write access and it is not cleared by that write access. Any attempt to selecting Mode 4 while either ECB or CBC chaining mode is not selected, defaults to effective selection of Mode 3. It is not possible to select a Mode 3 following a Mode 4.
@@ -2935,54 +2935,54 @@
 0x40026000 C   FIELD 16w01 CHMOD2 (rw): Chaining mode selection, bit [2] Refer to the bits [5:6] of the register for the description of the CHMOD[2:0] bitfield CHMOD[1:0]: Chaining mode selection, bits [1:0] This bitfield, together with the bit CHMOD[2] forming CHMOD[2:0], selects the AES chaining mode: others: Reserved Attempts to write the bitfield are ignored when the EN bit of the AES_CR register is set before the write access and it is not cleared by that write access.
 0x40026000 C   FIELD 18w01 KEYSIZE (rw): Key size selection This bitfield defines the length of the key used in the AES cryptographic core, in bits: Attempts to write the bit are ignored when the EN bit of the AES_CR register is set before the write access and it is not cleared by that write access.
 0x40026000 C   FIELD 20w04 NPBLB (rw): Number of padding bytes in last block The bitfield sets the number of padding bytes in last block of payload: ...
-0x40026004 B  REGISTER AES_SR: AES status register
+0x40026004 B  REGISTER SR: AES status register
 0x40026004 C   FIELD 00w01 CCF (ro): Computation completed flag This flag indicates whether the computation is completed: The flag is set by hardware upon the completion of the computation. It is cleared by software, upon setting the CCFC bit of the AES_CR register. Upon the flag setting, an interrupt is generated if enabled through the CCFIE bit of the AES_CR register. The flag is significant only when the DMAOUTEN bit is 0. It may stay high when DMA_EN is 1.
 0x40026004 C   FIELD 01w01 RDERR (ro): Read error flag This flag indicates the detection of an unexpected read operation from the AES_DOUTR register (during computation or data input phase): The flag is set by hardware. It is cleared by software upon setting the ERRC bit of the AES_CR register. Upon the flag setting, an interrupt is generated if enabled through the ERRIE bit of the AES_CR register. The flag setting has no impact on the AES operation. Unexpected read returns zero.
 0x40026004 C   FIELD 02w01 WRERR (ro): Write error This flag indicates the detection of an unexpected write operation to the AES_DINR register (during computation or data output phase): The flag is set by hardware. It is cleared by software upon setting the ERRC bit of the AES_CR register. Upon the flag setting, an interrupt is generated if enabled through the ERRIE bit of the AES_CR register. The flag setting has no impact on the AES operation. Unexpected write is ignored.
 0x40026004 C   FIELD 03w01 BUSY (ro): Busy This flag indicates whether AES is idle or busy during GCM payload encryption phase: When the flag indicates “idle”, the current GCM encryption processing may be suspended to process a higher-priority message. In other chaining modes, or in GCM phases other than payload encryption, the flag must be ignored for the suspend process.
-0x40026008 B  REGISTER AES_DINR: AES data input register
+0x40026008 B  REGISTER DINR: AES data input register
 0x40026008 C   FIELD 00w32 DIN (rw): Input data word A four-fold sequential write to this bitfield during the input phase results in writing a complete 128-bit block of input data to the AES peripheral. From the first to the fourth write, the corresponding data weights are [127:96], [95:64], [63:32], and [31:0]. Upon each write, the data from the 32-bit input buffer are handled by the data swap block according to the DATATYPE[1:0] bitfield, then written into the AES core 128-bit input buffer. The data signification of the input data block depends on the AES operating mode: - Mode 1 (encryption): plaintext - Mode 2 (key derivation): the bitfield is not used (AES_KEYRx registers used for input) - Mode 3 (decryption) and Mode 4 (key derivation then single decryption): ciphertext The data swap operation is described in page 499.
-0x4002600C B  REGISTER AES_DOUTR: AES data output register
+0x4002600C B  REGISTER DOUTR: AES data output register
 0x4002600C C   FIELD 00w32 DOUT (ro): Output data word This read-only bitfield fetches a 32-bit output buffer. A four-fold sequential read of this bitfield, upon the computation completion (CCF set), virtually reads a complete 128-bit block of output data from the AES peripheral. Before reaching the output buffer, the data produced by the AES core are handled by the data swap block according to the DATATYPE[1:0] bitfield. Data weights from the first to the fourth read operation are: [127:96], [95:64], [63:32], and [31:0]. The data signification of the output data block depends on the AES operating mode: - Mode 1 (encryption): ciphertext - Mode 2 (key derivation): the bitfield is not used (AES_KEYRx registers used for output) - Mode 3 (decryption) and Mode 4 (key derivation then single decryption): plaintext The data swap operation is described in page 499.
-0x40026010 B  REGISTER AES_KEYR0: AES key register 0
+0x40026010 B  REGISTER KEYR0: AES key register 0
 0x40026010 C   FIELD 00w32 KEY (rw): Cryptographic key, bits [31:0] This bitfield contains the bits [31:0] of the AES encryption or decryption key, depending on the operating mode: - In Mode 1 (encryption), Mode 2 (key derivation) and Mode 4 (key derivation then single decryption): the value to write into the bitfield is the encryption key. - In Mode 3 (decryption): the value to write into the bitfield is the encryption key to be derived before being used for decryption. After writing the encryption key into the bitfield, its reading before enabling AES returns the same value. Its reading after enabling AES and after the CCF flag is set returns the decryption key derived from the encryption key. Note: In mode 4 (key derivation then single decryption) the bitfield always contains the encryption key. The AES_KEYRx registers may be written only when KEYSIZE value is correct and when the AES peripheral is disabled (EN bit of the AES_CR register cleared). Note that, if, the key is directly loaded to AES_KEYRx registers (hence writes to key register is ignored and KEIF is set). Refer to for more details.
-0x40026014 B  REGISTER AES_KEYR1: AES key register 1
+0x40026014 B  REGISTER KEYR1: AES key register 1
 0x40026014 C   FIELD 00w32 KEY (rw): Cryptographic key, bits [63:32] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x40026018 B  REGISTER AES_KEYR2: AES key register 2
+0x40026018 B  REGISTER KEYR2: AES key register 2
 0x40026018 C   FIELD 00w32 KEY (rw): Cryptographic key, bits [95:64] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x4002601C B  REGISTER AES_KEYR3: AES key register 3
+0x4002601C B  REGISTER KEYR3: AES key register 3
 0x4002601C C   FIELD 00w32 KEY (rw): Cryptographic key, bits [127:96] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x40026020 B  REGISTER AES_IVR0: AES initialization vector register 0
+0x40026020 B  REGISTER IVR0: AES initialization vector register 0
 0x40026020 C   FIELD 00w32 IVI (rw): Initialization vector input, bits [31:0] Refer to for description of the IVI[127:0] bitfield. The initialization vector is only used in chaining modes other than ECB. The AES_IVRx registers may be written only when the AES peripheral is disabled
-0x40026024 B  REGISTER AES_IVR1: AES initialization vector register 1
+0x40026024 B  REGISTER IVR1: AES initialization vector register 1
 0x40026024 C   FIELD 00w32 IVI (rw): Initialization vector input, bits [63:32] Refer to the AES_IVR0 register for description of the IVI[128:0] bitfield.
-0x40026028 B  REGISTER AES_IVR2: AES initialization vector register 2
+0x40026028 B  REGISTER IVR2: AES initialization vector register 2
 0x40026028 C   FIELD 00w32 IVI (rw): Initialization vector input, bits [95:64] Refer to the AES_IVR0 register for description of the IVI[128:0] bitfield.
-0x4002602C B  REGISTER AES_IVR3: AES initialization vector register 3
+0x4002602C B  REGISTER IVR3: AES initialization vector register 3
 0x4002602C C   FIELD 00w32 IVI (rw): Initialization vector input, bits [127:96] Refer to the AES_IVR0 register for description of the IVI[128:0] bitfield.
-0x40026030 B  REGISTER AES_KEYR4: AES key register 4
+0x40026030 B  REGISTER KEYR4: AES key register 4
 0x40026030 C   FIELD 00w32 KEY (rw): Cryptographic key, bits [159:128] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x40026034 B  REGISTER AES_KEYR5: AES key register 5
+0x40026034 B  REGISTER KEYR5: AES key register 5
 0x40026034 C   FIELD 00w32 KEY (rw): Cryptographic key, bits [191:160] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x40026038 B  REGISTER AES_KEYR6: AES key register 6
+0x40026038 B  REGISTER KEYR6: AES key register 6
 0x40026038 C   FIELD 00w32 KEY (rw): Cryptographic key, bits [223:192] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x4002603C B  REGISTER AES_KEYR7: AES key register 7
+0x4002603C B  REGISTER KEYR7: AES key register 7
 0x4002603C C   FIELD 00w32 KEY (rw): Cryptographic key, bits [255:224] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield.
-0x40026040 B  REGISTER AES_SUSP0R: AES suspend registers
+0x40026040 B  REGISTER SUSP0R: AES suspend registers
 0x40026040 C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x40026044 B  REGISTER AES_SUSP1R: AES suspend registers
+0x40026044 B  REGISTER SUSP1R: AES suspend registers
 0x40026044 C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x40026048 B  REGISTER AES_SUSP2R: AES suspend registers
+0x40026048 B  REGISTER SUSP2R: AES suspend registers
 0x40026048 C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x4002604C B  REGISTER AES_SUSP3R: AES suspend registers
+0x4002604C B  REGISTER SUSP3R: AES suspend registers
 0x4002604C C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x40026050 B  REGISTER AES_SUSP4R: AES suspend registers
+0x40026050 B  REGISTER SUSP4R: AES suspend registers
 0x40026050 C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x40026054 B  REGISTER AES_SUSP5R: AES suspend registers
+0x40026054 B  REGISTER SUSP5R: AES suspend registers
 0x40026054 C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x40026058 B  REGISTER AES_SUSP6R: AES suspend registers
+0x40026058 B  REGISTER SUSP6R: AES suspend registers
 0x40026058 C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
-0x4002605C B  REGISTER AES_SUSP7R: AES suspend registers
+0x4002605C B  REGISTER SUSP7R: AES suspend registers
 0x4002605C C   FIELD 00w32 SUSP (rw): AES suspend Upon suspend operation, this bitfield of every AES_SUSPxR register takes the value of one of internal AES registers.
 0x50000000 A PERIPHERAL GPIOA
 0x50000000 B  REGISTER MODER (rw): GPIO port mode register
@@ -4120,7 +4120,7 @@
 0x50001428 C   FIELD 15w01 BR15: Port Reset bit
 INTERRUPT 000: WWDG (WWDG): Window watchdog interrupt
 INTERRUPT 011: DMA_Channel4_5_6_7 (DMAMUX): DMA channel 4, 5, 6 & 7 and DMAMUX
-INTERRUPT 013: TIM1_BRK_UP_TRG_COM (TIM1): TIM1 break, update, trigger
+INTERRUPT 013: TIM1_BRK_UP_TRG_COM (TIM1): TIM1 break, update, trigger and commutation interrupts
 INTERRUPT 014: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
 INTERRUPT 015: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 016: TIM3 (TIM3): TIM3 global interrupt

@@ -10280,15 +10280,15 @@
 0x40029000 A PERIPHERAL Ethernet_DMA
 0x40029000 B  REGISTER DMAMR: DMA mode register
 0x40029000 C   FIELD 00w01 SWR: Software Reset
-0x40029000 C   FIELD 01w01 DA: DMA Tx or Rx Arbitration Scheme
-0x40029000 C   FIELD 11w01 TXPR: Transmit priority
-0x40029000 C   FIELD 12w03 PR: Priority ratio
+0x40029000 C   FIELD 01w01 DA (rw): DMA Tx or Rx Arbitration Scheme
+0x40029000 C   FIELD 11w01 TXPR (rw): Transmit priority
+0x40029000 C   FIELD 12w03 PR (rw): Priority ratio
 0x40029000 C   FIELD 16w02 INTM: Interrupt Mode
 0x40029004 B  REGISTER DMASBMR: System bus mode register
 0x40029004 C   FIELD 00w01 FB: Fixed Burst Length
 0x40029004 C   FIELD 12w01 AAL: Address-Aligned Beats
-0x40029004 C   FIELD 14w01 MB: Mixed Burst
-0x40029004 C   FIELD 15w01 RB: Rebuild INCRx Burst
+0x40029004 C   FIELD 14w01 MB (rw): Mixed Burst
+0x40029004 C   FIELD 15w01 RB (rw): Rebuild INCRx Burst
 0x40029008 B  REGISTER DMAISR: Interrupt status register
 0x40029008 C   FIELD 00w01 DC0IS: DMA Channel Interrupt Status
 0x40029008 C   FIELD 16w01 MTLIS: MTL Interrupt Status
@@ -14094,7 +14094,16 @@
 0x500000A8 C   FIELD 03w01 UEDL: ULPS exit on data lane
 0x500000AC B  REGISTER PTTCR: DSI Host PHY TX triggers configuration register
 0x500000AC C   FIELD 00w04 TX_TRIG: Transmission trigger
-0x500000BC B  REGISTER PSR: DSI Host interrupt and status register 0
+0x500000B0 B  REGISTER PSR: DSI Host PHY status register
+0x500000B0 C   FIELD 01w01 PD: PHY direction
+0x500000B0 C   FIELD 02w01 PSSC: PHY stop state clock lane
+0x500000B0 C   FIELD 03w01 UANC: ULPS active not clock lane
+0x500000B0 C   FIELD 04w01 PSS0: PHY stop state lane 0
+0x500000B0 C   FIELD 05w01 UAN0: ULPS active not lane 1
+0x500000B0 C   FIELD 06w01 RUE0: RX ULPS escape lane 0
+0x500000B0 C   FIELD 07w01 PSS1: PHY stop state lane 1
+0x500000B0 C   FIELD 08w01 UAN1: ULPS active not lane 1
+0x500000BC B  REGISTER ISR0: DSI Host interrupt and status register 0
 0x500000BC C   FIELD 00w01 AE0: Acknowledge error 0
 0x500000BC C   FIELD 01w01 AE1: Acknowledge error 1
 0x500000BC C   FIELD 02w01 AE2: Acknowledge error 2
@@ -14308,7 +14317,17 @@
 0x5000041C C   FIELD 18w02 HSTXSRCDL: High-speed transmission slew-rate control on data lanes
 0x5000041C C   FIELD 22w01 FLPRXLPM: Forces LP receiver in low-power mode
 0x5000041C C   FIELD 25w02 LPRXFT: Low-power RX low-pass filtering tuning
-0x50000428 B  REGISTER WPCR2: DSI wrapper PHY configuration register 4
+0x50000420 B  REGISTER WPCR2: DSI wrapper PHY configuration register 2
+0x50000420 C   FIELD 00w08 TCLKPREP: tCLK-PREPARE
+0x50000420 C   FIELD 08w08 TCLKZERO: tCLK-ZERO
+0x50000420 C   FIELD 16w08 THSPREP: tHS-PREPARE
+0x50000420 C   FIELD 24w08 THSTRAIL: tHSTRAIL
+0x50000424 B  REGISTER WPCR3: DSI wrapper PHY configuration register 3
+0x50000424 C   FIELD 00w08 THSZERO: tHS-ZERO
+0x50000424 C   FIELD 08w08 TLPXD: tLPX for data lanes
+0x50000424 C   FIELD 16w08 THSEXIT: tHSEXIT
+0x50000424 C   FIELD 24w08 TLPXC: tLPXC for clock lane
+0x50000428 B  REGISTER WPCR4: DSI wrapper PHY configuration register 4
 0x50000428 C   FIELD 00w08 TCLKPOST: tCLK-POST
 0x50000430 B  REGISTER WRPCR: DSI wrapper regulator and PLL control register
 0x50000430 C   FIELD 00w01 PLLEN: PLL enable
