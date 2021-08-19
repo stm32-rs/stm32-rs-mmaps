@@ -615,85 +615,57 @@
 0x40002804 C   FIELD 13w03 WDU: Week day units
 0x40002804 C   FIELD 16w04 YU: Year units in BCD format
 0x40002804 C   FIELD 20w04 YT: Year tens in BCD format
-0x40002808 B  REGISTER CR (rw): control register
-0x40002808 C   FIELD 00w03 WUCKSEL: Wakeup clock selection
-0x40002808 C   FIELD 03w01 TSEDGE: Time-stamp event active edge
-0x40002808 C   FIELD 04w01 REFCKON: Reference clock detection enable (50 or 60 Hz)
-0x40002808 C   FIELD 05w01 BYPSHAD: Bypass the shadow registers
-0x40002808 C   FIELD 06w01 FMT: Hour format
-0x40002808 C   FIELD 08w01 ALRAE: Alarm A enable
-0x40002808 C   FIELD 09w01 ALRBE: Alarm B enable
-0x40002808 C   FIELD 10w01 WUTE: Wakeup timer enable
-0x40002808 C   FIELD 11w01 TSE: Time stamp enable
-0x40002808 C   FIELD 12w01 ALRAIE: Alarm A interrupt enable
-0x40002808 C   FIELD 13w01 ALRBIE: Alarm B interrupt enable
-0x40002808 C   FIELD 14w01 WUTIE: Wakeup timer interrupt enable
-0x40002808 C   FIELD 15w01 TSIE: Time-stamp interrupt enable
-0x40002808 C   FIELD 16w01 ADD1H: Add 1 hour (summer time change)
-0x40002808 C   FIELD 17w01 SUB1H: Subtract 1 hour (winter time change)
-0x40002808 C   FIELD 18w01 BKP: Backup
-0x40002808 C   FIELD 19w01 COSEL: Calibration output selection
-0x40002808 C   FIELD 20w01 POL: Output polarity
-0x40002808 C   FIELD 21w02 OSEL: Output selection
-0x40002808 C   FIELD 23w01 COE: Calibration output enable
-0x40002808 C   FIELD 24w01 ITSE: timestamp on internal event enable
-0x4000280C B  REGISTER ISR: initialization and status register
-0x4000280C C   FIELD 00w01 ALRAWF (ro): Alarm A write flag
-0x4000280C C   FIELD 01w01 ALRBWF (ro): Alarm B write flag
+0x40002808 B  REGISTER SSR (ro): sub second register
+0x40002808 C   FIELD 00w16 SS: Sub second value
+0x4000280C B  REGISTER ICSR (rw): RTC initialization control and status register
 0x4000280C C   FIELD 02w01 WUTWF (ro): Wakeup timer write flag
-0x4000280C C   FIELD 03w01 SHPF (rw): Shift operation pending
+0x4000280C C   FIELD 03w01 SHPF (ro): Shift operation pending
 0x4000280C C   FIELD 04w01 INITS (ro): Initialization status flag
-0x4000280C C   FIELD 05w01 RSF (rw): Registers synchronization flag
+0x4000280C C   FIELD 05w01 RSF: Registers synchronization flag
 0x4000280C C   FIELD 06w01 INITF (ro): Initialization flag
-0x4000280C C   FIELD 07w01 INIT (rw): Initialization mode
-0x4000280C C   FIELD 08w01 ALRAF (rw): Alarm A flag
-0x4000280C C   FIELD 09w01 ALRBF (rw): Alarm B flag
-0x4000280C C   FIELD 10w01 WUTF (rw): Wakeup timer flag
-0x4000280C C   FIELD 11w01 TSF (rw): Time-stamp flag
-0x4000280C C   FIELD 12w01 TSOVF (rw): Time-stamp overflow flag
-0x4000280C C   FIELD 13w01 TAMP1F (rw): Tamper detection flag
-0x4000280C C   FIELD 14w01 TAMP2F (rw): RTC_TAMP2 detection flag
-0x4000280C C   FIELD 15w01 TAMP3F (rw): RTC_TAMP3 detection flag
+0x4000280C C   FIELD 07w01 INIT: Initialization mode
 0x4000280C C   FIELD 16w01 RECALPF (ro): Recalibration pending Flag
 0x40002810 B  REGISTER PRER (rw): prescaler register
 0x40002810 C   FIELD 00w15 PREDIV_S: Synchronous prescaler factor
 0x40002810 C   FIELD 16w07 PREDIV_A: Asynchronous prescaler factor
 0x40002814 B  REGISTER WUTR (rw): wakeup timer register
 0x40002814 C   FIELD 00w16 WUT: Wakeup auto-reload value bits
-0x4000281C B  REGISTER ALRMAR (rw): alarm A register
-0x4000281C C   FIELD 00w04 SU: Second units in BCD format
-0x4000281C C   FIELD 04w03 ST: Second tens in BCD format
-0x4000281C C   FIELD 07w01 MSK1: Alarm A seconds mask
-0x4000281C C   FIELD 08w04 MNU: Minute units in BCD format
-0x4000281C C   FIELD 12w03 MNT: Minute tens in BCD format
-0x4000281C C   FIELD 15w01 MSK2: Alarm A minutes mask
-0x4000281C C   FIELD 16w04 HU: Hour units in BCD format
-0x4000281C C   FIELD 20w02 HT: Hour tens in BCD format
-0x4000281C C   FIELD 22w01 PM: AM/PM notation
-0x4000281C C   FIELD 23w01 MSK3: Alarm A hours mask
-0x4000281C C   FIELD 24w04 DU: Date units or day in BCD format
-0x4000281C C   FIELD 28w02 DT: Date tens in BCD format
-0x4000281C C   FIELD 30w01 WDSEL: Week day selection
-0x4000281C C   FIELD 31w01 MSK4: Alarm A date mask
-0x40002820 B  REGISTER ALRMBR (rw): alarm B register
-0x40002820 C   FIELD 00w04 SU: Second units in BCD format
-0x40002820 C   FIELD 04w03 ST: Second tens in BCD format
-0x40002820 C   FIELD 07w01 MSK1: Alarm B seconds mask
-0x40002820 C   FIELD 08w04 MNU: Minute units in BCD format
-0x40002820 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x40002820 C   FIELD 15w01 MSK2: Alarm B minutes mask
-0x40002820 C   FIELD 16w04 HU: Hour units in BCD format
-0x40002820 C   FIELD 20w02 HT: Hour tens in BCD format
-0x40002820 C   FIELD 22w01 PM: AM/PM notation
-0x40002820 C   FIELD 23w01 MSK3: Alarm B hours mask
-0x40002820 C   FIELD 24w04 DU: Date units or day in BCD format
-0x40002820 C   FIELD 28w02 DT: Date tens in BCD format
-0x40002820 C   FIELD 30w01 WDSEL: Week day selection
-0x40002820 C   FIELD 31w01 MSK4: Alarm B date mask
+0x40002814 C   FIELD 16w16 WUTOCLR (rw): Wakeup auto-reload output clear value
+0x40002818 B  REGISTER CR (rw): control register
+0x40002818 C   FIELD 00w03 WUCKSEL: Wakeup clock selection
+0x40002818 C   FIELD 03w01 TSEDGE: Time-stamp event active edge
+0x40002818 C   FIELD 04w01 REFCKON: Reference clock detection enable (50 or 60 Hz)
+0x40002818 C   FIELD 05w01 BYPSHAD: Bypass the shadow registers
+0x40002818 C   FIELD 06w01 FMT: Hour format
+0x40002818 C   FIELD 08w01 ALRAE: Alarm A enable
+0x40002818 C   FIELD 09w01 ALRBE: Alarm B enable
+0x40002818 C   FIELD 10w01 WUTE: Wakeup timer enable
+0x40002818 C   FIELD 11w01 TSE: Time stamp enable
+0x40002818 C   FIELD 12w01 ALRAIE: Alarm A interrupt enable
+0x40002818 C   FIELD 13w01 ALRBIE: Alarm B interrupt enable
+0x40002818 C   FIELD 14w01 WUTIE: Wakeup timer interrupt enable
+0x40002818 C   FIELD 15w01 TSIE: Time-stamp interrupt enable
+0x40002818 C   FIELD 16w01 ADD1H: Add 1 hour (summer time change)
+0x40002818 C   FIELD 17w01 SUB1H: Subtract 1 hour (winter time change)
+0x40002818 C   FIELD 18w01 BKP: Backup
+0x40002818 C   FIELD 19w01 COSEL: Calibration output selection
+0x40002818 C   FIELD 20w01 POL: Output polarity
+0x40002818 C   FIELD 21w02 OSEL: Output selection
+0x40002818 C   FIELD 23w01 COE: Calibration output enable
+0x40002818 C   FIELD 24w01 ITSE: timestamp on internal event enable
+0x40002818 C   FIELD 25w01 TAMPTS (rw): Activate timestamp on tamper detection event
+0x40002818 C   FIELD 26w01 TAMPOE (rw): Tamper detection output enable on TAMPALRM
+0x40002818 C   FIELD 29w01 TAMPALRM_PU (rw): TAMPALRM pull-up enable
+0x40002818 C   FIELD 30w01 TAMPALRM_TYPE (rw): TAMPALRM output type
+0x40002818 C   FIELD 31w01 OUT2EN (rw): RTC_OUT2 output enable
 0x40002824 B  REGISTER WPR (wo): write protection register
 0x40002824 C   FIELD 00w08 KEY: Write protection key
-0x40002828 B  REGISTER SSR (ro): sub second register
-0x40002828 C   FIELD 00w16 SS: Sub second value
+0x40002828 B  REGISTER CALR (rw): calibration register
+0x40002828 C   FIELD 00w09 CALM: Calibration minus
+0x40002828 C   FIELD 12w01 LPCAL (rw): Calibration low-power mode
+0x40002828 C   FIELD 13w01 CALW16: Use a 16-second calibration cycle period
+0x40002828 C   FIELD 14w01 CALW8: Use an 8-second calibration cycle period
+0x40002828 C   FIELD 15w01 CALP: Increase frequency of RTC by 488.5 ppm
 0x4000282C B  REGISTER SHIFTR (wo): shift control register
 0x4000282C C   FIELD 00w15 SUBFS: Subtract a fraction of a second
 0x4000282C C   FIELD 31w01 ADD1S: Add one second
@@ -713,106 +685,63 @@
 0x40002834 C   FIELD 13w03 WDU: Week day units
 0x40002838 B  REGISTER TSSSR (ro): timestamp sub second register
 0x40002838 C   FIELD 00w16 SS: Sub second value
-0x4000283C B  REGISTER CALR (rw): calibration register
-0x4000283C C   FIELD 00w09 CALM: Calibration minus
-0x4000283C C   FIELD 13w01 CALW16: Use a 16-second calibration cycle period
-0x4000283C C   FIELD 14w01 CALW8: Use an 8-second calibration cycle period
-0x4000283C C   FIELD 15w01 CALP: Increase frequency of RTC by 488.5 ppm
-0x40002840 B  REGISTER TAMPCR (rw): tamper configuration register
-0x40002840 C   FIELD 00w01 TAMP1E: Tamper 1 detection enable
-0x40002840 C   FIELD 01w01 TAMP1TRG: Active level for tamper 1
-0x40002840 C   FIELD 02w01 TAMPIE: Tamper interrupt enable
-0x40002840 C   FIELD 03w01 TAMP2E: Tamper 2 detection enable
-0x40002840 C   FIELD 04w01 TAMP2TRG: Active level for tamper 2
-0x40002840 C   FIELD 05w01 TAMP3E: Tamper 3 detection enable
-0x40002840 C   FIELD 06w01 TAMP3TRG: Active level for tamper 3
-0x40002840 C   FIELD 07w01 TAMPTS: Activate timestamp on tamper detection event
-0x40002840 C   FIELD 08w03 TAMPFREQ: Tamper sampling frequency
-0x40002840 C   FIELD 11w02 TAMPFLT: Tamper filter count
-0x40002840 C   FIELD 13w02 TAMPPRCH: Tamper precharge duration
-0x40002840 C   FIELD 15w01 TAMPPUDIS: TAMPER pull-up disable
-0x40002840 C   FIELD 16w01 TAMP1IE: Tamper 1 interrupt enable
-0x40002840 C   FIELD 17w01 TAMP1NOERASE: Tamper 1 no erase
-0x40002840 C   FIELD 18w01 TAMP1MF: Tamper 1 mask flag
-0x40002840 C   FIELD 19w01 TAMP2IE: Tamper 2 interrupt enable
-0x40002840 C   FIELD 20w01 TAMP2NOERASE: Tamper 2 no erase
-0x40002840 C   FIELD 21w01 TAMP2MF: Tamper 2 mask flag
-0x40002840 C   FIELD 22w01 TAMP3IE: Tamper 3 interrupt enable
-0x40002840 C   FIELD 23w01 TAMP3NOERASE: Tamper 3 no erase
-0x40002840 C   FIELD 24w01 TAMP3MF: Tamper 3 mask flag
+0x40002840 B  REGISTER ALRMAR (rw): alarm A register
+0x40002840 C   FIELD 00w04 SU: Second units in BCD format
+0x40002840 C   FIELD 04w03 ST: Second tens in BCD format
+0x40002840 C   FIELD 07w01 MSK1: Alarm A seconds mask
+0x40002840 C   FIELD 08w04 MNU: Minute units in BCD format
+0x40002840 C   FIELD 12w03 MNT: Minute tens in BCD format
+0x40002840 C   FIELD 15w01 MSK2: Alarm A minutes mask
+0x40002840 C   FIELD 16w04 HU: Hour units in BCD format
+0x40002840 C   FIELD 20w02 HT: Hour tens in BCD format
+0x40002840 C   FIELD 22w01 PM: AM/PM notation
+0x40002840 C   FIELD 23w01 MSK3: Alarm A hours mask
+0x40002840 C   FIELD 24w04 DU: Date units or day in BCD format
+0x40002840 C   FIELD 28w02 DT: Date tens in BCD format
+0x40002840 C   FIELD 30w01 WDSEL: Week day selection
+0x40002840 C   FIELD 31w01 MSK4: Alarm A date mask
 0x40002844 B  REGISTER ALRMASSR (rw): alarm A sub second register
 0x40002844 C   FIELD 00w15 SS: Sub seconds value
 0x40002844 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
-0x40002848 B  REGISTER ALRMBSSR (rw): alarm B sub second register
-0x40002848 C   FIELD 00w15 SS: Sub seconds value
-0x40002848 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
-0x4000284C B  REGISTER OR (rw): option register
-0x4000284C C   FIELD 00w01 RTC_ALARM_TYPE: RTC_ALARM on PC13 output type
-0x4000284C C   FIELD 01w01 RTC_OUT_RMP: RTC_OUT remap
-0x40002850 B  REGISTER BKP0R (rw): backup register
-0x40002850 C   FIELD 00w32 BKP: BKP
-0x40002854 B  REGISTER BKP1R (rw): backup register
-0x40002854 C   FIELD 00w32 BKP: BKP
-0x40002858 B  REGISTER BKP2R (rw): backup register
-0x40002858 C   FIELD 00w32 BKP: BKP
-0x4000285C B  REGISTER BKP3R (rw): backup register
-0x4000285C C   FIELD 00w32 BKP: BKP
-0x40002860 B  REGISTER BKP4R (rw): backup register
-0x40002860 C   FIELD 00w32 BKP: BKP
-0x40002864 B  REGISTER BKP5R (rw): backup register
-0x40002864 C   FIELD 00w32 BKP: BKP
-0x40002868 B  REGISTER BKP6R (rw): backup register
-0x40002868 C   FIELD 00w32 BKP: BKP
-0x4000286C B  REGISTER BKP7R (rw): backup register
-0x4000286C C   FIELD 00w32 BKP: BKP
-0x40002870 B  REGISTER BKP8R (rw): backup register
-0x40002870 C   FIELD 00w32 BKP: BKP
-0x40002874 B  REGISTER BKP9R (rw): backup register
-0x40002874 C   FIELD 00w32 BKP: BKP
-0x40002878 B  REGISTER BKP10R (rw): backup register
-0x40002878 C   FIELD 00w32 BKP: BKP
-0x4000287C B  REGISTER BKP11R (rw): backup register
-0x4000287C C   FIELD 00w32 BKP: BKP
-0x40002880 B  REGISTER BKP12R (rw): backup register
-0x40002880 C   FIELD 00w32 BKP: BKP
-0x40002884 B  REGISTER BKP13R (rw): backup register
-0x40002884 C   FIELD 00w32 BKP: BKP
-0x40002888 B  REGISTER BKP14R (rw): backup register
-0x40002888 C   FIELD 00w32 BKP: BKP
-0x4000288C B  REGISTER BKP15R (rw): backup register
-0x4000288C C   FIELD 00w32 BKP: BKP
-0x40002890 B  REGISTER BKP16R (rw): backup register
-0x40002890 C   FIELD 00w32 BKP: BKP
-0x40002894 B  REGISTER BKP17R (rw): backup register
-0x40002894 C   FIELD 00w32 BKP: BKP
-0x40002898 B  REGISTER BKP18R (rw): backup register
-0x40002898 C   FIELD 00w32 BKP: BKP
-0x4000289C B  REGISTER BKP19R (rw): backup register
-0x4000289C C   FIELD 00w32 BKP: BKP
-0x400028A0 B  REGISTER BKP20R (rw): backup register
-0x400028A0 C   FIELD 00w32 BKP: BKP
-0x400028A4 B  REGISTER BKP21R (rw): backup register
-0x400028A4 C   FIELD 00w32 BKP: BKP
-0x400028A8 B  REGISTER BKP22R (rw): backup register
-0x400028A8 C   FIELD 00w32 BKP: BKP
-0x400028AC B  REGISTER BKP23R (rw): backup register
-0x400028AC C   FIELD 00w32 BKP: BKP
-0x400028B0 B  REGISTER BKP24R (rw): backup register
-0x400028B0 C   FIELD 00w32 BKP: BKP
-0x400028B4 B  REGISTER BKP25R (rw): backup register
-0x400028B4 C   FIELD 00w32 BKP: BKP
-0x400028B8 B  REGISTER BKP26R (rw): backup register
-0x400028B8 C   FIELD 00w32 BKP: BKP
-0x400028BC B  REGISTER BKP27R (rw): backup register
-0x400028BC C   FIELD 00w32 BKP: BKP
-0x400028C0 B  REGISTER BKP28R (rw): backup register
-0x400028C0 C   FIELD 00w32 BKP: BKP
-0x400028C4 B  REGISTER BKP29R (rw): backup register
-0x400028C4 C   FIELD 00w32 BKP: BKP
-0x400028C8 B  REGISTER BKP30R (rw): backup register
-0x400028C8 C   FIELD 00w32 BKP: BKP
-0x400028CC B  REGISTER BKP31R (rw): backup register
-0x400028CC C   FIELD 00w32 BKP: BKP
+0x40002848 B  REGISTER ALRMBR (rw): alarm B register
+0x40002848 C   FIELD 00w04 SU: Second units in BCD format
+0x40002848 C   FIELD 04w03 ST: Second tens in BCD format
+0x40002848 C   FIELD 07w01 MSK1: Alarm B seconds mask
+0x40002848 C   FIELD 08w04 MNU: Minute units in BCD format
+0x40002848 C   FIELD 12w03 MNT: Minute tens in BCD format
+0x40002848 C   FIELD 15w01 MSK2: Alarm B minutes mask
+0x40002848 C   FIELD 16w04 HU: Hour units in BCD format
+0x40002848 C   FIELD 20w02 HT: Hour tens in BCD format
+0x40002848 C   FIELD 22w01 PM: AM/PM notation
+0x40002848 C   FIELD 23w01 MSK3: Alarm B hours mask
+0x40002848 C   FIELD 24w04 DU: Date units or day in BCD format
+0x40002848 C   FIELD 28w02 DT: Date tens in BCD format
+0x40002848 C   FIELD 30w01 WDSEL: Week day selection
+0x40002848 C   FIELD 31w01 MSK4: Alarm B date mask
+0x4000284C B  REGISTER ALRMBSSR (rw): alarm B sub second register
+0x4000284C C   FIELD 00w15 SS: Sub seconds value
+0x4000284C C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
+0x40002850 B  REGISTER SR (ro): RTC status register
+0x40002850 C   FIELD 00w01 ALRAF: Alarm A flag
+0x40002850 C   FIELD 01w01 ALRBF: Alarm B flag
+0x40002850 C   FIELD 02w01 WUTF: Wakeup timer flag
+0x40002850 C   FIELD 03w01 TSF: Timestamp flag
+0x40002850 C   FIELD 04w01 TSOVF: Timestamp overflow flag
+0x40002850 C   FIELD 05w01 ITSF: Internal timestamp flag
+0x40002854 B  REGISTER MISR (ro): RTC masked interrupt status register
+0x40002854 C   FIELD 00w01 ALRAMF: Alarm A masked flag
+0x40002854 C   FIELD 01w01 ALRBMF: Alarm B masked flag
+0x40002854 C   FIELD 02w01 WUTMF: Wakeup timer masked flag
+0x40002854 C   FIELD 03w01 TSMF: Timestamp masked flag
+0x40002854 C   FIELD 04w01 TSOVMF: Timestamp overflow masked flag
+0x40002854 C   FIELD 05w01 ITSMF: Internal timestamp masked flag
+0x4000285C B  REGISTER SCR (wo): RTC status clear register
+0x4000285C C   FIELD 00w01 CALRAF: Clear alarm A flag
+0x4000285C C   FIELD 01w01 CALRBF: Clear alarm B flag
+0x4000285C C   FIELD 02w01 CWUTF: Clear wakeup timer flag
+0x4000285C C   FIELD 03w01 CTSF: Clear timestamp flag
+0x4000285C C   FIELD 04w01 CTSOVF: Clear timestamp overflow flag
+0x4000285C C   FIELD 05w01 CITSF: Clear internal timestamp flag
 0x40002C00 A PERIPHERAL WWDG
 0x40002C00 B  REGISTER CR (rw): Control register
 0x40002C00 C   FIELD 00w07 T: 7-bit counter (MSB to LSB)
