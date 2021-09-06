@@ -8,6 +8,7 @@
 0x40000000 C   FIELD 05w02 CMS: Center-aligned mode selection
 0x40000000 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40000000 C   FIELD 08w02 CKD: Clock division
+0x40000000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40000004 B  REGISTER CR2 (rw): control register 2
 0x40000004 C   FIELD 03w01 CCDS: Capture/compare DMA selection
 0x40000004 C   FIELD 04w03 MMS: Master mode selection
@@ -107,6 +108,7 @@
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
 0x40000024 C   FIELD 00w32 CNT: Counter value
+0x40000024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000028 B  REGISTER PSC (rw): prescaler
 0x40000028 C   FIELD 00w16 PSC: Prescaler value
 0x4000002C B  REGISTER ARR (rw): auto-reload register
@@ -123,9 +125,9 @@
 0x40000048 C   FIELD 00w05 DBA: DMA base address
 0x40000048 C   FIELD 08w05 DBL: DMA burst length
 0x4000004C B  REGISTER DMAR (rw): DMA address for full transfer
-0x4000004C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x4000004C C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40000050 B  REGISTER OR (rw): TIM2 option register 1
-0x40000050 C   FIELD 00w01 ITR1_RMP: Internal trigger 1 remap
+0x40000050 C   FIELD 10w02 ITR1_RMP: Internal trigger 1 remap
 0x40000400 A PERIPHERAL TIM3
 0x40000400 B  REGISTER CR1 (rw): control register 1
 0x40000400 C   FIELD 00w01 CEN: Counter enable
@@ -136,6 +138,7 @@
 0x40000400 C   FIELD 05w02 CMS: Center-aligned mode selection
 0x40000400 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40000400 C   FIELD 08w02 CKD: Clock division
+0x40000400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40000404 B  REGISTER CR2 (rw): control register 2
 0x40000404 C   FIELD 03w01 CCDS: Capture/compare DMA selection
 0x40000404 C   FIELD 04w03 MMS: Master mode selection
@@ -235,29 +238,24 @@
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
 0x40000424 C   FIELD 00w16 CNT: Counter value
-0x40000424 C   FIELD 16w16 CNT_H: High counter value
+0x40000424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
 0x4000042C C   FIELD 00w16 ARR: Auto-reload value
-0x4000042C C   FIELD 16w16 ARR_H: High Auto-reload value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
 0x40000434 C   FIELD 00w16 CCR: Capture/Compare value
-0x40000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
 0x40000438 C   FIELD 00w16 CCR: Capture/Compare value
-0x40000438 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
 0x4000043C C   FIELD 00w16 CCR: Capture/Compare value
-0x4000043C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
 0x40000440 C   FIELD 00w16 CCR: Capture/Compare value
-0x40000440 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000448 B  REGISTER DCR (rw): DMA control register
 0x40000448 C   FIELD 00w05 DBA: DMA base address
 0x40000448 C   FIELD 08w05 DBL: DMA burst length
 0x4000044C B  REGISTER DMAR (rw): DMA address for full transfer
-0x4000044C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x4000044C C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40000800 A PERIPHERAL TIM4
 0x40000800 B  REGISTER CR1 (rw): control register 1
 0x40000800 C   FIELD 00w01 CEN: Counter enable
@@ -268,6 +266,7 @@
 0x40000800 C   FIELD 05w02 CMS: Center-aligned mode selection
 0x40000800 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40000800 C   FIELD 08w02 CKD: Clock division
+0x40000800 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40000804 B  REGISTER CR2 (rw): control register 2
 0x40000804 C   FIELD 03w01 CCDS: Capture/compare DMA selection
 0x40000804 C   FIELD 04w03 MMS: Master mode selection
@@ -367,29 +366,24 @@
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
 0x40000824 C   FIELD 00w16 CNT: Counter value
-0x40000824 C   FIELD 16w16 CNT_H: High counter value
+0x40000824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
 0x4000082C C   FIELD 00w16 ARR: Auto-reload value
-0x4000082C C   FIELD 16w16 ARR_H: High Auto-reload value
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register
 0x40000834 C   FIELD 00w16 CCR: Capture/Compare value
-0x40000834 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register
 0x40000838 C   FIELD 00w16 CCR: Capture/Compare value
-0x40000838 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x4000083C B  REGISTER CCR3 (rw): capture/compare register
 0x4000083C C   FIELD 00w16 CCR: Capture/Compare value
-0x4000083C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000840 B  REGISTER CCR4 (rw): capture/compare register
 0x40000840 C   FIELD 00w16 CCR: Capture/Compare value
-0x40000840 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000848 B  REGISTER DCR (rw): DMA control register
 0x40000848 C   FIELD 00w05 DBA: DMA base address
 0x40000848 C   FIELD 08w05 DBL: DMA burst length
 0x4000084C B  REGISTER DMAR (rw): DMA address for full transfer
-0x4000084C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x4000084C C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40000C00 A PERIPHERAL TIM5
 0x40000C00 B  REGISTER CR1 (rw): control register 1
 0x40000C00 C   FIELD 00w01 CEN: Counter enable
@@ -400,6 +394,7 @@
 0x40000C00 C   FIELD 05w02 CMS: Center-aligned mode selection
 0x40000C00 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40000C00 C   FIELD 08w02 CKD: Clock division
+0x40000C00 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40000C04 B  REGISTER CR2 (rw): control register 2
 0x40000C04 C   FIELD 03w01 CCDS: Capture/compare DMA selection
 0x40000C04 C   FIELD 04w03 MMS: Master mode selection
@@ -499,6 +494,7 @@
 0x40000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000C24 B  REGISTER CNT (rw): counter
 0x40000C24 C   FIELD 00w32 CNT: Counter value
+0x40000C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000C28 B  REGISTER PSC (rw): prescaler
 0x40000C28 C   FIELD 00w16 PSC: Prescaler value
 0x40000C2C B  REGISTER ARR (rw): auto-reload register
@@ -515,9 +511,9 @@
 0x40000C48 C   FIELD 00w05 DBA: DMA base address
 0x40000C48 C   FIELD 08w05 DBL: DMA burst length
 0x40000C4C B  REGISTER DMAR (rw): DMA address for full transfer
-0x40000C4C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x40000C4C C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40000C50 B  REGISTER OR (rw): TIM2 option register 1
-0x40000C50 C   FIELD 02w02 TI4_RMP: Input Capture 4 remap
+0x40000C50 C   FIELD 06w02 TI4_RMP: Input Capture 4 remap
 0x40001000 A PERIPHERAL TIM6
 0x40001000 B  REGISTER CR1 (rw): control register 1
 0x40001000 C   FIELD 00w01 CEN: Counter enable
@@ -525,6 +521,7 @@
 0x40001000 C   FIELD 02w01 URS: Update request source
 0x40001000 C   FIELD 03w01 OPM: One-pulse mode
 0x40001000 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40001000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40001004 B  REGISTER CR2 (rw): control register 2
 0x40001004 C   FIELD 04w03 MMS: Master mode selection
 0x4000100C B  REGISTER DIER (rw): DMA/Interrupt enable register
@@ -536,6 +533,7 @@
 0x40001014 C   FIELD 00w01 UG: Update generation
 0x40001024 B  REGISTER CNT (rw): counter
 0x40001024 C   FIELD 00w16 CNT: Low counter value
+0x40001024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40001028 B  REGISTER PSC (rw): prescaler
 0x40001028 C   FIELD 00w16 PSC: Prescaler value
 0x4000102C B  REGISTER ARR (rw): auto-reload register
@@ -547,6 +545,7 @@
 0x40001400 C   FIELD 02w01 URS: Update request source
 0x40001400 C   FIELD 03w01 OPM: One-pulse mode
 0x40001400 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40001400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40001404 B  REGISTER CR2 (rw): control register 2
 0x40001404 C   FIELD 04w03 MMS: Master mode selection
 0x4000140C B  REGISTER DIER (rw): DMA/Interrupt enable register
@@ -558,6 +557,7 @@
 0x40001414 C   FIELD 00w01 UG: Update generation
 0x40001424 B  REGISTER CNT (rw): counter
 0x40001424 C   FIELD 00w16 CNT: Low counter value
+0x40001424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40001428 B  REGISTER PSC (rw): prescaler
 0x40001428 C   FIELD 00w16 PSC: Prescaler value
 0x4000142C B  REGISTER ARR (rw): auto-reload register
@@ -570,10 +570,12 @@
 0x40001800 C   FIELD 03w01 OPM: One-pulse mode
 0x40001800 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40001800 C   FIELD 08w02 CKD: Clock division
+0x40001800 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40001808 B  REGISTER SMCR (rw): slave mode control register
 0x40001808 C   FIELD 00w03 SMS: Slave mode selection
 0x40001808 C   FIELD 04w03 TS: Trigger selection
 0x40001808 C   FIELD 07w01 MSM: Master/Slave mode
+0x40001808 C   FIELD 16w01 SMS_3: Slave mode selection - bit 3
 0x4000180C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x4000180C C   FIELD 00w01 UIE: Update interrupt enable
 0x4000180C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -618,6 +620,7 @@
 0x40001820 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
 0x40001824 B  REGISTER CNT (rw): counter
 0x40001824 C   FIELD 00w16 CNT: counter value
+0x40001824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40001828 B  REGISTER PSC (rw): prescaler
 0x40001828 C   FIELD 00w16 PSC: Prescaler value
 0x4000182C B  REGISTER ARR (rw): auto-reload register
@@ -631,17 +634,10 @@
 0x40001C00 C   FIELD 00w01 CEN: Counter enable
 0x40001C00 C   FIELD 01w01 UDIS: Update disable
 0x40001C00 C   FIELD 02w01 URS: Update request source
+0x40001C00 C   FIELD 03w01 OPM (rw): One-pulse mode
 0x40001C00 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40001C00 C   FIELD 08w02 CKD: Clock division
-0x40001C08 B  REGISTER SMCR (rw): slave mode control register
-0x40001C08 C   FIELD 00w03 SMS: Slave mode selection
-0x40001C08 C   FIELD 04w03 TS: Trigger selection
-0x40001C08 C   FIELD 07w01 MSM: Master/slave mode
-0x40001C08 C   FIELD 08w04 ETF: External trigger filter
-0x40001C08 C   FIELD 12w02 ETPS: External trigger prescaler
-0x40001C08 C   FIELD 14w01 ECE: External clock enable
-0x40001C08 C   FIELD 15w01 ETP: External trigger polarity
-0x40001C08 C   FIELD 16w01 SMS3: Slave mode selection
+0x40001C00 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40001C0C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x40001C0C C   FIELD 00w01 UIE: Update interrupt enable
 0x40001C0C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -661,12 +657,14 @@
 0x40001C18 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40001C18 C   FIELD 04w03 OC1M: Output Compare 1 mode
 0x40001C18 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40001C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40001C20 B  REGISTER CCER (rw): capture/compare enable register
 0x40001C20 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40001C20 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40001C20 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
 0x40001C24 B  REGISTER CNT (rw): counter
 0x40001C24 C   FIELD 00w16 CNT: counter value
+0x40001C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40001C28 B  REGISTER PSC (rw): prescaler
 0x40001C28 C   FIELD 00w16 PSC: Prescaler value
 0x40001C2C B  REGISTER ARR (rw): auto-reload register
@@ -680,17 +678,10 @@
 0x40002000 C   FIELD 00w01 CEN: Counter enable
 0x40002000 C   FIELD 01w01 UDIS: Update disable
 0x40002000 C   FIELD 02w01 URS: Update request source
+0x40002000 C   FIELD 03w01 OPM (rw): One-pulse mode
 0x40002000 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40002000 C   FIELD 08w02 CKD: Clock division
-0x40002008 B  REGISTER SMCR (rw): slave mode control register
-0x40002008 C   FIELD 00w03 SMS: Slave mode selection
-0x40002008 C   FIELD 04w03 TS: Trigger selection
-0x40002008 C   FIELD 07w01 MSM: Master/slave mode
-0x40002008 C   FIELD 08w04 ETF: External trigger filter
-0x40002008 C   FIELD 12w02 ETPS: External trigger prescaler
-0x40002008 C   FIELD 14w01 ECE: External clock enable
-0x40002008 C   FIELD 15w01 ETP: External trigger polarity
-0x40002008 C   FIELD 16w01 SMS3: Slave mode selection
+0x40002000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x4000200C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x4000200C C   FIELD 00w01 UIE: Update interrupt enable
 0x4000200C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -710,12 +701,14 @@
 0x40002018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40002018 C   FIELD 04w03 OC1M: Output Compare 1 mode
 0x40002018 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40002018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40002020 B  REGISTER CCER (rw): capture/compare enable register
 0x40002020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40002020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40002020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
 0x40002024 B  REGISTER CNT (rw): counter
 0x40002024 C   FIELD 00w16 CNT: counter value
+0x40002024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40002028 B  REGISTER PSC (rw): prescaler
 0x40002028 C   FIELD 00w16 PSC: Prescaler value
 0x4000202C B  REGISTER ARR (rw): auto-reload register
@@ -3254,6 +3247,7 @@
 0x40010000 C   FIELD 05w02 CMS: Center-aligned mode selection
 0x40010000 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40010000 C   FIELD 08w02 CKD: Clock division
+0x40010000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40010004 B  REGISTER CR2 (rw): control register 2
 0x40010004 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x40010004 C   FIELD 02w01 CCUS: Capture/compare control update selection
@@ -3267,6 +3261,9 @@
 0x40010004 C   FIELD 12w01 OIS3: Output Idle state 3
 0x40010004 C   FIELD 13w01 OIS3N: Output Idle state 3
 0x40010004 C   FIELD 14w01 OIS4: Output Idle state 4
+0x40010004 C   FIELD 16w01 OIS5: Output Idle state 5 (OC5 output)
+0x40010004 C   FIELD 18w01 OIS6: Output Idle state 6 (OC6 output)
+0x40010004 C   FIELD 20w04 MMS2: Master mode selection 2
 0x40010008 B  REGISTER SMCR (rw): slave mode control register
 0x40010008 C   FIELD 00w03 SMS: Slave mode selection - bit[2:0]
 0x40010008 C   FIELD 04w03 TS: Trigger selection
@@ -3301,10 +3298,13 @@
 0x40010010 C   FIELD 05w01 COMIF: COM interrupt flag
 0x40010010 C   FIELD 06w01 TIF: Trigger interrupt flag
 0x40010010 C   FIELD 07w01 BIF: Break interrupt flag
+0x40010010 C   FIELD 08w01 B2IF: Break 2 interrupt flag
 0x40010010 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
 0x40010010 C   FIELD 10w01 CC2OF: Capture/compare 2 overcapture flag
 0x40010010 C   FIELD 11w01 CC3OF: Capture/Compare 3 overcapture flag
 0x40010010 C   FIELD 12w01 CC4OF: Capture/Compare 4 overcapture flag
+0x40010010 C   FIELD 16w01 CC5IF: Compare 5 interrupt flag
+0x40010010 C   FIELD 17w01 CC6IF: Compare 6 interrupt flag
 0x40010014 B  REGISTER EGR (wo): event generation register
 0x40010014 C   FIELD 00w01 UG: Update generation
 0x40010014 C   FIELD 01w01 CC1G: Capture/compare 1 generation
@@ -3314,6 +3314,7 @@
 0x40010014 C   FIELD 05w01 COMG: Capture/Compare control update generation
 0x40010014 C   FIELD 06w01 TG: Trigger generation
 0x40010014 C   FIELD 07w01 BG: Break generation
+0x40010014 C   FIELD 08w01 B2G: Break 2 generation
 0x40010018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
 0x40010018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40010018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
@@ -3369,8 +3370,14 @@
 0x40010020 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40010020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
 0x40010020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40010020 C   FIELD 15w01 CC4NP: Capture/Compare 4 complementary output polarity
+0x40010020 C   FIELD 16w01 CC5E: Capture/Compare 5 output enable
+0x40010020 C   FIELD 17w01 CC5P: Capture/Compare 5 output polarity
+0x40010020 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
+0x40010020 C   FIELD 21w01 CC6P: Capture/Compare 6 output polarity
 0x40010024 B  REGISTER CNT (rw): counter
 0x40010024 C   FIELD 00w16 CNT: counter value
+0x40010024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40010028 B  REGISTER PSC (rw): prescaler
 0x40010028 C   FIELD 00w16 PSC: Prescaler value
 0x4001002C B  REGISTER ARR (rw): auto-reload register
@@ -3394,11 +3401,15 @@
 0x40010044 C   FIELD 13w01 BKP: Break polarity
 0x40010044 C   FIELD 14w01 AOE: Automatic output enable
 0x40010044 C   FIELD 15w01 MOE: Main output enable
+0x40010044 C   FIELD 16w04 BKF: Break filter
+0x40010044 C   FIELD 20w04 BK2F: Break 2 filter
+0x40010044 C   FIELD 24w01 BK2E: Break 2 enable
+0x40010044 C   FIELD 25w01 BK2P: Break 2 polarity
 0x40010048 B  REGISTER DCR (rw): DMA control register
 0x40010048 C   FIELD 00w05 DBA: DMA base address
 0x40010048 C   FIELD 08w05 DBL: DMA burst length
 0x4001004C B  REGISTER DMAR (rw): DMA address for full transfer
-0x4001004C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x4001004C C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40010054 B  REGISTER CCMR3_Output (rw): capture/compare mode register 3 (output mode)
 0x40010054 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
 0x40010054 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
@@ -3415,8 +3426,8 @@
 0x40010058 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40010058 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40010058 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
-0x4001005C B  REGISTER CRR6 (rw): capture/compare register 6
-0x4001005C C   FIELD 00w16 CCR6: Capture/Compare 6 value
+0x4001005C B  REGISTER CCR6 (rw): capture/compare register
+0x4001005C C   FIELD 00w16 CCR: Capture/Compare value
 0x40010400 A PERIPHERAL TIM8
 0x40010400 B  REGISTER CR1 (rw): control register 1
 0x40010400 C   FIELD 00w01 CEN: Counter enable
@@ -3427,6 +3438,7 @@
 0x40010400 C   FIELD 05w02 CMS: Center-aligned mode selection
 0x40010400 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40010400 C   FIELD 08w02 CKD: Clock division
+0x40010400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40010404 B  REGISTER CR2 (rw): control register 2
 0x40010404 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x40010404 C   FIELD 02w01 CCUS: Capture/compare control update selection
@@ -3440,6 +3452,9 @@
 0x40010404 C   FIELD 12w01 OIS3: Output Idle state 3
 0x40010404 C   FIELD 13w01 OIS3N: Output Idle state 3
 0x40010404 C   FIELD 14w01 OIS4: Output Idle state 4
+0x40010404 C   FIELD 16w01 OIS5: Output Idle state 5 (OC5 output)
+0x40010404 C   FIELD 18w01 OIS6: Output Idle state 6 (OC6 output)
+0x40010404 C   FIELD 20w04 MMS2: Master mode selection 2
 0x40010408 B  REGISTER SMCR (rw): slave mode control register
 0x40010408 C   FIELD 00w03 SMS: Slave mode selection - bit[2:0]
 0x40010408 C   FIELD 04w03 TS: Trigger selection
@@ -3474,10 +3489,13 @@
 0x40010410 C   FIELD 05w01 COMIF: COM interrupt flag
 0x40010410 C   FIELD 06w01 TIF: Trigger interrupt flag
 0x40010410 C   FIELD 07w01 BIF: Break interrupt flag
+0x40010410 C   FIELD 08w01 B2IF: Break 2 interrupt flag
 0x40010410 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
 0x40010410 C   FIELD 10w01 CC2OF: Capture/compare 2 overcapture flag
 0x40010410 C   FIELD 11w01 CC3OF: Capture/Compare 3 overcapture flag
 0x40010410 C   FIELD 12w01 CC4OF: Capture/Compare 4 overcapture flag
+0x40010410 C   FIELD 16w01 CC5IF: Compare 5 interrupt flag
+0x40010410 C   FIELD 17w01 CC6IF: Compare 6 interrupt flag
 0x40010414 B  REGISTER EGR (wo): event generation register
 0x40010414 C   FIELD 00w01 UG: Update generation
 0x40010414 C   FIELD 01w01 CC1G: Capture/compare 1 generation
@@ -3487,6 +3505,7 @@
 0x40010414 C   FIELD 05w01 COMG: Capture/Compare control update generation
 0x40010414 C   FIELD 06w01 TG: Trigger generation
 0x40010414 C   FIELD 07w01 BG: Break generation
+0x40010414 C   FIELD 08w01 B2G: Break 2 generation
 0x40010418 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
 0x40010418 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40010418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
@@ -3542,8 +3561,14 @@
 0x40010420 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40010420 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
 0x40010420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40010420 C   FIELD 15w01 CC4NP: Capture/Compare 4 complementary output polarity
+0x40010420 C   FIELD 16w01 CC5E: Capture/Compare 5 output enable
+0x40010420 C   FIELD 17w01 CC5P: Capture/Compare 5 output polarity
+0x40010420 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
+0x40010420 C   FIELD 21w01 CC6P: Capture/Compare 6 output polarity
 0x40010424 B  REGISTER CNT (rw): counter
 0x40010424 C   FIELD 00w16 CNT: counter value
+0x40010424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40010428 B  REGISTER PSC (rw): prescaler
 0x40010428 C   FIELD 00w16 PSC: Prescaler value
 0x4001042C B  REGISTER ARR (rw): auto-reload register
@@ -3567,11 +3592,15 @@
 0x40010444 C   FIELD 13w01 BKP: Break polarity
 0x40010444 C   FIELD 14w01 AOE: Automatic output enable
 0x40010444 C   FIELD 15w01 MOE: Main output enable
+0x40010444 C   FIELD 16w04 BKF: Break filter
+0x40010444 C   FIELD 20w04 BK2F: Break 2 filter
+0x40010444 C   FIELD 24w01 BK2E: Break 2 enable
+0x40010444 C   FIELD 25w01 BK2P: Break 2 polarity
 0x40010448 B  REGISTER DCR (rw): DMA control register
 0x40010448 C   FIELD 00w05 DBA: DMA base address
 0x40010448 C   FIELD 08w05 DBL: DMA burst length
 0x4001044C B  REGISTER DMAR (rw): DMA address for full transfer
-0x4001044C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x4001044C C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40010454 B  REGISTER CCMR3_Output (rw): capture/compare mode register 3 (output mode)
 0x40010454 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
 0x40010454 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
@@ -3588,8 +3617,8 @@
 0x40010458 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40010458 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40010458 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
-0x4001045C B  REGISTER CRR6 (rw): capture/compare register 6
-0x4001045C C   FIELD 00w16 CCR6: Capture/Compare 6 value
+0x4001045C B  REGISTER CCR6 (rw): capture/compare register
+0x4001045C C   FIELD 00w16 CCR: Capture/Compare value
 0x40011000 A PERIPHERAL USART1
 0x40011000 B  REGISTER CR1 (rw): Control register 1
 0x40011000 C   FIELD 00w01 UE: USART enable
@@ -4546,10 +4575,12 @@
 0x40014000 C   FIELD 03w01 OPM: One-pulse mode
 0x40014000 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40014000 C   FIELD 08w02 CKD: Clock division
+0x40014000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40014008 B  REGISTER SMCR (rw): slave mode control register
 0x40014008 C   FIELD 00w03 SMS: Slave mode selection
 0x40014008 C   FIELD 04w03 TS: Trigger selection
 0x40014008 C   FIELD 07w01 MSM: Master/Slave mode
+0x40014008 C   FIELD 16w01 SMS_3: Slave mode selection - bit 3
 0x4001400C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x4001400C C   FIELD 00w01 UIE: Update interrupt enable
 0x4001400C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -4594,6 +4625,7 @@
 0x40014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
 0x40014024 B  REGISTER CNT (rw): counter
 0x40014024 C   FIELD 00w16 CNT: counter value
+0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40014028 B  REGISTER PSC (rw): prescaler
 0x40014028 C   FIELD 00w16 PSC: Prescaler value
 0x4001402C B  REGISTER ARR (rw): auto-reload register
@@ -4607,17 +4639,10 @@
 0x40014400 C   FIELD 00w01 CEN: Counter enable
 0x40014400 C   FIELD 01w01 UDIS: Update disable
 0x40014400 C   FIELD 02w01 URS: Update request source
+0x40014400 C   FIELD 03w01 OPM (rw): One-pulse mode
 0x40014400 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40014400 C   FIELD 08w02 CKD: Clock division
-0x40014408 B  REGISTER SMCR (rw): slave mode control register
-0x40014408 C   FIELD 00w03 SMS: Slave mode selection
-0x40014408 C   FIELD 04w03 TS: Trigger selection
-0x40014408 C   FIELD 07w01 MSM: Master/slave mode
-0x40014408 C   FIELD 08w04 ETF: External trigger filter
-0x40014408 C   FIELD 12w02 ETPS: External trigger prescaler
-0x40014408 C   FIELD 14w01 ECE: External clock enable
-0x40014408 C   FIELD 15w01 ETP: External trigger polarity
-0x40014408 C   FIELD 16w01 SMS3: Slave mode selection
+0x40014400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x4001440C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x4001440C C   FIELD 00w01 UIE: Update interrupt enable
 0x4001440C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -4637,12 +4662,14 @@
 0x40014418 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40014418 C   FIELD 04w03 OC1M: Output Compare 1 mode
 0x40014418 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40014418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40014420 B  REGISTER CCER (rw): capture/compare enable register
 0x40014420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014420 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
 0x40014424 B  REGISTER CNT (rw): counter
 0x40014424 C   FIELD 00w16 CNT: counter value
+0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40014428 B  REGISTER PSC (rw): prescaler
 0x40014428 C   FIELD 00w16 PSC: Prescaler value
 0x4001442C B  REGISTER ARR (rw): auto-reload register
@@ -4656,17 +4683,10 @@
 0x40014800 C   FIELD 00w01 CEN: Counter enable
 0x40014800 C   FIELD 01w01 UDIS: Update disable
 0x40014800 C   FIELD 02w01 URS: Update request source
+0x40014800 C   FIELD 03w01 OPM (rw): One-pulse mode
 0x40014800 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40014800 C   FIELD 08w02 CKD: Clock division
-0x40014808 B  REGISTER SMCR (rw): slave mode control register
-0x40014808 C   FIELD 00w03 SMS: Slave mode selection
-0x40014808 C   FIELD 04w03 TS: Trigger selection
-0x40014808 C   FIELD 07w01 MSM: Master/slave mode
-0x40014808 C   FIELD 08w04 ETF: External trigger filter
-0x40014808 C   FIELD 12w02 ETPS: External trigger prescaler
-0x40014808 C   FIELD 14w01 ECE: External clock enable
-0x40014808 C   FIELD 15w01 ETP: External trigger polarity
-0x40014808 C   FIELD 16w01 SMS3: Slave mode selection
+0x40014800 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x4001480C B  REGISTER DIER (rw): DMA/Interrupt enable register
 0x4001480C C   FIELD 00w01 UIE: Update interrupt enable
 0x4001480C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -4686,12 +4706,14 @@
 0x40014818 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40014818 C   FIELD 04w03 OC1M: Output Compare 1 mode
 0x40014818 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40014818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40014820 B  REGISTER CCER (rw): capture/compare enable register
 0x40014820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014820 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
 0x40014824 B  REGISTER CNT (rw): counter
 0x40014824 C   FIELD 00w16 CNT: counter value
+0x40014824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40014828 B  REGISTER PSC (rw): prescaler
 0x40014828 C   FIELD 00w16 PSC: Prescaler value
 0x4001482C B  REGISTER ARR (rw): auto-reload register
