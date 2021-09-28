@@ -9048,6 +9048,7 @@
 0x40023820 C   FIELD 08w01 TIM14RST: TIM14 reset
 0x40023820 C   FIELD 09w01 LPTIM1RST: Low power timer 1 reset
 0x40023820 C   FIELD 11w01 WWDGRST: Window watchdog reset
+0x40023820 C   FIELD 13w01 CAN3RST: CAN 3 reset
 0x40023820 C   FIELD 14w01 SPI2RST: SPI 2 reset
 0x40023820 C   FIELD 15w01 SPI3RST: SPI 3 reset
 0x40023820 C   FIELD 16w01 SPDIFRXRST: SPDIF-RX reset
@@ -9084,6 +9085,9 @@
 0x40023824 C   FIELD 22w01 SAI1RST: SAI1 reset
 0x40023824 C   FIELD 23w01 SAI2RST: SAI2 reset
 0x40023824 C   FIELD 26w01 LTDCRST: LTDC reset
+0x40023824 C   FIELD 27w01 DSIRST: DSI reset
+0x40023824 C   FIELD 29w01 DFSDM1RST: DFSDM 1 reset
+0x40023824 C   FIELD 30w01 MDIORST: MDIO reset
 0x40023830 B  REGISTER AHB1ENR (rw): AHB1 peripheral clock register
 0x40023830 C   FIELD 00w01 GPIOAEN: IO port A clock enable
 0x40023830 C   FIELD 01w01 GPIOBEN: IO port B clock enable
@@ -9098,8 +9102,7 @@
 0x40023830 C   FIELD 10w01 GPIOKEN: IO port K clock enable
 0x40023830 C   FIELD 12w01 CRCEN: CRC clock enable
 0x40023830 C   FIELD 18w01 BKPSRAMEN: Backup SRAM interface clock enable
-0x40023830 C   FIELD 20w01 CCMDATARAMEN: CCM data RAM clock enable
-0x40023830 C   FIELD 20w01 DTCMRAMEN: DTCM data RAM clock enable
+0x40023830 C   FIELD 20w01 DTCMRAMEN: CCM data RAM clock enable
 0x40023830 C   FIELD 21w01 DMA1EN: DMA1 clock enable
 0x40023830 C   FIELD 22w01 DMA2EN: DMA2 clock enable
 0x40023830 C   FIELD 23w01 DMA2DEN: DMA2D clock enable
@@ -9111,6 +9114,7 @@
 0x40023830 C   FIELD 30w01 OTGHSULPIEN: USB OTG HSULPI clock enable
 0x40023834 B  REGISTER AHB2ENR (rw): AHB2 peripheral clock enable register
 0x40023834 C   FIELD 00w01 DCMIEN: Camera interface enable
+0x40023834 C   FIELD 01w01 JPEGEN: JPEG enable
 0x40023834 C   FIELD 04w01 CRYPEN: Cryptographic modules clock enable
 0x40023834 C   FIELD 05w01 HASHEN: Hash modules clock enable
 0x40023834 C   FIELD 06w01 RNGEN: Random number generator clock enable
@@ -9128,8 +9132,9 @@
 0x40023840 C   FIELD 06w01 TIM12EN: TIM12 clock enable
 0x40023840 C   FIELD 07w01 TIM13EN: TIM13 clock enable
 0x40023840 C   FIELD 08w01 TIM14EN: TIM14 clock enable
-0x40023840 C   FIELD 09w01 LPTMI1EN: Low power timer 1 clock enable
+0x40023840 C   FIELD 09w01 LPTIM1EN: Low power timer 1 clock enable
 0x40023840 C   FIELD 11w01 WWDGEN: Window watchdog clock enable
+0x40023840 C   FIELD 13w01 CAN3EN: CAN 3 enable
 0x40023840 C   FIELD 14w01 SPI2EN: SPI2 clock enable
 0x40023840 C   FIELD 15w01 SPI3EN: SPI3 clock enable
 0x40023840 C   FIELD 16w01 SPDIFRXEN: SPDIF-RX clock enable
@@ -9168,6 +9173,8 @@
 0x40023844 C   FIELD 22w01 SAI1EN: SAI1 clock enable
 0x40023844 C   FIELD 23w01 SAI2EN: SAI2 clock enable
 0x40023844 C   FIELD 26w01 LTDCEN: LTDC clock enable
+0x40023844 C   FIELD 27w01 DSIEN: DSI clock enable
+0x40023844 C   FIELD 29w01 DFSDM1EN: DFSDM1 clock enable
 0x40023844 C   FIELD 30w01 MDIOEN: MDIO clock enable
 0x40023850 B  REGISTER AHB1LPENR (rw): AHB1 peripheral clock enable in low power mode register
 0x40023850 C   FIELD 00w01 GPIOALPEN: IO port A clock enable during sleep mode
@@ -9182,11 +9189,13 @@
 0x40023850 C   FIELD 09w01 GPIOJLPEN: IO port J clock enable during Sleep mode
 0x40023850 C   FIELD 10w01 GPIOKLPEN: IO port K clock enable during Sleep mode
 0x40023850 C   FIELD 12w01 CRCLPEN: CRC clock enable during Sleep mode
+0x40023850 C   FIELD 13w01 AXILPEN: AXI to AHB bridge clock enable during Sleep mode
 0x40023850 C   FIELD 15w01 FLITFLPEN: Flash interface clock enable during Sleep mode
 0x40023850 C   FIELD 16w01 SRAM1LPEN: SRAM 1interface clock enable during Sleep mode
 0x40023850 C   FIELD 17w01 SRAM2LPEN: SRAM 2 interface clock enable during Sleep mode
 0x40023850 C   FIELD 18w01 BKPSRAMLPEN: Backup SRAM interface clock enable during Sleep mode
 0x40023850 C   FIELD 19w01 SRAM3LPEN: SRAM 3 interface clock enable during Sleep mode
+0x40023850 C   FIELD 20w01 DTCMLPEN: DTCM RAM interface clock enable during Sleep mode
 0x40023850 C   FIELD 21w01 DMA1LPEN: DMA1 clock enable during Sleep mode
 0x40023850 C   FIELD 22w01 DMA2LPEN: DMA2 clock enable during Sleep mode
 0x40023850 C   FIELD 23w01 DMA2DLPEN: DMA2D clock enable during Sleep mode
@@ -9198,6 +9207,7 @@
 0x40023850 C   FIELD 30w01 OTGHSULPILPEN: USB OTG HS ULPI clock enable during Sleep mode
 0x40023854 B  REGISTER AHB2LPENR (rw): AHB2 peripheral clock enable in low power mode register
 0x40023854 C   FIELD 00w01 DCMILPEN: Camera interface enable during Sleep mode
+0x40023854 C   FIELD 01w01 JPEGLPEN: JPEG module enabled during Sleep mode
 0x40023854 C   FIELD 04w01 CRYPLPEN: Cryptography modules clock enable during Sleep mode
 0x40023854 C   FIELD 05w01 HASHLPEN: Hash modules clock enable during Sleep mode
 0x40023854 C   FIELD 06w01 RNGLPEN: Random number generator clock enable during Sleep mode
@@ -9217,6 +9227,7 @@
 0x40023860 C   FIELD 08w01 TIM14LPEN: TIM14 clock enable during Sleep mode
 0x40023860 C   FIELD 09w01 LPTIM1LPEN: low power timer 1 clock enable during Sleep mode
 0x40023860 C   FIELD 11w01 WWDGLPEN: Window watchdog clock enable during Sleep mode
+0x40023860 C   FIELD 13w01 CAN3LPEN: CAN 3 clock enable during Sleep mode
 0x40023860 C   FIELD 14w01 SPI2LPEN: SPI2 clock enable during Sleep mode
 0x40023860 C   FIELD 15w01 SPI3LPEN: SPI3 clock enable during Sleep mode
 0x40023860 C   FIELD 16w01 SPDIFRXLPEN: SPDIF-RX clock enable during sleep mode
@@ -9240,6 +9251,7 @@
 0x40023864 C   FIELD 01w01 TIM8LPEN: TIM8 clock enable during Sleep mode
 0x40023864 C   FIELD 04w01 USART1LPEN: USART1 clock enable during Sleep mode
 0x40023864 C   FIELD 05w01 USART6LPEN: USART6 clock enable during Sleep mode
+0x40023864 C   FIELD 07w01 SDMMC2LPEN: SDMMC2 clock enable during Sleep mode
 0x40023864 C   FIELD 08w01 ADC1LPEN: ADC1 clock enable during Sleep mode
 0x40023864 C   FIELD 09w01 ADC2LPEN: ADC2 clock enable during Sleep mode
 0x40023864 C   FIELD 10w01 ADC3LPEN: ADC 3 clock enable during Sleep mode
@@ -9255,6 +9267,9 @@
 0x40023864 C   FIELD 22w01 SAI1LPEN: SAI1 clock enable during sleep mode
 0x40023864 C   FIELD 23w01 SAI2LPEN: SAI2 clock enable during sleep mode
 0x40023864 C   FIELD 26w01 LTDCLPEN: LTDC clock enable during sleep mode
+0x40023864 C   FIELD 27w01 DSILPEN: DSI clock enable during Sleep mode
+0x40023864 C   FIELD 29w01 DFSDM1LPEN: DFSDM1 clock enable during Sleep mode
+0x40023864 C   FIELD 30w01 MDIOLPEN: MDIO clock enable during Sleep mode
 0x40023870 B  REGISTER BDCR: Backup domain control register
 0x40023870 C   FIELD 00w01 LSEON (rw): External low-speed oscillator enable
 0x40023870 C   FIELD 01w01 LSERDY (ro): External low-speed oscillator ready
