@@ -4300,9 +4300,6 @@
 0x40011C0C C   FIELD 09w01 WAITPEND: CPSM Waits for ends of data transfer (CmdPend internal signal)
 0x40011C0C C   FIELD 10w01 CPSMEN: Command path state machine (CPSM) Enable bit
 0x40011C0C C   FIELD 11w01 SDIOSuspend: SD I/O suspend command
-0x40011C0C C   FIELD 12w01 ENCMDcompl: Enable CMD completion
-0x40011C0C C   FIELD 13w01 nIEN: not Interrupt Enable
-0x40011C0C C   FIELD 14w01 CE_ATACMD: CE-ATA command
 0x40011C10 B  REGISTER RESPCMD (ro): command response register
 0x40011C10 C   FIELD 00w06 RESPCMD: Response command index
 0x40011C14 B  REGISTER RESP1 (ro): response 1..4 register
@@ -4339,7 +4336,6 @@
 0x40011C34 C   FIELD 06w01 CMDREND: Command response received (CRC check passed)
 0x40011C34 C   FIELD 07w01 CMDSENT: Command sent (no response required)
 0x40011C34 C   FIELD 08w01 DATAEND: Data end (data counter, SDIDCOUNT, is zero)
-0x40011C34 C   FIELD 09w01 STBITERR: Start bit not detected on all data signals in wide bus mode
 0x40011C34 C   FIELD 10w01 DBCKEND: Data block sent/received (CRC check passed)
 0x40011C34 C   FIELD 11w01 CMDACT: Command transfer in progress
 0x40011C34 C   FIELD 12w01 TXACT: Data transmit in progress
@@ -4353,7 +4349,6 @@
 0x40011C34 C   FIELD 20w01 TXDAVL: Data available in transmit FIFO
 0x40011C34 C   FIELD 21w01 RXDAVL: Data available in receive FIFO
 0x40011C34 C   FIELD 22w01 SDIOIT: SDIO interrupt received
-0x40011C34 C   FIELD 23w01 CEATAEND: CE-ATA command completion signal received for CMD61
 0x40011C38 B  REGISTER ICR (rw): interrupt clear register
 0x40011C38 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit
 0x40011C38 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit
@@ -4364,10 +4359,8 @@
 0x40011C38 C   FIELD 06w01 CMDRENDC: CMDREND flag clear bit
 0x40011C38 C   FIELD 07w01 CMDSENTC: CMDSENT flag clear bit
 0x40011C38 C   FIELD 08w01 DATAENDC: DATAEND flag clear bit
-0x40011C38 C   FIELD 09w01 STBITERRC: STBITERR flag clear bit
 0x40011C38 C   FIELD 10w01 DBCKENDC: DBCKEND flag clear bit
 0x40011C38 C   FIELD 22w01 SDIOITC: SDIOIT flag clear bit
-0x40011C38 C   FIELD 23w01 CEATAENDC: CEATAEND flag clear bit
 0x40011C3C B  REGISTER MASK (rw): mask register
 0x40011C3C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable
 0x40011C3C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable
@@ -4378,7 +4371,6 @@
 0x40011C3C C   FIELD 06w01 CMDRENDIE: Command response received interrupt enable
 0x40011C3C C   FIELD 07w01 CMDSENTIE: Command sent interrupt enable
 0x40011C3C C   FIELD 08w01 DATAENDIE: Data end interrupt enable
-0x40011C3C C   FIELD 09w01 STBITERRIE: Start bit error interrupt enable
 0x40011C3C C   FIELD 10w01 DBCKENDIE: Data block end interrupt enable
 0x40011C3C C   FIELD 11w01 CMDACTIE: Command acting interrupt enable
 0x40011C3C C   FIELD 12w01 TXACTIE: Data transmit acting interrupt enable
@@ -4392,7 +4384,6 @@
 0x40011C3C C   FIELD 20w01 TXDAVLIE: Data available in Tx FIFO interrupt enable
 0x40011C3C C   FIELD 21w01 RXDAVLIE: Data available in Rx FIFO interrupt enable
 0x40011C3C C   FIELD 22w01 SDIOITIE: SDIO mode interrupt received interrupt enable
-0x40011C3C C   FIELD 23w01 CEATAENDIE: CE-ATA command completion signal received interrupt enable
 0x40011C48 B  REGISTER FIFOCNT (ro): FIFO counter register
 0x40011C48 C   FIELD 00w24 FIFOCOUNT: Remaining number of words to be written to or read from the FIFO
 0x40011C80 B  REGISTER FIFO (rw): data FIFO register
@@ -4763,9 +4754,6 @@
 0x40012C0C C   FIELD 09w01 WAITPEND: CPSM Waits for ends of data transfer (CmdPend internal signal)
 0x40012C0C C   FIELD 10w01 CPSMEN: Command path state machine (CPSM) Enable bit
 0x40012C0C C   FIELD 11w01 SDIOSuspend: SD I/O suspend command
-0x40012C0C C   FIELD 12w01 ENCMDcompl: Enable CMD completion
-0x40012C0C C   FIELD 13w01 nIEN: not Interrupt Enable
-0x40012C0C C   FIELD 14w01 CE_ATACMD: CE-ATA command
 0x40012C10 B  REGISTER RESPCMD (ro): command response register
 0x40012C10 C   FIELD 00w06 RESPCMD: Response command index
 0x40012C14 B  REGISTER RESP1 (ro): response 1..4 register
@@ -4802,7 +4790,6 @@
 0x40012C34 C   FIELD 06w01 CMDREND: Command response received (CRC check passed)
 0x40012C34 C   FIELD 07w01 CMDSENT: Command sent (no response required)
 0x40012C34 C   FIELD 08w01 DATAEND: Data end (data counter, SDIDCOUNT, is zero)
-0x40012C34 C   FIELD 09w01 STBITERR: Start bit not detected on all data signals in wide bus mode
 0x40012C34 C   FIELD 10w01 DBCKEND: Data block sent/received (CRC check passed)
 0x40012C34 C   FIELD 11w01 CMDACT: Command transfer in progress
 0x40012C34 C   FIELD 12w01 TXACT: Data transmit in progress
@@ -4816,7 +4803,6 @@
 0x40012C34 C   FIELD 20w01 TXDAVL: Data available in transmit FIFO
 0x40012C34 C   FIELD 21w01 RXDAVL: Data available in receive FIFO
 0x40012C34 C   FIELD 22w01 SDIOIT: SDIO interrupt received
-0x40012C34 C   FIELD 23w01 CEATAEND: CE-ATA command completion signal received for CMD61
 0x40012C38 B  REGISTER ICR (rw): interrupt clear register
 0x40012C38 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit
 0x40012C38 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit
@@ -4827,10 +4813,8 @@
 0x40012C38 C   FIELD 06w01 CMDRENDC: CMDREND flag clear bit
 0x40012C38 C   FIELD 07w01 CMDSENTC: CMDSENT flag clear bit
 0x40012C38 C   FIELD 08w01 DATAENDC: DATAEND flag clear bit
-0x40012C38 C   FIELD 09w01 STBITERRC: STBITERR flag clear bit
 0x40012C38 C   FIELD 10w01 DBCKENDC: DBCKEND flag clear bit
 0x40012C38 C   FIELD 22w01 SDIOITC: SDIOIT flag clear bit
-0x40012C38 C   FIELD 23w01 CEATAENDC: CEATAEND flag clear bit
 0x40012C3C B  REGISTER MASK (rw): mask register
 0x40012C3C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable
 0x40012C3C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable
@@ -4841,7 +4825,6 @@
 0x40012C3C C   FIELD 06w01 CMDRENDIE: Command response received interrupt enable
 0x40012C3C C   FIELD 07w01 CMDSENTIE: Command sent interrupt enable
 0x40012C3C C   FIELD 08w01 DATAENDIE: Data end interrupt enable
-0x40012C3C C   FIELD 09w01 STBITERRIE: Start bit error interrupt enable
 0x40012C3C C   FIELD 10w01 DBCKENDIE: Data block end interrupt enable
 0x40012C3C C   FIELD 11w01 CMDACTIE: Command acting interrupt enable
 0x40012C3C C   FIELD 12w01 TXACTIE: Data transmit acting interrupt enable
@@ -4855,7 +4838,6 @@
 0x40012C3C C   FIELD 20w01 TXDAVLIE: Data available in Tx FIFO interrupt enable
 0x40012C3C C   FIELD 21w01 RXDAVLIE: Data available in Rx FIFO interrupt enable
 0x40012C3C C   FIELD 22w01 SDIOITIE: SDIO mode interrupt received interrupt enable
-0x40012C3C C   FIELD 23w01 CEATAENDIE: CE-ATA command completion signal received interrupt enable
 0x40012C48 B  REGISTER FIFOCNT (ro): FIFO counter register
 0x40012C48 C   FIELD 00w24 FIFOCOUNT: Remaining number of words to be written to or read from the FIFO
 0x40012C80 B  REGISTER FIFO (rw): data FIFO register
