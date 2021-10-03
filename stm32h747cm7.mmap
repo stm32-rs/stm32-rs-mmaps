@@ -5115,7 +5115,7 @@
 0x40015804 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x40015804 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x40015804 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x40015804 C   FIELD 19w01 NODIV: No divider
+0x40015804 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x40015804 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x40015804 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015804 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -5176,7 +5176,7 @@
 0x40015824 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x40015824 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x40015824 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x40015824 C   FIELD 19w01 NODIV: No divider
+0x40015824 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x40015824 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x40015824 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015824 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -5257,7 +5257,7 @@
 0x40015C04 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x40015C04 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x40015C04 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x40015C04 C   FIELD 19w01 NODIV: No divider
+0x40015C04 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x40015C04 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x40015C04 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015C04 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -5318,7 +5318,7 @@
 0x40015C24 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x40015C24 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x40015C24 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x40015C24 C   FIELD 19w01 NODIV: No divider
+0x40015C24 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x40015C24 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x40015C24 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015C24 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -5399,7 +5399,7 @@
 0x40016004 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x40016004 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x40016004 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x40016004 C   FIELD 19w01 NODIV: No divider
+0x40016004 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x40016004 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x40016004 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40016004 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -5460,7 +5460,7 @@
 0x40016024 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x40016024 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x40016024 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x40016024 C   FIELD 19w01 NODIV: No divider
+0x40016024 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x40016024 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x40016024 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40016024 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -18226,7 +18226,7 @@
 0x58005404 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x58005404 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x58005404 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x58005404 C   FIELD 19w01 NODIV: No divider
+0x58005404 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x58005404 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x58005404 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x58005404 C   FIELD 27w01 MCKEN: Master clock generation enable
@@ -18288,7 +18288,7 @@
 0x58005424 C   FIELD 13w01 OUTDRIV: Output drive. This bit is set and cleared by software. Note: This bit has to be set before enabling the audio block and after the audio block configuration.
 0x58005424 C   FIELD 16w01 SAIEN: Audio block enable where x is A or B. This bit is set by software. To switch off the audio block, the application software must program this bit to 0 and poll the bit till it reads back 0, meaning that the block is completely disabled. Before setting this bit to 1, check that it is set to 0, otherwise the enable command will not be taken into account. This bit allows to control the state of SAIx audio block. If it is disabled when an audio frame transfer is ongoing, the ongoing transfer completes and the cell is fully disabled at the end of this audio frame transfer. Note: When SAIx block is configured in master mode, the clock must be present on the input of SAIx before setting SAIXEN bit.
 0x58005424 C   FIELD 17w01 DMAEN: DMA enable. This bit is set and cleared by software. Note: Since the audio block defaults to operate as a transmitter after reset, the MODE[1:0] bits must be configured before setting DMAEN to avoid a DMA request in receiver mode.
-0x58005424 C   FIELD 19w01 NODIV: No divider
+0x58005424 C   FIELD 19w01 NODIV: No fixed divider between MCLK and FS
 0x58005424 C   FIELD 20w06 MCKDIV: Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
 0x58005424 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x58005424 C   FIELD 27w01 MCKEN: Master clock generation enable
