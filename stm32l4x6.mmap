@@ -5032,7 +5032,7 @@
 0x40016134 C   FIELD 08w24 EXMIN: EXMIN
 0x40016138 B  REGISTER DFSDM0_CNVTIMR (ro): conversion timer register
 0x40016138 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDM_CKIN
-0x40016200 B  REGISTER DFSDM1_CR1 (rw): control register 1
+0x40016200 B  REGISTER CR1 (rw): control register 1
 0x40016200 C   FIELD 00w01 DFEN: DFSDM enable
 0x40016200 C   FIELD 01w01 JSWSTART: Start a conversion of the injected group of channels
 0x40016200 C   FIELD 03w01 JSYNC: Launch an injected conversion synchronously with the DFSDM0 JSWSTART trigger
@@ -5047,7 +5047,7 @@
 0x40016200 C   FIELD 24w03 RCH: Regular channel selection
 0x40016200 C   FIELD 29w01 FAST: Fast conversion mode selection for regular conversions
 0x40016200 C   FIELD 30w01 AWFSEL: Analog watchdog fast mode select
-0x40016204 B  REGISTER DFSDM1_CR2 (rw): control register 2
+0x40016204 B  REGISTER CR2 (rw): control register 2
 0x40016204 C   FIELD 00w01 JEOCIE: Injected end of conversion interrupt enable
 0x40016204 C   FIELD 01w01 REOCIE: Regular end of conversion interrupt enable
 0x40016204 C   FIELD 02w01 JOVRIE: Injected data overrun interrupt enable
@@ -5057,7 +5057,7 @@
 0x40016204 C   FIELD 06w01 CKABIE: Clock absence interrupt enable
 0x40016204 C   FIELD 08w08 EXCH: Extremes detector channel selection
 0x40016204 C   FIELD 16w08 AWDCH: Analog watchdog channel selection
-0x40016208 B  REGISTER DFSDM1_ISR (ro): interrupt and status register
+0x40016208 B  REGISTER ISR (ro): interrupt and status register
 0x40016208 C   FIELD 00w01 JEOCF: End of injected conversion flag
 0x40016208 C   FIELD 01w01 REOCF: End of regular conversion flag
 0x40016208 C   FIELD 02w01 JOVRF: Injected conversion overrun flag
@@ -5067,43 +5067,43 @@
 0x40016208 C   FIELD 14w01 RCIP: Regular conversion in progress status
 0x40016208 C   FIELD 16w08 CKABF: Clock absence flag
 0x40016208 C   FIELD 24w08 SCDF: short-circuit detector flag
-0x4001620C B  REGISTER DFSDM1_ICR (rw): interrupt flag clear register
+0x4001620C B  REGISTER ICR (rw): interrupt flag clear register
 0x4001620C C   FIELD 02w01 CLRJOVRF: Clear the injected conversion overrun flag
 0x4001620C C   FIELD 03w01 CLRROVRF: Clear the regular conversion overrun flag
 0x4001620C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001620C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
-0x40016210 B  REGISTER DFSDM1_JCHGR (rw): injected channel group selection register
+0x40016210 B  REGISTER JCHGR (rw): injected channel group selection register
 0x40016210 C   FIELD 00w08 JCHG: Injected channel group selection
-0x40016214 B  REGISTER DFSDM1_FCR (rw): filter control register
+0x40016214 B  REGISTER FCR (rw): filter control register
 0x40016214 C   FIELD 00w08 IOSR: Integrator oversampling ratio (averaging length)
 0x40016214 C   FIELD 16w10 FOSR: Sinc filter oversampling ratio (decimation rate)
 0x40016214 C   FIELD 29w03 FORD: Sinc filter order
-0x40016218 B  REGISTER DFSDM1_JDATAR (ro): data register for injected group
+0x40016218 B  REGISTER JDATAR (ro): data register for injected group
 0x40016218 C   FIELD 00w03 JDATACH: Injected channel most recently converted
 0x40016218 C   FIELD 08w24 JDATA: Injected group conversion data
-0x4001621C B  REGISTER DFSDM1_RDATAR (ro): data register for the regular channel
+0x4001621C B  REGISTER RDATAR (ro): data register for the regular channel
 0x4001621C C   FIELD 00w03 RDATACH: Regular channel most recently converted
 0x4001621C C   FIELD 04w01 RPEND: Regular channel pending data
 0x4001621C C   FIELD 08w24 RDATA: Regular channel conversion data
-0x40016220 B  REGISTER DFSDM1_AWHTR (rw): analog watchdog high threshold register
+0x40016220 B  REGISTER AWHTR (rw): analog watchdog high threshold register
 0x40016220 C   FIELD 00w04 BKAWH: Break signal assignment to analog watchdog high threshold event
 0x40016220 C   FIELD 08w24 AWHT: Analog watchdog high threshold
-0x40016224 B  REGISTER DFSDM1_AWLTR (rw): analog watchdog low threshold register
+0x40016224 B  REGISTER AWLTR (rw): analog watchdog low threshold register
 0x40016224 C   FIELD 00w04 BKAWL: Break signal assignment to analog watchdog low threshold event
 0x40016224 C   FIELD 08w24 AWLT: Analog watchdog low threshold
-0x40016228 B  REGISTER DFSDM1_AWSR (ro): analog watchdog status register
+0x40016228 B  REGISTER AWSR (ro): analog watchdog status register
 0x40016228 C   FIELD 00w08 AWLTF: Analog watchdog low threshold flag
 0x40016228 C   FIELD 08w08 AWHTF: Analog watchdog high threshold flag
-0x4001622C B  REGISTER DFSDM1_AWCFR (rw): analog watchdog clear flag register
+0x4001622C B  REGISTER AWCFR (rw): analog watchdog clear flag register
 0x4001622C C   FIELD 00w08 CLRAWLTF: Clear the analog watchdog low threshold flag
 0x4001622C C   FIELD 08w08 CLRAWHTF: Clear the analog watchdog high threshold flag
-0x40016230 B  REGISTER DFSDM1_EXMAX (ro): Extremes detector maximum register
+0x40016230 B  REGISTER EXMAX (ro): Extremes detector maximum register
 0x40016230 C   FIELD 00w03 EXMAXCH: Extremes detector maximum data channel
 0x40016230 C   FIELD 08w24 EXMAX: Extremes detector maximum value
-0x40016234 B  REGISTER DFSDM1_EXMIN (ro): Extremes detector minimum register
+0x40016234 B  REGISTER EXMIN (ro): Extremes detector minimum register
 0x40016234 C   FIELD 00w03 EXMINCH: Extremes detector minimum data channel
 0x40016234 C   FIELD 08w24 EXMIN: EXMIN
-0x40016238 B  REGISTER DFSDM1_CNVTIMR (ro): conversion timer register
+0x40016238 B  REGISTER CNVTIMR (ro): conversion timer register
 0x40016238 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDM_CKIN
 0x40016300 B  REGISTER DFSDM2_CR1 (rw): control register 1
 0x40016300 C   FIELD 00w01 DFEN: DFSDM enable
@@ -10185,21 +10185,21 @@
 0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
 0xE000ED88 C   FIELD 20w04 CP: CP
 0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER MPU_TYPER (ro): MPU type register
+0xE000ED90 B  REGISTER TYPER (ro): MPU type register
 0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
 0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
 0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER MPU_CTRL (ro): MPU control register
+0xE000ED94 B  REGISTER CTRL (ro): MPU control register
 0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
 0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
 0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER MPU_RNR (rw): MPU region number register
+0xE000ED98 B  REGISTER RNR (rw): MPU region number register
 0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER MPU_RBAR (rw): MPU region base address register
+0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
 0xE000ED9C C   FIELD 00w04 REGION: MPU region field
 0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
 0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER MPU_RASR (rw): MPU region attribute and size register
+0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
 0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
 0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
 0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
