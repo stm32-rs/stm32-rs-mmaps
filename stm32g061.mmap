@@ -371,27 +371,27 @@
 0x40002068 B  REGISTER TISEL (rw): TIM timer input selection register
 0x40002068 C   FIELD 00w04 TI1SEL (rw): selects TI1[0] to TI1[15] input Others: Reserved
 0x40002C00 A PERIPHERAL WWDG
-0x40002C00 B  REGISTER WWDG_CR (rw): Control register
+0x40002C00 B  REGISTER CR (rw): Control register
 0x40002C00 C   FIELD 00w07 T (rw): 7-bit counter (MSB to LSB) These bits contain the value of the watchdog counter, decremented every (4096 x 2WDGTB[1:0]) PCLK cycles. A reset is produced when it is decremented from 0x40 to 0x3F (T6 becomes cleared).
 0x40002C00 C   FIELD 07w01 WDGA (rw): Activation bit This bit is set by software and only cleared by hardware after a reset. When WDGAÂ =Â 1, the watchdog can generate a reset.
-0x40002C04 B  REGISTER WWDG_CFR (rw): Configuration register
+0x40002C04 B  REGISTER CFR (rw): Configuration register
 0x40002C04 C   FIELD 00w07 W (rw): 7-bit window value These bits contain the window value to be compared with the down-counter.
 0x40002C04 C   FIELD 09w01 EWI (rw): Early wakeup interrupt When set, an interrupt occurs whenever the counter reaches the value 0x40. This interrupt is only cleared by hardware after a reset.
 0x40002C04 C   FIELD 11w03 WDGTB (rw): Timer base The timebase of the prescaler can be modified as follows:
-0x40002C08 B  REGISTER WWDG_SR (rw): Status register
+0x40002C08 B  REGISTER SR (rw): Status register
 0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
 0x40003000 A PERIPHERAL IWDG
-0x40003000 B  REGISTER IWDG_KR (wo): Key register
+0x40003000 B  REGISTER KR (wo): Key register
 0x40003000 C   FIELD 00w16 KEY: Key value (write only, read 0x0000)
-0x40003004 B  REGISTER IWDG_PR (rw): Prescaler register
+0x40003004 B  REGISTER PR (rw): Prescaler register
 0x40003004 C   FIELD 00w03 PR (rw): Prescaler divider These bits are write access protected see . They are written by software to select the prescaler divider feeding the counter clock. PVU bit of the must be reset in order to be able to change the prescaler divider. Note: Reading this register returns the prescaler value from the VDD voltage domain. This value may not be up to date/valid if a write operation to this register is ongoing. For this reason the value read from this register is valid only when the PVU bit in the status register (IWDG_SR) is reset.
-0x40003008 B  REGISTER IWDG_RLR (rw): Reload register
+0x40003008 B  REGISTER RLR (rw): Reload register
 0x40003008 C   FIELD 00w12 RL: Watchdog counter reload value
-0x4000300C B  REGISTER IWDG_SR (ro): Status register
+0x4000300C B  REGISTER SR (ro): Status register
 0x4000300C C   FIELD 00w01 PVU (ro): Watchdog prescaler value update This bit is set by hardware to indicate that an update of the prescaler value is ongoing. It is reset by hardware when the prescaler update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Prescaler value can be updated only when PVU bit is reset.
 0x4000300C C   FIELD 01w01 RVU (ro): Watchdog counter reload value update This bit is set by hardware to indicate that an update of the reload value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Reload value can be updated only when RVU bit is reset.
 0x4000300C C   FIELD 02w01 WVU (ro): Watchdog counter window value update This bit is set by hardware to indicate that an update of the window value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Window value can be updated only when WVU bit is reset.
-0x40003010 B  REGISTER IWDG_WINR (rw): Window register
+0x40003010 B  REGISTER WINR (rw): Window register
 0x40003010 C   FIELD 00w12 WIN: Watchdog counter window value
 0x40004400 A PERIPHERAL USART2
 0x40004400 B  REGISTER CR1_FIFO_DISABLED (rw): Control register 1
@@ -755,7 +755,7 @@
 0x40005828 B  REGISTER I2C_TXDR (rw): Transmit data register
 0x40005828 C   FIELD 00w08 TXDATA: 8-bit transmit data
 0x40007400 A PERIPHERAL DAC
-0x40007400 B  REGISTER DAC_CR (rw): DAC control register
+0x40007400 B  REGISTER CR (rw): DAC control register
 0x40007400 C   FIELD 00w01 EN1 (rw): DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x40007400 C   FIELD 01w01 TEN1 (rw): DAC channel1 trigger enable This bit is set and cleared by software to enable/disable DAC channel1 trigger. Note: When software trigger is selected, the transfer from the DAC_DHR1 register to the DAC_DOR1 register takes only one dac_pclk clock cycle.
 0x40007400 C   FIELD 02w04 TSEL1 (rw): DAC channel1 trigger selection These bits select the external event used to trigger DAC channel1 ... Refer to the trigger selection tables in for details on trigger configuration and mapping. Note: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
@@ -772,55 +772,55 @@
 0x40007400 C   FIELD 28w01 DMAEN2 (rw): DAC channel2 DMA enable This bit is set and cleared by software. Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007400 C   FIELD 29w01 DMAUDRIE2 (rw): DAC channel2 DMA underrun interrupt enable This bit is set and cleared by software. Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007400 C   FIELD 30w01 CEN2 (rw): DAC channel2 calibration enable This bit is set and cleared by software to enable/disable DAC channel2 calibration, it can be written only if EN2 bit is set to 0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored. Note: This bit is available only on dual-channel DACs. Refer to implementation.
-0x40007404 B  REGISTER DAC_SWTRGR (wo): DAC software trigger register
+0x40007404 B  REGISTER SWTRGR (wo): DAC software trigger register
 0x40007404 C   FIELD 00w01 SWTRIG1 (wo): DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
 0x40007404 C   FIELD 01w01 SWTRIG2 (wo): DAC channel2 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR2 register value has been loaded into the DAC_DOR2 register. This bit is available only on dual-channel DACs. Refer to implementation.
-0x40007408 B  REGISTER DAC_DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
+0x40007408 B  REGISTER DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
 0x40007408 C   FIELD 00w12 DACC1DHR (rw): DAC channel1 12-bit right-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
-0x4000740C B  REGISTER DAC_DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
+0x4000740C B  REGISTER DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
 0x4000740C C   FIELD 04w12 DACC1DHR (rw): DAC channel1 12-bit left-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
-0x40007410 B  REGISTER DAC_DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
+0x40007410 B  REGISTER DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
 0x40007410 C   FIELD 00w08 DACC1DHR (rw): DAC channel1 8-bit right-aligned data These bits are written by software. They specify 8-bit data for DAC channel1.
-0x40007414 B  REGISTER DAC_DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
+0x40007414 B  REGISTER DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
 0x40007414 C   FIELD 00w12 DACC2DHR (rw): DAC channel2 12-bit right-aligned data These bits are written by software. They specify 12-bit data for DAC channel2.
-0x40007418 B  REGISTER DAC_DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
+0x40007418 B  REGISTER DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
 0x40007418 C   FIELD 04w12 DACC2DHR (rw): DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
-0x4000741C B  REGISTER DAC_DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
+0x4000741C B  REGISTER DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
 0x4000741C C   FIELD 00w08 DACC2DHR (rw): DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x40007420 B  REGISTER DAC_DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x40007420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
 0x40007420 C   FIELD 00w12 DACC1DHR (rw): DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007420 C   FIELD 16w12 DACC2DHR (rw): DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007424 B  REGISTER DAC_DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x40007424 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
 0x40007424 C   FIELD 04w12 DACC1DHR (rw): DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007424 C   FIELD 20w12 DACC2DHR (rw): DAC channel2 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007428 B  REGISTER DAC_DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x40007428 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
 0x40007428 C   FIELD 00w08 DACC1DHR (rw): DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
 0x40007428 C   FIELD 08w08 DACC2DHR (rw): DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x4000742C B  REGISTER DAC_DOR1 (ro): DAC channel1 data output register
+0x4000742C B  REGISTER DOR1 (ro): DAC channel1 data output register
 0x4000742C C   FIELD 00w12 DACC1DOR (ro): DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
-0x40007430 B  REGISTER DAC_DOR2 (ro): DAC channel2 data output register
+0x40007430 B  REGISTER DOR2 (ro): DAC channel2 data output register
 0x40007430 C   FIELD 00w12 DACC2DOR (ro): DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
-0x40007434 B  REGISTER DAC_SR: DAC status register
+0x40007434 B  REGISTER SR: DAC status register
 0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC channel1 calibration offset status This bit is set and cleared by hardware
 0x40007434 C   FIELD 15w01 BWST1 (ro): DAC channel1 busy writing sample time flag This bit is systematically set just after Sample and hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3 LSI periods of synchronization).
 0x40007434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1). Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC channel2 calibration offset status This bit is set and cleared by hardware Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007434 C   FIELD 31w01 BWST2 (ro): DAC channel2 busy writing sample time flag This bit is systematically set just after Sample and hold mode enable. It is set each time the software writes the register DAC_SHSR2, It is cleared by hardware when the write operation of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization). Note: This bit is available only on dual-channel DACs. Refer to implementation.
-0x40007438 B  REGISTER DAC_CCR (rw): DAC calibration control register
+0x40007438 B  REGISTER CCR (rw): DAC calibration control register
 0x40007438 C   FIELD 00w05 OTRIM1 (rw): DAC channel1 offset trimming value
 0x40007438 C   FIELD 16w05 OTRIM2 (rw): DAC channel2 offset trimming value These bits are available only on dual-channel DACs. Refer to implementation.
-0x4000743C B  REGISTER DAC_MCR (rw): DAC mode control register
+0x4000743C B  REGISTER MCR (rw): DAC mode control register
 0x4000743C C   FIELD 00w03 MODE1 (rw): DAC channel1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC channel1 mode: DAC channel1 in Normal mode DAC channel1 in sample & hold mode Note: This register can be modified only when EN1=0.
 0x4000743C C   FIELD 16w03 MODE2 (rw): DAC channel2 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write operation is ignored. They can be set and cleared by software to select the DAC channel2 mode: DAC channel2 in Normal mode DAC channel2 in Sample and hold mode Note: This register can be modified only when EN2=0. Refer to for the availability of DAC channel2.
-0x40007440 B  REGISTER DAC_SHSR1 (rw): DAC Sample and Hold sample time register 1
+0x40007440 B  REGISTER SHSR1 (rw): DAC Sample and Hold sample time register 1
 0x40007440 C   FIELD 00w10 TSAMPLE1 (rw): DAC channel1 sample time (only valid in Sample and hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWST1 of DAC_SR register is low, If BWST1=1, the write operation is ignored.
-0x40007444 B  REGISTER DAC_SHSR2 (rw): DAC Sample and Hold sample time register 2
+0x40007444 B  REGISTER SHSR2 (rw): DAC Sample and Hold sample time register 2
 0x40007444 C   FIELD 00w10 TSAMPLE2 (rw): DAC channel2 sample time (only valid in Sample and hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWST2 of DAC_SR register is low, if BWST2=1, the write operation is ignored.
-0x40007448 B  REGISTER DAC_SHHR (rw): DAC Sample and Hold hold time register
+0x40007448 B  REGISTER SHHR (rw): DAC Sample and Hold hold time register
 0x40007448 C   FIELD 00w10 THOLD1 (rw): DAC channel1 hold time (only valid in Sample and hold mode) Hold time= (THOLD[9:0]) x LSI clock period Note: This register can be modified only when EN1=0.
 0x40007448 C   FIELD 16w10 THOLD2 (rw): DAC channel2 hold time (only valid in Sample and hold mode). Hold time= (THOLD[9:0]) x LSI clock period Note: This register can be modified only when EN2=0. These bits are available only on dual-channel DACs. Refer to implementation.
-0x4000744C B  REGISTER DAC_SHRR (rw): DAC Sample and Hold refresh time register
+0x4000744C B  REGISTER SHRR (rw): DAC Sample and Hold refresh time register
 0x4000744C C   FIELD 00w08 TREFRESH1 (rw): DAC channel1 refresh time (only valid in Sample and hold mode) Refresh time= (TREFRESH[7:0]) x LSI clock period Note: This register can be modified only when EN1=0.
 0x4000744C C   FIELD 16w08 TREFRESH2 (rw): DAC channel2 refresh time (only valid in Sample and hold mode) Refresh time= (TREFRESH[7:0]) x LSI clock period Note: This register can be modified only when EN2=0. These bits are available only on dual-channel DACs. Refer to implementation.
 0x40007800 A PERIPHERAL HDMI_CEC
@@ -979,15 +979,15 @@
 0x40009424 C   FIELD 00w02 IN1SEL (rw): LPTIM input 1 selection The IN1SEL bits control the LPTIM Input 1 multiplexer, which connects LPTIM Input 1 to one of the available inputs. For connection details refer to .
 0x40009424 C   FIELD 04w02 IN2SEL (rw): LPTIM input 2 selection The IN2SEL bits control the LPTIM Input 2 multiplexer, which connect LPTIM Input 2 to one of the available inputs. For connection details refer to . Note: If the LPTIM does not support encoder mode feature, these bits are reserved. Please refer to .
 0x40010030 A PERIPHERAL VREFBUF
-0x40010030 B  REGISTER VREFBUF_CSR: VREFBUF control and status register
+0x40010030 B  REGISTER CSR: VREFBUF control and status register
 0x40010030 C   FIELD 00w01 ENVR (rw): Voltage reference buffer mode enable This bit is used to enable the voltage reference buffer mode.
 0x40010030 C   FIELD 01w01 HIZ (rw): High impedance mode This bit controls the analog switch to connect or not the VREF+ pin. Refer to for the mode descriptions depending on ENVR bit configuration.
 0x40010030 C   FIELD 02w01 VRS (rw): Voltage reference scale This bit selects the value generated by the voltage reference buffer.
 0x40010030 C   FIELD 03w01 VRR (ro): Voltage reference buffer ready
-0x40010034 B  REGISTER VREFBUF_CCR (rw): VREFBUF calibration control register
+0x40010034 B  REGISTER CCR (rw): VREFBUF calibration control register
 0x40010034 C   FIELD 00w06 TRIM (rw): Trimming code These bits are automatically initialized after reset with the trimming value stored in the Flash memory during the production test. Writing into these bits allows the tuning of the internal reference buffer voltage.
 0x40012400 A PERIPHERAL ADC
-0x40012400 B  REGISTER ADC_ISR (rw): ADC interrupt and status register
+0x40012400 B  REGISTER ISR (rw): ADC interrupt and status register
 0x40012400 C   FIELD 00w01 ADRDY (rw): ADC ready This bit is set by hardware after the ADC has been enabled (ADENÂ =Â 1) and when the ADC reaches a state where it is ready to accept conversion requests. It is cleared by software writing 1 to it.
 0x40012400 C   FIELD 01w01 EOSMP (rw): End of sampling flag This bit is set by hardware during the conversion, at the end of the sampling phase.It is cleared by software by programming it to '1â.
 0x40012400 C   FIELD 02w01 EOC (rw): End of conversion flag This bit is set by hardware at the end of each conversion of a channel when a new data result is available in the ADC_DR register. It is cleared by software writing 1 to it or by reading the ADC_DR register.
@@ -998,7 +998,7 @@
 0x40012400 C   FIELD 09w01 AWD3 (rw): Analog watchdog 3 flag This bit is set by hardware when the converted voltage crosses the values programmed in ADC_AWD3TR and ADC_AWD3TR registers. It is cleared by software by programming it to 1.
 0x40012400 C   FIELD 11w01 EOCAL (rw): End Of Calibration flag This bit is set by hardware when calibration is complete. It is cleared by software writing 1 to it.
 0x40012400 C   FIELD 13w01 CCRDY (rw): Channel Configuration Ready flag This flag bit is set by hardware when the channel configuration is applied after programming to ADC_CHSELR register or changing CHSELRMOD or SCANDIR. It is cleared by software by programming it to it. Note: When the software configures the channels (by programming ADC_CHSELR or changing CHSELRMOD or SCANDIR), it must wait until the CCRDY flag rises before configuring again or starting conversions, otherwise the new configuration (or the START bit) is ignored. Once the flag is asserted, if the software needs to configure again the channels, it must clear the CCRDY flag before proceeding with a new configuration.
-0x40012404 B  REGISTER ADC_IER (rw): ADC interrupt enable register
+0x40012404 B  REGISTER IER (rw): ADC interrupt enable register
 0x40012404 C   FIELD 00w01 ADRDYIE (rw): ADC ready interrupt enable This bit is set and cleared by software to enable/disable the ADC Ready interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 01w01 EOSMPIE (rw): End of sampling flag interrupt enable This bit is set and cleared by software to enable/disable the end of the sampling phase interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 02w01 EOCIE (rw): End of conversion interrupt enable This bit is set and cleared by software to enable/disable the end of conversion interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
@@ -1009,14 +1009,14 @@
 0x40012404 C   FIELD 09w01 AWD3IE (rw): Analog watchdog 3 interrupt enable This bit is set and cleared by software to enable/disable the analog watchdog interrupt. Note: The Software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 11w01 EOCALIE (rw): End of calibration interrupt enable This bit is set and cleared by software to enable/disable the end of calibration interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 13w01 CCRDYIE (rw): Channel Configuration Ready Interrupt enable This bit is set and cleared by software to enable/disable the channel configuration ready interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
-0x40012408 B  REGISTER ADC_CR (rw): ADC control register
+0x40012408 B  REGISTER CR (rw): ADC control register
 0x40012408 C   FIELD 00w01 ADEN (rw): ADC enable command This bit is set by software to enable the ADC. The ADC is effectively ready to operate once the ADRDY flag has been set. It is cleared by hardware when the ADC is disabled, after the execution of the ADDIS command. Note: The software is allowed to set ADEN only when all bits of ADC_CR registers are 0 (ADCALÂ =Â 0, ADSTPÂ =Â 0, ADSTARTÂ =Â 0, ADDISÂ =Â 0 and ADENÂ =Â 0)
 0x40012408 C   FIELD 01w01 ADDIS (rw): ADC disable command This bit is set by software to disable the ADC (ADDIS command) and put it into power-down state (OFF state). It is cleared by hardware once the ADC is effectively disabled (ADEN is also cleared by hardware at this time). Note: Setting ADDIS to '1â is only effective when ADENÂ =Â 1 and ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing)
 0x40012408 C   FIELD 02w01 ADSTART (rw): ADC start conversion command This bit is set by software to start ADC conversion. Depending on the EXTEN [1:0] configuration bits, a conversion either starts immediately (software trigger configuration) or once a hardware trigger event occurs (hardware trigger configuration). It is cleared by hardware: In single conversion mode (CONTÂ =Â 0, DISCENÂ =Â 0), when software trigger is selected (EXTENÂ =Â 00): at the assertion of the end of Conversion Sequence (EOS) flag. In discontinuous conversion mode(CONTÂ =Â 0, DISCENÂ =Â 1), when the software trigger is selected (EXTENÂ =Â 00): at the assertion of the end of Conversion (EOC) flag. In all other cases: after the execution of the ADSTP command, at the same time as the ADSTP bit is cleared by hardware. Note: The software is allowed to set ADSTART only when ADENÂ =Â 1 and ADDISÂ =Â 0 (ADC is enabled and there is no pending request to disable the ADC). After writing to ADC_CHSELR register or changing CHSELRMOD or SCANDIRW, it is mandatory to wait until CCRDY flag is asserted before setting ADSTART, otherwise, the value written to ADSTART is ignored.
 0x40012408 C   FIELD 04w01 ADSTP (rw): ADC stop conversion command This bit is set by software to stop and discard an ongoing conversion (ADSTP Command). It is cleared by hardware when the conversion is effectively discarded and the ADC is ready to accept a new start conversion command. Note: Setting ADSTP to '1â is only effective when ADSTARTÂ =Â 1 and ADDISÂ =Â 0 (ADC is enabled and may be converting and there is no pending request to disable the ADC)
 0x40012408 C   FIELD 28w01 ADVREGEN (rw): ADC Voltage Regulator Enable This bit is set by software, to enable the ADC internal voltage regulator. The voltage regulator output is available after tADCVREG_SETUP. It is cleared by software to disable the voltage regulator. It can be cleared only if ADEN is et to 0. Note: The software is allowed to program this bit field only when the ADC is disabled (ADCALÂ =Â 0, ADSTARTÂ =Â 0, ADSTPÂ =Â 0, ADDISÂ =Â 0 and ADENÂ =Â 0).
 0x40012408 C   FIELD 31w01 ADCAL (rw): ADC calibration This bit is set by software to start the calibration of the ADC. It is cleared by hardware after calibration is complete. Note: The software is allowed to set ADCAL only when the ADC is disabled (ADCALÂ =Â 0, ADSTARTÂ =Â 0, ADSTPÂ =Â 0, ADDISÂ =Â 0 and ADENÂ =Â 0). The software is allowed to update the calibration factor by writing ADC_CALFACT only when ADENÂ =Â 1 and ADSTARTÂ =Â 0 (ADC enabled and no conversion is ongoing).
-0x4001240C B  REGISTER ADC_CFGR1 (rw): ADC configuration register 1
+0x4001240C B  REGISTER CFGR1 (rw): ADC configuration register 1
 0x4001240C C   FIELD 00w01 DMAEN (rw): Direct memory access enable This bit is set and cleared by software to enable the generation of DMA requests. This allows the DMA controller to be used to manage automatically the converted data. For more details, refer to . Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x4001240C C   FIELD 01w01 DMACFG (rw): Direct memory access configuration This bit is set and cleared by software to select between two DMA modes of operation and is effective only when DMAENÂ =Â 1. For more details, refer to pageÂ 391 Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x4001240C C   FIELD 02w01 SCANDIR (rw): Scan sequence direction This bit is set and cleared by software to select the direction in which the channels is scanned in the sequence. It is effective only if CHSELMOD bit is cleared to 0. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
@@ -1033,14 +1033,14 @@
 0x4001240C C   FIELD 22w01 AWD1SGL (rw): Enable the watchdog on a single channel or on all channels This bit is set and cleared by software to enable the analog watchdog on the channel identified by the AWDCH[4:0] bits or on all the channels Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x4001240C C   FIELD 23w01 AWD1EN (rw): Analog watchdog enable This bit is set and cleared by software. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x4001240C C   FIELD 26w05 AWD1CH (rw): Analog watchdog channel selection These bits are set and cleared by software. They select the input channel to be guarded by the analog watchdog. ..... Others: Reserved Note: The channel selected by the AWDCH[4:0] bits must be also set into the CHSELR register. The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
-0x40012410 B  REGISTER ADC_CFGR2 (rw): ADC configuration register 2
+0x40012410 B  REGISTER CFGR2 (rw): ADC configuration register 2
 0x40012410 C   FIELD 00w01 OVSE (rw): Oversampler Enable This bit is set and cleared by software. Note: Software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012410 C   FIELD 02w03 OVSR (rw): Oversampling ratio This bit filed defines the number of oversampling ratio. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012410 C   FIELD 05w04 OVSS (rw): Oversampling shift This bit is set and cleared by software. Others: Reserved Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012410 C   FIELD 09w01 TOVS (rw): Triggered Oversampling This bit is set and cleared by software. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012410 C   FIELD 29w01 LFTRIG (rw): Low frequency trigger mode enable This bit is set and cleared by software. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012410 C   FIELD 30w02 CKMODE (rw): ADC clock mode These bits are set and cleared by software to define how the analog ADC is clocked: In all synchronous clock modes, there is no jitter in the delay from a timer trigger to the start of a conversion. Note: The software is allowed to write these bits only when the ADC is disabled (ADCALÂ =Â 0, ADSTARTÂ =Â 0, ADSTPÂ =Â 0, ADDISÂ =Â 0 and ADENÂ =Â 0).
-0x40012414 B  REGISTER ADC_SMPR (rw): ADC sampling time register
+0x40012414 B  REGISTER SMPR (rw): ADC sampling time register
 0x40012414 C   FIELD 00w03 SMP1 (rw): Sampling time selection 1 These bits are written by software to select the sampling time that applies to all channels. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012414 C   FIELD 04w03 SMP2 (rw): Sampling time selection 2 These bits are written by software to select the sampling time that applies to all channels. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012414 C   FIELD 08w01 SMPSEL0 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
@@ -1062,14 +1062,14 @@
 0x40012414 C   FIELD 24w01 SMPSEL16 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012414 C   FIELD 25w01 SMPSEL17 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012414 C   FIELD 26w01 SMPSEL18 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012420 B  REGISTER ADC_AWD1TR (rw): ADC watchdog threshold register
+0x40012420 B  REGISTER AWD1TR (rw): ADC watchdog threshold register
 0x40012420 C   FIELD 00w12 LT1 (rw): Analog watchdog 1 lower threshold These bits are written by software to define the lower threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
 0x40012420 C   FIELD 16w12 HT1 (rw): Analog watchdog 1 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
-0x40012424 B  REGISTER ADC_AWD2TR (rw): ADC watchdog threshold register
+0x40012424 B  REGISTER AWD2TR (rw): ADC watchdog threshold register
 0x40012424 C   FIELD 00w12 LT2 (rw): Analog watchdog 2 lower threshold These bits are written by software to define the lower threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
 0x40012424 C   FIELD 16w12 HT2 (rw): Analog watchdog 2 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
-0x40012428 B  REGISTER ADC_CHSELRMOD0 (rw): ADC channel selection register
-0x40012428 B  REGISTER ADC_CHSELRMOD1 (rw): ADC channel selection register
+0x40012428 B  REGISTER CHSELRMOD0 (rw): ADC channel selection register
+0x40012428 B  REGISTER CHSELRMOD1 (rw): ADC channel selection register
 0x40012428 C   FIELD 00w01 CHSEL0 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
 0x40012428 C   FIELD 00w04 SQ1 (rw): 1st conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012428 C   FIELD 01w01 CHSEL1 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
@@ -1097,12 +1097,12 @@
 0x40012428 C   FIELD 20w04 SQ6 (rw): 6th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012428 C   FIELD 24w04 SQ7 (rw): 7th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012428 C   FIELD 28w04 SQ8 (rw): 8th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates the end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. ... Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x4001242C B  REGISTER ADC_AWD3TR (rw): ADC watchdog threshold register
+0x4001242C B  REGISTER AWD3TR (rw): ADC watchdog threshold register
 0x4001242C C   FIELD 00w12 LT3 (rw): Analog watchdog 3lower threshold These bits are written by software to define the lower threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
 0x4001242C C   FIELD 16w12 HT3 (rw): Analog watchdog 3 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
-0x40012440 B  REGISTER ADC_DR (ro): ADC data register
+0x40012440 B  REGISTER DR (ro): ADC data register
 0x40012440 C   FIELD 00w16 DATA (ro): Converted data These bits are read-only. They contain the conversion result from the last converted channel. The data are left- or right-aligned as shown in OVSE = 0) on pageÂ 389. Just after a calibration is complete, DATA[6:0] contains the calibration factor.
-0x400124A0 B  REGISTER ADC_AWD2CR (rw): ADC Analog Watchdog 2 Configuration register
+0x400124A0 B  REGISTER AWD2CR (rw): ADC Analog Watchdog 2 Configuration register
 0x400124A0 C   FIELD 00w01 AWD2CH0 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 2 (AWD2). Note: The channels selected through ADC_AWD2CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x400124A0 C   FIELD 01w01 AWD2CH1 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 2 (AWD2). Note: The channels selected through ADC_AWD2CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x400124A0 C   FIELD 02w01 AWD2CH2 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 2 (AWD2). Note: The channels selected through ADC_AWD2CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
@@ -1122,7 +1122,7 @@
 0x400124A0 C   FIELD 16w01 AWD2CH16 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 2 (AWD2). Note: The channels selected through ADC_AWD2CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x400124A0 C   FIELD 17w01 AWD2CH17 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 2 (AWD2). Note: The channels selected through ADC_AWD2CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x400124A0 C   FIELD 18w01 AWD2CH18 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 2 (AWD2). Note: The channels selected through ADC_AWD2CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x400124A4 B  REGISTER ADC_AWD3CR (rw): ADC Analog Watchdog 3 Configuration register
+0x400124A4 B  REGISTER AWD3CR (rw): ADC Analog Watchdog 3 Configuration register
 0x400124A4 C   FIELD 00w01 AWD3CH0 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 3 (AWD3). Note: The channels selected through ADC_AWD3CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTART=0 (which ensures that no conversion is ongoing).
 0x400124A4 C   FIELD 01w01 AWD3CH1 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 3 (AWD3). Note: The channels selected through ADC_AWD3CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTART=0 (which ensures that no conversion is ongoing).
 0x400124A4 C   FIELD 02w01 AWD3CH2 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 3 (AWD3). Note: The channels selected through ADC_AWD3CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTART=0 (which ensures that no conversion is ongoing).
@@ -1142,9 +1142,9 @@
 0x400124A4 C   FIELD 16w01 AWD3CH16 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 3 (AWD3). Note: The channels selected through ADC_AWD3CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTART=0 (which ensures that no conversion is ongoing).
 0x400124A4 C   FIELD 17w01 AWD3CH17 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 3 (AWD3). Note: The channels selected through ADC_AWD3CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTART=0 (which ensures that no conversion is ongoing).
 0x400124A4 C   FIELD 18w01 AWD3CH18 (rw): Analog watchdog channel selection These bits are set and cleared by software. They enable and select the input channels to be guarded by analog watchdog 3 (AWD3). Note: The channels selected through ADC_AWD3CR must be also configured into the ADC_CHSELR registers. Refer to SQ8[3:0] for a definition of channel selection. The software is allowed to write this bit only when ADSTART=0 (which ensures that no conversion is ongoing).
-0x400124B4 B  REGISTER ADC_CALFACT (rw): ADC Calibration factor
+0x400124B4 B  REGISTER CALFACT (rw): ADC Calibration factor
 0x400124B4 C   FIELD 00w07 CALFACT (rw): Calibration factor These bits are written by hardware or by software. Once a calibration is complete,Â they are updated by hardware with the calibration factors. Software can write these bits with a new calibration factor. If the new calibration factor is different from the current one stored into the analog ADC, it is then applied once a new calibration is launched. Just after a calibration is complete, DATA[6:0] contains the calibration factor. Note: Software can write these bits only when ADEN=1 (ADC is enabled and no calibration is ongoing and no conversion is ongoing). Refer to SQ8[3:0] for a definition of channel selection.
-0x40012708 B  REGISTER ADC_CCR (rw): ADC common configuration register
+0x40012708 B  REGISTER CCR (rw): ADC common configuration register
 0x40012708 C   FIELD 18w04 PRESC (rw): ADC prescaler Set and cleared by software to select the frequency of the clock to the ADC. Other: Reserved Note: Software is allowed to write these bits only when the ADC is disabled (ADCALÂ =Â 0, ADSTARTÂ =Â 0, ADSTPÂ =Â 0, ADDISÂ =Â 0 and ADENÂ =Â 0).
 0x40012708 C   FIELD 22w01 VREFEN (rw): VREFINT enable This bit is set and cleared by software to enable/disable the VREFINT. Note: Software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012708 C   FIELD 23w01 TSEN (rw): Temperature sensor enable This bit is set and cleared by software to enable/disable the temperature sensor. Note: Software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
@@ -1843,7 +1843,7 @@
 0x40014868 B  REGISTER TISEL (rw): input selection register
 0x40014868 C   FIELD 00w04 TI1SEL (rw): selects TI1[0] to TI1[15] input Others: Reserved
 0x40020800 A PERIPHERAL DMAMUX
-0x40020800 B  REGISTER DMAMUX_C0CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020800 B  REGISTER C0CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020800 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020800 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020800 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1851,7 +1851,7 @@
 0x40020800 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020800 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020800 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020804 B  REGISTER DMAMUX_C1CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020804 B  REGISTER C1CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020804 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020804 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020804 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1859,7 +1859,7 @@
 0x40020804 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020804 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020804 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020808 B  REGISTER DMAMUX_C2CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020808 B  REGISTER C2CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020808 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020808 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020808 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1867,7 +1867,7 @@
 0x40020808 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020808 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020808 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x4002080C B  REGISTER DMAMUX_C3CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x4002080C B  REGISTER C3CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x4002080C C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x4002080C C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x4002080C C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1875,7 +1875,7 @@
 0x4002080C C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x4002080C C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x4002080C C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020810 B  REGISTER DMAMUX_C4CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020810 B  REGISTER C4CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020810 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020810 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020810 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1883,7 +1883,7 @@
 0x40020810 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020810 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020810 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020814 B  REGISTER DMAMUX_C5CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020814 B  REGISTER C5CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020814 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020814 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020814 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1891,7 +1891,7 @@
 0x40020814 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020814 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020814 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020818 B  REGISTER DMAMUX_C6CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020818 B  REGISTER C6CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020818 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020818 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020818 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1899,7 +1899,7 @@
 0x40020818 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020818 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020818 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020880 B  REGISTER DMAMUX_CSR (ro): DMAMUX request line multiplexer interrupt channel status register
+0x40020880 B  REGISTER CSR (ro): DMAMUX request line multiplexer interrupt channel status register
 0x40020880 C   FIELD 00w01 SOF0 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 01w01 SOF1 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 02w01 SOF2 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
@@ -1907,7 +1907,7 @@
 0x40020880 C   FIELD 04w01 SOF4 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 05w01 SOF5 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 06w01 SOF6 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
-0x40020884 B  REGISTER DMAMUX_CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
+0x40020884 B  REGISTER CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
 0x40020884 C   FIELD 00w01 CSOF0 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 01w01 CSOF1 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 02w01 CSOF2 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
@@ -1915,53 +1915,53 @@
 0x40020884 C   FIELD 04w01 CSOF4 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 05w01 CSOF5 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 06w01 CSOF6 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
-0x40020900 B  REGISTER DMAMUX_RG0CR (rw): DMAMUX request generator channel x configuration register
+0x40020900 B  REGISTER RG0CR (rw): DMAMUX request generator channel x configuration register
 0x40020900 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020900 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x40020900 C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x40020900 C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x40020900 C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x40020904 B  REGISTER DMAMUX_RG1CR (rw): DMAMUX request generator channel x configuration register
+0x40020904 B  REGISTER RG1CR (rw): DMAMUX request generator channel x configuration register
 0x40020904 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020904 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x40020904 C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x40020904 C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x40020904 C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x40020908 B  REGISTER DMAMUX_RG2CR (rw): DMAMUX request generator channel x configuration register
+0x40020908 B  REGISTER RG2CR (rw): DMAMUX request generator channel x configuration register
 0x40020908 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020908 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x40020908 C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x40020908 C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x40020908 C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x4002090C B  REGISTER DMAMUX_RG3CR (rw): DMAMUX request generator channel x configuration register
+0x4002090C B  REGISTER RG3CR (rw): DMAMUX request generator channel x configuration register
 0x4002090C C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x4002090C C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x4002090C C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x4002090C C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x4002090C C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x40020940 B  REGISTER DMAMUX_RGSR (ro): DMAMUX request generator interrupt status register
+0x40020940 B  REGISTER RGSR (ro): DMAMUX request generator interrupt status register
 0x40020940 C   FIELD 00w01 OF0 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
 0x40020940 C   FIELD 01w01 OF1 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
 0x40020940 C   FIELD 02w01 OF2 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
 0x40020940 C   FIELD 03w01 OF3 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
-0x40020944 B  REGISTER DMAMUX_RGCFR (wo): DMAMUX request generator interrupt clear flag register
+0x40020944 B  REGISTER RGCFR (wo): DMAMUX request generator interrupt clear flag register
 0x40020944 C   FIELD 00w01 COF0 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40020944 C   FIELD 01w01 COF1 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40020944 C   FIELD 02w01 COF2 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40020944 C   FIELD 03w01 COF3 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40023000 A PERIPHERAL CRC
-0x40023000 B  REGISTER CRC_DR (rw): Data register
+0x40023000 B  REGISTER DR (rw): Data register
 0x40023000 C   FIELD 00w32 DR: Data register bits
-0x40023004 B  REGISTER CRC_IDR (rw): Independent data register
+0x40023004 B  REGISTER IDR (rw): Independent data register
 0x40023004 C   FIELD 00w32 IDR: General-purpose 32-bit data register bits
-0x40023008 B  REGISTER CRC_CR: Control register
+0x40023008 B  REGISTER CR: Control register
 0x40023008 C   FIELD 00w01 RESET (wo): RESET bit
 0x40023008 C   FIELD 03w02 POLYSIZE (rw): Polynomial size These bits control the size of the polynomial.
 0x40023008 C   FIELD 05w02 REV_IN (rw): Reverse input data These bits control the reversal of the bit order of the input data
 0x40023008 C   FIELD 07w01 REV_OUT (rw): Reverse output data This bit controls the reversal of the bit order of the output data.
-0x40023010 B  REGISTER CRC_INIT (rw): Initial CRC value
+0x40023010 B  REGISTER INIT (rw): Initial CRC value
 0x40023010 C   FIELD 00w32 CRC_INIT: Programmable initial CRC value
-0x40023014 B  REGISTER CRC_POL (rw): polynomial
+0x40023014 B  REGISTER POL (rw): polynomial
 0x40023014 C   FIELD 00w32 POL: Programmable polynomial
 INTERRUPT 000: WWDG (WWDG): Window watchdog interrupt
 INTERRUPT 011: DMA_Channel4_5_6_7 (DMAMUX): DMA channel 4, 5, 6 & 7 and DMAMUX

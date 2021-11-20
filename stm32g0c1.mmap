@@ -371,27 +371,27 @@
 0x40002068 B  REGISTER TISEL (rw): TIM timer input selection register
 0x40002068 C   FIELD 00w04 TI1SEL (rw): selects TI1[0] to TI1[15] input Others: Reserved
 0x40002C00 A PERIPHERAL WWDG
-0x40002C00 B  REGISTER WWDG_CR (rw): Control register
+0x40002C00 B  REGISTER CR (rw): Control register
 0x40002C00 C   FIELD 00w07 T (rw): 7-bit counter (MSB to LSB) These bits contain the value of the watchdog counter, decremented every (4096 x 2WDGTB[1:0]) PCLK cycles. A reset is produced when it is decremented from 0x40 to 0x3F (T6 becomes cleared).
 0x40002C00 C   FIELD 07w01 WDGA (rw): Activation bit This bit is set by software and only cleared by hardware after a reset. When WDGAÂ =Â 1, the watchdog can generate a reset.
-0x40002C04 B  REGISTER WWDG_CFR (rw): Configuration register
+0x40002C04 B  REGISTER CFR (rw): Configuration register
 0x40002C04 C   FIELD 00w07 W (rw): 7-bit window value These bits contain the window value to be compared with the down-counter.
 0x40002C04 C   FIELD 09w01 EWI (rw): Early wakeup interrupt When set, an interrupt occurs whenever the counter reaches the value 0x40. This interrupt is only cleared by hardware after a reset.
 0x40002C04 C   FIELD 11w03 WDGTB (rw): Timer base The timebase of the prescaler can be modified as follows:
-0x40002C08 B  REGISTER WWDG_SR (rw): Status register
+0x40002C08 B  REGISTER SR (rw): Status register
 0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
 0x40003000 A PERIPHERAL IWDG
-0x40003000 B  REGISTER IWDG_KR (wo): Key register
+0x40003000 B  REGISTER KR (wo): Key register
 0x40003000 C   FIELD 00w16 KEY: Key value (write only, read 0x0000)
-0x40003004 B  REGISTER IWDG_PR (rw): Prescaler register
+0x40003004 B  REGISTER PR (rw): Prescaler register
 0x40003004 C   FIELD 00w03 PR (rw): Prescaler divider These bits are write access protected see . They are written by software to select the prescaler divider feeding the counter clock. PVU bit of the must be reset in order to be able to change the prescaler divider. Note: Reading this register returns the prescaler value from the VDD voltage domain. This value may not be up to date/valid if a write operation to this register is ongoing. For this reason the value read from this register is valid only when the PVU bit in the status register (IWDG_SR) is reset.
-0x40003008 B  REGISTER IWDG_RLR (rw): Reload register
+0x40003008 B  REGISTER RLR (rw): Reload register
 0x40003008 C   FIELD 00w12 RL: Watchdog counter reload value
-0x4000300C B  REGISTER IWDG_SR (ro): Status register
+0x4000300C B  REGISTER SR (ro): Status register
 0x4000300C C   FIELD 00w01 PVU (ro): Watchdog prescaler value update This bit is set by hardware to indicate that an update of the prescaler value is ongoing. It is reset by hardware when the prescaler update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Prescaler value can be updated only when PVU bit is reset.
 0x4000300C C   FIELD 01w01 RVU (ro): Watchdog counter reload value update This bit is set by hardware to indicate that an update of the reload value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Reload value can be updated only when RVU bit is reset.
 0x4000300C C   FIELD 02w01 WVU (ro): Watchdog counter window value update This bit is set by hardware to indicate that an update of the window value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Window value can be updated only when WVU bit is reset.
-0x40003010 B  REGISTER IWDG_WINR (rw): Window register
+0x40003010 B  REGISTER WINR (rw): Window register
 0x40003010 C   FIELD 00w12 WIN: Watchdog counter window value
 0x40004400 A PERIPHERAL USART2
 0x40004400 B  REGISTER CR1_FIFO_DISABLED (rw): Control register 1
@@ -1310,7 +1310,7 @@
 0x40005828 B  REGISTER I2C_TXDR (rw): Transmit data register
 0x40005828 C   FIELD 00w08 TXDATA: 8-bit transmit data
 0x40007400 A PERIPHERAL DAC
-0x40007400 B  REGISTER DAC_CR (rw): DAC control register
+0x40007400 B  REGISTER CR (rw): DAC control register
 0x40007400 C   FIELD 00w01 EN1 (rw): DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x40007400 C   FIELD 01w01 TEN1 (rw): DAC channel1 trigger enable This bit is set and cleared by software to enable/disable DAC channel1 trigger. Note: When software trigger is selected, the transfer from the DAC_DHR1 register to the DAC_DOR1 register takes only one dac_pclk clock cycle.
 0x40007400 C   FIELD 02w04 TSEL1 (rw): DAC channel1 trigger selection These bits select the external event used to trigger DAC channel1 ... Refer to the trigger selection tables in for details on trigger configuration and mapping. Note: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
@@ -1327,55 +1327,55 @@
 0x40007400 C   FIELD 28w01 DMAEN2 (rw): DAC channel2 DMA enable This bit is set and cleared by software. Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007400 C   FIELD 29w01 DMAUDRIE2 (rw): DAC channel2 DMA underrun interrupt enable This bit is set and cleared by software. Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007400 C   FIELD 30w01 CEN2 (rw): DAC channel2 calibration enable This bit is set and cleared by software to enable/disable DAC channel2 calibration, it can be written only if EN2 bit is set to 0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored. Note: This bit is available only on dual-channel DACs. Refer to implementation.
-0x40007404 B  REGISTER DAC_SWTRGR (wo): DAC software trigger register
+0x40007404 B  REGISTER SWTRGR (wo): DAC software trigger register
 0x40007404 C   FIELD 00w01 SWTRIG1 (wo): DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
 0x40007404 C   FIELD 01w01 SWTRIG2 (wo): DAC channel2 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR2 register value has been loaded into the DAC_DOR2 register. This bit is available only on dual-channel DACs. Refer to implementation.
-0x40007408 B  REGISTER DAC_DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
+0x40007408 B  REGISTER DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
 0x40007408 C   FIELD 00w12 DACC1DHR (rw): DAC channel1 12-bit right-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
-0x4000740C B  REGISTER DAC_DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
+0x4000740C B  REGISTER DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
 0x4000740C C   FIELD 04w12 DACC1DHR (rw): DAC channel1 12-bit left-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
-0x40007410 B  REGISTER DAC_DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
+0x40007410 B  REGISTER DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
 0x40007410 C   FIELD 00w08 DACC1DHR (rw): DAC channel1 8-bit right-aligned data These bits are written by software. They specify 8-bit data for DAC channel1.
-0x40007414 B  REGISTER DAC_DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
+0x40007414 B  REGISTER DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
 0x40007414 C   FIELD 00w12 DACC2DHR (rw): DAC channel2 12-bit right-aligned data These bits are written by software. They specify 12-bit data for DAC channel2.
-0x40007418 B  REGISTER DAC_DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
+0x40007418 B  REGISTER DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
 0x40007418 C   FIELD 04w12 DACC2DHR (rw): DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
-0x4000741C B  REGISTER DAC_DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
+0x4000741C B  REGISTER DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
 0x4000741C C   FIELD 00w08 DACC2DHR (rw): DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x40007420 B  REGISTER DAC_DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x40007420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
 0x40007420 C   FIELD 00w12 DACC1DHR (rw): DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007420 C   FIELD 16w12 DACC2DHR (rw): DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007424 B  REGISTER DAC_DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x40007424 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
 0x40007424 C   FIELD 04w12 DACC1DHR (rw): DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007424 C   FIELD 20w12 DACC2DHR (rw): DAC channel2 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007428 B  REGISTER DAC_DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x40007428 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
 0x40007428 C   FIELD 00w08 DACC1DHR (rw): DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
 0x40007428 C   FIELD 08w08 DACC2DHR (rw): DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x4000742C B  REGISTER DAC_DOR1 (ro): DAC channel1 data output register
+0x4000742C B  REGISTER DOR1 (ro): DAC channel1 data output register
 0x4000742C C   FIELD 00w12 DACC1DOR (ro): DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
-0x40007430 B  REGISTER DAC_DOR2 (ro): DAC channel2 data output register
+0x40007430 B  REGISTER DOR2 (ro): DAC channel2 data output register
 0x40007430 C   FIELD 00w12 DACC2DOR (ro): DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
-0x40007434 B  REGISTER DAC_SR: DAC status register
+0x40007434 B  REGISTER SR: DAC status register
 0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC channel1 calibration offset status This bit is set and cleared by hardware
 0x40007434 C   FIELD 15w01 BWST1 (ro): DAC channel1 busy writing sample time flag This bit is systematically set just after Sample and hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3 LSI periods of synchronization).
 0x40007434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1). Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC channel2 calibration offset status This bit is set and cleared by hardware Note: This bit is available only on dual-channel DACs. Refer to implementation.
 0x40007434 C   FIELD 31w01 BWST2 (ro): DAC channel2 busy writing sample time flag This bit is systematically set just after Sample and hold mode enable. It is set each time the software writes the register DAC_SHSR2, It is cleared by hardware when the write operation of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization). Note: This bit is available only on dual-channel DACs. Refer to implementation.
-0x40007438 B  REGISTER DAC_CCR (rw): DAC calibration control register
+0x40007438 B  REGISTER CCR (rw): DAC calibration control register
 0x40007438 C   FIELD 00w05 OTRIM1 (rw): DAC channel1 offset trimming value
 0x40007438 C   FIELD 16w05 OTRIM2 (rw): DAC channel2 offset trimming value These bits are available only on dual-channel DACs. Refer to implementation.
-0x4000743C B  REGISTER DAC_MCR (rw): DAC mode control register
+0x4000743C B  REGISTER MCR (rw): DAC mode control register
 0x4000743C C   FIELD 00w03 MODE1 (rw): DAC channel1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC channel1 mode: DAC channel1 in Normal mode DAC channel1 in sample & hold mode Note: This register can be modified only when EN1=0.
 0x4000743C C   FIELD 16w03 MODE2 (rw): DAC channel2 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write operation is ignored. They can be set and cleared by software to select the DAC channel2 mode: DAC channel2 in Normal mode DAC channel2 in Sample and hold mode Note: This register can be modified only when EN2=0. Refer to for the availability of DAC channel2.
-0x40007440 B  REGISTER DAC_SHSR1 (rw): DAC Sample and Hold sample time register 1
+0x40007440 B  REGISTER SHSR1 (rw): DAC Sample and Hold sample time register 1
 0x40007440 C   FIELD 00w10 TSAMPLE1 (rw): DAC channel1 sample time (only valid in Sample and hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWST1 of DAC_SR register is low, If BWST1=1, the write operation is ignored.
-0x40007444 B  REGISTER DAC_SHSR2 (rw): DAC Sample and Hold sample time register 2
+0x40007444 B  REGISTER SHSR2 (rw): DAC Sample and Hold sample time register 2
 0x40007444 C   FIELD 00w10 TSAMPLE2 (rw): DAC channel2 sample time (only valid in Sample and hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWST2 of DAC_SR register is low, if BWST2=1, the write operation is ignored.
-0x40007448 B  REGISTER DAC_SHHR (rw): DAC Sample and Hold hold time register
+0x40007448 B  REGISTER SHHR (rw): DAC Sample and Hold hold time register
 0x40007448 C   FIELD 00w10 THOLD1 (rw): DAC channel1 hold time (only valid in Sample and hold mode) Hold time= (THOLD[9:0]) x LSI clock period Note: This register can be modified only when EN1=0.
 0x40007448 C   FIELD 16w10 THOLD2 (rw): DAC channel2 hold time (only valid in Sample and hold mode). Hold time= (THOLD[9:0]) x LSI clock period Note: This register can be modified only when EN2=0. These bits are available only on dual-channel DACs. Refer to implementation.
-0x4000744C B  REGISTER DAC_SHRR (rw): DAC Sample and Hold refresh time register
+0x4000744C B  REGISTER SHRR (rw): DAC Sample and Hold refresh time register
 0x4000744C C   FIELD 00w08 TREFRESH1 (rw): DAC channel1 refresh time (only valid in Sample and hold mode) Refresh time= (TREFRESH[7:0]) x LSI clock period Note: This register can be modified only when EN1=0.
 0x4000744C C   FIELD 16w08 TREFRESH2 (rw): DAC channel2 refresh time (only valid in Sample and hold mode) Refresh time= (TREFRESH[7:0]) x LSI clock period Note: This register can be modified only when EN2=0. These bits are available only on dual-channel DACs. Refer to implementation.
 0x40007800 A PERIPHERAL HDMI_CEC
@@ -1534,12 +1534,12 @@
 0x40009424 C   FIELD 00w02 IN1SEL (rw): LPTIM input 1 selection The IN1SEL bits control the LPTIM Input 1 multiplexer, which connects LPTIM Input 1 to one of the available inputs. For connection details refer to .
 0x40009424 C   FIELD 04w02 IN2SEL (rw): LPTIM input 2 selection The IN2SEL bits control the LPTIM Input 2 multiplexer, which connect LPTIM Input 2 to one of the available inputs. For connection details refer to . Note: If the LPTIM does not support encoder mode feature, these bits are reserved. Please refer to .
 0x40010030 A PERIPHERAL VREFBUF
-0x40010030 B  REGISTER VREFBUF_CSR: VREFBUF control and status register
+0x40010030 B  REGISTER CSR: VREFBUF control and status register
 0x40010030 C   FIELD 00w01 ENVR (rw): Voltage reference buffer mode enable This bit is used to enable the voltage reference buffer mode.
 0x40010030 C   FIELD 01w01 HIZ (rw): High impedance mode This bit controls the analog switch to connect or not the VREF+ pin. Refer to for the mode descriptions depending on ENVR bit configuration.
 0x40010030 C   FIELD 02w01 VRS (rw): Voltage reference scale This bit selects the value generated by the voltage reference buffer.
 0x40010030 C   FIELD 03w01 VRR (ro): Voltage reference buffer ready
-0x40010034 B  REGISTER VREFBUF_CCR (rw): VREFBUF calibration control register
+0x40010034 B  REGISTER CCR (rw): VREFBUF calibration control register
 0x40010034 C   FIELD 00w06 TRIM (rw): Trimming code These bits are automatically initialized after reset with the trimming value stored in the Flash memory during the production test. Writing into these bits allows the tuning of the internal reference buffer voltage.
 0x40012C00 A PERIPHERAL TIM1
 0x40012C00 B  REGISTER CR1 (rw): control register 1
@@ -2423,10 +2423,10 @@
 0x40015800 B  REGISTER IDCODE (ro): MCU Device ID Code Register
 0x40015800 C   FIELD 00w12 DEV_ID: Device Identifier
 0x40015800 C   FIELD 16w16 REV_ID: Revision Identifier
-0x40015804 B  REGISTER DBG_CR (rw): DBG configuration register
+0x40015804 B  REGISTER CR (rw): DBG configuration register
 0x40015804 C   FIELD 01w01 DBG_STOP (rw): Debug Stop mode Debug options in Stop mode. Upon Stop mode exit, the software must re-establish the desired clock configuration.
 0x40015804 C   FIELD 02w01 DBG_STANDBY (rw): Debug Standby and Shutdown modes Debug options in Standby or Shutdown mode.
-0x40015808 B  REGISTER DBG_APB_FZ1 (rw): DBG APB freeze register 1
+0x40015808 B  REGISTER APB_FZ1 (rw): DBG APB freeze register 1
 0x40015808 C   FIELD 00w01 DBG_TIM2_STOP (rw): Clocking of TIM2 counter when the core is halted This bit enables/disables the clock to the counter of TIM2 when the core is halted:
 0x40015808 C   FIELD 01w01 DBG_TIM3_STOP (rw): Clocking of TIM3 counter when the core is halted This bit enables/disables the clock to the counter of TIM3 when the core is halted:
 0x40015808 C   FIELD 04w01 DBG_TIM6_STOP (rw): Clocking of TIM6 counter when the core is halted This bit enables/disables the clock to the counter of TIM6 when the core is halted:
@@ -2437,7 +2437,7 @@
 0x40015808 C   FIELD 21w01 DBG_I2C1_SMBUS_TIMEOUT (rw): SMBUS timeout when core is halted
 0x40015808 C   FIELD 30w01 DBG_LPTIM2_STOP (rw): Clocking of LPTIMER2 counter when the core is halted This bit enables/disables the clock to the counter of LPTIMER2 when the core is halted:
 0x40015808 C   FIELD 31w01 DBG_LPTIM1_STOP (rw): Clocking of LPTIMER1 counter when the core is halted This bit enables/disables the clock to the counter of LPTIMER1 when the core is halted:
-0x4001580C B  REGISTER DBG_APB_FZ2 (rw): DBG APB freeze register 2
+0x4001580C B  REGISTER APB_FZ2 (rw): DBG APB freeze register 2
 0x4001580C C   FIELD 11w01 DBG_TIM1_STOP (rw): Clocking of TIM1 counter when the core is halted This bit enables/disables the clock to the counter of TIM1 when the core is halted:
 0x4001580C C   FIELD 15w01 DBG_TIM14_STOP (rw): Clocking of TIM14 counter when the core is halted This bit enables/disables the clock to the counter of TIM14 when the core is halted:
 0x4001580C C   FIELD 16w01 DBG_TIM15_STOP (rw): Clocking of TIM15 counter when the core is halted This bit enables/disables the clock to the counter of TIM15 when the core is halted: Only available on STM32G071xx and STM32G081xx, reserved on STM32G031xx and STM32G041xx.
@@ -2786,7 +2786,7 @@
 0x40020464 B  REGISTER MAR5 (rw): DMA channel 1 memory address
 0x40020464 C   FIELD 00w32 MA: Memory address
 0x40020800 A PERIPHERAL DMAMUX
-0x40020800 B  REGISTER DMAMUX_C0CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020800 B  REGISTER C0CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020800 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020800 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020800 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2794,7 +2794,7 @@
 0x40020800 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020800 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020800 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020804 B  REGISTER DMAMUX_C1CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020804 B  REGISTER C1CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020804 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020804 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020804 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2802,7 +2802,7 @@
 0x40020804 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020804 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020804 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020808 B  REGISTER DMAMUX_C2CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020808 B  REGISTER C2CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020808 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020808 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020808 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2810,7 +2810,7 @@
 0x40020808 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020808 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020808 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x4002080C B  REGISTER DMAMUX_C3CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x4002080C B  REGISTER C3CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x4002080C C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x4002080C C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x4002080C C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2818,7 +2818,7 @@
 0x4002080C C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x4002080C C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x4002080C C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020810 B  REGISTER DMAMUX_C4CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020810 B  REGISTER C4CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020810 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020810 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020810 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2826,7 +2826,7 @@
 0x40020810 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020810 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020810 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020814 B  REGISTER DMAMUX_C5CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020814 B  REGISTER C5CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020814 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020814 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020814 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2834,7 +2834,7 @@
 0x40020814 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020814 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020814 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020818 B  REGISTER DMAMUX_C6CR (rw): DMAMUX request line multiplexer channel x configuration register
+0x40020818 B  REGISTER C6CR (rw): DMAMUX request line multiplexer channel x configuration register
 0x40020818 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020818 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020818 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -2842,7 +2842,7 @@
 0x40020818 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020818 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020818 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources STM32G0).
-0x40020880 B  REGISTER DMAMUX_CSR (ro): DMAMUX request line multiplexer interrupt channel status register
+0x40020880 B  REGISTER CSR (ro): DMAMUX request line multiplexer interrupt channel status register
 0x40020880 C   FIELD 00w01 SOF0 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 01w01 SOF1 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 02w01 SOF2 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
@@ -2850,7 +2850,7 @@
 0x40020880 C   FIELD 04w01 SOF4 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 05w01 SOF5 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
 0x40020880 C   FIELD 06w01 SOF6 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
-0x40020884 B  REGISTER DMAMUX_CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
+0x40020884 B  REGISTER CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
 0x40020884 C   FIELD 00w01 CSOF0 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 01w01 CSOF1 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 02w01 CSOF2 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
@@ -2858,66 +2858,66 @@
 0x40020884 C   FIELD 04w01 CSOF4 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 05w01 CSOF5 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x40020884 C   FIELD 06w01 CSOF6 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
-0x40020900 B  REGISTER DMAMUX_RG0CR (rw): DMAMUX request generator channel x configuration register
+0x40020900 B  REGISTER RG0CR (rw): DMAMUX request generator channel x configuration register
 0x40020900 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020900 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x40020900 C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x40020900 C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x40020900 C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x40020904 B  REGISTER DMAMUX_RG1CR (rw): DMAMUX request generator channel x configuration register
+0x40020904 B  REGISTER RG1CR (rw): DMAMUX request generator channel x configuration register
 0x40020904 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020904 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x40020904 C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x40020904 C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x40020904 C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x40020908 B  REGISTER DMAMUX_RG2CR (rw): DMAMUX request generator channel x configuration register
+0x40020908 B  REGISTER RG2CR (rw): DMAMUX request generator channel x configuration register
 0x40020908 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020908 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x40020908 C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x40020908 C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x40020908 C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x4002090C B  REGISTER DMAMUX_RG3CR (rw): DMAMUX request generator channel x configuration register
+0x4002090C B  REGISTER RG3CR (rw): DMAMUX request generator channel x configuration register
 0x4002090C C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x4002090C C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
 0x4002090C C   FIELD 16w01 GE (rw): DMA request generator channel x enable
 0x4002090C C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x4002090C C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
-0x40020940 B  REGISTER DMAMUX_RGSR (ro): DMAMUX request generator interrupt status register
+0x40020940 B  REGISTER RGSR (ro): DMAMUX request generator interrupt status register
 0x40020940 C   FIELD 00w01 OF0 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
 0x40020940 C   FIELD 01w01 OF1 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
 0x40020940 C   FIELD 02w01 OF2 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
 0x40020940 C   FIELD 03w01 OF3 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
-0x40020944 B  REGISTER DMAMUX_RGCFR (wo): DMAMUX request generator interrupt clear flag register
+0x40020944 B  REGISTER RGCFR (wo): DMAMUX request generator interrupt clear flag register
 0x40020944 C   FIELD 00w01 COF0 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40020944 C   FIELD 01w01 COF1 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40020944 C   FIELD 02w01 COF2 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40020944 C   FIELD 03w01 COF3 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
 0x40023000 A PERIPHERAL CRC
-0x40023000 B  REGISTER CRC_DR (rw): Data register
+0x40023000 B  REGISTER DR (rw): Data register
 0x40023000 C   FIELD 00w32 DR: Data register bits
-0x40023004 B  REGISTER CRC_IDR (rw): Independent data register
+0x40023004 B  REGISTER IDR (rw): Independent data register
 0x40023004 C   FIELD 00w32 IDR: General-purpose 32-bit data register bits
-0x40023008 B  REGISTER CRC_CR: Control register
+0x40023008 B  REGISTER CR: Control register
 0x40023008 C   FIELD 00w01 RESET (wo): RESET bit
 0x40023008 C   FIELD 03w02 POLYSIZE (rw): Polynomial size These bits control the size of the polynomial.
 0x40023008 C   FIELD 05w02 REV_IN (rw): Reverse input data These bits control the reversal of the bit order of the input data
 0x40023008 C   FIELD 07w01 REV_OUT (rw): Reverse output data This bit controls the reversal of the bit order of the output data.
-0x40023010 B  REGISTER CRC_INIT (rw): Initial CRC value
+0x40023010 B  REGISTER INIT (rw): Initial CRC value
 0x40023010 C   FIELD 00w32 CRC_INIT: Programmable initial CRC value
-0x40023014 B  REGISTER CRC_POL (rw): polynomial
+0x40023014 B  REGISTER POL (rw): polynomial
 0x40023014 C   FIELD 00w32 POL: Programmable polynomial
 0x40025000 A PERIPHERAL RNG
-0x40025000 B  REGISTER RNG_CR (rw): control register
+0x40025000 B  REGISTER CR (rw): control register
 0x40025000 C   FIELD 02w01 RNGEN (rw): True random number generator enable
 0x40025000 C   FIELD 03w01 IE (rw): Interrupt Enable
 0x40025000 C   FIELD 05w01 CED (rw): Clock error detection The clock error detection cannot be enabled nor disabled on-the-fly when the RNG is enabled, i.e. to enable or disable CED the RNG must be disabled.
-0x40025004 B  REGISTER RNG_SR: status register
+0x40025004 B  REGISTER SR: status register
 0x40025004 C   FIELD 00w01 DRDY (ro): Data Ready Once the output buffer becomes empty (after reading the RNG_DR register), this bit returns to 0 until a new random value is generated. Note: The DRDY bit can rise when the peripheral is disabled (RNGEN=0 in the RNG_CR register). If IE=1 in the RNG_CR register, an interrupt is generated when DRDY=1.
 0x40025004 C   FIELD 01w01 CECS (ro): Clock error current status Note: CECS bit is valid only if the CED bit in the RNG_CR register is set to 0.
 0x40025004 C   FIELD 02w01 SECS (ro): Seed error current status One of the noise source has provided more than 64 consecutive bits at a constant value (â0â or â1â), or more than 32 consecutive occurrence of two bit patterns (â01â or â10â) Both noise sources have delivered more than 32 consecutive bits at a constant value (â0â or â1â), or more than 16 consecutive occurrence of two bit patterns (â01â or â10â)
 0x40025004 C   FIELD 05w01 CEIS (rw): Clock error interrupt status This bit is set at the same time as CECS. It is cleared by writing 0. Writing 1 has no effect. An interrupt is pending if IE = 1 in the RNG_CR register.
 0x40025004 C   FIELD 06w01 SEIS (rw): Seed error interrupt status This bit is set at the same time as SECS. It is cleared by writing 0. Writing 1 has no effect. An interrupt is pending if IE = 1 in the RNG_CR register.
-0x40025008 B  REGISTER RNG_DR (ro): data register
+0x40025008 B  REGISTER DR (ro): data register
 0x40025008 C   FIELD 00w32 RNDATA: Random data
 0x40026000 A PERIPHERAL AES
 0x40026000 B  REGISTER CR: AES control register

@@ -6413,7 +6413,7 @@
 0x40017534 C   FIELD 08w24 EXMIN: Extremes detector minimum value
 0x40017538 B  REGISTER DFSDM0_CNVTIMR (ro): DFSDM conversion timer register
 0x40017538 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time
-0x40017580 B  REGISTER DFSDM1_CR1 (rw): DFSDM control register 1
+0x40017580 B  REGISTER CR1 (rw): DFSDM control register 1
 0x40017580 C   FIELD 00w01 DFEN: DFSDM enable
 0x40017580 C   FIELD 01w01 JSWSTART: Start a conversion of the injected group of channels
 0x40017580 C   FIELD 03w01 JSYNC: Launch an injected conversion synchronously with the DFSDM0 JSWSTART trigger
@@ -6428,7 +6428,7 @@
 0x40017580 C   FIELD 24w03 RCH: Regular channel selection
 0x40017580 C   FIELD 29w01 FAST: Fast conversion mode selection for regular conversions
 0x40017580 C   FIELD 30w01 AWFSEL: Analog watchdog fast mode select
-0x40017584 B  REGISTER DFSDM1_CR2 (rw): DFSDM control register 2
+0x40017584 B  REGISTER CR2 (rw): DFSDM control register 2
 0x40017584 C   FIELD 00w01 JEOCIE: Injected end of conversion interrupt enable
 0x40017584 C   FIELD 01w01 REOCIE: Regular end of conversion interrupt enable
 0x40017584 C   FIELD 02w01 JOVRIE: Injected data overrun interrupt enable
@@ -6438,7 +6438,7 @@
 0x40017584 C   FIELD 06w01 CKABIE: Clock absence interrupt enable
 0x40017584 C   FIELD 08w08 EXCH: Extremes detector channel selection
 0x40017584 C   FIELD 16w08 AWDCH: Analog watchdog channel selection
-0x40017588 B  REGISTER DFSDM1_ISR (ro): DFSDM interrupt and status register
+0x40017588 B  REGISTER ISR (ro): DFSDM interrupt and status register
 0x40017588 C   FIELD 00w01 JEOCF: End of injected conversion flag
 0x40017588 C   FIELD 01w01 REOCF: End of regular conversion flag
 0x40017588 C   FIELD 02w01 JOVRF: Injected conversion overrun flag
@@ -6448,43 +6448,43 @@
 0x40017588 C   FIELD 14w01 RCIP: Regular conversion in progress status
 0x40017588 C   FIELD 16w08 CKABF: Clock absence flag
 0x40017588 C   FIELD 24w08 SCDF: short-circuit detector flag
-0x4001758C B  REGISTER DFSDM1_ICR (rw): DFSDM interrupt flag clear register
+0x4001758C B  REGISTER ICR (rw): DFSDM interrupt flag clear register
 0x4001758C C   FIELD 02w01 CLRJOVRF: Clear the injected conversion overrun flag
 0x4001758C C   FIELD 03w01 CLRROVRF: Clear the regular conversion overrun flag
 0x4001758C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001758C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
-0x40017590 B  REGISTER DFSDM1_JCHGR (rw): DFSDM injected channel group selection register
+0x40017590 B  REGISTER JCHGR (rw): DFSDM injected channel group selection register
 0x40017590 C   FIELD 00w08 JCHG: Injected channel group selection
-0x40017594 B  REGISTER DFSDM1_FCR (rw): DFSDM filter control register
+0x40017594 B  REGISTER FCR (rw): DFSDM filter control register
 0x40017594 C   FIELD 00w08 IOSR: Integrator oversampling ratio (averaging length)
 0x40017594 C   FIELD 16w10 FOSR: Sinc filter oversampling ratio (decimation rate)
 0x40017594 C   FIELD 29w03 FORD: Sinc filter order
-0x40017598 B  REGISTER DFSDM1_JDATAR (ro): DFSDM data register for injected group
-0x40017598 B  REGISTER DFSDM1_RDATAR (ro): DFSDM data register for the regular channel
+0x40017598 B  REGISTER JDATAR (ro): DFSDM data register for injected group
+0x40017598 B  REGISTER RDATAR (ro): DFSDM data register for the regular channel
 0x40017598 C   FIELD 00w03 JDATACH: Injected channel most recently converted
 0x40017598 C   FIELD 00w03 RDATACH: Regular channel most recently converted
 0x40017598 C   FIELD 04w01 RPEND: Regular channel pending data
 0x40017598 C   FIELD 08w24 JDATA: Injected group conversion data
 0x40017598 C   FIELD 08w24 RDATA: Regular channel conversion data
-0x400175A0 B  REGISTER DFSDM1_AWHTR (rw): DFSDM analog watchdog high threshold register
+0x400175A0 B  REGISTER AWHTR (rw): DFSDM analog watchdog high threshold register
 0x400175A0 C   FIELD 00w04 BKAWH: Break signal assignment to analog watchdog high threshold event
 0x400175A0 C   FIELD 08w24 AWHT: Analog watchdog high threshold
-0x400175A4 B  REGISTER DFSDM1_AWLTR (rw): DFSDM analog watchdog low threshold register
+0x400175A4 B  REGISTER AWLTR (rw): DFSDM analog watchdog low threshold register
 0x400175A4 C   FIELD 00w04 BKAWL: Break signal assignment to analog watchdog low threshold event
 0x400175A4 C   FIELD 08w24 AWLT: Analog watchdog low threshold
-0x400175A8 B  REGISTER DFSDM1_AWSR (ro): DFSDM analog watchdog status register
+0x400175A8 B  REGISTER AWSR (ro): DFSDM analog watchdog status register
 0x400175A8 C   FIELD 00w08 AWLTF: Analog watchdog low threshold flag
 0x400175A8 C   FIELD 08w08 AWHTF: Analog watchdog high threshold flag
-0x400175AC B  REGISTER DFSDM1_AWCFR (rw): DFSDM analog watchdog clear flag register
+0x400175AC B  REGISTER AWCFR (rw): DFSDM analog watchdog clear flag register
 0x400175AC C   FIELD 00w08 CLRAWLTF: Clear the analog watchdog low threshold flag
 0x400175AC C   FIELD 08w08 CLRAWHTF: Clear the analog watchdog high threshold flag
-0x400175B0 B  REGISTER DFSDM1_EXMAX (ro): DFSDM Extremes detector maximum register
+0x400175B0 B  REGISTER EXMAX (ro): DFSDM Extremes detector maximum register
 0x400175B0 C   FIELD 00w03 EXMAXCH: Extremes detector maximum data channel
 0x400175B0 C   FIELD 08w24 EXMAX: Extremes detector maximum value
-0x400175B4 B  REGISTER DFSDM1_EXMIN (ro): DFSDM Extremes detector minimum register
+0x400175B4 B  REGISTER EXMIN (ro): DFSDM Extremes detector minimum register
 0x400175B4 C   FIELD 00w03 EXMINCH: Extremes detector minimum data channel
 0x400175B4 C   FIELD 08w24 EXMIN: Extremes detector minimum value
-0x400175B8 B  REGISTER DFSDM1_CNVTIMR (ro): DFSDM conversion timer register
+0x400175B8 B  REGISTER CNVTIMR (ro): DFSDM conversion timer register
 0x400175B8 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time
 0x40017600 B  REGISTER DFSDM2_CR1 (rw): DFSDM control register 1
 0x40017600 C   FIELD 00w01 DFEN: DFSDM enable
@@ -6633,156 +6633,156 @@
 0x4001778C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001778C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
 0x40017800 A PERIPHERAL MDIOS
-0x40017800 B  REGISTER MDIOS_CR (rw): MDIOS configuration register
+0x40017800 B  REGISTER CR (rw): MDIOS configuration register
 0x40017800 C   FIELD 00w01 EN: Peripheral enable
 0x40017800 C   FIELD 01w01 WRIE: Register write interrupt enable
 0x40017800 C   FIELD 02w01 RDIE: Register Read Interrupt Enable
 0x40017800 C   FIELD 03w01 EIE: Error interrupt enable
 0x40017800 C   FIELD 07w01 DPC: Disable Preamble Check
 0x40017800 C   FIELD 08w05 PORT_ADDRESS: Slaves's address
-0x40017804 B  REGISTER MDIOS_WRFR (ro): MDIOS write flag register
+0x40017804 B  REGISTER WRFR (ro): MDIOS write flag register
 0x40017804 C   FIELD 00w32 WRF: Write flags for MDIO registers 0 to 31
-0x40017808 B  REGISTER MDIOS_CWRFR (rw): MDIOS clear write flag register
+0x40017808 B  REGISTER CWRFR (rw): MDIOS clear write flag register
 0x40017808 C   FIELD 00w32 CWRF: Clear the write flag
-0x4001780C B  REGISTER MDIOS_RDFR (ro): MDIOS read flag register
+0x4001780C B  REGISTER RDFR (ro): MDIOS read flag register
 0x4001780C C   FIELD 00w32 RDF: Read flags for MDIO registers 0 to 31
-0x40017810 B  REGISTER MDIOS_CRDFR (rw): MDIOS clear read flag register
+0x40017810 B  REGISTER CRDFR (rw): MDIOS clear read flag register
 0x40017810 C   FIELD 00w32 CRDF: Clear the read flag
-0x40017814 B  REGISTER MDIOS_SR (ro): MDIOS status register
+0x40017814 B  REGISTER SR (ro): MDIOS status register
 0x40017814 C   FIELD 00w01 PERF: Preamble error flag
 0x40017814 C   FIELD 01w01 SERF: Start error flag
 0x40017814 C   FIELD 02w01 TERF: Turnaround error flag
-0x40017818 B  REGISTER MDIOS_CLRFR (rw): MDIOS clear flag register
+0x40017818 B  REGISTER CLRFR (rw): MDIOS clear flag register
 0x40017818 C   FIELD 00w01 CPERF: Clear the preamble error flag
 0x40017818 C   FIELD 01w01 CSERF: Clear the start error flag
 0x40017818 C   FIELD 02w01 CTERF: Clear the turnaround error flag
-0x4001781C B  REGISTER MDIOS_DINR0 (ro): MDIOS input data register 0
+0x4001781C B  REGISTER DINR0 (ro): MDIOS input data register 0
 0x4001781C C   FIELD 00w16 DIN0: Input data received from MDIO Master during write frames
-0x40017820 B  REGISTER MDIOS_DINR1 (ro): MDIOS input data register 1
+0x40017820 B  REGISTER DINR1 (ro): MDIOS input data register 1
 0x40017820 C   FIELD 00w16 DIN1: Input data received from MDIO Master during write frames
-0x40017824 B  REGISTER MDIOS_DINR2 (ro): MDIOS input data register 2
+0x40017824 B  REGISTER DINR2 (ro): MDIOS input data register 2
 0x40017824 C   FIELD 00w16 DIN2: Input data received from MDIO Master during write frames
-0x40017828 B  REGISTER MDIOS_DINR3 (ro): MDIOS input data register 3
+0x40017828 B  REGISTER DINR3 (ro): MDIOS input data register 3
 0x40017828 C   FIELD 00w16 DIN3: Input data received from MDIO Master during write frames
-0x4001782C B  REGISTER MDIOS_DINR4 (ro): MDIOS input data register 4
+0x4001782C B  REGISTER DINR4 (ro): MDIOS input data register 4
 0x4001782C C   FIELD 00w16 DIN4: Input data received from MDIO Master during write frames
-0x40017830 B  REGISTER MDIOS_DINR5 (ro): MDIOS input data register 5
+0x40017830 B  REGISTER DINR5 (ro): MDIOS input data register 5
 0x40017830 C   FIELD 00w16 DIN5: Input data received from MDIO Master during write frames
-0x40017834 B  REGISTER MDIOS_DINR6 (ro): MDIOS input data register 6
+0x40017834 B  REGISTER DINR6 (ro): MDIOS input data register 6
 0x40017834 C   FIELD 00w16 DIN6: Input data received from MDIO Master during write frames
-0x40017838 B  REGISTER MDIOS_DINR7 (ro): MDIOS input data register 7
+0x40017838 B  REGISTER DINR7 (ro): MDIOS input data register 7
 0x40017838 C   FIELD 00w16 DIN7: Input data received from MDIO Master during write frames
-0x4001783C B  REGISTER MDIOS_DINR8 (ro): MDIOS input data register 8
+0x4001783C B  REGISTER DINR8 (ro): MDIOS input data register 8
 0x4001783C C   FIELD 00w16 DIN8: Input data received from MDIO Master during write frames
-0x40017840 B  REGISTER MDIOS_DINR9 (ro): MDIOS input data register 9
+0x40017840 B  REGISTER DINR9 (ro): MDIOS input data register 9
 0x40017840 C   FIELD 00w16 DIN9: Input data received from MDIO Master during write frames
-0x40017844 B  REGISTER MDIOS_DINR10 (ro): MDIOS input data register 10
+0x40017844 B  REGISTER DINR10 (ro): MDIOS input data register 10
 0x40017844 C   FIELD 00w16 DIN10: Input data received from MDIO Master during write frames
-0x40017848 B  REGISTER MDIOS_DINR11 (ro): MDIOS input data register 11
+0x40017848 B  REGISTER DINR11 (ro): MDIOS input data register 11
 0x40017848 C   FIELD 00w16 DIN11: Input data received from MDIO Master during write frames
-0x4001784C B  REGISTER MDIOS_DINR12 (ro): MDIOS input data register 12
+0x4001784C B  REGISTER DINR12 (ro): MDIOS input data register 12
 0x4001784C C   FIELD 00w16 DIN12: Input data received from MDIO Master during write frames
-0x40017850 B  REGISTER MDIOS_DINR13 (ro): MDIOS input data register 13
+0x40017850 B  REGISTER DINR13 (ro): MDIOS input data register 13
 0x40017850 C   FIELD 00w16 DIN13: Input data received from MDIO Master during write frames
-0x40017854 B  REGISTER MDIOS_DINR14 (ro): MDIOS input data register 14
+0x40017854 B  REGISTER DINR14 (ro): MDIOS input data register 14
 0x40017854 C   FIELD 00w16 DIN14: Input data received from MDIO Master during write frames
-0x40017858 B  REGISTER MDIOS_DINR15 (ro): MDIOS input data register 15
+0x40017858 B  REGISTER DINR15 (ro): MDIOS input data register 15
 0x40017858 C   FIELD 00w16 DIN15: Input data received from MDIO Master during write frames
-0x4001785C B  REGISTER MDIOS_DINR16 (ro): MDIOS input data register 16
+0x4001785C B  REGISTER DINR16 (ro): MDIOS input data register 16
 0x4001785C C   FIELD 00w16 DIN16: Input data received from MDIO Master during write frames
-0x40017860 B  REGISTER MDIOS_DINR17 (ro): MDIOS input data register 17
+0x40017860 B  REGISTER DINR17 (ro): MDIOS input data register 17
 0x40017860 C   FIELD 00w16 DIN17: Input data received from MDIO Master during write frames
-0x40017864 B  REGISTER MDIOS_DINR18 (ro): MDIOS input data register 18
+0x40017864 B  REGISTER DINR18 (ro): MDIOS input data register 18
 0x40017864 C   FIELD 00w16 DIN18: Input data received from MDIO Master during write frames
-0x40017868 B  REGISTER MDIOS_DINR19 (ro): MDIOS input data register 19
+0x40017868 B  REGISTER DINR19 (ro): MDIOS input data register 19
 0x40017868 C   FIELD 00w16 DIN19: Input data received from MDIO Master during write frames
-0x4001786C B  REGISTER MDIOS_DINR20 (ro): MDIOS input data register 20
+0x4001786C B  REGISTER DINR20 (ro): MDIOS input data register 20
 0x4001786C C   FIELD 00w16 DIN20: Input data received from MDIO Master during write frames
-0x40017870 B  REGISTER MDIOS_DINR21 (ro): MDIOS input data register 21
+0x40017870 B  REGISTER DINR21 (ro): MDIOS input data register 21
 0x40017870 C   FIELD 00w16 DIN21: Input data received from MDIO Master during write frames
-0x40017874 B  REGISTER MDIOS_DINR22 (ro): MDIOS input data register 22
+0x40017874 B  REGISTER DINR22 (ro): MDIOS input data register 22
 0x40017874 C   FIELD 00w16 DIN22: Input data received from MDIO Master during write frames
-0x40017878 B  REGISTER MDIOS_DINR23 (ro): MDIOS input data register 23
+0x40017878 B  REGISTER DINR23 (ro): MDIOS input data register 23
 0x40017878 C   FIELD 00w16 DIN23: Input data received from MDIO Master during write frames
-0x4001787C B  REGISTER MDIOS_DINR24 (ro): MDIOS input data register 24
+0x4001787C B  REGISTER DINR24 (ro): MDIOS input data register 24
 0x4001787C C   FIELD 00w16 DIN24: Input data received from MDIO Master during write frames
-0x40017880 B  REGISTER MDIOS_DINR25 (ro): MDIOS input data register 25
+0x40017880 B  REGISTER DINR25 (ro): MDIOS input data register 25
 0x40017880 C   FIELD 00w16 DIN25: Input data received from MDIO Master during write frames
-0x40017884 B  REGISTER MDIOS_DINR26 (ro): MDIOS input data register 26
+0x40017884 B  REGISTER DINR26 (ro): MDIOS input data register 26
 0x40017884 C   FIELD 00w16 DIN26: Input data received from MDIO Master during write frames
-0x40017888 B  REGISTER MDIOS_DINR27 (ro): MDIOS input data register 27
+0x40017888 B  REGISTER DINR27 (ro): MDIOS input data register 27
 0x40017888 C   FIELD 00w16 DIN27: Input data received from MDIO Master during write frames
-0x4001788C B  REGISTER MDIOS_DINR28 (ro): MDIOS input data register 28
+0x4001788C B  REGISTER DINR28 (ro): MDIOS input data register 28
 0x4001788C C   FIELD 00w16 DIN28: Input data received from MDIO Master during write frames
-0x40017890 B  REGISTER MDIOS_DINR29 (ro): MDIOS input data register 29
+0x40017890 B  REGISTER DINR29 (ro): MDIOS input data register 29
 0x40017890 C   FIELD 00w16 DIN29: Input data received from MDIO Master during write frames
-0x40017894 B  REGISTER MDIOS_DINR30 (ro): MDIOS input data register 30
+0x40017894 B  REGISTER DINR30 (ro): MDIOS input data register 30
 0x40017894 C   FIELD 00w16 DIN30: Input data received from MDIO Master during write frames
-0x40017898 B  REGISTER MDIOS_DINR31 (ro): MDIOS input data register 31
+0x40017898 B  REGISTER DINR31 (ro): MDIOS input data register 31
 0x40017898 C   FIELD 00w16 DIN31: Input data received from MDIO Master during write frames
-0x4001789C B  REGISTER MDIOS_DOUTR0 (rw): MDIOS output data register 0
+0x4001789C B  REGISTER DOUTR0 (rw): MDIOS output data register 0
 0x4001789C C   FIELD 00w16 DOUT0: Output data sent to MDIO Master during read frames
-0x400178A0 B  REGISTER MDIOS_DOUTR1 (rw): MDIOS output data register 1
+0x400178A0 B  REGISTER DOUTR1 (rw): MDIOS output data register 1
 0x400178A0 C   FIELD 00w16 DOUT1: Output data sent to MDIO Master during read frames
-0x400178A4 B  REGISTER MDIOS_DOUTR2 (rw): MDIOS output data register 2
+0x400178A4 B  REGISTER DOUTR2 (rw): MDIOS output data register 2
 0x400178A4 C   FIELD 00w16 DOUT2: Output data sent to MDIO Master during read frames
-0x400178A8 B  REGISTER MDIOS_DOUTR3 (rw): MDIOS output data register 3
+0x400178A8 B  REGISTER DOUTR3 (rw): MDIOS output data register 3
 0x400178A8 C   FIELD 00w16 DOUT3: Output data sent to MDIO Master during read frames
-0x400178AC B  REGISTER MDIOS_DOUTR4 (rw): MDIOS output data register 4
+0x400178AC B  REGISTER DOUTR4 (rw): MDIOS output data register 4
 0x400178AC C   FIELD 00w16 DOUT4: Output data sent to MDIO Master during read frames
-0x400178B0 B  REGISTER MDIOS_DOUTR5 (rw): MDIOS output data register 5
+0x400178B0 B  REGISTER DOUTR5 (rw): MDIOS output data register 5
 0x400178B0 C   FIELD 00w16 DOUT5: Output data sent to MDIO Master during read frames
-0x400178B4 B  REGISTER MDIOS_DOUTR6 (rw): MDIOS output data register 6
+0x400178B4 B  REGISTER DOUTR6 (rw): MDIOS output data register 6
 0x400178B4 C   FIELD 00w16 DOUT6: Output data sent to MDIO Master during read frames
-0x400178B8 B  REGISTER MDIOS_DOUTR7 (rw): MDIOS output data register 7
+0x400178B8 B  REGISTER DOUTR7 (rw): MDIOS output data register 7
 0x400178B8 C   FIELD 00w16 DOUT7: Output data sent to MDIO Master during read frames
-0x400178BC B  REGISTER MDIOS_DOUTR8 (rw): MDIOS output data register 8
+0x400178BC B  REGISTER DOUTR8 (rw): MDIOS output data register 8
 0x400178BC C   FIELD 00w16 DOUT8: Output data sent to MDIO Master during read frames
-0x400178C0 B  REGISTER MDIOS_DOUTR9 (rw): MDIOS output data register 9
+0x400178C0 B  REGISTER DOUTR9 (rw): MDIOS output data register 9
 0x400178C0 C   FIELD 00w16 DOUT9: Output data sent to MDIO Master during read frames
-0x400178C4 B  REGISTER MDIOS_DOUTR10 (rw): MDIOS output data register 10
+0x400178C4 B  REGISTER DOUTR10 (rw): MDIOS output data register 10
 0x400178C4 C   FIELD 00w16 DOUT10: Output data sent to MDIO Master during read frames
-0x400178C8 B  REGISTER MDIOS_DOUTR11 (rw): MDIOS output data register 11
+0x400178C8 B  REGISTER DOUTR11 (rw): MDIOS output data register 11
 0x400178C8 C   FIELD 00w16 DOUT11: Output data sent to MDIO Master during read frames
-0x400178CC B  REGISTER MDIOS_DOUTR12 (rw): MDIOS output data register 12
+0x400178CC B  REGISTER DOUTR12 (rw): MDIOS output data register 12
 0x400178CC C   FIELD 00w16 DOUT12: Output data sent to MDIO Master during read frames
-0x400178D0 B  REGISTER MDIOS_DOUTR13 (rw): MDIOS output data register 13
+0x400178D0 B  REGISTER DOUTR13 (rw): MDIOS output data register 13
 0x400178D0 C   FIELD 00w16 DOUT13: Output data sent to MDIO Master during read frames
-0x400178D4 B  REGISTER MDIOS_DOUTR14 (rw): MDIOS output data register 14
+0x400178D4 B  REGISTER DOUTR14 (rw): MDIOS output data register 14
 0x400178D4 C   FIELD 00w16 DOUT14: Output data sent to MDIO Master during read frames
-0x400178D8 B  REGISTER MDIOS_DOUTR15 (rw): MDIOS output data register 15
+0x400178D8 B  REGISTER DOUTR15 (rw): MDIOS output data register 15
 0x400178D8 C   FIELD 00w16 DOUT15: Output data sent to MDIO Master during read frames
-0x400178DC B  REGISTER MDIOS_DOUTR16 (rw): MDIOS output data register 16
+0x400178DC B  REGISTER DOUTR16 (rw): MDIOS output data register 16
 0x400178DC C   FIELD 00w16 DOUT16: Output data sent to MDIO Master during read frames
-0x400178E0 B  REGISTER MDIOS_DOUTR17 (rw): MDIOS output data register 17
+0x400178E0 B  REGISTER DOUTR17 (rw): MDIOS output data register 17
 0x400178E0 C   FIELD 00w16 DOUT17: Output data sent to MDIO Master during read frames
-0x400178E4 B  REGISTER MDIOS_DOUTR18 (rw): MDIOS output data register 18
+0x400178E4 B  REGISTER DOUTR18 (rw): MDIOS output data register 18
 0x400178E4 C   FIELD 00w16 DOUT18: Output data sent to MDIO Master during read frames
-0x400178E8 B  REGISTER MDIOS_DOUTR19 (rw): MDIOS output data register 19
+0x400178E8 B  REGISTER DOUTR19 (rw): MDIOS output data register 19
 0x400178E8 C   FIELD 00w16 DOUT19: Output data sent to MDIO Master during read frames
-0x400178EC B  REGISTER MDIOS_DOUTR20 (rw): MDIOS output data register 20
+0x400178EC B  REGISTER DOUTR20 (rw): MDIOS output data register 20
 0x400178EC C   FIELD 00w16 DOUT20: Output data sent to MDIO Master during read frames
-0x400178F0 B  REGISTER MDIOS_DOUTR21 (rw): MDIOS output data register 21
+0x400178F0 B  REGISTER DOUTR21 (rw): MDIOS output data register 21
 0x400178F0 C   FIELD 00w16 DOUT21: Output data sent to MDIO Master during read frames
-0x400178F4 B  REGISTER MDIOS_DOUTR22 (rw): MDIOS output data register 22
+0x400178F4 B  REGISTER DOUTR22 (rw): MDIOS output data register 22
 0x400178F4 C   FIELD 00w16 DOUT22: Output data sent to MDIO Master during read frames
-0x400178F8 B  REGISTER MDIOS_DOUTR23 (rw): MDIOS output data register 23
+0x400178F8 B  REGISTER DOUTR23 (rw): MDIOS output data register 23
 0x400178F8 C   FIELD 00w16 DOUT23: Output data sent to MDIO Master during read frames
-0x400178FC B  REGISTER MDIOS_DOUTR24 (rw): MDIOS output data register 24
+0x400178FC B  REGISTER DOUTR24 (rw): MDIOS output data register 24
 0x400178FC C   FIELD 00w16 DOUT24: Output data sent to MDIO Master during read frames
-0x40017900 B  REGISTER MDIOS_DOUTR25 (rw): MDIOS output data register 25
+0x40017900 B  REGISTER DOUTR25 (rw): MDIOS output data register 25
 0x40017900 C   FIELD 00w16 DOUT25: Output data sent to MDIO Master during read frames
-0x40017904 B  REGISTER MDIOS_DOUTR26 (rw): MDIOS output data register 26
+0x40017904 B  REGISTER DOUTR26 (rw): MDIOS output data register 26
 0x40017904 C   FIELD 00w16 DOUT26: Output data sent to MDIO Master during read frames
-0x40017908 B  REGISTER MDIOS_DOUTR27 (rw): MDIOS output data register 27
+0x40017908 B  REGISTER DOUTR27 (rw): MDIOS output data register 27
 0x40017908 C   FIELD 00w16 DOUT27: Output data sent to MDIO Master during read frames
-0x4001790C B  REGISTER MDIOS_DOUTR28 (rw): MDIOS output data register 28
+0x4001790C B  REGISTER DOUTR28 (rw): MDIOS output data register 28
 0x4001790C C   FIELD 00w16 DOUT28: Output data sent to MDIO Master during read frames
-0x40017910 B  REGISTER MDIOS_DOUTR29 (rw): MDIOS output data register 29
+0x40017910 B  REGISTER DOUTR29 (rw): MDIOS output data register 29
 0x40017910 C   FIELD 00w16 DOUT29: Output data sent to MDIO Master during read frames
-0x40017914 B  REGISTER MDIOS_DOUTR30 (rw): MDIOS output data register 30
+0x40017914 B  REGISTER DOUTR30 (rw): MDIOS output data register 30
 0x40017914 C   FIELD 00w16 DOUT30: Output data sent to MDIO Master during read frames
-0x40017918 B  REGISTER MDIOS_DOUTR31 (rw): MDIOS output data register 31
+0x40017918 B  REGISTER DOUTR31 (rw): MDIOS output data register 31
 0x40017918 C   FIELD 00w16 DOUT31: Output data sent to MDIO Master during read frames
 0x40020000 A PERIPHERAL GPIOA
 0x40020000 B  REGISTER MODER (rw): GPIO port mode register
@@ -12979,48 +12979,48 @@
 0x50050028 C   FIELD 16w08 Byte2: Data byte 2
 0x50050028 C   FIELD 24w08 Byte3: Data byte 3
 0x50051000 A PERIPHERAL JPEG
-0x50051000 B  REGISTER JPEG_CONFR0 (wo): JPEG codec configuration register 0
+0x50051000 B  REGISTER CONFR0 (wo): JPEG codec configuration register 0
 0x50051000 C   FIELD 00w01 START: Start
-0x50051004 B  REGISTER JPEG_CONFR1 (rw): JPEG codec configuration register 1
+0x50051004 B  REGISTER CONFR1 (rw): JPEG codec configuration register 1
 0x50051004 C   FIELD 00w02 NF: Number of color components
 0x50051004 C   FIELD 03w01 DE: Decoding Enable
 0x50051004 C   FIELD 04w02 COLORSPACE: Color Space
 0x50051004 C   FIELD 06w02 NS: Number of components for Scan
 0x50051004 C   FIELD 08w01 HDR: Header Processing
 0x50051004 C   FIELD 16w16 YSIZE: Y Size
-0x50051008 B  REGISTER JPEG_CONFR2 (rw): JPEG codec configuration register 2
+0x50051008 B  REGISTER CONFR2 (rw): JPEG codec configuration register 2
 0x50051008 C   FIELD 00w26 NMCU: Number of MCU
-0x5005100C B  REGISTER JPEG_CONFR3 (rw): JPEG codec configuration register 3
+0x5005100C B  REGISTER CONFR3 (rw): JPEG codec configuration register 3
 0x5005100C C   FIELD 16w16 XSIZE: X size
-0x50051010 B  REGISTER JPEG_CONFR4 (rw): JPEG codec configuration register 4
+0x50051010 B  REGISTER CONFR4 (rw): JPEG codec configuration register 4
 0x50051010 C   FIELD 00w01 HD: Huffman DC
 0x50051010 C   FIELD 01w01 HA: Huffman AC
 0x50051010 C   FIELD 02w02 QT: Quantization Table
 0x50051010 C   FIELD 04w04 NB: Number of Block
 0x50051010 C   FIELD 08w04 VSF: Vertical Sampling Factor
 0x50051010 C   FIELD 12w04 HSF: Horizontal Sampling Factor
-0x50051014 B  REGISTER JPEG_CONFR5 (rw): JPEG codec configuration register 5
+0x50051014 B  REGISTER CONFR5 (rw): JPEG codec configuration register 5
 0x50051014 C   FIELD 00w01 HD: Huffman DC
 0x50051014 C   FIELD 01w01 HA: Huffman AC
 0x50051014 C   FIELD 02w02 QT: Quantization Table
 0x50051014 C   FIELD 04w04 NB: Number of Block
 0x50051014 C   FIELD 08w04 VSF: Vertical Sampling Factor
 0x50051014 C   FIELD 12w04 HSF: Horizontal Sampling Factor
-0x50051018 B  REGISTER JPEG_CONFR6 (rw): JPEG codec configuration register 6
+0x50051018 B  REGISTER CONFR6 (rw): JPEG codec configuration register 6
 0x50051018 C   FIELD 00w01 HD: Huffman DC
 0x50051018 C   FIELD 01w01 HA: Huffman AC
 0x50051018 C   FIELD 02w02 QT: Quantization Table
 0x50051018 C   FIELD 04w04 NB: Number of Block
 0x50051018 C   FIELD 08w04 VSF: Vertical Sampling Factor
 0x50051018 C   FIELD 12w04 HSF: Horizontal Sampling Factor
-0x5005101C B  REGISTER JPEG_CONFR7 (rw): JPEG codec configuration register 7
+0x5005101C B  REGISTER CONFR7 (rw): JPEG codec configuration register 7
 0x5005101C C   FIELD 00w01 HD: Huffman DC
 0x5005101C C   FIELD 01w01 HA: Huffman AC
 0x5005101C C   FIELD 02w02 QT: Quantization Table
 0x5005101C C   FIELD 04w04 NB: Number of Block
 0x5005101C C   FIELD 08w04 VSF: Vertical Sampling Factor
 0x5005101C C   FIELD 12w04 HSF: Horizontal Sampling Factor
-0x50051030 B  REGISTER JPEG_CR: JPEG control register
+0x50051030 B  REGISTER CR: JPEG control register
 0x50051030 C   FIELD 00w01 JCEN (rw): JPEG Core Enable
 0x50051030 C   FIELD 01w01 IFTIE (rw): Input FIFO Threshold Interrupt Enable
 0x50051030 C   FIELD 02w01 IFNFIE (rw): Input FIFO Not Full Interrupt Enable
@@ -13032,7 +13032,7 @@
 0x50051030 C   FIELD 12w01 ODMAEN (rw): Output DMA Enable
 0x50051030 C   FIELD 13w01 IFF (ro): Input FIFO Flush
 0x50051030 C   FIELD 14w01 OFF (ro): Output FIFO Flush
-0x50051034 B  REGISTER JPEG_SR (ro): JPEG status register
+0x50051034 B  REGISTER SR (ro): JPEG status register
 0x50051034 C   FIELD 01w01 IFTF: Input FIFO Threshold Flag
 0x50051034 C   FIELD 02w01 IFNFF: Input FIFO Not Full Flag
 0x50051034 C   FIELD 03w01 OFTF: Output FIFO Threshold Flag
@@ -13040,12 +13040,12 @@
 0x50051034 C   FIELD 05w01 EOCF: End of Conversion Flag
 0x50051034 C   FIELD 06w01 HPDF: Header Parsing Done Flag
 0x50051034 C   FIELD 07w01 COF: Codec Operation Flag
-0x50051038 B  REGISTER JPEG_CFR (wo): JPEG clear flag register
+0x50051038 B  REGISTER CFR (wo): JPEG clear flag register
 0x50051038 C   FIELD 05w01 CEOCF: Clear End of Conversion Flag
 0x50051038 C   FIELD 06w01 CHPDF: Clear Header Parsing Done Flag
-0x50051040 B  REGISTER JPEG_DIR (wo): JPEG data input register
+0x50051040 B  REGISTER DIR (wo): JPEG data input register
 0x50051040 C   FIELD 00w32 DATAIN: Data Input FIFO
-0x50051044 B  REGISTER JPEG_DOR (ro): JPEG data output register
+0x50051044 B  REGISTER DOR (ro): JPEG data output register
 0x50051044 C   FIELD 00w32 DATAOUT: Data Output FIFO
 0x50051050 B  REGISTER QMEM0_0 (rw): JPEG quantization tables
 0x50051050 C   FIELD 00w32 QMem_RAM: QMem RAM
@@ -14907,21 +14907,21 @@
 0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
 0xE000ED88 C   FIELD 20w04 CP: CP
 0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER MPU_TYPER (ro): MPU type register
+0xE000ED90 B  REGISTER TYPER (ro): MPU type register
 0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
 0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
 0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER MPU_CTRL (ro): MPU control register
+0xE000ED94 B  REGISTER CTRL (ro): MPU control register
 0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
 0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
 0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER MPU_RNR (rw): MPU region number register
+0xE000ED98 B  REGISTER RNR (rw): MPU region number register
 0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER MPU_RBAR (rw): MPU region base address register
+0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
 0xE000ED9C C   FIELD 00w04 REGION: MPU region field
 0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
 0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER MPU_RASR (rw): MPU region attribute and size register
+0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
 0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
 0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
 0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits

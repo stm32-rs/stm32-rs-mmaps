@@ -7473,7 +7473,7 @@
 0x40029054 B  REGISTER DMACHRBAR (ro): Ethernet DMA current host receive buffer address register
 0x40029054 C   FIELD 00w32 HRBAP: Host receive buffer address pointer
 0x4002B000 A PERIPHERAL DMA2D
-0x4002B000 B  REGISTER DMA2D_CR (rw): DMA2D control register
+0x4002B000 B  REGISTER CR (rw): DMA2D control register
 0x4002B000 C   FIELD 00w01 START: Start This bit can be used to launch the DMA2D according to the parameters loaded in the various configuration registers. This bit is automatically reset by the following events: ** At the end of the transfer ** When the data transfer is aborted by the user application by setting the ABORT bit in DMA2D_CR ** When a data transfer error occurs ** When the data transfer has not started due to a configuration error or another transfer operation already ongoing (automatic CLUT loading).
 0x4002B000 C   FIELD 01w01 SUSP: Suspend This bit can be used to suspend the current transfer. This bit is set and reset by software. It is automatically reset by hardware when the START bit is reset.
 0x4002B000 C   FIELD 02w01 ABORT: Abort This bit can be used to abort the current transfer. This bit is set by software and is automatically reset by hardware when the START bit is reset.
@@ -7484,29 +7484,29 @@
 0x4002B000 C   FIELD 12w01 CTCIE: CLUT transfer complete interrupt enable This bit is set and cleared by software.
 0x4002B000 C   FIELD 13w01 CEIE: Configuration Error Interrupt Enable This bit is set and cleared by software.
 0x4002B000 C   FIELD 16w02 MODE: DMA2D mode This bit is set and cleared by software. It cannot be modified while a transfer is ongoing.
-0x4002B004 B  REGISTER DMA2D_ISR (ro): DMA2D Interrupt Status Register
+0x4002B004 B  REGISTER ISR (ro): DMA2D Interrupt Status Register
 0x4002B004 C   FIELD 00w01 TEIF: Transfer error interrupt flag This bit is set when an error occurs during a DMA transfer (data transfer or automatic CLUT loading).
 0x4002B004 C   FIELD 01w01 TCIF: Transfer complete interrupt flag This bit is set when a DMA2D transfer operation is complete (data transfer only).
 0x4002B004 C   FIELD 02w01 TWIF: Transfer watermark interrupt flag This bit is set when the last pixel of the watermarked line has been transferred.
 0x4002B004 C   FIELD 03w01 CAEIF: CLUT access error interrupt flag This bit is set when the CPU accesses the CLUT while the CLUT is being automatically copied from a system memory to the internal DMA2D.
 0x4002B004 C   FIELD 04w01 CTCIF: CLUT transfer complete interrupt flag This bit is set when the CLUT copy from a system memory area to the internal DMA2D memory is complete.
 0x4002B004 C   FIELD 05w01 CEIF: Configuration error interrupt flag This bit is set when the START bit of DMA2D_CR, DMA2DFGPFCCR or DMA2D_BGPFCCR is set and a wrong configuration has been programmed.
-0x4002B008 B  REGISTER DMA2D_IFCR (rw): DMA2D interrupt flag clear register
+0x4002B008 B  REGISTER IFCR (rw): DMA2D interrupt flag clear register
 0x4002B008 C   FIELD 00w01 CTEIF: Clear Transfer error interrupt flag Programming this bit to 1 clears the TEIF flag in the DMA2D_ISR register
 0x4002B008 C   FIELD 01w01 CTCIF: Clear transfer complete interrupt flag Programming this bit to 1 clears the TCIF flag in the DMA2D_ISR register
 0x4002B008 C   FIELD 02w01 CTWIF: Clear transfer watermark interrupt flag Programming this bit to 1 clears the TWIF flag in the DMA2D_ISR register
 0x4002B008 C   FIELD 03w01 CAECIF: Clear CLUT access error interrupt flag Programming this bit to 1 clears the CAEIF flag in the DMA2D_ISR register
 0x4002B008 C   FIELD 04w01 CCTCIF: Clear CLUT transfer complete interrupt flag Programming this bit to 1 clears the CTCIF flag in the DMA2D_ISR register
 0x4002B008 C   FIELD 05w01 CCEIF: Clear configuration error interrupt flag Programming this bit to 1 clears the CEIF flag in the DMA2D_ISR register
-0x4002B00C B  REGISTER DMA2D_FGMAR (rw): DMA2D foreground memory address register
+0x4002B00C B  REGISTER FGMAR (rw): DMA2D foreground memory address register
 0x4002B00C C   FIELD 00w32 MA: Memory address Address of the data used for the foreground image. This register can only be written when data transfers are disabled. Once the data transfer has started, this register is read-only. The address alignment must match the image format selected e.g. a 32-bit per pixel format must be 32-bit aligned, a 16-bit per pixel format must be 16-bit aligned and a 4-bit per pixel format must be 8-bit aligned.
-0x4002B010 B  REGISTER DMA2D_FGOR (rw): DMA2D foreground offset register
+0x4002B010 B  REGISTER FGOR (rw): DMA2D foreground offset register
 0x4002B010 C   FIELD 00w14 LO: Line offset Line offset used for the foreground expressed in pixel. This value is used to generate the address. It is added at the end of each line to determine the starting address of the next line. These bits can only be written when data transfers are disabled. Once a data transfer has started, they become read-only. If the image format is 4-bit per pixel, the line offset must be even.
-0x4002B014 B  REGISTER DMA2D_BGMAR (rw): DMA2D background memory address register
+0x4002B014 B  REGISTER BGMAR (rw): DMA2D background memory address register
 0x4002B014 C   FIELD 00w32 MA: Memory address Address of the data used for the background image. This register can only be written when data transfers are disabled. Once a data transfer has started, this register is read-only. The address alignment must match the image format selected e.g. a 32-bit per pixel format must be 32-bit aligned, a 16-bit per pixel format must be 16-bit aligned and a 4-bit per pixel format must be 8-bit aligned.
-0x4002B018 B  REGISTER DMA2D_BGOR (rw): DMA2D background offset register
+0x4002B018 B  REGISTER BGOR (rw): DMA2D background offset register
 0x4002B018 C   FIELD 00w14 LO: Line offset Line offset used for the background image (expressed in pixel). This value is used for the address generation. It is added at the end of each line to determine the starting address of the next line. These bits can only be written when data transfers are disabled. Once data transfer has started, they become read-only. If the image format is 4-bit per pixel, the line offset must be even.
-0x4002B01C B  REGISTER DMA2D_FGPFCCR (rw): DMA2D foreground PFC control register
+0x4002B01C B  REGISTER FGPFCCR (rw): DMA2D foreground PFC control register
 0x4002B01C C   FIELD 00w04 CM: Color mode These bits defines the color format of the foreground image. They can only be written when data transfers are disabled. Once the transfer has started, they are read-only. others: meaningless
 0x4002B01C C   FIELD 04w01 CCM: CLUT color mode This bit defines the color format of the CLUT. It can only be written when the transfer is disabled. Once the CLUT transfer has started, this bit is read-only.
 0x4002B01C C   FIELD 05w01 START: Start This bit can be set to start the automatic loading of the CLUT. It is automatically reset: ** at the end of the transfer ** when the transfer is aborted by the user application by setting the ABORT bit in DMA2D_CR ** when a transfer error occurs ** when the transfer has not started due to a configuration error or another transfer operation already ongoing (data transfer or automatic background CLUT transfer).
@@ -7516,11 +7516,11 @@
 0x4002B01C C   FIELD 20w01 AI: Alpha Inverted This bit inverts the alpha value. Once the transfer has started, this bit is read-only.
 0x4002B01C C   FIELD 21w01 RBS: Red Blue Swap This bit allows to swap the R &amp; B to support BGR or ABGR color formats. Once the transfer has started, this bit is read-only.
 0x4002B01C C   FIELD 24w08 ALPHA: Alpha value These bits define a fixed alpha channel value which can replace the original alpha value or be multiplied by the original alpha value according to the alpha mode selected through the AM[1:0] bits. These bits can only be written when data transfers are disabled. Once a transfer has started, they become read-only.
-0x4002B020 B  REGISTER DMA2D_FGCOLR (rw): DMA2D foreground color register
+0x4002B020 B  REGISTER FGCOLR (rw): DMA2D foreground color register
 0x4002B020 C   FIELD 00w08 BLUE: Blue Value These bits defines the blue value for the A4 or A8 mode of the foreground image. They can only be written when data transfers are disabled. Once the transfer has started, They are read-only.
 0x4002B020 C   FIELD 08w08 GREEN: Green Value These bits defines the green value for the A4 or A8 mode of the foreground image. They can only be written when data transfers are disabled. Once the transfer has started, They are read-only.
 0x4002B020 C   FIELD 16w08 RED: Red Value These bits defines the red value for the A4 or A8 mode of the foreground image. They can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
-0x4002B024 B  REGISTER DMA2D_BGPFCCR (rw): DMA2D background PFC control register
+0x4002B024 B  REGISTER BGPFCCR (rw): DMA2D background PFC control register
 0x4002B024 C   FIELD 00w04 CM: Color mode These bits define the color format of the foreground image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only. others: meaningless
 0x4002B024 C   FIELD 04w01 CCM: CLUT Color mode These bits define the color format of the CLUT. This register can only be written when the transfer is disabled. Once the CLUT transfer has started, this bit is read-only.
 0x4002B024 C   FIELD 05w01 START: Start This bit is set to start the automatic loading of the CLUT. This bit is automatically reset: ** at the end of the transfer ** when the transfer is aborted by the user application by setting the ABORT bit in the DMA2D_CR ** when a transfer error occurs ** when the transfer has not started due to a configuration error or another transfer operation already on going (data transfer or automatic BackGround CLUT transfer).
@@ -7529,33 +7529,33 @@
 0x4002B024 C   FIELD 20w01 AI: Alpha Inverted This bit inverts the alpha value. Once the transfer has started, this bit is read-only.
 0x4002B024 C   FIELD 21w01 RBS: Red Blue Swap This bit allows to swap the R &amp; B to support BGR or ABGR color formats. Once the transfer has started, this bit is read-only.
 0x4002B024 C   FIELD 24w08 ALPHA: Alpha value These bits define a fixed alpha channel value which can replace the original alpha value or be multiplied with the original alpha value according to the alpha mode selected with bits AM[1: 0]. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
-0x4002B028 B  REGISTER DMA2D_BGCOLR (rw): DMA2D background color register
+0x4002B028 B  REGISTER BGCOLR (rw): DMA2D background color register
 0x4002B028 C   FIELD 00w08 BLUE: Blue Value These bits define the blue value for the A4 or A8 mode of the background. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
 0x4002B028 C   FIELD 08w08 GREEN: Green Value These bits define the green value for the A4 or A8 mode of the background. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
 0x4002B028 C   FIELD 16w08 RED: Red Value These bits define the red value for the A4 or A8 mode of the background. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
-0x4002B02C B  REGISTER DMA2D_FGCMAR (rw): DMA2D foreground CLUT memory address register
+0x4002B02C B  REGISTER FGCMAR (rw): DMA2D foreground CLUT memory address register
 0x4002B02C C   FIELD 00w32 MA: Memory Address Address of the data used for the CLUT address dedicated to the foreground image. This register can only be written when no transfer is ongoing. Once the CLUT transfer has started, this register is read-only. If the foreground CLUT format is 32-bit, the address must be 32-bit aligned.
-0x4002B030 B  REGISTER DMA2D_BGCMAR (rw): DMA2D background CLUT memory address register
+0x4002B030 B  REGISTER BGCMAR (rw): DMA2D background CLUT memory address register
 0x4002B030 C   FIELD 00w32 MA: Memory address Address of the data used for the CLUT address dedicated to the background image. This register can only be written when no transfer is on going. Once the CLUT transfer has started, this register is read-only. If the background CLUT format is 32-bit, the address must be 32-bit aligned.
-0x4002B034 B  REGISTER DMA2D_OPFCCR (rw): DMA2D output PFC control register
+0x4002B034 B  REGISTER OPFCCR (rw): DMA2D output PFC control register
 0x4002B034 C   FIELD 00w03 CM: Color mode These bits define the color format of the output image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only. others: meaningless
 0x4002B034 C   FIELD 20w01 AI: Alpha Inverted This bit inverts the alpha value. Once the transfer has started, this bit is read-only.
 0x4002B034 C   FIELD 21w01 RBS: Red Blue Swap This bit allows to swap the R &amp; B to support BGR or ABGR color formats. Once the transfer has started, this bit is read-only.
-0x4002B038 B  REGISTER DMA2D_OCOLR (rw): DMA2D output color register
+0x4002B038 B  REGISTER OCOLR (rw): DMA2D output color register
 0x4002B038 C   FIELD 00w08 BLUE: Blue Value These bits define the blue value of the output image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
 0x4002B038 C   FIELD 08w08 GREEN: Green Value These bits define the green value of the output image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
 0x4002B038 C   FIELD 16w08 RED: Red Value These bits define the red value of the output image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
 0x4002B038 C   FIELD 24w08 ALPHA: Alpha Channel Value These bits define the alpha channel of the output color. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
-0x4002B03C B  REGISTER DMA2D_OMAR (rw): DMA2D output memory address register
+0x4002B03C B  REGISTER OMAR (rw): DMA2D output memory address register
 0x4002B03C C   FIELD 00w32 MA: Memory Address Address of the data used for the output FIFO. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only. The address alignment must match the image format selected e.g. a 32-bit per pixel format must be 32-bit aligned and a 16-bit per pixel format must be 16-bit aligned.
-0x4002B040 B  REGISTER DMA2D_OOR (rw): DMA2D output offset register
+0x4002B040 B  REGISTER OOR (rw): DMA2D output offset register
 0x4002B040 C   FIELD 00w14 LO: Line Offset Line offset used for the output (expressed in pixels). This value is used for the address generation. It is added at the end of each line to determine the starting address of the next line. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
-0x4002B044 B  REGISTER DMA2D_NLR (rw): DMA2D number of line register
+0x4002B044 B  REGISTER NLR (rw): DMA2D number of line register
 0x4002B044 C   FIELD 00w16 NL: Number of lines Number of lines of the area to be transferred. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
 0x4002B044 C   FIELD 16w14 PL: Pixel per lines Number of pixels per lines of the area to be transferred. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only. If any of the input image format is 4-bit per pixel, pixel per lines must be even.
-0x4002B048 B  REGISTER DMA2D_LWR (rw): DMA2D line watermark register
+0x4002B048 B  REGISTER LWR (rw): DMA2D line watermark register
 0x4002B048 C   FIELD 00w16 LW: Line watermark These bits allow to configure the line watermark for interrupt generation. An interrupt is raised when the last pixel of the watermarked line has been transferred. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
-0x4002B04C B  REGISTER DMA2D_AMTCR (rw): DMA2D AXI master timer configuration register
+0x4002B04C B  REGISTER AMTCR (rw): DMA2D AXI master timer configuration register
 0x4002B04C C   FIELD 00w01 EN: Enable Enables the dead time functionality.
 0x4002B04C C   FIELD 08w08 DT: Dead Time Dead time value in the AXI clock cycle inserted between two consecutive accesses on the AXI master port. These bits represent the minimum guaranteed number of cycles between two consecutive AXI accesses.
 0x40040000 A PERIPHERAL OTG_HS_GLOBAL
@@ -10323,21 +10323,21 @@
 0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
 0xE000ED88 C   FIELD 20w04 CP: CP
 0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER MPU_TYPER (ro): MPU type register
+0xE000ED90 B  REGISTER TYPER (ro): MPU type register
 0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
 0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
 0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER MPU_CTRL (ro): MPU control register
+0xE000ED94 B  REGISTER CTRL (ro): MPU control register
 0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
 0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
 0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER MPU_RNR (rw): MPU region number register
+0xE000ED98 B  REGISTER RNR (rw): MPU region number register
 0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER MPU_RBAR (rw): MPU region base address register
+0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
 0xE000ED9C C   FIELD 00w04 REGION: MPU region field
 0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
 0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER MPU_RASR (rw): MPU region attribute and size register
+0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
 0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
 0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
 0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
