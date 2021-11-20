@@ -2333,7 +2333,7 @@
 0x40007080 B  REGISTER PRIVCFGR (rw): Power privilege configuration register
 0x40007080 C   FIELD 00w01 PRIV: PRIV
 0x40007400 A PERIPHERAL DAC
-0x40007400 B  REGISTER DAC_CR (rw): DAC control register
+0x40007400 B  REGISTER CR (rw): DAC control register
 0x40007400 C   FIELD 00w01 EN1: DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x40007400 C   FIELD 01w01 TEN1: DAC channel1 trigger enable
 0x40007400 C   FIELD 02w01 TSEL10: TSEL10
@@ -2357,55 +2357,55 @@
 0x40007400 C   FIELD 28w01 DMAEN2: DAC channel2 DMA enable This bit is set and cleared by software.
 0x40007400 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable This bit is set and cleared by software.
 0x40007400 C   FIELD 30w01 CEN2: DAC Channel 2 calibration enable This bit is set and cleared by software to enable/disable DAC channel 2 calibration, it can be written only if bit EN2=0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored.
-0x40007404 B  REGISTER DAC_SWTRGR (wo): DAC software trigger register
+0x40007404 B  REGISTER SWTRGR (wo): DAC software trigger register
 0x40007404 C   FIELD 00w01 SWTRIG1: DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
 0x40007404 C   FIELD 01w01 SWTRIG2: DAC channel2 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR2 register value has been loaded into the DAC_DOR2 register.
-0x40007408 B  REGISTER DAC_DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
+0x40007408 B  REGISTER DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
 0x40007408 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
-0x4000740C B  REGISTER DAC_DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
+0x4000740C B  REGISTER DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
 0x4000740C C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
-0x40007410 B  REGISTER DAC_DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
+0x40007410 B  REGISTER DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
 0x40007410 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
-0x40007414 B  REGISTER DAC_DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
+0x40007414 B  REGISTER DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
 0x40007414 C   FIELD 00w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007418 B  REGISTER DAC_DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
+0x40007418 B  REGISTER DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
 0x40007418 C   FIELD 04w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
-0x4000741C B  REGISTER DAC_DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
+0x4000741C B  REGISTER DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
 0x4000741C C   FIELD 00w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x40007420 B  REGISTER DAC_DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x40007420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
 0x40007420 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007420 C   FIELD 16w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007424 B  REGISTER DAC_DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x40007424 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
 0x40007424 C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007424 C   FIELD 20w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007428 B  REGISTER DAC_DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x40007428 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
 0x40007428 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
 0x40007428 C   FIELD 08w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x4000742C B  REGISTER DAC_DOR1 (ro): DAC channel1 data output register
+0x4000742C B  REGISTER DOR1 (ro): DAC channel1 data output register
 0x4000742C C   FIELD 00w12 DACC1DOR: DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
-0x40007430 B  REGISTER DAC_DOR2 (ro): DAC channel2 data output register
+0x40007430 B  REGISTER DOR2 (ro): DAC channel2 data output register
 0x40007430 C   FIELD 00w12 DACC2DOR: DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
-0x40007434 B  REGISTER DAC_SR: DAC status register
+0x40007434 B  REGISTER SR: DAC status register
 0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC Channel 1 calibration offset status This bit is set and cleared by hardware
 0x40007434 C   FIELD 15w01 BWST1 (ro): DAC Channel 1 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3LSI periods of synchronization).
 0x40007434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x40007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC Channel 2 calibration offset status This bit is set and cleared by hardware
 0x40007434 C   FIELD 31w01 BWST2 (ro): DAC Channel 2 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR2, It is cleared by hardware when the write operation of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization).
-0x40007438 B  REGISTER DAC_CCR (rw): DAC calibration control register
+0x40007438 B  REGISTER CCR (rw): DAC calibration control register
 0x40007438 C   FIELD 00w05 OTRIM1: DAC Channel 1 offset trimming value
 0x40007438 C   FIELD 16w05 OTRIM2: DAC Channel 2 offset trimming value
-0x4000743C B  REGISTER DAC_MCR (rw): DAC mode control register
+0x4000743C B  REGISTER MCR (rw): DAC mode control register
 0x4000743C C   FIELD 00w03 MODE1: DAC Channel 1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 1 mode: DAC Channel 1 in normal Mode DAC Channel 1 in sample &amp; hold mode
 0x4000743C C   FIELD 16w03 MODE2: DAC Channel 2 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 2 mode: DAC Channel 2 in normal Mode DAC Channel 2 in sample &amp; hold mode
-0x40007440 B  REGISTER DAC_SHSR1 (rw): DAC Sample and Hold sample time register 1
+0x40007440 B  REGISTER SHSR1 (rw): DAC Sample and Hold sample time register 1
 0x40007440 C   FIELD 00w10 TSAMPLE1: DAC Channel 1 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, If BWSTx=1, the write operation is ignored.
-0x40007444 B  REGISTER DAC_SHSR2 (rw): DAC Sample and Hold sample time register 2
+0x40007444 B  REGISTER SHSR2 (rw): DAC Sample and Hold sample time register 2
 0x40007444 C   FIELD 00w10 TSAMPLE2: DAC Channel 2 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, if BWSTx=1, the write operation is ignored.
-0x40007448 B  REGISTER DAC_SHHR (rw): DAC Sample and Hold hold time register
+0x40007448 B  REGISTER SHHR (rw): DAC Sample and Hold hold time register
 0x40007448 C   FIELD 00w10 THOLD1: DAC Channel 1 hold Time (only valid in sample &amp; hold mode) Hold time= (THOLD[9:0]) x T LSI
 0x40007448 C   FIELD 16w10 THOLD2: DAC Channel 2 hold time (only valid in sample &amp; hold mode). Hold time= (THOLD[9:0]) x T LSI
-0x4000744C B  REGISTER DAC_SHRR (rw): DAC Sample and Hold refresh time register
+0x4000744C B  REGISTER SHRR (rw): DAC Sample and Hold refresh time register
 0x4000744C C   FIELD 00w08 TREFRESH1: DAC Channel 1 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x4000744C C   FIELD 16w08 TREFRESH2: DAC Channel 2 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x40007800 A PERIPHERAL OPAMP
@@ -13681,7 +13681,7 @@
 0x4202830C C   FIELD 00w16 RDATA_MST: RDATA_MST
 0x4202830C C   FIELD 16w16 RDATA_SLV: RDATA_SLV
 0x420C0800 A PERIPHERAL RNG
-0x420C0800 B  REGISTER RNG_CR (rw): RNG control register
+0x420C0800 B  REGISTER CR (rw): RNG control register
 0x420C0800 C   FIELD 02w01 RNGEN: Random number generator enable
 0x420C0800 C   FIELD 03w01 IE: Interrupt enable
 0x420C0800 C   FIELD 05w01 CED: Clock error detection Note: The clock error detection can be used only when ck_rc48 or ck_pll1_q (ck_pll1_q = 48MHz) source is selected otherwise, CED bit must be equal to 1. The clock error detection cannot be enabled nor disabled on the fly when RNG peripheral is enabled, to enable or disable CED the RNG must be disabled.
@@ -13692,15 +13692,15 @@
 0x420C0800 C   FIELD 20w06 RNG_CONFIG1: RNG configuration 1
 0x420C0800 C   FIELD 30w01 CONDRST: Conditioning soft reset
 0x420C0800 C   FIELD 31w01 CONFIGLOCK: RNG Config Lock
-0x420C0804 B  REGISTER RNG_SR: RNG status register
+0x420C0804 B  REGISTER SR: RNG status register
 0x420C0804 C   FIELD 00w01 DRDY (ro): Data ready Note: If IE=1 in RNG_CR, an interrupt is generated when DRDY=1. It can rise when the peripheral is disabled. When the output buffer becomes empty (after reading RNG_DR), this bit returns to 0 until a new random value is generated.
 0x420C0804 C   FIELD 01w01 CECS (ro): Clock error current status Note: This bit is meaningless if CED (Clock error detection) bit in RNG_CR is equal to 1.
 0x420C0804 C   FIELD 02w01 SECS (ro): Seed error current status ** More than 64 consecutive bits at the same value (0 or 1) ** More than 32 consecutive alternances of 0 and 1 (0101010101...01)
 0x420C0804 C   FIELD 05w01 CEIS (rw): Clock error interrupt status This bit is set at the same time as CECS. It is cleared by writing it to 0. An interrupt is pending if IE = 1 in the RNG_CR register. Note: This bit is meaningless if CED (Clock error detection) bit in RNG_CR is equal to 1.
 0x420C0804 C   FIELD 06w01 SEIS (rw): Seed error interrupt status This bit is set at the same time as SECS. It is cleared by writing it to 0. ** More than 64 consecutive bits at the same value (0 or 1) ** More than 32 consecutive alternances of 0 and 1 (0101010101...01) An interrupt is pending if IE = 1 in the RNG_CR register.
-0x420C0808 B  REGISTER RNG_DR (ro): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
+0x420C0808 B  REGISTER DR (ro): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
 0x420C0808 C   FIELD 00w32 RNDATA: Random data 32-bit random data which are valid when DRDY=1.
-0x420C0810 B  REGISTER RNG_HTCR (rw): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
+0x420C0810 B  REGISTER HTCR (rw): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
 0x420C0810 C   FIELD 00w32 HTCFG: health test configuration
 0x420C8000 A PERIPHERAL SDMMC1
 0x420C8000 B  REGISTER SDMMC_POWER (rw): SDMMC power control register
@@ -13853,7 +13853,7 @@
 0x420C83F8 B  REGISTER SDMMC_ID (ro): SDMMC IP identification register
 0x420C83F8 C   FIELD 00w32 IP_ID: SDMMC IP identification.
 0x44020000 A PERIPHERAL FMC
-0x44020000 B  REGISTER FMC_BCR1 (rw): FMC_BCR1
+0x44020000 B  REGISTER BCR1 (rw): FMC_BCR1
 0x44020000 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x44020000 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x44020000 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -13871,7 +13871,7 @@
 0x44020000 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x44020000 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x44020000 C   FIELD 22w02 NBLSET: NBLSET
-0x44020004 B  REGISTER FMC_BTR1 (rw): This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
+0x44020004 B  REGISTER BTR1 (rw): This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
 0x44020004 C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x44020004 C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x44020004 C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -13880,7 +13880,7 @@
 0x44020004 C   FIELD 24w04 DATLAT: Data latency for synchronous memory For synchronous access with read write burst mode enabled these bits define the number of memory clock cycles
 0x44020004 C   FIELD 28w02 ACCMOD: Access mode These bits specify the asynchronous access modes as shown in the timing diagrams. They are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
 0x44020004 C   FIELD 30w02 DATAHLD: DATAHLD
-0x44020008 B  REGISTER FMC_BCR2 (rw): FMC_BCR2
+0x44020008 B  REGISTER BCR2 (rw): FMC_BCR2
 0x44020008 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x44020008 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x44020008 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -13898,7 +13898,7 @@
 0x44020008 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x44020008 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x44020008 C   FIELD 22w02 NBLSET: NBLSET
-0x4402000C B  REGISTER FMC_BTR2 (rw): FMC_BTR2
+0x4402000C B  REGISTER BTR2 (rw): FMC_BTR2
 0x4402000C C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x4402000C C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x4402000C C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -13907,7 +13907,7 @@
 0x4402000C C   FIELD 24w04 DATLAT: Data latency for synchronous memory For synchronous access with read write burst mode enabled these bits define the number of memory clock cycles
 0x4402000C C   FIELD 28w02 ACCMOD: Access mode These bits specify the asynchronous access modes as shown in the timing diagrams. They are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
 0x4402000C C   FIELD 30w02 DATAHLD: DATAHLD
-0x44020010 B  REGISTER FMC_BCR3 (rw): >FMC_BCR3
+0x44020010 B  REGISTER BCR3 (rw): >FMC_BCR3
 0x44020010 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x44020010 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x44020010 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -13925,7 +13925,7 @@
 0x44020010 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x44020010 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x44020010 C   FIELD 22w02 NBLSET: NBLSET
-0x44020014 B  REGISTER FMC_BTR3 (rw): FMC_BTR3
+0x44020014 B  REGISTER BTR3 (rw): FMC_BTR3
 0x44020014 C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x44020014 C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x44020014 C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -13934,7 +13934,7 @@
 0x44020014 C   FIELD 24w04 DATLAT: Data latency for synchronous memory For synchronous access with read write burst mode enabled these bits define the number of memory clock cycles
 0x44020014 C   FIELD 28w02 ACCMOD: Access mode These bits specify the asynchronous access modes as shown in the timing diagrams. They are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
 0x44020014 C   FIELD 30w02 DATAHLD: DATAHLD
-0x44020018 B  REGISTER FMC_BCR4 (rw): >FMC_BCR4
+0x44020018 B  REGISTER BCR4 (rw): >FMC_BCR4
 0x44020018 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x44020018 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x44020018 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -13952,7 +13952,7 @@
 0x44020018 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x44020018 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x44020018 C   FIELD 22w02 NBLSET: NBLSET
-0x4402001C B  REGISTER FMC_BTR4 (rw): FMC_BTR4
+0x4402001C B  REGISTER BTR4 (rw): FMC_BTR4
 0x4402001C C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x4402001C C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x4402001C C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -13967,7 +13967,7 @@
 0x44020020 C   FIELD 17w01 CNTB2EN: Counter Bank 2 enable
 0x44020020 C   FIELD 18w01 CNTB3EN: Counter Bank 3 enable
 0x44020020 C   FIELD 19w01 CNTB4EN: Counter Bank 4 enable
-0x44020080 B  REGISTER FMC_PCR (rw): NAND Flash control registers
+0x44020080 B  REGISTER PCR (rw): NAND Flash control registers
 0x44020080 C   FIELD 01w01 PWAITEN: Wait feature enable bit. This bit enables the Wait feature for the NAND Flash memory bank:
 0x44020080 C   FIELD 02w01 PBKEN: NAND Flash memory bank enable bit. This bit enables the memory bank. Accessing a disabled memory bank causes an ERROR on AXI bus
 0x44020080 C   FIELD 03w01 PTYP: Memory type
@@ -13976,7 +13976,7 @@
 0x44020080 C   FIELD 09w04 TCLR: CLE to RE delay. These bits set time from CLE low to RE low in number of KCK_FMC clock cycles. The time is give by the following formula: t_clr = (TCLR + SET + 2) TKCK_FMC where TKCK_FMC is the KCK_FMC clock period Note: Set is MEMSET or ATTSET according to the addressed space.
 0x44020080 C   FIELD 13w04 TAR: ALE to RE delay. These bits set time from ALE low to RE low in number of KCK_FMC clock cycles. Time is: t_ar = (TAR + SET + 2) TKCK_FMC where TKCK_FMC is the FMC clock period Note: Set is MEMSET or ATTSET according to the addressed space.
 0x44020080 C   FIELD 17w03 ECCPS: ECC page size. These bits define the page size for the extended ECC:
-0x44020084 B  REGISTER FMC_SR: This register contains information about the FIFO status and interrupt. The FMC features a FIFO that is used when writing to memories to transfer up to 16 words of data.This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals other than the FMC, while the FMC is draining its FIFO into the memory. One of these register bits indicates the status of the FIFO, for ECC purposes.The ECC is calculated while the data are written to the memory. To read the correct ECC, the software must consequently wait until the FIFO is empty.
+0x44020084 B  REGISTER SR: This register contains information about the FIFO status and interrupt. The FMC features a FIFO that is used when writing to memories to transfer up to 16 words of data.This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals other than the FMC, while the FMC is draining its FIFO into the memory. One of these register bits indicates the status of the FIFO, for ECC purposes.The ECC is calculated while the data are written to the memory. To read the correct ECC, the software must consequently wait until the FIFO is empty.
 0x44020084 C   FIELD 00w01 IRS (rw): Interrupt rising edge status The flag is set by hardware and reset by software. Note: If this bit is written by software to 1 it will be set.
 0x44020084 C   FIELD 01w01 ILS (rw): Interrupt high-level status The flag is set by hardware and reset by software.
 0x44020084 C   FIELD 02w01 IFS (rw): Interrupt falling edge status The flag is set by hardware and reset by software. Note: If this bit is written by software to 1 it will be set.
@@ -13984,37 +13984,37 @@
 0x44020084 C   FIELD 04w01 ILEN (rw): Interrupt high-level detection enable bit
 0x44020084 C   FIELD 05w01 IFEN (rw): Interrupt falling edge detection enable bit
 0x44020084 C   FIELD 06w01 FEMPT (ro): FIFO empty. Read-only bit that provides the status of the FIFO
-0x44020088 B  REGISTER FMC_PMEM (rw): The FMC_PMEM read/write register contains the timing information for NAND Flash memory bank. This information is used to access either the common memory space of the NAND Flash for command, address write access and data read/write access.
+0x44020088 B  REGISTER PMEM (rw): The FMC_PMEM read/write register contains the timing information for NAND Flash memory bank. This information is used to access either the common memory space of the NAND Flash for command, address write access and data read/write access.
 0x44020088 C   FIELD 00w08 MEMSET: Common memory x setup time These bits define the number of KCK_FMC (+1) clock cycles to set up the address before the command assertion (NWE, NOE), for NAND Flash read or write access to common memory space:
 0x44020088 C   FIELD 08w08 MEMWAIT: Common memory wait time These bits define the minimum number of KCK_FMC (+1) clock cycles to assert the command (NWE, NOE), for NAND Flash read or write access to common memory space. The duration of command assertion is extended if the wait signal (NWAIT) is active (low) at the end of the programmed value of KCK_FMC:
 0x44020088 C   FIELD 16w08 MEMHOLD: Common memory hold time These bits define the number of KCK_FMC clock cycles for write accesses and KCK_FMC+1 clock cycles for read accesses during which the address is held (and data for write accesses) after the command is de-asserted (NWE, NOE), for NAND Flash read or write access to common memory space:
 0x44020088 C   FIELD 24w08 MEMHIZ: Common memory x data bus Hi-Z time These bits define the number of KCK_FMC clock cycles during which the data bus is kept Hi-Z after the start of a NAND Flash write access to common memory space. This is only valid for write transactions:
-0x4402008C B  REGISTER FMC_PATT (rw): The FMC_PATT read/write register contains the timing information for NAND Flash memory bank. It is used for 8-bit accesses to the attribute memory space of the NAND Flash for the last address write access if the timing must differ from that of previous accesses (for Ready/Busy management, refer to Section20.8.5: NAND Flash prewait feature).
+0x4402008C B  REGISTER PATT (rw): The FMC_PATT read/write register contains the timing information for NAND Flash memory bank. It is used for 8-bit accesses to the attribute memory space of the NAND Flash for the last address write access if the timing must differ from that of previous accesses (for Ready/Busy management, refer to Section20.8.5: NAND Flash prewait feature).
 0x4402008C C   FIELD 00w08 ATTSET: Attribute memory setup time These bits define the number of KCK_FMC (+1) clock cycles to set up address before the command assertion (NWE, NOE), for NAND Flash read or write access to attribute memory space:
 0x4402008C C   FIELD 08w08 ATTWAIT: Attribute memory wait time These bits define the minimum number of x KCK_FMC (+1) clock cycles to assert the command (NWE, NOE), for NAND Flash read or write access to attribute memory space. The duration for command assertion is extended if the wait signal (NWAIT) is active (low) at the end of the programmed value of KCK_FMC:
 0x4402008C C   FIELD 16w08 ATTHOLD: Attribute memory hold time These bits define the number of KCK_FMC clock cycles during which the address is held (and data for write access) after the command de-assertion (NWE, NOE), for NAND Flash read or write access to attribute memory space:
 0x4402008C C   FIELD 24w08 ATTHIZ: Attribute memory data bus Hi-Z time These bits define the number of KCK_FMC clock cycles during which the data bus is kept in Hi-Z after the start of a NAND Flash write access to attribute memory space on socket. Only valid for writ transaction:
-0x44020094 B  REGISTER FMC_ECCR (ro): This register contain the current error correction code value computed by the ECC computation modules of the FMC NAND controller. When the CPU reads/writes the data from a NAND Flash memory page at the correct address (refer to Section20.8.6: Computation of the error correction code (ECC) in NAND Flash memory), the data read/written from/to the NAND Flash memory are processed automatically by the ECC computation module. When X bytes have been read (according to the ECCPS field in the FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC registers. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and, to correct it otherwise. The FMC_ECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
+0x44020094 B  REGISTER ECCR (ro): This register contain the current error correction code value computed by the ECC computation modules of the FMC NAND controller. When the CPU reads/writes the data from a NAND Flash memory page at the correct address (refer to Section20.8.6: Computation of the error correction code (ECC) in NAND Flash memory), the data read/written from/to the NAND Flash memory are processed automatically by the ECC computation module. When X bytes have been read (according to the ECCPS field in the FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC registers. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and, to correct it otherwise. The FMC_ECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
 0x44020094 C   FIELD 00w32 ECC: ECC result This field contains the value computed by the ECC computation logic. Table167 describes the contents of these bit fields.
-0x44020104 B  REGISTER FMC_BWTR1 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x44020104 B  REGISTER BWTR1 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x44020104 C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x44020104 C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x44020104 C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x44020104 C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x44020104 C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x4402010C B  REGISTER FMC_BWTR2 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x4402010C B  REGISTER BWTR2 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x4402010C C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x4402010C C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x4402010C C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x4402010C C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x4402010C C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x44020114 B  REGISTER FMC_BWTR3 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x44020114 B  REGISTER BWTR3 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x44020114 C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x44020114 C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x44020114 C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x44020114 C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x44020114 C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x4402011C B  REGISTER FMC_BWTR4 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x4402011C B  REGISTER BWTR4 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x4402011C C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x4402011C C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x4402011C C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
@@ -16479,7 +16479,7 @@
 0x50007080 B  REGISTER PRIVCFGR (rw): Power privilege configuration register
 0x50007080 C   FIELD 00w01 PRIV: PRIV
 0x50007400 A PERIPHERAL SEC_DAC
-0x50007400 B  REGISTER DAC_CR (rw): DAC control register
+0x50007400 B  REGISTER CR (rw): DAC control register
 0x50007400 C   FIELD 00w01 EN1: DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x50007400 C   FIELD 01w01 TEN1: DAC channel1 trigger enable
 0x50007400 C   FIELD 02w01 TSEL10: TSEL10
@@ -16503,55 +16503,55 @@
 0x50007400 C   FIELD 28w01 DMAEN2: DAC channel2 DMA enable This bit is set and cleared by software.
 0x50007400 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable This bit is set and cleared by software.
 0x50007400 C   FIELD 30w01 CEN2: DAC Channel 2 calibration enable This bit is set and cleared by software to enable/disable DAC channel 2 calibration, it can be written only if bit EN2=0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored.
-0x50007404 B  REGISTER DAC_SWTRGR (wo): DAC software trigger register
+0x50007404 B  REGISTER SWTRGR (wo): DAC software trigger register
 0x50007404 C   FIELD 00w01 SWTRIG1: DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
 0x50007404 C   FIELD 01w01 SWTRIG2: DAC channel2 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR2 register value has been loaded into the DAC_DOR2 register.
-0x50007408 B  REGISTER DAC_DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
+0x50007408 B  REGISTER DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
 0x50007408 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
-0x5000740C B  REGISTER DAC_DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
+0x5000740C B  REGISTER DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
 0x5000740C C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
-0x50007410 B  REGISTER DAC_DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
+0x50007410 B  REGISTER DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
 0x50007410 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
-0x50007414 B  REGISTER DAC_DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
+0x50007414 B  REGISTER DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
 0x50007414 C   FIELD 00w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x50007418 B  REGISTER DAC_DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
+0x50007418 B  REGISTER DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
 0x50007418 C   FIELD 04w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
-0x5000741C B  REGISTER DAC_DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
+0x5000741C B  REGISTER DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
 0x5000741C C   FIELD 00w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x50007420 B  REGISTER DAC_DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x50007420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
 0x50007420 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x50007420 C   FIELD 16w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x50007424 B  REGISTER DAC_DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x50007424 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
 0x50007424 C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x50007424 C   FIELD 20w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x50007428 B  REGISTER DAC_DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x50007428 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
 0x50007428 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
 0x50007428 C   FIELD 08w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x5000742C B  REGISTER DAC_DOR1 (ro): DAC channel1 data output register
+0x5000742C B  REGISTER DOR1 (ro): DAC channel1 data output register
 0x5000742C C   FIELD 00w12 DACC1DOR: DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
-0x50007430 B  REGISTER DAC_DOR2 (ro): DAC channel2 data output register
+0x50007430 B  REGISTER DOR2 (ro): DAC channel2 data output register
 0x50007430 C   FIELD 00w12 DACC2DOR: DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
-0x50007434 B  REGISTER DAC_SR: DAC status register
+0x50007434 B  REGISTER SR: DAC status register
 0x50007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x50007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC Channel 1 calibration offset status This bit is set and cleared by hardware
 0x50007434 C   FIELD 15w01 BWST1 (ro): DAC Channel 1 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3LSI periods of synchronization).
 0x50007434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x50007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC Channel 2 calibration offset status This bit is set and cleared by hardware
 0x50007434 C   FIELD 31w01 BWST2 (ro): DAC Channel 2 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR2, It is cleared by hardware when the write operation of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization).
-0x50007438 B  REGISTER DAC_CCR (rw): DAC calibration control register
+0x50007438 B  REGISTER CCR (rw): DAC calibration control register
 0x50007438 C   FIELD 00w05 OTRIM1: DAC Channel 1 offset trimming value
 0x50007438 C   FIELD 16w05 OTRIM2: DAC Channel 2 offset trimming value
-0x5000743C B  REGISTER DAC_MCR (rw): DAC mode control register
+0x5000743C B  REGISTER MCR (rw): DAC mode control register
 0x5000743C C   FIELD 00w03 MODE1: DAC Channel 1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 1 mode: DAC Channel 1 in normal Mode DAC Channel 1 in sample &amp; hold mode
 0x5000743C C   FIELD 16w03 MODE2: DAC Channel 2 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 2 mode: DAC Channel 2 in normal Mode DAC Channel 2 in sample &amp; hold mode
-0x50007440 B  REGISTER DAC_SHSR1 (rw): DAC Sample and Hold sample time register 1
+0x50007440 B  REGISTER SHSR1 (rw): DAC Sample and Hold sample time register 1
 0x50007440 C   FIELD 00w10 TSAMPLE1: DAC Channel 1 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, If BWSTx=1, the write operation is ignored.
-0x50007444 B  REGISTER DAC_SHSR2 (rw): DAC Sample and Hold sample time register 2
+0x50007444 B  REGISTER SHSR2 (rw): DAC Sample and Hold sample time register 2
 0x50007444 C   FIELD 00w10 TSAMPLE2: DAC Channel 2 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, if BWSTx=1, the write operation is ignored.
-0x50007448 B  REGISTER DAC_SHHR (rw): DAC Sample and Hold hold time register
+0x50007448 B  REGISTER SHHR (rw): DAC Sample and Hold hold time register
 0x50007448 C   FIELD 00w10 THOLD1: DAC Channel 1 hold Time (only valid in sample &amp; hold mode) Hold time= (THOLD[9:0]) x T LSI
 0x50007448 C   FIELD 16w10 THOLD2: DAC Channel 2 hold time (only valid in sample &amp; hold mode). Hold time= (THOLD[9:0]) x T LSI
-0x5000744C B  REGISTER DAC_SHRR (rw): DAC Sample and Hold refresh time register
+0x5000744C B  REGISTER SHRR (rw): DAC Sample and Hold refresh time register
 0x5000744C C   FIELD 00w08 TREFRESH1: DAC Channel 1 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x5000744C C   FIELD 16w08 TREFRESH2: DAC Channel 2 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x50007800 A PERIPHERAL SEC_OPAMP
@@ -27825,7 +27825,7 @@
 0x5202830C C   FIELD 00w16 RDATA_MST: RDATA_MST
 0x5202830C C   FIELD 16w16 RDATA_SLV: RDATA_SLV
 0x520C0800 A PERIPHERAL SEC_RNG
-0x520C0800 B  REGISTER RNG_CR (rw): RNG control register
+0x520C0800 B  REGISTER CR (rw): RNG control register
 0x520C0800 C   FIELD 02w01 RNGEN: Random number generator enable
 0x520C0800 C   FIELD 03w01 IE: Interrupt enable
 0x520C0800 C   FIELD 05w01 CED: Clock error detection Note: The clock error detection can be used only when ck_rc48 or ck_pll1_q (ck_pll1_q = 48MHz) source is selected otherwise, CED bit must be equal to 1. The clock error detection cannot be enabled nor disabled on the fly when RNG peripheral is enabled, to enable or disable CED the RNG must be disabled.
@@ -27836,15 +27836,15 @@
 0x520C0800 C   FIELD 20w06 RNG_CONFIG1: RNG configuration 1
 0x520C0800 C   FIELD 30w01 CONDRST: Conditioning soft reset
 0x520C0800 C   FIELD 31w01 CONFIGLOCK: RNG Config Lock
-0x520C0804 B  REGISTER RNG_SR: RNG status register
+0x520C0804 B  REGISTER SR: RNG status register
 0x520C0804 C   FIELD 00w01 DRDY (ro): Data ready Note: If IE=1 in RNG_CR, an interrupt is generated when DRDY=1. It can rise when the peripheral is disabled. When the output buffer becomes empty (after reading RNG_DR), this bit returns to 0 until a new random value is generated.
 0x520C0804 C   FIELD 01w01 CECS (ro): Clock error current status Note: This bit is meaningless if CED (Clock error detection) bit in RNG_CR is equal to 1.
 0x520C0804 C   FIELD 02w01 SECS (ro): Seed error current status ** More than 64 consecutive bits at the same value (0 or 1) ** More than 32 consecutive alternances of 0 and 1 (0101010101...01)
 0x520C0804 C   FIELD 05w01 CEIS (rw): Clock error interrupt status This bit is set at the same time as CECS. It is cleared by writing it to 0. An interrupt is pending if IE = 1 in the RNG_CR register. Note: This bit is meaningless if CED (Clock error detection) bit in RNG_CR is equal to 1.
 0x520C0804 C   FIELD 06w01 SEIS (rw): Seed error interrupt status This bit is set at the same time as SECS. It is cleared by writing it to 0. ** More than 64 consecutive bits at the same value (0 or 1) ** More than 32 consecutive alternances of 0 and 1 (0101010101...01) An interrupt is pending if IE = 1 in the RNG_CR register.
-0x520C0808 B  REGISTER RNG_DR (ro): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
+0x520C0808 B  REGISTER DR (ro): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
 0x520C0808 C   FIELD 00w32 RNDATA: Random data 32-bit random data which are valid when DRDY=1.
-0x520C0810 B  REGISTER RNG_HTCR (rw): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
+0x520C0810 B  REGISTER HTCR (rw): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
 0x520C0810 C   FIELD 00w32 HTCFG: health test configuration
 0x520C8000 A PERIPHERAL SEC_SDMMC1
 0x520C8000 B  REGISTER SDMMC_POWER (rw): SDMMC power control register
@@ -27997,7 +27997,7 @@
 0x520C83F8 B  REGISTER SDMMC_ID (ro): SDMMC IP identification register
 0x520C83F8 C   FIELD 00w32 IP_ID: SDMMC IP identification.
 0x54020000 A PERIPHERAL SEC_FMC
-0x54020000 B  REGISTER FMC_BCR1 (rw): FMC_BCR1
+0x54020000 B  REGISTER BCR1 (rw): FMC_BCR1
 0x54020000 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x54020000 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x54020000 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -28015,7 +28015,7 @@
 0x54020000 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x54020000 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x54020000 C   FIELD 22w02 NBLSET: NBLSET
-0x54020004 B  REGISTER FMC_BTR1 (rw): This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
+0x54020004 B  REGISTER BTR1 (rw): This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
 0x54020004 C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x54020004 C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x54020004 C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -28024,7 +28024,7 @@
 0x54020004 C   FIELD 24w04 DATLAT: Data latency for synchronous memory For synchronous access with read write burst mode enabled these bits define the number of memory clock cycles
 0x54020004 C   FIELD 28w02 ACCMOD: Access mode These bits specify the asynchronous access modes as shown in the timing diagrams. They are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
 0x54020004 C   FIELD 30w02 DATAHLD: DATAHLD
-0x54020008 B  REGISTER FMC_BCR2 (rw): FMC_BCR2
+0x54020008 B  REGISTER BCR2 (rw): FMC_BCR2
 0x54020008 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x54020008 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x54020008 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -28042,7 +28042,7 @@
 0x54020008 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x54020008 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x54020008 C   FIELD 22w02 NBLSET: NBLSET
-0x5402000C B  REGISTER FMC_BTR2 (rw): FMC_BTR2
+0x5402000C B  REGISTER BTR2 (rw): FMC_BTR2
 0x5402000C C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x5402000C C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x5402000C C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -28051,7 +28051,7 @@
 0x5402000C C   FIELD 24w04 DATLAT: Data latency for synchronous memory For synchronous access with read write burst mode enabled these bits define the number of memory clock cycles
 0x5402000C C   FIELD 28w02 ACCMOD: Access mode These bits specify the asynchronous access modes as shown in the timing diagrams. They are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
 0x5402000C C   FIELD 30w02 DATAHLD: DATAHLD
-0x54020010 B  REGISTER FMC_BCR3 (rw): >FMC_BCR3
+0x54020010 B  REGISTER BCR3 (rw): >FMC_BCR3
 0x54020010 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x54020010 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x54020010 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -28069,7 +28069,7 @@
 0x54020010 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x54020010 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x54020010 C   FIELD 22w02 NBLSET: NBLSET
-0x54020014 B  REGISTER FMC_BTR3 (rw): FMC_BTR3
+0x54020014 B  REGISTER BTR3 (rw): FMC_BTR3
 0x54020014 C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x54020014 C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x54020014 C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -28078,7 +28078,7 @@
 0x54020014 C   FIELD 24w04 DATLAT: Data latency for synchronous memory For synchronous access with read write burst mode enabled these bits define the number of memory clock cycles
 0x54020014 C   FIELD 28w02 ACCMOD: Access mode These bits specify the asynchronous access modes as shown in the timing diagrams. They are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
 0x54020014 C   FIELD 30w02 DATAHLD: DATAHLD
-0x54020018 B  REGISTER FMC_BCR4 (rw): >FMC_BCR4
+0x54020018 B  REGISTER BCR4 (rw): >FMC_BCR4
 0x54020018 C   FIELD 00w01 MBKEN: Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
 0x54020018 C   FIELD 01w01 MUXEN: Address/data multiplexing enable bit When this bit is set, the address and data values are multiplexed on the data bus, valid only with NOR and PSRAM memories:
 0x54020018 C   FIELD 02w02 MTYP: Memory type These bits define the type of external memory attached to the corresponding memory bank:
@@ -28096,7 +28096,7 @@
 0x54020018 C   FIELD 20w01 CCLKEN: Continuous Clock Enable This bit enables the FMC_CLK clock output to external memory devices. Note: The CCLKEN bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register. Bank 1 must be configured in synchronous mode to generate the FMC_CLK continuous clock. If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the FMC_BTR1 register. CLKDIV in FMC_BWTR1 is dont care. If the synchronous mode is used and CCLKEN bit is set, the synchronous memories connected to other banks than Bank 1 are clocked by the same clock (the CLKDIV value in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
 0x54020018 C   FIELD 21w01 WFDIS: Write FIFO Disable This bit disables the Write FIFO used by the FMC controller. Note: The WFDIS bit of the FMC_BCR2..4 registers is dont care. It is only enabled through the FMC_BCR1 register.
 0x54020018 C   FIELD 22w02 NBLSET: NBLSET
-0x5402001C B  REGISTER FMC_BTR4 (rw): FMC_BTR4
+0x5402001C B  REGISTER BTR4 (rw): FMC_BTR4
 0x5402001C C   FIELD 00w04 ADDSET: Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
 0x5402001C C   FIELD 04w04 ADDHLD: Address-hold phase duration These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in mode D or multiplexed accesses: For each access mode address-hold phase duration, please refer to the respective figure (Figure81 to Figure93). Note: In synchronous accesses, this value is not used, the address hold phase is always 1 memory clock period duration.
 0x5402001C C   FIELD 08w08 DATAST: Data-phase duration These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous accesses: For each memory type and access mode data-phase duration, please refer to the respective figure (Figure81 to Figure93). Example: Mode1, write access, DATAST=1: Data-phase duration= DATAST+1 = 2 KCK_FMC clock cycles. Note: In synchronous accesses, this value is dont care.
@@ -28111,7 +28111,7 @@
 0x54020020 C   FIELD 17w01 CNTB2EN: Counter Bank 2 enable
 0x54020020 C   FIELD 18w01 CNTB3EN: Counter Bank 3 enable
 0x54020020 C   FIELD 19w01 CNTB4EN: Counter Bank 4 enable
-0x54020080 B  REGISTER FMC_PCR (rw): NAND Flash control registers
+0x54020080 B  REGISTER PCR (rw): NAND Flash control registers
 0x54020080 C   FIELD 01w01 PWAITEN: Wait feature enable bit. This bit enables the Wait feature for the NAND Flash memory bank:
 0x54020080 C   FIELD 02w01 PBKEN: NAND Flash memory bank enable bit. This bit enables the memory bank. Accessing a disabled memory bank causes an ERROR on AXI bus
 0x54020080 C   FIELD 03w01 PTYP: Memory type
@@ -28120,7 +28120,7 @@
 0x54020080 C   FIELD 09w04 TCLR: CLE to RE delay. These bits set time from CLE low to RE low in number of KCK_FMC clock cycles. The time is give by the following formula: t_clr = (TCLR + SET + 2) TKCK_FMC where TKCK_FMC is the KCK_FMC clock period Note: Set is MEMSET or ATTSET according to the addressed space.
 0x54020080 C   FIELD 13w04 TAR: ALE to RE delay. These bits set time from ALE low to RE low in number of KCK_FMC clock cycles. Time is: t_ar = (TAR + SET + 2) TKCK_FMC where TKCK_FMC is the FMC clock period Note: Set is MEMSET or ATTSET according to the addressed space.
 0x54020080 C   FIELD 17w03 ECCPS: ECC page size. These bits define the page size for the extended ECC:
-0x54020084 B  REGISTER FMC_SR: This register contains information about the FIFO status and interrupt. The FMC features a FIFO that is used when writing to memories to transfer up to 16 words of data.This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals other than the FMC, while the FMC is draining its FIFO into the memory. One of these register bits indicates the status of the FIFO, for ECC purposes.The ECC is calculated while the data are written to the memory. To read the correct ECC, the software must consequently wait until the FIFO is empty.
+0x54020084 B  REGISTER SR: This register contains information about the FIFO status and interrupt. The FMC features a FIFO that is used when writing to memories to transfer up to 16 words of data.This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals other than the FMC, while the FMC is draining its FIFO into the memory. One of these register bits indicates the status of the FIFO, for ECC purposes.The ECC is calculated while the data are written to the memory. To read the correct ECC, the software must consequently wait until the FIFO is empty.
 0x54020084 C   FIELD 00w01 IRS (rw): Interrupt rising edge status The flag is set by hardware and reset by software. Note: If this bit is written by software to 1 it will be set.
 0x54020084 C   FIELD 01w01 ILS (rw): Interrupt high-level status The flag is set by hardware and reset by software.
 0x54020084 C   FIELD 02w01 IFS (rw): Interrupt falling edge status The flag is set by hardware and reset by software. Note: If this bit is written by software to 1 it will be set.
@@ -28128,37 +28128,37 @@
 0x54020084 C   FIELD 04w01 ILEN (rw): Interrupt high-level detection enable bit
 0x54020084 C   FIELD 05w01 IFEN (rw): Interrupt falling edge detection enable bit
 0x54020084 C   FIELD 06w01 FEMPT (ro): FIFO empty. Read-only bit that provides the status of the FIFO
-0x54020088 B  REGISTER FMC_PMEM (rw): The FMC_PMEM read/write register contains the timing information for NAND Flash memory bank. This information is used to access either the common memory space of the NAND Flash for command, address write access and data read/write access.
+0x54020088 B  REGISTER PMEM (rw): The FMC_PMEM read/write register contains the timing information for NAND Flash memory bank. This information is used to access either the common memory space of the NAND Flash for command, address write access and data read/write access.
 0x54020088 C   FIELD 00w08 MEMSET: Common memory x setup time These bits define the number of KCK_FMC (+1) clock cycles to set up the address before the command assertion (NWE, NOE), for NAND Flash read or write access to common memory space:
 0x54020088 C   FIELD 08w08 MEMWAIT: Common memory wait time These bits define the minimum number of KCK_FMC (+1) clock cycles to assert the command (NWE, NOE), for NAND Flash read or write access to common memory space. The duration of command assertion is extended if the wait signal (NWAIT) is active (low) at the end of the programmed value of KCK_FMC:
 0x54020088 C   FIELD 16w08 MEMHOLD: Common memory hold time These bits define the number of KCK_FMC clock cycles for write accesses and KCK_FMC+1 clock cycles for read accesses during which the address is held (and data for write accesses) after the command is de-asserted (NWE, NOE), for NAND Flash read or write access to common memory space:
 0x54020088 C   FIELD 24w08 MEMHIZ: Common memory x data bus Hi-Z time These bits define the number of KCK_FMC clock cycles during which the data bus is kept Hi-Z after the start of a NAND Flash write access to common memory space. This is only valid for write transactions:
-0x5402008C B  REGISTER FMC_PATT (rw): The FMC_PATT read/write register contains the timing information for NAND Flash memory bank. It is used for 8-bit accesses to the attribute memory space of the NAND Flash for the last address write access if the timing must differ from that of previous accesses (for Ready/Busy management, refer to Section20.8.5: NAND Flash prewait feature).
+0x5402008C B  REGISTER PATT (rw): The FMC_PATT read/write register contains the timing information for NAND Flash memory bank. It is used for 8-bit accesses to the attribute memory space of the NAND Flash for the last address write access if the timing must differ from that of previous accesses (for Ready/Busy management, refer to Section20.8.5: NAND Flash prewait feature).
 0x5402008C C   FIELD 00w08 ATTSET: Attribute memory setup time These bits define the number of KCK_FMC (+1) clock cycles to set up address before the command assertion (NWE, NOE), for NAND Flash read or write access to attribute memory space:
 0x5402008C C   FIELD 08w08 ATTWAIT: Attribute memory wait time These bits define the minimum number of x KCK_FMC (+1) clock cycles to assert the command (NWE, NOE), for NAND Flash read or write access to attribute memory space. The duration for command assertion is extended if the wait signal (NWAIT) is active (low) at the end of the programmed value of KCK_FMC:
 0x5402008C C   FIELD 16w08 ATTHOLD: Attribute memory hold time These bits define the number of KCK_FMC clock cycles during which the address is held (and data for write access) after the command de-assertion (NWE, NOE), for NAND Flash read or write access to attribute memory space:
 0x5402008C C   FIELD 24w08 ATTHIZ: Attribute memory data bus Hi-Z time These bits define the number of KCK_FMC clock cycles during which the data bus is kept in Hi-Z after the start of a NAND Flash write access to attribute memory space on socket. Only valid for writ transaction:
-0x54020094 B  REGISTER FMC_ECCR (ro): This register contain the current error correction code value computed by the ECC computation modules of the FMC NAND controller. When the CPU reads/writes the data from a NAND Flash memory page at the correct address (refer to Section20.8.6: Computation of the error correction code (ECC) in NAND Flash memory), the data read/written from/to the NAND Flash memory are processed automatically by the ECC computation module. When X bytes have been read (according to the ECCPS field in the FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC registers. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and, to correct it otherwise. The FMC_ECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
+0x54020094 B  REGISTER ECCR (ro): This register contain the current error correction code value computed by the ECC computation modules of the FMC NAND controller. When the CPU reads/writes the data from a NAND Flash memory page at the correct address (refer to Section20.8.6: Computation of the error correction code (ECC) in NAND Flash memory), the data read/written from/to the NAND Flash memory are processed automatically by the ECC computation module. When X bytes have been read (according to the ECCPS field in the FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC registers. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and, to correct it otherwise. The FMC_ECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
 0x54020094 C   FIELD 00w32 ECC: ECC result This field contains the value computed by the ECC computation logic. Table167 describes the contents of these bit fields.
-0x54020104 B  REGISTER FMC_BWTR1 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x54020104 B  REGISTER BWTR1 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x54020104 C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x54020104 C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x54020104 C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x54020104 C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x54020104 C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x5402010C B  REGISTER FMC_BWTR2 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x5402010C B  REGISTER BWTR2 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x5402010C C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x5402010C C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x5402010C C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x5402010C C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x5402010C C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x54020114 B  REGISTER FMC_BWTR3 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x54020114 B  REGISTER BWTR3 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x54020114 C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x54020114 C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x54020114 C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
 0x54020114 C   FIELD 16w04 BUSTURN: Bus turnaround phase duration These bits are written by software to add a delay at the end of a write transaction to match the minimum time between consecutive transactions (tEHEL from ENx high to ENx low): (BUSTRUN + 1) KCK_FMC period &#8805; tEHELmin. The programmed bus turnaround delay is inserted between a an asynchronous write transfer and any other asynchronous /synchronous read or write transfer to or from a static bank. If a read operation is performed, the bank can be the same or a different one, whereas it must be different in case of write operation to the bank, except in muxed mode or mode D. In some cases, whatever the programmed BUSTRUN values, the bus turnaround delay is fixed as follows: The bus turnaround delay is not inserted between two consecutive asynchronous write transfers to the same static memory bank except for muxed mode and mode D. There is a bus turnaround delay of 2 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to the same bank A synchronous write transfer ((in Burst or Single mode) and an asynchronous write or read transfer to or from static memory bank. There is a bus turnaround delay of 3 FMC clock cycle between: Two consecutive synchronous write operations (in Burst or Single mode) to different static banks. A synchronous write transfer (in Burst or Single mode) and a synchronous read from the same or a different bank. ...
 0x54020114 C   FIELD 28w02 ACCMOD: Access mode. These bits specify the asynchronous access modes as shown in the next timing diagrams.These bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
-0x5402011C B  REGISTER FMC_BWTR4 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
+0x5402011C B  REGISTER BWTR4 (rw): This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
 0x5402011C C   FIELD 00w04 ADDSET: Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
 0x5402011C C   FIELD 04w04 ADDHLD: Address-hold phase duration. These bits are written by software to define the duration of the address hold phase (refer to Figure81 to Figure93), used in asynchronous multiplexed accesses: ... Note: In synchronous NOR Flash accesses, this value is not used, the address hold phase is always 1 Flash clock period duration.
 0x5402011C C   FIELD 08w08 DATAST: Data-phase duration. These bits are written by software to define the duration of the data phase (refer to Figure81 to Figure93), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
