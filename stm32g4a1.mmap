@@ -418,17 +418,17 @@
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
-0x4000042C C   FIELD 00w20 ARR: Auto-reload value
+0x4000042C C   FIELD 00w16 ARR: Auto-reload value
 0x40000430 B  REGISTER RCR (rw): repetition counter register
 0x40000430 C   FIELD 00w16 REP: Repetition counter value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
-0x40000434 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000434 C   FIELD 00w16 CCR: Capture/Compare value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
-0x40000438 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000438 C   FIELD 00w16 CCR: Capture/Compare value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
-0x4000043C C   FIELD 00w20 CCR: Capture/Compare value
+0x4000043C C   FIELD 00w16 CCR: Capture/Compare value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
-0x40000440 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000440 C   FIELD 00w16 CCR: Capture/Compare value
 0x40000444 B  REGISTER BDTR (rw): break and dead-time register
 0x40000444 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40000444 C   FIELD 08w02 LOCK: Lock configuration
@@ -447,12 +447,12 @@
 0x40000444 C   FIELD 28w01 BKBID: BKBID
 0x40000444 C   FIELD 29w01 BK2ID: BK2ID
 0x40000448 B  REGISTER CCR5 (rw): capture/compare register
-0x40000448 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000448 C   FIELD 00w16 CCR: Capture/Compare value
 0x40000448 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40000448 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40000448 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
 0x4000044C B  REGISTER CCR6 (rw): capture/compare register
-0x4000044C C   FIELD 00w20 CCR: Capture/Compare value
+0x4000044C C   FIELD 00w16 CCR: Capture/Compare value
 0x40000450 B  REGISTER CCMR3_Output (rw): capture/compare mode register 2 (output mode)
 0x40000450 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
 0x40000450 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
@@ -677,17 +677,17 @@
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
-0x4000082C C   FIELD 00w20 ARR: Auto-reload value
+0x4000082C C   FIELD 00w16 ARR: Auto-reload value
 0x40000830 B  REGISTER RCR (rw): repetition counter register
 0x40000830 C   FIELD 00w16 REP: Repetition counter value
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register
-0x40000834 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000834 C   FIELD 00w16 CCR: Capture/Compare value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register
-0x40000838 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000838 C   FIELD 00w16 CCR: Capture/Compare value
 0x4000083C B  REGISTER CCR3 (rw): capture/compare register
-0x4000083C C   FIELD 00w20 CCR: Capture/Compare value
+0x4000083C C   FIELD 00w16 CCR: Capture/Compare value
 0x40000840 B  REGISTER CCR4 (rw): capture/compare register
-0x40000840 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000840 C   FIELD 00w16 CCR: Capture/Compare value
 0x40000844 B  REGISTER BDTR (rw): break and dead-time register
 0x40000844 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40000844 C   FIELD 08w02 LOCK: Lock configuration
@@ -706,12 +706,12 @@
 0x40000844 C   FIELD 28w01 BKBID: BKBID
 0x40000844 C   FIELD 29w01 BK2ID: BK2ID
 0x40000848 B  REGISTER CCR5 (rw): capture/compare register
-0x40000848 C   FIELD 00w20 CCR: Capture/Compare value
+0x40000848 C   FIELD 00w16 CCR: Capture/Compare value
 0x40000848 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40000848 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40000848 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
 0x4000084C B  REGISTER CCR6 (rw): capture/compare register
-0x4000084C C   FIELD 00w20 CCR: Capture/Compare value
+0x4000084C C   FIELD 00w16 CCR: Capture/Compare value
 0x40000850 B  REGISTER CCMR3_Output (rw): capture/compare mode register 2 (output mode)
 0x40000850 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
 0x40000850 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
@@ -2218,7 +2218,7 @@
 0x40006440 C   FIELD 08w07 REC: TREC
 0x40006440 C   FIELD 15w01 RP: RP
 0x40006440 C   FIELD 16w08 CEL: CEL
-0x40006444 B  REGISTER PSR: FDCAN Protocol Status Register
+0x40006444 B  REGISTER PSR (ro): FDCAN Protocol Status Register
 0x40006444 C   FIELD 00w03 LEC (rw): LEC
 0x40006444 C   FIELD 03w02 ACT (wo): ACT
 0x40006444 C   FIELD 05w01 EP (rw): EP
@@ -2295,10 +2295,10 @@
 0x4000645C C   FIELD 00w01 EINT0: EINT0
 0x4000645C C   FIELD 01w01 EINT1: EINT1
 0x40006480 B  REGISTER RXGFC: Global settings for Message ID filtering. The Global Filter Configuration controls the filter path for standard and extended messages as described in Figure706: Standard Message ID filter path and Figure707: Extended Message ID filter path.
-0x40006480 C   FIELD 00w01 RRFE (rw): RRFE
-0x40006480 C   FIELD 01w01 RRFS (rw): RRFS
-0x40006480 C   FIELD 02w02 ANFE (wo): ANFE
-0x40006480 C   FIELD 04w02 ANFS (wo): ANFS
+0x40006480 C   FIELD 00w01 RRFE (rw): Reject remote frames extended
+0x40006480 C   FIELD 01w01 RRFS (rw): Reject remote frames standard
+0x40006480 C   FIELD 02w02 ANFE (wo): Accept Non-matching frames extended
+0x40006480 C   FIELD 04w02 ANFS (wo): Accept Non-matching frames standard
 0x40006480 C   FIELD 08w01 F1OM: FIFO 1 operation mode
 0x40006480 C   FIELD 09w01 F0OM: FIFO 0 operation mode
 0x40006480 C   FIELD 16w05 LSS: List size standard
@@ -2306,32 +2306,28 @@
 0x40006484 B  REGISTER XIDAM (rw): FDCAN Extended ID and Mask Register
 0x40006484 C   FIELD 00w29 EIDM: EIDM
 0x40006488 B  REGISTER HPMS (ro): This register is updated every time a Message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
-0x40006488 C   FIELD 00w06 BIDX: BIDX
+0x40006488 C   FIELD 00w03 BIDX: BIDX
 0x40006488 C   FIELD 06w02 MSI: MSI
-0x40006488 C   FIELD 08w07 FIDX: FIDX
+0x40006488 C   FIELD 08w05 FIDX: FIDX
 0x40006488 C   FIELD 15w01 FLST: FLST
-0x40006490 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
-0x40006490 C   FIELD 00w07 F0FL: F0FL
-0x40006490 C   FIELD 08w06 F0GI: F0GI
-0x40006490 C   FIELD 16w06 F0PI: F0PI
+0x40006490 B  REGISTER RXF0S (ro): FDCAN Rx FIFO 0 Status Register
+0x40006490 C   FIELD 00w04 F0FL: F0FL
+0x40006490 C   FIELD 08w02 F0GI: F0GI
+0x40006490 C   FIELD 16w02 F0PI: F0PI
 0x40006490 C   FIELD 24w01 F0F: F0F
 0x40006490 C   FIELD 25w01 RF0L: RF0L
 0x40006494 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
-0x40006494 C   FIELD 00w06 F0AI: F0AI
+0x40006494 C   FIELD 00w03 F0AI: F0AI
 0x40006498 B  REGISTER RXF1S (ro): FDCAN Rx FIFO 1 Status Register
-0x40006498 C   FIELD 00w07 F1FL: F1FL
-0x40006498 C   FIELD 08w06 F1GI: F1GI
-0x40006498 C   FIELD 16w06 F1PI: F1PI
+0x40006498 C   FIELD 00w04 F1FL: F1FL
+0x40006498 C   FIELD 08w02 F1GI: F1GI
+0x40006498 C   FIELD 16w02 F1PI: F1PI
 0x40006498 C   FIELD 24w01 F1F: F1F
 0x40006498 C   FIELD 25w01 RF1L: RF1L
-0x40006498 C   FIELD 30w02 DMS: DMS
 0x4000649C B  REGISTER RXF1A (rw): FDCAN Rx FIFO 1 Acknowledge Register
-0x4000649C C   FIELD 00w06 F1AI: F1AI
+0x4000649C C   FIELD 00w04 F1AI: F1AI
 0x400064C0 B  REGISTER TXBC (rw): FDCAN Tx Buffer Configuration Register
-0x400064C0 C   FIELD 02w14 TBSA: TBSA
-0x400064C0 C   FIELD 16w06 NDTB: NDTB
-0x400064C0 C   FIELD 24w06 TFQS: TFQS
-0x400064C0 C   FIELD 30w01 TFQM: TFQM
+0x400064C0 C   FIELD 24w01 TFQM: TFQM
 0x400064C4 B  REGISTER TXFQS (ro): The Tx FIFO/Queue status is related to the pending Tx requests listed in register TXBRP. Therefore the effect of Add/Cancellation requests may be delayed due to a running Tx scan (TXBRP not yet updated).
 0x400064C4 C   FIELD 00w03 TFFL: TFFL
 0x400064C4 C   FIELD 08w02 TFGI: TFGI
@@ -2358,7 +2354,7 @@
 0x400064E4 C   FIELD 24w01 EFF: EFF
 0x400064E4 C   FIELD 25w01 TEFL: TEFL
 0x400064E8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
-0x400064E8 C   FIELD 00w05 EFAI: EFAI
+0x400064E8 C   FIELD 00w02 EFAI: EFAI
 0x40006500 B  REGISTER CKDIV (rw): FDCAN CFG clock divider register
 0x40006500 C   FIELD 00w04 PDIV: input clock divider. the APB clock could be divided prior to be used by the CAN sub
 0x40007000 A PERIPHERAL PWR
@@ -3047,7 +3043,7 @@
 0x4000A440 C   FIELD 08w07 REC: TREC
 0x4000A440 C   FIELD 15w01 RP: RP
 0x4000A440 C   FIELD 16w08 CEL: CEL
-0x4000A444 B  REGISTER PSR: FDCAN Protocol Status Register
+0x4000A444 B  REGISTER PSR (ro): FDCAN Protocol Status Register
 0x4000A444 C   FIELD 00w03 LEC (rw): LEC
 0x4000A444 C   FIELD 03w02 ACT (wo): ACT
 0x4000A444 C   FIELD 05w01 EP (rw): EP
@@ -3124,10 +3120,10 @@
 0x4000A45C C   FIELD 00w01 EINT0: EINT0
 0x4000A45C C   FIELD 01w01 EINT1: EINT1
 0x4000A480 B  REGISTER RXGFC: Global settings for Message ID filtering. The Global Filter Configuration controls the filter path for standard and extended messages as described in Figure706: Standard Message ID filter path and Figure707: Extended Message ID filter path.
-0x4000A480 C   FIELD 00w01 RRFE (rw): RRFE
-0x4000A480 C   FIELD 01w01 RRFS (rw): RRFS
-0x4000A480 C   FIELD 02w02 ANFE (wo): ANFE
-0x4000A480 C   FIELD 04w02 ANFS (wo): ANFS
+0x4000A480 C   FIELD 00w01 RRFE (rw): Reject remote frames extended
+0x4000A480 C   FIELD 01w01 RRFS (rw): Reject remote frames standard
+0x4000A480 C   FIELD 02w02 ANFE (wo): Accept Non-matching frames extended
+0x4000A480 C   FIELD 04w02 ANFS (wo): Accept Non-matching frames standard
 0x4000A480 C   FIELD 08w01 F1OM: FIFO 1 operation mode
 0x4000A480 C   FIELD 09w01 F0OM: FIFO 0 operation mode
 0x4000A480 C   FIELD 16w05 LSS: List size standard
@@ -3135,32 +3131,28 @@
 0x4000A484 B  REGISTER XIDAM (rw): FDCAN Extended ID and Mask Register
 0x4000A484 C   FIELD 00w29 EIDM: EIDM
 0x4000A488 B  REGISTER HPMS (ro): This register is updated every time a Message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
-0x4000A488 C   FIELD 00w06 BIDX: BIDX
+0x4000A488 C   FIELD 00w03 BIDX: BIDX
 0x4000A488 C   FIELD 06w02 MSI: MSI
-0x4000A488 C   FIELD 08w07 FIDX: FIDX
+0x4000A488 C   FIELD 08w05 FIDX: FIDX
 0x4000A488 C   FIELD 15w01 FLST: FLST
-0x4000A490 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
-0x4000A490 C   FIELD 00w07 F0FL: F0FL
-0x4000A490 C   FIELD 08w06 F0GI: F0GI
-0x4000A490 C   FIELD 16w06 F0PI: F0PI
+0x4000A490 B  REGISTER RXF0S (ro): FDCAN Rx FIFO 0 Status Register
+0x4000A490 C   FIELD 00w04 F0FL: F0FL
+0x4000A490 C   FIELD 08w02 F0GI: F0GI
+0x4000A490 C   FIELD 16w02 F0PI: F0PI
 0x4000A490 C   FIELD 24w01 F0F: F0F
 0x4000A490 C   FIELD 25w01 RF0L: RF0L
 0x4000A494 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
-0x4000A494 C   FIELD 00w06 F0AI: F0AI
+0x4000A494 C   FIELD 00w03 F0AI: F0AI
 0x4000A498 B  REGISTER RXF1S (ro): FDCAN Rx FIFO 1 Status Register
-0x4000A498 C   FIELD 00w07 F1FL: F1FL
-0x4000A498 C   FIELD 08w06 F1GI: F1GI
-0x4000A498 C   FIELD 16w06 F1PI: F1PI
+0x4000A498 C   FIELD 00w04 F1FL: F1FL
+0x4000A498 C   FIELD 08w02 F1GI: F1GI
+0x4000A498 C   FIELD 16w02 F1PI: F1PI
 0x4000A498 C   FIELD 24w01 F1F: F1F
 0x4000A498 C   FIELD 25w01 RF1L: RF1L
-0x4000A498 C   FIELD 30w02 DMS: DMS
 0x4000A49C B  REGISTER RXF1A (rw): FDCAN Rx FIFO 1 Acknowledge Register
-0x4000A49C C   FIELD 00w06 F1AI: F1AI
+0x4000A49C C   FIELD 00w04 F1AI: F1AI
 0x4000A4C0 B  REGISTER TXBC (rw): FDCAN Tx Buffer Configuration Register
-0x4000A4C0 C   FIELD 02w14 TBSA: TBSA
-0x4000A4C0 C   FIELD 16w06 NDTB: NDTB
-0x4000A4C0 C   FIELD 24w06 TFQS: TFQS
-0x4000A4C0 C   FIELD 30w01 TFQM: TFQM
+0x4000A4C0 C   FIELD 24w01 TFQM: TFQM
 0x4000A4C4 B  REGISTER TXFQS (ro): The Tx FIFO/Queue status is related to the pending Tx requests listed in register TXBRP. Therefore the effect of Add/Cancellation requests may be delayed due to a running Tx scan (TXBRP not yet updated).
 0x4000A4C4 C   FIELD 00w03 TFFL: TFFL
 0x4000A4C4 C   FIELD 08w02 TFGI: TFGI
@@ -3187,7 +3179,7 @@
 0x4000A4E4 C   FIELD 24w01 EFF: EFF
 0x4000A4E4 C   FIELD 25w01 TEFL: TEFL
 0x4000A4E8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
-0x4000A4E8 C   FIELD 00w05 EFAI: EFAI
+0x4000A4E8 C   FIELD 00w02 EFAI: EFAI
 0x4000A500 B  REGISTER CKDIV (rw): FDCAN CFG clock divider register
 0x4000A500 C   FIELD 00w04 PDIV: input clock divider. the APB clock could be divided prior to be used by the CAN sub
 0x40010000 A PERIPHERAL SYSCFG
@@ -3784,17 +3776,17 @@
 0x40012C28 B  REGISTER PSC (rw): prescaler
 0x40012C28 C   FIELD 00w16 PSC: Prescaler value
 0x40012C2C B  REGISTER ARR (rw): auto-reload register
-0x40012C2C C   FIELD 00w20 ARR: Auto-reload value
+0x40012C2C C   FIELD 00w16 ARR: Auto-reload value
 0x40012C30 B  REGISTER RCR (rw): repetition counter register
 0x40012C30 C   FIELD 00w16 REP: Repetition counter value
 0x40012C34 B  REGISTER CCR1 (rw): capture/compare register
-0x40012C34 C   FIELD 00w20 CCR: Capture/Compare value
+0x40012C34 C   FIELD 00w16 CCR: Capture/Compare value
 0x40012C38 B  REGISTER CCR2 (rw): capture/compare register
-0x40012C38 C   FIELD 00w20 CCR: Capture/Compare value
+0x40012C38 C   FIELD 00w16 CCR: Capture/Compare value
 0x40012C3C B  REGISTER CCR3 (rw): capture/compare register
-0x40012C3C C   FIELD 00w20 CCR: Capture/Compare value
+0x40012C3C C   FIELD 00w16 CCR: Capture/Compare value
 0x40012C40 B  REGISTER CCR4 (rw): capture/compare register
-0x40012C40 C   FIELD 00w20 CCR: Capture/Compare value
+0x40012C40 C   FIELD 00w16 CCR: Capture/Compare value
 0x40012C44 B  REGISTER BDTR (rw): break and dead-time register
 0x40012C44 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40012C44 C   FIELD 08w02 LOCK: Lock configuration
@@ -3813,12 +3805,12 @@
 0x40012C44 C   FIELD 28w01 BKBID: BKBID
 0x40012C44 C   FIELD 29w01 BK2ID: BK2ID
 0x40012C48 B  REGISTER CCR5 (rw): capture/compare register
-0x40012C48 C   FIELD 00w20 CCR: Capture/Compare value
+0x40012C48 C   FIELD 00w16 CCR: Capture/Compare value
 0x40012C48 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40012C48 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40012C48 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
 0x40012C4C B  REGISTER CCR6 (rw): capture/compare register
-0x40012C4C C   FIELD 00w20 CCR: Capture/Compare value
+0x40012C4C C   FIELD 00w16 CCR: Capture/Compare value
 0x40012C50 B  REGISTER CCMR3_Output (rw): capture/compare mode register 2 (output mode)
 0x40012C50 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
 0x40012C50 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
@@ -4103,17 +4095,17 @@
 0x40013428 B  REGISTER PSC (rw): prescaler
 0x40013428 C   FIELD 00w16 PSC: Prescaler value
 0x4001342C B  REGISTER ARR (rw): auto-reload register
-0x4001342C C   FIELD 00w20 ARR: Auto-reload value
+0x4001342C C   FIELD 00w16 ARR: Auto-reload value
 0x40013430 B  REGISTER RCR (rw): repetition counter register
 0x40013430 C   FIELD 00w16 REP: Repetition counter value
 0x40013434 B  REGISTER CCR1 (rw): capture/compare register
-0x40013434 C   FIELD 00w20 CCR: Capture/Compare value
+0x40013434 C   FIELD 00w16 CCR: Capture/Compare value
 0x40013438 B  REGISTER CCR2 (rw): capture/compare register
-0x40013438 C   FIELD 00w20 CCR: Capture/Compare value
+0x40013438 C   FIELD 00w16 CCR: Capture/Compare value
 0x4001343C B  REGISTER CCR3 (rw): capture/compare register
-0x4001343C C   FIELD 00w20 CCR: Capture/Compare value
+0x4001343C C   FIELD 00w16 CCR: Capture/Compare value
 0x40013440 B  REGISTER CCR4 (rw): capture/compare register
-0x40013440 C   FIELD 00w20 CCR: Capture/Compare value
+0x40013440 C   FIELD 00w16 CCR: Capture/Compare value
 0x40013444 B  REGISTER BDTR (rw): break and dead-time register
 0x40013444 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40013444 C   FIELD 08w02 LOCK: Lock configuration
@@ -4132,12 +4124,12 @@
 0x40013444 C   FIELD 28w01 BKBID: BKBID
 0x40013444 C   FIELD 29w01 BK2ID: BK2ID
 0x40013448 B  REGISTER CCR5 (rw): capture/compare register
-0x40013448 C   FIELD 00w20 CCR: Capture/Compare value
+0x40013448 C   FIELD 00w16 CCR: Capture/Compare value
 0x40013448 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40013448 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40013448 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
 0x4001344C B  REGISTER CCR6 (rw): capture/compare register
-0x4001344C C   FIELD 00w20 CCR: Capture/Compare value
+0x4001344C C   FIELD 00w16 CCR: Capture/Compare value
 0x40013450 B  REGISTER CCMR3_Output (rw): capture/compare mode register 2 (output mode)
 0x40013450 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
 0x40013450 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
@@ -4435,13 +4427,13 @@
 0x40014028 B  REGISTER PSC (rw): prescaler
 0x40014028 C   FIELD 00w16 PSC: Prescaler value
 0x4001402C B  REGISTER ARR (rw): auto-reload register
-0x4001402C C   FIELD 00w20 ARR: Auto-reload value
+0x4001402C C   FIELD 00w16 ARR: Auto-reload value
 0x40014030 B  REGISTER RCR (rw): repetition counter register
 0x40014030 C   FIELD 00w08 REP: Repetition counter value
 0x40014034 B  REGISTER CCR1 (rw): capture/compare register
-0x40014034 C   FIELD 00w20 CCR: Capture/Compare value
+0x40014034 C   FIELD 00w16 CCR: Capture/Compare value
 0x40014038 B  REGISTER CCR2 (rw): capture/compare register
-0x40014038 C   FIELD 00w20 CCR: Capture/Compare value
+0x40014038 C   FIELD 00w16 CCR: Capture/Compare value
 0x40014044 B  REGISTER BDTR (rw): break and dead-time register
 0x40014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -4538,11 +4530,11 @@
 0x40014428 B  REGISTER PSC (rw): prescaler
 0x40014428 C   FIELD 00w16 PSC: Prescaler value
 0x4001442C B  REGISTER ARR (rw): auto-reload register
-0x4001442C C   FIELD 00w20 ARR: Auto-reload value
+0x4001442C C   FIELD 00w16 ARR: Auto-reload value
 0x40014430 B  REGISTER RCR (rw): repetition counter register
 0x40014430 C   FIELD 00w08 REP: Repetition counter value
 0x40014434 B  REGISTER CCR1 (rw): capture/compare register
-0x40014434 C   FIELD 00w20 CCR: Capture/Compare value
+0x40014434 C   FIELD 00w16 CCR: Capture/Compare value
 0x40014444 B  REGISTER BDTR (rw): break and dead-time register
 0x40014444 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014444 C   FIELD 08w02 LOCK: Lock configuration
@@ -4640,11 +4632,11 @@
 0x40014828 B  REGISTER PSC (rw): prescaler
 0x40014828 C   FIELD 00w16 PSC: Prescaler value
 0x4001482C B  REGISTER ARR (rw): auto-reload register
-0x4001482C C   FIELD 00w20 ARR: Auto-reload value
+0x4001482C C   FIELD 00w16 ARR: Auto-reload value
 0x40014830 B  REGISTER RCR (rw): repetition counter register
 0x40014830 C   FIELD 00w08 REP: Repetition counter value
 0x40014834 B  REGISTER CCR1 (rw): capture/compare register
-0x40014834 C   FIELD 00w20 CCR: Capture/Compare value
+0x40014834 C   FIELD 00w16 CCR: Capture/Compare value
 0x40014844 B  REGISTER BDTR (rw): break and dead-time register
 0x40014844 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014844 C   FIELD 08w02 LOCK: Lock configuration
