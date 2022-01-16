@@ -8709,13 +8709,13 @@
 0x50000100 B  REGISTER HPTXFSIZ (rw): OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
 0x50000100 C   FIELD 00w16 PTXSA: Host periodic TxFIFO start address
 0x50000100 C   FIELD 16w16 PTXFSIZ: Host periodic TxFIFO depth
-0x50000104 B  REGISTER DIEPTXF1 (rw): OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+0x50000104 B  REGISTER DIEPTXF1 (rw): OTF_FS device IN endpoint transmit FIFO size register
 0x50000104 C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x50000104 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x50000108 B  REGISTER DIEPTXF2 (rw): OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+0x50000108 B  REGISTER DIEPTXF2 (rw): OTF_FS device IN endpoint transmit FIFO size register
 0x50000108 C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x50000108 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x5000010C B  REGISTER DIEPTXF3 (rw): OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+0x5000010C B  REGISTER DIEPTXF3 (rw): OTF_FS device IN endpoint transmit FIFO size register
 0x5000010C C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x5000010C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x50000400 A PERIPHERAL OTG_FS_HOST
@@ -9106,7 +9106,7 @@
 0x50000910 C   FIELD 19w02 PKTCNT: Packet count
 0x50000918 B  REGISTER DTXFSTS0 (ro): OTG_FS device IN endpoint transmit FIFO status register
 0x50000918 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space available
-0x50000920 B  REGISTER DIEPCTL1: OTG device endpoint-1 control register
+0x50000920 B  REGISTER DIEPCTL1: OTG_FS device endpoint 1 IN control register
 0x50000920 C   FIELD 00w11 MPSIZ (rw): MPSIZ
 0x50000920 C   FIELD 15w01 USBAEP (rw): USBAEP
 0x50000920 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
@@ -9133,7 +9133,7 @@
 0x50000930 C   FIELD 29w02 MCNT: Multi count
 0x50000938 B  REGISTER DTXFSTS1 (ro): OTG_FS device IN endpoint transmit FIFO status register
 0x50000938 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space available
-0x50000940 B  REGISTER DIEPCTL2: OTG device endpoint-1 control register
+0x50000940 B  REGISTER DIEPCTL2: OTG_FS device endpoint 2 IN control register
 0x50000940 C   FIELD 00w11 MPSIZ (rw): MPSIZ
 0x50000940 C   FIELD 15w01 USBAEP (rw): USBAEP
 0x50000940 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
@@ -9160,7 +9160,7 @@
 0x50000950 C   FIELD 29w02 MCNT: Multi count
 0x50000958 B  REGISTER DTXFSTS2 (ro): OTG_FS device IN endpoint transmit FIFO status register
 0x50000958 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space available
-0x50000960 B  REGISTER DIEPCTL3: OTG device endpoint-1 control register
+0x50000960 B  REGISTER DIEPCTL3: OTG_FS device endpoint 3 IN control register
 0x50000960 C   FIELD 00w11 MPSIZ (rw): MPSIZ
 0x50000960 C   FIELD 15w01 USBAEP (rw): USBAEP
 0x50000960 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
@@ -9208,7 +9208,7 @@
 0x50000B10 C   FIELD 00w07 XFRSIZ: Transfer size
 0x50000B10 C   FIELD 19w01 PKTCNT: Packet count
 0x50000B10 C   FIELD 29w02 STUPCNT: SETUP packet count
-0x50000B20 B  REGISTER DOEPCTL1: device endpoint-1 control register
+0x50000B20 B  REGISTER DOEPCTL1: OTG_FS device endpoint 1 OUT control register
 0x50000B20 C   FIELD 00w11 MPSIZ (rw): MPSIZ
 0x50000B20 C   FIELD 15w01 USBAEP (rw): USBAEP
 0x50000B20 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
@@ -9232,7 +9232,7 @@
 0x50000B30 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000B30 C   FIELD 19w10 PKTCNT: Packet count
 0x50000B30 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x50000B40 B  REGISTER DOEPCTL2: device endpoint-1 control register
+0x50000B40 B  REGISTER DOEPCTL2: OTG_FS device endpoint 2 OUT control register
 0x50000B40 C   FIELD 00w11 MPSIZ (rw): MPSIZ
 0x50000B40 C   FIELD 15w01 USBAEP (rw): USBAEP
 0x50000B40 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
@@ -9256,7 +9256,7 @@
 0x50000B50 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000B50 C   FIELD 19w10 PKTCNT: Packet count
 0x50000B50 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x50000B60 B  REGISTER DOEPCTL3: device endpoint-1 control register
+0x50000B60 B  REGISTER DOEPCTL3: OTG_FS device endpoint 3 OUT control register
 0x50000B60 C   FIELD 00w11 MPSIZ (rw): MPSIZ
 0x50000B60 C   FIELD 15w01 USBAEP (rw): USBAEP
 0x50000B60 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
