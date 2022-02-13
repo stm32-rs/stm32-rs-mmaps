@@ -4416,6 +4416,7 @@
 0x40015440 B  REGISTER DRB (rw): AData register
 0x40015440 C   FIELD 00w32 DATA: Data
 0x40015800 A PERIPHERAL SAI2
+0x40015804 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015804 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015804 C   FIELD 00w02 MODE: Audio block mode
 0x40015804 C   FIELD 02w02 PRTCFG: Protocol configuration
@@ -4475,6 +4476,7 @@
 0x4001581C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
 0x40015820 B  REGISTER DRA (rw): AData register
 0x40015820 C   FIELD 00w32 DATA: Data
+0x40015824 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015824 B  REGISTER CR1B (rw): AConfiguration register 1
 0x40015824 C   FIELD 00w02 MODE: Audio block mode
 0x40015824 C   FIELD 02w02 PRTCFG: Protocol configuration
@@ -8839,77 +8841,220 @@
 0xE0042010 C   FIELD 17w01 DBG_TIM16_STOP: TIM16 counter stopped when core is halted
 0xE0042010 C   FIELD 18w01 DBG_TIM17_STOP: TIM17 counter stopped when core is halted
 INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
+INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
+INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
+INTERRUPT 001: PVD (EXTI): PVD through EXTI line detection
+INTERRUPT 001: PVD (EXTI): PVD through EXTI line detection
 INTERRUPT 001: PVD (EXTI): PVD through EXTI line detection
 INTERRUPT 002: TAMP_STAMP (RTC): Tamper and TimeStamp interrupts
+INTERRUPT 002: TAMP_STAMP (RTC): Tamper and TimeStamp interrupts
+INTERRUPT 002: TAMP_STAMP (RTC): Tamper and TimeStamp interrupts
+INTERRUPT 003: RTC_WKUP (RTC): RTC Tamper or TimeStamp /CSS on LSE through EXTI line 19 interrupts
+INTERRUPT 003: RTC_WKUP (RTC): RTC Tamper or TimeStamp /CSS on LSE through EXTI line 19 interrupts
 INTERRUPT 003: RTC_WKUP (RTC): RTC Tamper or TimeStamp /CSS on LSE through EXTI line 19 interrupts
 INTERRUPT 005: RCC (RCC): RCC global interrupt
+INTERRUPT 005: RCC (RCC): RCC global interrupt
+INTERRUPT 005: RCC (RCC): RCC global interrupt
+INTERRUPT 005: RCC (RCC): RCC global interrupt
+INTERRUPT 006: EXTI0 (EXTI): EXTI Line 0 interrupt
+INTERRUPT 006: EXTI0 (EXTI): EXTI Line 0 interrupt
 INTERRUPT 006: EXTI0 (EXTI): EXTI Line 0 interrupt
 INTERRUPT 007: EXTI1 (EXTI): EXTI Line 1 interrupt
+INTERRUPT 007: EXTI1 (EXTI): EXTI Line 1 interrupt
+INTERRUPT 007: EXTI1 (EXTI): EXTI Line 1 interrupt
+INTERRUPT 008: EXTI2 (EXTI): EXTI Line 2 interrupt
+INTERRUPT 008: EXTI2 (EXTI): EXTI Line 2 interrupt
 INTERRUPT 008: EXTI2 (EXTI): EXTI Line 2 interrupt
 INTERRUPT 009: EXTI3 (EXTI): EXTI Line 3 interrupt
+INTERRUPT 009: EXTI3 (EXTI): EXTI Line 3 interrupt
+INTERRUPT 009: EXTI3 (EXTI): EXTI Line 3 interrupt
+INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
+INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
 INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
 INTERRUPT 011: DMA1_CH1 (DMA1): DMA1 Channel1 global interrupt
+INTERRUPT 011: DMA1_CH1 (DMA1): DMA1 Channel1 global interrupt
+INTERRUPT 011: DMA1_CH1 (DMA1): DMA1 Channel1 global interrupt
+INTERRUPT 012: DMA1_CH2 (DMA1): DMA1 Channel2 global interrupt
+INTERRUPT 012: DMA1_CH2 (DMA1): DMA1 Channel2 global interrupt
 INTERRUPT 012: DMA1_CH2 (DMA1): DMA1 Channel2 global interrupt
 INTERRUPT 013: DMA1_CH3 (DMA1): DMA1 Channel3 interrupt
+INTERRUPT 013: DMA1_CH3 (DMA1): DMA1 Channel3 interrupt
+INTERRUPT 013: DMA1_CH3 (DMA1): DMA1 Channel3 interrupt
+INTERRUPT 014: DMA1_CH4 (DMA1): DMA1 Channel4 interrupt
+INTERRUPT 014: DMA1_CH4 (DMA1): DMA1 Channel4 interrupt
 INTERRUPT 014: DMA1_CH4 (DMA1): DMA1 Channel4 interrupt
 INTERRUPT 015: DMA1_CH5 (DMA1): DMA1 Channel5 interrupt
+INTERRUPT 015: DMA1_CH5 (DMA1): DMA1 Channel5 interrupt
+INTERRUPT 015: DMA1_CH5 (DMA1): DMA1 Channel5 interrupt
 INTERRUPT 016: DMA1_CH6 (DMA1): DMA1 Channel6 interrupt
+INTERRUPT 016: DMA1_CH6 (DMA1): DMA1 Channel6 interrupt
+INTERRUPT 016: DMA1_CH6 (DMA1): DMA1 Channel6 interrupt
+INTERRUPT 017: DMA1_CH7 (DMA1): DMA1 Channel 7 interrupt
+INTERRUPT 017: DMA1_CH7 (DMA1): DMA1 Channel 7 interrupt
 INTERRUPT 017: DMA1_CH7 (DMA1): DMA1 Channel 7 interrupt
 INTERRUPT 018: ADC1_2 (ADC2): ADC1 and ADC2 global interrupt
 INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line5 to Line9 interrupts
+INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line5 to Line9 interrupts
+INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line5 to Line9 interrupts
+INTERRUPT 024: TIM15 (TIM15): Timer 15 global interrupt
+INTERRUPT 024: TIM15 (TIM15): Timer 15 global interrupt
 INTERRUPT 024: TIM15 (TIM15): Timer 15 global interrupt
 INTERRUPT 025: TIM16 (TIM16): Timer 16 global interrupt
+INTERRUPT 025: TIM16 (TIM16): Timer 16 global interrupt
+INTERRUPT 025: TIM16 (TIM16): Timer 16 global interrupt
+INTERRUPT 026: TIM1_TRG_COM_TIM17 (TIM17): TIM1 Trigger and Commutation interrupts and TIM17 global interrupt
+INTERRUPT 026: TIM1_TRG_COM_TIM17 (TIM17): TIM1 Trigger and Commutation interrupts and TIM17 global interrupt
 INTERRUPT 026: TIM1_TRG_COM_TIM17 (TIM17): TIM1 Trigger and Commutation interrupts and TIM17 global interrupt
 INTERRUPT 027: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
+INTERRUPT 027: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
+INTERRUPT 027: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
+INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
+INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
+INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
+INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
+INTERRUPT 030: TIM4 (TIM4): TIM4 global interrupt
+INTERRUPT 030: TIM4 (TIM4): TIM4 global interrupt
 INTERRUPT 030: TIM4 (TIM4): TIM4 global interrupt
 INTERRUPT 031: I2C1_EV (I2C1): I2C1 event interrupt
+INTERRUPT 031: I2C1_EV (I2C1): I2C1 event interrupt
+INTERRUPT 031: I2C1_EV (I2C1): I2C1 event interrupt
+INTERRUPT 032: I2C1_ER (I2C1): I2C1 error interrupt
+INTERRUPT 032: I2C1_ER (I2C1): I2C1 error interrupt
 INTERRUPT 032: I2C1_ER (I2C1): I2C1 error interrupt
 INTERRUPT 033: I2C2_EV (I2C2): I2C2 event interrupt
+INTERRUPT 033: I2C2_EV (I2C2): I2C2 event interrupt
+INTERRUPT 033: I2C2_EV (I2C2): I2C2 event interrupt
+INTERRUPT 034: I2C2_ER (I2C2): I2C2 error interrupt
+INTERRUPT 034: I2C2_ER (I2C2): I2C2 error interrupt
 INTERRUPT 034: I2C2_ER (I2C2): I2C2 error interrupt
 INTERRUPT 035: SPI1 (SPI1): SPI1 global interrupt
+INTERRUPT 035: SPI1 (SPI1): SPI1 global interrupt
+INTERRUPT 035: SPI1 (SPI1): SPI1 global interrupt
+INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
+INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
 INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
 INTERRUPT 037: USART1 (USART1): USART1 global interrupt
+INTERRUPT 037: USART1 (USART1): USART1 global interrupt
+INTERRUPT 037: USART1 (USART1): USART1 global interrupt
+INTERRUPT 038: USART2 (USART2): USART2 global interrupt
+INTERRUPT 038: USART2 (USART2): USART2 global interrupt
 INTERRUPT 038: USART2 (USART2): USART2 global interrupt
 INTERRUPT 039: USART3 (USART3): USART3 global interrupt
+INTERRUPT 039: USART3 (USART3): USART3 global interrupt
+INTERRUPT 039: USART3 (USART3): USART3 global interrupt
+INTERRUPT 040: EXTI15_10 (EXTI): EXTI Lines 10 to 15 interrupts
+INTERRUPT 040: EXTI15_10 (EXTI): EXTI Lines 10 to 15 interrupts
 INTERRUPT 040: EXTI15_10 (EXTI): EXTI Lines 10 to 15 interrupts
 INTERRUPT 041: RTC_ALARM (RTC): RTC alarms through EXTI line 18 interrupts
+INTERRUPT 041: RTC_ALARM (RTC): RTC alarms through EXTI line 18 interrupts
+INTERRUPT 041: RTC_ALARM (RTC): RTC alarms through EXTI line 18 interrupts
+INTERRUPT 042: DFSDM3 (DFSDM): SD Filter 3 global Interrupt
+INTERRUPT 042: DFSDM3 (DFSDM): SD Filter 3 global Interrupt
 INTERRUPT 042: DFSDM3 (DFSDM): SD Filter 3 global Interrupt
 INTERRUPT 043: TIM8_BRK (TIM8): TIM8 Break Interrupt
+INTERRUPT 043: TIM8_BRK (TIM8): TIM8 Break Interrupt
+INTERRUPT 043: TIM8_BRK (TIM8): TIM8 Break Interrupt
+INTERRUPT 044: TIM8 (TIM8): TIM8 Update Interrupt
+INTERRUPT 044: TIM8 (TIM8): TIM8 Update Interrupt
 INTERRUPT 044: TIM8 (TIM8): TIM8 Update Interrupt
 INTERRUPT 045: TIM8_TRG_COM (TIM8): TIM8 Trigger and Commutation Interrupt
+INTERRUPT 045: TIM8_TRG_COM (TIM8): TIM8 Trigger and Commutation Interrupt
+INTERRUPT 045: TIM8_TRG_COM (TIM8): TIM8 Trigger and Commutation Interrupt
+INTERRUPT 046: TIM8_CC (TIM8): TIM8 Capture Compare Interrupt
+INTERRUPT 046: TIM8_CC (TIM8): TIM8 Capture Compare Interrupt
 INTERRUPT 046: TIM8_CC (TIM8): TIM8 Capture Compare Interrupt
 INTERRUPT 047: ADC3 (ADC3): ADC3 global Interrupt
 INTERRUPT 048: FMC (FMC): FMC global Interrupt
+INTERRUPT 048: FMC (FMC): FMC global Interrupt
+INTERRUPT 048: FMC (FMC): FMC global Interrupt
+INTERRUPT 049: SDMMC (SDMMC): SDMMC global Interrupt
+INTERRUPT 049: SDMMC (SDMMC): SDMMC global Interrupt
 INTERRUPT 049: SDMMC (SDMMC): SDMMC global Interrupt
 INTERRUPT 050: TIM5 (TIM5): TIM5 global Interrupt
+INTERRUPT 050: TIM5 (TIM5): TIM5 global Interrupt
+INTERRUPT 050: TIM5 (TIM5): TIM5 global Interrupt
+INTERRUPT 051: SPI3 (SPI3): SPI3 global Interrupt
+INTERRUPT 051: SPI3 (SPI3): SPI3 global Interrupt
 INTERRUPT 051: SPI3 (SPI3): SPI3 global Interrupt
 INTERRUPT 052: UART4 (UART4): UART4 global Interrupt
+INTERRUPT 052: UART4 (UART4): UART4 global Interrupt
+INTERRUPT 052: UART4 (UART4): UART4 global Interrupt
+INTERRUPT 053: UART5 (UART5): UART5 global Interrupt
+INTERRUPT 053: UART5 (UART5): UART5 global Interrupt
 INTERRUPT 053: UART5 (UART5): UART5 global Interrupt
 INTERRUPT 054: TIM6_DAC (TIM6): TIM6 global and DAC1 and 2 underrun error interrupts
+INTERRUPT 054: TIM6_DAC (TIM6): TIM6 global and DAC1 and 2 underrun error interrupts
+INTERRUPT 054: TIM6_DAC (TIM6): TIM6 global and DAC1 and 2 underrun error interrupts
+INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
+INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 056: DMA2_CH1 (DMA2): DMA2 Channel 1 global Interrupt
+INTERRUPT 056: DMA2_CH1 (DMA2): DMA2 Channel 1 global Interrupt
+INTERRUPT 056: DMA2_CH1 (DMA2): DMA2 Channel 1 global Interrupt
+INTERRUPT 057: DMA2_CH2 (DMA2): DMA2 Channel 2 global Interrupt
+INTERRUPT 057: DMA2_CH2 (DMA2): DMA2 Channel 2 global Interrupt
 INTERRUPT 057: DMA2_CH2 (DMA2): DMA2 Channel 2 global Interrupt
 INTERRUPT 058: DMA2_CH3 (DMA2): DMA2 Channel 3 global Interrupt
+INTERRUPT 058: DMA2_CH3 (DMA2): DMA2 Channel 3 global Interrupt
+INTERRUPT 058: DMA2_CH3 (DMA2): DMA2 Channel 3 global Interrupt
+INTERRUPT 059: DMA2_CH4 (DMA2): DMA2 Channel 4 global Interrupt
+INTERRUPT 059: DMA2_CH4 (DMA2): DMA2 Channel 4 global Interrupt
 INTERRUPT 059: DMA2_CH4 (DMA2): DMA2 Channel 4 global Interrupt
 INTERRUPT 060: DMA2_CH5 (DMA2): DMA2 Channel 5 global Interrupt
+INTERRUPT 060: DMA2_CH5 (DMA2): DMA2 Channel 5 global Interrupt
+INTERRUPT 060: DMA2_CH5 (DMA2): DMA2 Channel 5 global Interrupt
+INTERRUPT 061: DFSDM0 (DFSDM): SD Filter 0 global Interrupt
+INTERRUPT 061: DFSDM0 (DFSDM): SD Filter 0 global Interrupt
 INTERRUPT 061: DFSDM0 (DFSDM): SD Filter 0 global Interrupt
 INTERRUPT 062: DFSDM1 (DFSDM): SD Filter 1 global Interrupt
+INTERRUPT 062: DFSDM1 (DFSDM): SD Filter 1 global Interrupt
+INTERRUPT 062: DFSDM1 (DFSDM): SD Filter 1 global Interrupt
+INTERRUPT 063: DFSDM2 (DFSDM): SD Filter 2 global Interrupt
+INTERRUPT 063: DFSDM2 (DFSDM): SD Filter 2 global Interrupt
 INTERRUPT 063: DFSDM2 (DFSDM): SD Filter 2 global Interrupt
 INTERRUPT 064: COMP (COMP): COMP1 and COMP2 interrupts
+INTERRUPT 064: COMP (COMP): COMP1 and COMP2 interrupts
+INTERRUPT 064: COMP (COMP): COMP1 and COMP2 interrupts
+INTERRUPT 065: LPTIM1 (LPTIM1): LP TIM1 interrupt
+INTERRUPT 065: LPTIM1 (LPTIM1): LP TIM1 interrupt
 INTERRUPT 065: LPTIM1 (LPTIM1): LP TIM1 interrupt
 INTERRUPT 066: LPTIM2 (LPTIM2): LP TIM2 interrupt
+INTERRUPT 066: LPTIM2 (LPTIM2): LP TIM2 interrupt
+INTERRUPT 066: LPTIM2 (LPTIM2): LP TIM2 interrupt
+INTERRUPT 068: DMA2_CH6 (DMA2): DMA2 Channel 6 global Interrupt
+INTERRUPT 068: DMA2_CH6 (DMA2): DMA2 Channel 6 global Interrupt
 INTERRUPT 068: DMA2_CH6 (DMA2): DMA2 Channel 6 global Interrupt
 INTERRUPT 069: DMA2_CH7 (DMA2): DMA2 Channel 7 global Interrupt
+INTERRUPT 069: DMA2_CH7 (DMA2): DMA2 Channel 7 global Interrupt
+INTERRUPT 069: DMA2_CH7 (DMA2): DMA2 Channel 7 global Interrupt
+INTERRUPT 071: QUADSPI (QUADSPI): Quad SPI global interrupt
+INTERRUPT 071: QUADSPI (QUADSPI): Quad SPI global interrupt
 INTERRUPT 071: QUADSPI (QUADSPI): Quad SPI global interrupt
 INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
+INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
+INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
+INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
+INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
 INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
 INTERRUPT 074: SAI1 (SAI1): SAI1 global interrupt
+INTERRUPT 074: SAI1 (SAI1): SAI1 global interrupt
+INTERRUPT 074: SAI1 (SAI1): SAI1 global interrupt
+INTERRUPT 075: SAI2 (SAI2): SAI2 global interrupt
+INTERRUPT 075: SAI2 (SAI2): SAI2 global interrupt
 INTERRUPT 075: SAI2 (SAI2): SAI2 global interrupt
 INTERRUPT 076: SWPMI1 (SWPMI1): SWPMI1 global interrupt
+INTERRUPT 076: SWPMI1 (SWPMI1): SWPMI1 global interrupt
+INTERRUPT 076: SWPMI1 (SWPMI1): SWPMI1 global interrupt
+INTERRUPT 077: TSC (TSC): TSC global interrupt
+INTERRUPT 077: TSC (TSC): TSC global interrupt
 INTERRUPT 077: TSC (TSC): TSC global interrupt
 INTERRUPT 078: LCD (LCD): LCD global interrupt
+INTERRUPT 078: LCD (LCD): LCD global interrupt
+INTERRUPT 078: LCD (LCD): LCD global interrupt
 INTERRUPT 079: AES (AES): AES global interrupt
+INTERRUPT 080: RNG (RNG): RNG global interrupt
+INTERRUPT 080: RNG (RNG): RNG global interrupt
 INTERRUPT 080: RNG (RNG): RNG global interrupt
 INTERRUPT 081: FPU (FPU): Floating point interrupt

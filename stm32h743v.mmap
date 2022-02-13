@@ -5094,6 +5094,7 @@
 0x40015800 B  REGISTER GCR (rw): Global configuration register
 0x40015800 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x40015800 C   FIELD 04w02 SYNCOUT: Synchronization outputs These bits are set and cleared by software.
+0x40015804 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015804 B  REGISTER CR1A (rw): Configuration register 1
 0x40015804 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x40015804 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -5155,6 +5156,7 @@
 0x4001581C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag. This bit is write only. Programming this bit to 1 clears the LFSDET flag in the SAI_xSR register. This bit is not used in AC97or SPDIF mode Reading this bit always returns the value 0.
 0x40015820 B  REGISTER DRA (rw): Data register
 0x40015820 C   FIELD 00w32 DATA: Data A write to this register loads the FIFO provided the FIFO is not full. A read from this register empties the FIFO if the FIFO is not empty.
+0x40015824 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015824 B  REGISTER CR1B (rw): Configuration register 1
 0x40015824 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x40015824 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -5236,6 +5238,7 @@
 0x40015C00 B  REGISTER GCR (rw): Global configuration register
 0x40015C00 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x40015C00 C   FIELD 04w02 SYNCOUT: Synchronization outputs These bits are set and cleared by software.
+0x40015C04 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015C04 B  REGISTER CR1A (rw): Configuration register 1
 0x40015C04 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x40015C04 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -5297,6 +5300,7 @@
 0x40015C1C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag. This bit is write only. Programming this bit to 1 clears the LFSDET flag in the SAI_xSR register. This bit is not used in AC97or SPDIF mode Reading this bit always returns the value 0.
 0x40015C20 B  REGISTER DRA (rw): Data register
 0x40015C20 C   FIELD 00w32 DATA: Data A write to this register loads the FIFO provided the FIFO is not full. A read from this register empties the FIFO if the FIFO is not empty.
+0x40015C24 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015C24 B  REGISTER CR1B (rw): Configuration register 1
 0x40015C24 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x40015C24 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -5378,6 +5382,7 @@
 0x40016000 B  REGISTER GCR (rw): Global configuration register
 0x40016000 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x40016000 C   FIELD 04w02 SYNCOUT: Synchronization outputs These bits are set and cleared by software.
+0x40016004 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40016004 B  REGISTER CR1A (rw): Configuration register 1
 0x40016004 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x40016004 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -5439,6 +5444,7 @@
 0x4001601C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag. This bit is write only. Programming this bit to 1 clears the LFSDET flag in the SAI_xSR register. This bit is not used in AC97or SPDIF mode Reading this bit always returns the value 0.
 0x40016020 B  REGISTER DRA (rw): Data register
 0x40016020 C   FIELD 00w32 DATA: Data A write to this register loads the FIFO provided the FIFO is not full. A read from this register empties the FIFO if the FIFO is not empty.
+0x40016024 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40016024 B  REGISTER CR1B (rw): Configuration register 1
 0x40016024 C   FIELD 00w02 MODE: SAIx audio block mode immediately
 0x40016024 C   FIELD 02w02 PRTCFG: Protocol configuration. These bits are set and cleared by software. These bits have to be configured when the audio block is disabled.
@@ -8849,6 +8855,7 @@
 0x4002040C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
 0x4002040C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
 0x4002040C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
+0x40020410 B  CLUSTER ST0: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40020410 B  REGISTER CR0 (rw): stream x configuration register
 0x40020410 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40020410 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8883,6 +8890,7 @@
 0x40020424 C   FIELD 03w03 FS (ro): FIFO status
 0x40020424 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x40020424 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x40020428 B  CLUSTER ST1: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40020428 B  REGISTER CR1 (rw): stream x configuration register
 0x40020428 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40020428 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8917,6 +8925,7 @@
 0x4002043C C   FIELD 03w03 FS (ro): FIFO status
 0x4002043C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x4002043C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x40020440 B  CLUSTER ST2: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40020440 B  REGISTER CR2 (rw): stream x configuration register
 0x40020440 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40020440 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8951,6 +8960,7 @@
 0x40020454 C   FIELD 03w03 FS (ro): FIFO status
 0x40020454 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x40020454 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x40020458 B  CLUSTER ST3: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40020458 B  REGISTER CR3 (rw): stream x configuration register
 0x40020458 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40020458 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8985,6 +8995,7 @@
 0x4002046C C   FIELD 03w03 FS (ro): FIFO status
 0x4002046C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x4002046C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x40020470 B  CLUSTER ST4: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40020470 B  REGISTER CR4 (rw): stream x configuration register
 0x40020470 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40020470 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -9019,6 +9030,7 @@
 0x40020484 C   FIELD 03w03 FS (ro): FIFO status
 0x40020484 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x40020484 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x40020488 B  CLUSTER ST5: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40020488 B  REGISTER CR5 (rw): stream x configuration register
 0x40020488 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40020488 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -9053,6 +9065,7 @@
 0x4002049C C   FIELD 03w03 FS (ro): FIFO status
 0x4002049C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x4002049C C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x400204A0 B  CLUSTER ST6: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400204A0 B  REGISTER CR6 (rw): stream x configuration register
 0x400204A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400204A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -9087,6 +9100,7 @@
 0x400204B4 C   FIELD 03w03 FS (ro): FIFO status
 0x400204B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
 0x400204B4 C   FIELD 20w01 TRBUFF (rw): Enable the DMA to handle bufferable transfers
+0x400204B8 B  CLUSTER ST7: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400204B8 B  REGISTER CR7 (rw): stream x configuration register
 0x400204B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400204B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -21900,7 +21914,9 @@ INTERRUPT 008: EXTI2 (EXTI): EXTI Line 2 interrupt
 INTERRUPT 009: EXTI3 (EXTI): EXTI Line 3interrupt
 INTERRUPT 010: EXTI4 (EXTI): EXTI Line 4interrupt
 INTERRUPT 011: DMA1_STR0 (DMA1): DMA1 Stream0
+INTERRUPT 011: DMA_STR0 (DMA1): DMA1 Stream0
 INTERRUPT 012: DMA1_STR1 (DMA1): DMA1 Stream1
+INTERRUPT 012: DMA_STR1 (DMA1): DMA1 Stream1
 INTERRUPT 013: DMA1_STR2 (DMA1): DMA1 Stream2
 INTERRUPT 014: DMA1_STR3 (DMA1): DMA1 Stream3
 INTERRUPT 015: DMA1_STR4 (DMA1): DMA1 Stream4

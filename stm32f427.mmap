@@ -2035,6 +2035,7 @@
 0x4000681C C   FIELD 24w02 SJW: SJW
 0x4000681C C   FIELD 30w01 LBKM: LBKM
 0x4000681C C   FIELD 31w01 SILM: SILM
+0x40006980 B  CLUSTER TX0: CAN Transmit cluster
 0x40006980 B  REGISTER TIR0 (rw): TX mailbox identifier register
 0x40006980 C   FIELD 00w01 TXRQ: TXRQ
 0x40006980 C   FIELD 01w01 RTR: RTR
@@ -2055,6 +2056,7 @@
 0x4000698C C   FIELD 08w08 DATA5: DATA5
 0x4000698C C   FIELD 16w08 DATA6: DATA6
 0x4000698C C   FIELD 24w08 DATA7: DATA7
+0x40006990 B  CLUSTER TX1: CAN Transmit cluster
 0x40006990 B  REGISTER TIR1 (rw): TX mailbox identifier register
 0x40006990 C   FIELD 00w01 TXRQ: TXRQ
 0x40006990 C   FIELD 01w01 RTR: RTR
@@ -2075,6 +2077,7 @@
 0x4000699C C   FIELD 08w08 DATA5: DATA5
 0x4000699C C   FIELD 16w08 DATA6: DATA6
 0x4000699C C   FIELD 24w08 DATA7: DATA7
+0x400069A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400069A0 B  REGISTER TIR2 (rw): TX mailbox identifier register
 0x400069A0 C   FIELD 00w01 TXRQ: TXRQ
 0x400069A0 C   FIELD 01w01 RTR: RTR
@@ -2095,6 +2098,7 @@
 0x400069AC C   FIELD 08w08 DATA5: DATA5
 0x400069AC C   FIELD 16w08 DATA6: DATA6
 0x400069AC C   FIELD 24w08 DATA7: DATA7
+0x400069B0 B  CLUSTER RX0: CAN Receive cluster
 0x400069B0 B  REGISTER RIR0 (ro): receive FIFO mailbox identifier register
 0x400069B0 C   FIELD 01w01 RTR: RTR
 0x400069B0 C   FIELD 02w01 IDE: IDE
@@ -2114,6 +2118,7 @@
 0x400069BC C   FIELD 08w08 DATA5: DATA5
 0x400069BC C   FIELD 16w08 DATA6: DATA6
 0x400069BC C   FIELD 24w08 DATA7: DATA7
+0x400069C0 B  CLUSTER RX1: CAN Receive cluster
 0x400069C0 B  REGISTER RIR1 (ro): receive FIFO mailbox identifier register
 0x400069C0 C   FIELD 01w01 RTR: RTR
 0x400069C0 C   FIELD 02w01 IDE: IDE
@@ -2252,114 +2257,142 @@
 0x40006A1C C   FIELD 25w01 FACT25: Filter active
 0x40006A1C C   FIELD 26w01 FACT26: Filter active
 0x40006A1C C   FIELD 27w01 FACT27: Filter active
+0x40006A40 B  CLUSTER FB0: CAN Filter Bank cluster
 0x40006A40 B  REGISTER FR10 (rw): Filter bank 0 register 1
 0x40006A40 C   FIELD 00w32 FB: Filter bits
 0x40006A44 B  REGISTER FR20 (rw): Filter bank 0 register 2
 0x40006A44 C   FIELD 00w32 FB: Filter bits
+0x40006A48 B  CLUSTER FB1: CAN Filter Bank cluster
 0x40006A48 B  REGISTER FR11 (rw): Filter bank 0 register 1
 0x40006A48 C   FIELD 00w32 FB: Filter bits
 0x40006A4C B  REGISTER FR21 (rw): Filter bank 0 register 2
 0x40006A4C C   FIELD 00w32 FB: Filter bits
+0x40006A50 B  CLUSTER FB2: CAN Filter Bank cluster
 0x40006A50 B  REGISTER FR12 (rw): Filter bank 0 register 1
 0x40006A50 C   FIELD 00w32 FB: Filter bits
 0x40006A54 B  REGISTER FR22 (rw): Filter bank 0 register 2
 0x40006A54 C   FIELD 00w32 FB: Filter bits
+0x40006A58 B  CLUSTER FB3: CAN Filter Bank cluster
 0x40006A58 B  REGISTER FR13 (rw): Filter bank 0 register 1
 0x40006A58 C   FIELD 00w32 FB: Filter bits
 0x40006A5C B  REGISTER FR23 (rw): Filter bank 0 register 2
 0x40006A5C C   FIELD 00w32 FB: Filter bits
+0x40006A60 B  CLUSTER FB4: CAN Filter Bank cluster
 0x40006A60 B  REGISTER FR14 (rw): Filter bank 0 register 1
 0x40006A60 C   FIELD 00w32 FB: Filter bits
 0x40006A64 B  REGISTER FR24 (rw): Filter bank 0 register 2
 0x40006A64 C   FIELD 00w32 FB: Filter bits
+0x40006A68 B  CLUSTER FB5: CAN Filter Bank cluster
 0x40006A68 B  REGISTER FR15 (rw): Filter bank 0 register 1
 0x40006A68 C   FIELD 00w32 FB: Filter bits
 0x40006A6C B  REGISTER FR25 (rw): Filter bank 0 register 2
 0x40006A6C C   FIELD 00w32 FB: Filter bits
+0x40006A70 B  CLUSTER FB6: CAN Filter Bank cluster
 0x40006A70 B  REGISTER FR16 (rw): Filter bank 0 register 1
 0x40006A70 C   FIELD 00w32 FB: Filter bits
 0x40006A74 B  REGISTER FR26 (rw): Filter bank 0 register 2
 0x40006A74 C   FIELD 00w32 FB: Filter bits
+0x40006A78 B  CLUSTER FB7: CAN Filter Bank cluster
 0x40006A78 B  REGISTER FR17 (rw): Filter bank 0 register 1
 0x40006A78 C   FIELD 00w32 FB: Filter bits
 0x40006A7C B  REGISTER FR27 (rw): Filter bank 0 register 2
 0x40006A7C C   FIELD 00w32 FB: Filter bits
+0x40006A80 B  CLUSTER FB8: CAN Filter Bank cluster
 0x40006A80 B  REGISTER FR18 (rw): Filter bank 0 register 1
 0x40006A80 C   FIELD 00w32 FB: Filter bits
 0x40006A84 B  REGISTER FR28 (rw): Filter bank 0 register 2
 0x40006A84 C   FIELD 00w32 FB: Filter bits
+0x40006A88 B  CLUSTER FB9: CAN Filter Bank cluster
 0x40006A88 B  REGISTER FR19 (rw): Filter bank 0 register 1
 0x40006A88 C   FIELD 00w32 FB: Filter bits
 0x40006A8C B  REGISTER FR29 (rw): Filter bank 0 register 2
 0x40006A8C C   FIELD 00w32 FB: Filter bits
+0x40006A90 B  CLUSTER FB10: CAN Filter Bank cluster
 0x40006A90 B  REGISTER FR110 (rw): Filter bank 0 register 1
 0x40006A90 C   FIELD 00w32 FB: Filter bits
 0x40006A94 B  REGISTER FR210 (rw): Filter bank 0 register 2
 0x40006A94 C   FIELD 00w32 FB: Filter bits
+0x40006A98 B  CLUSTER FB11: CAN Filter Bank cluster
 0x40006A98 B  REGISTER FR111 (rw): Filter bank 0 register 1
 0x40006A98 C   FIELD 00w32 FB: Filter bits
 0x40006A9C B  REGISTER FR211 (rw): Filter bank 0 register 2
 0x40006A9C C   FIELD 00w32 FB: Filter bits
+0x40006AA0 B  CLUSTER FB12: CAN Filter Bank cluster
 0x40006AA0 B  REGISTER FR112 (rw): Filter bank 0 register 1
 0x40006AA0 C   FIELD 00w32 FB: Filter bits
 0x40006AA4 B  REGISTER FR212 (rw): Filter bank 0 register 2
 0x40006AA4 C   FIELD 00w32 FB: Filter bits
+0x40006AA8 B  CLUSTER FB13: CAN Filter Bank cluster
 0x40006AA8 B  REGISTER FR113 (rw): Filter bank 0 register 1
 0x40006AA8 C   FIELD 00w32 FB: Filter bits
 0x40006AAC B  REGISTER FR213 (rw): Filter bank 0 register 2
 0x40006AAC C   FIELD 00w32 FB: Filter bits
+0x40006AB0 B  CLUSTER FB14: CAN Filter Bank cluster
 0x40006AB0 B  REGISTER FR114 (rw): Filter bank 0 register 1
 0x40006AB0 C   FIELD 00w32 FB: Filter bits
 0x40006AB4 B  REGISTER FR214 (rw): Filter bank 0 register 2
 0x40006AB4 C   FIELD 00w32 FB: Filter bits
+0x40006AB8 B  CLUSTER FB15: CAN Filter Bank cluster
 0x40006AB8 B  REGISTER FR115 (rw): Filter bank 0 register 1
 0x40006AB8 C   FIELD 00w32 FB: Filter bits
 0x40006ABC B  REGISTER FR215 (rw): Filter bank 0 register 2
 0x40006ABC C   FIELD 00w32 FB: Filter bits
+0x40006AC0 B  CLUSTER FB16: CAN Filter Bank cluster
 0x40006AC0 B  REGISTER FR116 (rw): Filter bank 0 register 1
 0x40006AC0 C   FIELD 00w32 FB: Filter bits
 0x40006AC4 B  REGISTER FR216 (rw): Filter bank 0 register 2
 0x40006AC4 C   FIELD 00w32 FB: Filter bits
+0x40006AC8 B  CLUSTER FB17: CAN Filter Bank cluster
 0x40006AC8 B  REGISTER FR117 (rw): Filter bank 0 register 1
 0x40006AC8 C   FIELD 00w32 FB: Filter bits
 0x40006ACC B  REGISTER FR217 (rw): Filter bank 0 register 2
 0x40006ACC C   FIELD 00w32 FB: Filter bits
+0x40006AD0 B  CLUSTER FB18: CAN Filter Bank cluster
 0x40006AD0 B  REGISTER FR118 (rw): Filter bank 0 register 1
 0x40006AD0 C   FIELD 00w32 FB: Filter bits
 0x40006AD4 B  REGISTER FR218 (rw): Filter bank 0 register 2
 0x40006AD4 C   FIELD 00w32 FB: Filter bits
+0x40006AD8 B  CLUSTER FB19: CAN Filter Bank cluster
 0x40006AD8 B  REGISTER FR119 (rw): Filter bank 0 register 1
 0x40006AD8 C   FIELD 00w32 FB: Filter bits
 0x40006ADC B  REGISTER FR219 (rw): Filter bank 0 register 2
 0x40006ADC C   FIELD 00w32 FB: Filter bits
+0x40006AE0 B  CLUSTER FB20: CAN Filter Bank cluster
 0x40006AE0 B  REGISTER FR120 (rw): Filter bank 0 register 1
 0x40006AE0 C   FIELD 00w32 FB: Filter bits
 0x40006AE4 B  REGISTER FR220 (rw): Filter bank 0 register 2
 0x40006AE4 C   FIELD 00w32 FB: Filter bits
+0x40006AE8 B  CLUSTER FB21: CAN Filter Bank cluster
 0x40006AE8 B  REGISTER FR121 (rw): Filter bank 0 register 1
 0x40006AE8 C   FIELD 00w32 FB: Filter bits
 0x40006AEC B  REGISTER FR221 (rw): Filter bank 0 register 2
 0x40006AEC C   FIELD 00w32 FB: Filter bits
+0x40006AF0 B  CLUSTER FB22: CAN Filter Bank cluster
 0x40006AF0 B  REGISTER FR122 (rw): Filter bank 0 register 1
 0x40006AF0 C   FIELD 00w32 FB: Filter bits
 0x40006AF4 B  REGISTER FR222 (rw): Filter bank 0 register 2
 0x40006AF4 C   FIELD 00w32 FB: Filter bits
+0x40006AF8 B  CLUSTER FB23: CAN Filter Bank cluster
 0x40006AF8 B  REGISTER FR123 (rw): Filter bank 0 register 1
 0x40006AF8 C   FIELD 00w32 FB: Filter bits
 0x40006AFC B  REGISTER FR223 (rw): Filter bank 0 register 2
 0x40006AFC C   FIELD 00w32 FB: Filter bits
+0x40006B00 B  CLUSTER FB24: CAN Filter Bank cluster
 0x40006B00 B  REGISTER FR124 (rw): Filter bank 0 register 1
 0x40006B00 C   FIELD 00w32 FB: Filter bits
 0x40006B04 B  REGISTER FR224 (rw): Filter bank 0 register 2
 0x40006B04 C   FIELD 00w32 FB: Filter bits
+0x40006B08 B  CLUSTER FB25: CAN Filter Bank cluster
 0x40006B08 B  REGISTER FR125 (rw): Filter bank 0 register 1
 0x40006B08 C   FIELD 00w32 FB: Filter bits
 0x40006B0C B  REGISTER FR225 (rw): Filter bank 0 register 2
 0x40006B0C C   FIELD 00w32 FB: Filter bits
+0x40006B10 B  CLUSTER FB26: CAN Filter Bank cluster
 0x40006B10 B  REGISTER FR126 (rw): Filter bank 0 register 1
 0x40006B10 C   FIELD 00w32 FB: Filter bits
 0x40006B14 B  REGISTER FR226 (rw): Filter bank 0 register 2
 0x40006B14 C   FIELD 00w32 FB: Filter bits
+0x40006B18 B  CLUSTER FB27: CAN Filter Bank cluster
 0x40006B18 B  REGISTER FR127 (rw): Filter bank 0 register 1
 0x40006B18 C   FIELD 00w32 FB: Filter bits
 0x40006B1C B  REGISTER FR227 (rw): Filter bank 0 register 2
@@ -6576,6 +6609,7 @@
 0x4002600C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
 0x4002600C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
 0x4002600C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
+0x40026010 B  CLUSTER ST0: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026010 B  REGISTER CR0 (rw): stream x configuration register
 0x40026010 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026010 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6609,6 +6643,7 @@
 0x40026024 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026024 C   FIELD 03w03 FS (ro): FIFO status
 0x40026024 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026028 B  CLUSTER ST1: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026028 B  REGISTER CR1 (rw): stream x configuration register
 0x40026028 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026028 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6642,6 +6677,7 @@
 0x4002603C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002603C C   FIELD 03w03 FS (ro): FIFO status
 0x4002603C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026040 B  CLUSTER ST2: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026040 B  REGISTER CR2 (rw): stream x configuration register
 0x40026040 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026040 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6675,6 +6711,7 @@
 0x40026054 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026054 C   FIELD 03w03 FS (ro): FIFO status
 0x40026054 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026058 B  CLUSTER ST3: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026058 B  REGISTER CR3 (rw): stream x configuration register
 0x40026058 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026058 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6708,6 +6745,7 @@
 0x4002606C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002606C C   FIELD 03w03 FS (ro): FIFO status
 0x4002606C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026070 B  CLUSTER ST4: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026070 B  REGISTER CR4 (rw): stream x configuration register
 0x40026070 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026070 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6741,6 +6779,7 @@
 0x40026084 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026084 C   FIELD 03w03 FS (ro): FIFO status
 0x40026084 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026088 B  CLUSTER ST5: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026088 B  REGISTER CR5 (rw): stream x configuration register
 0x40026088 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026088 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6774,6 +6813,7 @@
 0x4002609C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002609C C   FIELD 03w03 FS (ro): FIFO status
 0x4002609C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x400260A0 B  CLUSTER ST6: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400260A0 B  REGISTER CR6 (rw): stream x configuration register
 0x400260A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400260A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -6807,6 +6847,7 @@
 0x400260B4 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400260B4 C   FIELD 03w03 FS (ro): FIFO status
 0x400260B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x400260B8 B  CLUSTER ST7: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400260B8 B  REGISTER CR7 (rw): stream x configuration register
 0x400260B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400260B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -10493,6 +10534,7 @@ INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
 INTERRUPT 079: CRYP (CRYP): CRYP crypto global interrupt
 INTERRUPT 080: HASH_RNG (HASH): Hash and Rng global interrupt
 INTERRUPT 081: FPU (FPU): Floating point unit
+INTERRUPT 081: FPU (RNG): FPU interrupt
 INTERRUPT 082: UART7 (UART7): UART 7 global interrupt
 INTERRUPT 083: UART8 (UART8): UART 8 global interrupt
 INTERRUPT 084: SPI4 (SPI4): SPI 4 global interrupt

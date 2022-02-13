@@ -6120,6 +6120,7 @@
 0x40015C00 B  REGISTER GCR (rw): Global configuration register
 0x40015C00 C   FIELD 00w02 SYNCIN: Synchronization inputs
 0x40015C00 C   FIELD 04w02 SYNCOUT: Synchronization outputs
+0x40015C04 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015C04 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015C04 C   FIELD 00w02 MODE: Audio block mode
 0x40015C04 C   FIELD 02w02 PRTCFG: Protocol configuration
@@ -6179,6 +6180,7 @@
 0x40015C1C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
 0x40015C20 B  REGISTER DRA (rw): AData register
 0x40015C20 C   FIELD 00w32 DATA: Data
+0x40015C24 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015C24 B  REGISTER CR1B (rw): AConfiguration register 1
 0x40015C24 C   FIELD 00w02 MODE: Audio block mode
 0x40015C24 C   FIELD 02w02 PRTCFG: Protocol configuration
@@ -8287,6 +8289,7 @@
 0x4002600C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
 0x4002600C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
 0x4002600C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
+0x40026010 B  CLUSTER ST0: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026010 B  REGISTER CR0 (rw): stream x configuration register
 0x40026010 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026010 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8320,6 +8323,7 @@
 0x40026024 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026024 C   FIELD 03w03 FS (ro): FIFO status
 0x40026024 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026028 B  CLUSTER ST1: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026028 B  REGISTER CR1 (rw): stream x configuration register
 0x40026028 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026028 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8353,6 +8357,7 @@
 0x4002603C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002603C C   FIELD 03w03 FS (ro): FIFO status
 0x4002603C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026040 B  CLUSTER ST2: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026040 B  REGISTER CR2 (rw): stream x configuration register
 0x40026040 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026040 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8386,6 +8391,7 @@
 0x40026054 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026054 C   FIELD 03w03 FS (ro): FIFO status
 0x40026054 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026058 B  CLUSTER ST3: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026058 B  REGISTER CR3 (rw): stream x configuration register
 0x40026058 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026058 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8419,6 +8425,7 @@
 0x4002606C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002606C C   FIELD 03w03 FS (ro): FIFO status
 0x4002606C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026070 B  CLUSTER ST4: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026070 B  REGISTER CR4 (rw): stream x configuration register
 0x40026070 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026070 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8452,6 +8459,7 @@
 0x40026084 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026084 C   FIELD 03w03 FS (ro): FIFO status
 0x40026084 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026088 B  CLUSTER ST5: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026088 B  REGISTER CR5 (rw): stream x configuration register
 0x40026088 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026088 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8485,6 +8493,7 @@
 0x4002609C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002609C C   FIELD 03w03 FS (ro): FIFO status
 0x4002609C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x400260A0 B  CLUSTER ST6: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400260A0 B  REGISTER CR6 (rw): stream x configuration register
 0x400260A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400260A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -8518,6 +8527,7 @@
 0x400260B4 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400260B4 C   FIELD 03w03 FS (ro): FIFO status
 0x400260B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x400260B8 B  CLUSTER ST7: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400260B8 B  REGISTER CR7 (rw): stream x configuration register
 0x400260B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400260B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable

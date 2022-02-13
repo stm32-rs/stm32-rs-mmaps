@@ -1658,6 +1658,7 @@
 0x4000681C C   FIELD 24w02 SJW: SJW
 0x4000681C C   FIELD 30w01 LBKM: LBKM
 0x4000681C C   FIELD 31w01 SILM: SILM
+0x40006980 B  CLUSTER TX0: CAN Transmit cluster
 0x40006980 B  REGISTER TIR0 (rw): CAN_TI0R
 0x40006980 C   FIELD 00w01 TXRQ: TXRQ
 0x40006980 C   FIELD 01w01 RTR: RTR
@@ -1678,6 +1679,7 @@
 0x4000698C C   FIELD 08w08 DATA5: DATA5
 0x4000698C C   FIELD 16w08 DATA6: DATA6
 0x4000698C C   FIELD 24w08 DATA7: DATA7
+0x40006990 B  CLUSTER TX1: CAN Transmit cluster
 0x40006990 B  REGISTER TIR1 (rw): CAN_TI0R
 0x40006990 C   FIELD 00w01 TXRQ: TXRQ
 0x40006990 C   FIELD 01w01 RTR: RTR
@@ -1698,6 +1700,7 @@
 0x4000699C C   FIELD 08w08 DATA5: DATA5
 0x4000699C C   FIELD 16w08 DATA6: DATA6
 0x4000699C C   FIELD 24w08 DATA7: DATA7
+0x400069A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400069A0 B  REGISTER TIR2 (rw): CAN_TI0R
 0x400069A0 C   FIELD 00w01 TXRQ: TXRQ
 0x400069A0 C   FIELD 01w01 RTR: RTR
@@ -1718,6 +1721,7 @@
 0x400069AC C   FIELD 08w08 DATA5: DATA5
 0x400069AC C   FIELD 16w08 DATA6: DATA6
 0x400069AC C   FIELD 24w08 DATA7: DATA7
+0x400069B0 B  CLUSTER RX0: CAN Receive cluster
 0x400069B0 B  REGISTER RIR0 (ro): CAN_RI0R
 0x400069B0 C   FIELD 01w01 RTR: RTR
 0x400069B0 C   FIELD 02w01 IDE: IDE
@@ -1737,6 +1741,7 @@
 0x400069BC C   FIELD 08w08 DATA5: DATA5
 0x400069BC C   FIELD 16w08 DATA6: DATA6
 0x400069BC C   FIELD 24w08 DATA7: DATA7
+0x400069C0 B  CLUSTER RX1: CAN Receive cluster
 0x400069C0 B  REGISTER RIR1 (ro): CAN_RI0R
 0x400069C0 C   FIELD 01w01 RTR: RTR
 0x400069C0 C   FIELD 02w01 IDE: IDE
@@ -1818,58 +1823,72 @@
 0x40006A1C C   FIELD 11w01 FACT11: Filter active
 0x40006A1C C   FIELD 12w01 FACT12: Filter active
 0x40006A1C C   FIELD 13w01 FACT13: Filter active
+0x40006A40 B  CLUSTER FB0: CAN Filter Bank cluster
 0x40006A40 B  REGISTER FR10 (rw): Filter bank 0 register 1
 0x40006A40 C   FIELD 00w32 FB: Filter bits
 0x40006A44 B  REGISTER FR20 (rw): Filter bank 0 register 2
 0x40006A44 C   FIELD 00w32 FB: Filter bits
+0x40006A48 B  CLUSTER FB1: CAN Filter Bank cluster
 0x40006A48 B  REGISTER FR11 (rw): Filter bank 0 register 1
 0x40006A48 C   FIELD 00w32 FB: Filter bits
 0x40006A4C B  REGISTER FR21 (rw): Filter bank 0 register 2
 0x40006A4C C   FIELD 00w32 FB: Filter bits
+0x40006A50 B  CLUSTER FB2: CAN Filter Bank cluster
 0x40006A50 B  REGISTER FR12 (rw): Filter bank 0 register 1
 0x40006A50 C   FIELD 00w32 FB: Filter bits
 0x40006A54 B  REGISTER FR22 (rw): Filter bank 0 register 2
 0x40006A54 C   FIELD 00w32 FB: Filter bits
+0x40006A58 B  CLUSTER FB3: CAN Filter Bank cluster
 0x40006A58 B  REGISTER FR13 (rw): Filter bank 0 register 1
 0x40006A58 C   FIELD 00w32 FB: Filter bits
 0x40006A5C B  REGISTER FR23 (rw): Filter bank 0 register 2
 0x40006A5C C   FIELD 00w32 FB: Filter bits
+0x40006A60 B  CLUSTER FB4: CAN Filter Bank cluster
 0x40006A60 B  REGISTER FR14 (rw): Filter bank 0 register 1
 0x40006A60 C   FIELD 00w32 FB: Filter bits
 0x40006A64 B  REGISTER FR24 (rw): Filter bank 0 register 2
 0x40006A64 C   FIELD 00w32 FB: Filter bits
+0x40006A68 B  CLUSTER FB5: CAN Filter Bank cluster
 0x40006A68 B  REGISTER FR15 (rw): Filter bank 0 register 1
 0x40006A68 C   FIELD 00w32 FB: Filter bits
 0x40006A6C B  REGISTER FR25 (rw): Filter bank 0 register 2
 0x40006A6C C   FIELD 00w32 FB: Filter bits
+0x40006A70 B  CLUSTER FB6: CAN Filter Bank cluster
 0x40006A70 B  REGISTER FR16 (rw): Filter bank 0 register 1
 0x40006A70 C   FIELD 00w32 FB: Filter bits
 0x40006A74 B  REGISTER FR26 (rw): Filter bank 0 register 2
 0x40006A74 C   FIELD 00w32 FB: Filter bits
+0x40006A78 B  CLUSTER FB7: CAN Filter Bank cluster
 0x40006A78 B  REGISTER FR17 (rw): Filter bank 0 register 1
 0x40006A78 C   FIELD 00w32 FB: Filter bits
 0x40006A7C B  REGISTER FR27 (rw): Filter bank 0 register 2
 0x40006A7C C   FIELD 00w32 FB: Filter bits
+0x40006A80 B  CLUSTER FB8: CAN Filter Bank cluster
 0x40006A80 B  REGISTER FR18 (rw): Filter bank 0 register 1
 0x40006A80 C   FIELD 00w32 FB: Filter bits
 0x40006A84 B  REGISTER FR28 (rw): Filter bank 0 register 2
 0x40006A84 C   FIELD 00w32 FB: Filter bits
+0x40006A88 B  CLUSTER FB9: CAN Filter Bank cluster
 0x40006A88 B  REGISTER FR19 (rw): Filter bank 0 register 1
 0x40006A88 C   FIELD 00w32 FB: Filter bits
 0x40006A8C B  REGISTER FR29 (rw): Filter bank 0 register 2
 0x40006A8C C   FIELD 00w32 FB: Filter bits
+0x40006A90 B  CLUSTER FB10: CAN Filter Bank cluster
 0x40006A90 B  REGISTER FR110 (rw): Filter bank 0 register 1
 0x40006A90 C   FIELD 00w32 FB: Filter bits
 0x40006A94 B  REGISTER FR210 (rw): Filter bank 0 register 2
 0x40006A94 C   FIELD 00w32 FB: Filter bits
+0x40006A98 B  CLUSTER FB11: CAN Filter Bank cluster
 0x40006A98 B  REGISTER FR111 (rw): Filter bank 0 register 1
 0x40006A98 C   FIELD 00w32 FB: Filter bits
 0x40006A9C B  REGISTER FR211 (rw): Filter bank 0 register 2
 0x40006A9C C   FIELD 00w32 FB: Filter bits
+0x40006AA0 B  CLUSTER FB12: CAN Filter Bank cluster
 0x40006AA0 B  REGISTER FR112 (rw): Filter bank 0 register 1
 0x40006AA0 C   FIELD 00w32 FB: Filter bits
 0x40006AA4 B  REGISTER FR212 (rw): Filter bank 0 register 2
 0x40006AA4 C   FIELD 00w32 FB: Filter bits
+0x40006AA8 B  CLUSTER FB13: CAN Filter Bank cluster
 0x40006AA8 B  REGISTER FR113 (rw): Filter bank 0 register 1
 0x40006AA8 C   FIELD 00w32 FB: Filter bits
 0x40006AAC B  REGISTER FR213 (rw): Filter bank 0 register 2
@@ -4396,6 +4415,7 @@
 0x40020404 C   FIELD 25w01 CTCIF7: Channel 7 Transfer Complete clear
 0x40020404 C   FIELD 26w01 CHTIF7: Channel 7 Half Transfer clear
 0x40020404 C   FIELD 27w01 CTEIF7: Channel 7 Transfer Error clear
+0x40020408 B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020408 B  REGISTER CR1 (rw): DMA channel configuration register (DMA_CCR)
 0x40020408 C   FIELD 00w01 EN: Channel enable
 0x40020408 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -4415,6 +4435,7 @@
 0x40020410 C   FIELD 00w32 PA: Peripheral address
 0x40020414 B  REGISTER MAR1 (rw): DMA channel 1 memory address register
 0x40020414 C   FIELD 00w32 MA: Memory address
+0x4002041C B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x4002041C B  REGISTER CR2 (rw): DMA channel configuration register (DMA_CCR)
 0x4002041C C   FIELD 00w01 EN: Channel enable
 0x4002041C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -4434,6 +4455,7 @@
 0x40020424 C   FIELD 00w32 PA: Peripheral address
 0x40020428 B  REGISTER MAR2 (rw): DMA channel 1 memory address register
 0x40020428 C   FIELD 00w32 MA: Memory address
+0x40020430 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020430 B  REGISTER CR3 (rw): DMA channel configuration register (DMA_CCR)
 0x40020430 C   FIELD 00w01 EN: Channel enable
 0x40020430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -4453,6 +4475,7 @@
 0x40020438 C   FIELD 00w32 PA: Peripheral address
 0x4002043C B  REGISTER MAR3 (rw): DMA channel 1 memory address register
 0x4002043C C   FIELD 00w32 MA: Memory address
+0x40020444 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020444 B  REGISTER CR4 (rw): DMA channel configuration register (DMA_CCR)
 0x40020444 C   FIELD 00w01 EN: Channel enable
 0x40020444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -4472,6 +4495,7 @@
 0x4002044C C   FIELD 00w32 PA: Peripheral address
 0x40020450 B  REGISTER MAR4 (rw): DMA channel 1 memory address register
 0x40020450 C   FIELD 00w32 MA: Memory address
+0x40020458 B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020458 B  REGISTER CR5 (rw): DMA channel configuration register (DMA_CCR)
 0x40020458 C   FIELD 00w01 EN: Channel enable
 0x40020458 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -4491,6 +4515,7 @@
 0x40020460 C   FIELD 00w32 PA: Peripheral address
 0x40020464 B  REGISTER MAR5 (rw): DMA channel 1 memory address register
 0x40020464 C   FIELD 00w32 MA: Memory address
+0x4002046C B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x4002046C B  REGISTER CR6 (rw): DMA channel configuration register (DMA_CCR)
 0x4002046C C   FIELD 00w01 EN: Channel enable
 0x4002046C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -4510,6 +4535,7 @@
 0x40020474 C   FIELD 00w32 PA: Peripheral address
 0x40020478 B  REGISTER MAR6 (rw): DMA channel 1 memory address register
 0x40020478 C   FIELD 00w32 MA: Memory address
+0x40020480 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020480 B  REGISTER CR7 (rw): DMA channel configuration register (DMA_CCR)
 0x40020480 C   FIELD 00w01 EN: Channel enable
 0x40020480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -6165,6 +6191,7 @@ INTERRUPT 018: ADC1_2 (ADC1): ADC1 and ADC2 global interrupt
 INTERRUPT 019: USB_HP_CAN_TX (USB): USB High Priority or CAN TX interrupts
 INTERRUPT 020: USB_LP_CAN_RX0 (USB): USB Low Priority or CAN RX0 interrupts
 INTERRUPT 021: CAN_RX1 (CAN1): CAN RX1 interrupt
+INTERRUPT 022: CAN_SCE (CAN1): CAN SCE interrupt
 INTERRUPT 022: CAN_SCE (CAN1): CAN SCE interrupt
 INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line[9:5] interrupts
 INTERRUPT 024: TIM1_BRK (TIM1): TIM1 Break interrupt

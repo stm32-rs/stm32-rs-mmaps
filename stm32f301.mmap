@@ -5186,6 +5186,7 @@
 0x40020404 C   FIELD 25w01 CTCIF7: Channel 7 Transfer Complete clear
 0x40020404 C   FIELD 26w01 CHTIF7: Channel 7 Half Transfer clear
 0x40020404 C   FIELD 27w01 CTEIF7: Channel 7 Transfer Error clear
+0x40020408 B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020408 B  REGISTER CR1 (rw): DMA channel configuration register (DMA_CCR)
 0x40020408 C   FIELD 00w01 EN: Channel enable
 0x40020408 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5205,6 +5206,7 @@
 0x40020410 C   FIELD 00w32 PA: Peripheral address
 0x40020414 B  REGISTER MAR1 (rw): DMA channel 1 memory address register
 0x40020414 C   FIELD 00w32 MA: Memory address
+0x4002041C B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x4002041C B  REGISTER CR2 (rw): DMA channel configuration register (DMA_CCR)
 0x4002041C C   FIELD 00w01 EN: Channel enable
 0x4002041C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5224,6 +5226,7 @@
 0x40020424 C   FIELD 00w32 PA: Peripheral address
 0x40020428 B  REGISTER MAR2 (rw): DMA channel 1 memory address register
 0x40020428 C   FIELD 00w32 MA: Memory address
+0x40020430 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020430 B  REGISTER CR3 (rw): DMA channel configuration register (DMA_CCR)
 0x40020430 C   FIELD 00w01 EN: Channel enable
 0x40020430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5243,6 +5246,7 @@
 0x40020438 C   FIELD 00w32 PA: Peripheral address
 0x4002043C B  REGISTER MAR3 (rw): DMA channel 1 memory address register
 0x4002043C C   FIELD 00w32 MA: Memory address
+0x40020444 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020444 B  REGISTER CR4 (rw): DMA channel configuration register (DMA_CCR)
 0x40020444 C   FIELD 00w01 EN: Channel enable
 0x40020444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5262,6 +5266,7 @@
 0x4002044C C   FIELD 00w32 PA: Peripheral address
 0x40020450 B  REGISTER MAR4 (rw): DMA channel 1 memory address register
 0x40020450 C   FIELD 00w32 MA: Memory address
+0x40020458 B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020458 B  REGISTER CR5 (rw): DMA channel configuration register (DMA_CCR)
 0x40020458 C   FIELD 00w01 EN: Channel enable
 0x40020458 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5281,6 +5286,7 @@
 0x40020460 C   FIELD 00w32 PA: Peripheral address
 0x40020464 B  REGISTER MAR5 (rw): DMA channel 1 memory address register
 0x40020464 C   FIELD 00w32 MA: Memory address
+0x4002046C B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x4002046C B  REGISTER CR6 (rw): DMA channel configuration register (DMA_CCR)
 0x4002046C C   FIELD 00w01 EN: Channel enable
 0x4002046C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5300,6 +5306,7 @@
 0x40020474 C   FIELD 00w32 PA: Peripheral address
 0x40020478 B  REGISTER MAR6 (rw): DMA channel 1 memory address register
 0x40020478 C   FIELD 00w32 MA: Memory address
+0x40020480 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
 0x40020480 B  REGISTER CR7 (rw): DMA channel configuration register (DMA_CCR)
 0x40020480 C   FIELD 00w01 EN: Channel enable
 0x40020480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -7427,17 +7434,22 @@ INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line5 to Line9 interrupts
 INTERRUPT 024: TIM15_IRQ (TIM15): Timer 15 global interrupt
 INTERRUPT 025: TIM16_IRQ (TIM16): Timer 16 global interrupt
 INTERRUPT 026: TIM17_IRQ (TIM17): Timer 17 global interrupt
+INTERRUPT 027: TIM18_DAC3_IRQ (TIM18): Timer 18 global interrupt/DAC3 underrun interrupt
 INTERRUPT 027: TIM1_CC (TIM1): TIM1 capture compare interrupt
 INTERRUPT 028: TIM2 (TIM2): Timer 2 global interrupt
 INTERRUPT 031: I2C1_EV_EXTI23 (EXTI): I2C1 event interrupt and EXTI Line23 interrupt
+INTERRUPT 031: I2C1_EV_IRQ (I2C1): I2C1_EV global interrupt/EXTI Line[3:2] interrupts
 INTERRUPT 032: I2C1_ER_IRQ (I2C1): I2C1_ER
 INTERRUPT 033: I2C2_EV_IRQ (I2C2): I2C2_EV global interrupt/EXTI Line[4:2] interrupts
 INTERRUPT 034: I2C2_ER_IRQ (I2C2): I2C2_ER
 INTERRUPT 035: SPI1_IRQ (SPI1): SPI1 global interrupt
 INTERRUPT 036: SPI2_IRQ (SPI2): SPI2 global interrupt
 INTERRUPT 037: USART1_EXTI25 (EXTI): USART1 global interrupt and EXTI Line 25 interrupt
+INTERRUPT 037: USART1_IRQ (USART1): USART1 global interrupt/EXTI25 (USART1 wakeup event)
 INTERRUPT 038: USART2_EXTI26 (EXTI): USART2 global interrupt and EXTI Line 26 interrupt
+INTERRUPT 038: USART2_IRQ (USART2): USART2 global interrupt/EXTI26 (USART1 wakeup event)
 INTERRUPT 039: USART3_EXTI28 (EXTI): USART3 global interrupt and EXTI Line 28 interrupt
+INTERRUPT 039: USART3_IRQ (USART3): USART3 global interrupt/EXTI28 (USART1 wakeup event)
 INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line15 to Line10 interrupts
 INTERRUPT 041: RTC_ALARM_IT_IRQ (RTC): RTC alarm interrupt
 INTERRUPT 042: CEC_IRQ (CEC): CEC interrupt
@@ -7456,5 +7468,6 @@ INTERRUPT 072: I2C3_EV_IRQ (I2C3): I2C3 event interrupt / EXTI Line27 interrupt
 INTERRUPT 073: I2C3_ER_IRQ (I2C3): I2C3 error interrupt
 INTERRUPT 074: USB_HP_IRQ (USB): USB high priority interrupt
 INTERRUPT 075: USB_LP_IRQ (USB): USB low priority interrupt
+INTERRUPT 076: USB_WAKEUP_IRQ (USB): USB wakeup interrupt
 INTERRUPT 076: USB_WKUP_EXTI (EXTI): USB wakeup from Suspend and EXTI Line 18
 INTERRUPT 081: FPU (FPU): Floating point unit interrupt

@@ -3085,6 +3085,7 @@
 0x4002640C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
 0x4002640C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
 0x4002640C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
+0x40026410 B  CLUSTER ST0: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026410 B  REGISTER CR0 (rw): stream x configuration register
 0x40026410 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026410 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3118,6 +3119,7 @@
 0x40026424 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026424 C   FIELD 03w03 FS (ro): FIFO status
 0x40026424 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026428 B  CLUSTER ST1: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026428 B  REGISTER CR1 (rw): stream x configuration register
 0x40026428 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026428 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3151,6 +3153,7 @@
 0x4002643C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002643C C   FIELD 03w03 FS (ro): FIFO status
 0x4002643C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026440 B  CLUSTER ST2: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026440 B  REGISTER CR2 (rw): stream x configuration register
 0x40026440 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026440 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3184,6 +3187,7 @@
 0x40026454 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026454 C   FIELD 03w03 FS (ro): FIFO status
 0x40026454 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026458 B  CLUSTER ST3: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026458 B  REGISTER CR3 (rw): stream x configuration register
 0x40026458 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026458 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3217,6 +3221,7 @@
 0x4002646C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002646C C   FIELD 03w03 FS (ro): FIFO status
 0x4002646C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026470 B  CLUSTER ST4: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026470 B  REGISTER CR4 (rw): stream x configuration register
 0x40026470 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026470 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3250,6 +3255,7 @@
 0x40026484 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026484 C   FIELD 03w03 FS (ro): FIFO status
 0x40026484 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x40026488 B  CLUSTER ST5: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x40026488 B  REGISTER CR5 (rw): stream x configuration register
 0x40026488 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026488 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3283,6 +3289,7 @@
 0x4002649C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002649C C   FIELD 03w03 FS (ro): FIFO status
 0x4002649C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x400264A0 B  CLUSTER ST6: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400264A0 B  REGISTER CR6 (rw): stream x configuration register
 0x400264A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400264A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3316,6 +3323,7 @@
 0x400264B4 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400264B4 C   FIELD 03w03 FS (ro): FIFO status
 0x400264B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
+0x400264B8 B  CLUSTER ST7: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
 0x400264B8 B  REGISTER CR7 (rw): stream x configuration register
 0x400264B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400264B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
@@ -3738,6 +3746,8 @@ INTERRUPT 071: USART6 (USART1): USART6 global interrupt
 INTERRUPT 076: EXTI20 (EXTI): EXTI Line 20 interrupt
 INTERRUPT 080: RNG (RNG): RNG global interrupt
 INTERRUPT 081: FPU (FPU): Floating point unit
+INTERRUPT 085: SPI5 (SPI1): SPI 5 global interrupt
+INTERRUPT 085: SPI5 (SPI2): SPI 5 global interrupt
 INTERRUPT 085: SPI5 (SPI5): SPI 5 global interrupt
 INTERRUPT 095: I2C4_EV (FMPI2C1): I2C4 event interrupt
 INTERRUPT 096: I2C4_ER (FMPI2C1): I2C2 error interrupt

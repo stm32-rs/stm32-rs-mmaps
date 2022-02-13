@@ -4083,6 +4083,7 @@
 0x40015440 B  REGISTER DRB (rw): AData register
 0x40015440 C   FIELD 00w32 DATA: Data
 0x40015800 A PERIPHERAL SAI2
+0x40015804 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015804 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015804 C   FIELD 00w02 MODE: Audio block mode
 0x40015804 C   FIELD 02w02 PRTCFG: Protocol configuration
@@ -4142,6 +4143,7 @@
 0x4001581C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
 0x40015820 B  REGISTER DRA (rw): AData register
 0x40015820 C   FIELD 00w32 DATA: Data
+0x40015824 B  CLUSTER CHB: Cluster CHB, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015824 B  REGISTER CR1B (rw): AConfiguration register 1
 0x40015824 C   FIELD 00w02 MODE: Audio block mode
 0x40015824 C   FIELD 02w02 PRTCFG: Protocol configuration
@@ -16659,7 +16661,9 @@ INTERRUPT 077: TSC (TSC): TSC global interrupt
 INTERRUPT 078: DSIHOST (DSI): DSI global interrupt
 INTERRUPT 079: AES (AES): AES global interrupt
 INTERRUPT 080: RNG_HASH (RNG): RNG and HASH global interrupt
+INTERRUPT 081: FPU (FMC): Floating point interrupt
 INTERRUPT 081: FPU (FPU): Floating point interrupt
+INTERRUPT 081: FPU (FPU): Floating point unit interrupt
 INTERRUPT 082: CRS (CRS): CRS global interrupt
 INTERRUPT 083: I2C4_ER (I2C4): I2C4 error interrupt
 INTERRUPT 084: I2C4_EV (I2C4): I2C4 event interrupt
