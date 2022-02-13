@@ -212,7 +212,7 @@
 0x40002018 C   FIELD 00w02 CC1S: CC1S
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40002018 C   FIELD 02w01 OC1FE: OC1FE
-0x40002018 C   FIELD 02w02 ICPCS: Input capture 1 prescaler
+0x40002018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40002018 C   FIELD 03w01 OC1PE: OC1PE
 0x40002018 C   FIELD 04w03 OC1M: OC1M
 0x40002018 C   FIELD 04w04 IC1F: Input capture 1 filter
@@ -435,7 +435,7 @@
 0x40003800 C   FIELD 08w01 SSI: Internal slave select
 0x40003800 C   FIELD 09w01 SSM: Software slave management
 0x40003800 C   FIELD 10w01 RXONLY: Receive only
-0x40003800 C   FIELD 11w01 DFF: Data frame format
+0x40003800 C   FIELD 11w01 CRCL: CRC length
 0x40003800 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003800 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003800 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -462,7 +462,7 @@
 0x40003808 C   FIELD 05w01 MODF (ro): Mode fault
 0x40003808 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40003808 C   FIELD 07w01 BSY (ro): Busy flag
-0x40003808 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x40003808 C   FIELD 08w01 FRE (ro): Frame format error
 0x40003808 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40003808 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4000380C B  REGISTER DR (rw): data register
@@ -480,7 +480,7 @@
 0x4000381C C   FIELD 04w02 I2SSTD: standard selection
 0x4000381C C   FIELD 07w01 PCMSYNC: PCM frame synchronization
 0x4000381C C   FIELD 08w02 I2SCFG: I2S configuration mode
-0x4000381C C   FIELD 10w01 SE2: I2S enable
+0x4000381C C   FIELD 10w01 I2SE: I2S enable
 0x4000381C C   FIELD 11w01 I2SMOD: I2S mode selection
 0x40003820 B  REGISTER I2SPR (rw): prescaler register
 0x40003820 C   FIELD 00w08 I2SDIV: linear prescaler
@@ -540,13 +540,12 @@
 0x40004404 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40004404 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40004404 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40004404 C   FIELD 18w01 TAINV: Binary data inversion
+0x40004404 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004404 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004404 C   FIELD 20w01 ABREN: Auto baud rate enable
 0x40004404 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004404 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004404 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004404 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004404 C   FIELD 24w08 ADD: Address of the USART node
 0x40004408 B  REGISTER CR3 (rw): Control register 3
 0x40004408 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004408 C   FIELD 01w01 IREN: Ir mode enable
@@ -573,8 +572,7 @@
 0x40004408 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
 0x40004408 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
 0x4000440C B  REGISTER BRR (rw): Baud rate register
-0x4000440C C   FIELD 00w04 BRR_0_3: BRR_0_3
-0x4000440C C   FIELD 04w12 BRR_4_15: BRR_4_15
+0x4000440C C   FIELD 00w16 BRR: Baud rate
 0x40004410 B  REGISTER GTPR (rw): Guard time and prescaler register
 0x40004410 C   FIELD 00w08 PSC: Prescaler value
 0x40004410 C   FIELD 08w08 GT: Guard time value
@@ -679,13 +677,12 @@
 0x40004804 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40004804 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40004804 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40004804 C   FIELD 18w01 TAINV: Binary data inversion
+0x40004804 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004804 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004804 C   FIELD 20w01 ABREN: Auto baud rate enable
 0x40004804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004804 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004804 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004804 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004804 C   FIELD 24w08 ADD: Address of the USART node
 0x40004808 B  REGISTER CR3 (rw): Control register 3
 0x40004808 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004808 C   FIELD 01w01 IREN: Ir mode enable
@@ -712,8 +709,7 @@
 0x40004808 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
 0x40004808 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
 0x4000480C B  REGISTER BRR (rw): Baud rate register
-0x4000480C C   FIELD 00w04 BRR_0_3: BRR_0_3
-0x4000480C C   FIELD 04w12 BRR_4_15: BRR_4_15
+0x4000480C C   FIELD 00w16 BRR: Baud rate
 0x40004810 B  REGISTER GTPR (rw): Guard time and prescaler register
 0x40004810 C   FIELD 00w08 PSC: Prescaler value
 0x40004810 C   FIELD 08w08 GT: Guard time value
@@ -818,13 +814,12 @@
 0x40004C04 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40004C04 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40004C04 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40004C04 C   FIELD 18w01 TAINV: Binary data inversion
+0x40004C04 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004C04 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004C04 C   FIELD 20w01 ABREN: Auto baud rate enable
 0x40004C04 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004C04 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004C04 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004C04 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004C04 C   FIELD 24w08 ADD: Address of the USART node
 0x40004C08 B  REGISTER CR3 (rw): Control register 3
 0x40004C08 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004C08 C   FIELD 01w01 IREN: Ir mode enable
@@ -851,8 +846,7 @@
 0x40004C08 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
 0x40004C08 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
 0x40004C0C B  REGISTER BRR (rw): Baud rate register
-0x40004C0C C   FIELD 00w04 BRR_0_3: BRR_0_3
-0x40004C0C C   FIELD 04w12 BRR_4_15: BRR_4_15
+0x40004C0C C   FIELD 00w16 BRR: Baud rate
 0x40004C10 B  REGISTER GTPR (rw): Guard time and prescaler register
 0x40004C10 C   FIELD 00w08 PSC: Prescaler value
 0x40004C10 C   FIELD 08w08 GT: Guard time value
@@ -951,9 +945,7 @@
 0x40005404 C   FIELD 25w01 AUTOEND: Automatic end mode (master mode)
 0x40005404 C   FIELD 26w01 PECBYTE: Packet error checking byte
 0x40005408 B  REGISTER OAR1 (rw): Own address register 1
-0x40005408 C   FIELD 00w01 OA1_0: Interface address
-0x40005408 C   FIELD 01w07 OA1_7_1: Interface address
-0x40005408 C   FIELD 08w02 OA1_8_9: Interface address
+0x40005408 C   FIELD 00w10 OA1: Interface address
 0x40005408 C   FIELD 10w01 OA1MODE: Own Address 1 10-bit mode
 0x40005408 C   FIELD 15w01 OA1EN: Own Address 1 enable
 0x4000540C B  REGISTER OAR2 (rw): Own address register 2
@@ -1041,9 +1033,7 @@
 0x40005804 C   FIELD 25w01 AUTOEND: Automatic end mode (master mode)
 0x40005804 C   FIELD 26w01 PECBYTE: Packet error checking byte
 0x40005808 B  REGISTER OAR1 (rw): Own address register 1
-0x40005808 C   FIELD 00w01 OA1_0: Interface address
-0x40005808 C   FIELD 01w07 OA1_7_1: Interface address
-0x40005808 C   FIELD 08w02 OA1_8_9: Interface address
+0x40005808 C   FIELD 00w10 OA1: Interface address
 0x40005808 C   FIELD 10w01 OA1MODE: Own Address 1 10-bit mode
 0x40005808 C   FIELD 15w01 OA1EN: Own Address 1 enable
 0x4000580C B  REGISTER OAR2 (rw): Own address register 2
@@ -1404,7 +1394,7 @@
 0x4001240C C   FIELD 21w01 CHSELRMOD: Mode selection of the ADC_CHSELR register
 0x4001240C C   FIELD 22w01 AWD1SGL: ADC analog watchdog 1 monitoring a single channel or all channels
 0x4001240C C   FIELD 23w01 AWD1EN: ADC analog watchdog 1 enable on scope ADC group regular
-0x4001240C C   FIELD 26w05 AWDCH1CH: ADC analog watchdog 1 monitored channel selection
+0x4001240C C   FIELD 26w05 AWD1CH: ADC analog watchdog 1 monitored channel selection
 0x40012410 B  REGISTER CFGR2 (rw): ADC configuration register 2
 0x40012410 C   FIELD 00w01 OVSE: ADC oversampler enable on scope ADC group regular
 0x40012410 C   FIELD 02w03 OVSR: ADC oversampling ratio
@@ -1415,15 +1405,33 @@
 0x40012414 B  REGISTER SMPR (rw): ADC sampling time register
 0x40012414 C   FIELD 00w03 SMP1: Sampling time selection
 0x40012414 C   FIELD 04w03 SMP2: Sampling time selection
-0x40012414 C   FIELD 08w19 SMPSEL: Channel sampling time selection
+0x40012414 C   FIELD 08w01 SMPSEL0: Channel sampling time selection
+0x40012414 C   FIELD 09w01 SMPSEL1: Channel sampling time selection
+0x40012414 C   FIELD 10w01 SMPSEL2: Channel sampling time selection
+0x40012414 C   FIELD 11w01 SMPSEL3: Channel sampling time selection
+0x40012414 C   FIELD 12w01 SMPSEL4: Channel sampling time selection
+0x40012414 C   FIELD 13w01 SMPSEL5: Channel sampling time selection
+0x40012414 C   FIELD 14w01 SMPSEL6: Channel sampling time selection
+0x40012414 C   FIELD 15w01 SMPSEL7: Channel sampling time selection
+0x40012414 C   FIELD 16w01 SMPSEL8: Channel sampling time selection
+0x40012414 C   FIELD 17w01 SMPSEL9: Channel sampling time selection
+0x40012414 C   FIELD 18w01 SMPSEL10: Channel sampling time selection
+0x40012414 C   FIELD 19w01 SMPSEL11: Channel sampling time selection
+0x40012414 C   FIELD 20w01 SMPSEL12: Channel sampling time selection
+0x40012414 C   FIELD 21w01 SMPSEL13: Channel sampling time selection
+0x40012414 C   FIELD 22w01 SMPSEL14: Channel sampling time selection
+0x40012414 C   FIELD 23w01 SMPSEL15: Channel sampling time selection
+0x40012414 C   FIELD 24w01 SMPSEL16: Channel sampling time selection
+0x40012414 C   FIELD 25w01 SMPSEL17: Channel sampling time selection
+0x40012414 C   FIELD 26w01 SMPSEL18: Channel sampling time selection
 0x40012420 B  REGISTER AWD1TR (rw): watchdog threshold register
 0x40012420 C   FIELD 00w12 LT1: ADC analog watchdog 1 threshold low
 0x40012420 C   FIELD 16w12 HT1: ADC analog watchdog 1 threshold high
 0x40012424 B  REGISTER AWD2TR (rw): watchdog threshold register
 0x40012424 C   FIELD 00w12 LT2: ADC analog watchdog 2 threshold low
 0x40012424 C   FIELD 16w12 HT2: ADC analog watchdog 2 threshold high
-0x40012428 B  REGISTER CHSELR (rw): channel selection register
-0x40012428 B  REGISTER CHSELR_1 (rw): channel selection register CHSELRMOD = 1 in ADC_CFGR1
+0x40012428 B  REGISTER CHSELR0 (rw): channel selection register
+0x40012428 B  REGISTER CHSELR1 (rw): channel selection register CHSELRMOD = 1 in ADC_CFGR1
 0x40012428 C   FIELD 00w04 SQ1: conversion of the sequence
 0x40012428 C   FIELD 00w19 CHSEL: Channel-x selection
 0x40012428 C   FIELD 04w04 SQ2: conversion of the sequence
@@ -1437,11 +1445,47 @@
 0x4001242C C   FIELD 00w12 LT3: ADC analog watchdog 3 threshold high
 0x4001242C C   FIELD 16w12 HT3: ADC analog watchdog 3 threshold high
 0x40012440 B  REGISTER DR (ro): ADC group regular conversion data register
-0x40012440 C   FIELD 00w16 regularDATA: ADC group regular conversion data
+0x40012440 C   FIELD 00w16 DATA: ADC group regular conversion data
 0x400124A0 B  REGISTER AWD2CR (rw): ADC analog watchdog 2 configuration register
-0x400124A0 C   FIELD 00w19 AWD2CH: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 00w01 AWD2CH0: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 01w01 AWD2CH1: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 02w01 AWD2CH2: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 03w01 AWD2CH3: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 04w01 AWD2CH4: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 05w01 AWD2CH5: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 06w01 AWD2CH6: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 07w01 AWD2CH7: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 08w01 AWD2CH8: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 09w01 AWD2CH9: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 10w01 AWD2CH10: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 11w01 AWD2CH11: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 12w01 AWD2CH12: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 13w01 AWD2CH13: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 14w01 AWD2CH14: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 15w01 AWD2CH15: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 16w01 AWD2CH16: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 17w01 AWD2CH17: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 18w01 AWD2CH18: ADC analog watchdog 2 monitored channel selection
 0x400124A4 B  REGISTER AWD3CR (rw): ADC analog watchdog 3 configuration register
-0x400124A4 C   FIELD 00w19 AWD3CH: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 00w01 AWD3CH0: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 01w01 AWD3CH1: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 02w01 AWD3CH2: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 03w01 AWD3CH3: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 04w01 AWD3CH4: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 05w01 AWD3CH5: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 06w01 AWD3CH6: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 07w01 AWD3CH7: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 08w01 AWD3CH8: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 09w01 AWD3CH9: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 10w01 AWD3CH10: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 11w01 AWD3CH11: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 12w01 AWD3CH12: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 13w01 AWD3CH13: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 14w01 AWD3CH14: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 15w01 AWD3CH15: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 16w01 AWD3CH16: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 17w01 AWD3CH17: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 18w01 AWD3CH18: ADC analog watchdog 3 monitored channel selection
 0x400124B4 B  REGISTER CALFACT (rw): ADC calibration factors register
 0x400124B4 C   FIELD 00w07 CALFACT: ADC calibration factor in single-ended mode
 0x40012708 B  REGISTER CCR (rw): ADC common control register
@@ -1725,7 +1769,7 @@
 0x40013000 C   FIELD 08w01 SSI: Internal slave select
 0x40013000 C   FIELD 09w01 SSM: Software slave management
 0x40013000 C   FIELD 10w01 RXONLY: Receive only
-0x40013000 C   FIELD 11w01 DFF: Data frame format
+0x40013000 C   FIELD 11w01 CRCL: CRC length
 0x40013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -1752,7 +1796,7 @@
 0x40013008 C   FIELD 05w01 MODF (ro): Mode fault
 0x40013008 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40013008 C   FIELD 07w01 BSY (ro): Busy flag
-0x40013008 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x40013008 C   FIELD 08w01 FRE (ro): Frame format error
 0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4001300C B  REGISTER DR (rw): data register
@@ -1770,7 +1814,7 @@
 0x4001301C C   FIELD 04w02 I2SSTD: standard selection
 0x4001301C C   FIELD 07w01 PCMSYNC: PCM frame synchronization
 0x4001301C C   FIELD 08w02 I2SCFG: I2S configuration mode
-0x4001301C C   FIELD 10w01 SE2: I2S enable
+0x4001301C C   FIELD 10w01 I2SE: I2S enable
 0x4001301C C   FIELD 11w01 I2SMOD: I2S mode selection
 0x40013020 B  REGISTER I2SPR (rw): prescaler register
 0x40013020 C   FIELD 00w08 I2SDIV: linear prescaler
@@ -1830,13 +1874,12 @@
 0x40013804 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40013804 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40013804 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40013804 C   FIELD 18w01 TAINV: Binary data inversion
+0x40013804 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40013804 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40013804 C   FIELD 20w01 ABREN: Auto baud rate enable
 0x40013804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40013804 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40013804 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40013804 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40013804 C   FIELD 24w08 ADD: Address of the USART node
 0x40013808 B  REGISTER CR3 (rw): Control register 3
 0x40013808 C   FIELD 00w01 EIE: Error interrupt enable
 0x40013808 C   FIELD 01w01 IREN: Ir mode enable
@@ -1863,8 +1906,7 @@
 0x40013808 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
 0x40013808 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
 0x4001380C B  REGISTER BRR (rw): Baud rate register
-0x4001380C C   FIELD 00w04 BRR_0_3: BRR_0_3
-0x4001380C C   FIELD 04w12 BRR_4_15: BRR_4_15
+0x4001380C C   FIELD 00w16 BRR: Baud rate
 0x40013810 B  REGISTER GTPR (rw): Guard time and prescaler register
 0x40013810 C   FIELD 00w08 PSC: Prescaler value
 0x40013810 C   FIELD 08w08 GT: Guard time value
