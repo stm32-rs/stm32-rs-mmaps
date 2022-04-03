@@ -237,7 +237,7 @@
 0x40002C04 B  REGISTER CFR (rw): Configuration register
 0x40002C04 C   FIELD 00w07 W (rw): 7-bit window value These bits contain the window value to be compared with the down-counter.
 0x40002C04 C   FIELD 09w01 EWI (rw): Early wakeup interrupt When set, an interrupt occurs whenever the counter reaches the value 0x40. This interrupt is only cleared by hardware after a reset.
-0x40002C04 C   FIELD 11w03 WDGTB (rw): Timer base The timebase of the prescaler can be modified as follows:
+0x40002C04 C   FIELD 11w03 WDGTB: Timer base The timebase of the prescaler can be modified as follows:
 0x40002C08 B  REGISTER SR (rw): Status register
 0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
 0x40003000 A PERIPHERAL IWDG
@@ -994,7 +994,7 @@
 0x4000502C B  REGISTER PRESC (rw): Prescaler register
 0x4000502C C   FIELD 00w04 PRESCALER (rw): Clock prescaler The USART input clock can be divided by a prescaler factor: Remaining combinations: Reserved Note: When PRESCALER is programmed with a value different of the allowed ones, programmed prescaler value is 1011 i.e. input clock divided by 256.
 0x40005400 A PERIPHERAL I2C1
-0x40005400 B  REGISTER I2C_CR1 (rw): Control register 1
+0x40005400 B  REGISTER CR1 (rw): Control register 1
 0x40005400 C   FIELD 00w01 PE (rw): Peripheral enable Note: When PE=0, the I2C SCL and SDA lines are released. Internal state machines and status bits are put back to their reset value. When cleared, PE must be kept low for at least 3 APB clock cycles.
 0x40005400 C   FIELD 01w01 TXIE (rw): TX Interrupt enable
 0x40005400 C   FIELD 02w01 RXIE (rw): RX Interrupt enable
@@ -1015,7 +1015,7 @@
 0x40005400 C   FIELD 21w01 SMBDEN (rw): SMBus Device Default Address enable Note: If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
 0x40005400 C   FIELD 22w01 ALERTEN (rw): SMBus alert enable Note: When ALERTEN=0, the SMBA pin can be used as a standard GPIO. If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
 0x40005400 C   FIELD 23w01 PECEN (rw): PEC enable Note: If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
-0x40005404 B  REGISTER I2C_CR2 (rw): Control register 2
+0x40005404 B  REGISTER CR2 (rw): Control register 2
 0x40005404 C   FIELD 00w10 SADD (rw): Slave address (master mode) In 7-bit addressing mode (ADD10 = 0): SADD[7:1] should be written with the 7-bit slave address to be sent. The bits SADD[9], SADD[8] and SADD[0] are don't care. In 10-bit addressing mode (ADD10 = 1): SADD[9:0] should be written with the 10-bit slave address to be sent. Note: Changing these bits when the START bit is set is not allowed.
 0x40005404 C   FIELD 10w01 RD_WRN (rw): Transfer direction (master mode) Note: Changing this bit when the START bit is set is not allowed.
 0x40005404 C   FIELD 11w01 ADD10 (rw): 10-bit addressing mode (master mode) Note: Changing this bit when the START bit is set is not allowed.
@@ -1027,27 +1027,27 @@
 0x40005404 C   FIELD 24w01 RELOAD (rw): NBYTES reload mode This bit is set and cleared by software.
 0x40005404 C   FIELD 25w01 AUTOEND (rw): Automatic end mode (master mode) This bit is set and cleared by software. Note: This bit has no effect in slave mode or when the RELOAD bit is set.
 0x40005404 C   FIELD 26w01 PECBYTE (rw): Packet error checking byte This bit is set by software, and cleared by hardware when the PEC is transferred, or when a STOP condition or an Address matched is received, also when PE=0. Note: Writing '0â to this bit has no effect. This bit has no effect when RELOAD is set. This bit has no effect is slave mode when SBC=0. If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
-0x40005408 B  REGISTER I2C_OAR1 (rw): Own address register 1
+0x40005408 B  REGISTER OAR1 (rw): Own address register 1
 0x40005408 C   FIELD 00w10 OA1 (rw): Interface own slave address 7-bit addressing mode: OA1[7:1] contains the 7-bit own slave address. The bits OA1[9], OA1[8] and OA1[0] are don't care. 10-bit addressing mode: OA1[9:0] contains the 10-bit own slave address. Note: These bits can be written only when OA1EN=0.
 0x40005408 C   FIELD 10w01 OA1MODE (rw): Own Address 1 10-bit mode Note: This bit can be written only when OA1EN=0.
 0x40005408 C   FIELD 15w01 OA1EN (rw): Own Address 1 enable
-0x4000540C B  REGISTER I2C_OAR2 (rw): Own address register 2
+0x4000540C B  REGISTER OAR2 (rw): Own address register 2
 0x4000540C C   FIELD 01w07 OA2 (rw): Interface address 7-bit addressing mode: 7-bit address Note: These bits can be written only when OA2EN=0.
 0x4000540C C   FIELD 08w03 OA2MSK (rw): Own Address 2 masks Note: These bits can be written only when OA2EN=0. As soon as OA2MSK is not equal to 0, the reserved I2C addresses (0b0000xxx and 0b1111xxx) are not acknowledged even if the comparison matches.
 0x4000540C C   FIELD 15w01 OA2EN (rw): Own Address 2 enable
-0x40005410 B  REGISTER I2C_TIMINGR (rw): Timing register
+0x40005410 B  REGISTER TIMINGR (rw): Timing register
 0x40005410 C   FIELD 00w08 SCLL: SCL low period (master mode)
 0x40005410 C   FIELD 08w08 SCLH: SCL high period (master mode)
 0x40005410 C   FIELD 16w04 SDADEL: Data hold time
 0x40005410 C   FIELD 20w04 SCLDEL: Data setup time
 0x40005410 C   FIELD 28w04 PRESC: Timing prescaler
-0x40005414 B  REGISTER I2C_TIMEOUTR (rw): Status register 1
+0x40005414 B  REGISTER TIMEOUTR (rw): Status register 1
 0x40005414 C   FIELD 00w12 TIMEOUTA (rw): Bus Timeout A This field is used to configure: The SCL low timeout condition tTIMEOUT when TIDLE=0 tTIMEOUT= (TIMEOUTA+1) x 2048 x tI2CCLK The bus idle condition (both SCL and SDA high) when TIDLE=1 tIDLE= (TIMEOUTA+1) x 4 x tI2CCLK Note: These bits can be written only when TIMOUTEN=0.
 0x40005414 C   FIELD 12w01 TIDLE (rw): Idle clock timeout detection Note: This bit can be written only when TIMOUTEN=0.
 0x40005414 C   FIELD 15w01 TIMOUTEN (rw): Clock timeout enable
 0x40005414 C   FIELD 16w12 TIMEOUTB (rw): Bus timeout B This field is used to configure the cumulative clock extension timeout: In master mode, the master cumulative clock low extend time (tLOW:MEXT) is detected In slave mode, the slave cumulative clock low extend time (tLOW:SEXT) is detected tLOW:EXT= (TIMEOUTB+1) x 2048 x tI2CCLK Note: These bits can be written only when TEXTEN=0.
 0x40005414 C   FIELD 31w01 TEXTEN (rw): Extended clock timeout enable
-0x40005418 B  REGISTER I2C_ISR: Interrupt and Status register
+0x40005418 B  REGISTER ISR: Interrupt and Status register
 0x40005418 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters)
 0x40005418 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters)
 0x40005418 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers)
@@ -1065,7 +1065,7 @@
 0x40005418 C   FIELD 15w01 BUSY (ro): Bus busy
 0x40005418 C   FIELD 16w01 DIR (ro): Transfer direction (Slave mode) This flag is updated when an address match event occurs (ADDR=1).
 0x40005418 C   FIELD 17w07 ADDCODE (ro): Address match code (Slave mode)
-0x4000541C B  REGISTER I2C_ICR (wo): Interrupt clear register
+0x4000541C B  REGISTER ICR (wo): Interrupt clear register
 0x4000541C C   FIELD 03w01 ADDRCF: Address Matched flag clear
 0x4000541C C   FIELD 04w01 NACKCF: Not Acknowledge flag clear
 0x4000541C C   FIELD 05w01 STOPCF: Stop detection flag clear
@@ -1075,14 +1075,14 @@
 0x4000541C C   FIELD 11w01 PECCF: PEC Error flag clear
 0x4000541C C   FIELD 12w01 TIMOUTCF: Timeout detection flag clear
 0x4000541C C   FIELD 13w01 ALERTCF: Alert flag clear
-0x40005420 B  REGISTER I2C_PECR (ro): PEC register
+0x40005420 B  REGISTER PECR (ro): PEC register
 0x40005420 C   FIELD 00w08 PEC: Packet error checking register
-0x40005424 B  REGISTER I2C_RXDR (ro): Receive data register
+0x40005424 B  REGISTER RXDR (ro): Receive data register
 0x40005424 C   FIELD 00w08 RXDATA: 8-bit receive data
-0x40005428 B  REGISTER I2C_TXDR (rw): Transmit data register
+0x40005428 B  REGISTER TXDR (rw): Transmit data register
 0x40005428 C   FIELD 00w08 TXDATA: 8-bit transmit data
 0x40005800 A PERIPHERAL I2C2
-0x40005800 B  REGISTER I2C_CR1 (rw): Control register 1
+0x40005800 B  REGISTER CR1 (rw): Control register 1
 0x40005800 C   FIELD 00w01 PE (rw): Peripheral enable Note: When PE=0, the I2C SCL and SDA lines are released. Internal state machines and status bits are put back to their reset value. When cleared, PE must be kept low for at least 3 APB clock cycles.
 0x40005800 C   FIELD 01w01 TXIE (rw): TX Interrupt enable
 0x40005800 C   FIELD 02w01 RXIE (rw): RX Interrupt enable
@@ -1103,7 +1103,7 @@
 0x40005800 C   FIELD 21w01 SMBDEN (rw): SMBus Device Default Address enable Note: If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
 0x40005800 C   FIELD 22w01 ALERTEN (rw): SMBus alert enable Note: When ALERTEN=0, the SMBA pin can be used as a standard GPIO. If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
 0x40005800 C   FIELD 23w01 PECEN (rw): PEC enable Note: If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
-0x40005804 B  REGISTER I2C_CR2 (rw): Control register 2
+0x40005804 B  REGISTER CR2 (rw): Control register 2
 0x40005804 C   FIELD 00w10 SADD (rw): Slave address (master mode) In 7-bit addressing mode (ADD10 = 0): SADD[7:1] should be written with the 7-bit slave address to be sent. The bits SADD[9], SADD[8] and SADD[0] are don't care. In 10-bit addressing mode (ADD10 = 1): SADD[9:0] should be written with the 10-bit slave address to be sent. Note: Changing these bits when the START bit is set is not allowed.
 0x40005804 C   FIELD 10w01 RD_WRN (rw): Transfer direction (master mode) Note: Changing this bit when the START bit is set is not allowed.
 0x40005804 C   FIELD 11w01 ADD10 (rw): 10-bit addressing mode (master mode) Note: Changing this bit when the START bit is set is not allowed.
@@ -1115,27 +1115,27 @@
 0x40005804 C   FIELD 24w01 RELOAD (rw): NBYTES reload mode This bit is set and cleared by software.
 0x40005804 C   FIELD 25w01 AUTOEND (rw): Automatic end mode (master mode) This bit is set and cleared by software. Note: This bit has no effect in slave mode or when the RELOAD bit is set.
 0x40005804 C   FIELD 26w01 PECBYTE (rw): Packet error checking byte This bit is set by software, and cleared by hardware when the PEC is transferred, or when a STOP condition or an Address matched is received, also when PE=0. Note: Writing '0â to this bit has no effect. This bit has no effect when RELOAD is set. This bit has no effect is slave mode when SBC=0. If the SMBus feature is not supported, this bit is reserved and forced by hardware to '0â. Refer to .
-0x40005808 B  REGISTER I2C_OAR1 (rw): Own address register 1
+0x40005808 B  REGISTER OAR1 (rw): Own address register 1
 0x40005808 C   FIELD 00w10 OA1 (rw): Interface own slave address 7-bit addressing mode: OA1[7:1] contains the 7-bit own slave address. The bits OA1[9], OA1[8] and OA1[0] are don't care. 10-bit addressing mode: OA1[9:0] contains the 10-bit own slave address. Note: These bits can be written only when OA1EN=0.
 0x40005808 C   FIELD 10w01 OA1MODE (rw): Own Address 1 10-bit mode Note: This bit can be written only when OA1EN=0.
 0x40005808 C   FIELD 15w01 OA1EN (rw): Own Address 1 enable
-0x4000580C B  REGISTER I2C_OAR2 (rw): Own address register 2
+0x4000580C B  REGISTER OAR2 (rw): Own address register 2
 0x4000580C C   FIELD 01w07 OA2 (rw): Interface address 7-bit addressing mode: 7-bit address Note: These bits can be written only when OA2EN=0.
 0x4000580C C   FIELD 08w03 OA2MSK (rw): Own Address 2 masks Note: These bits can be written only when OA2EN=0. As soon as OA2MSK is not equal to 0, the reserved I2C addresses (0b0000xxx and 0b1111xxx) are not acknowledged even if the comparison matches.
 0x4000580C C   FIELD 15w01 OA2EN (rw): Own Address 2 enable
-0x40005810 B  REGISTER I2C_TIMINGR (rw): Timing register
+0x40005810 B  REGISTER TIMINGR (rw): Timing register
 0x40005810 C   FIELD 00w08 SCLL: SCL low period (master mode)
 0x40005810 C   FIELD 08w08 SCLH: SCL high period (master mode)
 0x40005810 C   FIELD 16w04 SDADEL: Data hold time
 0x40005810 C   FIELD 20w04 SCLDEL: Data setup time
 0x40005810 C   FIELD 28w04 PRESC: Timing prescaler
-0x40005814 B  REGISTER I2C_TIMEOUTR (rw): Status register 1
+0x40005814 B  REGISTER TIMEOUTR (rw): Status register 1
 0x40005814 C   FIELD 00w12 TIMEOUTA (rw): Bus Timeout A This field is used to configure: The SCL low timeout condition tTIMEOUT when TIDLE=0 tTIMEOUT= (TIMEOUTA+1) x 2048 x tI2CCLK The bus idle condition (both SCL and SDA high) when TIDLE=1 tIDLE= (TIMEOUTA+1) x 4 x tI2CCLK Note: These bits can be written only when TIMOUTEN=0.
 0x40005814 C   FIELD 12w01 TIDLE (rw): Idle clock timeout detection Note: This bit can be written only when TIMOUTEN=0.
 0x40005814 C   FIELD 15w01 TIMOUTEN (rw): Clock timeout enable
 0x40005814 C   FIELD 16w12 TIMEOUTB (rw): Bus timeout B This field is used to configure the cumulative clock extension timeout: In master mode, the master cumulative clock low extend time (tLOW:MEXT) is detected In slave mode, the slave cumulative clock low extend time (tLOW:SEXT) is detected tLOW:EXT= (TIMEOUTB+1) x 2048 x tI2CCLK Note: These bits can be written only when TEXTEN=0.
 0x40005814 C   FIELD 31w01 TEXTEN (rw): Extended clock timeout enable
-0x40005818 B  REGISTER I2C_ISR: Interrupt and Status register
+0x40005818 B  REGISTER ISR: Interrupt and Status register
 0x40005818 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters)
 0x40005818 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters)
 0x40005818 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers)
@@ -1153,7 +1153,7 @@
 0x40005818 C   FIELD 15w01 BUSY (ro): Bus busy
 0x40005818 C   FIELD 16w01 DIR (ro): Transfer direction (Slave mode) This flag is updated when an address match event occurs (ADDR=1).
 0x40005818 C   FIELD 17w07 ADDCODE (ro): Address match code (Slave mode)
-0x4000581C B  REGISTER I2C_ICR (wo): Interrupt clear register
+0x4000581C B  REGISTER ICR (wo): Interrupt clear register
 0x4000581C C   FIELD 03w01 ADDRCF: Address Matched flag clear
 0x4000581C C   FIELD 04w01 NACKCF: Not Acknowledge flag clear
 0x4000581C C   FIELD 05w01 STOPCF: Stop detection flag clear
@@ -1163,11 +1163,11 @@
 0x4000581C C   FIELD 11w01 PECCF: PEC Error flag clear
 0x4000581C C   FIELD 12w01 TIMOUTCF: Timeout detection flag clear
 0x4000581C C   FIELD 13w01 ALERTCF: Alert flag clear
-0x40005820 B  REGISTER I2C_PECR (ro): PEC register
+0x40005820 B  REGISTER PECR (ro): PEC register
 0x40005820 C   FIELD 00w08 PEC: Packet error checking register
-0x40005824 B  REGISTER I2C_RXDR (ro): Receive data register
+0x40005824 B  REGISTER RXDR (ro): Receive data register
 0x40005824 C   FIELD 00w08 RXDATA: 8-bit receive data
-0x40005828 B  REGISTER I2C_TXDR (rw): Transmit data register
+0x40005828 B  REGISTER TXDR (rw): Transmit data register
 0x40005828 C   FIELD 00w08 TXDATA: 8-bit transmit data
 0x40010030 A PERIPHERAL VREFBUF
 0x40010030 B  REGISTER CSR: VREFBUF control and status register
