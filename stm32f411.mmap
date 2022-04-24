@@ -4381,7 +4381,7 @@
 0x50000018 C   FIELD 19w01 OEPINT (rw): OUT endpoints interrupt mask
 0x50000018 C   FIELD 20w01 IISOIXFRM (rw): Incomplete isochronous IN transfer mask
 0x50000018 C   FIELD 21w01 IPXFRM_IISOOXFRM (rw): Incomplete periodic transfer mask(Host mode)/Incomplete isochronous OUT transfer mask(Device mode)
-0x50000018 C   FIELD 24w01 PRTIM (ro): Host port interrupt mask
+0x50000018 C   FIELD 24w01 PRTIM (rw): Host port interrupt mask
 0x50000018 C   FIELD 25w01 HCIM (rw): Host channels interrupt mask
 0x50000018 C   FIELD 26w01 PTXFEM (rw): Periodic TxFIFO empty mask
 0x50000018 C   FIELD 28w01 CIDSCHGM (rw): Connector ID status change mask
@@ -4389,8 +4389,8 @@
 0x50000018 C   FIELD 30w01 SRQIM (rw): Session request/new session detected interrupt mask
 0x50000018 C   FIELD 31w01 WUIM (rw): Resume/remote wakeup detected interrupt mask
 0x5000001C B  REGISTER GRXSTSR_Device (ro): OTG_FS Receive status debug read(Device mode)
-0x5000001C B  REGISTER GRXSTSR_Host (ro): OTG_FS Receive status debug read(Host mode)
-0x5000001C C   FIELD 00w04 EPNUM: Endpoint number
+0x5000001C B  REGISTER GRXSTSR_Host (ro): OTG status debug read (host mode)
+0x5000001C C   FIELD 00w04 CHNUM: Channel number
 0x5000001C C   FIELD 00w04 EPNUM: Endpoint number
 0x5000001C C   FIELD 04w11 BCNT: Byte count
 0x5000001C C   FIELD 04w11 BCNT: Byte count
@@ -4398,7 +4398,6 @@
 0x5000001C C   FIELD 15w02 DPID: Data PID
 0x5000001C C   FIELD 17w04 PKTSTS: Packet status
 0x5000001C C   FIELD 17w04 PKTSTS: Packet status
-0x5000001C C   FIELD 21w04 FRMNUM: Frame number
 0x5000001C C   FIELD 21w04 FRMNUM: Frame number
 0x50000020 B  REGISTER GRXSTSP_Device (ro): OTG status read and pop (device mode)
 0x50000020 B  REGISTER GRXSTSP_Host (ro): OTG status read and pop (host mode)
@@ -4411,7 +4410,6 @@
 0x50000020 C   FIELD 17w04 PKTSTS: Packet status
 0x50000020 C   FIELD 17w04 PKTSTS: Packet status
 0x50000020 C   FIELD 21w04 FRMNUM: Frame number
-0x50000020 C   FIELD 27w01 STSPHST: Status phase start
 0x50000024 B  REGISTER GRXFSIZ (rw): OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
 0x50000024 C   FIELD 00w16 RXFD: RxFIFO depth
 0x50000028 B  REGISTER DIEPTXF0 (rw): OTG_FS non-periodic transmit FIFO size register (Device mode)
@@ -4429,6 +4427,7 @@
 0x50000038 C   FIELD 18w01 VBUSASEN: Enable the VBUS sensing device
 0x50000038 C   FIELD 19w01 VBUSBSEN: Enable the VBUS sensing device
 0x50000038 C   FIELD 20w01 SOFOUTEN: SOF output enable
+0x50000038 C   FIELD 21w01 NOVBUSSENS: Vbus sensing disable option
 0x5000003C B  REGISTER CID (rw): core ID register
 0x5000003C C   FIELD 00w32 PRODUCT_ID: Product ID field
 0x50000100 B  REGISTER HPTXFSIZ (rw): OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
@@ -4446,7 +4445,7 @@
 0x50000400 A PERIPHERAL OTG_FS_HOST
 0x50000400 B  REGISTER HCFG: OTG_FS host configuration register (OTG_FS_HCFG)
 0x50000400 C   FIELD 00w02 FSLSPCS (rw): FS/LS PHY clock select
-0x50000400 C   FIELD 02w01 FSLSS (ro): FS- and LS-only support
+0x50000400 C   FIELD 02w01 FSLSS (rw): FS- and LS-only support
 0x50000404 B  REGISTER HFIR (rw): OTG_FS Host frame interval register
 0x50000404 C   FIELD 00w16 FRIVL: Frame interval
 0x50000408 B  REGISTER HFNUM (ro): OTG_FS host frame number/frame time remaining register (OTG_FS_HFNUM)
