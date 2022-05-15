@@ -598,41 +598,41 @@
 0x40002838 B  REGISTER TSSSR: RTC timestamp sub second register
 0x40002838 C   FIELD 00w16 SS (ro): Sub second value SS[15:0] is the value of the synchronous prescaler counter when the timestamp event occurred.
 0x40002840 B  REGISTER ALRMAR: RTC alarm A register
-0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format.
-0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format.
-0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm A seconds mask
+0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format
+0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format
+0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x40002840 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002840 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm A minutes mask
+0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x40002840 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002840 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002840 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm A hours mask
+0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x40002840 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002840 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002840 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm A date mask
+0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm date mask
 0x40002844 B  REGISTER ALRMASSR: RTC alarm A sub second register
 0x40002844 C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x40002844 C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit 2: SS[14:2] are don't care in alarm A comparison. Only SS[1:0] are compared. 3: SS[14:3] are don't care in alarm A comparison. Only SS[2:0] are compared. ... 12: SS[14:12] are don't care in alarm A comparison. SS[11:0] are compared. 13: SS[14:13] are don't care in alarm A comparison. SS[12:0] are compared. 14: SS[14] is don't care in alarm A comparison. SS[13:0] are compared. 15: All 15 SS bits are compared and must match to activate alarm. The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation. Note: The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
-0x40002848 B  REGISTER ALRMBR: RTC alarm B register
+0x40002848 B  REGISTER ALRMBR: RTC alarm A register
 0x40002848 C   FIELD 00w04 SU (rw): Second units in BCD format
 0x40002848 C   FIELD 04w03 ST (rw): Second tens in BCD format
-0x40002848 C   FIELD 07w01 MSK1 (rw): Alarm B seconds mask
+0x40002848 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x40002848 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002848 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002848 C   FIELD 15w01 MSK2 (rw): Alarm B minutes mask
+0x40002848 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x40002848 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002848 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002848 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002848 C   FIELD 23w01 MSK3 (rw): Alarm B hours mask
+0x40002848 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x40002848 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002848 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002848 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002848 C   FIELD 31w01 MSK4 (rw): Alarm B date mask
-0x4000284C B  REGISTER ALRMBSSR: RTC alarm B sub second register
-0x4000284C C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm B is to be activated. Only bits 0 up to MASKSS-1 are compared.
-0x4000284C C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
+0x40002848 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x4000284C B  REGISTER ALRMBSSR: RTC alarm A sub second register
+0x4000284C C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
+0x4000284C C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit 2: SS[14:2] are don't care in alarm A comparison. Only SS[1:0] are compared. 3: SS[14:3] are don't care in alarm A comparison. Only SS[2:0] are compared. ... 12: SS[14:12] are don't care in alarm A comparison. SS[11:0] are compared. 13: SS[14:13] are don't care in alarm A comparison. SS[12:0] are compared. 14: SS[14] is don't care in alarm A comparison. SS[13:0] are compared. 15: All 15 SS bits are compared and must match to activate alarm. The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation. Note: The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
 0x40002850 B  REGISTER SR: RTC status register
 0x40002850 C   FIELD 00w01 ALRAF (ro): Alarm A flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm A register (RTC_ALRMAR).
 0x40002850 C   FIELD 01w01 ALRBF (ro): Alarm B flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm B register (RTC_ALRMBR).

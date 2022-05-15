@@ -17980,35 +17980,35 @@
 0x58004014 B  REGISTER WUTR (rw): This register can be written only when WUTWF is set to 1 in RTC_ISR.This register is write protected. The write access procedure is described in RTC register write protection on page9.
 0x58004014 C   FIELD 00w16 WUT: Wakeup auto-reload value bits When the wakeup timer is enabled (WUTE set to 1), the WUTF flag is set every (WUT[15:0] + 1) ck_wut cycles. The ck_wut period is selected through WUCKSEL[2:0] bits of the RTC_CR register When WUCKSEL[2] = 1, the wakeup timer becomes 17-bits and WUCKSEL[1] effectively becomes WUT[16] the most-significant bit to be reloaded into the timer. The first assertion of WUTF occurs (WUT+1) ck_wut cycles after WUTE is set. Setting WUT[15:0] to 0x0000 with WUCKSEL[2:0] =011 (RTCCLK/2) is forbidden.
 0x5800401C B  REGISTER ALRMAR (rw): This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-0x5800401C C   FIELD 00w04 SU: Second units in BCD format.
-0x5800401C C   FIELD 04w03 ST: Second tens in BCD format.
-0x5800401C C   FIELD 07w01 MSK1: Alarm A seconds mask
-0x5800401C C   FIELD 08w04 MNU: Minute units in BCD format.
-0x5800401C C   FIELD 12w03 MNT: Minute tens in BCD format.
-0x5800401C C   FIELD 15w01 MSK2: Alarm A minutes mask
-0x5800401C C   FIELD 16w04 HU: Hour units in BCD format.
-0x5800401C C   FIELD 20w02 HT: Hour tens in BCD format.
+0x5800401C C   FIELD 00w04 SU: Second units in BCD format
+0x5800401C C   FIELD 04w03 ST: Second tens in BCD format
+0x5800401C C   FIELD 07w01 MSK1: Alarm seconds mask
+0x5800401C C   FIELD 08w04 MNU: Minute units in BCD format
+0x5800401C C   FIELD 12w03 MNT: Minute tens in BCD format
+0x5800401C C   FIELD 15w01 MSK2: Alarm minutes mask
+0x5800401C C   FIELD 16w04 HU: Hour units in BCD format
+0x5800401C C   FIELD 20w02 HT: Hour tens in BCD format
 0x5800401C C   FIELD 22w01 PM: AM/PM notation
-0x5800401C C   FIELD 23w01 MSK3: Alarm A hours mask
-0x5800401C C   FIELD 24w04 DU: Date units or day in BCD format.
-0x5800401C C   FIELD 28w02 DT: Date tens in BCD format.
+0x5800401C C   FIELD 23w01 MSK3: Alarm hours mask
+0x5800401C C   FIELD 24w04 DU: Date units or day in BCD format
+0x5800401C C   FIELD 28w02 DT: Date tens in BCD format
 0x5800401C C   FIELD 30w01 WDSEL: Week day selection
-0x5800401C C   FIELD 31w01 MSK4: Alarm A date mask
-0x58004020 B  REGISTER ALRMBR (rw): This register can be written only when ALRBWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
+0x5800401C C   FIELD 31w01 MSK4: Alarm date mask
+0x58004020 B  REGISTER ALRMBR (rw): This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
 0x58004020 C   FIELD 00w04 SU: Second units in BCD format
 0x58004020 C   FIELD 04w03 ST: Second tens in BCD format
-0x58004020 C   FIELD 07w01 MSK1: Alarm B seconds mask
+0x58004020 C   FIELD 07w01 MSK1: Alarm seconds mask
 0x58004020 C   FIELD 08w04 MNU: Minute units in BCD format
 0x58004020 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x58004020 C   FIELD 15w01 MSK2: Alarm B minutes mask
+0x58004020 C   FIELD 15w01 MSK2: Alarm minutes mask
 0x58004020 C   FIELD 16w04 HU: Hour units in BCD format
 0x58004020 C   FIELD 20w02 HT: Hour tens in BCD format
 0x58004020 C   FIELD 22w01 PM: AM/PM notation
-0x58004020 C   FIELD 23w01 MSK3: Alarm B hours mask
+0x58004020 C   FIELD 23w01 MSK3: Alarm hours mask
 0x58004020 C   FIELD 24w04 DU: Date units or day in BCD format
 0x58004020 C   FIELD 28w02 DT: Date tens in BCD format
 0x58004020 C   FIELD 30w01 WDSEL: Week day selection
-0x58004020 C   FIELD 31w01 MSK4: Alarm B date mask
+0x58004020 C   FIELD 31w01 MSK4: Alarm date mask
 0x58004024 B  REGISTER WPR (wo): RTC write protection register
 0x58004024 C   FIELD 00w08 KEY: Write protection key This byte is written by software. Reading this byte always returns 0x00. Refer to RTC register write protection for a description of how to unlock RTC register write protection.
 0x58004028 B  REGISTER SSR (ro): RTC sub second register
@@ -18062,8 +18062,8 @@
 0x58004044 B  REGISTER ALRMASSR (rw): This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
 0x58004044 C   FIELD 00w15 SS: Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x58004044 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
-0x58004048 B  REGISTER ALRMBSSR (rw): This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode.This register is write protected.The write access procedure is described in Section: RTC register write protection.
-0x58004048 C   FIELD 00w15 SS: Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if Alarm B is to be activated. Only bits 0 up to MASKSS-1 are compared.
+0x58004048 B  REGISTER ALRMBSSR (rw): This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
+0x58004048 C   FIELD 00w15 SS: Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x58004048 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
 0x5800404C B  REGISTER OR (rw): RTC option register
 0x5800404C C   FIELD 00w01 RTC_ALARM_TYPE: RTC_ALARM output type on PC13
