@@ -4873,6 +4873,280 @@
 0x40011428 C   FIELD 00w09 TDR: Transmit data value
 0x4001142C B  REGISTER PRESC (rw): USART prescaler register
 0x4001142C C   FIELD 00w04 PRESCALER: Clock prescaler
+0x40011800 A PERIPHERAL UART9
+0x40011800 B  REGISTER CR1 (rw): Control register 1
+0x40011800 C   FIELD 00w01 UE: USART enable
+0x40011800 C   FIELD 01w01 UESM: USART enable in Stop mode
+0x40011800 C   FIELD 02w01 RE: Receiver enable
+0x40011800 C   FIELD 03w01 TE: Transmitter enable
+0x40011800 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
+0x40011800 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
+0x40011800 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
+0x40011800 C   FIELD 07w01 TXEIE: interrupt enable
+0x40011800 C   FIELD 08w01 PEIE: PE interrupt enable
+0x40011800 C   FIELD 09w01 PS: Parity selection
+0x40011800 C   FIELD 10w01 PCE: Parity control enable
+0x40011800 C   FIELD 11w01 WAKE: Receiver wakeup method
+0x40011800 C   FIELD 12w01 M0: Word length
+0x40011800 C   FIELD 13w01 MME: Mute mode enable
+0x40011800 C   FIELD 14w01 CMIE: Character match interrupt enable
+0x40011800 C   FIELD 15w01 OVER8: Oversampling mode
+0x40011800 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40011800 C   FIELD 21w05 DEAT: Driver Enable assertion time
+0x40011800 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
+0x40011800 C   FIELD 27w01 EOBIE: End of Block interrupt enable
+0x40011800 C   FIELD 28w01 M1: Word length
+0x40011800 C   FIELD 29w01 FIFOEN: FIFO mode enable
+0x40011800 C   FIELD 30w01 TXFEIE: TXFIFO empty interrupt enable
+0x40011800 C   FIELD 31w01 RXFFIE: RXFIFO Full interrupt enable
+0x40011804 B  REGISTER CR2 (rw): Control register 2
+0x40011804 C   FIELD 00w01 SLVEN: Synchronous Slave mode enable
+0x40011804 C   FIELD 03w01 DIS_NSS: When the DSI_NSS bit is set, the NSS pin input is ignored
+0x40011804 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
+0x40011804 C   FIELD 05w01 LBDL: LIN break detection length
+0x40011804 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
+0x40011804 C   FIELD 08w01 LBCL: Last bit clock pulse
+0x40011804 C   FIELD 09w01 CPHA: Clock phase
+0x40011804 C   FIELD 10w01 CPOL: Clock polarity
+0x40011804 C   FIELD 11w01 CLKEN: Clock enable
+0x40011804 C   FIELD 12w02 STOP: STOP bits
+0x40011804 C   FIELD 14w01 LINEN: LIN mode enable
+0x40011804 C   FIELD 15w01 SWAP: Swap TX/RX pins
+0x40011804 C   FIELD 16w01 RXINV: RX pin active level inversion
+0x40011804 C   FIELD 17w01 TXINV: TX pin active level inversion
+0x40011804 C   FIELD 18w01 DATAINV: Binary data inversion
+0x40011804 C   FIELD 19w01 MSBFIRST: Most significant bit first
+0x40011804 C   FIELD 20w01 ABREN: Auto baud rate enable
+0x40011804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
+0x40011804 C   FIELD 23w01 RTOEN: Receiver timeout enable
+0x40011804 C   FIELD 24w08 ADD: Address of the USART node
+0x40011808 B  REGISTER CR3 (rw): Control register 3
+0x40011808 C   FIELD 00w01 EIE: Error interrupt enable
+0x40011808 C   FIELD 01w01 IREN: Ir mode enable
+0x40011808 C   FIELD 02w01 IRLP: Ir low-power
+0x40011808 C   FIELD 03w01 HDSEL: Half-duplex selection
+0x40011808 C   FIELD 04w01 NACK: Smartcard NACK enable
+0x40011808 C   FIELD 05w01 SCEN: Smartcard mode enable
+0x40011808 C   FIELD 06w01 DMAR: DMA enable receiver
+0x40011808 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40011808 C   FIELD 08w01 RTSE: RTS enable
+0x40011808 C   FIELD 09w01 CTSE: CTS enable
+0x40011808 C   FIELD 10w01 CTSIE: CTS interrupt enable
+0x40011808 C   FIELD 11w01 ONEBIT: One sample bit method enable
+0x40011808 C   FIELD 12w01 OVRDIS: Overrun Disable
+0x40011808 C   FIELD 13w01 DDRE: DMA Disable on Reception Error
+0x40011808 C   FIELD 14w01 DEM: Driver enable mode
+0x40011808 C   FIELD 15w01 DEP: Driver enable polarity selection
+0x40011808 C   FIELD 17w03 SCARCNT: Smartcard auto-retry count
+0x40011808 C   FIELD 20w02 WUS: Wakeup from Stop mode interrupt flag selection
+0x40011808 C   FIELD 22w01 WUFIE: Wakeup from Stop mode interrupt enable
+0x40011808 C   FIELD 23w01 TXFTIE: TXFIFO threshold interrupt enable
+0x40011808 C   FIELD 24w01 TCBGTIE: Transmission Complete before guard time, interrupt enable
+0x40011808 C   FIELD 25w03 RXFTCFG: Receive FIFO threshold configuration
+0x40011808 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
+0x40011808 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
+0x4001180C B  REGISTER BRR (rw): Baud rate register
+0x4001180C C   FIELD 00w16 BRR: DIV_Mantissa
+0x40011810 B  REGISTER GTPR (rw): Guard time and prescaler register
+0x40011810 C   FIELD 00w08 PSC: Prescaler value
+0x40011810 C   FIELD 08w08 GT: Guard time value
+0x40011814 B  REGISTER RTOR (rw): Receiver timeout register
+0x40011814 C   FIELD 00w24 RTO: Receiver timeout value
+0x40011814 C   FIELD 24w08 BLEN: Block Length
+0x40011818 B  REGISTER RQR (wo): Request register
+0x40011818 C   FIELD 00w01 ABRRQ: Auto baud rate request
+0x40011818 C   FIELD 01w01 SBKRQ: Send break request
+0x40011818 C   FIELD 02w01 MMRQ: Mute mode request
+0x40011818 C   FIELD 03w01 RXFRQ: Receive data flush request
+0x40011818 C   FIELD 04w01 TXFRQ: Transmit data flush request
+0x4001181C B  REGISTER ISR (ro): Interrupt & status register
+0x4001181C C   FIELD 00w01 PE: PE
+0x4001181C C   FIELD 01w01 FE: FE
+0x4001181C C   FIELD 02w01 NF: NF
+0x4001181C C   FIELD 03w01 ORE: ORE
+0x4001181C C   FIELD 04w01 IDLE: IDLE
+0x4001181C C   FIELD 05w01 RXNE: RXNE
+0x4001181C C   FIELD 06w01 TC: TC
+0x4001181C C   FIELD 07w01 TXE: TXE
+0x4001181C C   FIELD 08w01 LBDF: LBDF
+0x4001181C C   FIELD 09w01 CTSIF: CTSIF
+0x4001181C C   FIELD 10w01 CTS: CTS
+0x4001181C C   FIELD 11w01 RTOF: RTOF
+0x4001181C C   FIELD 12w01 EOBF: EOBF
+0x4001181C C   FIELD 13w01 UDR: SPI slave underrun error flag
+0x4001181C C   FIELD 14w01 ABRE: ABRE
+0x4001181C C   FIELD 15w01 ABRF: ABRF
+0x4001181C C   FIELD 16w01 BUSY: BUSY
+0x4001181C C   FIELD 17w01 CMF: CMF
+0x4001181C C   FIELD 18w01 SBKF: SBKF
+0x4001181C C   FIELD 19w01 RWU: RWU
+0x4001181C C   FIELD 20w01 WUF: WUF
+0x4001181C C   FIELD 21w01 TEACK: TEACK
+0x4001181C C   FIELD 22w01 REACK: REACK
+0x4001181C C   FIELD 23w01 TXFE: TXFIFO Empty
+0x4001181C C   FIELD 24w01 RXFF: RXFIFO Full
+0x4001181C C   FIELD 25w01 TCBGT: Transmission complete before guard time flag
+0x4001181C C   FIELD 26w01 RXFT: RXFIFO threshold flag
+0x4001181C C   FIELD 27w01 TXFT: TXFIFO threshold flag
+0x40011820 B  REGISTER ICR (wo): Interrupt flag clear register
+0x40011820 C   FIELD 00w01 PECF: Parity error clear flag
+0x40011820 C   FIELD 01w01 FECF: Framing error clear flag
+0x40011820 C   FIELD 02w01 NCF: Noise detected clear flag
+0x40011820 C   FIELD 03w01 ORECF: Overrun error clear flag
+0x40011820 C   FIELD 04w01 IDLECF: Idle line detected clear flag
+0x40011820 C   FIELD 05w01 TXFECF: TXFIFO empty clear flag
+0x40011820 C   FIELD 06w01 TCCF: Transmission complete clear flag
+0x40011820 C   FIELD 07w01 TCBGTC: Transmission complete before Guard time clear flag
+0x40011820 C   FIELD 08w01 LBDCF: LIN break detection clear flag
+0x40011820 C   FIELD 09w01 CTSCF: CTS clear flag
+0x40011820 C   FIELD 11w01 RTOCF: Receiver timeout clear flag
+0x40011820 C   FIELD 12w01 EOBCF: End of block clear flag
+0x40011820 C   FIELD 13w01 UDRCF: SPI slave underrun clear flag
+0x40011820 C   FIELD 17w01 CMCF: Character match clear flag
+0x40011820 C   FIELD 20w01 WUCF: Wakeup from Stop mode clear flag
+0x40011824 B  REGISTER RDR (ro): Receive data register
+0x40011824 C   FIELD 00w09 RDR: Receive data value
+0x40011828 B  REGISTER TDR (rw): Transmit data register
+0x40011828 C   FIELD 00w09 TDR: Transmit data value
+0x4001182C B  REGISTER PRESC (rw): USART prescaler register
+0x4001182C C   FIELD 00w04 PRESCALER: Clock prescaler
+0x40011C00 A PERIPHERAL USART10
+0x40011C00 B  REGISTER CR1 (rw): Control register 1
+0x40011C00 C   FIELD 00w01 UE: USART enable
+0x40011C00 C   FIELD 01w01 UESM: USART enable in Stop mode
+0x40011C00 C   FIELD 02w01 RE: Receiver enable
+0x40011C00 C   FIELD 03w01 TE: Transmitter enable
+0x40011C00 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
+0x40011C00 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
+0x40011C00 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
+0x40011C00 C   FIELD 07w01 TXEIE: interrupt enable
+0x40011C00 C   FIELD 08w01 PEIE: PE interrupt enable
+0x40011C00 C   FIELD 09w01 PS: Parity selection
+0x40011C00 C   FIELD 10w01 PCE: Parity control enable
+0x40011C00 C   FIELD 11w01 WAKE: Receiver wakeup method
+0x40011C00 C   FIELD 12w01 M0: Word length
+0x40011C00 C   FIELD 13w01 MME: Mute mode enable
+0x40011C00 C   FIELD 14w01 CMIE: Character match interrupt enable
+0x40011C00 C   FIELD 15w01 OVER8: Oversampling mode
+0x40011C00 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40011C00 C   FIELD 21w05 DEAT: Driver Enable assertion time
+0x40011C00 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
+0x40011C00 C   FIELD 27w01 EOBIE: End of Block interrupt enable
+0x40011C00 C   FIELD 28w01 M1: Word length
+0x40011C00 C   FIELD 29w01 FIFOEN: FIFO mode enable
+0x40011C00 C   FIELD 30w01 TXFEIE: TXFIFO empty interrupt enable
+0x40011C00 C   FIELD 31w01 RXFFIE: RXFIFO Full interrupt enable
+0x40011C04 B  REGISTER CR2 (rw): Control register 2
+0x40011C04 C   FIELD 00w01 SLVEN: Synchronous Slave mode enable
+0x40011C04 C   FIELD 03w01 DIS_NSS: When the DSI_NSS bit is set, the NSS pin input is ignored
+0x40011C04 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
+0x40011C04 C   FIELD 05w01 LBDL: LIN break detection length
+0x40011C04 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
+0x40011C04 C   FIELD 08w01 LBCL: Last bit clock pulse
+0x40011C04 C   FIELD 09w01 CPHA: Clock phase
+0x40011C04 C   FIELD 10w01 CPOL: Clock polarity
+0x40011C04 C   FIELD 11w01 CLKEN: Clock enable
+0x40011C04 C   FIELD 12w02 STOP: STOP bits
+0x40011C04 C   FIELD 14w01 LINEN: LIN mode enable
+0x40011C04 C   FIELD 15w01 SWAP: Swap TX/RX pins
+0x40011C04 C   FIELD 16w01 RXINV: RX pin active level inversion
+0x40011C04 C   FIELD 17w01 TXINV: TX pin active level inversion
+0x40011C04 C   FIELD 18w01 DATAINV: Binary data inversion
+0x40011C04 C   FIELD 19w01 MSBFIRST: Most significant bit first
+0x40011C04 C   FIELD 20w01 ABREN: Auto baud rate enable
+0x40011C04 C   FIELD 21w02 ABRMOD: Auto baud rate mode
+0x40011C04 C   FIELD 23w01 RTOEN: Receiver timeout enable
+0x40011C04 C   FIELD 24w08 ADD: Address of the USART node
+0x40011C08 B  REGISTER CR3 (rw): Control register 3
+0x40011C08 C   FIELD 00w01 EIE: Error interrupt enable
+0x40011C08 C   FIELD 01w01 IREN: Ir mode enable
+0x40011C08 C   FIELD 02w01 IRLP: Ir low-power
+0x40011C08 C   FIELD 03w01 HDSEL: Half-duplex selection
+0x40011C08 C   FIELD 04w01 NACK: Smartcard NACK enable
+0x40011C08 C   FIELD 05w01 SCEN: Smartcard mode enable
+0x40011C08 C   FIELD 06w01 DMAR: DMA enable receiver
+0x40011C08 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40011C08 C   FIELD 08w01 RTSE: RTS enable
+0x40011C08 C   FIELD 09w01 CTSE: CTS enable
+0x40011C08 C   FIELD 10w01 CTSIE: CTS interrupt enable
+0x40011C08 C   FIELD 11w01 ONEBIT: One sample bit method enable
+0x40011C08 C   FIELD 12w01 OVRDIS: Overrun Disable
+0x40011C08 C   FIELD 13w01 DDRE: DMA Disable on Reception Error
+0x40011C08 C   FIELD 14w01 DEM: Driver enable mode
+0x40011C08 C   FIELD 15w01 DEP: Driver enable polarity selection
+0x40011C08 C   FIELD 17w03 SCARCNT: Smartcard auto-retry count
+0x40011C08 C   FIELD 20w02 WUS: Wakeup from Stop mode interrupt flag selection
+0x40011C08 C   FIELD 22w01 WUFIE: Wakeup from Stop mode interrupt enable
+0x40011C08 C   FIELD 23w01 TXFTIE: TXFIFO threshold interrupt enable
+0x40011C08 C   FIELD 24w01 TCBGTIE: Transmission Complete before guard time, interrupt enable
+0x40011C08 C   FIELD 25w03 RXFTCFG: Receive FIFO threshold configuration
+0x40011C08 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
+0x40011C08 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
+0x40011C0C B  REGISTER BRR (rw): Baud rate register
+0x40011C0C C   FIELD 00w16 BRR: DIV_Mantissa
+0x40011C10 B  REGISTER GTPR (rw): Guard time and prescaler register
+0x40011C10 C   FIELD 00w08 PSC: Prescaler value
+0x40011C10 C   FIELD 08w08 GT: Guard time value
+0x40011C14 B  REGISTER RTOR (rw): Receiver timeout register
+0x40011C14 C   FIELD 00w24 RTO: Receiver timeout value
+0x40011C14 C   FIELD 24w08 BLEN: Block Length
+0x40011C18 B  REGISTER RQR (wo): Request register
+0x40011C18 C   FIELD 00w01 ABRRQ: Auto baud rate request
+0x40011C18 C   FIELD 01w01 SBKRQ: Send break request
+0x40011C18 C   FIELD 02w01 MMRQ: Mute mode request
+0x40011C18 C   FIELD 03w01 RXFRQ: Receive data flush request
+0x40011C18 C   FIELD 04w01 TXFRQ: Transmit data flush request
+0x40011C1C B  REGISTER ISR (ro): Interrupt & status register
+0x40011C1C C   FIELD 00w01 PE: PE
+0x40011C1C C   FIELD 01w01 FE: FE
+0x40011C1C C   FIELD 02w01 NF: NF
+0x40011C1C C   FIELD 03w01 ORE: ORE
+0x40011C1C C   FIELD 04w01 IDLE: IDLE
+0x40011C1C C   FIELD 05w01 RXNE: RXNE
+0x40011C1C C   FIELD 06w01 TC: TC
+0x40011C1C C   FIELD 07w01 TXE: TXE
+0x40011C1C C   FIELD 08w01 LBDF: LBDF
+0x40011C1C C   FIELD 09w01 CTSIF: CTSIF
+0x40011C1C C   FIELD 10w01 CTS: CTS
+0x40011C1C C   FIELD 11w01 RTOF: RTOF
+0x40011C1C C   FIELD 12w01 EOBF: EOBF
+0x40011C1C C   FIELD 13w01 UDR: SPI slave underrun error flag
+0x40011C1C C   FIELD 14w01 ABRE: ABRE
+0x40011C1C C   FIELD 15w01 ABRF: ABRF
+0x40011C1C C   FIELD 16w01 BUSY: BUSY
+0x40011C1C C   FIELD 17w01 CMF: CMF
+0x40011C1C C   FIELD 18w01 SBKF: SBKF
+0x40011C1C C   FIELD 19w01 RWU: RWU
+0x40011C1C C   FIELD 20w01 WUF: WUF
+0x40011C1C C   FIELD 21w01 TEACK: TEACK
+0x40011C1C C   FIELD 22w01 REACK: REACK
+0x40011C1C C   FIELD 23w01 TXFE: TXFIFO Empty
+0x40011C1C C   FIELD 24w01 RXFF: RXFIFO Full
+0x40011C1C C   FIELD 25w01 TCBGT: Transmission complete before guard time flag
+0x40011C1C C   FIELD 26w01 RXFT: RXFIFO threshold flag
+0x40011C1C C   FIELD 27w01 TXFT: TXFIFO threshold flag
+0x40011C20 B  REGISTER ICR (wo): Interrupt flag clear register
+0x40011C20 C   FIELD 00w01 PECF: Parity error clear flag
+0x40011C20 C   FIELD 01w01 FECF: Framing error clear flag
+0x40011C20 C   FIELD 02w01 NCF: Noise detected clear flag
+0x40011C20 C   FIELD 03w01 ORECF: Overrun error clear flag
+0x40011C20 C   FIELD 04w01 IDLECF: Idle line detected clear flag
+0x40011C20 C   FIELD 05w01 TXFECF: TXFIFO empty clear flag
+0x40011C20 C   FIELD 06w01 TCCF: Transmission complete clear flag
+0x40011C20 C   FIELD 07w01 TCBGTC: Transmission complete before Guard time clear flag
+0x40011C20 C   FIELD 08w01 LBDCF: LIN break detection clear flag
+0x40011C20 C   FIELD 09w01 CTSCF: CTS clear flag
+0x40011C20 C   FIELD 11w01 RTOCF: Receiver timeout clear flag
+0x40011C20 C   FIELD 12w01 EOBCF: End of block clear flag
+0x40011C20 C   FIELD 13w01 UDRCF: SPI slave underrun clear flag
+0x40011C20 C   FIELD 17w01 CMCF: Character match clear flag
+0x40011C20 C   FIELD 20w01 WUCF: Wakeup from Stop mode clear flag
+0x40011C24 B  REGISTER RDR (ro): Receive data register
+0x40011C24 C   FIELD 00w09 RDR: Receive data value
+0x40011C28 B  REGISTER TDR (rw): Transmit data register
+0x40011C28 C   FIELD 00w09 TDR: Transmit data value
+0x40011C2C B  REGISTER PRESC (rw): USART prescaler register
+0x40011C2C C   FIELD 00w04 PRESCALER: Clock prescaler
 0x40013000 A PERIPHERAL SPI1
 0x40013000 B  REGISTER CR1: control register 1
 0x40013000 C   FIELD 00w01 SPE (rw): Serial Peripheral Enable
@@ -8954,280 +9228,6 @@
 0x40017CB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
 0x40017CB8 B  REGISTER FLTCNVTIMR7: 
 0x40017CB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
-0x40018000 A PERIPHERAL UART9
-0x40018000 B  REGISTER CR1 (rw): Control register 1
-0x40018000 C   FIELD 00w01 UE: USART enable
-0x40018000 C   FIELD 01w01 UESM: USART enable in Stop mode
-0x40018000 C   FIELD 02w01 RE: Receiver enable
-0x40018000 C   FIELD 03w01 TE: Transmitter enable
-0x40018000 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
-0x40018000 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
-0x40018000 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
-0x40018000 C   FIELD 07w01 TXEIE: interrupt enable
-0x40018000 C   FIELD 08w01 PEIE: PE interrupt enable
-0x40018000 C   FIELD 09w01 PS: Parity selection
-0x40018000 C   FIELD 10w01 PCE: Parity control enable
-0x40018000 C   FIELD 11w01 WAKE: Receiver wakeup method
-0x40018000 C   FIELD 12w01 M0: Word length
-0x40018000 C   FIELD 13w01 MME: Mute mode enable
-0x40018000 C   FIELD 14w01 CMIE: Character match interrupt enable
-0x40018000 C   FIELD 15w01 OVER8: Oversampling mode
-0x40018000 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
-0x40018000 C   FIELD 21w05 DEAT: Driver Enable assertion time
-0x40018000 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
-0x40018000 C   FIELD 27w01 EOBIE: End of Block interrupt enable
-0x40018000 C   FIELD 28w01 M1: Word length
-0x40018000 C   FIELD 29w01 FIFOEN: FIFO mode enable
-0x40018000 C   FIELD 30w01 TXFEIE: TXFIFO empty interrupt enable
-0x40018000 C   FIELD 31w01 RXFFIE: RXFIFO Full interrupt enable
-0x40018004 B  REGISTER CR2 (rw): Control register 2
-0x40018004 C   FIELD 00w01 SLVEN: Synchronous Slave mode enable
-0x40018004 C   FIELD 03w01 DIS_NSS: When the DSI_NSS bit is set, the NSS pin input is ignored
-0x40018004 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
-0x40018004 C   FIELD 05w01 LBDL: LIN break detection length
-0x40018004 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40018004 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40018004 C   FIELD 09w01 CPHA: Clock phase
-0x40018004 C   FIELD 10w01 CPOL: Clock polarity
-0x40018004 C   FIELD 11w01 CLKEN: Clock enable
-0x40018004 C   FIELD 12w02 STOP: STOP bits
-0x40018004 C   FIELD 14w01 LINEN: LIN mode enable
-0x40018004 C   FIELD 15w01 SWAP: Swap TX/RX pins
-0x40018004 C   FIELD 16w01 RXINV: RX pin active level inversion
-0x40018004 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40018004 C   FIELD 18w01 DATAINV: Binary data inversion
-0x40018004 C   FIELD 19w01 MSBFIRST: Most significant bit first
-0x40018004 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40018004 C   FIELD 21w02 ABRMOD: Auto baud rate mode
-0x40018004 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40018004 C   FIELD 24w08 ADD: Address of the USART node
-0x40018008 B  REGISTER CR3 (rw): Control register 3
-0x40018008 C   FIELD 00w01 EIE: Error interrupt enable
-0x40018008 C   FIELD 01w01 IREN: Ir mode enable
-0x40018008 C   FIELD 02w01 IRLP: Ir low-power
-0x40018008 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40018008 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40018008 C   FIELD 05w01 SCEN: Smartcard mode enable
-0x40018008 C   FIELD 06w01 DMAR: DMA enable receiver
-0x40018008 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40018008 C   FIELD 08w01 RTSE: RTS enable
-0x40018008 C   FIELD 09w01 CTSE: CTS enable
-0x40018008 C   FIELD 10w01 CTSIE: CTS interrupt enable
-0x40018008 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40018008 C   FIELD 12w01 OVRDIS: Overrun Disable
-0x40018008 C   FIELD 13w01 DDRE: DMA Disable on Reception Error
-0x40018008 C   FIELD 14w01 DEM: Driver enable mode
-0x40018008 C   FIELD 15w01 DEP: Driver enable polarity selection
-0x40018008 C   FIELD 17w03 SCARCNT: Smartcard auto-retry count
-0x40018008 C   FIELD 20w02 WUS: Wakeup from Stop mode interrupt flag selection
-0x40018008 C   FIELD 22w01 WUFIE: Wakeup from Stop mode interrupt enable
-0x40018008 C   FIELD 23w01 TXFTIE: TXFIFO threshold interrupt enable
-0x40018008 C   FIELD 24w01 TCBGTIE: Transmission Complete before guard time, interrupt enable
-0x40018008 C   FIELD 25w03 RXFTCFG: Receive FIFO threshold configuration
-0x40018008 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
-0x40018008 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
-0x4001800C B  REGISTER BRR (rw): Baud rate register
-0x4001800C C   FIELD 00w16 BRR: DIV_Mantissa
-0x40018010 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40018010 C   FIELD 00w08 PSC: Prescaler value
-0x40018010 C   FIELD 08w08 GT: Guard time value
-0x40018014 B  REGISTER RTOR (rw): Receiver timeout register
-0x40018014 C   FIELD 00w24 RTO: Receiver timeout value
-0x40018014 C   FIELD 24w08 BLEN: Block Length
-0x40018018 B  REGISTER RQR (wo): Request register
-0x40018018 C   FIELD 00w01 ABRRQ: Auto baud rate request
-0x40018018 C   FIELD 01w01 SBKRQ: Send break request
-0x40018018 C   FIELD 02w01 MMRQ: Mute mode request
-0x40018018 C   FIELD 03w01 RXFRQ: Receive data flush request
-0x40018018 C   FIELD 04w01 TXFRQ: Transmit data flush request
-0x4001801C B  REGISTER ISR (ro): Interrupt & status register
-0x4001801C C   FIELD 00w01 PE: PE
-0x4001801C C   FIELD 01w01 FE: FE
-0x4001801C C   FIELD 02w01 NF: NF
-0x4001801C C   FIELD 03w01 ORE: ORE
-0x4001801C C   FIELD 04w01 IDLE: IDLE
-0x4001801C C   FIELD 05w01 RXNE: RXNE
-0x4001801C C   FIELD 06w01 TC: TC
-0x4001801C C   FIELD 07w01 TXE: TXE
-0x4001801C C   FIELD 08w01 LBDF: LBDF
-0x4001801C C   FIELD 09w01 CTSIF: CTSIF
-0x4001801C C   FIELD 10w01 CTS: CTS
-0x4001801C C   FIELD 11w01 RTOF: RTOF
-0x4001801C C   FIELD 12w01 EOBF: EOBF
-0x4001801C C   FIELD 13w01 UDR: SPI slave underrun error flag
-0x4001801C C   FIELD 14w01 ABRE: ABRE
-0x4001801C C   FIELD 15w01 ABRF: ABRF
-0x4001801C C   FIELD 16w01 BUSY: BUSY
-0x4001801C C   FIELD 17w01 CMF: CMF
-0x4001801C C   FIELD 18w01 SBKF: SBKF
-0x4001801C C   FIELD 19w01 RWU: RWU
-0x4001801C C   FIELD 20w01 WUF: WUF
-0x4001801C C   FIELD 21w01 TEACK: TEACK
-0x4001801C C   FIELD 22w01 REACK: REACK
-0x4001801C C   FIELD 23w01 TXFE: TXFIFO Empty
-0x4001801C C   FIELD 24w01 RXFF: RXFIFO Full
-0x4001801C C   FIELD 25w01 TCBGT: Transmission complete before guard time flag
-0x4001801C C   FIELD 26w01 RXFT: RXFIFO threshold flag
-0x4001801C C   FIELD 27w01 TXFT: TXFIFO threshold flag
-0x40018020 B  REGISTER ICR (wo): Interrupt flag clear register
-0x40018020 C   FIELD 00w01 PECF: Parity error clear flag
-0x40018020 C   FIELD 01w01 FECF: Framing error clear flag
-0x40018020 C   FIELD 02w01 NCF: Noise detected clear flag
-0x40018020 C   FIELD 03w01 ORECF: Overrun error clear flag
-0x40018020 C   FIELD 04w01 IDLECF: Idle line detected clear flag
-0x40018020 C   FIELD 05w01 TXFECF: TXFIFO empty clear flag
-0x40018020 C   FIELD 06w01 TCCF: Transmission complete clear flag
-0x40018020 C   FIELD 07w01 TCBGTC: Transmission complete before Guard time clear flag
-0x40018020 C   FIELD 08w01 LBDCF: LIN break detection clear flag
-0x40018020 C   FIELD 09w01 CTSCF: CTS clear flag
-0x40018020 C   FIELD 11w01 RTOCF: Receiver timeout clear flag
-0x40018020 C   FIELD 12w01 EOBCF: End of block clear flag
-0x40018020 C   FIELD 13w01 UDRCF: SPI slave underrun clear flag
-0x40018020 C   FIELD 17w01 CMCF: Character match clear flag
-0x40018020 C   FIELD 20w01 WUCF: Wakeup from Stop mode clear flag
-0x40018024 B  REGISTER RDR (ro): Receive data register
-0x40018024 C   FIELD 00w09 RDR: Receive data value
-0x40018028 B  REGISTER TDR (rw): Transmit data register
-0x40018028 C   FIELD 00w09 TDR: Transmit data value
-0x4001802C B  REGISTER PRESC (rw): USART prescaler register
-0x4001802C C   FIELD 00w04 PRESCALER: Clock prescaler
-0x4001C000 A PERIPHERAL USART10
-0x4001C000 B  REGISTER CR1 (rw): Control register 1
-0x4001C000 C   FIELD 00w01 UE: USART enable
-0x4001C000 C   FIELD 01w01 UESM: USART enable in Stop mode
-0x4001C000 C   FIELD 02w01 RE: Receiver enable
-0x4001C000 C   FIELD 03w01 TE: Transmitter enable
-0x4001C000 C   FIELD 04w01 IDLEIE: IDLE interrupt enable
-0x4001C000 C   FIELD 05w01 RXNEIE: RXNE interrupt enable
-0x4001C000 C   FIELD 06w01 TCIE: Transmission complete interrupt enable
-0x4001C000 C   FIELD 07w01 TXEIE: interrupt enable
-0x4001C000 C   FIELD 08w01 PEIE: PE interrupt enable
-0x4001C000 C   FIELD 09w01 PS: Parity selection
-0x4001C000 C   FIELD 10w01 PCE: Parity control enable
-0x4001C000 C   FIELD 11w01 WAKE: Receiver wakeup method
-0x4001C000 C   FIELD 12w01 M0: Word length
-0x4001C000 C   FIELD 13w01 MME: Mute mode enable
-0x4001C000 C   FIELD 14w01 CMIE: Character match interrupt enable
-0x4001C000 C   FIELD 15w01 OVER8: Oversampling mode
-0x4001C000 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
-0x4001C000 C   FIELD 21w05 DEAT: Driver Enable assertion time
-0x4001C000 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
-0x4001C000 C   FIELD 27w01 EOBIE: End of Block interrupt enable
-0x4001C000 C   FIELD 28w01 M1: Word length
-0x4001C000 C   FIELD 29w01 FIFOEN: FIFO mode enable
-0x4001C000 C   FIELD 30w01 TXFEIE: TXFIFO empty interrupt enable
-0x4001C000 C   FIELD 31w01 RXFFIE: RXFIFO Full interrupt enable
-0x4001C004 B  REGISTER CR2 (rw): Control register 2
-0x4001C004 C   FIELD 00w01 SLVEN: Synchronous Slave mode enable
-0x4001C004 C   FIELD 03w01 DIS_NSS: When the DSI_NSS bit is set, the NSS pin input is ignored
-0x4001C004 C   FIELD 04w01 ADDM7: 7-bit Address Detection/4-bit Address Detection
-0x4001C004 C   FIELD 05w01 LBDL: LIN break detection length
-0x4001C004 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x4001C004 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x4001C004 C   FIELD 09w01 CPHA: Clock phase
-0x4001C004 C   FIELD 10w01 CPOL: Clock polarity
-0x4001C004 C   FIELD 11w01 CLKEN: Clock enable
-0x4001C004 C   FIELD 12w02 STOP: STOP bits
-0x4001C004 C   FIELD 14w01 LINEN: LIN mode enable
-0x4001C004 C   FIELD 15w01 SWAP: Swap TX/RX pins
-0x4001C004 C   FIELD 16w01 RXINV: RX pin active level inversion
-0x4001C004 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x4001C004 C   FIELD 18w01 DATAINV: Binary data inversion
-0x4001C004 C   FIELD 19w01 MSBFIRST: Most significant bit first
-0x4001C004 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x4001C004 C   FIELD 21w02 ABRMOD: Auto baud rate mode
-0x4001C004 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x4001C004 C   FIELD 24w08 ADD: Address of the USART node
-0x4001C008 B  REGISTER CR3 (rw): Control register 3
-0x4001C008 C   FIELD 00w01 EIE: Error interrupt enable
-0x4001C008 C   FIELD 01w01 IREN: Ir mode enable
-0x4001C008 C   FIELD 02w01 IRLP: Ir low-power
-0x4001C008 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x4001C008 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x4001C008 C   FIELD 05w01 SCEN: Smartcard mode enable
-0x4001C008 C   FIELD 06w01 DMAR: DMA enable receiver
-0x4001C008 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x4001C008 C   FIELD 08w01 RTSE: RTS enable
-0x4001C008 C   FIELD 09w01 CTSE: CTS enable
-0x4001C008 C   FIELD 10w01 CTSIE: CTS interrupt enable
-0x4001C008 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x4001C008 C   FIELD 12w01 OVRDIS: Overrun Disable
-0x4001C008 C   FIELD 13w01 DDRE: DMA Disable on Reception Error
-0x4001C008 C   FIELD 14w01 DEM: Driver enable mode
-0x4001C008 C   FIELD 15w01 DEP: Driver enable polarity selection
-0x4001C008 C   FIELD 17w03 SCARCNT: Smartcard auto-retry count
-0x4001C008 C   FIELD 20w02 WUS: Wakeup from Stop mode interrupt flag selection
-0x4001C008 C   FIELD 22w01 WUFIE: Wakeup from Stop mode interrupt enable
-0x4001C008 C   FIELD 23w01 TXFTIE: TXFIFO threshold interrupt enable
-0x4001C008 C   FIELD 24w01 TCBGTIE: Transmission Complete before guard time, interrupt enable
-0x4001C008 C   FIELD 25w03 RXFTCFG: Receive FIFO threshold configuration
-0x4001C008 C   FIELD 28w01 RXFTIE: RXFIFO threshold interrupt enable
-0x4001C008 C   FIELD 29w03 TXFTCFG: TXFIFO threshold configuration
-0x4001C00C B  REGISTER BRR (rw): Baud rate register
-0x4001C00C C   FIELD 00w16 BRR: DIV_Mantissa
-0x4001C010 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x4001C010 C   FIELD 00w08 PSC: Prescaler value
-0x4001C010 C   FIELD 08w08 GT: Guard time value
-0x4001C014 B  REGISTER RTOR (rw): Receiver timeout register
-0x4001C014 C   FIELD 00w24 RTO: Receiver timeout value
-0x4001C014 C   FIELD 24w08 BLEN: Block Length
-0x4001C018 B  REGISTER RQR (wo): Request register
-0x4001C018 C   FIELD 00w01 ABRRQ: Auto baud rate request
-0x4001C018 C   FIELD 01w01 SBKRQ: Send break request
-0x4001C018 C   FIELD 02w01 MMRQ: Mute mode request
-0x4001C018 C   FIELD 03w01 RXFRQ: Receive data flush request
-0x4001C018 C   FIELD 04w01 TXFRQ: Transmit data flush request
-0x4001C01C B  REGISTER ISR (ro): Interrupt & status register
-0x4001C01C C   FIELD 00w01 PE: PE
-0x4001C01C C   FIELD 01w01 FE: FE
-0x4001C01C C   FIELD 02w01 NF: NF
-0x4001C01C C   FIELD 03w01 ORE: ORE
-0x4001C01C C   FIELD 04w01 IDLE: IDLE
-0x4001C01C C   FIELD 05w01 RXNE: RXNE
-0x4001C01C C   FIELD 06w01 TC: TC
-0x4001C01C C   FIELD 07w01 TXE: TXE
-0x4001C01C C   FIELD 08w01 LBDF: LBDF
-0x4001C01C C   FIELD 09w01 CTSIF: CTSIF
-0x4001C01C C   FIELD 10w01 CTS: CTS
-0x4001C01C C   FIELD 11w01 RTOF: RTOF
-0x4001C01C C   FIELD 12w01 EOBF: EOBF
-0x4001C01C C   FIELD 13w01 UDR: SPI slave underrun error flag
-0x4001C01C C   FIELD 14w01 ABRE: ABRE
-0x4001C01C C   FIELD 15w01 ABRF: ABRF
-0x4001C01C C   FIELD 16w01 BUSY: BUSY
-0x4001C01C C   FIELD 17w01 CMF: CMF
-0x4001C01C C   FIELD 18w01 SBKF: SBKF
-0x4001C01C C   FIELD 19w01 RWU: RWU
-0x4001C01C C   FIELD 20w01 WUF: WUF
-0x4001C01C C   FIELD 21w01 TEACK: TEACK
-0x4001C01C C   FIELD 22w01 REACK: REACK
-0x4001C01C C   FIELD 23w01 TXFE: TXFIFO Empty
-0x4001C01C C   FIELD 24w01 RXFF: RXFIFO Full
-0x4001C01C C   FIELD 25w01 TCBGT: Transmission complete before guard time flag
-0x4001C01C C   FIELD 26w01 RXFT: RXFIFO threshold flag
-0x4001C01C C   FIELD 27w01 TXFT: TXFIFO threshold flag
-0x4001C020 B  REGISTER ICR (wo): Interrupt flag clear register
-0x4001C020 C   FIELD 00w01 PECF: Parity error clear flag
-0x4001C020 C   FIELD 01w01 FECF: Framing error clear flag
-0x4001C020 C   FIELD 02w01 NCF: Noise detected clear flag
-0x4001C020 C   FIELD 03w01 ORECF: Overrun error clear flag
-0x4001C020 C   FIELD 04w01 IDLECF: Idle line detected clear flag
-0x4001C020 C   FIELD 05w01 TXFECF: TXFIFO empty clear flag
-0x4001C020 C   FIELD 06w01 TCCF: Transmission complete clear flag
-0x4001C020 C   FIELD 07w01 TCBGTC: Transmission complete before Guard time clear flag
-0x4001C020 C   FIELD 08w01 LBDCF: LIN break detection clear flag
-0x4001C020 C   FIELD 09w01 CTSCF: CTS clear flag
-0x4001C020 C   FIELD 11w01 RTOCF: Receiver timeout clear flag
-0x4001C020 C   FIELD 12w01 EOBCF: End of block clear flag
-0x4001C020 C   FIELD 13w01 UDRCF: SPI slave underrun clear flag
-0x4001C020 C   FIELD 17w01 CMCF: Character match clear flag
-0x4001C020 C   FIELD 20w01 WUCF: Wakeup from Stop mode clear flag
-0x4001C024 B  REGISTER RDR (ro): Receive data register
-0x4001C024 C   FIELD 00w09 RDR: Receive data value
-0x4001C028 B  REGISTER TDR (rw): Transmit data register
-0x4001C028 C   FIELD 00w09 TDR: Transmit data value
-0x4001C02C B  REGISTER PRESC (rw): USART prescaler register
-0x4001C02C C   FIELD 00w04 PRESCALER: Clock prescaler
 0x40020000 A PERIPHERAL DMA1
 0x40020000 B  REGISTER LISR (ro): low interrupt status register
 0x40020000 C   FIELD 00w01 FEIF0: Stream x FIFO error interrupt flag (x=3..0)
