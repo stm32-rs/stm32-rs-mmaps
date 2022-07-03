@@ -236,18 +236,24 @@
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
 0x40000424 C   FIELD 00w16 CNT: Counter value
+0x40000424 C   FIELD 16w16 CNT_H: High counter value (TIM2 only)
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
 0x4000042C C   FIELD 00w16 ARR: Auto-reload value
+0x4000042C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
 0x40000434 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
 0x40000438 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000438 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
 0x4000043C C   FIELD 00w16 CCR: Capture/Compare value
+0x4000043C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
 0x40000440 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000440 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
 0x40000448 B  REGISTER DCR (rw): DMA control register
 0x40000448 C   FIELD 00w05 DBA: DMA base address
 0x40000448 C   FIELD 08w05 DBL: DMA burst length
@@ -654,36 +660,36 @@
 0x40002810 C   FIELD 16w07 PREDIV_A: Asynchronous prescaler factor
 0x40002814 B  REGISTER WUTR (rw): wakeup timer register
 0x40002814 C   FIELD 00w16 WUT: Wakeup auto-reload value bits
-0x4000281C B  REGISTER ALRMAR (rw): Alarm register
+0x4000281C B  REGISTER ALRMAR (rw): alarm A register
 0x4000281C C   FIELD 00w04 SU: Second units in BCD format
 0x4000281C C   FIELD 04w03 ST: Second tens in BCD format
-0x4000281C C   FIELD 07w01 MSK1: Alarm seconds mask
+0x4000281C C   FIELD 07w01 MSK1: Alarm A seconds mask
 0x4000281C C   FIELD 08w04 MNU: Minute units in BCD format
 0x4000281C C   FIELD 12w03 MNT: Minute tens in BCD format
-0x4000281C C   FIELD 15w01 MSK2: Alarm minutes mask
+0x4000281C C   FIELD 15w01 MSK2: Alarm A minutes mask
 0x4000281C C   FIELD 16w04 HU: Hour units in BCD format
 0x4000281C C   FIELD 20w02 HT: Hour tens in BCD format
 0x4000281C C   FIELD 22w01 PM: AM/PM notation
-0x4000281C C   FIELD 23w01 MSK3: Alarm hours mask
+0x4000281C C   FIELD 23w01 MSK3: Alarm A hours mask
 0x4000281C C   FIELD 24w04 DU: Date units or day in BCD format
 0x4000281C C   FIELD 28w02 DT: Date tens in BCD format
 0x4000281C C   FIELD 30w01 WDSEL: Week day selection
-0x4000281C C   FIELD 31w01 MSK4: Alarm date mask
-0x40002820 B  REGISTER ALRMBR (rw): Alarm register
+0x4000281C C   FIELD 31w01 MSK4: Alarm A date mask
+0x40002820 B  REGISTER ALRMBR (rw): alarm B register
 0x40002820 C   FIELD 00w04 SU: Second units in BCD format
 0x40002820 C   FIELD 04w03 ST: Second tens in BCD format
-0x40002820 C   FIELD 07w01 MSK1: Alarm seconds mask
+0x40002820 C   FIELD 07w01 MSK1: Alarm B seconds mask
 0x40002820 C   FIELD 08w04 MNU: Minute units in BCD format
 0x40002820 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x40002820 C   FIELD 15w01 MSK2: Alarm minutes mask
+0x40002820 C   FIELD 15w01 MSK2: Alarm B minutes mask
 0x40002820 C   FIELD 16w04 HU: Hour units in BCD format
 0x40002820 C   FIELD 20w02 HT: Hour tens in BCD format
 0x40002820 C   FIELD 22w01 PM: AM/PM notation
-0x40002820 C   FIELD 23w01 MSK3: Alarm hours mask
+0x40002820 C   FIELD 23w01 MSK3: Alarm B hours mask
 0x40002820 C   FIELD 24w04 DU: Date units or day in BCD format
 0x40002820 C   FIELD 28w02 DT: Date tens in BCD format
 0x40002820 C   FIELD 30w01 WDSEL: Week day selection
-0x40002820 C   FIELD 31w01 MSK4: Alarm date mask
+0x40002820 C   FIELD 31w01 MSK4: Alarm B date mask
 0x40002824 B  REGISTER WPR (wo): write protection register
 0x40002824 C   FIELD 00w08 KEY: Write protection key
 0x40002828 B  REGISTER SSR (ro): sub second register
@@ -734,10 +740,10 @@
 0x40002840 C   FIELD 22w01 TAMP3IE: Tamper 3 interrupt enable
 0x40002840 C   FIELD 23w01 TAMP3NOERASE: Tamper 3 no erase
 0x40002840 C   FIELD 24w01 TAMP3MF: Tamper 3 mask flag
-0x40002844 B  REGISTER ALRMASSR (rw): Alarm sub-second register
+0x40002844 B  REGISTER ALRMASSR (rw): alarm A sub second register
 0x40002844 C   FIELD 00w15 SS: Sub seconds value
 0x40002844 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
-0x40002848 B  REGISTER ALRMBSSR (rw): Alarm sub-second register
+0x40002848 B  REGISTER ALRMBSSR (rw): alarm B sub second register
 0x40002848 C   FIELD 00w15 SS: Sub seconds value
 0x40002848 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
 0x4000284C B  REGISTER OR (rw): option register
@@ -2545,7 +2551,7 @@
 0x4000705C B  REGISTER PDCRH (rw): Power Port H pull-down control register
 0x4000705C C   FIELD 00w01 PD0: Port H pull-down bit y (y=0..1)
 0x4000705C C   FIELD 01w01 PD1: Port H pull-down bit y (y=0..1)
-0x40007400 A PERIPHERAL DAC1
+0x40007400 A PERIPHERAL DAC
 0x40007400 B  REGISTER CR (rw): control register
 0x40007400 C   FIELD 00w01 EN1: DAC channel1 enable
 0x40007400 C   FIELD 02w01 TEN1: DAC channel1 trigger enable
@@ -3055,32 +3061,32 @@
 0x40010034 C   FIELD 00w06 TRIM: Trimming code
 0x40010200 A PERIPHERAL COMP
 0x40010200 B  REGISTER COMP1_CSR: Comparator 1 control and status register
-0x40010200 C   FIELD 00w01 COMP1_EN (rw): Comparator 1 enable bit
-0x40010200 C   FIELD 02w02 COMP1_PWRMODE (rw): Power Mode of the comparator 1
-0x40010200 C   FIELD 04w03 COMP1_INMSEL (rw): Comparator 1 Input Minus connection configuration bit
-0x40010200 C   FIELD 07w02 COMP1_INPSEL (rw): Comparator1 input plus selection bit
-0x40010200 C   FIELD 15w01 COMP1_POLARITY (rw): Comparator 1 polarity selection bit
-0x40010200 C   FIELD 16w02 COMP1_HYST (rw): Comparator 1 hysteresis selection bits
-0x40010200 C   FIELD 18w03 COMP1_BLANKING (rw): Comparator 1 blanking source selection bits
-0x40010200 C   FIELD 22w01 COMP1_BRGEN (rw): Scaler bridge enable
-0x40010200 C   FIELD 23w01 COMP1_SCALEN (rw): Voltage scaler enable bit
-0x40010200 C   FIELD 25w02 COMP1_INMESEL (rw): comparator 1 input minus extended selection bits
-0x40010200 C   FIELD 30w01 COMP1_VALUE (ro): Comparator 1 output status bit
-0x40010200 C   FIELD 31w01 COMP1_LOCK (wo): COMP1_CSR register lock bit
+0x40010200 C   FIELD 00w01 EN (rw): Comparator 1 enable bit
+0x40010200 C   FIELD 02w02 PWRMODE (rw): Power Mode of the comparator 1
+0x40010200 C   FIELD 04w03 INMSEL (rw): Comparator 1 Input Minus connection configuration bit
+0x40010200 C   FIELD 07w02 INPSEL (rw): Comparator1 input plus selection bit
+0x40010200 C   FIELD 15w01 POLARITY (rw): Comparator 1 polarity selection bit
+0x40010200 C   FIELD 16w02 HYST (rw): Comparator 1 hysteresis selection bits
+0x40010200 C   FIELD 18w03 BLANKING (rw): Comparator 1 blanking source selection bits
+0x40010200 C   FIELD 22w01 BRGEN (rw): Scaler bridge enable
+0x40010200 C   FIELD 23w01 SCALEN (rw): Voltage scaler enable bit
+0x40010200 C   FIELD 25w02 INMESEL (rw): comparator 1 input minus extended selection bits
+0x40010200 C   FIELD 30w01 VALUE (ro): Comparator 1 output status bit
+0x40010200 C   FIELD 31w01 LOCK (wo): COMP1_CSR register lock bit
 0x40010204 B  REGISTER COMP2_CSR: Comparator 2 control and status register
-0x40010204 C   FIELD 00w01 COMP2_EN (rw): Comparator 2 enable bit
-0x40010204 C   FIELD 02w02 COMP2_PWRMODE (rw): Power Mode of the comparator 2
-0x40010204 C   FIELD 04w03 COMP2_INMSEL (rw): Comparator 2 Input Minus connection configuration bit
-0x40010204 C   FIELD 07w02 COMP2_INPSEL (rw): Comparator 2 Input Plus connection configuration bit
-0x40010204 C   FIELD 09w01 COMP2_WINMODE (rw): Windows mode selection bit
-0x40010204 C   FIELD 15w01 COMP2_POLARITY (rw): Comparator 2 polarity selection bit
-0x40010204 C   FIELD 16w02 COMP2_HYST (rw): Comparator 2 hysteresis selection bits
-0x40010204 C   FIELD 18w03 COMP2_BLANKING (rw): Comparator 2 blanking source selection bits
-0x40010204 C   FIELD 22w01 COMP2_BRGEN (rw): Scaler bridge enable
-0x40010204 C   FIELD 23w01 COMP2_SCALEN (rw): Voltage scaler enable bit
-0x40010204 C   FIELD 25w02 COMP2_INMESEL (rw): comparator 2 input minus extended selection bits
-0x40010204 C   FIELD 30w01 COMP2_VALUE (ro): Comparator 2 output status bit
-0x40010204 C   FIELD 31w01 COMP2_LOCK (wo): COMP2_CSR register lock bit
+0x40010204 C   FIELD 00w01 EN (rw): Comparator 2 enable bit
+0x40010204 C   FIELD 02w02 PWRMODE (rw): Power Mode of the comparator 2
+0x40010204 C   FIELD 04w03 INMSEL (rw): Comparator 2 Input Minus connection configuration bit
+0x40010204 C   FIELD 07w02 INPSEL (rw): Comparator 2 Input Plus connection configuration bit
+0x40010204 C   FIELD 09w01 WINMODE (rw): Windows mode selection bit
+0x40010204 C   FIELD 15w01 POLARITY (rw): Comparator 2 polarity selection bit
+0x40010204 C   FIELD 16w02 HYST (rw): Comparator 2 hysteresis selection bits
+0x40010204 C   FIELD 18w03 BLANKING (rw): Comparator 2 blanking source selection bits
+0x40010204 C   FIELD 22w01 BRGEN (rw): Scaler bridge enable
+0x40010204 C   FIELD 23w01 SCALEN (rw): Voltage scaler enable bit
+0x40010204 C   FIELD 25w02 INMESEL (rw): comparator 2 input minus extended selection bits
+0x40010204 C   FIELD 30w01 VALUE (ro): Comparator 2 output status bit
+0x40010204 C   FIELD 31w01 LOCK (wo): COMP2_CSR register lock bit
 0x40010400 A PERIPHERAL EXTI
 0x40010400 B  REGISTER IMR1 (rw): Interrupt mask register
 0x40010400 C   FIELD 00w01 MR0: Interrupt Mask on line 0
@@ -3815,23 +3821,12 @@
 0x40014018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40014018 C   FIELD 04w03 OC1M: Output Compare 1 mode
 0x40014018 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40014018 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
-0x40014018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40014018 C   FIELD 11w01 OC2PE: Capture/Compare 2 selection
-0x40014018 C   FIELD 12w03 OC2M: Output Compare 2 mode
-0x40014018 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40014018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode
-0x40014018 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x40014020 B  REGISTER CCER (rw): capture/compare enable register
 0x40014020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014020 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
-0x40014020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
-0x40014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output polarity
-0x40014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 complementary output polarity
 0x40014024 B  REGISTER CNT: counter
 0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
@@ -3843,8 +3838,6 @@
 0x40014030 C   FIELD 00w08 REP: Repetition counter value
 0x40014034 B  REGISTER CCR1 (rw): capture/compare register
 0x40014034 C   FIELD 00w16 CCR: Capture/Compare value
-0x40014038 B  REGISTER CCR2: Channel 2 capture/compare register
-0x40014038 C   FIELD 00w16 CCR2 (rw): Capture/Compare 2 value
 0x40014044 B  REGISTER BDTR (rw): break and dead-time register
 0x40014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -5736,23 +5729,6 @@
 0x48000024 C   FIELD 20w04 AFRH13: Alternate function selection for port x bit y (y = 8..15)
 0x48000024 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48000024 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
-0x48000028 B  REGISTER BRR: GPIO port bit reset register
-0x48000028 C   FIELD 00w01 BR0: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 01w01 BR1: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 02w01 BR2: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 03w01 BR3: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 04w01 BR4: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 05w01 BR5: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 06w01 BR6: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 07w01 BR7: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 08w01 BR8: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 09w01 BR9: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 10w01 BR10: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 11w01 BR11: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 12w01 BR12: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 13w01 BR13: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 14w01 BR14: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000028 C   FIELD 15w01 BR15: These bits are write-only. A read to these bits returns the value 0x0000
 0x48000400 A PERIPHERAL GPIOB
 0x48000400 B  REGISTER MODER (rw): GPIO port mode register
 0x48000400 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
@@ -5925,23 +5901,6 @@
 0x48000424 C   FIELD 20w04 AFRH13: Alternate function selection for port x bit y (y = 8..15)
 0x48000424 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48000424 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
-0x48000428 B  REGISTER BRR: GPIO port bit reset register
-0x48000428 C   FIELD 00w01 BR0: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 01w01 BR1: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 02w01 BR2: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 03w01 BR3: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 04w01 BR4: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 05w01 BR5: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 06w01 BR6: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 07w01 BR7: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 08w01 BR8: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 09w01 BR9: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 10w01 BR10: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 11w01 BR11: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 12w01 BR12: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 13w01 BR13: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 14w01 BR14: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000428 C   FIELD 15w01 BR15: These bits are write-only. A read to these bits returns the value 0x0000
 0x48000800 A PERIPHERAL GPIOC
 0x48000800 B  REGISTER MODER (rw): GPIO port mode register
 0x48000800 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
@@ -6114,23 +6073,6 @@
 0x48000824 C   FIELD 20w04 AFRH13: Alternate function selection for port x bit y (y = 8..15)
 0x48000824 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48000824 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
-0x48000828 B  REGISTER BRR: GPIO port bit reset register
-0x48000828 C   FIELD 00w01 BR0: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 01w01 BR1: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 02w01 BR2: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 03w01 BR3: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 04w01 BR4: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 05w01 BR5: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 06w01 BR6: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 07w01 BR7: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 08w01 BR8: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 09w01 BR9: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 10w01 BR10: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 11w01 BR11: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 12w01 BR12: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 13w01 BR13: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 14w01 BR14: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000828 C   FIELD 15w01 BR15: These bits are write-only. A read to these bits returns the value 0x0000
 0x48000C00 A PERIPHERAL GPIOD
 0x48000C00 B  REGISTER MODER (rw): GPIO port mode register
 0x48000C00 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
@@ -6303,23 +6245,6 @@
 0x48000C24 C   FIELD 20w04 AFRH13: Alternate function selection for port x bit y (y = 8..15)
 0x48000C24 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48000C24 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
-0x48000C28 B  REGISTER BRR: GPIO port bit reset register
-0x48000C28 C   FIELD 00w01 BR0: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 01w01 BR1: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 02w01 BR2: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 03w01 BR3: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 04w01 BR4: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 05w01 BR5: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 06w01 BR6: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 07w01 BR7: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 08w01 BR8: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 09w01 BR9: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 10w01 BR10: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 11w01 BR11: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 12w01 BR12: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 13w01 BR13: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 14w01 BR14: These bits are write-only. A read to these bits returns the value 0x0000
-0x48000C28 C   FIELD 15w01 BR15: These bits are write-only. A read to these bits returns the value 0x0000
 0x48001000 A PERIPHERAL GPIOE
 0x48001000 B  REGISTER MODER (rw): GPIO port mode register
 0x48001000 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
@@ -6492,23 +6417,6 @@
 0x48001024 C   FIELD 20w04 AFRH13: Alternate function selection for port x bit y (y = 8..15)
 0x48001024 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48001024 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
-0x48001028 B  REGISTER BRR: GPIO port bit reset register
-0x48001028 C   FIELD 00w01 BR0: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 01w01 BR1: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 02w01 BR2: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 03w01 BR3: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 04w01 BR4: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 05w01 BR5: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 06w01 BR6: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 07w01 BR7: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 08w01 BR8: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 09w01 BR9: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 10w01 BR10: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 11w01 BR11: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 12w01 BR12: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 13w01 BR13: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 14w01 BR14: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001028 C   FIELD 15w01 BR15: These bits are write-only. A read to these bits returns the value 0x0000
 0x48001C00 A PERIPHERAL GPIOH
 0x48001C00 B  REGISTER MODER (rw): GPIO port mode register
 0x48001C00 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
@@ -6681,23 +6589,6 @@
 0x48001C24 C   FIELD 20w04 AFRH13: Alternate function selection for port x bit y (y = 8..15)
 0x48001C24 C   FIELD 24w04 AFRH14: Alternate function selection for port x bit y (y = 8..15)
 0x48001C24 C   FIELD 28w04 AFRH15: Alternate function selection for port x bit y (y = 8..15)
-0x48001C28 B  REGISTER BRR: GPIO port bit reset register
-0x48001C28 C   FIELD 00w01 BR0: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 01w01 BR1: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 02w01 BR2: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 03w01 BR3: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 04w01 BR4: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 05w01 BR5: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 06w01 BR6: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 07w01 BR7: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 08w01 BR8: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 09w01 BR9: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 10w01 BR10: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 11w01 BR11: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 12w01 BR12: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 13w01 BR13: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 14w01 BR14: These bits are write-only. A read to these bits returns the value 0x0000
-0x48001C28 C   FIELD 15w01 BR15: These bits are write-only. A read to these bits returns the value 0x0000
 0x50040000 A PERIPHERAL ADC1
 0x50040000 B  REGISTER ISR (rw): interrupt and status register
 0x50040000 C   FIELD 00w01 ADRDY: ADRDY
@@ -6813,7 +6704,7 @@
 0x5004003C C   FIELD 00w05 SQ15: SQ15
 0x5004003C C   FIELD 06w05 SQ16: SQ16
 0x50040040 B  REGISTER DR (ro): regular Data Register
-0x50040040 C   FIELD 00w16 RDATA: Regular data
+0x50040040 C   FIELD 00w16 regularDATA: regularDATA
 0x5004004C B  REGISTER JSQR (rw): injected sequence register
 0x5004004C C   FIELD 00w02 JL: JL
 0x5004004C C   FIELD 02w04 JEXTSEL: JEXTSEL
@@ -6971,7 +6862,7 @@
 0x5004013C C   FIELD 00w05 SQ15: SQ15
 0x5004013C C   FIELD 06w05 SQ16: SQ16
 0x50040140 B  REGISTER DR (ro): regular Data Register
-0x50040140 C   FIELD 00w16 RDATA: Regular data
+0x50040140 C   FIELD 00w16 regularDATA: regularDATA
 0x5004014C B  REGISTER JSQR (rw): injected sequence register
 0x5004014C C   FIELD 00w02 JL: JL
 0x5004014C C   FIELD 02w04 JEXTSEL: JEXTSEL
@@ -7568,7 +7459,7 @@ INTERRUPT 077: TSC (TSC): TSC global interrupt
 INTERRUPT 078: LCD (LCD): LCD global interrupt
 INTERRUPT 079: AES (AES): AES global interrupt
 INTERRUPT 080: RNG (RNG): RNG global interrupt
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
+INTERRUPT 081: FPU (FPU): Floating point unit
 INTERRUPT 081: FPU (VREFBUF): Floating point interrupt
 INTERRUPT 082: CRS (CRS): CRS interrupt
 INTERRUPT 083: I2C4_EV (I2C4): I2C4 event interrupt, wakeup through EXTI

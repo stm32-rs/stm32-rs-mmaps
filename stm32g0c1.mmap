@@ -598,41 +598,41 @@
 0x40002838 B  REGISTER TSSSR: RTC timestamp sub second register
 0x40002838 C   FIELD 00w16 SS (ro): Sub second value SS[15:0] is the value of the synchronous prescaler counter when the timestamp event occurred.
 0x40002840 B  REGISTER ALRMAR: RTC alarm A register
-0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format
-0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format
-0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
+0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format.
+0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format.
+0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm A seconds mask
 0x40002840 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002840 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
+0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm A minutes mask
 0x40002840 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002840 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002840 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
+0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm A hours mask
 0x40002840 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002840 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002840 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm A date mask
 0x40002844 B  REGISTER ALRMASSR: RTC alarm A sub second register
 0x40002844 C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x40002844 C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit 2: SS[14:2] are don't care in alarm A comparison. Only SS[1:0] are compared. 3: SS[14:3] are don't care in alarm A comparison. Only SS[2:0] are compared. ... 12: SS[14:12] are don't care in alarm A comparison. SS[11:0] are compared. 13: SS[14:13] are don't care in alarm A comparison. SS[12:0] are compared. 14: SS[14] is don't care in alarm A comparison. SS[13:0] are compared. 15: All 15 SS bits are compared and must match to activate alarm. The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation. Note: The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
-0x40002848 B  REGISTER ALRMBR: RTC alarm A register
+0x40002848 B  REGISTER ALRMBR: RTC alarm B register
 0x40002848 C   FIELD 00w04 SU (rw): Second units in BCD format
 0x40002848 C   FIELD 04w03 ST (rw): Second tens in BCD format
-0x40002848 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
+0x40002848 C   FIELD 07w01 MSK1 (rw): Alarm B seconds mask
 0x40002848 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002848 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002848 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
+0x40002848 C   FIELD 15w01 MSK2 (rw): Alarm B minutes mask
 0x40002848 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002848 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002848 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002848 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
+0x40002848 C   FIELD 23w01 MSK3 (rw): Alarm B hours mask
 0x40002848 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002848 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002848 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002848 C   FIELD 31w01 MSK4 (rw): Alarm date mask
-0x4000284C B  REGISTER ALRMBSSR: RTC alarm A sub second register
-0x4000284C C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
-0x4000284C C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit 2: SS[14:2] are don't care in alarm A comparison. Only SS[1:0] are compared. 3: SS[14:3] are don't care in alarm A comparison. Only SS[2:0] are compared. ... 12: SS[14:12] are don't care in alarm A comparison. SS[11:0] are compared. 13: SS[14:13] are don't care in alarm A comparison. SS[12:0] are compared. 14: SS[14] is don't care in alarm A comparison. SS[13:0] are compared. 15: All 15 SS bits are compared and must match to activate alarm. The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation. Note: The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
+0x40002848 C   FIELD 31w01 MSK4 (rw): Alarm B date mask
+0x4000284C B  REGISTER ALRMBSSR: RTC alarm B sub second register
+0x4000284C C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm B is to be activated. Only bits 0 up to MASKSS-1 are compared.
+0x4000284C C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
 0x40002850 B  REGISTER SR: RTC status register
 0x40002850 C   FIELD 00w01 ALRAF (ro): Alarm A flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm A register (RTC_ALRMAR).
 0x40002850 C   FIELD 01w01 ALRBF (ro): Alarm B flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm B register (RTC_ALRMBR).
@@ -661,7 +661,7 @@
 0x40002C04 B  REGISTER CFR (rw): Configuration register
 0x40002C04 C   FIELD 00w07 W (rw): 7-bit window value These bits contain the window value to be compared with the down-counter.
 0x40002C04 C   FIELD 09w01 EWI (rw): Early wakeup interrupt When set, an interrupt occurs whenever the counter reaches the value 0x40. This interrupt is only cleared by hardware after a reset.
-0x40002C04 C   FIELD 11w03 WDGTB: Timer base The timebase of the prescaler can be modified as follows:
+0x40002C04 C   FIELD 11w03 WDGTB (rw): Timer base The timebase of the prescaler can be modified as follows:
 0x40002C08 B  REGISTER SR (rw): Status register
 0x40002C08 C   FIELD 00w01 EWIF: Early wakeup interrupt flag
 0x40003000 A PERIPHERAL IWDG
@@ -3540,8 +3540,8 @@
 0x40012424 B  REGISTER AWD2TR: ADC watchdog threshold register
 0x40012424 C   FIELD 00w12 LT2 (rw): Analog watchdog 2 lower threshold These bits are written by software to define the lower threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 407.
 0x40012424 C   FIELD 16w12 HT2 (rw): Analog watchdog 2 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 407.
-0x40012428 B  REGISTER CHSELR0: ADC channel selection register [alternate]
-0x40012428 B  REGISTER CHSELR1: channel selection register CHSELRMOD = 1 in ADC_CFGR1
+0x40012428 B  REGISTER CHSELR: ADC channel selection register [alternate]
+0x40012428 B  REGISTER CHSELR_1: channel selection register CHSELRMOD = 1 in ADC_CFGR1
 0x40012428 C   FIELD 00w01 CHSEL0 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
 0x40012428 C   FIELD 00w04 SQ1 (rw): 1st conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
 0x40012428 C   FIELD 01w01 CHSEL1 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
@@ -5579,18 +5579,18 @@
 0x40022020 C   FIELD 26w01 nBOOT0: nBOOT0 option bit
 0x40022020 C   FIELD 27w02 NRST_MODE: NRST_MODE
 0x40022020 C   FIELD 29w01 IRHEN: Internal reset holder enable bit
-0x40022024 B  REGISTER PCROP1ASR (rw): Flash PCROP zone A Start address register
+0x40022024 B  REGISTER PCROP1ASR (ro): Flash PCROP zone A Start address register
 0x40022024 C   FIELD 00w08 PCROP1A_STRT: PCROP1A area start offset
-0x40022028 B  REGISTER PCROP1AER (rw): Flash PCROP zone A End address register
+0x40022028 B  REGISTER PCROP1AER (ro): Flash PCROP zone A End address register
 0x40022028 C   FIELD 00w08 PCROP1A_END: PCROP1A area end offset
 0x40022028 C   FIELD 31w01 PCROP_RDP: PCROP area preserved when RDP level decreased
-0x4002202C B  REGISTER WRP1AR (rw): Flash WRP area A address register
+0x4002202C B  REGISTER WRP1AR (ro): Flash WRP area A address register
 0x4002202C C   FIELD 00w06 WRP1A_STRT: WRP area A start offset
 0x4002202C C   FIELD 16w06 WRP1A_END: WRP area A end offset
-0x40022030 B  REGISTER WRP1BR (rw): Flash WRP area B address register
+0x40022030 B  REGISTER WRP1BR (ro): Flash WRP area B address register
 0x40022030 C   FIELD 00w06 WRP1B_STRT: WRP area B start offset
 0x40022030 C   FIELD 16w06 WRP1B_END: WRP area B end offset
-0x40022034 B  REGISTER PCROP1BSR (rw): Flash PCROP zone B Start address register
+0x40022034 B  REGISTER PCROP1BSR (ro): Flash PCROP zone B Start address register
 0x40022034 C   FIELD 00w08 PCROP1B_STRT: PCROP1B area start offset
 0x40022038 B  REGISTER PCROP1BER (rw): Flash PCROP area B End address register
 0x40022038 C   FIELD 00w09 PCROP1B_END: PCROP1B area end offset

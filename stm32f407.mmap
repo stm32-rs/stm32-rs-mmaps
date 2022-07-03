@@ -225,18 +225,24 @@
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
 0x40000424 C   FIELD 00w16 CNT: Counter value
+0x40000424 C   FIELD 16w16 CNT_H: High counter value
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
 0x4000042C C   FIELD 00w16 ARR: Auto-reload value
+0x4000042C C   FIELD 16w16 ARR_H: High Auto-reload value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
 0x40000434 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
 0x40000438 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000438 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
 0x4000043C C   FIELD 00w16 CCR: Capture/Compare value
+0x4000043C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
 0x40000440 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000440 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000448 B  REGISTER DCR (rw): DMA control register
 0x40000448 C   FIELD 00w05 DBA: DMA base address
 0x40000448 C   FIELD 08w05 DBL: DMA burst length
@@ -346,18 +352,24 @@
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
 0x40000824 C   FIELD 00w16 CNT: Counter value
+0x40000824 C   FIELD 16w16 CNT_H: High counter value
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
 0x4000082C C   FIELD 00w16 ARR: Auto-reload value
+0x4000082C C   FIELD 16w16 ARR_H: High Auto-reload value
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register
 0x40000834 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000834 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register
 0x40000838 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000838 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x4000083C B  REGISTER CCR3 (rw): capture/compare register
 0x4000083C C   FIELD 00w16 CCR: Capture/Compare value
+0x4000083C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000840 B  REGISTER CCR4 (rw): capture/compare register
 0x40000840 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000840 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000848 B  REGISTER DCR (rw): DMA control register
 0x40000848 C   FIELD 00w05 DBA: DMA base address
 0x40000848 C   FIELD 08w05 DBL: DMA burst length
@@ -736,36 +748,36 @@
 0x40002818 B  REGISTER CALIBR (rw): calibration register
 0x40002818 C   FIELD 00w05 DC: Digital calibration
 0x40002818 C   FIELD 07w01 DCS: Digital calibration sign
-0x4000281C B  REGISTER ALRMAR (rw): Alarm register
+0x4000281C B  REGISTER ALRMAR (rw): alarm A register
 0x4000281C C   FIELD 00w04 SU: Second units in BCD format
 0x4000281C C   FIELD 04w03 ST: Second tens in BCD format
-0x4000281C C   FIELD 07w01 MSK1: Alarm seconds mask
+0x4000281C C   FIELD 07w01 MSK1: Alarm A seconds mask
 0x4000281C C   FIELD 08w04 MNU: Minute units in BCD format
 0x4000281C C   FIELD 12w03 MNT: Minute tens in BCD format
-0x4000281C C   FIELD 15w01 MSK2: Alarm minutes mask
+0x4000281C C   FIELD 15w01 MSK2: Alarm A minutes mask
 0x4000281C C   FIELD 16w04 HU: Hour units in BCD format
 0x4000281C C   FIELD 20w02 HT: Hour tens in BCD format
 0x4000281C C   FIELD 22w01 PM: AM/PM notation
-0x4000281C C   FIELD 23w01 MSK3: Alarm hours mask
+0x4000281C C   FIELD 23w01 MSK3: Alarm A hours mask
 0x4000281C C   FIELD 24w04 DU: Date units or day in BCD format
 0x4000281C C   FIELD 28w02 DT: Date tens in BCD format
 0x4000281C C   FIELD 30w01 WDSEL: Week day selection
-0x4000281C C   FIELD 31w01 MSK4: Alarm date mask
-0x40002820 B  REGISTER ALRMBR (rw): Alarm register
+0x4000281C C   FIELD 31w01 MSK4: Alarm A date mask
+0x40002820 B  REGISTER ALRMBR (rw): alarm B register
 0x40002820 C   FIELD 00w04 SU: Second units in BCD format
 0x40002820 C   FIELD 04w03 ST: Second tens in BCD format
-0x40002820 C   FIELD 07w01 MSK1: Alarm seconds mask
+0x40002820 C   FIELD 07w01 MSK1: Alarm B seconds mask
 0x40002820 C   FIELD 08w04 MNU: Minute units in BCD format
 0x40002820 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x40002820 C   FIELD 15w01 MSK2: Alarm minutes mask
+0x40002820 C   FIELD 15w01 MSK2: Alarm B minutes mask
 0x40002820 C   FIELD 16w04 HU: Hour units in BCD format
 0x40002820 C   FIELD 20w02 HT: Hour tens in BCD format
 0x40002820 C   FIELD 22w01 PM: AM/PM notation
-0x40002820 C   FIELD 23w01 MSK3: Alarm hours mask
+0x40002820 C   FIELD 23w01 MSK3: Alarm B hours mask
 0x40002820 C   FIELD 24w04 DU: Date units or day in BCD format
 0x40002820 C   FIELD 28w02 DT: Date tens in BCD format
 0x40002820 C   FIELD 30w01 WDSEL: Week day selection
-0x40002820 C   FIELD 31w01 MSK4: Alarm date mask
+0x40002820 C   FIELD 31w01 MSK4: Alarm B date mask
 0x40002824 B  REGISTER WPR (wo): write protection register
 0x40002824 C   FIELD 00w08 KEY: Write protection key
 0x40002828 B  REGISTER SSR (ro): sub second register
@@ -807,10 +819,10 @@
 0x40002840 C   FIELD 16w01 TAMP1INSEL: TAMPER1 mapping
 0x40002840 C   FIELD 17w01 TSINSEL: TIMESTAMP mapping
 0x40002840 C   FIELD 18w01 ALARMOUTTYPE: AFO_ALARM output type
-0x40002844 B  REGISTER ALRMASSR (rw): Alarm sub-second register
+0x40002844 B  REGISTER ALRMASSR (rw): alarm A sub second register
 0x40002844 C   FIELD 00w15 SS: Sub seconds value
 0x40002844 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
-0x40002848 B  REGISTER ALRMBSSR (rw): Alarm sub-second register
+0x40002848 B  REGISTER ALRMBSSR (rw): alarm B sub second register
 0x40002848 C   FIELD 00w15 SS: Sub seconds value
 0x40002848 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
 0x40002850 B  REGISTER BKP0R (rw): backup register
@@ -1257,8 +1269,6 @@
 0x40004C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40004C14 C   FIELD 07w01 DMAT: DMA enable transmitter
 0x40004C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40004C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
-0x40004C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40005000 A PERIPHERAL UART5
 0x40005000 B  REGISTER SR: Status register
 0x40005000 C   FIELD 00w01 PE (ro): Parity error
@@ -1305,8 +1315,6 @@
 0x40005014 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40005014 C   FIELD 07w01 DMAT: DMA enable transmitter
 0x40005014 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40005018 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
-0x40005018 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40005400 A PERIPHERAL I2C1
 0x40005400 B  REGISTER CR1 (rw): Control register 1
 0x40005400 C   FIELD 00w01 PE: Peripheral enable
@@ -2495,8 +2503,6 @@
 0x40007814 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40007814 C   FIELD 07w01 DMAT: DMA enable transmitter
 0x40007814 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40007818 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
-0x40007818 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40007C00 A PERIPHERAL UART8
 0x40007C00 B  REGISTER SR: Status register
 0x40007C00 C   FIELD 00w01 PE (ro): Parity error
@@ -2543,8 +2549,6 @@
 0x40007C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40007C14 C   FIELD 07w01 DMAT: DMA enable transmitter
 0x40007C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40007C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
-0x40007C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40010000 A PERIPHERAL TIM1
 0x40010000 B  REGISTER CR1 (rw): control register 1
 0x40010000 C   FIELD 00w01 CEN: Counter enable
@@ -7268,7 +7272,7 @@
 0x40028110 B  REGISTER MMCTIMR (rw): Ethernet MMC transmit interrupt mask register
 0x40028110 C   FIELD 14w01 TGFSCM: Transmitted good frames single collision mask
 0x40028110 C   FIELD 15w01 TGFMSCM: Transmitted good frames more than single collision mask
-0x40028110 C   FIELD 21w01 TGFM: Transmitted good frames mask
+0x40028110 C   FIELD 16w01 TGFM: Transmitted good frames mask
 0x4002814C B  REGISTER MMCTGFSCCR (ro): Ethernet MMC transmitted good frames after a single collision counter
 0x4002814C C   FIELD 00w32 TGFSCC: Transmitted good frames single collision counter
 0x40028150 B  REGISTER MMCTGFMSCCR (ro): Ethernet MMC transmitted good frames after more than a single collision
@@ -8699,7 +8703,7 @@
 0x50000018 C   FIELD 19w01 OEPINT (rw): OUT endpoints interrupt mask
 0x50000018 C   FIELD 20w01 IISOIXFRM (rw): Incomplete isochronous IN transfer mask
 0x50000018 C   FIELD 21w01 IPXFRM_IISOOXFRM (rw): Incomplete periodic transfer mask(Host mode)/Incomplete isochronous OUT transfer mask(Device mode)
-0x50000018 C   FIELD 24w01 PRTIM (rw): Host port interrupt mask
+0x50000018 C   FIELD 24w01 PRTIM (ro): Host port interrupt mask
 0x50000018 C   FIELD 25w01 HCIM (rw): Host channels interrupt mask
 0x50000018 C   FIELD 26w01 PTXFEM (rw): Periodic TxFIFO empty mask
 0x50000018 C   FIELD 28w01 CIDSCHGM (rw): Connector ID status change mask
@@ -8707,8 +8711,8 @@
 0x50000018 C   FIELD 30w01 SRQIM (rw): Session request/new session detected interrupt mask
 0x50000018 C   FIELD 31w01 WUIM (rw): Resume/remote wakeup detected interrupt mask
 0x5000001C B  REGISTER GRXSTSR_Device (ro): OTG_FS Receive status debug read(Device mode)
-0x5000001C B  REGISTER GRXSTSR_Host (ro): OTG status debug read (host mode)
-0x5000001C C   FIELD 00w04 CHNUM: Channel number
+0x5000001C B  REGISTER GRXSTSR_Host (ro): OTG_FS Receive status debug read(Host mode)
+0x5000001C C   FIELD 00w04 EPNUM: Endpoint number
 0x5000001C C   FIELD 00w04 EPNUM: Endpoint number
 0x5000001C C   FIELD 04w11 BCNT: Byte count
 0x5000001C C   FIELD 04w11 BCNT: Byte count
@@ -8716,6 +8720,7 @@
 0x5000001C C   FIELD 15w02 DPID: Data PID
 0x5000001C C   FIELD 17w04 PKTSTS: Packet status
 0x5000001C C   FIELD 17w04 PKTSTS: Packet status
+0x5000001C C   FIELD 21w04 FRMNUM: Frame number
 0x5000001C C   FIELD 21w04 FRMNUM: Frame number
 0x50000020 B  REGISTER GRXSTSP_Device (ro): OTG status read and pop (device mode)
 0x50000020 B  REGISTER GRXSTSP_Host (ro): OTG status read and pop (host mode)
@@ -8728,6 +8733,7 @@
 0x50000020 C   FIELD 17w04 PKTSTS: Packet status
 0x50000020 C   FIELD 17w04 PKTSTS: Packet status
 0x50000020 C   FIELD 21w04 FRMNUM: Frame number
+0x50000020 C   FIELD 27w01 STSPHST: Status phase start
 0x50000024 B  REGISTER GRXFSIZ (rw): OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
 0x50000024 C   FIELD 00w16 RXFD: RxFIFO depth
 0x50000028 B  REGISTER DIEPTXF0 (rw): OTG_FS non-periodic transmit FIFO size register (Device mode)
@@ -8745,7 +8751,6 @@
 0x50000038 C   FIELD 18w01 VBUSASEN: Enable the VBUS sensing device
 0x50000038 C   FIELD 19w01 VBUSBSEN: Enable the VBUS sensing device
 0x50000038 C   FIELD 20w01 SOFOUTEN: SOF output enable
-0x50000038 C   FIELD 21w01 NOVBUSSENS: Vbus sensing disable option
 0x5000003C B  REGISTER CID (rw): core ID register
 0x5000003C C   FIELD 00w32 PRODUCT_ID: Product ID field
 0x50000100 B  REGISTER HPTXFSIZ (rw): OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
@@ -8763,7 +8768,7 @@
 0x50000400 A PERIPHERAL OTG_FS_HOST
 0x50000400 B  REGISTER HCFG: OTG_FS host configuration register (OTG_FS_HCFG)
 0x50000400 C   FIELD 00w02 FSLSPCS (rw): FS/LS PHY clock select
-0x50000400 C   FIELD 02w01 FSLSS (rw): FS- and LS-only support
+0x50000400 C   FIELD 02w01 FSLSS (ro): FS- and LS-only support
 0x50000404 B  REGISTER HFIR (rw): OTG_FS Host frame interval register
 0x50000404 C   FIELD 00w16 FRIVL: Frame interval
 0x50000408 B  REGISTER HFNUM (ro): OTG_FS host frame number/frame time remaining register (OTG_FS_HFNUM)
@@ -10307,7 +10312,7 @@ INTERRUPT 077: OTG_HS (OTG_HS_GLOBAL): USB On The Go HS global interrupt
 INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
 INTERRUPT 079: CRYP (CRYP): CRYP crypto global interrupt
 INTERRUPT 080: HASH_RNG (HASH): Hash and Rng global interrupt
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
+INTERRUPT 081: FPU (FPU): Floating point unit
 INTERRUPT 081: FPU (RNG): FPU interrupt
 INTERRUPT 088: LCD_TFT (LTDC): LTDC global interrupt
 INTERRUPT 089: LCD_TFT_1 (LTDC): LTDC global error interrupt

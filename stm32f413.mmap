@@ -225,18 +225,24 @@
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
 0x40000424 C   FIELD 00w16 CNT: Counter value
+0x40000424 C   FIELD 16w16 CNT_H: High counter value
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
 0x4000042C C   FIELD 00w16 ARR: Auto-reload value
+0x4000042C C   FIELD 16w16 ARR_H: High Auto-reload value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
 0x40000434 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
 0x40000438 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000438 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
 0x4000043C C   FIELD 00w16 CCR: Capture/Compare value
+0x4000043C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
 0x40000440 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000440 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000448 B  REGISTER DCR (rw): DMA control register
 0x40000448 C   FIELD 00w05 DBA: DMA base address
 0x40000448 C   FIELD 08w05 DBL: DMA burst length
@@ -346,18 +352,24 @@
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
 0x40000824 C   FIELD 00w16 CNT: Counter value
+0x40000824 C   FIELD 16w16 CNT_H: High counter value
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
 0x4000082C C   FIELD 00w16 ARR: Auto-reload value
+0x4000082C C   FIELD 16w16 ARR_H: High Auto-reload value
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register
 0x40000834 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000834 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register
 0x40000838 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000838 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x4000083C B  REGISTER CCR3 (rw): capture/compare register
 0x4000083C C   FIELD 00w16 CCR: Capture/Compare value
+0x4000083C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000840 B  REGISTER CCR4 (rw): capture/compare register
 0x40000840 C   FIELD 00w16 CCR: Capture/Compare value
+0x40000840 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value
 0x40000848 B  REGISTER DCR (rw): DMA control register
 0x40000848 C   FIELD 00w05 DBA: DMA base address
 0x40000848 C   FIELD 08w05 DBL: DMA burst length
@@ -493,6 +505,7 @@
 0x40001000 C   FIELD 02w01 URS: Update request source
 0x40001000 C   FIELD 03w01 OPM: One-pulse mode
 0x40001000 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40001000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40001004 B  REGISTER CR2 (rw): control register 2
 0x40001004 C   FIELD 04w03 MMS: Master mode selection
 0x4000100C B  REGISTER DIER (rw): DMA/Interrupt enable register
@@ -504,6 +517,7 @@
 0x40001014 C   FIELD 00w01 UG: Update generation
 0x40001024 B  REGISTER CNT: counter
 0x40001024 C   FIELD 00w16 CNT (rw): Low counter value
+0x40001024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40001028 B  REGISTER PSC (rw): prescaler
 0x40001028 C   FIELD 00w16 PSC: Prescaler value
 0x4000102C B  REGISTER ARR (rw): auto-reload register
@@ -515,6 +529,7 @@
 0x40001400 C   FIELD 02w01 URS: Update request source
 0x40001400 C   FIELD 03w01 OPM: One-pulse mode
 0x40001400 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40001400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
 0x40001404 B  REGISTER CR2 (rw): control register 2
 0x40001404 C   FIELD 04w03 MMS: Master mode selection
 0x4000140C B  REGISTER DIER (rw): DMA/Interrupt enable register
@@ -526,6 +541,7 @@
 0x40001414 C   FIELD 00w01 UG: Update generation
 0x40001424 B  REGISTER CNT: counter
 0x40001424 C   FIELD 00w16 CNT (rw): Low counter value
+0x40001424 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40001428 B  REGISTER PSC (rw): prescaler
 0x40001428 C   FIELD 00w16 PSC: Prescaler value
 0x4000142C B  REGISTER ARR (rw): auto-reload register
@@ -781,36 +797,36 @@
 0x40002818 B  REGISTER CALIBR (rw): calibration register
 0x40002818 C   FIELD 00w05 DC: Digital calibration
 0x40002818 C   FIELD 07w01 DCS: Digital calibration sign
-0x4000281C B  REGISTER ALRMAR (rw): Alarm register
+0x4000281C B  REGISTER ALRMAR (rw): alarm A register
 0x4000281C C   FIELD 00w04 SU: Second units in BCD format
 0x4000281C C   FIELD 04w03 ST: Second tens in BCD format
-0x4000281C C   FIELD 07w01 MSK1: Alarm seconds mask
+0x4000281C C   FIELD 07w01 MSK1: Alarm A seconds mask
 0x4000281C C   FIELD 08w04 MNU: Minute units in BCD format
 0x4000281C C   FIELD 12w03 MNT: Minute tens in BCD format
-0x4000281C C   FIELD 15w01 MSK2: Alarm minutes mask
+0x4000281C C   FIELD 15w01 MSK2: Alarm A minutes mask
 0x4000281C C   FIELD 16w04 HU: Hour units in BCD format
 0x4000281C C   FIELD 20w02 HT: Hour tens in BCD format
 0x4000281C C   FIELD 22w01 PM: AM/PM notation
-0x4000281C C   FIELD 23w01 MSK3: Alarm hours mask
+0x4000281C C   FIELD 23w01 MSK3: Alarm A hours mask
 0x4000281C C   FIELD 24w04 DU: Date units or day in BCD format
 0x4000281C C   FIELD 28w02 DT: Date tens in BCD format
 0x4000281C C   FIELD 30w01 WDSEL: Week day selection
-0x4000281C C   FIELD 31w01 MSK4: Alarm date mask
-0x40002820 B  REGISTER ALRMBR (rw): Alarm register
+0x4000281C C   FIELD 31w01 MSK4: Alarm A date mask
+0x40002820 B  REGISTER ALRMBR (rw): alarm B register
 0x40002820 C   FIELD 00w04 SU: Second units in BCD format
 0x40002820 C   FIELD 04w03 ST: Second tens in BCD format
-0x40002820 C   FIELD 07w01 MSK1: Alarm seconds mask
+0x40002820 C   FIELD 07w01 MSK1: Alarm B seconds mask
 0x40002820 C   FIELD 08w04 MNU: Minute units in BCD format
 0x40002820 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x40002820 C   FIELD 15w01 MSK2: Alarm minutes mask
+0x40002820 C   FIELD 15w01 MSK2: Alarm B minutes mask
 0x40002820 C   FIELD 16w04 HU: Hour units in BCD format
 0x40002820 C   FIELD 20w02 HT: Hour tens in BCD format
 0x40002820 C   FIELD 22w01 PM: AM/PM notation
-0x40002820 C   FIELD 23w01 MSK3: Alarm hours mask
+0x40002820 C   FIELD 23w01 MSK3: Alarm B hours mask
 0x40002820 C   FIELD 24w04 DU: Date units or day in BCD format
 0x40002820 C   FIELD 28w02 DT: Date tens in BCD format
 0x40002820 C   FIELD 30w01 WDSEL: Week day selection
-0x40002820 C   FIELD 31w01 MSK4: Alarm date mask
+0x40002820 C   FIELD 31w01 MSK4: Alarm B date mask
 0x40002824 B  REGISTER WPR (wo): write protection register
 0x40002824 C   FIELD 00w08 KEY: Write protection key
 0x40002828 B  REGISTER SSR (ro): sub second register
@@ -853,10 +869,10 @@
 0x40002840 C   FIELD 16w01 TAMP1INSEL: TAMPER1 mapping
 0x40002840 C   FIELD 17w01 TSINSEL: TIMESTAMP mapping
 0x40002840 C   FIELD 18w01 ALARMOUTTYPE: AFO_ALARM output type
-0x40002844 B  REGISTER ALRMASSR (rw): Alarm sub-second register
+0x40002844 B  REGISTER ALRMASSR (rw): alarm A sub second register
 0x40002844 C   FIELD 00w15 SS: Sub seconds value
 0x40002844 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
-0x40002848 B  REGISTER ALRMBSSR (rw): Alarm sub-second register
+0x40002848 B  REGISTER ALRMBSSR (rw): alarm B sub second register
 0x40002848 C   FIELD 00w15 SS: Sub seconds value
 0x40002848 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit
 0x40002850 B  REGISTER BKP0R (rw): backup register
@@ -1158,6 +1174,7 @@
 0x40004C00 C   FIELD 06w01 TC (rw): Transmission complete
 0x40004C00 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40004C00 C   FIELD 08w01 LBD (rw): LIN break detection flag
+0x40004C00 C   FIELD 09w01 CTS (rw): CTS flag
 0x40004C04 B  REGISTER DR (rw): Data register
 0x40004C04 C   FIELD 00w09 DR: Data value
 0x40004C08 B  REGISTER BRR (rw): Baud rate register
@@ -1183,6 +1200,10 @@
 0x40004C10 C   FIELD 00w04 ADD: Address of the USART node
 0x40004C10 C   FIELD 05w01 LBDL: lin break detection length
 0x40004C10 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
+0x40004C10 C   FIELD 08w01 LBCL: Last bit clock pulse
+0x40004C10 C   FIELD 09w01 CPHA: Clock phase
+0x40004C10 C   FIELD 10w01 CPOL: Clock polarity
+0x40004C10 C   FIELD 11w01 CLKEN: Clock enable
 0x40004C10 C   FIELD 12w02 STOP: STOP bits
 0x40004C10 C   FIELD 14w01 LINEN: LIN mode enable
 0x40004C14 B  REGISTER CR3 (rw): Control register 3
@@ -1190,11 +1211,17 @@
 0x40004C14 C   FIELD 01w01 IREN: IrDA mode enable
 0x40004C14 C   FIELD 02w01 IRLP: IrDA low-power
 0x40004C14 C   FIELD 03w01 HDSEL: Half-duplex selection
+0x40004C14 C   FIELD 04w01 NACK: Smartcard NACK enable
+0x40004C14 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40004C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40004C14 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40004C14 C   FIELD 08w01 RTSE: RTS enable
+0x40004C14 C   FIELD 09w01 CTSE: CTS enable
+0x40004C14 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40004C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40004C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
-0x40004C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
+0x40004C18 B  REGISTER GTPR (rw): Guard time and prescaler register
+0x40004C18 C   FIELD 00w08 PSC: Prescaler value
+0x40004C18 C   FIELD 08w08 GT: Guard time value
 0x40005000 A PERIPHERAL UART5
 0x40005000 B  REGISTER SR: Status register
 0x40005000 C   FIELD 00w01 PE (ro): Parity error
@@ -9301,7 +9328,7 @@ INTERRUPT 077: CAN3_SCE (CAN3): CAN 3 SCE interrupt
 INTERRUPT 079: CRYPTO (AES): AES global interrupt
 INTERRUPT 080: RNG (CAN1): Rng global interrupt
 INTERRUPT 081: FPU (ADC_Common): FPU interrupt
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
+INTERRUPT 081: FPU (FPU): Floating point unit
 INTERRUPT 081: FPU (SDIO): FPU global interrupt
 INTERRUPT 082: USART7 (USART1): USART7 global interrupt
 INTERRUPT 083: USART8 (UART9): USART8 global interrupt
