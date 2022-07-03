@@ -11183,6 +11183,61 @@
 0x480230B0 C   FIELD 00w32 FEC: Failing error code
 0x480230B4 B  REGISTER M5FECR (ro): RAMECC monitor x failing ECC error code register
 0x480230B4 C   FIELD 00w32 FEC: Failing error code
+0x48024000 A PERIPHERAL FMAC
+0x48024000 B  REGISTER X1BUFCFG: X1 buffer configuration register
+0x48024000 C   FIELD 00w08 X1_BASE: Base address of X1 buffer
+0x48024000 C   FIELD 08w08 X1_BUF_SIZE: Allocated size of X1 buffer in 16-bit words
+0x48024000 C   FIELD 24w02 FULL_WM: Watermark for buffer full flag
+0x48024004 B  REGISTER X2BUFCFG: X2 buffer configuration register
+0x48024004 C   FIELD 00w08 X2_BASE: Base address of X2 buffer
+0x48024004 C   FIELD 08w08 X2_BUF_SIZE: Size of X2 buffer in 16-bit words
+0x48024008 B  REGISTER YBUFCFG: Y buffer configuration register
+0x48024008 C   FIELD 00w08 Y_BASE: Base address of Y buffer
+0x48024008 C   FIELD 08w08 Y_BUF_SIZE: Size of Y buffer in 16-bit words
+0x48024008 C   FIELD 24w02 EMPTY_WM: Watermark for buffer empty flag
+0x4802400C B  REGISTER PARAM: Parameter register
+0x4802400C C   FIELD 00w08 P: Input parameter P
+0x4802400C C   FIELD 08w08 Q: Input parameter Q
+0x4802400C C   FIELD 16w08 R: Input parameter R
+0x4802400C C   FIELD 24w07 FUNC: Function
+0x4802400C C   FIELD 31w01 START: Enable execution
+0x48024010 B  REGISTER CR: Control register
+0x48024010 C   FIELD 00w01 RIEN: Enable read interrupt
+0x48024010 C   FIELD 01w01 WIEN: Enable write interrupt
+0x48024010 C   FIELD 02w01 OVFLIEN: Enable overflow error interrupts
+0x48024010 C   FIELD 03w01 UNFLIEN: Enable underflow error interrupts
+0x48024010 C   FIELD 04w01 SATIEN: Enable saturation error interrupts
+0x48024010 C   FIELD 08w01 DMAREN: Enable DMA read channel requests
+0x48024010 C   FIELD 09w01 DMAWEN: Enable DMA write channel requests
+0x48024010 C   FIELD 15w01 CLIPEN: Enable clipping
+0x48024010 C   FIELD 16w01 RESET: Reset FMAC unit
+0x48024014 B  REGISTER SR: Status register
+0x48024014 C   FIELD 00w01 YEMPTY: Y buffer empty flag
+0x48024014 C   FIELD 01w01 X1FULL: X1 buffer full flag
+0x48024014 C   FIELD 08w01 OVFL: Overflow error flag
+0x48024014 C   FIELD 09w01 UNFL: Underflow error flag
+0x48024014 C   FIELD 10w01 SAT: Saturation error flag
+0x48024018 B  REGISTER WDATA: Write data register
+0x48024018 C   FIELD 00w16 WDATA: Write data (write data are transferred to the address indicated by the write pointer)
+0x4802401C B  REGISTER RDATA: Read data register
+0x4802401C C   FIELD 00w16 RES: Read data (contents of the Y output buffer at the address indicated by the READ pointer)
+0x48024400 A PERIPHERAL CORDIC
+0x48024400 B  REGISTER CSR: Control and status register
+0x48024400 C   FIELD 00w04 FUNC: Function
+0x48024400 C   FIELD 04w04 PRECISION: Precision required (number of iterations/cycles), where PRECISION = (number of iterations/4)
+0x48024400 C   FIELD 08w03 SCALE: Scaling factor (2^-n for arguments, 2^n for results)
+0x48024400 C   FIELD 16w01 IEN: Enable interrupt
+0x48024400 C   FIELD 17w01 DMAREN: Enable DMA wread channel
+0x48024400 C   FIELD 18w01 DMAWEN: Enable DMA write channel
+0x48024400 C   FIELD 19w01 NRES: Number of results in the RDATA register
+0x48024400 C   FIELD 20w01 NARGS: Number of arguments expected by the WDATA register
+0x48024400 C   FIELD 21w01 RESSIZE: Width of output data
+0x48024400 C   FIELD 22w01 ARGSIZE: Width of input data
+0x48024400 C   FIELD 31w01 RRDY: Result ready flag
+0x48024404 B  REGISTER WDATA: Argument register
+0x48024404 C   FIELD 00w32 ARG: Function input arguments
+0x48024408 B  REGISTER RDATA: Result register
+0x48024408 C   FIELD 00w32 RES: Function result
 0x50001000 A PERIPHERAL LTDC
 0x50001008 B  REGISTER SSCR (rw): Synchronization Size Configuration Register
 0x50001008 C   FIELD 00w11 VSH: Vertical Synchronization Height (in units of horizontal scan line)
@@ -18817,9 +18872,9 @@
 0x5C001000 C   FIELD 00w12 DEV_ID: Device ID
 0x5C001000 C   FIELD 16w16 REV_ID: Revision
 0x5C001004 B  REGISTER CR (rw): DBGMCU Configuration Register
-0x5C001004 C   FIELD 00w01 DBGSLPD1: Allow D1 domain debug in Sleep mode
-0x5C001004 C   FIELD 01w01 DBGSTPD1: Allow D1 domain debug in Stop mode
-0x5C001004 C   FIELD 02w01 DBGSTBD1: Allow D1 domain debug in Standby mode
+0x5C001004 C   FIELD 00w01 DBGSLEEP_D1: Allow D1 domain debug in Sleep mode
+0x5C001004 C   FIELD 01w01 DBGSTOP_D1: Allow D1 domain debug in Stop mode
+0x5C001004 C   FIELD 02w01 DBGSTBY_D1: Allow D1 domain debug in Standby mode
 0x5C001004 C   FIELD 03w01 DBGSLPD2: Allow D2 domain debug in Sleep mode
 0x5C001004 C   FIELD 04w01 DBGSTPD2: Allow D2 domain debug in Stop mode
 0x5C001004 C   FIELD 05w01 DBGSTBD2: Allow D2 domain debug in Standby mode
@@ -19393,7 +19448,7 @@ INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line[9:5] interrupts
 INTERRUPT 024: TIM1_BRK (TIM1): TIM1 break interrupt
 INTERRUPT 025: TIM1_UP (TIM1): TIM1 update interrupt
 INTERRUPT 026: TIM1_TRG_COM (TIM1): TIM1 trigger and commutation
-INTERRUPT 027: TIM_CC (TIM1): TIM1 capture / compare
+INTERRUPT 027: TIM1_CC (TIM1): TIM1 capture / compare
 INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
 INTERRUPT 030: TIM4 (TIM4): TIM4 global interrupt
@@ -19436,8 +19491,13 @@ INTERRUPT 070: DMA2_STR7 (DMA2): DMA2 Stream7
 INTERRUPT 071: USART6 (USART6): USART6 global interrupt
 INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
 INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
-INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
+INTERRUPT 074: OTG_HS_EP1_OUT (OTG1_HS_GLOBAL): USB OTG_HS OUT endpoint1 global interrupt
+INTERRUPT 075: OTG_HS_EP1_IN (OTG1_HS_GLOBAL): USB OTG_HS IN endpoint1 global interrupt
+INTERRUPT 076: OTG_HS_WKUP (OTG1_HS_GLOBAL): USB OTG_HS wakeup Interrupt through EXTI line
+INTERRUPT 077: OTG_HS (OTG1_HS_GLOBAL): USB OTG_HS global interrupt
+INTERRUPT 078: DCMI_PSSI (DCMI): DCMI/PSSI global interrupt
 INTERRUPT 079: CRYP (CRYP): Crypto global interrupt
+INTERRUPT 080: HASH_RNG (RNG): HASH OR RNG interrupt
 INTERRUPT 081: FPU (FPU): Floating point unit interrupt
 INTERRUPT 082: UART7 (UART7): UART7 global interrupt
 INTERRUPT 083: UART8 (UART8): UART8 global interrupt
@@ -19447,6 +19507,7 @@ INTERRUPT 086: SPI6 (SPI6): SPI6 global interrupt
 INTERRUPT 087: SAI1 (SAI1): SAI1 global interrupt
 INTERRUPT 088: LTDC (LTDC): LCD-TFT global interrupt
 INTERRUPT 089: LTDC_ER (LTDC): LCD-TFT error interrupt
+INTERRUPT 089: LTDC_ERR (LTDC): LCD-TFT global Error interrupt
 INTERRUPT 090: DMA2D (DMA2D): DMA2D global interrupt
 INTERRUPT 092: OCTOSPI1 (OCTOSPI1): OCTOSPI1 global interrupt
 INTERRUPT 093: LPTIM1 (LPTIM1): LPTIM1 global interrupt
@@ -19485,9 +19546,12 @@ INTERRUPT 140: LPTIM4 (LPTIM4): LPTIM2 timer interrupt
 INTERRUPT 141: LPTIM5 (LPTIM5): LPTIM2 timer interrupt
 INTERRUPT 142: LPUART (LPUART1): LPUART global interrupt
 INTERRUPT 144: CRS (CRS): Clock Recovery System global interrupt
+INTERRUPT 145: ECC_DIAG_IT (RAMECC1): ECC diagnostic global interrupt
 INTERRUPT 146: SAI4 (SAI4): SAI4 global interrupt
 INTERRUPT 149: WKUP (DELAY_Block_SDMMC1): WKUP1 to WKUP6 pins
 INTERRUPT 149: WKUP (EXTI): WKUP1 to WKUP6 pins
 INTERRUPT 150: OCTOSPI2 (OCTOSPI2): OCTOSPI2 global interrupt
+INTERRUPT 153: FMAC (FMAC): FMAC interrupt
+INTERRUPT 154: CORDIC_IT (CORDIC): CORDIC interrupt
 INTERRUPT 161: TIM23 (TIM23): TIM23 global interrupt
 INTERRUPT 162: TIM24 (TIM24): TIM24 global interrupt
