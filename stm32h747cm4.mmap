@@ -15959,9 +15959,14 @@
 0x5200205C C   FIELD 00w32 CRC_DATA: CRC result
 0x52002060 B  REGISTER FAR1: FLASH ECC fail address for bank 1
 0x52002060 C   FIELD 00w15 FAIL_ECC_ADDR: Bank 1 ECC error address
+0x52002100 B  REGISTER ACR_: FLASH access control register
+0x52002100 C   FIELD 00w04 LATENCY: Read latency
+0x52002100 C   FIELD 04w02 WRHIGHFREQ: Flash signal delay
 0x52002104 B  CLUSTER BANK2: Cluster BANK2, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
 0x52002104 B  REGISTER KEYR2 (wo): FLASH key register for bank 1
 0x52002104 C   FIELD 00w32 KEYR: Bank access configuration unlock key
+0x52002108 B  REGISTER OPTKEYR_ (wo): FLASH option key register
+0x52002108 C   FIELD 00w32 OPTKEYR: FLASH option bytes control access unlock key
 0x5200210C B  REGISTER CR2: FLASH control register for bank 1
 0x5200210C C   FIELD 00w01 LOCK: Bank 1 configuration lock bit
 0x5200210C C   FIELD 01w01 PG: Bank 1 internal buffer control bit
@@ -16014,6 +16019,50 @@
 0x52002114 C   FIELD 26w01 CLR_DBECCERR: Bank 1 DBECCERR1 flag clear bit
 0x52002114 C   FIELD 27w01 CLR_CRCEND: Bank 1 CRCEND1 flag clear bit
 0x52002114 C   FIELD 28w01 CLR_CRCRDERR: Bank 1 CRCRDERR1 flag clear bit
+0x52002118 B  REGISTER OPTCR_: FLASH option control register
+0x52002118 C   FIELD 00w01 OPTLOCK: FLASH
+0x52002118 C   FIELD 01w01 OPTSTART: Option byte start change option configuration bit
+0x52002118 C   FIELD 04w01 MER: mass erase request
+0x52002118 C   FIELD 30w01 OPTCHANGEERRIE: Option byte change error interrupt enable bit
+0x52002118 C   FIELD 31w01 SWAP_BANK: Bank swapping option configuration bit
+0x5200211C B  REGISTER OPTSR_CUR_: FLASH option status register
+0x5200211C C   FIELD 00w01 OPT_BUSY: Option byte change ongoing flag
+0x5200211C C   FIELD 02w02 BOR_LEV: Brownout level option status bit
+0x5200211C C   FIELD 04w01 IWDG_SW: IWDG control mode option status bit
+0x5200211C C   FIELD 05w01 IWDG2_SW: IWDG2 control mode option status bit
+0x5200211C C   FIELD 06w01 NRST_STOP_D1: D1 domain DStop entry reset option status bit
+0x5200211C C   FIELD 07w01 RST_STDY_D1: D1 domain DStandby entry reset option status bit
+0x5200211C C   FIELD 08w08 RDP: Readout protection level option status byte
+0x5200211C C   FIELD 17w01 IWDG_FZ_STOP: IWDG Stop mode freeze option status bit
+0x5200211C C   FIELD 18w01 IWDG_FZ_SDBY: IWDG Standby mode freeze option status bit
+0x5200211C C   FIELD 19w02 ST_RAM_SIZE: ST RAM size option status
+0x5200211C C   FIELD 21w01 SECURITY: Security enable option status bit
+0x5200211C C   FIELD 22w01 BOOT_CM4: Arm Cortex
+0x5200211C C   FIELD 23w01 BOOT_CM7: Arm Cortex
+0x5200211C C   FIELD 24w01 NRST_STOP_D2: D2 domain DStop entry reset option status bit
+0x5200211C C   FIELD 25w01 NRST_STBY_D2: D2 domain DStandby entry reset option status bit
+0x5200211C C   FIELD 29w01 IO_HSLV: I
+0x5200211C C   FIELD 30w01 OPTCHANGEERR: Option byte change error flag
+0x5200211C C   FIELD 31w01 SWAP_BANK_OPT: Bank swapping option status bit
+0x52002120 B  REGISTER OPTSR_PRG_: FLASH option status register
+0x52002120 C   FIELD 02w02 BOR_LEV: Brownout level option configuration bit
+0x52002120 C   FIELD 04w01 IWDG_SW: IWDG control mode option configuration bit
+0x52002120 C   FIELD 05w01 IWDG2_SW: IWDG2 control mode option configuration bit
+0x52002120 C   FIELD 06w01 NRST_STOP_D1: D1 domain DStop entry reset option configuration bit
+0x52002120 C   FIELD 07w01 NRST_STDY_D1: D1 domain DStandby entry reset option configuration bit
+0x52002120 C   FIELD 08w08 RDP: Readout protection level option configuration bits
+0x52002120 C   FIELD 17w01 IWDG_FZ_STOP: IWDG Stop mode freeze option configuration bit
+0x52002120 C   FIELD 18w01 IWDG_FZ_SDBY: IWDG Standby mode freeze option configuration bit
+0x52002120 C   FIELD 19w02 ST_RAM_SIZE: ST RAM size option configuration bits
+0x52002120 C   FIELD 21w01 SECURITY: Security enable option configuration bit
+0x52002120 C   FIELD 22w01 BOOT_CM4: Arm Cortex
+0x52002120 C   FIELD 23w01 BOOT_CM7: Arm Cortex
+0x52002120 C   FIELD 24w01 NRST_STOP_D2: D2 domain DStop entry reset option configuration bit
+0x52002120 C   FIELD 25w01 NRST_STBY_D2: D2 domain DStandby entry reset option configuration bit
+0x52002120 C   FIELD 29w01 IO_HSLV: I
+0x52002120 C   FIELD 31w01 SWAP_BANK_OPT: Bank swapping option configuration bit
+0x52002124 B  REGISTER OPTCCR_: FLASH option clear control register
+0x52002124 C   FIELD 30w01 CLR_OPTCHANGEERR: OPTCHANGEERR reset bit
 0x52002128 B  REGISTER PRAR_CUR2: FLASH protection address for bank 1
 0x52002128 C   FIELD 00w12 PROT_AREA_START: Bank 1 PCROP area start status bits
 0x52002128 C   FIELD 16w12 PROT_AREA_END: Bank 1 PCROP area end status bits
@@ -16034,6 +16083,18 @@
 0x52002138 C   FIELD 00w08 WRPSn: Bank 1 sector write protection option status byte
 0x5200213C B  REGISTER WPSN_PRGR2: FLASH write sector protection for bank 1
 0x5200213C C   FIELD 00w08 WRPSn: Bank 1 sector write protection option status byte
+0x52002140 B  REGISTER BOOT7_CURR_: FLASH register boot address for Arm Cortex-M7 core
+0x52002140 C   FIELD 00w16 BOOT_CM7_ADD0: Arm Cortex-M7 boot address 0
+0x52002140 C   FIELD 16w16 BOOT_CM7_ADD1: Arm Cortex-M7 boot address 1
+0x52002144 B  REGISTER BOOT7_PRGR_: FLASH register boot address for Arm Cortex-M7 core
+0x52002144 C   FIELD 00w16 BOOT_CM7_ADD0: Arm Cortex-M7 boot address 0 configuration
+0x52002144 C   FIELD 16w16 BOOT_CM7_ADD1: Arm Cortex-M7 boot address 1 configuration
+0x52002148 B  REGISTER BOOT4_CURR_: FLASH register boot address for Arm Cortex-M4 core
+0x52002148 C   FIELD 00w16 BOOT_CM4_ADD0: Arm Cortex-M4 boot address 0
+0x52002148 C   FIELD 16w16 BOOT_CM4_ADD1: Arm Cortex-M4 boot address 1
+0x5200214C B  REGISTER BOOT4_PRGR_: FLASH register boot address for Arm Cortex-M4 core
+0x5200214C C   FIELD 00w16 BOOT_CM4_ADD0: Arm Cortex-M4 boot address 0 configuration
+0x5200214C C   FIELD 16w16 BOOT_CM4_ADD1: Arm Cortex-M4 boot address 1 configuration
 0x52002150 B  REGISTER CRCCR2: FLASH CRC control register for bank 1
 0x52002150 C   FIELD 00w03 CRC_SECT: Bank 1 CRC sector number
 0x52002150 C   FIELD 08w01 CRC_BY_SECT: Bank 1 CRC sector mode select bit
