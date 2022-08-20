@@ -18476,26 +18476,21 @@
 0x58026008 C   FIELD 03w01 JADSTART: ADC group injected conversion start
 0x58026008 C   FIELD 04w01 ADSTP: ADC group regular conversion stop
 0x58026008 C   FIELD 05w01 JADSTP: ADC group injected conversion stop
-0x58026008 C   FIELD 08w02 BOOST: Boost mode control
-0x58026008 C   FIELD 16w01 ADCALLIN: Linearity calibration
-0x58026008 C   FIELD 22w01 LINCALRDYW1: Linearity calibration ready Word 1
-0x58026008 C   FIELD 23w01 LINCALRDYW2: Linearity calibration ready Word 2
-0x58026008 C   FIELD 24w01 LINCALRDYW3: Linearity calibration ready Word 3
-0x58026008 C   FIELD 25w01 LINCALRDYW4: Linearity calibration ready Word 4
-0x58026008 C   FIELD 26w01 LINCALRDYW5: Linearity calibration ready Word 5
-0x58026008 C   FIELD 27w01 LINCALRDYW6: Linearity calibration ready Word 6
 0x58026008 C   FIELD 28w01 ADVREGEN: ADC voltage regulator enable
 0x58026008 C   FIELD 29w01 DEEPPWD: ADC deep power down enable
 0x58026008 C   FIELD 30w01 ADCALDIF: ADC differential mode for calibration
 0x58026008 C   FIELD 31w01 ADCAL: ADC calibration
 0x5802600C B  REGISTER CFGR (rw): ADC configuration register 1
-0x5802600C C   FIELD 00w02 DMNGT: ADC DMA transfer enable
-0x5802600C C   FIELD 02w03 RES: ADC data resolution
+0x5802600C C   FIELD 00w01 DMAEN: Direct memory access enable
+0x5802600C C   FIELD 01w01 DMACFG: Direct memory access configuration
+0x5802600C C   FIELD 02w01 DFSDMCFG: DFSDM mode configuration
+0x5802600C C   FIELD 03w02 RES: ADC data resolution
 0x5802600C C   FIELD 05w05 EXTSEL: ADC group regular external trigger source
 0x5802600C C   FIELD 10w02 EXTEN: ADC group regular external trigger polarity
 0x5802600C C   FIELD 12w01 OVRMOD: ADC group regular overrun configuration
 0x5802600C C   FIELD 13w01 CONT: ADC group regular continuous conversion mode
-0x5802600C C   FIELD 14w01 AUTDLY: ADC low power auto wait
+0x5802600C C   FIELD 14w01 AUTDLY: Delayed conversion mode
+0x5802600C C   FIELD 15w01 ALIGN: Data alignment
 0x5802600C C   FIELD 16w01 DISCEN: ADC group regular sequencer discontinuous mode
 0x5802600C C   FIELD 17w03 DISCNUM: ADC group regular sequencer discontinuous number of ranks
 0x5802600C C   FIELD 20w01 JDISCEN: ADC group injected sequencer discontinuous mode
@@ -18509,15 +18504,14 @@
 0x58026010 B  REGISTER CFGR2 (rw): ADC configuration register 2
 0x58026010 C   FIELD 00w01 ROVSE: ADC oversampler enable on scope ADC group regular
 0x58026010 C   FIELD 01w01 JOVSE: ADC oversampler enable on scope ADC group injected
+0x58026010 C   FIELD 02w03 OVSR: Oversampling ratio
 0x58026010 C   FIELD 05w04 OVSS: ADC oversampling shift
 0x58026010 C   FIELD 09w01 TROVS: ADC oversampling discontinuous mode (triggered mode) for ADC group regular
 0x58026010 C   FIELD 10w01 ROVSM: Regular Oversampling mode
-0x58026010 C   FIELD 11w01 RSHIFT1: Right-shift data after Offset 1 correction
-0x58026010 C   FIELD 12w01 RSHIFT2: Right-shift data after Offset 2 correction
-0x58026010 C   FIELD 13w01 RSHIFT3: Right-shift data after Offset 3 correction
-0x58026010 C   FIELD 14w01 RSHIFT4: Right-shift data after Offset 4 correction
 0x58026010 C   FIELD 16w10 OSVR: Oversampling ratio
-0x58026010 C   FIELD 28w04 LSHIFT: Left shift factor
+0x58026010 C   FIELD 25w01 SWTRIG: Software trigger bit for sampling time control trigger mode
+0x58026010 C   FIELD 26w01 BULB: Bulb sampling mode
+0x58026010 C   FIELD 27w01 SMPTRIG: Sampling time control trigger mode
 0x58026014 B  REGISTER SMPR1 (rw): ADC sampling time register 1
 0x58026014 C   FIELD 00w03 SMP0 (rw): ADC channel 0 sampling time
 0x58026014 C   FIELD 03w03 SMP1: ADC channel 1 sampling time selection
@@ -18529,6 +18523,7 @@
 0x58026014 C   FIELD 21w03 SMP7: ADC channel 7 sampling time selection
 0x58026014 C   FIELD 24w03 SMP8: ADC channel 8 sampling time selection
 0x58026014 C   FIELD 27w03 SMP9: ADC channel 9 sampling time selection
+0x58026014 C   FIELD 31w01 SMPPLUS: Addition of one clock cycle to the sampling time
 0x58026018 B  REGISTER SMPR2 (rw): ADC sampling time register 2
 0x58026018 C   FIELD 00w03 SMP10: ADC channel 10 sampling time selection
 0x58026018 C   FIELD 03w03 SMP11: ADC channel 11 sampling time selection
@@ -18539,13 +18534,16 @@
 0x58026018 C   FIELD 18w03 SMP16: ADC channel 16 sampling time selection
 0x58026018 C   FIELD 21w03 SMP17: ADC channel 17 sampling time selection
 0x58026018 C   FIELD 24w03 SMP18: ADC channel 18 sampling time selection
-0x58026018 C   FIELD 27w03 SMP19: ADC channel 19 sampling time
-0x5802601C B  REGISTER PCSEL (rw): ADC pre channel selection register
-0x5802601C C   FIELD 00w20 PCSEL: Channel x (VINP[i]) pre selection
-0x58026020 B  REGISTER LTR1 (rw): ADC analog watchdog 1 threshold register
-0x58026020 C   FIELD 00w26 LTR1: ADC analog watchdog 1 threshold low
-0x58026024 B  REGISTER HTR1 (rw): ADC analog watchdog 2 threshold register
-0x58026024 C   FIELD 00w26 HTR1: ADC analog watchdog 2 threshold low
+0x58026020 B  REGISTER TR1: ADC watchdog threshold register 1
+0x58026020 C   FIELD 00w12 LT1: Analog watchdog 1 lower threshold
+0x58026020 C   FIELD 12w03 AWDFILT: Analog watchdog filtering parameter
+0x58026020 C   FIELD 16w12 HT1: Analog watchdog 1 higher threshold
+0x58026024 B  REGISTER TR2: ADC watchdog threshold register 2
+0x58026024 C   FIELD 00w08 LT2: Analog watchdog 2 lower threshold
+0x58026024 C   FIELD 16w08 HT2: Analog watchdog 2 higher threshold
+0x58026028 B  REGISTER TR3: ADC watchdog threshold register 3
+0x58026028 C   FIELD 00w08 LT3: Analog watchdog 3 lower threshold
+0x58026028 C   FIELD 16w08 HT3: Analog watchdog 3 higher threshold
 0x58026030 B  REGISTER SQR1 (rw): ADC group regular sequencer ranks register 1
 0x58026030 C   FIELD 00w04 L: L3
 0x58026030 C   FIELD 06w05 SQ1: ADC group regular sequencer rank 1
@@ -18577,22 +18575,30 @@
 0x5802604C C   FIELD 15w05 JSQ2: ADC group injected sequencer rank 2
 0x5802604C C   FIELD 21w05 JSQ3: ADC group injected sequencer rank 3
 0x5802604C C   FIELD 27w05 JSQ4: ADC group injected sequencer rank 4
-0x58026060 B  REGISTER OFR1 (rw): ADC offset number 1 register
-0x58026060 C   FIELD 00w26 OFFSET1: ADC offset number 1 offset level
-0x58026060 C   FIELD 26w05 OFFSET1_CH: ADC offset number 1 channel selection
-0x58026060 C   FIELD 31w01 SSATE: Signed saturation enable
-0x58026064 B  REGISTER OFR2 (rw): ADC offset number 2 register
-0x58026064 C   FIELD 00w26 OFFSET2: ADC offset number 1 offset level
-0x58026064 C   FIELD 26w05 OFFSET2_CH: ADC offset number 1 channel selection
-0x58026064 C   FIELD 31w01 SSATE: Signed saturation enable
-0x58026068 B  REGISTER OFR3 (rw): ADC offset number 3 register
-0x58026068 C   FIELD 00w26 OFFSET3: ADC offset number 1 offset level
-0x58026068 C   FIELD 26w05 OFFSET3_CH: ADC offset number 1 channel selection
-0x58026068 C   FIELD 31w01 SSATE: Signed saturation enable
-0x5802606C B  REGISTER OFR4 (rw): ADC offset number 4 register
-0x5802606C C   FIELD 00w26 OFFSET4: ADC offset number 1 offset level
-0x5802606C C   FIELD 26w05 OFFSET4_CH: ADC offset number 1 channel selection
-0x5802606C C   FIELD 31w01 SSATE: Signed saturation enable
+0x58026060 B  REGISTER OFR1: ADC offset number 1 register
+0x58026060 C   FIELD 00w12 OFFSET1: Data offset 1 for the channel programmed into bits OFFSET1_CH
+0x58026060 C   FIELD 24w01 OFFSETPOS: Positive offset
+0x58026060 C   FIELD 25w01 SATEN: Saturation enable
+0x58026060 C   FIELD 26w05 OFFSET1_CH: Channel selection for the data offset 1
+0x58026060 C   FIELD 31w01 OFFSET1_EN: Offset 1 Enable
+0x58026064 B  REGISTER OFR2: ADC offset number 2 register
+0x58026064 C   FIELD 00w12 OFFSET2: Data offset 2 for the channel programmed into bits OFFSET2_CH
+0x58026064 C   FIELD 24w01 OFFSETPOS: Positive offset
+0x58026064 C   FIELD 25w01 SATEN: Saturation enable
+0x58026064 C   FIELD 26w05 OFFSET2_CH: Channel selection for the data offset 2
+0x58026064 C   FIELD 31w01 OFFSET2_EN: Offset 2 Enable
+0x58026068 B  REGISTER OFR3: ADC offset number 3 register
+0x58026068 C   FIELD 00w12 OFFSET3: Data offset 3 for the channel programmed into bits OFFSET3_CH
+0x58026068 C   FIELD 24w01 OFFSETPOS: Positive offset
+0x58026068 C   FIELD 25w01 SATEN: Saturation enable
+0x58026068 C   FIELD 26w05 OFFSET3_CH: Channel selection for the data offset 3
+0x58026068 C   FIELD 31w01 OFFSET3_EN: Offset 3 Enable
+0x5802606C B  REGISTER OFR4: ADC offset number 4 register
+0x5802606C C   FIELD 00w12 OFFSET4: Data offset 4 for the channel programmed into bits OFFSET4_CH
+0x5802606C C   FIELD 24w01 OFFSETPOS: Positive offset
+0x5802606C C   FIELD 25w01 SATEN: Saturation enable
+0x5802606C C   FIELD 26w05 OFFSET4_CH: Channel selection for the data offset 4
+0x5802606C C   FIELD 31w01 OFFSET4_EN: Offset 4 Enable
 0x58026080 B  REGISTER JDR1 (ro): ADC group injected sequencer rank 1 register
 0x58026080 C   FIELD 00w32 JDATA1: ADC group injected sequencer rank 1 conversion data
 0x58026084 B  REGISTER JDR2 (ro): ADC group injected sequencer rank 2 register
@@ -18620,63 +18626,47 @@
 0x580260A0 C   FIELD 15w01 AWD2CH15: ADC analog watchdog 2 monitored channel selection
 0x580260A0 C   FIELD 16w01 AWD2CH16: ADC analog watchdog 2 monitored channel selection
 0x580260A0 C   FIELD 17w01 AWD2CH17: ADC analog watchdog 2 monitored channel selection
-0x580260A0 C   FIELD 18w01 AWD2CH18: ADC analog watchdog 2 monitored channel selection
-0x580260A0 C   FIELD 19w01 AWD2CH19: ADC analog watchdog 2 monitored channel selection
 0x580260A4 B  REGISTER AWD3CR (rw): ADC analog watchdog 3 configuration register
-0x580260A4 C   FIELD 01w01 AWD3CH0: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 02w01 AWD3CH1: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 03w01 AWD3CH2: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 04w01 AWD3CH3: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 05w01 AWD3CH4: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 06w01 AWD3CH5: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 07w01 AWD3CH6: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 08w01 AWD3CH7: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 09w01 AWD3CH8: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 10w01 AWD3CH9: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 11w01 AWD3CH10: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 12w01 AWD3CH11: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 13w01 AWD3CH12: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 14w01 AWD3CH13: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 15w01 AWD3CH14: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 16w01 AWD3CH15: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 17w01 AWD3CH16: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 18w01 AWD3CH17: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 19w01 AWD3CH18: ADC analog watchdog 3 monitored channel selection
-0x580260A4 C   FIELD 20w01 AWD3CH19: ADC analog watchdog 3 monitored channel selection
-0x580260B0 B  REGISTER LTR2 (rw): ADC watchdog lower threshold register 2
-0x580260B0 C   FIELD 00w26 LTR2: Analog watchdog 2 lower threshold
-0x580260B4 B  REGISTER HTR2 (rw): ADC watchdog higher threshold register 2
-0x580260B4 C   FIELD 00w26 HTR2: Analog watchdog 2 higher threshold
-0x580260B8 B  REGISTER LTR3 (rw): ADC watchdog lower threshold register 3
-0x580260B8 C   FIELD 00w26 LTR3: Analog watchdog 3 lower threshold
-0x580260BC B  REGISTER HTR3 (rw): ADC watchdog higher threshold register 3
-0x580260BC C   FIELD 00w26 HTR3: Analog watchdog 3 higher threshold
-0x580260C0 B  REGISTER DIFSEL (rw): ADC channel differential or single-ended mode selection register
-0x580260C0 C   FIELD 00w01 DIFSEL0: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 01w01 DIFSEL1: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 02w01 DIFSEL2: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 03w01 DIFSEL3: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 04w01 DIFSEL4: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 05w01 DIFSEL5: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 06w01 DIFSEL6: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 07w01 DIFSEL7: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 08w01 DIFSEL8: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 09w01 DIFSEL9: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 10w01 DIFSEL10: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 11w01 DIFSEL11: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 12w01 DIFSEL12: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 13w01 DIFSEL13: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 14w01 DIFSEL14: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 15w01 DIFSEL15: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 16w01 DIFSEL16: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 17w01 DIFSEL17: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 18w01 DIFSEL18: ADC channel differential or single-ended mode for channel
-0x580260C0 C   FIELD 19w01 DIFSEL19: ADC channel differential or single-ended mode for channel
-0x580260C4 B  REGISTER CALFACT (rw): ADC calibration factors register
-0x580260C4 C   FIELD 00w11 CALFACT_S: ADC calibration factor in single-ended mode
-0x580260C4 C   FIELD 16w11 CALFACT_D: ADC calibration factor in differential mode
-0x580260C8 B  REGISTER CALFACT2 (rw): ADC Calibration Factor register 2
-0x580260C8 C   FIELD 00w30 LINCALFACT: Linearity Calibration Factor
+0x580260A4 C   FIELD 00w01 AWD3CH0: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 01w01 AWD3CH1: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 02w01 AWD3CH2: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 03w01 AWD3CH3: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 04w01 AWD3CH4: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 05w01 AWD3CH5: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 06w01 AWD3CH6: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 07w01 AWD3CH7: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 08w01 AWD3CH8: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 09w01 AWD3CH9: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 10w01 AWD3CH10: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 11w01 AWD3CH11: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 12w01 AWD3CH12: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 13w01 AWD3CH13: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 14w01 AWD3CH14: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 15w01 AWD3CH15: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 16w01 AWD3CH16: ADC analog watchdog 3 monitored channel selection
+0x580260A4 C   FIELD 17w01 AWD3CH17: ADC analog watchdog 3 monitored channel selection
+0x580260B0 B  REGISTER DIFSEL: ADC differential mode selection register
+0x580260B0 C   FIELD 00w01 DIFSEL0: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 01w01 DIFSEL1: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 02w01 DIFSEL2: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 03w01 DIFSEL3: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 04w01 DIFSEL4: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 05w01 DIFSEL5: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 06w01 DIFSEL6: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 07w01 DIFSEL7: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 08w01 DIFSEL8: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 09w01 DIFSEL9: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 10w01 DIFSEL10: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 11w01 DIFSEL11: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 12w01 DIFSEL12: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 13w01 DIFSEL13: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 14w01 DIFSEL14: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 15w01 DIFSEL15: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 16w01 DIFSEL16: Differential mode for channels 18 to 0
+0x580260B0 C   FIELD 17w01 DIFSEL17: Differential mode for channels 18 to 0
+0x580260B4 B  REGISTER CALFACT: ADC calibration factors
+0x580260B4 C   FIELD 00w07 CALFACT_S: Calibration Factors In single-ended mode
+0x580260B4 C   FIELD 16w07 CALFACT_D: Calibration Factors in differential mode
 0x58026300 A PERIPHERAL ADC3_Common
 0x58026300 B  REGISTER CSR (ro): ADC Common status register
 0x58026300 C   FIELD 00w01 ADRDY_MST: Master ADC ready
