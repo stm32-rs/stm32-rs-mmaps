@@ -11045,46 +11045,67 @@
 0x40080E00 C   FIELD 01w01 GATEHCLK: Gate HCLK
 0x40080E00 C   FIELD 04w01 PHYSUSP: PHY suspended
 0x48020000 A PERIPHERAL DCMI
+0x48020000 A PERIPHERAL PSSI
+0x48020000 B  REGISTER CR (rw): PSSI control register
 0x48020000 B  REGISTER CR (rw): control register 1
 0x48020000 C   FIELD 00w01 CAPTURE: Capture enable
 0x48020000 C   FIELD 01w01 CM: Capture mode
 0x48020000 C   FIELD 02w01 CROP: Crop feature
 0x48020000 C   FIELD 03w01 JPEG: JPEG format
 0x48020000 C   FIELD 04w01 ESS: Embedded synchronization select
+0x48020000 C   FIELD 05w01 CKPOL: Parallel data clock polarity
 0x48020000 C   FIELD 05w01 PCKPOL: Pixel clock polarity
+0x48020000 C   FIELD 06w01 DEPOL: Data enable (PSSI_DE) polarity
 0x48020000 C   FIELD 06w01 HSPOL: Horizontal synchronization polarity
 0x48020000 C   FIELD 07w01 VSPOL: Vertical synchronization polarity
+0x48020000 C   FIELD 08w01 RDYPOL: Ready (PSSI_RDY) polarity
 0x48020000 C   FIELD 08w02 FCRC: Frame capture rate control
 0x48020000 C   FIELD 10w02 EDM: Extended data mode
+0x48020000 C   FIELD 10w02 EDM: Extended data mode
 0x48020000 C   FIELD 14w01 ENABLE: DCMI enable
+0x48020000 C   FIELD 14w01 ENABLE: PSSI enable
 0x48020000 C   FIELD 16w02 BSM: Byte Select mode
 0x48020000 C   FIELD 18w01 OEBS: Odd/Even Byte Select (Byte Select Start)
+0x48020000 C   FIELD 18w03 DERDYCFG: Data enable and ready configuration
 0x48020000 C   FIELD 19w01 LSM: Line Select mode
 0x48020000 C   FIELD 20w01 OELS: Odd/Even Line Select (Line Select Start)
+0x48020000 C   FIELD 30w01 DMAEN: DMA enable bit
+0x48020000 C   FIELD 31w01 OUTEN: Data direction selection bit
+0x48020004 B  REGISTER SR (ro): PSSI status register
 0x48020004 B  REGISTER SR (ro): status register
 0x48020004 C   FIELD 00w01 HSYNC: HSYNC
 0x48020004 C   FIELD 01w01 VSYNC: VSYNC
 0x48020004 C   FIELD 02w01 FNE: FIFO not empty
+0x48020004 C   FIELD 02w01 RTT4B: FIFO is ready to transfer four bytes
+0x48020004 C   FIELD 03w01 RTT1B: FIFO is ready to transfer one byte
+0x48020008 B  REGISTER RIS (ro): PSSI raw interrupt status register
 0x48020008 B  REGISTER RIS (ro): raw interrupt status register
 0x48020008 C   FIELD 00w01 FRAME_RIS: Capture complete raw interrupt status
+0x48020008 C   FIELD 01w01 OVR_RIS: Data buffer overrun/underrun raw interrupt status
 0x48020008 C   FIELD 01w01 OVR_RIS: Overrun raw interrupt status
 0x48020008 C   FIELD 02w01 ERR_RIS: Synchronization error raw interrupt status
 0x48020008 C   FIELD 03w01 VSYNC_RIS: VSYNC raw interrupt status
 0x48020008 C   FIELD 04w01 LINE_RIS: Line raw interrupt status
+0x4802000C B  REGISTER IER (rw): PSSI interrupt enable register
 0x4802000C B  REGISTER IER (rw): interrupt enable register
 0x4802000C C   FIELD 00w01 FRAME_IE: Capture complete interrupt enable
+0x4802000C C   FIELD 01w01 OVR_IE: Data buffer overrun/underrun interrupt enable
 0x4802000C C   FIELD 01w01 OVR_IE: Overrun interrupt enable
 0x4802000C C   FIELD 02w01 ERR_IE: Synchronization error interrupt enable
 0x4802000C C   FIELD 03w01 VSYNC_IE: VSYNC interrupt enable
 0x4802000C C   FIELD 04w01 LINE_IE: Line interrupt enable
+0x48020010 B  REGISTER MIS (ro): PSSI masked interrupt status register
 0x48020010 B  REGISTER MIS (ro): masked interrupt status register
 0x48020010 C   FIELD 00w01 FRAME_MIS: Capture complete masked interrupt status
+0x48020010 C   FIELD 01w01 OVR_MIS: Data buffer overrun/underrun masked interrupt status
 0x48020010 C   FIELD 01w01 OVR_MIS: Overrun masked interrupt status
 0x48020010 C   FIELD 02w01 ERR_MIS: Synchronization error masked interrupt status
 0x48020010 C   FIELD 03w01 VSYNC_MIS: VSYNC masked interrupt status
 0x48020010 C   FIELD 04w01 LINE_MIS: Line masked interrupt status
+0x48020014 B  REGISTER ICR (wo): PSSI interrupt clear register
 0x48020014 B  REGISTER ICR (wo): interrupt clear register
 0x48020014 C   FIELD 00w01 FRAME_ISC: Capture complete interrupt status clear
+0x48020014 C   FIELD 01w01 OVR_ISC: Data buffer overrun/underrun interrupt status clear
 0x48020014 C   FIELD 01w01 OVR_ISC: Overrun interrupt status clear
 0x48020014 C   FIELD 02w01 ERR_ISC: Synchronization error interrupt status clear
 0x48020014 C   FIELD 03w01 VSYNC_ISC: Vertical synch interrupt status clear
@@ -11106,9 +11127,14 @@
 0x48020024 C   FIELD 00w14 CAPCNT: Capture count
 0x48020024 C   FIELD 16w14 VLINE: Vertical line count
 0x48020028 B  REGISTER DR (ro): data register
+0x48020028 B  REGISTER DR (rw): PSSI data register
+0x48020028 C   FIELD 00w08 Byte0: 
 0x48020028 C   FIELD 00w08 Byte0: Data byte 0
+0x48020028 C   FIELD 08w08 Byte1: 
 0x48020028 C   FIELD 08w08 Byte1: Data byte 1
+0x48020028 C   FIELD 16w08 Byte2: 
 0x48020028 C   FIELD 16w08 Byte2: Data byte 2
+0x48020028 C   FIELD 24w08 Byte3: 
 0x48020028 C   FIELD 24w08 Byte3: Data byte 3
 0x48021000 A PERIPHERAL CRYP
 0x48021000 B  REGISTER CR: control register
