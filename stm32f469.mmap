@@ -2462,7 +2462,6 @@
 0x40007800 C   FIELD 06w01 TC (rw): Transmission complete
 0x40007800 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40007800 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40007800 C   FIELD 09w01 CTS (rw): CTS flag
 0x40007804 B  REGISTER DR (rw): Data register
 0x40007804 C   FIELD 00w09 DR: Data value
 0x40007808 B  REGISTER BRR (rw): Baud rate register
@@ -2488,10 +2487,6 @@
 0x40007810 C   FIELD 00w04 ADD: Address of the USART node
 0x40007810 C   FIELD 05w01 LBDL: lin break detection length
 0x40007810 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40007810 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40007810 C   FIELD 09w01 CPHA: Clock phase
-0x40007810 C   FIELD 10w01 CPOL: Clock polarity
-0x40007810 C   FIELD 11w01 CLKEN: Clock enable
 0x40007810 C   FIELD 12w02 STOP: STOP bits
 0x40007810 C   FIELD 14w01 LINEN: LIN mode enable
 0x40007814 B  REGISTER CR3 (rw): Control register 3
@@ -2499,17 +2494,11 @@
 0x40007814 C   FIELD 01w01 IREN: IrDA mode enable
 0x40007814 C   FIELD 02w01 IRLP: IrDA low-power
 0x40007814 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40007814 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40007814 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40007814 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40007814 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40007814 C   FIELD 08w01 RTSE: RTS enable
-0x40007814 C   FIELD 09w01 CTSE: CTS enable
-0x40007814 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40007814 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40007818 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40007818 C   FIELD 00w08 PSC: Prescaler value
-0x40007818 C   FIELD 08w08 GT: Guard time value
+0x40007818 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40007818 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40007C00 A PERIPHERAL UART8
 0x40007C00 B  REGISTER SR: Status register
 0x40007C00 C   FIELD 00w01 PE (ro): Parity error
@@ -2521,7 +2510,6 @@
 0x40007C00 C   FIELD 06w01 TC (rw): Transmission complete
 0x40007C00 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40007C00 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40007C00 C   FIELD 09w01 CTS (rw): CTS flag
 0x40007C04 B  REGISTER DR (rw): Data register
 0x40007C04 C   FIELD 00w09 DR: Data value
 0x40007C08 B  REGISTER BRR (rw): Baud rate register
@@ -2547,10 +2535,6 @@
 0x40007C10 C   FIELD 00w04 ADD: Address of the USART node
 0x40007C10 C   FIELD 05w01 LBDL: lin break detection length
 0x40007C10 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40007C10 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40007C10 C   FIELD 09w01 CPHA: Clock phase
-0x40007C10 C   FIELD 10w01 CPOL: Clock polarity
-0x40007C10 C   FIELD 11w01 CLKEN: Clock enable
 0x40007C10 C   FIELD 12w02 STOP: STOP bits
 0x40007C10 C   FIELD 14w01 LINEN: LIN mode enable
 0x40007C14 B  REGISTER CR3 (rw): Control register 3
@@ -2558,17 +2542,11 @@
 0x40007C14 C   FIELD 01w01 IREN: IrDA mode enable
 0x40007C14 C   FIELD 02w01 IRLP: IrDA low-power
 0x40007C14 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40007C14 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40007C14 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40007C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40007C14 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40007C14 C   FIELD 08w01 RTSE: RTS enable
-0x40007C14 C   FIELD 09w01 CTSE: CTS enable
-0x40007C14 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40007C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40007C18 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40007C18 C   FIELD 00w08 PSC: Prescaler value
-0x40007C18 C   FIELD 08w08 GT: Guard time value
+0x40007C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40007C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40010000 A PERIPHERAL TIM1
 0x40010000 B  REGISTER CR1 (rw): control register 1
 0x40010000 C   FIELD 00w01 CEN: Counter enable

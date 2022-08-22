@@ -609,11 +609,11 @@
 0x40001C14 B  REGISTER EGR (wo): event generation register
 0x40001C14 C   FIELD 00w01 UG: Update generation
 0x40001C14 C   FIELD 01w01 CC1G: Capture/compare 1 generation
-0x40001C18 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
-0x40001C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
+0x40001C18 B  REGISTER CCMR1_Input (rw): capture/compare mode register (input mode)
+0x40001C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40001C18 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40001C18 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40001C18 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40001C18 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40001C18 C   FIELD 04w03 OC1M: Output Compare 1 mode
@@ -647,11 +647,11 @@
 0x40002014 B  REGISTER EGR (wo): event generation register
 0x40002014 C   FIELD 00w01 UG: Update generation
 0x40002014 C   FIELD 01w01 CC1G: Capture/compare 1 generation
-0x40002018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
-0x40002018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
+0x40002018 B  REGISTER CCMR1_Input (rw): capture/compare mode register (input mode)
+0x40002018 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40002018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40002018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40002018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40002018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
 0x40002018 C   FIELD 04w03 OC1M: Output Compare 1 mode
@@ -1193,7 +1193,6 @@
 0x40005000 C   FIELD 06w01 TC (rw): Transmission complete
 0x40005000 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40005000 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40005000 C   FIELD 09w01 CTS (rw): CTS flag
 0x40005004 B  REGISTER DR (rw): Data register
 0x40005004 C   FIELD 00w09 DR: Data value
 0x40005008 B  REGISTER BRR (rw): Baud rate register
@@ -1219,10 +1218,6 @@
 0x40005010 C   FIELD 00w04 ADD: Address of the USART node
 0x40005010 C   FIELD 05w01 LBDL: lin break detection length
 0x40005010 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40005010 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40005010 C   FIELD 09w01 CPHA: Clock phase
-0x40005010 C   FIELD 10w01 CPOL: Clock polarity
-0x40005010 C   FIELD 11w01 CLKEN: Clock enable
 0x40005010 C   FIELD 12w02 STOP: STOP bits
 0x40005010 C   FIELD 14w01 LINEN: LIN mode enable
 0x40005014 B  REGISTER CR3 (rw): Control register 3
@@ -1230,17 +1225,11 @@
 0x40005014 C   FIELD 01w01 IREN: IrDA mode enable
 0x40005014 C   FIELD 02w01 IRLP: IrDA low-power
 0x40005014 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40005014 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40005014 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40005014 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40005014 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40005014 C   FIELD 08w01 RTSE: RTS enable
-0x40005014 C   FIELD 09w01 CTSE: CTS enable
-0x40005014 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40005014 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40005018 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40005018 C   FIELD 00w08 PSC: Prescaler value
-0x40005018 C   FIELD 08w08 GT: Guard time value
+0x40005018 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40005018 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40005400 A PERIPHERAL I2C1
 0x40005400 B  REGISTER CR1 (rw): Control register 1
 0x40005400 C   FIELD 00w01 PE: Peripheral enable
@@ -2940,7 +2929,6 @@
 0x40007800 C   FIELD 06w01 TC (rw): Transmission complete
 0x40007800 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40007800 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40007800 C   FIELD 09w01 CTS (rw): CTS flag
 0x40007804 B  REGISTER DR (rw): Data register
 0x40007804 C   FIELD 00w09 DR: Data value
 0x40007808 B  REGISTER BRR (rw): Baud rate register
@@ -2966,10 +2954,6 @@
 0x40007810 C   FIELD 00w04 ADD: Address of the USART node
 0x40007810 C   FIELD 05w01 LBDL: lin break detection length
 0x40007810 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40007810 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40007810 C   FIELD 09w01 CPHA: Clock phase
-0x40007810 C   FIELD 10w01 CPOL: Clock polarity
-0x40007810 C   FIELD 11w01 CLKEN: Clock enable
 0x40007810 C   FIELD 12w02 STOP: STOP bits
 0x40007810 C   FIELD 14w01 LINEN: LIN mode enable
 0x40007814 B  REGISTER CR3 (rw): Control register 3
@@ -2977,17 +2961,11 @@
 0x40007814 C   FIELD 01w01 IREN: IrDA mode enable
 0x40007814 C   FIELD 02w01 IRLP: IrDA low-power
 0x40007814 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40007814 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40007814 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40007814 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40007814 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40007814 C   FIELD 08w01 RTSE: RTS enable
-0x40007814 C   FIELD 09w01 CTSE: CTS enable
-0x40007814 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40007814 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40007818 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40007818 C   FIELD 00w08 PSC: Prescaler value
-0x40007818 C   FIELD 08w08 GT: Guard time value
+0x40007818 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40007818 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40007C00 A PERIPHERAL UART8
 0x40007C00 B  REGISTER SR: Status register
 0x40007C00 C   FIELD 00w01 PE (ro): Parity error
@@ -2999,7 +2977,6 @@
 0x40007C00 C   FIELD 06w01 TC (rw): Transmission complete
 0x40007C00 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40007C00 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40007C00 C   FIELD 09w01 CTS (rw): CTS flag
 0x40007C04 B  REGISTER DR (rw): Data register
 0x40007C04 C   FIELD 00w09 DR: Data value
 0x40007C08 B  REGISTER BRR (rw): Baud rate register
@@ -3025,10 +3002,6 @@
 0x40007C10 C   FIELD 00w04 ADD: Address of the USART node
 0x40007C10 C   FIELD 05w01 LBDL: lin break detection length
 0x40007C10 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40007C10 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40007C10 C   FIELD 09w01 CPHA: Clock phase
-0x40007C10 C   FIELD 10w01 CPOL: Clock polarity
-0x40007C10 C   FIELD 11w01 CLKEN: Clock enable
 0x40007C10 C   FIELD 12w02 STOP: STOP bits
 0x40007C10 C   FIELD 14w01 LINEN: LIN mode enable
 0x40007C14 B  REGISTER CR3 (rw): Control register 3
@@ -3036,17 +3009,11 @@
 0x40007C14 C   FIELD 01w01 IREN: IrDA mode enable
 0x40007C14 C   FIELD 02w01 IRLP: IrDA low-power
 0x40007C14 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40007C14 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40007C14 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40007C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40007C14 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40007C14 C   FIELD 08w01 RTSE: RTS enable
-0x40007C14 C   FIELD 09w01 CTSE: CTS enable
-0x40007C14 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40007C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40007C18 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40007C18 C   FIELD 00w08 PSC: Prescaler value
-0x40007C18 C   FIELD 08w08 GT: Guard time value
+0x40007C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40007C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40010000 A PERIPHERAL TIM1
 0x40010000 B  REGISTER CR1 (rw): control register 1
 0x40010000 C   FIELD 00w01 CEN: Counter enable
@@ -3476,7 +3443,6 @@
 0x40011800 C   FIELD 06w01 TC (rw): Transmission complete
 0x40011800 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40011800 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40011800 C   FIELD 09w01 CTS (rw): CTS flag
 0x40011804 B  REGISTER DR (rw): Data register
 0x40011804 C   FIELD 00w09 DR: Data value
 0x40011808 B  REGISTER BRR (rw): Baud rate register
@@ -3502,10 +3468,6 @@
 0x40011810 C   FIELD 00w04 ADD: Address of the USART node
 0x40011810 C   FIELD 05w01 LBDL: lin break detection length
 0x40011810 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40011810 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40011810 C   FIELD 09w01 CPHA: Clock phase
-0x40011810 C   FIELD 10w01 CPOL: Clock polarity
-0x40011810 C   FIELD 11w01 CLKEN: Clock enable
 0x40011810 C   FIELD 12w02 STOP: STOP bits
 0x40011810 C   FIELD 14w01 LINEN: LIN mode enable
 0x40011814 B  REGISTER CR3 (rw): Control register 3
@@ -3513,17 +3475,11 @@
 0x40011814 C   FIELD 01w01 IREN: IrDA mode enable
 0x40011814 C   FIELD 02w01 IRLP: IrDA low-power
 0x40011814 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40011814 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40011814 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40011814 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40011814 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40011814 C   FIELD 08w01 RTSE: RTS enable
-0x40011814 C   FIELD 09w01 CTSE: CTS enable
-0x40011814 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40011814 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40011818 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40011818 C   FIELD 00w08 PSC: Prescaler value
-0x40011818 C   FIELD 08w08 GT: Guard time value
+0x40011818 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40011818 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40011C00 A PERIPHERAL UART10
 0x40011C00 B  REGISTER SR: Status register
 0x40011C00 C   FIELD 00w01 PE (ro): Parity error
@@ -3535,7 +3491,6 @@
 0x40011C00 C   FIELD 06w01 TC (rw): Transmission complete
 0x40011C00 C   FIELD 07w01 TXE (ro): Transmit data register empty
 0x40011C00 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40011C00 C   FIELD 09w01 CTS (rw): CTS flag
 0x40011C04 B  REGISTER DR (rw): Data register
 0x40011C04 C   FIELD 00w09 DR: Data value
 0x40011C08 B  REGISTER BRR (rw): Baud rate register
@@ -3561,10 +3516,6 @@
 0x40011C10 C   FIELD 00w04 ADD: Address of the USART node
 0x40011C10 C   FIELD 05w01 LBDL: lin break detection length
 0x40011C10 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
-0x40011C10 C   FIELD 08w01 LBCL: Last bit clock pulse
-0x40011C10 C   FIELD 09w01 CPHA: Clock phase
-0x40011C10 C   FIELD 10w01 CPOL: Clock polarity
-0x40011C10 C   FIELD 11w01 CLKEN: Clock enable
 0x40011C10 C   FIELD 12w02 STOP: STOP bits
 0x40011C10 C   FIELD 14w01 LINEN: LIN mode enable
 0x40011C14 B  REGISTER CR3 (rw): Control register 3
@@ -3572,17 +3523,11 @@
 0x40011C14 C   FIELD 01w01 IREN: IrDA mode enable
 0x40011C14 C   FIELD 02w01 IRLP: IrDA low-power
 0x40011C14 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40011C14 C   FIELD 04w01 NACK: Smartcard NACK enable
-0x40011C14 C   FIELD 05w01 SCEN: Smartcard mode enable
 0x40011C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40011C14 C   FIELD 07w01 DMAT: DMA enable transmitter
-0x40011C14 C   FIELD 08w01 RTSE: RTS enable
-0x40011C14 C   FIELD 09w01 CTSE: CTS enable
-0x40011C14 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40011C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
-0x40011C18 B  REGISTER GTPR (rw): Guard time and prescaler register
-0x40011C18 C   FIELD 00w08 PSC: Prescaler value
-0x40011C18 C   FIELD 08w08 GT: Guard time value
+0x40011C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40011C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
 0x40012000 A PERIPHERAL ADC1
 0x40012000 B  REGISTER SR (rw): status register
 0x40012000 C   FIELD 00w01 AWD: Analog watchdog flag
@@ -4111,6 +4056,8 @@
 0x40014000 C   FIELD 03w01 OPM: One-pulse mode
 0x40014000 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40014000 C   FIELD 08w02 CKD: Clock division
+0x40014004 B  REGISTER CR2 (rw): control register 2
+0x40014004 C   FIELD 04w03 MMS: Master mode selection
 0x40014008 B  REGISTER SMCR (rw): slave mode control register
 0x40014008 C   FIELD 00w03 SMS: Slave mode selection
 0x40014008 C   FIELD 04w03 TS: Trigger selection
@@ -4133,7 +4080,7 @@
 0x40014014 C   FIELD 02w01 CC2G: Capture/compare 2 generation
 0x40014014 C   FIELD 06w01 TG: Trigger generation
 0x40014018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
-0x40014018 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
+0x40014018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
@@ -4146,8 +4093,8 @@
 0x40014018 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
 0x40014018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
 0x40014018 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
+0x40014018 C   FIELD 12w03 IC2F: Input capture 2 filter
 0x40014018 C   FIELD 12w03 OC2M: Output Compare 2 mode
-0x40014018 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40014020 B  REGISTER CCER (rw): capture/compare enable register
 0x40014020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -9246,8 +9193,9 @@ INTERRUPT 034: I2C2_ERR (I2C1): I2C2 error interrupt
 INTERRUPT 035: SPI1 (SPI3): SPI1 global interrupt
 INTERRUPT 036: SPI2 (SYSCFG): SPI2 global interrupt
 INTERRUPT 037: USART1 (OTG_FS_HOST): USART1 global interrupt
-INTERRUPT 038: USART2 (UART8): USART2 global interrupt
-INTERRUPT 039: USART3 (USART2): USART3 global interrupt
+INTERRUPT 037: USART1 (USART1): USART 1 global interrupt
+INTERRUPT 038: USART2 (USART2): USART 2 global interrupt
+INTERRUPT 039: USART3 (USART3): USART 3 global interrupt
 INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line[15:10] interrupts
 INTERRUPT 041: EXTI17_RTC_Alarm (RCC): RTC Alarms (A and B) through EXTI line interrupt
 INTERRUPT 043: TIM8_BRK_TIM12 (TIM13): Timer 12 global interrupt
@@ -9258,9 +9206,8 @@ INTERRUPT 047: DMA1_Stream7 (DMA1): DMA1 global interrupt Channel 7
 INTERRUPT 048: FSMC (TIM12): FSMC global interrupt
 INTERRUPT 049: SDIO (SAI): SDIO global interrupt
 INTERRUPT 050: TIM5 (IWDG): TIM5 global interrupt
-INTERRUPT 051: SPI3 (UART4): SPI3 global interrupt
-INTERRUPT 052: USART4 (UART5): UART 4 global interrupt
-INTERRUPT 053: UART5 (UART10): UART 5global interrupt
+INTERRUPT 052: UART4 (UART4): UART4 global interrupt
+INTERRUPT 053: UART5 (UART5): UART5 global interrupt
 INTERRUPT 054: TIM6_GLB_IT_DAC1_DAC2 (TIM6): TIM6 global and DAC12 underrun interrupts
 INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 056: DMA2_Stream0 (DMA2): DMA2 Stream0 global interrupt
@@ -9278,7 +9225,7 @@ INTERRUPT 067: OTG_FS (OTG_FS_GLOBAL): USB OTG FS Interrupt
 INTERRUPT 068: DMA2_Stream5 (DMA2): DMA2 Stream5 global interrupt
 INTERRUPT 069: DMA2_Stream6 (DMA2): DMA2 Stream6 global interrupt
 INTERRUPT 070: DMA2_Stream7 (DMA2): DMA2 Stream7 global interrupt
-INTERRUPT 071: USART6 (UART7): USART6 global interrupt
+INTERRUPT 071: USART6 (USART6): USART 6 global interrupt
 INTERRUPT 072: I2C3_EV (LPTIM): I2C3 event interrupt
 INTERRUPT 073: I2C3_ER (LPTIM): I2C3 error interrupt
 INTERRUPT 074: CAN3_TX (CAN3): CAN 3 TX interrupt
@@ -9290,13 +9237,15 @@ INTERRUPT 080: RNG (CAN1): Rng global interrupt
 INTERRUPT 081: FPU (ADC_Common): FPU interrupt
 INTERRUPT 081: FPU (FPU): Floating point unit interrupt
 INTERRUPT 081: FPU (SDIO): FPU global interrupt
-INTERRUPT 082: USART7 (USART1): USART7 global interrupt
-INTERRUPT 083: USART8 (UART9): USART8 global interrupt
+INTERRUPT 082: UART7 (UART7): UART 7 global interrupt
+INTERRUPT 083: UART8 (UART8): UART 8 global interrupt
 INTERRUPT 084: SPI4 (SPI1): SPI4 global interrupt
 INTERRUPT 085: SPI5 (SPI4): SPI5 global interrupt
 INTERRUPT 087: SAI1 (AES): SAI1 global interrupt
 INTERRUPT 088: UART9 (OTG_FS_PWRCLK): UART9 global interrupt
+INTERRUPT 088: UART9 (UART9): UART 9 global interrupt
 INTERRUPT 089: UART10 (OTG_FS_DEVICE): UART10 global interrupt
+INTERRUPT 089: UART10 (UART10): UART 10 global interrupt
 INTERRUPT 092: QuadSPI (NVIC): Quad-SPI global interrupt
 INTERRUPT 095: I2CFMP1event (TIM12): I2CFMP1 event interrupt
 INTERRUPT 096: I2CFMP1error (TIM12): I2CFMP1 error interrupt
