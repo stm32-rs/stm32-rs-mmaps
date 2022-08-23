@@ -4251,7 +4251,8 @@
 0x50000440 C   FIELD 12w01 PPWR (rw): Port power
 0x50000440 C   FIELD 13w04 PTCTL (rw): Port test control
 0x50000440 C   FIELD 17w02 PSPD (ro): Port speed
-0x50000500 B  REGISTER HCCHAR0 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+0x50000500 B  CLUSTER HC0: Host channel
+0x50000500 B  REGISTER CHAR0 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000500 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x50000500 C   FIELD 11w04 EPNUM: Endpoint number
 0x50000500 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4262,7 +4263,7 @@
 0x50000500 C   FIELD 29w01 ODDFRM: Odd frame
 0x50000500 C   FIELD 30w01 CHDIS: Channel disable
 0x50000500 C   FIELD 31w01 CHENA: Channel enable
-0x50000508 B  REGISTER HCINT0 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+0x50000508 B  REGISTER INT0 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x50000508 C   FIELD 00w01 XFRC: Transfer completed
 0x50000508 C   FIELD 01w01 CHH: Channel halted
 0x50000508 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4272,7 +4273,7 @@
 0x50000508 C   FIELD 08w01 BBERR: Babble error
 0x50000508 C   FIELD 09w01 FRMOR: Frame overrun
 0x50000508 C   FIELD 10w01 DTERR: Data toggle error
-0x5000050C B  REGISTER HCINTMSK0 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+0x5000050C B  REGISTER INTMSK0 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x5000050C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x5000050C C   FIELD 01w01 CHHM: Channel halted mask
 0x5000050C C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4283,11 +4284,12 @@
 0x5000050C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000050C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x5000050C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x50000510 B  REGISTER HCTSIZ0 (rw): OTG_FS host channel-0 transfer size register
+0x50000510 B  REGISTER TSIZ0 (rw): OTG_FS host channel-0 transfer size register
 0x50000510 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000510 C   FIELD 19w10 PKTCNT: Packet count
 0x50000510 C   FIELD 29w02 DPID: Data PID
-0x50000520 B  REGISTER HCCHAR1 (rw): OTG_FS host channel-1 characteristics register (OTG_FS_HCCHAR1)
+0x50000520 B  CLUSTER HC1: Host channel
+0x50000520 B  REGISTER CHAR1 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000520 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x50000520 C   FIELD 11w04 EPNUM: Endpoint number
 0x50000520 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4298,7 +4300,7 @@
 0x50000520 C   FIELD 29w01 ODDFRM: Odd frame
 0x50000520 C   FIELD 30w01 CHDIS: Channel disable
 0x50000520 C   FIELD 31w01 CHENA: Channel enable
-0x50000528 B  REGISTER HCINT1 (rw): OTG_FS host channel-1 interrupt register (OTG_FS_HCINT1)
+0x50000528 B  REGISTER INT1 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x50000528 C   FIELD 00w01 XFRC: Transfer completed
 0x50000528 C   FIELD 01w01 CHH: Channel halted
 0x50000528 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4308,7 +4310,7 @@
 0x50000528 C   FIELD 08w01 BBERR: Babble error
 0x50000528 C   FIELD 09w01 FRMOR: Frame overrun
 0x50000528 C   FIELD 10w01 DTERR: Data toggle error
-0x5000052C B  REGISTER HCINTMSK1 (rw): OTG_FS host channel-1 mask register (OTG_FS_HCINTMSK1)
+0x5000052C B  REGISTER INTMSK1 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x5000052C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x5000052C C   FIELD 01w01 CHHM: Channel halted mask
 0x5000052C C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4319,11 +4321,12 @@
 0x5000052C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000052C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x5000052C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x50000530 B  REGISTER HCTSIZ1 (rw): OTG_FS host channel-1 transfer size register
+0x50000530 B  REGISTER TSIZ1 (rw): OTG_FS host channel-0 transfer size register
 0x50000530 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000530 C   FIELD 19w10 PKTCNT: Packet count
 0x50000530 C   FIELD 29w02 DPID: Data PID
-0x50000540 B  REGISTER HCCHAR2 (rw): OTG_FS host channel-2 characteristics register (OTG_FS_HCCHAR2)
+0x50000540 B  CLUSTER HC2: Host channel
+0x50000540 B  REGISTER CHAR2 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000540 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x50000540 C   FIELD 11w04 EPNUM: Endpoint number
 0x50000540 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4334,7 +4337,7 @@
 0x50000540 C   FIELD 29w01 ODDFRM: Odd frame
 0x50000540 C   FIELD 30w01 CHDIS: Channel disable
 0x50000540 C   FIELD 31w01 CHENA: Channel enable
-0x50000548 B  REGISTER HCINT2 (rw): OTG_FS host channel-2 interrupt register (OTG_FS_HCINT2)
+0x50000548 B  REGISTER INT2 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x50000548 C   FIELD 00w01 XFRC: Transfer completed
 0x50000548 C   FIELD 01w01 CHH: Channel halted
 0x50000548 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4344,7 +4347,7 @@
 0x50000548 C   FIELD 08w01 BBERR: Babble error
 0x50000548 C   FIELD 09w01 FRMOR: Frame overrun
 0x50000548 C   FIELD 10w01 DTERR: Data toggle error
-0x5000054C B  REGISTER HCINTMSK2 (rw): OTG_FS host channel-2 mask register (OTG_FS_HCINTMSK2)
+0x5000054C B  REGISTER INTMSK2 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x5000054C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x5000054C C   FIELD 01w01 CHHM: Channel halted mask
 0x5000054C C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4355,11 +4358,12 @@
 0x5000054C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000054C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x5000054C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x50000550 B  REGISTER HCTSIZ2 (rw): OTG_FS host channel-2 transfer size register
+0x50000550 B  REGISTER TSIZ2 (rw): OTG_FS host channel-0 transfer size register
 0x50000550 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000550 C   FIELD 19w10 PKTCNT: Packet count
 0x50000550 C   FIELD 29w02 DPID: Data PID
-0x50000560 B  REGISTER HCCHAR3 (rw): OTG_FS host channel-3 characteristics register (OTG_FS_HCCHAR3)
+0x50000560 B  CLUSTER HC3: Host channel
+0x50000560 B  REGISTER CHAR3 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000560 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x50000560 C   FIELD 11w04 EPNUM: Endpoint number
 0x50000560 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4370,7 +4374,7 @@
 0x50000560 C   FIELD 29w01 ODDFRM: Odd frame
 0x50000560 C   FIELD 30w01 CHDIS: Channel disable
 0x50000560 C   FIELD 31w01 CHENA: Channel enable
-0x50000568 B  REGISTER HCINT3 (rw): OTG_FS host channel-3 interrupt register (OTG_FS_HCINT3)
+0x50000568 B  REGISTER INT3 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x50000568 C   FIELD 00w01 XFRC: Transfer completed
 0x50000568 C   FIELD 01w01 CHH: Channel halted
 0x50000568 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4380,7 +4384,7 @@
 0x50000568 C   FIELD 08w01 BBERR: Babble error
 0x50000568 C   FIELD 09w01 FRMOR: Frame overrun
 0x50000568 C   FIELD 10w01 DTERR: Data toggle error
-0x5000056C B  REGISTER HCINTMSK3 (rw): OTG_FS host channel-3 mask register (OTG_FS_HCINTMSK3)
+0x5000056C B  REGISTER INTMSK3 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x5000056C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x5000056C C   FIELD 01w01 CHHM: Channel halted mask
 0x5000056C C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4391,11 +4395,12 @@
 0x5000056C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000056C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x5000056C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x50000570 B  REGISTER HCTSIZ3 (rw): OTG_FS host channel-3 transfer size register
+0x50000570 B  REGISTER TSIZ3 (rw): OTG_FS host channel-0 transfer size register
 0x50000570 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000570 C   FIELD 19w10 PKTCNT: Packet count
 0x50000570 C   FIELD 29w02 DPID: Data PID
-0x50000580 B  REGISTER HCCHAR4 (rw): OTG_FS host channel-4 characteristics register (OTG_FS_HCCHAR4)
+0x50000580 B  CLUSTER HC4: Host channel
+0x50000580 B  REGISTER CHAR4 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000580 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x50000580 C   FIELD 11w04 EPNUM: Endpoint number
 0x50000580 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4406,7 +4411,7 @@
 0x50000580 C   FIELD 29w01 ODDFRM: Odd frame
 0x50000580 C   FIELD 30w01 CHDIS: Channel disable
 0x50000580 C   FIELD 31w01 CHENA: Channel enable
-0x50000588 B  REGISTER HCINT4 (rw): OTG_FS host channel-4 interrupt register (OTG_FS_HCINT4)
+0x50000588 B  REGISTER INT4 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x50000588 C   FIELD 00w01 XFRC: Transfer completed
 0x50000588 C   FIELD 01w01 CHH: Channel halted
 0x50000588 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4416,7 +4421,7 @@
 0x50000588 C   FIELD 08w01 BBERR: Babble error
 0x50000588 C   FIELD 09w01 FRMOR: Frame overrun
 0x50000588 C   FIELD 10w01 DTERR: Data toggle error
-0x5000058C B  REGISTER HCINTMSK4 (rw): OTG_FS host channel-4 mask register (OTG_FS_HCINTMSK4)
+0x5000058C B  REGISTER INTMSK4 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x5000058C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x5000058C C   FIELD 01w01 CHHM: Channel halted mask
 0x5000058C C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4427,11 +4432,12 @@
 0x5000058C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000058C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x5000058C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x50000590 B  REGISTER HCTSIZ4 (rw): OTG_FS host channel-x transfer size register
+0x50000590 B  REGISTER TSIZ4 (rw): OTG_FS host channel-0 transfer size register
 0x50000590 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000590 C   FIELD 19w10 PKTCNT: Packet count
 0x50000590 C   FIELD 29w02 DPID: Data PID
-0x500005A0 B  REGISTER HCCHAR5 (rw): OTG_FS host channel-5 characteristics register (OTG_FS_HCCHAR5)
+0x500005A0 B  CLUSTER HC5: Host channel
+0x500005A0 B  REGISTER CHAR5 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x500005A0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x500005A0 C   FIELD 11w04 EPNUM: Endpoint number
 0x500005A0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4442,7 +4448,7 @@
 0x500005A0 C   FIELD 29w01 ODDFRM: Odd frame
 0x500005A0 C   FIELD 30w01 CHDIS: Channel disable
 0x500005A0 C   FIELD 31w01 CHENA: Channel enable
-0x500005A8 B  REGISTER HCINT5 (rw): OTG_FS host channel-5 interrupt register (OTG_FS_HCINT5)
+0x500005A8 B  REGISTER INT5 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x500005A8 C   FIELD 00w01 XFRC: Transfer completed
 0x500005A8 C   FIELD 01w01 CHH: Channel halted
 0x500005A8 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4452,7 +4458,7 @@
 0x500005A8 C   FIELD 08w01 BBERR: Babble error
 0x500005A8 C   FIELD 09w01 FRMOR: Frame overrun
 0x500005A8 C   FIELD 10w01 DTERR: Data toggle error
-0x500005AC B  REGISTER HCINTMSK5 (rw): OTG_FS host channel-5 mask register (OTG_FS_HCINTMSK5)
+0x500005AC B  REGISTER INTMSK5 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x500005AC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x500005AC C   FIELD 01w01 CHHM: Channel halted mask
 0x500005AC C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4463,11 +4469,12 @@
 0x500005AC C   FIELD 08w01 BBERRM: Babble error mask
 0x500005AC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x500005AC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x500005B0 B  REGISTER HCTSIZ5 (rw): OTG_FS host channel-5 transfer size register
+0x500005B0 B  REGISTER TSIZ5 (rw): OTG_FS host channel-0 transfer size register
 0x500005B0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x500005B0 C   FIELD 19w10 PKTCNT: Packet count
 0x500005B0 C   FIELD 29w02 DPID: Data PID
-0x500005C0 B  REGISTER HCCHAR6 (rw): OTG_FS host channel-6 characteristics register (OTG_FS_HCCHAR6)
+0x500005C0 B  CLUSTER HC6: Host channel
+0x500005C0 B  REGISTER CHAR6 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x500005C0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x500005C0 C   FIELD 11w04 EPNUM: Endpoint number
 0x500005C0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4478,7 +4485,7 @@
 0x500005C0 C   FIELD 29w01 ODDFRM: Odd frame
 0x500005C0 C   FIELD 30w01 CHDIS: Channel disable
 0x500005C0 C   FIELD 31w01 CHENA: Channel enable
-0x500005C8 B  REGISTER HCINT6 (rw): OTG_FS host channel-6 interrupt register (OTG_FS_HCINT6)
+0x500005C8 B  REGISTER INT6 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x500005C8 C   FIELD 00w01 XFRC: Transfer completed
 0x500005C8 C   FIELD 01w01 CHH: Channel halted
 0x500005C8 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4488,7 +4495,7 @@
 0x500005C8 C   FIELD 08w01 BBERR: Babble error
 0x500005C8 C   FIELD 09w01 FRMOR: Frame overrun
 0x500005C8 C   FIELD 10w01 DTERR: Data toggle error
-0x500005CC B  REGISTER HCINTMSK6 (rw): OTG_FS host channel-6 mask register (OTG_FS_HCINTMSK6)
+0x500005CC B  REGISTER INTMSK6 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x500005CC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x500005CC C   FIELD 01w01 CHHM: Channel halted mask
 0x500005CC C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4499,11 +4506,12 @@
 0x500005CC C   FIELD 08w01 BBERRM: Babble error mask
 0x500005CC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x500005CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x500005D0 B  REGISTER HCTSIZ6 (rw): OTG_FS host channel-6 transfer size register
+0x500005D0 B  REGISTER TSIZ6 (rw): OTG_FS host channel-0 transfer size register
 0x500005D0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x500005D0 C   FIELD 19w10 PKTCNT: Packet count
 0x500005D0 C   FIELD 29w02 DPID: Data PID
-0x500005E0 B  REGISTER HCCHAR7 (rw): OTG_FS host channel-7 characteristics register (OTG_FS_HCCHAR7)
+0x500005E0 B  CLUSTER HC7: Host channel
+0x500005E0 B  REGISTER CHAR7 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x500005E0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x500005E0 C   FIELD 11w04 EPNUM: Endpoint number
 0x500005E0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -4514,7 +4522,7 @@
 0x500005E0 C   FIELD 29w01 ODDFRM: Odd frame
 0x500005E0 C   FIELD 30w01 CHDIS: Channel disable
 0x500005E0 C   FIELD 31w01 CHENA: Channel enable
-0x500005E8 B  REGISTER HCINT7 (rw): OTG_FS host channel-7 interrupt register (OTG_FS_HCINT7)
+0x500005E8 B  REGISTER INT7 (rw): OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
 0x500005E8 C   FIELD 00w01 XFRC: Transfer completed
 0x500005E8 C   FIELD 01w01 CHH: Channel halted
 0x500005E8 C   FIELD 03w01 STALL: STALL response received interrupt
@@ -4524,7 +4532,7 @@
 0x500005E8 C   FIELD 08w01 BBERR: Babble error
 0x500005E8 C   FIELD 09w01 FRMOR: Frame overrun
 0x500005E8 C   FIELD 10w01 DTERR: Data toggle error
-0x500005EC B  REGISTER HCINTMSK7 (rw): OTG_FS host channel-7 mask register (OTG_FS_HCINTMSK7)
+0x500005EC B  REGISTER INTMSK7 (rw): OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
 0x500005EC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x500005EC C   FIELD 01w01 CHHM: Channel halted mask
 0x500005EC C   FIELD 03w01 STALLM: STALL response received interrupt mask
@@ -4535,7 +4543,7 @@
 0x500005EC C   FIELD 08w01 BBERRM: Babble error mask
 0x500005EC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x500005EC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x500005F0 B  REGISTER HCTSIZ7 (rw): OTG_FS host channel-7 transfer size register
+0x500005F0 B  REGISTER TSIZ7 (rw): OTG_FS host channel-0 transfer size register
 0x500005F0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x500005F0 C   FIELD 19w10 PKTCNT: Packet count
 0x500005F0 C   FIELD 29w02 DPID: Data PID
@@ -4595,7 +4603,7 @@
 0x50000900 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x50000900 C   FIELD 27w01 SNAK (wo): Set NAK
 0x50000900 C   FIELD 30w01 EPDIS (ro): Endpoint disable
-0x50000900 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x50000900 C   FIELD 31w01 EPENA (ro): Endpoint enable
 0x50000908 B  REGISTER DIEPINT0: device endpoint-x interrupt register
 0x50000908 C   FIELD 00w01 XFRC (rw): XFRC
 0x50000908 C   FIELD 01w01 EPDISD (rw): EPDISD
@@ -4614,7 +4622,7 @@
 0x50000920 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
 0x50000920 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000920 C   FIELD 18w02 EPTYP (rw): EPTYP
-0x50000920 C   FIELD 21w01 STALL (rw): STALL
+0x50000920 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000920 C   FIELD 22w04 TXFNUM (rw): TXFNUM
 0x50000920 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000920 C   FIELD 27w01 SNAK (wo): SNAK
@@ -4641,7 +4649,7 @@
 0x50000940 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
 0x50000940 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000940 C   FIELD 18w02 EPTYP (rw): EPTYP
-0x50000940 C   FIELD 21w01 STALL (rw): STALL
+0x50000940 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000940 C   FIELD 22w04 TXFNUM (rw): TXFNUM
 0x50000940 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000940 C   FIELD 27w01 SNAK (wo): SNAK
@@ -4668,7 +4676,7 @@
 0x50000960 C   FIELD 16w01 EONUM_DPID (ro): EONUM/DPID
 0x50000960 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000960 C   FIELD 18w02 EPTYP (rw): EPTYP
-0x50000960 C   FIELD 21w01 STALL (rw): STALL
+0x50000960 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000960 C   FIELD 22w04 TXFNUM (rw): TXFNUM
 0x50000960 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000960 C   FIELD 27w01 SNAK (wo): SNAK
@@ -4695,7 +4703,7 @@
 0x50000B00 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000B00 C   FIELD 18w02 EPTYP (ro): EPTYP
 0x50000B00 C   FIELD 20w01 SNPM (rw): SNPM
-0x50000B00 C   FIELD 21w01 STALL (rw): STALL
+0x50000B00 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000B00 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000B00 C   FIELD 27w01 SNAK (wo): SNAK
 0x50000B00 C   FIELD 30w01 EPDIS (ro): EPDIS
@@ -4717,7 +4725,7 @@
 0x50000B20 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000B20 C   FIELD 18w02 EPTYP (rw): EPTYP
 0x50000B20 C   FIELD 20w01 SNPM (rw): SNPM
-0x50000B20 C   FIELD 21w01 STALL (rw): STALL
+0x50000B20 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000B20 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000B20 C   FIELD 27w01 SNAK (wo): SNAK
 0x50000B20 C   FIELD 28w01 SD0PID_SEVNFRM (wo): SD0PID/SEVNFRM
@@ -4741,7 +4749,7 @@
 0x50000B40 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000B40 C   FIELD 18w02 EPTYP (rw): EPTYP
 0x50000B40 C   FIELD 20w01 SNPM (rw): SNPM
-0x50000B40 C   FIELD 21w01 STALL (rw): STALL
+0x50000B40 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000B40 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000B40 C   FIELD 27w01 SNAK (wo): SNAK
 0x50000B40 C   FIELD 28w01 SD0PID_SEVNFRM (wo): SD0PID/SEVNFRM
@@ -4765,7 +4773,7 @@
 0x50000B60 C   FIELD 17w01 NAKSTS (ro): NAKSTS
 0x50000B60 C   FIELD 18w02 EPTYP (rw): EPTYP
 0x50000B60 C   FIELD 20w01 SNPM (rw): SNPM
-0x50000B60 C   FIELD 21w01 STALL (rw): STALL
+0x50000B60 C   FIELD 21w01 STALL (rw): STALL handshake
 0x50000B60 C   FIELD 26w01 CNAK (wo): CNAK
 0x50000B60 C   FIELD 27w01 SNAK (wo): SNAK
 0x50000B60 C   FIELD 28w01 SD0PID_SEVNFRM (wo): SD0PID/SEVNFRM
