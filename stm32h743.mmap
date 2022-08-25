@@ -10351,6 +10351,12 @@
 0x40040000 B  REGISTER GOTGCTL: OTG_HS control and status register
 0x40040000 C   FIELD 00w01 SRQSCS (ro): Session request success
 0x40040000 C   FIELD 01w01 SRQ (rw): Session request
+0x40040000 C   FIELD 02w01 VBVALOEN (rw): V_BUS valid override enable
+0x40040000 C   FIELD 03w01 VBVALOVAL (rw): V_BUS valid override value
+0x40040000 C   FIELD 04w01 AVALOEN (rw): A-peripheral session valid override enable
+0x40040000 C   FIELD 05w01 AVALOVAL (rw): A-peripheral session valid override value
+0x40040000 C   FIELD 06w01 BVALOEN (rw): B-peripheral session valid override enable
+0x40040000 C   FIELD 07w01 BVALOVAL (rw): B-peripheral session valid override value
 0x40040000 C   FIELD 08w01 HNGSCS (ro): Host negotiation success
 0x40040000 C   FIELD 09w01 HNPRQ (rw): HNP request
 0x40040000 C   FIELD 10w01 HSHNPEN (rw): Host set HNP enable
@@ -10360,6 +10366,8 @@
 0x40040000 C   FIELD 17w01 DBCT (ro): Long/short debounce time
 0x40040000 C   FIELD 18w01 ASVLD (ro): A-session valid
 0x40040000 C   FIELD 19w01 BSVLD (ro): B-session valid
+0x40040000 C   FIELD 20w01 OTGVER (rw): OTG version
+0x40040000 C   FIELD 21w01 CURMOD (ro): Current mode of operation
 0x40040004 B  REGISTER GOTGINT (rw): OTG_HS interrupt register
 0x40040004 C   FIELD 02w01 SEDET: Session end detected
 0x40040004 C   FIELD 08w01 SRSSCHG: Session request success status change
@@ -10480,13 +10488,13 @@
 0x40040020 C   FIELD 21w04 FRMNUM: Frame number
 0x40040024 B  REGISTER GRXFSIZ (rw): OTG_HS Receive FIFO size register
 0x40040024 C   FIELD 00w16 RXFD: RxFIFO depth
-0x40040028 B  REGISTER DIEPTXF0_Device (rw): Endpoint 0 transmit FIFO size (peripheral mode)
-0x40040028 B  REGISTER HNPTXFSIZ_Host (rw): OTG_HS nonperiodic transmit FIFO size register (host mode)
+0x40040028 B  REGISTER DIEPTXF0 (rw): Endpoint 0 transmit FIFO size (peripheral mode)
+0x40040028 B  REGISTER HNPTXFSIZ (rw): OTG_HS nonperiodic transmit FIFO size register (host mode)
 0x40040028 C   FIELD 00w16 NPTXFSA: Nonperiodic transmit RAM start address
 0x40040028 C   FIELD 00w16 TX0FSA: Endpoint 0 transmit RAM start address
 0x40040028 C   FIELD 16w16 NPTXFD: Nonperiodic TxFIFO depth
 0x40040028 C   FIELD 16w16 TX0FD: Endpoint 0 TxFIFO depth
-0x4004002C B  REGISTER GNPTXSTS (ro): OTG_HS nonperiodic transmit FIFO/queue status register
+0x4004002C B  REGISTER HNPTXSTS (ro): OTG_HS nonperiodic transmit FIFO/queue status register
 0x4004002C C   FIELD 00w16 NPTXFSAV: Nonperiodic TxFIFO space available
 0x4004002C C   FIELD 16w08 NPTQXSAV: Nonperiodic transmit request queue space available
 0x4004002C C   FIELD 24w07 NPTXQTOP: Top of the nonperiodic transmit request queue
@@ -10528,21 +10536,24 @@
 0x40040108 B  REGISTER DIEPTXF2 (rw): OTG_HS device IN endpoint transmit FIFO size register
 0x40040108 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x40040108 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x4004011C B  REGISTER DIEPTXF3 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x4004010C B  REGISTER DIEPTXF3 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x4004010C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x4004010C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x40040110 B  REGISTER DIEPTXF4 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40040110 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40040110 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x40040114 B  REGISTER DIEPTXF5 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40040114 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40040114 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x40040118 B  REGISTER DIEPTXF6 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40040118 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40040118 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x4004011C B  REGISTER DIEPTXF7 (rw): OTG_HS device IN endpoint transmit FIFO size register
 0x4004011C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x4004011C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x40040120 B  REGISTER DIEPTXF4 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40040120 B  REGISTER DIEPTXF8 (rw): OTG_HS device IN endpoint transmit FIFO size register
 0x40040120 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x40040120 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x40040124 B  REGISTER DIEPTXF5 (rw): OTG_HS device IN endpoint transmit FIFO size register
-0x40040124 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
-0x40040124 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x40040128 B  REGISTER DIEPTXF6 (rw): OTG_HS device IN endpoint transmit FIFO size register
-0x40040128 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
-0x40040128 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x4004012C B  REGISTER DIEPTXF7 (rw): OTG_HS device IN endpoint transmit FIFO size register
-0x4004012C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
-0x4004012C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x40040400 A PERIPHERAL OTG1_HS_HOST
 0x40040400 B  REGISTER HCFG: OTG_HS host configuration register
 0x40040400 C   FIELD 00w02 FSLSPCS (rw): FS/LS PHY clock select
@@ -10574,7 +10585,8 @@
 0x40040440 C   FIELD 12w01 PPWR (rw): Port power
 0x40040440 C   FIELD 13w04 PTCTL (rw): Port test control
 0x40040440 C   FIELD 17w02 PSPD (ro): Port speed
-0x40040500 B  REGISTER HCCHAR0 (rw): OTG_HS host channel-0 characteristics register
+0x40040500 B  CLUSTER HC0: Host channel
+0x40040500 B  REGISTER CHAR0 (rw): OTG_HS host channel-0 characteristics register
 0x40040500 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040500 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040500 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10585,13 +10597,13 @@
 0x40040500 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040500 C   FIELD 30w01 CHDIS: Channel disable
 0x40040500 C   FIELD 31w01 CHENA: Channel enable
-0x40040504 B  REGISTER HCSPLT0 (rw): OTG_HS host channel-0 split control register
+0x40040504 B  REGISTER SPLT0 (rw): OTG_HS host channel-0 split control register
 0x40040504 C   FIELD 00w07 PRTADDR: Port address
 0x40040504 C   FIELD 07w07 HUBADDR: Hub address
 0x40040504 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040504 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040504 C   FIELD 31w01 SPLITEN: Split enable
-0x40040508 B  REGISTER HCINT0 (rw): OTG_HS host channel-11 interrupt register
+0x40040508 B  REGISTER INT0 (rw): OTG_HS host channel-11 interrupt register
 0x40040508 C   FIELD 00w01 XFRC: Transfer completed
 0x40040508 C   FIELD 01w01 CHH: Channel halted
 0x40040508 C   FIELD 02w01 AHBERR: AHB error
@@ -10603,7 +10615,7 @@
 0x40040508 C   FIELD 08w01 BBERR: Babble error
 0x40040508 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040508 C   FIELD 10w01 DTERR: Data toggle error
-0x4004050C B  REGISTER HCINTMSK0 (rw): OTG_HS host channel-11 interrupt mask register
+0x4004050C B  REGISTER INTMSK0 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004050C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004050C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004050C C   FIELD 02w01 AHBERR: AHB error
@@ -10615,13 +10627,14 @@
 0x4004050C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004050C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004050C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040510 B  REGISTER HCTSIZ0 (rw): OTG_HS host channel-11 transfer size register
+0x40040510 B  REGISTER TSIZ0 (rw): OTG_HS host channel-11 transfer size register
 0x40040510 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040510 C   FIELD 19w10 PKTCNT: Packet count
 0x40040510 C   FIELD 29w02 DPID: Data PID
-0x40040514 B  REGISTER HCDMA0 (rw): OTG_HS host channel-0 DMA address register
+0x40040514 B  REGISTER DMA0 (rw): OTG_HS host channel-0 DMA address register
 0x40040514 C   FIELD 00w32 DMAADDR: DMA address
-0x40040520 B  REGISTER HCCHAR1 (rw): OTG_HS host channel-1 characteristics register
+0x40040520 B  CLUSTER HC1: Host channel
+0x40040520 B  REGISTER CHAR1 (rw): OTG_HS host channel-0 characteristics register
 0x40040520 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040520 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040520 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10632,13 +10645,13 @@
 0x40040520 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040520 C   FIELD 30w01 CHDIS: Channel disable
 0x40040520 C   FIELD 31w01 CHENA: Channel enable
-0x40040524 B  REGISTER HCSPLT1 (rw): OTG_HS host channel-1 split control register
+0x40040524 B  REGISTER SPLT1 (rw): OTG_HS host channel-0 split control register
 0x40040524 C   FIELD 00w07 PRTADDR: Port address
 0x40040524 C   FIELD 07w07 HUBADDR: Hub address
 0x40040524 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040524 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040524 C   FIELD 31w01 SPLITEN: Split enable
-0x40040528 B  REGISTER HCINT1 (rw): OTG_HS host channel-1 interrupt register
+0x40040528 B  REGISTER INT1 (rw): OTG_HS host channel-11 interrupt register
 0x40040528 C   FIELD 00w01 XFRC: Transfer completed
 0x40040528 C   FIELD 01w01 CHH: Channel halted
 0x40040528 C   FIELD 02w01 AHBERR: AHB error
@@ -10650,7 +10663,7 @@
 0x40040528 C   FIELD 08w01 BBERR: Babble error
 0x40040528 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040528 C   FIELD 10w01 DTERR: Data toggle error
-0x4004052C B  REGISTER HCINTMSK1 (rw): OTG_HS host channel-1 interrupt mask register
+0x4004052C B  REGISTER INTMSK1 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004052C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004052C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004052C C   FIELD 02w01 AHBERR: AHB error
@@ -10662,13 +10675,14 @@
 0x4004052C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004052C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004052C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040530 B  REGISTER HCTSIZ1 (rw): OTG_HS host channel-1 transfer size register
+0x40040530 B  REGISTER TSIZ1 (rw): OTG_HS host channel-11 transfer size register
 0x40040530 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040530 C   FIELD 19w10 PKTCNT: Packet count
 0x40040530 C   FIELD 29w02 DPID: Data PID
-0x40040534 B  REGISTER HCDMA1 (rw): OTG_HS host channel-1 DMA address register
+0x40040534 B  REGISTER DMA1 (rw): OTG_HS host channel-0 DMA address register
 0x40040534 C   FIELD 00w32 DMAADDR: DMA address
-0x40040540 B  REGISTER HCCHAR2 (rw): OTG_HS host channel-2 characteristics register
+0x40040540 B  CLUSTER HC2: Host channel
+0x40040540 B  REGISTER CHAR2 (rw): OTG_HS host channel-0 characteristics register
 0x40040540 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040540 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040540 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10679,13 +10693,13 @@
 0x40040540 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040540 C   FIELD 30w01 CHDIS: Channel disable
 0x40040540 C   FIELD 31w01 CHENA: Channel enable
-0x40040544 B  REGISTER HCSPLT2 (rw): OTG_HS host channel-2 split control register
+0x40040544 B  REGISTER SPLT2 (rw): OTG_HS host channel-0 split control register
 0x40040544 C   FIELD 00w07 PRTADDR: Port address
 0x40040544 C   FIELD 07w07 HUBADDR: Hub address
 0x40040544 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040544 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040544 C   FIELD 31w01 SPLITEN: Split enable
-0x40040548 B  REGISTER HCINT2 (rw): OTG_HS host channel-2 interrupt register
+0x40040548 B  REGISTER INT2 (rw): OTG_HS host channel-11 interrupt register
 0x40040548 C   FIELD 00w01 XFRC: Transfer completed
 0x40040548 C   FIELD 01w01 CHH: Channel halted
 0x40040548 C   FIELD 02w01 AHBERR: AHB error
@@ -10697,7 +10711,7 @@
 0x40040548 C   FIELD 08w01 BBERR: Babble error
 0x40040548 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040548 C   FIELD 10w01 DTERR: Data toggle error
-0x4004054C B  REGISTER HCINTMSK2 (rw): OTG_HS host channel-2 interrupt mask register
+0x4004054C B  REGISTER INTMSK2 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004054C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004054C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004054C C   FIELD 02w01 AHBERR: AHB error
@@ -10709,13 +10723,14 @@
 0x4004054C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004054C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004054C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040550 B  REGISTER HCTSIZ2 (rw): OTG_HS host channel-2 transfer size register
+0x40040550 B  REGISTER TSIZ2 (rw): OTG_HS host channel-11 transfer size register
 0x40040550 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040550 C   FIELD 19w10 PKTCNT: Packet count
 0x40040550 C   FIELD 29w02 DPID: Data PID
-0x40040554 B  REGISTER HCDMA2 (rw): OTG_HS host channel-2 DMA address register
+0x40040554 B  REGISTER DMA2 (rw): OTG_HS host channel-0 DMA address register
 0x40040554 C   FIELD 00w32 DMAADDR: DMA address
-0x40040560 B  REGISTER HCCHAR3 (rw): OTG_HS host channel-3 characteristics register
+0x40040560 B  CLUSTER HC3: Host channel
+0x40040560 B  REGISTER CHAR3 (rw): OTG_HS host channel-0 characteristics register
 0x40040560 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040560 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040560 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10726,13 +10741,13 @@
 0x40040560 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040560 C   FIELD 30w01 CHDIS: Channel disable
 0x40040560 C   FIELD 31w01 CHENA: Channel enable
-0x40040564 B  REGISTER HCSPLT3 (rw): OTG_HS host channel-3 split control register
+0x40040564 B  REGISTER SPLT3 (rw): OTG_HS host channel-0 split control register
 0x40040564 C   FIELD 00w07 PRTADDR: Port address
 0x40040564 C   FIELD 07w07 HUBADDR: Hub address
 0x40040564 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040564 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040564 C   FIELD 31w01 SPLITEN: Split enable
-0x40040568 B  REGISTER HCINT3 (rw): OTG_HS host channel-3 interrupt register
+0x40040568 B  REGISTER INT3 (rw): OTG_HS host channel-11 interrupt register
 0x40040568 C   FIELD 00w01 XFRC: Transfer completed
 0x40040568 C   FIELD 01w01 CHH: Channel halted
 0x40040568 C   FIELD 02w01 AHBERR: AHB error
@@ -10744,7 +10759,7 @@
 0x40040568 C   FIELD 08w01 BBERR: Babble error
 0x40040568 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040568 C   FIELD 10w01 DTERR: Data toggle error
-0x4004056C B  REGISTER HCINTMSK3 (rw): OTG_HS host channel-3 interrupt mask register
+0x4004056C B  REGISTER INTMSK3 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004056C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004056C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004056C C   FIELD 02w01 AHBERR: AHB error
@@ -10756,13 +10771,14 @@
 0x4004056C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004056C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004056C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040570 B  REGISTER HCTSIZ3 (rw): OTG_HS host channel-3 transfer size register
+0x40040570 B  REGISTER TSIZ3 (rw): OTG_HS host channel-11 transfer size register
 0x40040570 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040570 C   FIELD 19w10 PKTCNT: Packet count
 0x40040570 C   FIELD 29w02 DPID: Data PID
-0x40040574 B  REGISTER HCDMA3 (rw): OTG_HS host channel-3 DMA address register
+0x40040574 B  REGISTER DMA3 (rw): OTG_HS host channel-0 DMA address register
 0x40040574 C   FIELD 00w32 DMAADDR: DMA address
-0x40040580 B  REGISTER HCCHAR4 (rw): OTG_HS host channel-4 characteristics register
+0x40040580 B  CLUSTER HC4: Host channel
+0x40040580 B  REGISTER CHAR4 (rw): OTG_HS host channel-0 characteristics register
 0x40040580 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040580 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040580 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10773,13 +10789,13 @@
 0x40040580 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040580 C   FIELD 30w01 CHDIS: Channel disable
 0x40040580 C   FIELD 31w01 CHENA: Channel enable
-0x40040584 B  REGISTER HCSPLT4 (rw): OTG_HS host channel-4 split control register
+0x40040584 B  REGISTER SPLT4 (rw): OTG_HS host channel-0 split control register
 0x40040584 C   FIELD 00w07 PRTADDR: Port address
 0x40040584 C   FIELD 07w07 HUBADDR: Hub address
 0x40040584 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040584 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040584 C   FIELD 31w01 SPLITEN: Split enable
-0x40040588 B  REGISTER HCINT4 (rw): OTG_HS host channel-4 interrupt register
+0x40040588 B  REGISTER INT4 (rw): OTG_HS host channel-11 interrupt register
 0x40040588 C   FIELD 00w01 XFRC: Transfer completed
 0x40040588 C   FIELD 01w01 CHH: Channel halted
 0x40040588 C   FIELD 02w01 AHBERR: AHB error
@@ -10791,7 +10807,7 @@
 0x40040588 C   FIELD 08w01 BBERR: Babble error
 0x40040588 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040588 C   FIELD 10w01 DTERR: Data toggle error
-0x4004058C B  REGISTER HCINTMSK4 (rw): OTG_HS host channel-4 interrupt mask register
+0x4004058C B  REGISTER INTMSK4 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004058C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004058C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004058C C   FIELD 02w01 AHBERR: AHB error
@@ -10803,13 +10819,14 @@
 0x4004058C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004058C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004058C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040590 B  REGISTER HCTSIZ4 (rw): OTG_HS host channel-4 transfer size register
+0x40040590 B  REGISTER TSIZ4 (rw): OTG_HS host channel-11 transfer size register
 0x40040590 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040590 C   FIELD 19w10 PKTCNT: Packet count
 0x40040590 C   FIELD 29w02 DPID: Data PID
-0x40040594 B  REGISTER HCDMA4 (rw): OTG_HS host channel-4 DMA address register
+0x40040594 B  REGISTER DMA4 (rw): OTG_HS host channel-0 DMA address register
 0x40040594 C   FIELD 00w32 DMAADDR: DMA address
-0x400405A0 B  REGISTER HCCHAR5 (rw): OTG_HS host channel-5 characteristics register
+0x400405A0 B  CLUSTER HC5: Host channel
+0x400405A0 B  REGISTER CHAR5 (rw): OTG_HS host channel-0 characteristics register
 0x400405A0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400405A0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400405A0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10820,13 +10837,13 @@
 0x400405A0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400405A0 C   FIELD 30w01 CHDIS: Channel disable
 0x400405A0 C   FIELD 31w01 CHENA: Channel enable
-0x400405A4 B  REGISTER HCSPLT5 (rw): OTG_HS host channel-5 split control register
+0x400405A4 B  REGISTER SPLT5 (rw): OTG_HS host channel-0 split control register
 0x400405A4 C   FIELD 00w07 PRTADDR: Port address
 0x400405A4 C   FIELD 07w07 HUBADDR: Hub address
 0x400405A4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400405A4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400405A4 C   FIELD 31w01 SPLITEN: Split enable
-0x400405A8 B  REGISTER HCINT5 (rw): OTG_HS host channel-5 interrupt register
+0x400405A8 B  REGISTER INT5 (rw): OTG_HS host channel-11 interrupt register
 0x400405A8 C   FIELD 00w01 XFRC: Transfer completed
 0x400405A8 C   FIELD 01w01 CHH: Channel halted
 0x400405A8 C   FIELD 02w01 AHBERR: AHB error
@@ -10838,7 +10855,7 @@
 0x400405A8 C   FIELD 08w01 BBERR: Babble error
 0x400405A8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400405A8 C   FIELD 10w01 DTERR: Data toggle error
-0x400405AC B  REGISTER HCINTMSK5 (rw): OTG_HS host channel-5 interrupt mask register
+0x400405AC B  REGISTER INTMSK5 (rw): OTG_HS host channel-11 interrupt mask register
 0x400405AC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400405AC C   FIELD 01w01 CHHM: Channel halted mask
 0x400405AC C   FIELD 02w01 AHBERR: AHB error
@@ -10850,13 +10867,14 @@
 0x400405AC C   FIELD 08w01 BBERRM: Babble error mask
 0x400405AC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400405AC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400405B0 B  REGISTER HCTSIZ5 (rw): OTG_HS host channel-5 transfer size register
+0x400405B0 B  REGISTER TSIZ5 (rw): OTG_HS host channel-11 transfer size register
 0x400405B0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400405B0 C   FIELD 19w10 PKTCNT: Packet count
 0x400405B0 C   FIELD 29w02 DPID: Data PID
-0x400405B4 B  REGISTER HCDMA5 (rw): OTG_HS host channel-5 DMA address register
+0x400405B4 B  REGISTER DMA5 (rw): OTG_HS host channel-0 DMA address register
 0x400405B4 C   FIELD 00w32 DMAADDR: DMA address
-0x400405C0 B  REGISTER HCCHAR6 (rw): OTG_HS host channel-6 characteristics register
+0x400405C0 B  CLUSTER HC6: Host channel
+0x400405C0 B  REGISTER CHAR6 (rw): OTG_HS host channel-0 characteristics register
 0x400405C0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400405C0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400405C0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10867,13 +10885,13 @@
 0x400405C0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400405C0 C   FIELD 30w01 CHDIS: Channel disable
 0x400405C0 C   FIELD 31w01 CHENA: Channel enable
-0x400405C4 B  REGISTER HCSPLT6 (rw): OTG_HS host channel-6 split control register
+0x400405C4 B  REGISTER SPLT6 (rw): OTG_HS host channel-0 split control register
 0x400405C4 C   FIELD 00w07 PRTADDR: Port address
 0x400405C4 C   FIELD 07w07 HUBADDR: Hub address
 0x400405C4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400405C4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400405C4 C   FIELD 31w01 SPLITEN: Split enable
-0x400405C8 B  REGISTER HCINT6 (rw): OTG_HS host channel-6 interrupt register
+0x400405C8 B  REGISTER INT6 (rw): OTG_HS host channel-11 interrupt register
 0x400405C8 C   FIELD 00w01 XFRC: Transfer completed
 0x400405C8 C   FIELD 01w01 CHH: Channel halted
 0x400405C8 C   FIELD 02w01 AHBERR: AHB error
@@ -10885,7 +10903,7 @@
 0x400405C8 C   FIELD 08w01 BBERR: Babble error
 0x400405C8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400405C8 C   FIELD 10w01 DTERR: Data toggle error
-0x400405CC B  REGISTER HCINTMSK6 (rw): OTG_HS host channel-6 interrupt mask register
+0x400405CC B  REGISTER INTMSK6 (rw): OTG_HS host channel-11 interrupt mask register
 0x400405CC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400405CC C   FIELD 01w01 CHHM: Channel halted mask
 0x400405CC C   FIELD 02w01 AHBERR: AHB error
@@ -10897,13 +10915,14 @@
 0x400405CC C   FIELD 08w01 BBERRM: Babble error mask
 0x400405CC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400405CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400405D0 B  REGISTER HCTSIZ6 (rw): OTG_HS host channel-6 transfer size register
+0x400405D0 B  REGISTER TSIZ6 (rw): OTG_HS host channel-11 transfer size register
 0x400405D0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400405D0 C   FIELD 19w10 PKTCNT: Packet count
 0x400405D0 C   FIELD 29w02 DPID: Data PID
-0x400405D4 B  REGISTER HCDMA6 (rw): OTG_HS host channel-6 DMA address register
+0x400405D4 B  REGISTER DMA6 (rw): OTG_HS host channel-0 DMA address register
 0x400405D4 C   FIELD 00w32 DMAADDR: DMA address
-0x400405E0 B  REGISTER HCCHAR7 (rw): OTG_HS host channel-7 characteristics register
+0x400405E0 B  CLUSTER HC7: Host channel
+0x400405E0 B  REGISTER CHAR7 (rw): OTG_HS host channel-0 characteristics register
 0x400405E0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400405E0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400405E0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10914,13 +10933,13 @@
 0x400405E0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400405E0 C   FIELD 30w01 CHDIS: Channel disable
 0x400405E0 C   FIELD 31w01 CHENA: Channel enable
-0x400405E4 B  REGISTER HCSPLT7 (rw): OTG_HS host channel-7 split control register
+0x400405E4 B  REGISTER SPLT7 (rw): OTG_HS host channel-0 split control register
 0x400405E4 C   FIELD 00w07 PRTADDR: Port address
 0x400405E4 C   FIELD 07w07 HUBADDR: Hub address
 0x400405E4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400405E4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400405E4 C   FIELD 31w01 SPLITEN: Split enable
-0x400405E8 B  REGISTER HCINT7 (rw): OTG_HS host channel-7 interrupt register
+0x400405E8 B  REGISTER INT7 (rw): OTG_HS host channel-11 interrupt register
 0x400405E8 C   FIELD 00w01 XFRC: Transfer completed
 0x400405E8 C   FIELD 01w01 CHH: Channel halted
 0x400405E8 C   FIELD 02w01 AHBERR: AHB error
@@ -10932,7 +10951,7 @@
 0x400405E8 C   FIELD 08w01 BBERR: Babble error
 0x400405E8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400405E8 C   FIELD 10w01 DTERR: Data toggle error
-0x400405EC B  REGISTER HCINTMSK7 (rw): OTG_HS host channel-7 interrupt mask register
+0x400405EC B  REGISTER INTMSK7 (rw): OTG_HS host channel-11 interrupt mask register
 0x400405EC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400405EC C   FIELD 01w01 CHHM: Channel halted mask
 0x400405EC C   FIELD 02w01 AHBERR: AHB error
@@ -10944,13 +10963,14 @@
 0x400405EC C   FIELD 08w01 BBERRM: Babble error mask
 0x400405EC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400405EC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400405F0 B  REGISTER HCTSIZ7 (rw): OTG_HS host channel-7 transfer size register
+0x400405F0 B  REGISTER TSIZ7 (rw): OTG_HS host channel-11 transfer size register
 0x400405F0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400405F0 C   FIELD 19w10 PKTCNT: Packet count
 0x400405F0 C   FIELD 29w02 DPID: Data PID
-0x400405F4 B  REGISTER HCDMA7 (rw): OTG_HS host channel-7 DMA address register
+0x400405F4 B  REGISTER DMA7 (rw): OTG_HS host channel-0 DMA address register
 0x400405F4 C   FIELD 00w32 DMAADDR: DMA address
-0x40040600 B  REGISTER HCCHAR8 (rw): OTG_HS host channel-8 characteristics register
+0x40040600 B  CLUSTER HC8: Host channel
+0x40040600 B  REGISTER CHAR8 (rw): OTG_HS host channel-0 characteristics register
 0x40040600 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040600 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040600 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -10961,13 +10981,13 @@
 0x40040600 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040600 C   FIELD 30w01 CHDIS: Channel disable
 0x40040600 C   FIELD 31w01 CHENA: Channel enable
-0x40040604 B  REGISTER HCSPLT8 (rw): OTG_HS host channel-8 split control register
+0x40040604 B  REGISTER SPLT8 (rw): OTG_HS host channel-0 split control register
 0x40040604 C   FIELD 00w07 PRTADDR: Port address
 0x40040604 C   FIELD 07w07 HUBADDR: Hub address
 0x40040604 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040604 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040604 C   FIELD 31w01 SPLITEN: Split enable
-0x40040608 B  REGISTER HCINT8 (rw): OTG_HS host channel-8 interrupt register
+0x40040608 B  REGISTER INT8 (rw): OTG_HS host channel-11 interrupt register
 0x40040608 C   FIELD 00w01 XFRC: Transfer completed
 0x40040608 C   FIELD 01w01 CHH: Channel halted
 0x40040608 C   FIELD 02w01 AHBERR: AHB error
@@ -10979,7 +10999,7 @@
 0x40040608 C   FIELD 08w01 BBERR: Babble error
 0x40040608 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040608 C   FIELD 10w01 DTERR: Data toggle error
-0x4004060C B  REGISTER HCINTMSK8 (rw): OTG_HS host channel-8 interrupt mask register
+0x4004060C B  REGISTER INTMSK8 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004060C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004060C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004060C C   FIELD 02w01 AHBERR: AHB error
@@ -10991,13 +11011,14 @@
 0x4004060C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004060C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004060C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040610 B  REGISTER HCTSIZ8 (rw): OTG_HS host channel-8 transfer size register
+0x40040610 B  REGISTER TSIZ8 (rw): OTG_HS host channel-11 transfer size register
 0x40040610 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040610 C   FIELD 19w10 PKTCNT: Packet count
 0x40040610 C   FIELD 29w02 DPID: Data PID
-0x40040614 B  REGISTER HCDMA8 (rw): OTG_HS host channel-8 DMA address register
+0x40040614 B  REGISTER DMA8 (rw): OTG_HS host channel-0 DMA address register
 0x40040614 C   FIELD 00w32 DMAADDR: DMA address
-0x40040620 B  REGISTER HCCHAR9 (rw): OTG_HS host channel-9 characteristics register
+0x40040620 B  CLUSTER HC9: Host channel
+0x40040620 B  REGISTER CHAR9 (rw): OTG_HS host channel-0 characteristics register
 0x40040620 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040620 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040620 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -11008,13 +11029,13 @@
 0x40040620 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040620 C   FIELD 30w01 CHDIS: Channel disable
 0x40040620 C   FIELD 31w01 CHENA: Channel enable
-0x40040624 B  REGISTER HCSPLT9 (rw): OTG_HS host channel-9 split control register
+0x40040624 B  REGISTER SPLT9 (rw): OTG_HS host channel-0 split control register
 0x40040624 C   FIELD 00w07 PRTADDR: Port address
 0x40040624 C   FIELD 07w07 HUBADDR: Hub address
 0x40040624 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040624 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040624 C   FIELD 31w01 SPLITEN: Split enable
-0x40040628 B  REGISTER HCINT9 (rw): OTG_HS host channel-9 interrupt register
+0x40040628 B  REGISTER INT9 (rw): OTG_HS host channel-11 interrupt register
 0x40040628 C   FIELD 00w01 XFRC: Transfer completed
 0x40040628 C   FIELD 01w01 CHH: Channel halted
 0x40040628 C   FIELD 02w01 AHBERR: AHB error
@@ -11026,7 +11047,7 @@
 0x40040628 C   FIELD 08w01 BBERR: Babble error
 0x40040628 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040628 C   FIELD 10w01 DTERR: Data toggle error
-0x4004062C B  REGISTER HCINTMSK9 (rw): OTG_HS host channel-9 interrupt mask register
+0x4004062C B  REGISTER INTMSK9 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004062C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004062C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004062C C   FIELD 02w01 AHBERR: AHB error
@@ -11038,13 +11059,14 @@
 0x4004062C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004062C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004062C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040630 B  REGISTER HCTSIZ9 (rw): OTG_HS host channel-9 transfer size register
+0x40040630 B  REGISTER TSIZ9 (rw): OTG_HS host channel-11 transfer size register
 0x40040630 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040630 C   FIELD 19w10 PKTCNT: Packet count
 0x40040630 C   FIELD 29w02 DPID: Data PID
-0x40040634 B  REGISTER HCDMA9 (rw): OTG_HS host channel-9 DMA address register
+0x40040634 B  REGISTER DMA9 (rw): OTG_HS host channel-0 DMA address register
 0x40040634 C   FIELD 00w32 DMAADDR: DMA address
-0x40040640 B  REGISTER HCCHAR10 (rw): OTG_HS host channel-10 characteristics register
+0x40040640 B  CLUSTER HC10: Host channel
+0x40040640 B  REGISTER CHAR10 (rw): OTG_HS host channel-0 characteristics register
 0x40040640 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040640 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040640 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -11055,13 +11077,13 @@
 0x40040640 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040640 C   FIELD 30w01 CHDIS: Channel disable
 0x40040640 C   FIELD 31w01 CHENA: Channel enable
-0x40040644 B  REGISTER HCSPLT10 (rw): OTG_HS host channel-10 split control register
+0x40040644 B  REGISTER SPLT10 (rw): OTG_HS host channel-0 split control register
 0x40040644 C   FIELD 00w07 PRTADDR: Port address
 0x40040644 C   FIELD 07w07 HUBADDR: Hub address
 0x40040644 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040644 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040644 C   FIELD 31w01 SPLITEN: Split enable
-0x40040648 B  REGISTER HCINT10 (rw): OTG_HS host channel-10 interrupt register
+0x40040648 B  REGISTER INT10 (rw): OTG_HS host channel-11 interrupt register
 0x40040648 C   FIELD 00w01 XFRC: Transfer completed
 0x40040648 C   FIELD 01w01 CHH: Channel halted
 0x40040648 C   FIELD 02w01 AHBERR: AHB error
@@ -11073,7 +11095,7 @@
 0x40040648 C   FIELD 08w01 BBERR: Babble error
 0x40040648 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040648 C   FIELD 10w01 DTERR: Data toggle error
-0x4004064C B  REGISTER HCINTMSK10 (rw): OTG_HS host channel-10 interrupt mask register
+0x4004064C B  REGISTER INTMSK10 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004064C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004064C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004064C C   FIELD 02w01 AHBERR: AHB error
@@ -11085,13 +11107,14 @@
 0x4004064C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004064C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004064C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040650 B  REGISTER HCTSIZ10 (rw): OTG_HS host channel-10 transfer size register
+0x40040650 B  REGISTER TSIZ10 (rw): OTG_HS host channel-11 transfer size register
 0x40040650 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040650 C   FIELD 19w10 PKTCNT: Packet count
 0x40040650 C   FIELD 29w02 DPID: Data PID
-0x40040654 B  REGISTER HCDMA10 (rw): OTG_HS host channel-10 DMA address register
+0x40040654 B  REGISTER DMA10 (rw): OTG_HS host channel-0 DMA address register
 0x40040654 C   FIELD 00w32 DMAADDR: DMA address
-0x40040660 B  REGISTER HCCHAR11 (rw): OTG_HS host channel-11 characteristics register
+0x40040660 B  CLUSTER HC11: Host channel
+0x40040660 B  REGISTER CHAR11 (rw): OTG_HS host channel-0 characteristics register
 0x40040660 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40040660 C   FIELD 11w04 EPNUM: Endpoint number
 0x40040660 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -11102,13 +11125,13 @@
 0x40040660 C   FIELD 29w01 ODDFRM: Odd frame
 0x40040660 C   FIELD 30w01 CHDIS: Channel disable
 0x40040660 C   FIELD 31w01 CHENA: Channel enable
-0x40040664 B  REGISTER HCSPLT11 (rw): OTG_HS host channel-11 split control register
+0x40040664 B  REGISTER SPLT11 (rw): OTG_HS host channel-0 split control register
 0x40040664 C   FIELD 00w07 PRTADDR: Port address
 0x40040664 C   FIELD 07w07 HUBADDR: Hub address
 0x40040664 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40040664 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40040664 C   FIELD 31w01 SPLITEN: Split enable
-0x40040668 B  REGISTER HCINT11 (rw): OTG_HS host channel-11 interrupt register
+0x40040668 B  REGISTER INT11 (rw): OTG_HS host channel-11 interrupt register
 0x40040668 C   FIELD 00w01 XFRC: Transfer completed
 0x40040668 C   FIELD 01w01 CHH: Channel halted
 0x40040668 C   FIELD 02w01 AHBERR: AHB error
@@ -11120,7 +11143,7 @@
 0x40040668 C   FIELD 08w01 BBERR: Babble error
 0x40040668 C   FIELD 09w01 FRMOR: Frame overrun
 0x40040668 C   FIELD 10w01 DTERR: Data toggle error
-0x4004066C B  REGISTER HCINTMSK11 (rw): OTG_HS host channel-11 interrupt mask register
+0x4004066C B  REGISTER INTMSK11 (rw): OTG_HS host channel-11 interrupt mask register
 0x4004066C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4004066C C   FIELD 01w01 CHHM: Channel halted mask
 0x4004066C C   FIELD 02w01 AHBERR: AHB error
@@ -11132,154 +11155,110 @@
 0x4004066C C   FIELD 08w01 BBERRM: Babble error mask
 0x4004066C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4004066C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040670 B  REGISTER HCTSIZ11 (rw): OTG_HS host channel-11 transfer size register
+0x40040670 B  REGISTER TSIZ11 (rw): OTG_HS host channel-11 transfer size register
 0x40040670 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040670 C   FIELD 19w10 PKTCNT: Packet count
 0x40040670 C   FIELD 29w02 DPID: Data PID
-0x40040674 B  REGISTER HCDMA11 (rw): OTG_HS host channel-11 DMA address register
+0x40040674 B  REGISTER DMA11 (rw): OTG_HS host channel-0 DMA address register
 0x40040674 C   FIELD 00w32 DMAADDR: DMA address
-0x40040678 B  REGISTER HCCHAR12 (rw): OTG_HS host channel-12 characteristics register
-0x40040678 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40040678 C   FIELD 11w04 EPNUM: Endpoint number
-0x40040678 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40040678 C   FIELD 17w01 LSDEV: Low-speed device
-0x40040678 C   FIELD 18w02 EPTYP: Endpoint type
-0x40040678 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40040678 C   FIELD 22w07 DAD: Device address
-0x40040678 C   FIELD 29w01 ODDFRM: Odd frame
-0x40040678 C   FIELD 30w01 CHDIS: Channel disable
-0x40040678 C   FIELD 31w01 CHENA: Channel enable
-0x4004067C B  REGISTER HCSPLT12 (rw): OTG_HS host channel-12 split control register
-0x4004067C C   FIELD 00w07 PRTADDR: Port address
-0x4004067C C   FIELD 07w07 HUBADDR: Hub address
-0x4004067C C   FIELD 14w02 XACTPOS: XACTPOS
-0x4004067C C   FIELD 16w01 COMPLSPLT: Do complete split
-0x4004067C C   FIELD 31w01 SPLITEN: Split enable
-0x40040680 B  REGISTER HCINT12 (rw): OTG_HS host channel-12 interrupt register
-0x40040680 C   FIELD 00w01 XFRC: Transfer completed
-0x40040680 C   FIELD 01w01 CHH: Channel halted
-0x40040680 C   FIELD 02w01 AHBERR: AHB error
-0x40040680 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40040680 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40040680 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40040680 C   FIELD 06w01 NYET: Response received interrupt
-0x40040680 C   FIELD 07w01 TXERR: Transaction error
-0x40040680 C   FIELD 08w01 BBERR: Babble error
-0x40040680 C   FIELD 09w01 FRMOR: Frame overrun
-0x40040680 C   FIELD 10w01 DTERR: Data toggle error
-0x40040684 B  REGISTER HCINTMSK12 (rw): OTG_HS host channel-12 interrupt mask register
-0x40040684 C   FIELD 00w01 XFRCM: Transfer completed mask
-0x40040684 C   FIELD 01w01 CHHM: Channel halted mask
-0x40040684 C   FIELD 02w01 AHBERR: AHB error
-0x40040684 C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x40040684 C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x40040684 C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x40040684 C   FIELD 06w01 NYET: Response received interrupt
-0x40040684 C   FIELD 07w01 TXERRM: Transaction error
-0x40040684 C   FIELD 08w01 BBERRM: Babble error
-0x40040684 C   FIELD 09w01 FRMORM: Frame overrun mask
-0x40040684 C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40040688 B  REGISTER HCTSIZ12 (rw): OTG_HS host channel-12 transfer size register
-0x40040688 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40040688 C   FIELD 19w10 PKTCNT: Packet count
-0x40040688 C   FIELD 29w02 DPID: Data PID
-0x4004068C B  REGISTER HCDMA12 (rw): OTG_HS host channel-12 DMA address register
-0x4004068C C   FIELD 00w32 DMAADDR: DMA address
-0x40040690 B  REGISTER HCCHAR13 (rw): OTG_HS host channel-13 characteristics register
-0x40040690 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40040690 C   FIELD 11w04 EPNUM: Endpoint number
-0x40040690 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40040690 C   FIELD 17w01 LSDEV: Low-speed device
-0x40040690 C   FIELD 18w02 EPTYP: Endpoint type
-0x40040690 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40040690 C   FIELD 22w07 DAD: Device address
-0x40040690 C   FIELD 29w01 ODDFRM: Odd frame
-0x40040690 C   FIELD 30w01 CHDIS: Channel disable
-0x40040690 C   FIELD 31w01 CHENA: Channel enable
-0x40040694 B  REGISTER HCSPLT13 (rw): OTG_HS host channel-13 split control register
-0x40040694 C   FIELD 00w07 PRTADDR: Port address
-0x40040694 C   FIELD 07w07 HUBADDR: Hub address
-0x40040694 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40040694 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40040694 C   FIELD 31w01 SPLITEN: Split enable
-0x40040698 B  REGISTER HCINT13 (rw): OTG_HS host channel-13 interrupt register
-0x40040698 C   FIELD 00w01 XFRC: Transfer completed
-0x40040698 C   FIELD 01w01 CHH: Channel halted
-0x40040698 C   FIELD 02w01 AHBERR: AHB error
-0x40040698 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40040698 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40040698 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40040698 C   FIELD 06w01 NYET: Response received interrupt
-0x40040698 C   FIELD 07w01 TXERR: Transaction error
-0x40040698 C   FIELD 08w01 BBERR: Babble error
-0x40040698 C   FIELD 09w01 FRMOR: Frame overrun
-0x40040698 C   FIELD 10w01 DTERR: Data toggle error
-0x4004069C B  REGISTER HCINTMSK13 (rw): OTG_HS host channel-13 interrupt mask register
-0x4004069C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4004069C C   FIELD 01w01 CHHM: Channel halted mask
-0x4004069C C   FIELD 02w01 AHBERR: AHB error
-0x4004069C C   FIELD 03w01 STALLM: STALLM response received interrupt mask
-0x4004069C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4004069C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4004069C C   FIELD 06w01 NYET: Response received interrupt
-0x4004069C C   FIELD 07w01 TXERRM: Transaction error
-0x4004069C C   FIELD 08w01 BBERRM: Babble error
-0x4004069C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4004069C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400406A0 B  REGISTER HCTSIZ13 (rw): OTG_HS host channel-13 transfer size register
-0x400406A0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400406A0 C   FIELD 19w10 PKTCNT: Packet count
-0x400406A0 C   FIELD 29w02 DPID: Data PID
-0x400406A4 B  REGISTER HCDMA13 (rw): OTG_HS host channel-13 DMA address register
-0x400406A4 C   FIELD 00w32 DMAADDR: DMA address
-0x400406A8 B  REGISTER HCCHAR14 (rw): OTG_HS host channel-14 characteristics register
-0x400406A8 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400406A8 C   FIELD 11w04 EPNUM: Endpoint number
-0x400406A8 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400406A8 C   FIELD 17w01 LSDEV: Low-speed device
-0x400406A8 C   FIELD 18w02 EPTYP: Endpoint type
-0x400406A8 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400406A8 C   FIELD 22w07 DAD: Device address
-0x400406A8 C   FIELD 29w01 ODDFRM: Odd frame
-0x400406A8 C   FIELD 30w01 CHDIS: Channel disable
-0x400406A8 C   FIELD 31w01 CHENA: Channel enable
-0x400406AC B  REGISTER HCSPLT14 (rw): OTG_HS host channel-14 split control register
-0x400406AC C   FIELD 00w07 PRTADDR: Port address
-0x400406AC C   FIELD 07w07 HUBADDR: Hub address
-0x400406AC C   FIELD 14w02 XACTPOS: XACTPOS
-0x400406AC C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400406AC C   FIELD 31w01 SPLITEN: Split enable
-0x400406B0 B  REGISTER HCINT14 (rw): OTG_HS host channel-14 interrupt register
-0x400406B0 C   FIELD 00w01 XFRC: Transfer completed
-0x400406B0 C   FIELD 01w01 CHH: Channel halted
-0x400406B0 C   FIELD 02w01 AHBERR: AHB error
-0x400406B0 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400406B0 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400406B0 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400406B0 C   FIELD 06w01 NYET: Response received interrupt
-0x400406B0 C   FIELD 07w01 TXERR: Transaction error
-0x400406B0 C   FIELD 08w01 BBERR: Babble error
-0x400406B0 C   FIELD 09w01 FRMOR: Frame overrun
-0x400406B0 C   FIELD 10w01 DTERR: Data toggle error
-0x400406B4 B  REGISTER HCINTMSK14 (rw): OTG_HS host channel-14 interrupt mask register
-0x400406B4 C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400406B4 C   FIELD 01w01 CHHM: Channel halted mask
-0x400406B4 C   FIELD 02w01 AHBERR: AHB error
-0x400406B4 C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400406B4 C   FIELD 04w01 NAKM: NAKM response received interrupt mask
-0x400406B4 C   FIELD 05w01 ACKM: ACKM response received/transmitted interrupt mask
-0x400406B4 C   FIELD 06w01 NYET: Response received interrupt
-0x400406B4 C   FIELD 07w01 TXERRM: Transaction error
-0x400406B4 C   FIELD 08w01 BBERRM: Babble error
-0x400406B4 C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400406B4 C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400406B8 B  REGISTER HCTSIZ14 (rw): OTG_HS host channel-14 transfer size register
-0x400406B8 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400406B8 C   FIELD 19w10 PKTCNT: Packet count
-0x400406B8 C   FIELD 29w02 DPID: Data PID
-0x400406BC B  REGISTER HCDMA14 (rw): OTG_HS host channel-14 DMA address register
-0x400406BC C   FIELD 00w32 DMAADDR: DMA address
-0x400406C0 B  REGISTER HCCHAR15 (rw): OTG_HS host channel-15 characteristics register
+0x40040680 B  CLUSTER HC12: Host channel
+0x40040680 B  REGISTER CHAR12 (rw): OTG_HS host channel-0 characteristics register
+0x40040680 C   FIELD 00w11 MPSIZ: Maximum packet size
+0x40040680 C   FIELD 11w04 EPNUM: Endpoint number
+0x40040680 C   FIELD 15w01 EPDIR: Endpoint direction
+0x40040680 C   FIELD 17w01 LSDEV: Low-speed device
+0x40040680 C   FIELD 18w02 EPTYP: Endpoint type
+0x40040680 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
+0x40040680 C   FIELD 22w07 DAD: Device address
+0x40040680 C   FIELD 29w01 ODDFRM: Odd frame
+0x40040680 C   FIELD 30w01 CHDIS: Channel disable
+0x40040680 C   FIELD 31w01 CHENA: Channel enable
+0x40040684 B  REGISTER SPLT12 (rw): OTG_HS host channel-0 split control register
+0x40040684 C   FIELD 00w07 PRTADDR: Port address
+0x40040684 C   FIELD 07w07 HUBADDR: Hub address
+0x40040684 C   FIELD 14w02 XACTPOS: XACTPOS
+0x40040684 C   FIELD 16w01 COMPLSPLT: Do complete split
+0x40040684 C   FIELD 31w01 SPLITEN: Split enable
+0x40040688 B  REGISTER INT12 (rw): OTG_HS host channel-11 interrupt register
+0x40040688 C   FIELD 00w01 XFRC: Transfer completed
+0x40040688 C   FIELD 01w01 CHH: Channel halted
+0x40040688 C   FIELD 02w01 AHBERR: AHB error
+0x40040688 C   FIELD 03w01 STALL: STALL response received interrupt
+0x40040688 C   FIELD 04w01 NAK: NAK response received interrupt
+0x40040688 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
+0x40040688 C   FIELD 06w01 NYET: Response received interrupt
+0x40040688 C   FIELD 07w01 TXERR: Transaction error
+0x40040688 C   FIELD 08w01 BBERR: Babble error
+0x40040688 C   FIELD 09w01 FRMOR: Frame overrun
+0x40040688 C   FIELD 10w01 DTERR: Data toggle error
+0x4004068C B  REGISTER INTMSK12 (rw): OTG_HS host channel-11 interrupt mask register
+0x4004068C C   FIELD 00w01 XFRCM: Transfer completed mask
+0x4004068C C   FIELD 01w01 CHHM: Channel halted mask
+0x4004068C C   FIELD 02w01 AHBERR: AHB error
+0x4004068C C   FIELD 03w01 STALLM: STALL response received interrupt mask
+0x4004068C C   FIELD 04w01 NAKM: NAK response received interrupt mask
+0x4004068C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
+0x4004068C C   FIELD 06w01 NYET: response received interrupt mask
+0x4004068C C   FIELD 07w01 TXERRM: Transaction error mask
+0x4004068C C   FIELD 08w01 BBERRM: Babble error mask
+0x4004068C C   FIELD 09w01 FRMORM: Frame overrun mask
+0x4004068C C   FIELD 10w01 DTERRM: Data toggle error mask
+0x40040690 B  REGISTER TSIZ12 (rw): OTG_HS host channel-11 transfer size register
+0x40040690 C   FIELD 00w19 XFRSIZ: Transfer size
+0x40040690 C   FIELD 19w10 PKTCNT: Packet count
+0x40040690 C   FIELD 29w02 DPID: Data PID
+0x40040694 B  REGISTER DMA12 (rw): OTG_HS host channel-0 DMA address register
+0x40040694 C   FIELD 00w32 DMAADDR: DMA address
+0x400406A0 B  CLUSTER HC13: Host channel
+0x400406A0 B  REGISTER CHAR13 (rw): OTG_HS host channel-0 characteristics register
+0x400406A0 C   FIELD 00w11 MPSIZ: Maximum packet size
+0x400406A0 C   FIELD 11w04 EPNUM: Endpoint number
+0x400406A0 C   FIELD 15w01 EPDIR: Endpoint direction
+0x400406A0 C   FIELD 17w01 LSDEV: Low-speed device
+0x400406A0 C   FIELD 18w02 EPTYP: Endpoint type
+0x400406A0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
+0x400406A0 C   FIELD 22w07 DAD: Device address
+0x400406A0 C   FIELD 29w01 ODDFRM: Odd frame
+0x400406A0 C   FIELD 30w01 CHDIS: Channel disable
+0x400406A0 C   FIELD 31w01 CHENA: Channel enable
+0x400406A4 B  REGISTER SPLT13 (rw): OTG_HS host channel-0 split control register
+0x400406A4 C   FIELD 00w07 PRTADDR: Port address
+0x400406A4 C   FIELD 07w07 HUBADDR: Hub address
+0x400406A4 C   FIELD 14w02 XACTPOS: XACTPOS
+0x400406A4 C   FIELD 16w01 COMPLSPLT: Do complete split
+0x400406A4 C   FIELD 31w01 SPLITEN: Split enable
+0x400406A8 B  REGISTER INT13 (rw): OTG_HS host channel-11 interrupt register
+0x400406A8 C   FIELD 00w01 XFRC: Transfer completed
+0x400406A8 C   FIELD 01w01 CHH: Channel halted
+0x400406A8 C   FIELD 02w01 AHBERR: AHB error
+0x400406A8 C   FIELD 03w01 STALL: STALL response received interrupt
+0x400406A8 C   FIELD 04w01 NAK: NAK response received interrupt
+0x400406A8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
+0x400406A8 C   FIELD 06w01 NYET: Response received interrupt
+0x400406A8 C   FIELD 07w01 TXERR: Transaction error
+0x400406A8 C   FIELD 08w01 BBERR: Babble error
+0x400406A8 C   FIELD 09w01 FRMOR: Frame overrun
+0x400406A8 C   FIELD 10w01 DTERR: Data toggle error
+0x400406AC B  REGISTER INTMSK13 (rw): OTG_HS host channel-11 interrupt mask register
+0x400406AC C   FIELD 00w01 XFRCM: Transfer completed mask
+0x400406AC C   FIELD 01w01 CHHM: Channel halted mask
+0x400406AC C   FIELD 02w01 AHBERR: AHB error
+0x400406AC C   FIELD 03w01 STALLM: STALL response received interrupt mask
+0x400406AC C   FIELD 04w01 NAKM: NAK response received interrupt mask
+0x400406AC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
+0x400406AC C   FIELD 06w01 NYET: response received interrupt mask
+0x400406AC C   FIELD 07w01 TXERRM: Transaction error mask
+0x400406AC C   FIELD 08w01 BBERRM: Babble error mask
+0x400406AC C   FIELD 09w01 FRMORM: Frame overrun mask
+0x400406AC C   FIELD 10w01 DTERRM: Data toggle error mask
+0x400406B0 B  REGISTER TSIZ13 (rw): OTG_HS host channel-11 transfer size register
+0x400406B0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400406B0 C   FIELD 19w10 PKTCNT: Packet count
+0x400406B0 C   FIELD 29w02 DPID: Data PID
+0x400406B4 B  REGISTER DMA13 (rw): OTG_HS host channel-0 DMA address register
+0x400406B4 C   FIELD 00w32 DMAADDR: DMA address
+0x400406C0 B  CLUSTER HC14: Host channel
+0x400406C0 B  REGISTER CHAR14 (rw): OTG_HS host channel-0 characteristics register
 0x400406C0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400406C0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400406C0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -11290,13 +11269,13 @@
 0x400406C0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400406C0 C   FIELD 30w01 CHDIS: Channel disable
 0x400406C0 C   FIELD 31w01 CHENA: Channel enable
-0x400406C4 B  REGISTER HCSPLT15 (rw): OTG_HS host channel-15 split control register
+0x400406C4 B  REGISTER SPLT14 (rw): OTG_HS host channel-0 split control register
 0x400406C4 C   FIELD 00w07 PRTADDR: Port address
 0x400406C4 C   FIELD 07w07 HUBADDR: Hub address
 0x400406C4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400406C4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400406C4 C   FIELD 31w01 SPLITEN: Split enable
-0x400406C8 B  REGISTER HCINT15 (rw): OTG_HS host channel-15 interrupt register
+0x400406C8 B  REGISTER INT14 (rw): OTG_HS host channel-11 interrupt register
 0x400406C8 C   FIELD 00w01 XFRC: Transfer completed
 0x400406C8 C   FIELD 01w01 CHH: Channel halted
 0x400406C8 C   FIELD 02w01 AHBERR: AHB error
@@ -11308,24 +11287,72 @@
 0x400406C8 C   FIELD 08w01 BBERR: Babble error
 0x400406C8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400406C8 C   FIELD 10w01 DTERR: Data toggle error
-0x400406CC B  REGISTER HCINTMSK15 (rw): OTG_HS host channel-15 interrupt mask register
+0x400406CC B  REGISTER INTMSK14 (rw): OTG_HS host channel-11 interrupt mask register
 0x400406CC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400406CC C   FIELD 01w01 CHHM: Channel halted mask
 0x400406CC C   FIELD 02w01 AHBERR: AHB error
-0x400406CC C   FIELD 03w01 STALL: STALL response received interrupt mask
+0x400406CC C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x400406CC C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x400406CC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400406CC C   FIELD 06w01 NYET: Response received interrupt
-0x400406CC C   FIELD 07w01 TXERRM: Transaction error
-0x400406CC C   FIELD 08w01 BBERRM: Babble error
+0x400406CC C   FIELD 06w01 NYET: response received interrupt mask
+0x400406CC C   FIELD 07w01 TXERRM: Transaction error mask
+0x400406CC C   FIELD 08w01 BBERRM: Babble error mask
 0x400406CC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400406CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400406D0 B  REGISTER HCTSIZ15 (rw): OTG_HS host channel-15 transfer size register
+0x400406D0 B  REGISTER TSIZ14 (rw): OTG_HS host channel-11 transfer size register
 0x400406D0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400406D0 C   FIELD 19w10 PKTCNT: Packet count
 0x400406D0 C   FIELD 29w02 DPID: Data PID
-0x400406D4 B  REGISTER HCDMA15 (rw): OTG_HS host channel-15 DMA address register
+0x400406D4 B  REGISTER DMA14 (rw): OTG_HS host channel-0 DMA address register
 0x400406D4 C   FIELD 00w32 DMAADDR: DMA address
+0x400406E0 B  CLUSTER HC15: Host channel
+0x400406E0 B  REGISTER CHAR15 (rw): OTG_HS host channel-0 characteristics register
+0x400406E0 C   FIELD 00w11 MPSIZ: Maximum packet size
+0x400406E0 C   FIELD 11w04 EPNUM: Endpoint number
+0x400406E0 C   FIELD 15w01 EPDIR: Endpoint direction
+0x400406E0 C   FIELD 17w01 LSDEV: Low-speed device
+0x400406E0 C   FIELD 18w02 EPTYP: Endpoint type
+0x400406E0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
+0x400406E0 C   FIELD 22w07 DAD: Device address
+0x400406E0 C   FIELD 29w01 ODDFRM: Odd frame
+0x400406E0 C   FIELD 30w01 CHDIS: Channel disable
+0x400406E0 C   FIELD 31w01 CHENA: Channel enable
+0x400406E4 B  REGISTER SPLT15 (rw): OTG_HS host channel-0 split control register
+0x400406E4 C   FIELD 00w07 PRTADDR: Port address
+0x400406E4 C   FIELD 07w07 HUBADDR: Hub address
+0x400406E4 C   FIELD 14w02 XACTPOS: XACTPOS
+0x400406E4 C   FIELD 16w01 COMPLSPLT: Do complete split
+0x400406E4 C   FIELD 31w01 SPLITEN: Split enable
+0x400406E8 B  REGISTER INT15 (rw): OTG_HS host channel-11 interrupt register
+0x400406E8 C   FIELD 00w01 XFRC: Transfer completed
+0x400406E8 C   FIELD 01w01 CHH: Channel halted
+0x400406E8 C   FIELD 02w01 AHBERR: AHB error
+0x400406E8 C   FIELD 03w01 STALL: STALL response received interrupt
+0x400406E8 C   FIELD 04w01 NAK: NAK response received interrupt
+0x400406E8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
+0x400406E8 C   FIELD 06w01 NYET: Response received interrupt
+0x400406E8 C   FIELD 07w01 TXERR: Transaction error
+0x400406E8 C   FIELD 08w01 BBERR: Babble error
+0x400406E8 C   FIELD 09w01 FRMOR: Frame overrun
+0x400406E8 C   FIELD 10w01 DTERR: Data toggle error
+0x400406EC B  REGISTER INTMSK15 (rw): OTG_HS host channel-11 interrupt mask register
+0x400406EC C   FIELD 00w01 XFRCM: Transfer completed mask
+0x400406EC C   FIELD 01w01 CHHM: Channel halted mask
+0x400406EC C   FIELD 02w01 AHBERR: AHB error
+0x400406EC C   FIELD 03w01 STALLM: STALL response received interrupt mask
+0x400406EC C   FIELD 04w01 NAKM: NAK response received interrupt mask
+0x400406EC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
+0x400406EC C   FIELD 06w01 NYET: response received interrupt mask
+0x400406EC C   FIELD 07w01 TXERRM: Transaction error mask
+0x400406EC C   FIELD 08w01 BBERRM: Babble error mask
+0x400406EC C   FIELD 09w01 FRMORM: Frame overrun mask
+0x400406EC C   FIELD 10w01 DTERRM: Data toggle error mask
+0x400406F0 B  REGISTER TSIZ15 (rw): OTG_HS host channel-11 transfer size register
+0x400406F0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400406F0 C   FIELD 19w10 PKTCNT: Packet count
+0x400406F0 C   FIELD 29w02 DPID: Data PID
+0x400406F4 B  REGISTER DMA15 (rw): OTG_HS host channel-0 DMA address register
+0x400406F4 C   FIELD 00w32 DMAADDR: DMA address
 0x40040800 A PERIPHERAL OTG1_HS_DEVICE
 0x40040800 B  REGISTER DCFG (rw): OTG_HS device configuration register
 0x40040800 C   FIELD 00w02 DSPD: Device speed
@@ -11391,13 +11418,36 @@
 0x4004083C B  REGISTER DEACHINTMSK (rw): OTG_HS device each endpoint interrupt register mask
 0x4004083C C   FIELD 01w01 IEP1INTM: IN Endpoint 1 interrupt mask bit
 0x4004083C C   FIELD 17w01 OEP1INTM: OUT Endpoint 1 interrupt mask bit
-0x40040900 B  REGISTER DIEPCTL0: OTG device endpoint-0 control register
+0x40040844 B  REGISTER DIEPEACHMSK1 (rw): 
+0x40040844 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
+0x40040844 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
+0x40040844 C   FIELD 02w01 AHBERRM: AHB error mask
+0x40040844 C   FIELD 03w01 TOM: Timeout condition mask (Non-isochronous endpoints)
+0x40040844 C   FIELD 04w01 ITTXFEMSK: IN token received when TxFIFO empty mask
+0x40040844 C   FIELD 06w01 INEPNEM: IN endpoint NAK effective mask
+0x40040844 C   FIELD 08w01 TXFURM: FIFO underrun mask
+0x40040844 C   FIELD 09w01 BNAM: BNA interrupt mask
+0x40040844 C   FIELD 13w01 NAKM: NAK interrupt mask
+0x40040884 B  REGISTER DOEPEACHMSK1 (rw): 
+0x40040884 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
+0x40040884 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
+0x40040884 C   FIELD 02w01 AHBERRM: AHB error mask
+0x40040884 C   FIELD 03w01 STUPM: SETUP phase done mask
+0x40040884 C   FIELD 04w01 OTEPDM: OUT token received when endpoint disabled mask
+0x40040884 C   FIELD 06w01 B2BSTUPM: Back-to-back SETUP packets received mask
+0x40040884 C   FIELD 08w01 OUTPKTERRM: Out packet error mask
+0x40040884 C   FIELD 09w01 BNAM: BNA interrupt mask
+0x40040884 C   FIELD 12w01 BERRM: Babble error interrupt mask
+0x40040884 C   FIELD 13w01 NAKMSK: NAK interrupt mask
+0x40040884 C   FIELD 14w01 NYETMSK: NYET interrupt mask
+0x40040900 B  CLUSTER DIEP0: Device IN endpoint 0
+0x40040900 B  REGISTER CTL: OTG device endpoint-0 control register
 0x40040900 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040900 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040900 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40040900 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040900 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40040900 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040900 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040900 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40040900 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040900 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11405,7 +11455,7 @@
 0x40040900 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040900 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040900 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040908 B  REGISTER DIEPINT0: OTG device endpoint-0 interrupt register
+0x40040908 B  REGISTER INT: OTG device endpoint-0 interrupt register
 0x40040908 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40040908 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40040908 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11417,20 +11467,21 @@
 0x40040908 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40040908 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40040908 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40040910 B  REGISTER DIEPTSIZ0 (rw): OTG_HS device IN endpoint 0 transfer size register
+0x40040910 B  REGISTER TSIZ (rw): OTG_HS device IN endpoint 0 transfer size register
 0x40040910 C   FIELD 00w07 XFRSIZ: Transfer size
 0x40040910 C   FIELD 19w02 PKTCNT: Packet count
-0x40040914 B  REGISTER DIEPDMA1 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040914 B  REGISTER DMA (rw): OTG_HS device endpoint-0 DMA address register
 0x40040914 C   FIELD 00w32 DMAADDR: DMA address
-0x40040918 B  REGISTER DTXFSTS0 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40040918 B  REGISTER TXFSTS (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40040918 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40040920 B  REGISTER DIEPCTL1: OTG device endpoint-1 control register
+0x40040920 B  CLUSTER DIEP1: Device IN endpoint X
+0x40040920 B  REGISTER CTL1: OTG device endpoint-1 control register
 0x40040920 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040920 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040920 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40040920 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040920 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40040920 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040920 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040920 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40040920 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040920 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11438,7 +11489,7 @@
 0x40040920 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040920 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040920 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040928 B  REGISTER DIEPINT1: OTG device endpoint-1 interrupt register
+0x40040928 B  REGISTER INT1: OTG device endpoint-1 interrupt register
 0x40040928 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40040928 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40040928 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11450,21 +11501,22 @@
 0x40040928 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40040928 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40040928 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40040930 B  REGISTER DIEPTSIZ1 (rw): OTG_HS device endpoint transfer size register
+0x40040930 B  REGISTER TSIZ1 (rw): OTG_HS device endpoint transfer size register
 0x40040930 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040930 C   FIELD 19w10 PKTCNT: Packet count
 0x40040930 C   FIELD 29w02 MCNT: Multi count
-0x40040934 B  REGISTER DIEPDMA2 (rw): OTG_HS device endpoint-2 DMA address register
+0x40040934 B  REGISTER DMA1 (rw): OTG_HS device endpoint-1 DMA address register
 0x40040934 C   FIELD 00w32 DMAADDR: DMA address
-0x40040938 B  REGISTER DTXFSTS1 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40040938 B  REGISTER TXFSTS1 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40040938 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40040940 B  REGISTER DIEPCTL2: OTG device endpoint-2 control register
+0x40040940 B  CLUSTER DIEP2: Device IN endpoint X
+0x40040940 B  REGISTER CTL2: OTG device endpoint-1 control register
 0x40040940 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040940 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040940 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40040940 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040940 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40040940 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040940 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040940 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40040940 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040940 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11472,7 +11524,7 @@
 0x40040940 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040940 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040940 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040948 B  REGISTER DIEPINT2: OTG device endpoint-2 interrupt register
+0x40040948 B  REGISTER INT2: OTG device endpoint-1 interrupt register
 0x40040948 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40040948 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40040948 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11484,21 +11536,22 @@
 0x40040948 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40040948 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40040948 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40040950 B  REGISTER DIEPTSIZ2 (rw): OTG_HS device endpoint transfer size register
+0x40040950 B  REGISTER TSIZ2 (rw): OTG_HS device endpoint transfer size register
 0x40040950 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040950 C   FIELD 19w10 PKTCNT: Packet count
 0x40040950 C   FIELD 29w02 MCNT: Multi count
-0x40040954 B  REGISTER DIEPDMA3 (rw): OTG_HS device endpoint-3 DMA address register
+0x40040954 B  REGISTER DMA2 (rw): OTG_HS device endpoint-1 DMA address register
 0x40040954 C   FIELD 00w32 DMAADDR: DMA address
-0x40040958 B  REGISTER DTXFSTS2 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40040958 B  REGISTER TXFSTS2 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40040958 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40040960 B  REGISTER DIEPCTL3: OTG device endpoint-3 control register
+0x40040960 B  CLUSTER DIEP3: Device IN endpoint X
+0x40040960 B  REGISTER CTL3: OTG device endpoint-1 control register
 0x40040960 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040960 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040960 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40040960 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040960 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40040960 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040960 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040960 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40040960 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040960 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11506,7 +11559,7 @@
 0x40040960 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040960 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040960 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040968 B  REGISTER DIEPINT3: OTG device endpoint-3 interrupt register
+0x40040968 B  REGISTER INT3: OTG device endpoint-1 interrupt register
 0x40040968 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40040968 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40040968 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11518,21 +11571,22 @@
 0x40040968 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40040968 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40040968 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40040970 B  REGISTER DIEPTSIZ3 (rw): OTG_HS device endpoint transfer size register
+0x40040970 B  REGISTER TSIZ3 (rw): OTG_HS device endpoint transfer size register
 0x40040970 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040970 C   FIELD 19w10 PKTCNT: Packet count
 0x40040970 C   FIELD 29w02 MCNT: Multi count
-0x40040974 B  REGISTER DIEPDMA4 (rw): OTG_HS device endpoint-4 DMA address register
+0x40040974 B  REGISTER DMA3 (rw): OTG_HS device endpoint-1 DMA address register
 0x40040974 C   FIELD 00w32 DMAADDR: DMA address
-0x40040978 B  REGISTER DTXFSTS3 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40040978 B  REGISTER TXFSTS3 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40040978 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40040980 B  REGISTER DIEPCTL4: OTG device endpoint-4 control register
+0x40040980 B  CLUSTER DIEP4: Device IN endpoint X
+0x40040980 B  REGISTER CTL4: OTG device endpoint-1 control register
 0x40040980 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040980 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040980 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40040980 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040980 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40040980 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040980 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040980 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40040980 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040980 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11540,7 +11594,7 @@
 0x40040980 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040980 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040980 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040988 B  REGISTER DIEPINT4: OTG device endpoint-4 interrupt register
+0x40040988 B  REGISTER INT4: OTG device endpoint-1 interrupt register
 0x40040988 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40040988 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40040988 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11552,38 +11606,31 @@
 0x40040988 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40040988 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40040988 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40040990 B  REGISTER DIEPTSIZ4 (rw): OTG_HS device endpoint transfer size register
+0x40040990 B  REGISTER TSIZ4 (rw): OTG_HS device endpoint transfer size register
 0x40040990 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040990 C   FIELD 19w10 PKTCNT: Packet count
 0x40040990 C   FIELD 29w02 MCNT: Multi count
-0x40040994 B  REGISTER DIEPDMA5 (rw): OTG_HS device endpoint-5 DMA address register
+0x40040994 B  REGISTER DMA4 (rw): OTG_HS device endpoint-1 DMA address register
 0x40040994 C   FIELD 00w32 DMAADDR: DMA address
-0x40040998 B  REGISTER DTXFSTS4 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40040998 B  REGISTER TXFSTS4 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40040998 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400409A0 B  REGISTER DIEPCTL5: OTG device endpoint-5 control register
-0x400409A0 B  REGISTER DIEPTSIZ6 (rw): OTG_HS device endpoint transfer size register
+0x400409A0 B  CLUSTER DIEP5: Device IN endpoint X
+0x400409A0 B  REGISTER CTL5: OTG device endpoint-1 control register
 0x400409A0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x400409A0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400409A0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x400409A0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x400409A0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x400409A0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400409A0 C   FIELD 19w10 PKTCNT: Packet count
-0x400409A0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x400409A0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x400409A0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x400409A0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x400409A0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x400409A0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
 0x400409A0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x400409A0 C   FIELD 29w02 MCNT: Multi count
 0x400409A0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x400409A0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400409A4 B  REGISTER DTXFSTS6 (rw): OTG_HS device IN endpoint transmit FIFO status register
-0x400409A4 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400409A8 B  REGISTER DIEPINT5: OTG device endpoint-5 interrupt register
-0x400409A8 B  REGISTER DIEPTSIZ7 (rw): OTG_HS device endpoint transfer size register
+0x400409A8 B  REGISTER INT5: OTG device endpoint-1 interrupt register
 0x400409A8 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
-0x400409A8 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400409A8 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x400409A8 C   FIELD 03w01 TOC (rw): Timeout condition
 0x400409A8 C   FIELD 04w01 ITTXFE (rw): IN token received when TxFIFO is empty
@@ -11594,23 +11641,22 @@
 0x400409A8 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x400409A8 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x400409A8 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x400409A8 C   FIELD 19w10 PKTCNT: Packet count
-0x400409A8 C   FIELD 29w02 MCNT: Multi count
-0x400409AC B  REGISTER DTXFSTS7 (rw): OTG_HS device IN endpoint transmit FIFO status register
-0x400409AC C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400409B0 B  REGISTER DIEPTSIZ5 (rw): OTG_HS device endpoint transfer size register
+0x400409B0 B  REGISTER TSIZ5 (rw): OTG_HS device endpoint transfer size register
 0x400409B0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400409B0 C   FIELD 19w10 PKTCNT: Packet count
 0x400409B0 C   FIELD 29w02 MCNT: Multi count
-0x400409B8 B  REGISTER DTXFSTS5 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x400409B4 B  REGISTER DMA5 (rw): OTG_HS device endpoint-1 DMA address register
+0x400409B4 C   FIELD 00w32 DMAADDR: DMA address
+0x400409B8 B  REGISTER TXFSTS5 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x400409B8 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400409C0 B  REGISTER DIEPCTL6: OTG device endpoint-6 control register
+0x400409C0 B  CLUSTER DIEP6: Device IN endpoint X
+0x400409C0 B  REGISTER CTL6: OTG device endpoint-1 control register
 0x400409C0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x400409C0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x400409C0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x400409C0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x400409C0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400409C0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x400409C0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x400409C0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x400409C0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x400409C0 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11618,7 +11664,7 @@
 0x400409C0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x400409C0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x400409C0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400409C8 B  REGISTER DIEPINT6: OTG device endpoint-6 interrupt register
+0x400409C8 B  REGISTER INT6: OTG device endpoint-1 interrupt register
 0x400409C8 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x400409C8 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x400409C8 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11630,13 +11676,22 @@
 0x400409C8 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x400409C8 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x400409C8 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x400409E0 B  REGISTER DIEPCTL7: OTG device endpoint-7 control register
+0x400409D0 B  REGISTER TSIZ6 (rw): OTG_HS device endpoint transfer size register
+0x400409D0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400409D0 C   FIELD 19w10 PKTCNT: Packet count
+0x400409D0 C   FIELD 29w02 MCNT: Multi count
+0x400409D4 B  REGISTER DMA6 (rw): OTG_HS device endpoint-1 DMA address register
+0x400409D4 C   FIELD 00w32 DMAADDR: DMA address
+0x400409D8 B  REGISTER TXFSTS6 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x400409D8 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
+0x400409E0 B  CLUSTER DIEP7: Device IN endpoint X
+0x400409E0 B  REGISTER CTL7: OTG device endpoint-1 control register
 0x400409E0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x400409E0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x400409E0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x400409E0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x400409E0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400409E0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x400409E0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x400409E0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x400409E0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x400409E0 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -11644,7 +11699,7 @@
 0x400409E0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x400409E0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x400409E0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400409E8 B  REGISTER DIEPINT7: OTG device endpoint-7 interrupt register
+0x400409E8 B  REGISTER INT7: OTG device endpoint-1 interrupt register
 0x400409E8 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x400409E8 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x400409E8 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -11656,203 +11711,298 @@
 0x400409E8 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x400409E8 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x400409E8 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40040B00 B  REGISTER DOEPCTL0: OTG_HS device control OUT endpoint 0 control register
+0x400409F0 B  REGISTER TSIZ7 (rw): OTG_HS device endpoint transfer size register
+0x400409F0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400409F0 C   FIELD 19w10 PKTCNT: Packet count
+0x400409F0 C   FIELD 29w02 MCNT: Multi count
+0x400409F4 B  REGISTER DMA7 (rw): OTG_HS device endpoint-1 DMA address register
+0x400409F4 C   FIELD 00w32 DMAADDR: DMA address
+0x400409F8 B  REGISTER TXFSTS7 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x400409F8 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
+0x40040A00 B  CLUSTER DIEP8: Device IN endpoint X
+0x40040A00 B  REGISTER CTL8: OTG device endpoint-1 control register
+0x40040A00 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
+0x40040A00 C   FIELD 15w01 USBAEP (rw): USB active endpoint
+0x40040A00 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
+0x40040A00 C   FIELD 17w01 NAKSTS (ro): NAK status
+0x40040A00 C   FIELD 18w02 EPTYP (rw): Endpoint type
+0x40040A00 C   FIELD 21w01 STALL (rw): STALL handshake
+0x40040A00 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
+0x40040A00 C   FIELD 26w01 CNAK (wo): Clear NAK
+0x40040A00 C   FIELD 27w01 SNAK (wo): Set NAK
+0x40040A00 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
+0x40040A00 C   FIELD 29w01 SODDFRM (wo): Set odd frame
+0x40040A00 C   FIELD 30w01 EPDIS (rw): Endpoint disable
+0x40040A00 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x40040A08 B  REGISTER INT8: OTG device endpoint-1 interrupt register
+0x40040A08 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
+0x40040A08 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
+0x40040A08 C   FIELD 03w01 TOC (rw): Timeout condition
+0x40040A08 C   FIELD 04w01 ITTXFE (rw): IN token received when TxFIFO is empty
+0x40040A08 C   FIELD 06w01 INEPNE (rw): IN endpoint NAK effective
+0x40040A08 C   FIELD 07w01 TXFE (ro): Transmit FIFO empty
+0x40040A08 C   FIELD 08w01 TXFIFOUDRN (rw): Transmit Fifo Underrun
+0x40040A08 C   FIELD 09w01 BNA (rw): Buffer not available interrupt
+0x40040A08 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
+0x40040A08 C   FIELD 12w01 BERR (rw): Babble error interrupt
+0x40040A08 C   FIELD 13w01 NAK (rw): NAK interrupt
+0x40040A10 B  REGISTER TSIZ8 (rw): OTG_HS device endpoint transfer size register
+0x40040A10 C   FIELD 00w19 XFRSIZ: Transfer size
+0x40040A10 C   FIELD 19w10 PKTCNT: Packet count
+0x40040A10 C   FIELD 29w02 MCNT: Multi count
+0x40040A14 B  REGISTER DMA8 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040A14 C   FIELD 00w32 DMAADDR: DMA address
+0x40040A18 B  REGISTER TXFSTS8 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40040A18 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
+0x40040B00 B  CLUSTER DOEP0: Device OUT endpoint 0
+0x40040B00 B  REGISTER CTL: OTG_HS device control OUT endpoint 0 control register
 0x40040B00 C   FIELD 00w02 MPSIZ (ro): Maximum packet size
 0x40040B00 C   FIELD 15w01 USBAEP (ro): USB active endpoint
 0x40040B00 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040B00 C   FIELD 18w02 EPTYP (ro): Endpoint type
 0x40040B00 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040B00 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040B00 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040B00 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040B00 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040B00 C   FIELD 30w01 EPDIS (ro): Endpoint disable
-0x40040B00 C   FIELD 31w01 EPENA (wo): Endpoint enable
-0x40040B08 B  REGISTER DOEPINT0 (rw): OTG_HS device endpoint-0 interrupt register
+0x40040B00 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x40040B08 B  REGISTER INT (rw): OTG_HS device endpoint-0 interrupt register
 0x40040B08 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040B08 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040B08 C   FIELD 03w01 STUP: SETUP phase done
 0x40040B08 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040B08 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040B08 C   FIELD 14w01 NYET: NYET interrupt
-0x40040B10 B  REGISTER DOEPTSIZ0 (rw): OTG_HS device endpoint-0 transfer size register
+0x40040B10 B  REGISTER TSIZ (rw): OTG_HS device endpoint-0 transfer size register
 0x40040B10 C   FIELD 00w07 XFRSIZ: Transfer size
 0x40040B10 C   FIELD 19w01 PKTCNT: Packet count
 0x40040B10 C   FIELD 29w02 STUPCNT: SETUP packet count
-0x40040B20 B  REGISTER DOEPCTL1: OTG device endpoint-1 control register
+0x40040B14 B  REGISTER DMA (rw): OTG_HS device endpoint-0 DMA address register
+0x40040B14 C   FIELD 00w32 DMAADDR: DMA address
+0x40040B20 B  CLUSTER DOEP1: Device IN endpoint X
+0x40040B20 B  REGISTER CTL1: OTG device endpoint-1 control register
 0x40040B20 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040B20 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040B20 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040B20 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040B20 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040B20 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040B20 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040B20 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040B20 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040B20 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040B20 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040B20 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040B20 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040B20 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040B28 B  REGISTER DOEPINT1 (rw): OTG_HS device endpoint-1 interrupt register
+0x40040B28 B  REGISTER INT1 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040B28 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040B28 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040B28 C   FIELD 03w01 STUP: SETUP phase done
 0x40040B28 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040B28 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040B28 C   FIELD 14w01 NYET: NYET interrupt
-0x40040B30 B  REGISTER DOEPTSIZ1 (rw): OTG_HS device endpoint-1 transfer size register
+0x40040B30 B  REGISTER TSIZ1 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040B30 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040B30 C   FIELD 19w10 PKTCNT: Packet count
 0x40040B30 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40040B40 B  REGISTER DOEPCTL2: OTG device endpoint-2 control register
+0x40040B34 B  REGISTER DMA1 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040B34 C   FIELD 00w32 DMAADDR: DMA address
+0x40040B40 B  CLUSTER DOEP2: Device IN endpoint X
+0x40040B40 B  REGISTER CTL2: OTG device endpoint-1 control register
 0x40040B40 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040B40 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040B40 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040B40 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040B40 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040B40 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040B40 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040B40 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040B40 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040B40 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040B40 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040B40 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040B40 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040B40 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040B48 B  REGISTER DOEPINT2 (rw): OTG_HS device endpoint-2 interrupt register
+0x40040B48 B  REGISTER INT2 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040B48 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040B48 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040B48 C   FIELD 03w01 STUP: SETUP phase done
 0x40040B48 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040B48 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040B48 C   FIELD 14w01 NYET: NYET interrupt
-0x40040B50 B  REGISTER DOEPTSIZ2 (rw): OTG_HS device endpoint-2 transfer size register
+0x40040B50 B  REGISTER TSIZ2 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040B50 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040B50 C   FIELD 19w10 PKTCNT: Packet count
 0x40040B50 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40040B60 B  REGISTER DOEPCTL3: OTG device endpoint-3 control register
+0x40040B54 B  REGISTER DMA2 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040B54 C   FIELD 00w32 DMAADDR: DMA address
+0x40040B60 B  CLUSTER DOEP3: Device IN endpoint X
+0x40040B60 B  REGISTER CTL3: OTG device endpoint-1 control register
 0x40040B60 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040B60 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040B60 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040B60 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040B60 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040B60 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040B60 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040B60 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040B60 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040B60 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040B60 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040B60 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040B60 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040B60 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040B68 B  REGISTER DOEPINT3 (rw): OTG_HS device endpoint-3 interrupt register
+0x40040B68 B  REGISTER INT3 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040B68 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040B68 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040B68 C   FIELD 03w01 STUP: SETUP phase done
 0x40040B68 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040B68 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040B68 C   FIELD 14w01 NYET: NYET interrupt
-0x40040B70 B  REGISTER DOEPTSIZ3 (rw): OTG_HS device endpoint-3 transfer size register
+0x40040B70 B  REGISTER TSIZ3 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040B70 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040B70 C   FIELD 19w10 PKTCNT: Packet count
 0x40040B70 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40040B80 B  REGISTER DOEPCTL4: OTG device endpoint-4 control register
+0x40040B74 B  REGISTER DMA3 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040B74 C   FIELD 00w32 DMAADDR: DMA address
+0x40040B80 B  CLUSTER DOEP4: Device IN endpoint X
+0x40040B80 B  REGISTER CTL4: OTG device endpoint-1 control register
 0x40040B80 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040B80 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040B80 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040B80 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040B80 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040B80 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040B80 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040B80 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040B80 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040B80 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040B80 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040B80 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040B80 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040B80 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040B88 B  REGISTER DOEPINT4 (rw): OTG_HS device endpoint-4 interrupt register
+0x40040B88 B  REGISTER INT4 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040B88 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040B88 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040B88 C   FIELD 03w01 STUP: SETUP phase done
 0x40040B88 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040B88 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040B88 C   FIELD 14w01 NYET: NYET interrupt
-0x40040B90 B  REGISTER DOEPTSIZ4 (rw): OTG_HS device endpoint-4 transfer size register
+0x40040B90 B  REGISTER TSIZ4 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040B90 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040B90 C   FIELD 19w10 PKTCNT: Packet count
 0x40040B90 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40040BA0 B  REGISTER DOEPCTL5: OTG device endpoint-5 control register
+0x40040B94 B  REGISTER DMA4 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040B94 C   FIELD 00w32 DMAADDR: DMA address
+0x40040BA0 B  CLUSTER DOEP5: Device IN endpoint X
+0x40040BA0 B  REGISTER CTL5: OTG device endpoint-1 control register
 0x40040BA0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040BA0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040BA0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040BA0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040BA0 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040BA0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040BA0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040BA0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040BA0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040BA0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040BA0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040BA0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040BA0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040BA0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040BA8 B  REGISTER DOEPINT5 (rw): OTG_HS device endpoint-5 interrupt register
+0x40040BA8 B  REGISTER INT5 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040BA8 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040BA8 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040BA8 C   FIELD 03w01 STUP: SETUP phase done
 0x40040BA8 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040BA8 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040BA8 C   FIELD 14w01 NYET: NYET interrupt
-0x40040BB0 B  REGISTER DOEPTSIZ5 (rw): OTG_HS device endpoint-5 transfer size register
+0x40040BB0 B  REGISTER TSIZ5 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040BB0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040BB0 C   FIELD 19w10 PKTCNT: Packet count
 0x40040BB0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40040BC0 B  REGISTER DOEPCTL6: OTG device endpoint-6 control register
+0x40040BB4 B  REGISTER DMA5 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040BB4 C   FIELD 00w32 DMAADDR: DMA address
+0x40040BC0 B  CLUSTER DOEP6: Device IN endpoint X
+0x40040BC0 B  REGISTER CTL6: OTG device endpoint-1 control register
 0x40040BC0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040BC0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040BC0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040BC0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040BC0 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040BC0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040BC0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040BC0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040BC0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040BC0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040BC0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040BC0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040BC0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040BC0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040BC8 B  REGISTER DOEPINT6 (rw): OTG_HS device endpoint-6 interrupt register
+0x40040BC8 B  REGISTER INT6 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040BC8 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040BC8 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040BC8 C   FIELD 03w01 STUP: SETUP phase done
 0x40040BC8 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040BC8 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040BC8 C   FIELD 14w01 NYET: NYET interrupt
-0x40040BD0 B  REGISTER DOEPTSIZ6 (rw): OTG_HS device endpoint-6 transfer size register
+0x40040BD0 B  REGISTER TSIZ6 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040BD0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040BD0 C   FIELD 19w10 PKTCNT: Packet count
 0x40040BD0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40040BE0 B  REGISTER DOEPCTL7: OTG device endpoint-7 control register
+0x40040BD4 B  REGISTER DMA6 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040BD4 C   FIELD 00w32 DMAADDR: DMA address
+0x40040BE0 B  CLUSTER DOEP7: Device IN endpoint X
+0x40040BE0 B  REGISTER CTL7: OTG device endpoint-1 control register
 0x40040BE0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40040BE0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40040BE0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40040BE0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40040BE0 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40040BE0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40040BE0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40040BE0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40040BE0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40040BE0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40040BE0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40040BE0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40040BE0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40040BE0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40040BE8 B  REGISTER DOEPINT7 (rw): OTG_HS device endpoint-7 interrupt register
+0x40040BE8 B  REGISTER INT7 (rw): OTG_HS device endpoint-1 interrupt register
 0x40040BE8 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40040BE8 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40040BE8 C   FIELD 03w01 STUP: SETUP phase done
 0x40040BE8 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40040BE8 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40040BE8 C   FIELD 14w01 NYET: NYET interrupt
-0x40040BF0 B  REGISTER DOEPTSIZ7 (rw): OTG_HS device endpoint-7 transfer size register
+0x40040BF0 B  REGISTER TSIZ7 (rw): OTG_HS device endpoint-1 transfer size register
 0x40040BF0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40040BF0 C   FIELD 19w10 PKTCNT: Packet count
 0x40040BF0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
+0x40040BF4 B  REGISTER DMA7 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040BF4 C   FIELD 00w32 DMAADDR: DMA address
+0x40040C00 B  CLUSTER DOEP8: Device IN endpoint X
+0x40040C00 B  REGISTER CTL8: OTG device endpoint-1 control register
+0x40040C00 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
+0x40040C00 C   FIELD 15w01 USBAEP (rw): USB active endpoint
+0x40040C00 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
+0x40040C00 C   FIELD 17w01 NAKSTS (ro): NAK status
+0x40040C00 C   FIELD 18w02 EPTYP (rw): Endpoint type
+0x40040C00 C   FIELD 20w01 SNPM (rw): Snoop mode
+0x40040C00 C   FIELD 21w01 STALL (rw): STALL handshake
+0x40040C00 C   FIELD 26w01 CNAK (wo): Clear NAK
+0x40040C00 C   FIELD 27w01 SNAK (wo): Set NAK
+0x40040C00 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
+0x40040C00 C   FIELD 29w01 SODDFRM (wo): Set odd frame
+0x40040C00 C   FIELD 30w01 EPDIS (rw): Endpoint disable
+0x40040C00 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x40040C08 B  REGISTER INT8 (rw): OTG_HS device endpoint-1 interrupt register
+0x40040C08 C   FIELD 00w01 XFRC: Transfer completed interrupt
+0x40040C08 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
+0x40040C08 C   FIELD 03w01 STUP: SETUP phase done
+0x40040C08 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
+0x40040C08 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
+0x40040C08 C   FIELD 14w01 NYET: NYET interrupt
+0x40040C10 B  REGISTER TSIZ8 (rw): OTG_HS device endpoint-1 transfer size register
+0x40040C10 C   FIELD 00w19 XFRSIZ: Transfer size
+0x40040C10 C   FIELD 19w10 PKTCNT: Packet count
+0x40040C10 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
+0x40040C14 B  REGISTER DMA8 (rw): OTG_HS device endpoint-1 DMA address register
+0x40040C14 C   FIELD 00w32 DMAADDR: DMA address
 0x40040E00 A PERIPHERAL OTG1_HS_PWRCLK
 0x40040E00 B  REGISTER PCGCR (rw): Power and clock gating control register
 0x40040E00 C   FIELD 00w01 STPPCLK: Stop PHY clock
@@ -11862,6 +12012,12 @@
 0x40080000 B  REGISTER GOTGCTL: OTG_HS control and status register
 0x40080000 C   FIELD 00w01 SRQSCS (ro): Session request success
 0x40080000 C   FIELD 01w01 SRQ (rw): Session request
+0x40080000 C   FIELD 02w01 VBVALOEN (rw): V_BUS valid override enable
+0x40080000 C   FIELD 03w01 VBVALOVAL (rw): V_BUS valid override value
+0x40080000 C   FIELD 04w01 AVALOEN (rw): A-peripheral session valid override enable
+0x40080000 C   FIELD 05w01 AVALOVAL (rw): A-peripheral session valid override value
+0x40080000 C   FIELD 06w01 BVALOEN (rw): B-peripheral session valid override enable
+0x40080000 C   FIELD 07w01 BVALOVAL (rw): B-peripheral session valid override value
 0x40080000 C   FIELD 08w01 HNGSCS (ro): Host negotiation success
 0x40080000 C   FIELD 09w01 HNPRQ (rw): HNP request
 0x40080000 C   FIELD 10w01 HSHNPEN (rw): Host set HNP enable
@@ -11871,6 +12027,8 @@
 0x40080000 C   FIELD 17w01 DBCT (ro): Long/short debounce time
 0x40080000 C   FIELD 18w01 ASVLD (ro): A-session valid
 0x40080000 C   FIELD 19w01 BSVLD (ro): B-session valid
+0x40080000 C   FIELD 20w01 OTGVER (rw): OTG version
+0x40080000 C   FIELD 21w01 CURMOD (ro): Current mode of operation
 0x40080004 B  REGISTER GOTGINT (rw): OTG_HS interrupt register
 0x40080004 C   FIELD 02w01 SEDET: Session end detected
 0x40080004 C   FIELD 08w01 SRSSCHG: Session request success status change
@@ -11991,13 +12149,13 @@
 0x40080020 C   FIELD 21w04 FRMNUM: Frame number
 0x40080024 B  REGISTER GRXFSIZ (rw): OTG_HS Receive FIFO size register
 0x40080024 C   FIELD 00w16 RXFD: RxFIFO depth
-0x40080028 B  REGISTER DIEPTXF0_Device (rw): Endpoint 0 transmit FIFO size (peripheral mode)
-0x40080028 B  REGISTER HNPTXFSIZ_Host (rw): OTG_HS nonperiodic transmit FIFO size register (host mode)
+0x40080028 B  REGISTER DIEPTXF0 (rw): Endpoint 0 transmit FIFO size (peripheral mode)
+0x40080028 B  REGISTER HNPTXFSIZ (rw): OTG_HS nonperiodic transmit FIFO size register (host mode)
 0x40080028 C   FIELD 00w16 NPTXFSA: Nonperiodic transmit RAM start address
 0x40080028 C   FIELD 00w16 TX0FSA: Endpoint 0 transmit RAM start address
 0x40080028 C   FIELD 16w16 NPTXFD: Nonperiodic TxFIFO depth
 0x40080028 C   FIELD 16w16 TX0FD: Endpoint 0 TxFIFO depth
-0x4008002C B  REGISTER GNPTXSTS (ro): OTG_HS nonperiodic transmit FIFO/queue status register
+0x4008002C B  REGISTER HNPTXSTS (ro): OTG_HS nonperiodic transmit FIFO/queue status register
 0x4008002C C   FIELD 00w16 NPTXFSAV: Nonperiodic TxFIFO space available
 0x4008002C C   FIELD 16w08 NPTQXSAV: Nonperiodic transmit request queue space available
 0x4008002C C   FIELD 24w07 NPTXQTOP: Top of the nonperiodic transmit request queue
@@ -12039,21 +12197,24 @@
 0x40080108 B  REGISTER DIEPTXF2 (rw): OTG_HS device IN endpoint transmit FIFO size register
 0x40080108 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x40080108 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x4008011C B  REGISTER DIEPTXF3 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x4008010C B  REGISTER DIEPTXF3 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x4008010C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x4008010C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x40080110 B  REGISTER DIEPTXF4 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40080110 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40080110 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x40080114 B  REGISTER DIEPTXF5 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40080114 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40080114 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x40080118 B  REGISTER DIEPTXF6 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40080118 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40080118 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
+0x4008011C B  REGISTER DIEPTXF7 (rw): OTG_HS device IN endpoint transmit FIFO size register
 0x4008011C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x4008011C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x40080120 B  REGISTER DIEPTXF4 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40080120 B  REGISTER DIEPTXF8 (rw): OTG_HS device IN endpoint transmit FIFO size register
 0x40080120 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x40080120 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x40080124 B  REGISTER DIEPTXF5 (rw): OTG_HS device IN endpoint transmit FIFO size register
-0x40080124 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
-0x40080124 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x40080128 B  REGISTER DIEPTXF6 (rw): OTG_HS device IN endpoint transmit FIFO size register
-0x40080128 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
-0x40080128 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x4008012C B  REGISTER DIEPTXF7 (rw): OTG_HS device IN endpoint transmit FIFO size register
-0x4008012C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
-0x4008012C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x40080400 A PERIPHERAL OTG2_HS_HOST
 0x40080400 B  REGISTER HCFG: OTG_HS host configuration register
 0x40080400 C   FIELD 00w02 FSLSPCS (rw): FS/LS PHY clock select
@@ -12085,7 +12246,8 @@
 0x40080440 C   FIELD 12w01 PPWR (rw): Port power
 0x40080440 C   FIELD 13w04 PTCTL (rw): Port test control
 0x40080440 C   FIELD 17w02 PSPD (ro): Port speed
-0x40080500 B  REGISTER HCCHAR0 (rw): OTG_HS host channel-0 characteristics register
+0x40080500 B  CLUSTER HC0: Host channel
+0x40080500 B  REGISTER CHAR0 (rw): OTG_HS host channel-0 characteristics register
 0x40080500 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080500 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080500 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12096,13 +12258,13 @@
 0x40080500 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080500 C   FIELD 30w01 CHDIS: Channel disable
 0x40080500 C   FIELD 31w01 CHENA: Channel enable
-0x40080504 B  REGISTER HCSPLT0 (rw): OTG_HS host channel-0 split control register
+0x40080504 B  REGISTER SPLT0 (rw): OTG_HS host channel-0 split control register
 0x40080504 C   FIELD 00w07 PRTADDR: Port address
 0x40080504 C   FIELD 07w07 HUBADDR: Hub address
 0x40080504 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080504 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080504 C   FIELD 31w01 SPLITEN: Split enable
-0x40080508 B  REGISTER HCINT0 (rw): OTG_HS host channel-11 interrupt register
+0x40080508 B  REGISTER INT0 (rw): OTG_HS host channel-11 interrupt register
 0x40080508 C   FIELD 00w01 XFRC: Transfer completed
 0x40080508 C   FIELD 01w01 CHH: Channel halted
 0x40080508 C   FIELD 02w01 AHBERR: AHB error
@@ -12114,7 +12276,7 @@
 0x40080508 C   FIELD 08w01 BBERR: Babble error
 0x40080508 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080508 C   FIELD 10w01 DTERR: Data toggle error
-0x4008050C B  REGISTER HCINTMSK0 (rw): OTG_HS host channel-11 interrupt mask register
+0x4008050C B  REGISTER INTMSK0 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008050C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008050C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008050C C   FIELD 02w01 AHBERR: AHB error
@@ -12126,13 +12288,14 @@
 0x4008050C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008050C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008050C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080510 B  REGISTER HCTSIZ0 (rw): OTG_HS host channel-11 transfer size register
+0x40080510 B  REGISTER TSIZ0 (rw): OTG_HS host channel-11 transfer size register
 0x40080510 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080510 C   FIELD 19w10 PKTCNT: Packet count
 0x40080510 C   FIELD 29w02 DPID: Data PID
-0x40080514 B  REGISTER HCDMA0 (rw): OTG_HS host channel-0 DMA address register
+0x40080514 B  REGISTER DMA0 (rw): OTG_HS host channel-0 DMA address register
 0x40080514 C   FIELD 00w32 DMAADDR: DMA address
-0x40080520 B  REGISTER HCCHAR1 (rw): OTG_HS host channel-1 characteristics register
+0x40080520 B  CLUSTER HC1: Host channel
+0x40080520 B  REGISTER CHAR1 (rw): OTG_HS host channel-0 characteristics register
 0x40080520 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080520 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080520 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12143,13 +12306,13 @@
 0x40080520 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080520 C   FIELD 30w01 CHDIS: Channel disable
 0x40080520 C   FIELD 31w01 CHENA: Channel enable
-0x40080524 B  REGISTER HCSPLT1 (rw): OTG_HS host channel-1 split control register
+0x40080524 B  REGISTER SPLT1 (rw): OTG_HS host channel-0 split control register
 0x40080524 C   FIELD 00w07 PRTADDR: Port address
 0x40080524 C   FIELD 07w07 HUBADDR: Hub address
 0x40080524 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080524 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080524 C   FIELD 31w01 SPLITEN: Split enable
-0x40080528 B  REGISTER HCINT1 (rw): OTG_HS host channel-1 interrupt register
+0x40080528 B  REGISTER INT1 (rw): OTG_HS host channel-11 interrupt register
 0x40080528 C   FIELD 00w01 XFRC: Transfer completed
 0x40080528 C   FIELD 01w01 CHH: Channel halted
 0x40080528 C   FIELD 02w01 AHBERR: AHB error
@@ -12161,7 +12324,7 @@
 0x40080528 C   FIELD 08w01 BBERR: Babble error
 0x40080528 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080528 C   FIELD 10w01 DTERR: Data toggle error
-0x4008052C B  REGISTER HCINTMSK1 (rw): OTG_HS host channel-1 interrupt mask register
+0x4008052C B  REGISTER INTMSK1 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008052C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008052C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008052C C   FIELD 02w01 AHBERR: AHB error
@@ -12173,13 +12336,14 @@
 0x4008052C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008052C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008052C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080530 B  REGISTER HCTSIZ1 (rw): OTG_HS host channel-1 transfer size register
+0x40080530 B  REGISTER TSIZ1 (rw): OTG_HS host channel-11 transfer size register
 0x40080530 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080530 C   FIELD 19w10 PKTCNT: Packet count
 0x40080530 C   FIELD 29w02 DPID: Data PID
-0x40080534 B  REGISTER HCDMA1 (rw): OTG_HS host channel-1 DMA address register
+0x40080534 B  REGISTER DMA1 (rw): OTG_HS host channel-0 DMA address register
 0x40080534 C   FIELD 00w32 DMAADDR: DMA address
-0x40080540 B  REGISTER HCCHAR2 (rw): OTG_HS host channel-2 characteristics register
+0x40080540 B  CLUSTER HC2: Host channel
+0x40080540 B  REGISTER CHAR2 (rw): OTG_HS host channel-0 characteristics register
 0x40080540 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080540 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080540 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12190,13 +12354,13 @@
 0x40080540 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080540 C   FIELD 30w01 CHDIS: Channel disable
 0x40080540 C   FIELD 31w01 CHENA: Channel enable
-0x40080544 B  REGISTER HCSPLT2 (rw): OTG_HS host channel-2 split control register
+0x40080544 B  REGISTER SPLT2 (rw): OTG_HS host channel-0 split control register
 0x40080544 C   FIELD 00w07 PRTADDR: Port address
 0x40080544 C   FIELD 07w07 HUBADDR: Hub address
 0x40080544 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080544 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080544 C   FIELD 31w01 SPLITEN: Split enable
-0x40080548 B  REGISTER HCINT2 (rw): OTG_HS host channel-2 interrupt register
+0x40080548 B  REGISTER INT2 (rw): OTG_HS host channel-11 interrupt register
 0x40080548 C   FIELD 00w01 XFRC: Transfer completed
 0x40080548 C   FIELD 01w01 CHH: Channel halted
 0x40080548 C   FIELD 02w01 AHBERR: AHB error
@@ -12208,7 +12372,7 @@
 0x40080548 C   FIELD 08w01 BBERR: Babble error
 0x40080548 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080548 C   FIELD 10w01 DTERR: Data toggle error
-0x4008054C B  REGISTER HCINTMSK2 (rw): OTG_HS host channel-2 interrupt mask register
+0x4008054C B  REGISTER INTMSK2 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008054C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008054C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008054C C   FIELD 02w01 AHBERR: AHB error
@@ -12220,13 +12384,14 @@
 0x4008054C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008054C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008054C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080550 B  REGISTER HCTSIZ2 (rw): OTG_HS host channel-2 transfer size register
+0x40080550 B  REGISTER TSIZ2 (rw): OTG_HS host channel-11 transfer size register
 0x40080550 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080550 C   FIELD 19w10 PKTCNT: Packet count
 0x40080550 C   FIELD 29w02 DPID: Data PID
-0x40080554 B  REGISTER HCDMA2 (rw): OTG_HS host channel-2 DMA address register
+0x40080554 B  REGISTER DMA2 (rw): OTG_HS host channel-0 DMA address register
 0x40080554 C   FIELD 00w32 DMAADDR: DMA address
-0x40080560 B  REGISTER HCCHAR3 (rw): OTG_HS host channel-3 characteristics register
+0x40080560 B  CLUSTER HC3: Host channel
+0x40080560 B  REGISTER CHAR3 (rw): OTG_HS host channel-0 characteristics register
 0x40080560 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080560 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080560 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12237,13 +12402,13 @@
 0x40080560 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080560 C   FIELD 30w01 CHDIS: Channel disable
 0x40080560 C   FIELD 31w01 CHENA: Channel enable
-0x40080564 B  REGISTER HCSPLT3 (rw): OTG_HS host channel-3 split control register
+0x40080564 B  REGISTER SPLT3 (rw): OTG_HS host channel-0 split control register
 0x40080564 C   FIELD 00w07 PRTADDR: Port address
 0x40080564 C   FIELD 07w07 HUBADDR: Hub address
 0x40080564 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080564 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080564 C   FIELD 31w01 SPLITEN: Split enable
-0x40080568 B  REGISTER HCINT3 (rw): OTG_HS host channel-3 interrupt register
+0x40080568 B  REGISTER INT3 (rw): OTG_HS host channel-11 interrupt register
 0x40080568 C   FIELD 00w01 XFRC: Transfer completed
 0x40080568 C   FIELD 01w01 CHH: Channel halted
 0x40080568 C   FIELD 02w01 AHBERR: AHB error
@@ -12255,7 +12420,7 @@
 0x40080568 C   FIELD 08w01 BBERR: Babble error
 0x40080568 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080568 C   FIELD 10w01 DTERR: Data toggle error
-0x4008056C B  REGISTER HCINTMSK3 (rw): OTG_HS host channel-3 interrupt mask register
+0x4008056C B  REGISTER INTMSK3 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008056C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008056C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008056C C   FIELD 02w01 AHBERR: AHB error
@@ -12267,13 +12432,14 @@
 0x4008056C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008056C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008056C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080570 B  REGISTER HCTSIZ3 (rw): OTG_HS host channel-3 transfer size register
+0x40080570 B  REGISTER TSIZ3 (rw): OTG_HS host channel-11 transfer size register
 0x40080570 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080570 C   FIELD 19w10 PKTCNT: Packet count
 0x40080570 C   FIELD 29w02 DPID: Data PID
-0x40080574 B  REGISTER HCDMA3 (rw): OTG_HS host channel-3 DMA address register
+0x40080574 B  REGISTER DMA3 (rw): OTG_HS host channel-0 DMA address register
 0x40080574 C   FIELD 00w32 DMAADDR: DMA address
-0x40080580 B  REGISTER HCCHAR4 (rw): OTG_HS host channel-4 characteristics register
+0x40080580 B  CLUSTER HC4: Host channel
+0x40080580 B  REGISTER CHAR4 (rw): OTG_HS host channel-0 characteristics register
 0x40080580 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080580 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080580 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12284,13 +12450,13 @@
 0x40080580 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080580 C   FIELD 30w01 CHDIS: Channel disable
 0x40080580 C   FIELD 31w01 CHENA: Channel enable
-0x40080584 B  REGISTER HCSPLT4 (rw): OTG_HS host channel-4 split control register
+0x40080584 B  REGISTER SPLT4 (rw): OTG_HS host channel-0 split control register
 0x40080584 C   FIELD 00w07 PRTADDR: Port address
 0x40080584 C   FIELD 07w07 HUBADDR: Hub address
 0x40080584 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080584 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080584 C   FIELD 31w01 SPLITEN: Split enable
-0x40080588 B  REGISTER HCINT4 (rw): OTG_HS host channel-4 interrupt register
+0x40080588 B  REGISTER INT4 (rw): OTG_HS host channel-11 interrupt register
 0x40080588 C   FIELD 00w01 XFRC: Transfer completed
 0x40080588 C   FIELD 01w01 CHH: Channel halted
 0x40080588 C   FIELD 02w01 AHBERR: AHB error
@@ -12302,7 +12468,7 @@
 0x40080588 C   FIELD 08w01 BBERR: Babble error
 0x40080588 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080588 C   FIELD 10w01 DTERR: Data toggle error
-0x4008058C B  REGISTER HCINTMSK4 (rw): OTG_HS host channel-4 interrupt mask register
+0x4008058C B  REGISTER INTMSK4 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008058C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008058C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008058C C   FIELD 02w01 AHBERR: AHB error
@@ -12314,13 +12480,14 @@
 0x4008058C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008058C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008058C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080590 B  REGISTER HCTSIZ4 (rw): OTG_HS host channel-4 transfer size register
+0x40080590 B  REGISTER TSIZ4 (rw): OTG_HS host channel-11 transfer size register
 0x40080590 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080590 C   FIELD 19w10 PKTCNT: Packet count
 0x40080590 C   FIELD 29w02 DPID: Data PID
-0x40080594 B  REGISTER HCDMA4 (rw): OTG_HS host channel-4 DMA address register
+0x40080594 B  REGISTER DMA4 (rw): OTG_HS host channel-0 DMA address register
 0x40080594 C   FIELD 00w32 DMAADDR: DMA address
-0x400805A0 B  REGISTER HCCHAR5 (rw): OTG_HS host channel-5 characteristics register
+0x400805A0 B  CLUSTER HC5: Host channel
+0x400805A0 B  REGISTER CHAR5 (rw): OTG_HS host channel-0 characteristics register
 0x400805A0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400805A0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400805A0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12331,13 +12498,13 @@
 0x400805A0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400805A0 C   FIELD 30w01 CHDIS: Channel disable
 0x400805A0 C   FIELD 31w01 CHENA: Channel enable
-0x400805A4 B  REGISTER HCSPLT5 (rw): OTG_HS host channel-5 split control register
+0x400805A4 B  REGISTER SPLT5 (rw): OTG_HS host channel-0 split control register
 0x400805A4 C   FIELD 00w07 PRTADDR: Port address
 0x400805A4 C   FIELD 07w07 HUBADDR: Hub address
 0x400805A4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400805A4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400805A4 C   FIELD 31w01 SPLITEN: Split enable
-0x400805A8 B  REGISTER HCINT5 (rw): OTG_HS host channel-5 interrupt register
+0x400805A8 B  REGISTER INT5 (rw): OTG_HS host channel-11 interrupt register
 0x400805A8 C   FIELD 00w01 XFRC: Transfer completed
 0x400805A8 C   FIELD 01w01 CHH: Channel halted
 0x400805A8 C   FIELD 02w01 AHBERR: AHB error
@@ -12349,7 +12516,7 @@
 0x400805A8 C   FIELD 08w01 BBERR: Babble error
 0x400805A8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400805A8 C   FIELD 10w01 DTERR: Data toggle error
-0x400805AC B  REGISTER HCINTMSK5 (rw): OTG_HS host channel-5 interrupt mask register
+0x400805AC B  REGISTER INTMSK5 (rw): OTG_HS host channel-11 interrupt mask register
 0x400805AC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400805AC C   FIELD 01w01 CHHM: Channel halted mask
 0x400805AC C   FIELD 02w01 AHBERR: AHB error
@@ -12361,13 +12528,14 @@
 0x400805AC C   FIELD 08w01 BBERRM: Babble error mask
 0x400805AC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400805AC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400805B0 B  REGISTER HCTSIZ5 (rw): OTG_HS host channel-5 transfer size register
+0x400805B0 B  REGISTER TSIZ5 (rw): OTG_HS host channel-11 transfer size register
 0x400805B0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400805B0 C   FIELD 19w10 PKTCNT: Packet count
 0x400805B0 C   FIELD 29w02 DPID: Data PID
-0x400805B4 B  REGISTER HCDMA5 (rw): OTG_HS host channel-5 DMA address register
+0x400805B4 B  REGISTER DMA5 (rw): OTG_HS host channel-0 DMA address register
 0x400805B4 C   FIELD 00w32 DMAADDR: DMA address
-0x400805C0 B  REGISTER HCCHAR6 (rw): OTG_HS host channel-6 characteristics register
+0x400805C0 B  CLUSTER HC6: Host channel
+0x400805C0 B  REGISTER CHAR6 (rw): OTG_HS host channel-0 characteristics register
 0x400805C0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400805C0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400805C0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12378,13 +12546,13 @@
 0x400805C0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400805C0 C   FIELD 30w01 CHDIS: Channel disable
 0x400805C0 C   FIELD 31w01 CHENA: Channel enable
-0x400805C4 B  REGISTER HCSPLT6 (rw): OTG_HS host channel-6 split control register
+0x400805C4 B  REGISTER SPLT6 (rw): OTG_HS host channel-0 split control register
 0x400805C4 C   FIELD 00w07 PRTADDR: Port address
 0x400805C4 C   FIELD 07w07 HUBADDR: Hub address
 0x400805C4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400805C4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400805C4 C   FIELD 31w01 SPLITEN: Split enable
-0x400805C8 B  REGISTER HCINT6 (rw): OTG_HS host channel-6 interrupt register
+0x400805C8 B  REGISTER INT6 (rw): OTG_HS host channel-11 interrupt register
 0x400805C8 C   FIELD 00w01 XFRC: Transfer completed
 0x400805C8 C   FIELD 01w01 CHH: Channel halted
 0x400805C8 C   FIELD 02w01 AHBERR: AHB error
@@ -12396,7 +12564,7 @@
 0x400805C8 C   FIELD 08w01 BBERR: Babble error
 0x400805C8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400805C8 C   FIELD 10w01 DTERR: Data toggle error
-0x400805CC B  REGISTER HCINTMSK6 (rw): OTG_HS host channel-6 interrupt mask register
+0x400805CC B  REGISTER INTMSK6 (rw): OTG_HS host channel-11 interrupt mask register
 0x400805CC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400805CC C   FIELD 01w01 CHHM: Channel halted mask
 0x400805CC C   FIELD 02w01 AHBERR: AHB error
@@ -12408,13 +12576,14 @@
 0x400805CC C   FIELD 08w01 BBERRM: Babble error mask
 0x400805CC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400805CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400805D0 B  REGISTER HCTSIZ6 (rw): OTG_HS host channel-6 transfer size register
+0x400805D0 B  REGISTER TSIZ6 (rw): OTG_HS host channel-11 transfer size register
 0x400805D0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400805D0 C   FIELD 19w10 PKTCNT: Packet count
 0x400805D0 C   FIELD 29w02 DPID: Data PID
-0x400805D4 B  REGISTER HCDMA6 (rw): OTG_HS host channel-6 DMA address register
+0x400805D4 B  REGISTER DMA6 (rw): OTG_HS host channel-0 DMA address register
 0x400805D4 C   FIELD 00w32 DMAADDR: DMA address
-0x400805E0 B  REGISTER HCCHAR7 (rw): OTG_HS host channel-7 characteristics register
+0x400805E0 B  CLUSTER HC7: Host channel
+0x400805E0 B  REGISTER CHAR7 (rw): OTG_HS host channel-0 characteristics register
 0x400805E0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400805E0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400805E0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12425,13 +12594,13 @@
 0x400805E0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400805E0 C   FIELD 30w01 CHDIS: Channel disable
 0x400805E0 C   FIELD 31w01 CHENA: Channel enable
-0x400805E4 B  REGISTER HCSPLT7 (rw): OTG_HS host channel-7 split control register
+0x400805E4 B  REGISTER SPLT7 (rw): OTG_HS host channel-0 split control register
 0x400805E4 C   FIELD 00w07 PRTADDR: Port address
 0x400805E4 C   FIELD 07w07 HUBADDR: Hub address
 0x400805E4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400805E4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400805E4 C   FIELD 31w01 SPLITEN: Split enable
-0x400805E8 B  REGISTER HCINT7 (rw): OTG_HS host channel-7 interrupt register
+0x400805E8 B  REGISTER INT7 (rw): OTG_HS host channel-11 interrupt register
 0x400805E8 C   FIELD 00w01 XFRC: Transfer completed
 0x400805E8 C   FIELD 01w01 CHH: Channel halted
 0x400805E8 C   FIELD 02w01 AHBERR: AHB error
@@ -12443,7 +12612,7 @@
 0x400805E8 C   FIELD 08w01 BBERR: Babble error
 0x400805E8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400805E8 C   FIELD 10w01 DTERR: Data toggle error
-0x400805EC B  REGISTER HCINTMSK7 (rw): OTG_HS host channel-7 interrupt mask register
+0x400805EC B  REGISTER INTMSK7 (rw): OTG_HS host channel-11 interrupt mask register
 0x400805EC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400805EC C   FIELD 01w01 CHHM: Channel halted mask
 0x400805EC C   FIELD 02w01 AHBERR: AHB error
@@ -12455,13 +12624,14 @@
 0x400805EC C   FIELD 08w01 BBERRM: Babble error mask
 0x400805EC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400805EC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400805F0 B  REGISTER HCTSIZ7 (rw): OTG_HS host channel-7 transfer size register
+0x400805F0 B  REGISTER TSIZ7 (rw): OTG_HS host channel-11 transfer size register
 0x400805F0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400805F0 C   FIELD 19w10 PKTCNT: Packet count
 0x400805F0 C   FIELD 29w02 DPID: Data PID
-0x400805F4 B  REGISTER HCDMA7 (rw): OTG_HS host channel-7 DMA address register
+0x400805F4 B  REGISTER DMA7 (rw): OTG_HS host channel-0 DMA address register
 0x400805F4 C   FIELD 00w32 DMAADDR: DMA address
-0x40080600 B  REGISTER HCCHAR8 (rw): OTG_HS host channel-8 characteristics register
+0x40080600 B  CLUSTER HC8: Host channel
+0x40080600 B  REGISTER CHAR8 (rw): OTG_HS host channel-0 characteristics register
 0x40080600 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080600 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080600 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12472,13 +12642,13 @@
 0x40080600 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080600 C   FIELD 30w01 CHDIS: Channel disable
 0x40080600 C   FIELD 31w01 CHENA: Channel enable
-0x40080604 B  REGISTER HCSPLT8 (rw): OTG_HS host channel-8 split control register
+0x40080604 B  REGISTER SPLT8 (rw): OTG_HS host channel-0 split control register
 0x40080604 C   FIELD 00w07 PRTADDR: Port address
 0x40080604 C   FIELD 07w07 HUBADDR: Hub address
 0x40080604 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080604 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080604 C   FIELD 31w01 SPLITEN: Split enable
-0x40080608 B  REGISTER HCINT8 (rw): OTG_HS host channel-8 interrupt register
+0x40080608 B  REGISTER INT8 (rw): OTG_HS host channel-11 interrupt register
 0x40080608 C   FIELD 00w01 XFRC: Transfer completed
 0x40080608 C   FIELD 01w01 CHH: Channel halted
 0x40080608 C   FIELD 02w01 AHBERR: AHB error
@@ -12490,7 +12660,7 @@
 0x40080608 C   FIELD 08w01 BBERR: Babble error
 0x40080608 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080608 C   FIELD 10w01 DTERR: Data toggle error
-0x4008060C B  REGISTER HCINTMSK8 (rw): OTG_HS host channel-8 interrupt mask register
+0x4008060C B  REGISTER INTMSK8 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008060C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008060C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008060C C   FIELD 02w01 AHBERR: AHB error
@@ -12502,13 +12672,14 @@
 0x4008060C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008060C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008060C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080610 B  REGISTER HCTSIZ8 (rw): OTG_HS host channel-8 transfer size register
+0x40080610 B  REGISTER TSIZ8 (rw): OTG_HS host channel-11 transfer size register
 0x40080610 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080610 C   FIELD 19w10 PKTCNT: Packet count
 0x40080610 C   FIELD 29w02 DPID: Data PID
-0x40080614 B  REGISTER HCDMA8 (rw): OTG_HS host channel-8 DMA address register
+0x40080614 B  REGISTER DMA8 (rw): OTG_HS host channel-0 DMA address register
 0x40080614 C   FIELD 00w32 DMAADDR: DMA address
-0x40080620 B  REGISTER HCCHAR9 (rw): OTG_HS host channel-9 characteristics register
+0x40080620 B  CLUSTER HC9: Host channel
+0x40080620 B  REGISTER CHAR9 (rw): OTG_HS host channel-0 characteristics register
 0x40080620 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080620 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080620 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12519,13 +12690,13 @@
 0x40080620 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080620 C   FIELD 30w01 CHDIS: Channel disable
 0x40080620 C   FIELD 31w01 CHENA: Channel enable
-0x40080624 B  REGISTER HCSPLT9 (rw): OTG_HS host channel-9 split control register
+0x40080624 B  REGISTER SPLT9 (rw): OTG_HS host channel-0 split control register
 0x40080624 C   FIELD 00w07 PRTADDR: Port address
 0x40080624 C   FIELD 07w07 HUBADDR: Hub address
 0x40080624 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080624 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080624 C   FIELD 31w01 SPLITEN: Split enable
-0x40080628 B  REGISTER HCINT9 (rw): OTG_HS host channel-9 interrupt register
+0x40080628 B  REGISTER INT9 (rw): OTG_HS host channel-11 interrupt register
 0x40080628 C   FIELD 00w01 XFRC: Transfer completed
 0x40080628 C   FIELD 01w01 CHH: Channel halted
 0x40080628 C   FIELD 02w01 AHBERR: AHB error
@@ -12537,7 +12708,7 @@
 0x40080628 C   FIELD 08w01 BBERR: Babble error
 0x40080628 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080628 C   FIELD 10w01 DTERR: Data toggle error
-0x4008062C B  REGISTER HCINTMSK9 (rw): OTG_HS host channel-9 interrupt mask register
+0x4008062C B  REGISTER INTMSK9 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008062C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008062C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008062C C   FIELD 02w01 AHBERR: AHB error
@@ -12549,13 +12720,14 @@
 0x4008062C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008062C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008062C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080630 B  REGISTER HCTSIZ9 (rw): OTG_HS host channel-9 transfer size register
+0x40080630 B  REGISTER TSIZ9 (rw): OTG_HS host channel-11 transfer size register
 0x40080630 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080630 C   FIELD 19w10 PKTCNT: Packet count
 0x40080630 C   FIELD 29w02 DPID: Data PID
-0x40080634 B  REGISTER HCDMA9 (rw): OTG_HS host channel-9 DMA address register
+0x40080634 B  REGISTER DMA9 (rw): OTG_HS host channel-0 DMA address register
 0x40080634 C   FIELD 00w32 DMAADDR: DMA address
-0x40080640 B  REGISTER HCCHAR10 (rw): OTG_HS host channel-10 characteristics register
+0x40080640 B  CLUSTER HC10: Host channel
+0x40080640 B  REGISTER CHAR10 (rw): OTG_HS host channel-0 characteristics register
 0x40080640 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080640 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080640 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12566,13 +12738,13 @@
 0x40080640 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080640 C   FIELD 30w01 CHDIS: Channel disable
 0x40080640 C   FIELD 31w01 CHENA: Channel enable
-0x40080644 B  REGISTER HCSPLT10 (rw): OTG_HS host channel-10 split control register
+0x40080644 B  REGISTER SPLT10 (rw): OTG_HS host channel-0 split control register
 0x40080644 C   FIELD 00w07 PRTADDR: Port address
 0x40080644 C   FIELD 07w07 HUBADDR: Hub address
 0x40080644 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080644 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080644 C   FIELD 31w01 SPLITEN: Split enable
-0x40080648 B  REGISTER HCINT10 (rw): OTG_HS host channel-10 interrupt register
+0x40080648 B  REGISTER INT10 (rw): OTG_HS host channel-11 interrupt register
 0x40080648 C   FIELD 00w01 XFRC: Transfer completed
 0x40080648 C   FIELD 01w01 CHH: Channel halted
 0x40080648 C   FIELD 02w01 AHBERR: AHB error
@@ -12584,7 +12756,7 @@
 0x40080648 C   FIELD 08w01 BBERR: Babble error
 0x40080648 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080648 C   FIELD 10w01 DTERR: Data toggle error
-0x4008064C B  REGISTER HCINTMSK10 (rw): OTG_HS host channel-10 interrupt mask register
+0x4008064C B  REGISTER INTMSK10 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008064C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008064C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008064C C   FIELD 02w01 AHBERR: AHB error
@@ -12596,13 +12768,14 @@
 0x4008064C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008064C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008064C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080650 B  REGISTER HCTSIZ10 (rw): OTG_HS host channel-10 transfer size register
+0x40080650 B  REGISTER TSIZ10 (rw): OTG_HS host channel-11 transfer size register
 0x40080650 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080650 C   FIELD 19w10 PKTCNT: Packet count
 0x40080650 C   FIELD 29w02 DPID: Data PID
-0x40080654 B  REGISTER HCDMA10 (rw): OTG_HS host channel-10 DMA address register
+0x40080654 B  REGISTER DMA10 (rw): OTG_HS host channel-0 DMA address register
 0x40080654 C   FIELD 00w32 DMAADDR: DMA address
-0x40080660 B  REGISTER HCCHAR11 (rw): OTG_HS host channel-11 characteristics register
+0x40080660 B  CLUSTER HC11: Host channel
+0x40080660 B  REGISTER CHAR11 (rw): OTG_HS host channel-0 characteristics register
 0x40080660 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x40080660 C   FIELD 11w04 EPNUM: Endpoint number
 0x40080660 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12613,13 +12786,13 @@
 0x40080660 C   FIELD 29w01 ODDFRM: Odd frame
 0x40080660 C   FIELD 30w01 CHDIS: Channel disable
 0x40080660 C   FIELD 31w01 CHENA: Channel enable
-0x40080664 B  REGISTER HCSPLT11 (rw): OTG_HS host channel-11 split control register
+0x40080664 B  REGISTER SPLT11 (rw): OTG_HS host channel-0 split control register
 0x40080664 C   FIELD 00w07 PRTADDR: Port address
 0x40080664 C   FIELD 07w07 HUBADDR: Hub address
 0x40080664 C   FIELD 14w02 XACTPOS: XACTPOS
 0x40080664 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x40080664 C   FIELD 31w01 SPLITEN: Split enable
-0x40080668 B  REGISTER HCINT11 (rw): OTG_HS host channel-11 interrupt register
+0x40080668 B  REGISTER INT11 (rw): OTG_HS host channel-11 interrupt register
 0x40080668 C   FIELD 00w01 XFRC: Transfer completed
 0x40080668 C   FIELD 01w01 CHH: Channel halted
 0x40080668 C   FIELD 02w01 AHBERR: AHB error
@@ -12631,7 +12804,7 @@
 0x40080668 C   FIELD 08w01 BBERR: Babble error
 0x40080668 C   FIELD 09w01 FRMOR: Frame overrun
 0x40080668 C   FIELD 10w01 DTERR: Data toggle error
-0x4008066C B  REGISTER HCINTMSK11 (rw): OTG_HS host channel-11 interrupt mask register
+0x4008066C B  REGISTER INTMSK11 (rw): OTG_HS host channel-11 interrupt mask register
 0x4008066C C   FIELD 00w01 XFRCM: Transfer completed mask
 0x4008066C C   FIELD 01w01 CHHM: Channel halted mask
 0x4008066C C   FIELD 02w01 AHBERR: AHB error
@@ -12643,154 +12816,110 @@
 0x4008066C C   FIELD 08w01 BBERRM: Babble error mask
 0x4008066C C   FIELD 09w01 FRMORM: Frame overrun mask
 0x4008066C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080670 B  REGISTER HCTSIZ11 (rw): OTG_HS host channel-11 transfer size register
+0x40080670 B  REGISTER TSIZ11 (rw): OTG_HS host channel-11 transfer size register
 0x40080670 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080670 C   FIELD 19w10 PKTCNT: Packet count
 0x40080670 C   FIELD 29w02 DPID: Data PID
-0x40080674 B  REGISTER HCDMA11 (rw): OTG_HS host channel-11 DMA address register
+0x40080674 B  REGISTER DMA11 (rw): OTG_HS host channel-0 DMA address register
 0x40080674 C   FIELD 00w32 DMAADDR: DMA address
-0x40080678 B  REGISTER HCCHAR12 (rw): OTG_HS host channel-12 characteristics register
-0x40080678 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080678 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080678 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080678 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080678 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080678 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080678 C   FIELD 22w07 DAD: Device address
-0x40080678 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080678 C   FIELD 30w01 CHDIS: Channel disable
-0x40080678 C   FIELD 31w01 CHENA: Channel enable
-0x4008067C B  REGISTER HCSPLT12 (rw): OTG_HS host channel-12 split control register
-0x4008067C C   FIELD 00w07 PRTADDR: Port address
-0x4008067C C   FIELD 07w07 HUBADDR: Hub address
-0x4008067C C   FIELD 14w02 XACTPOS: XACTPOS
-0x4008067C C   FIELD 16w01 COMPLSPLT: Do complete split
-0x4008067C C   FIELD 31w01 SPLITEN: Split enable
-0x40080680 B  REGISTER HCINT12 (rw): OTG_HS host channel-12 interrupt register
-0x40080680 C   FIELD 00w01 XFRC: Transfer completed
-0x40080680 C   FIELD 01w01 CHH: Channel halted
-0x40080680 C   FIELD 02w01 AHBERR: AHB error
-0x40080680 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080680 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080680 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080680 C   FIELD 06w01 NYET: Response received interrupt
-0x40080680 C   FIELD 07w01 TXERR: Transaction error
-0x40080680 C   FIELD 08w01 BBERR: Babble error
-0x40080680 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080680 C   FIELD 10w01 DTERR: Data toggle error
-0x40080684 B  REGISTER HCINTMSK12 (rw): OTG_HS host channel-12 interrupt mask register
-0x40080684 C   FIELD 00w01 XFRCM: Transfer completed mask
-0x40080684 C   FIELD 01w01 CHHM: Channel halted mask
-0x40080684 C   FIELD 02w01 AHBERR: AHB error
-0x40080684 C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x40080684 C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x40080684 C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x40080684 C   FIELD 06w01 NYET: Response received interrupt
-0x40080684 C   FIELD 07w01 TXERRM: Transaction error
-0x40080684 C   FIELD 08w01 BBERRM: Babble error
-0x40080684 C   FIELD 09w01 FRMORM: Frame overrun mask
-0x40080684 C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080688 B  REGISTER HCTSIZ12 (rw): OTG_HS host channel-12 transfer size register
-0x40080688 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080688 C   FIELD 19w10 PKTCNT: Packet count
-0x40080688 C   FIELD 29w02 DPID: Data PID
-0x4008068C B  REGISTER HCDMA12 (rw): OTG_HS host channel-12 DMA address register
-0x4008068C C   FIELD 00w32 DMAADDR: DMA address
-0x40080690 B  REGISTER HCCHAR13 (rw): OTG_HS host channel-13 characteristics register
-0x40080690 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080690 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080690 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080690 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080690 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080690 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080690 C   FIELD 22w07 DAD: Device address
-0x40080690 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080690 C   FIELD 30w01 CHDIS: Channel disable
-0x40080690 C   FIELD 31w01 CHENA: Channel enable
-0x40080694 B  REGISTER HCSPLT13 (rw): OTG_HS host channel-13 split control register
-0x40080694 C   FIELD 00w07 PRTADDR: Port address
-0x40080694 C   FIELD 07w07 HUBADDR: Hub address
-0x40080694 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080694 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080694 C   FIELD 31w01 SPLITEN: Split enable
-0x40080698 B  REGISTER HCINT13 (rw): OTG_HS host channel-13 interrupt register
-0x40080698 C   FIELD 00w01 XFRC: Transfer completed
-0x40080698 C   FIELD 01w01 CHH: Channel halted
-0x40080698 C   FIELD 02w01 AHBERR: AHB error
-0x40080698 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080698 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080698 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080698 C   FIELD 06w01 NYET: Response received interrupt
-0x40080698 C   FIELD 07w01 TXERR: Transaction error
-0x40080698 C   FIELD 08w01 BBERR: Babble error
-0x40080698 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080698 C   FIELD 10w01 DTERR: Data toggle error
-0x4008069C B  REGISTER HCINTMSK13 (rw): OTG_HS host channel-13 interrupt mask register
-0x4008069C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008069C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008069C C   FIELD 02w01 AHBERR: AHB error
-0x4008069C C   FIELD 03w01 STALLM: STALLM response received interrupt mask
-0x4008069C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008069C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008069C C   FIELD 06w01 NYET: Response received interrupt
-0x4008069C C   FIELD 07w01 TXERRM: Transaction error
-0x4008069C C   FIELD 08w01 BBERRM: Babble error
-0x4008069C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008069C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400806A0 B  REGISTER HCTSIZ13 (rw): OTG_HS host channel-13 transfer size register
-0x400806A0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400806A0 C   FIELD 19w10 PKTCNT: Packet count
-0x400806A0 C   FIELD 29w02 DPID: Data PID
-0x400806A4 B  REGISTER HCDMA13 (rw): OTG_HS host channel-13 DMA address register
-0x400806A4 C   FIELD 00w32 DMAADDR: DMA address
-0x400806A8 B  REGISTER HCCHAR14 (rw): OTG_HS host channel-14 characteristics register
-0x400806A8 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400806A8 C   FIELD 11w04 EPNUM: Endpoint number
-0x400806A8 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400806A8 C   FIELD 17w01 LSDEV: Low-speed device
-0x400806A8 C   FIELD 18w02 EPTYP: Endpoint type
-0x400806A8 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400806A8 C   FIELD 22w07 DAD: Device address
-0x400806A8 C   FIELD 29w01 ODDFRM: Odd frame
-0x400806A8 C   FIELD 30w01 CHDIS: Channel disable
-0x400806A8 C   FIELD 31w01 CHENA: Channel enable
-0x400806AC B  REGISTER HCSPLT14 (rw): OTG_HS host channel-14 split control register
-0x400806AC C   FIELD 00w07 PRTADDR: Port address
-0x400806AC C   FIELD 07w07 HUBADDR: Hub address
-0x400806AC C   FIELD 14w02 XACTPOS: XACTPOS
-0x400806AC C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400806AC C   FIELD 31w01 SPLITEN: Split enable
-0x400806B0 B  REGISTER HCINT14 (rw): OTG_HS host channel-14 interrupt register
-0x400806B0 C   FIELD 00w01 XFRC: Transfer completed
-0x400806B0 C   FIELD 01w01 CHH: Channel halted
-0x400806B0 C   FIELD 02w01 AHBERR: AHB error
-0x400806B0 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400806B0 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400806B0 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400806B0 C   FIELD 06w01 NYET: Response received interrupt
-0x400806B0 C   FIELD 07w01 TXERR: Transaction error
-0x400806B0 C   FIELD 08w01 BBERR: Babble error
-0x400806B0 C   FIELD 09w01 FRMOR: Frame overrun
-0x400806B0 C   FIELD 10w01 DTERR: Data toggle error
-0x400806B4 B  REGISTER HCINTMSK14 (rw): OTG_HS host channel-14 interrupt mask register
-0x400806B4 C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400806B4 C   FIELD 01w01 CHHM: Channel halted mask
-0x400806B4 C   FIELD 02w01 AHBERR: AHB error
-0x400806B4 C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400806B4 C   FIELD 04w01 NAKM: NAKM response received interrupt mask
-0x400806B4 C   FIELD 05w01 ACKM: ACKM response received/transmitted interrupt mask
-0x400806B4 C   FIELD 06w01 NYET: Response received interrupt
-0x400806B4 C   FIELD 07w01 TXERRM: Transaction error
-0x400806B4 C   FIELD 08w01 BBERRM: Babble error
-0x400806B4 C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400806B4 C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400806B8 B  REGISTER HCTSIZ14 (rw): OTG_HS host channel-14 transfer size register
-0x400806B8 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400806B8 C   FIELD 19w10 PKTCNT: Packet count
-0x400806B8 C   FIELD 29w02 DPID: Data PID
-0x400806BC B  REGISTER HCDMA14 (rw): OTG_HS host channel-14 DMA address register
-0x400806BC C   FIELD 00w32 DMAADDR: DMA address
-0x400806C0 B  REGISTER HCCHAR15 (rw): OTG_HS host channel-15 characteristics register
+0x40080680 B  CLUSTER HC12: Host channel
+0x40080680 B  REGISTER CHAR12 (rw): OTG_HS host channel-0 characteristics register
+0x40080680 C   FIELD 00w11 MPSIZ: Maximum packet size
+0x40080680 C   FIELD 11w04 EPNUM: Endpoint number
+0x40080680 C   FIELD 15w01 EPDIR: Endpoint direction
+0x40080680 C   FIELD 17w01 LSDEV: Low-speed device
+0x40080680 C   FIELD 18w02 EPTYP: Endpoint type
+0x40080680 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
+0x40080680 C   FIELD 22w07 DAD: Device address
+0x40080680 C   FIELD 29w01 ODDFRM: Odd frame
+0x40080680 C   FIELD 30w01 CHDIS: Channel disable
+0x40080680 C   FIELD 31w01 CHENA: Channel enable
+0x40080684 B  REGISTER SPLT12 (rw): OTG_HS host channel-0 split control register
+0x40080684 C   FIELD 00w07 PRTADDR: Port address
+0x40080684 C   FIELD 07w07 HUBADDR: Hub address
+0x40080684 C   FIELD 14w02 XACTPOS: XACTPOS
+0x40080684 C   FIELD 16w01 COMPLSPLT: Do complete split
+0x40080684 C   FIELD 31w01 SPLITEN: Split enable
+0x40080688 B  REGISTER INT12 (rw): OTG_HS host channel-11 interrupt register
+0x40080688 C   FIELD 00w01 XFRC: Transfer completed
+0x40080688 C   FIELD 01w01 CHH: Channel halted
+0x40080688 C   FIELD 02w01 AHBERR: AHB error
+0x40080688 C   FIELD 03w01 STALL: STALL response received interrupt
+0x40080688 C   FIELD 04w01 NAK: NAK response received interrupt
+0x40080688 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
+0x40080688 C   FIELD 06w01 NYET: Response received interrupt
+0x40080688 C   FIELD 07w01 TXERR: Transaction error
+0x40080688 C   FIELD 08w01 BBERR: Babble error
+0x40080688 C   FIELD 09w01 FRMOR: Frame overrun
+0x40080688 C   FIELD 10w01 DTERR: Data toggle error
+0x4008068C B  REGISTER INTMSK12 (rw): OTG_HS host channel-11 interrupt mask register
+0x4008068C C   FIELD 00w01 XFRCM: Transfer completed mask
+0x4008068C C   FIELD 01w01 CHHM: Channel halted mask
+0x4008068C C   FIELD 02w01 AHBERR: AHB error
+0x4008068C C   FIELD 03w01 STALLM: STALL response received interrupt mask
+0x4008068C C   FIELD 04w01 NAKM: NAK response received interrupt mask
+0x4008068C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
+0x4008068C C   FIELD 06w01 NYET: response received interrupt mask
+0x4008068C C   FIELD 07w01 TXERRM: Transaction error mask
+0x4008068C C   FIELD 08w01 BBERRM: Babble error mask
+0x4008068C C   FIELD 09w01 FRMORM: Frame overrun mask
+0x4008068C C   FIELD 10w01 DTERRM: Data toggle error mask
+0x40080690 B  REGISTER TSIZ12 (rw): OTG_HS host channel-11 transfer size register
+0x40080690 C   FIELD 00w19 XFRSIZ: Transfer size
+0x40080690 C   FIELD 19w10 PKTCNT: Packet count
+0x40080690 C   FIELD 29w02 DPID: Data PID
+0x40080694 B  REGISTER DMA12 (rw): OTG_HS host channel-0 DMA address register
+0x40080694 C   FIELD 00w32 DMAADDR: DMA address
+0x400806A0 B  CLUSTER HC13: Host channel
+0x400806A0 B  REGISTER CHAR13 (rw): OTG_HS host channel-0 characteristics register
+0x400806A0 C   FIELD 00w11 MPSIZ: Maximum packet size
+0x400806A0 C   FIELD 11w04 EPNUM: Endpoint number
+0x400806A0 C   FIELD 15w01 EPDIR: Endpoint direction
+0x400806A0 C   FIELD 17w01 LSDEV: Low-speed device
+0x400806A0 C   FIELD 18w02 EPTYP: Endpoint type
+0x400806A0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
+0x400806A0 C   FIELD 22w07 DAD: Device address
+0x400806A0 C   FIELD 29w01 ODDFRM: Odd frame
+0x400806A0 C   FIELD 30w01 CHDIS: Channel disable
+0x400806A0 C   FIELD 31w01 CHENA: Channel enable
+0x400806A4 B  REGISTER SPLT13 (rw): OTG_HS host channel-0 split control register
+0x400806A4 C   FIELD 00w07 PRTADDR: Port address
+0x400806A4 C   FIELD 07w07 HUBADDR: Hub address
+0x400806A4 C   FIELD 14w02 XACTPOS: XACTPOS
+0x400806A4 C   FIELD 16w01 COMPLSPLT: Do complete split
+0x400806A4 C   FIELD 31w01 SPLITEN: Split enable
+0x400806A8 B  REGISTER INT13 (rw): OTG_HS host channel-11 interrupt register
+0x400806A8 C   FIELD 00w01 XFRC: Transfer completed
+0x400806A8 C   FIELD 01w01 CHH: Channel halted
+0x400806A8 C   FIELD 02w01 AHBERR: AHB error
+0x400806A8 C   FIELD 03w01 STALL: STALL response received interrupt
+0x400806A8 C   FIELD 04w01 NAK: NAK response received interrupt
+0x400806A8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
+0x400806A8 C   FIELD 06w01 NYET: Response received interrupt
+0x400806A8 C   FIELD 07w01 TXERR: Transaction error
+0x400806A8 C   FIELD 08w01 BBERR: Babble error
+0x400806A8 C   FIELD 09w01 FRMOR: Frame overrun
+0x400806A8 C   FIELD 10w01 DTERR: Data toggle error
+0x400806AC B  REGISTER INTMSK13 (rw): OTG_HS host channel-11 interrupt mask register
+0x400806AC C   FIELD 00w01 XFRCM: Transfer completed mask
+0x400806AC C   FIELD 01w01 CHHM: Channel halted mask
+0x400806AC C   FIELD 02w01 AHBERR: AHB error
+0x400806AC C   FIELD 03w01 STALLM: STALL response received interrupt mask
+0x400806AC C   FIELD 04w01 NAKM: NAK response received interrupt mask
+0x400806AC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
+0x400806AC C   FIELD 06w01 NYET: response received interrupt mask
+0x400806AC C   FIELD 07w01 TXERRM: Transaction error mask
+0x400806AC C   FIELD 08w01 BBERRM: Babble error mask
+0x400806AC C   FIELD 09w01 FRMORM: Frame overrun mask
+0x400806AC C   FIELD 10w01 DTERRM: Data toggle error mask
+0x400806B0 B  REGISTER TSIZ13 (rw): OTG_HS host channel-11 transfer size register
+0x400806B0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400806B0 C   FIELD 19w10 PKTCNT: Packet count
+0x400806B0 C   FIELD 29w02 DPID: Data PID
+0x400806B4 B  REGISTER DMA13 (rw): OTG_HS host channel-0 DMA address register
+0x400806B4 C   FIELD 00w32 DMAADDR: DMA address
+0x400806C0 B  CLUSTER HC14: Host channel
+0x400806C0 B  REGISTER CHAR14 (rw): OTG_HS host channel-0 characteristics register
 0x400806C0 C   FIELD 00w11 MPSIZ: Maximum packet size
 0x400806C0 C   FIELD 11w04 EPNUM: Endpoint number
 0x400806C0 C   FIELD 15w01 EPDIR: Endpoint direction
@@ -12801,13 +12930,13 @@
 0x400806C0 C   FIELD 29w01 ODDFRM: Odd frame
 0x400806C0 C   FIELD 30w01 CHDIS: Channel disable
 0x400806C0 C   FIELD 31w01 CHENA: Channel enable
-0x400806C4 B  REGISTER HCSPLT15 (rw): OTG_HS host channel-15 split control register
+0x400806C4 B  REGISTER SPLT14 (rw): OTG_HS host channel-0 split control register
 0x400806C4 C   FIELD 00w07 PRTADDR: Port address
 0x400806C4 C   FIELD 07w07 HUBADDR: Hub address
 0x400806C4 C   FIELD 14w02 XACTPOS: XACTPOS
 0x400806C4 C   FIELD 16w01 COMPLSPLT: Do complete split
 0x400806C4 C   FIELD 31w01 SPLITEN: Split enable
-0x400806C8 B  REGISTER HCINT15 (rw): OTG_HS host channel-15 interrupt register
+0x400806C8 B  REGISTER INT14 (rw): OTG_HS host channel-11 interrupt register
 0x400806C8 C   FIELD 00w01 XFRC: Transfer completed
 0x400806C8 C   FIELD 01w01 CHH: Channel halted
 0x400806C8 C   FIELD 02w01 AHBERR: AHB error
@@ -12819,24 +12948,72 @@
 0x400806C8 C   FIELD 08w01 BBERR: Babble error
 0x400806C8 C   FIELD 09w01 FRMOR: Frame overrun
 0x400806C8 C   FIELD 10w01 DTERR: Data toggle error
-0x400806CC B  REGISTER HCINTMSK15 (rw): OTG_HS host channel-15 interrupt mask register
+0x400806CC B  REGISTER INTMSK14 (rw): OTG_HS host channel-11 interrupt mask register
 0x400806CC C   FIELD 00w01 XFRCM: Transfer completed mask
 0x400806CC C   FIELD 01w01 CHHM: Channel halted mask
 0x400806CC C   FIELD 02w01 AHBERR: AHB error
-0x400806CC C   FIELD 03w01 STALL: STALL response received interrupt mask
+0x400806CC C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x400806CC C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x400806CC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400806CC C   FIELD 06w01 NYET: Response received interrupt
-0x400806CC C   FIELD 07w01 TXERRM: Transaction error
-0x400806CC C   FIELD 08w01 BBERRM: Babble error
+0x400806CC C   FIELD 06w01 NYET: response received interrupt mask
+0x400806CC C   FIELD 07w01 TXERRM: Transaction error mask
+0x400806CC C   FIELD 08w01 BBERRM: Babble error mask
 0x400806CC C   FIELD 09w01 FRMORM: Frame overrun mask
 0x400806CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400806D0 B  REGISTER HCTSIZ15 (rw): OTG_HS host channel-15 transfer size register
+0x400806D0 B  REGISTER TSIZ14 (rw): OTG_HS host channel-11 transfer size register
 0x400806D0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400806D0 C   FIELD 19w10 PKTCNT: Packet count
 0x400806D0 C   FIELD 29w02 DPID: Data PID
-0x400806D4 B  REGISTER HCDMA15 (rw): OTG_HS host channel-15 DMA address register
+0x400806D4 B  REGISTER DMA14 (rw): OTG_HS host channel-0 DMA address register
 0x400806D4 C   FIELD 00w32 DMAADDR: DMA address
+0x400806E0 B  CLUSTER HC15: Host channel
+0x400806E0 B  REGISTER CHAR15 (rw): OTG_HS host channel-0 characteristics register
+0x400806E0 C   FIELD 00w11 MPSIZ: Maximum packet size
+0x400806E0 C   FIELD 11w04 EPNUM: Endpoint number
+0x400806E0 C   FIELD 15w01 EPDIR: Endpoint direction
+0x400806E0 C   FIELD 17w01 LSDEV: Low-speed device
+0x400806E0 C   FIELD 18w02 EPTYP: Endpoint type
+0x400806E0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
+0x400806E0 C   FIELD 22w07 DAD: Device address
+0x400806E0 C   FIELD 29w01 ODDFRM: Odd frame
+0x400806E0 C   FIELD 30w01 CHDIS: Channel disable
+0x400806E0 C   FIELD 31w01 CHENA: Channel enable
+0x400806E4 B  REGISTER SPLT15 (rw): OTG_HS host channel-0 split control register
+0x400806E4 C   FIELD 00w07 PRTADDR: Port address
+0x400806E4 C   FIELD 07w07 HUBADDR: Hub address
+0x400806E4 C   FIELD 14w02 XACTPOS: XACTPOS
+0x400806E4 C   FIELD 16w01 COMPLSPLT: Do complete split
+0x400806E4 C   FIELD 31w01 SPLITEN: Split enable
+0x400806E8 B  REGISTER INT15 (rw): OTG_HS host channel-11 interrupt register
+0x400806E8 C   FIELD 00w01 XFRC: Transfer completed
+0x400806E8 C   FIELD 01w01 CHH: Channel halted
+0x400806E8 C   FIELD 02w01 AHBERR: AHB error
+0x400806E8 C   FIELD 03w01 STALL: STALL response received interrupt
+0x400806E8 C   FIELD 04w01 NAK: NAK response received interrupt
+0x400806E8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
+0x400806E8 C   FIELD 06w01 NYET: Response received interrupt
+0x400806E8 C   FIELD 07w01 TXERR: Transaction error
+0x400806E8 C   FIELD 08w01 BBERR: Babble error
+0x400806E8 C   FIELD 09w01 FRMOR: Frame overrun
+0x400806E8 C   FIELD 10w01 DTERR: Data toggle error
+0x400806EC B  REGISTER INTMSK15 (rw): OTG_HS host channel-11 interrupt mask register
+0x400806EC C   FIELD 00w01 XFRCM: Transfer completed mask
+0x400806EC C   FIELD 01w01 CHHM: Channel halted mask
+0x400806EC C   FIELD 02w01 AHBERR: AHB error
+0x400806EC C   FIELD 03w01 STALLM: STALL response received interrupt mask
+0x400806EC C   FIELD 04w01 NAKM: NAK response received interrupt mask
+0x400806EC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
+0x400806EC C   FIELD 06w01 NYET: response received interrupt mask
+0x400806EC C   FIELD 07w01 TXERRM: Transaction error mask
+0x400806EC C   FIELD 08w01 BBERRM: Babble error mask
+0x400806EC C   FIELD 09w01 FRMORM: Frame overrun mask
+0x400806EC C   FIELD 10w01 DTERRM: Data toggle error mask
+0x400806F0 B  REGISTER TSIZ15 (rw): OTG_HS host channel-11 transfer size register
+0x400806F0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400806F0 C   FIELD 19w10 PKTCNT: Packet count
+0x400806F0 C   FIELD 29w02 DPID: Data PID
+0x400806F4 B  REGISTER DMA15 (rw): OTG_HS host channel-0 DMA address register
+0x400806F4 C   FIELD 00w32 DMAADDR: DMA address
 0x40080800 A PERIPHERAL OTG2_HS_DEVICE
 0x40080800 B  REGISTER DCFG (rw): OTG_HS device configuration register
 0x40080800 C   FIELD 00w02 DSPD: Device speed
@@ -12902,13 +13079,36 @@
 0x4008083C B  REGISTER DEACHINTMSK (rw): OTG_HS device each endpoint interrupt register mask
 0x4008083C C   FIELD 01w01 IEP1INTM: IN Endpoint 1 interrupt mask bit
 0x4008083C C   FIELD 17w01 OEP1INTM: OUT Endpoint 1 interrupt mask bit
-0x40080900 B  REGISTER DIEPCTL0: OTG device endpoint-0 control register
+0x40080844 B  REGISTER DIEPEACHMSK1 (rw): 
+0x40080844 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
+0x40080844 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
+0x40080844 C   FIELD 02w01 AHBERRM: AHB error mask
+0x40080844 C   FIELD 03w01 TOM: Timeout condition mask (Non-isochronous endpoints)
+0x40080844 C   FIELD 04w01 ITTXFEMSK: IN token received when TxFIFO empty mask
+0x40080844 C   FIELD 06w01 INEPNEM: IN endpoint NAK effective mask
+0x40080844 C   FIELD 08w01 TXFURM: FIFO underrun mask
+0x40080844 C   FIELD 09w01 BNAM: BNA interrupt mask
+0x40080844 C   FIELD 13w01 NAKM: NAK interrupt mask
+0x40080884 B  REGISTER DOEPEACHMSK1 (rw): 
+0x40080884 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
+0x40080884 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
+0x40080884 C   FIELD 02w01 AHBERRM: AHB error mask
+0x40080884 C   FIELD 03w01 STUPM: SETUP phase done mask
+0x40080884 C   FIELD 04w01 OTEPDM: OUT token received when endpoint disabled mask
+0x40080884 C   FIELD 06w01 B2BSTUPM: Back-to-back SETUP packets received mask
+0x40080884 C   FIELD 08w01 OUTPKTERRM: Out packet error mask
+0x40080884 C   FIELD 09w01 BNAM: BNA interrupt mask
+0x40080884 C   FIELD 12w01 BERRM: Babble error interrupt mask
+0x40080884 C   FIELD 13w01 NAKMSK: NAK interrupt mask
+0x40080884 C   FIELD 14w01 NYETMSK: NYET interrupt mask
+0x40080900 B  CLUSTER DIEP0: Device IN endpoint 0
+0x40080900 B  REGISTER CTL: OTG device endpoint-0 control register
 0x40080900 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080900 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080900 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40080900 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080900 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080900 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080900 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080900 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40080900 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080900 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -12916,7 +13116,7 @@
 0x40080900 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080900 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080900 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080908 B  REGISTER DIEPINT0: OTG device endpoint-0 interrupt register
+0x40080908 B  REGISTER INT: OTG device endpoint-0 interrupt register
 0x40080908 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40080908 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40080908 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -12928,20 +13128,21 @@
 0x40080908 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40080908 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40080908 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080910 B  REGISTER DIEPTSIZ0 (rw): OTG_HS device IN endpoint 0 transfer size register
+0x40080910 B  REGISTER TSIZ (rw): OTG_HS device IN endpoint 0 transfer size register
 0x40080910 C   FIELD 00w07 XFRSIZ: Transfer size
 0x40080910 C   FIELD 19w02 PKTCNT: Packet count
-0x40080914 B  REGISTER DIEPDMA1 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080914 B  REGISTER DMA (rw): OTG_HS device endpoint-0 DMA address register
 0x40080914 C   FIELD 00w32 DMAADDR: DMA address
-0x40080918 B  REGISTER DTXFSTS0 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40080918 B  REGISTER TXFSTS (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40080918 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40080920 B  REGISTER DIEPCTL1: OTG device endpoint-1 control register
+0x40080920 B  CLUSTER DIEP1: Device IN endpoint X
+0x40080920 B  REGISTER CTL1: OTG device endpoint-1 control register
 0x40080920 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080920 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080920 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40080920 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080920 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080920 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080920 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080920 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40080920 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080920 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -12949,7 +13150,7 @@
 0x40080920 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080920 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080920 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080928 B  REGISTER DIEPINT1: OTG device endpoint-1 interrupt register
+0x40080928 B  REGISTER INT1: OTG device endpoint-1 interrupt register
 0x40080928 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40080928 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40080928 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -12961,21 +13162,22 @@
 0x40080928 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40080928 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40080928 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080930 B  REGISTER DIEPTSIZ1 (rw): OTG_HS device endpoint transfer size register
+0x40080930 B  REGISTER TSIZ1 (rw): OTG_HS device endpoint transfer size register
 0x40080930 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080930 C   FIELD 19w10 PKTCNT: Packet count
 0x40080930 C   FIELD 29w02 MCNT: Multi count
-0x40080934 B  REGISTER DIEPDMA2 (rw): OTG_HS device endpoint-2 DMA address register
+0x40080934 B  REGISTER DMA1 (rw): OTG_HS device endpoint-1 DMA address register
 0x40080934 C   FIELD 00w32 DMAADDR: DMA address
-0x40080938 B  REGISTER DTXFSTS1 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40080938 B  REGISTER TXFSTS1 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40080938 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40080940 B  REGISTER DIEPCTL2: OTG device endpoint-2 control register
+0x40080940 B  CLUSTER DIEP2: Device IN endpoint X
+0x40080940 B  REGISTER CTL2: OTG device endpoint-1 control register
 0x40080940 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080940 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080940 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40080940 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080940 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080940 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080940 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080940 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40080940 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080940 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -12983,7 +13185,7 @@
 0x40080940 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080940 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080940 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080948 B  REGISTER DIEPINT2: OTG device endpoint-2 interrupt register
+0x40080948 B  REGISTER INT2: OTG device endpoint-1 interrupt register
 0x40080948 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40080948 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40080948 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -12995,21 +13197,22 @@
 0x40080948 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40080948 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40080948 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080950 B  REGISTER DIEPTSIZ2 (rw): OTG_HS device endpoint transfer size register
+0x40080950 B  REGISTER TSIZ2 (rw): OTG_HS device endpoint transfer size register
 0x40080950 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080950 C   FIELD 19w10 PKTCNT: Packet count
 0x40080950 C   FIELD 29w02 MCNT: Multi count
-0x40080954 B  REGISTER DIEPDMA3 (rw): OTG_HS device endpoint-3 DMA address register
+0x40080954 B  REGISTER DMA2 (rw): OTG_HS device endpoint-1 DMA address register
 0x40080954 C   FIELD 00w32 DMAADDR: DMA address
-0x40080958 B  REGISTER DTXFSTS2 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40080958 B  REGISTER TXFSTS2 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40080958 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40080960 B  REGISTER DIEPCTL3: OTG device endpoint-3 control register
+0x40080960 B  CLUSTER DIEP3: Device IN endpoint X
+0x40080960 B  REGISTER CTL3: OTG device endpoint-1 control register
 0x40080960 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080960 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080960 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40080960 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080960 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080960 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080960 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080960 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40080960 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080960 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -13017,7 +13220,7 @@
 0x40080960 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080960 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080960 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080968 B  REGISTER DIEPINT3: OTG device endpoint-3 interrupt register
+0x40080968 B  REGISTER INT3: OTG device endpoint-1 interrupt register
 0x40080968 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40080968 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40080968 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -13029,21 +13232,22 @@
 0x40080968 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40080968 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40080968 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080970 B  REGISTER DIEPTSIZ3 (rw): OTG_HS device endpoint transfer size register
+0x40080970 B  REGISTER TSIZ3 (rw): OTG_HS device endpoint transfer size register
 0x40080970 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080970 C   FIELD 19w10 PKTCNT: Packet count
 0x40080970 C   FIELD 29w02 MCNT: Multi count
-0x40080974 B  REGISTER DIEPDMA4 (rw): OTG_HS device endpoint-4 DMA address register
+0x40080974 B  REGISTER DMA3 (rw): OTG_HS device endpoint-1 DMA address register
 0x40080974 C   FIELD 00w32 DMAADDR: DMA address
-0x40080978 B  REGISTER DTXFSTS3 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40080978 B  REGISTER TXFSTS3 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40080978 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40080980 B  REGISTER DIEPCTL4: OTG device endpoint-4 control register
+0x40080980 B  CLUSTER DIEP4: Device IN endpoint X
+0x40080980 B  REGISTER CTL4: OTG device endpoint-1 control register
 0x40080980 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080980 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080980 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x40080980 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080980 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080980 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080980 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080980 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x40080980 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080980 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -13051,7 +13255,7 @@
 0x40080980 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080980 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080980 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080988 B  REGISTER DIEPINT4: OTG device endpoint-4 interrupt register
+0x40080988 B  REGISTER INT4: OTG device endpoint-1 interrupt register
 0x40080988 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x40080988 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x40080988 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -13063,38 +13267,31 @@
 0x40080988 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x40080988 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x40080988 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080990 B  REGISTER DIEPTSIZ4 (rw): OTG_HS device endpoint transfer size register
+0x40080990 B  REGISTER TSIZ4 (rw): OTG_HS device endpoint transfer size register
 0x40080990 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080990 C   FIELD 19w10 PKTCNT: Packet count
 0x40080990 C   FIELD 29w02 MCNT: Multi count
-0x40080994 B  REGISTER DIEPDMA5 (rw): OTG_HS device endpoint-5 DMA address register
+0x40080994 B  REGISTER DMA4 (rw): OTG_HS device endpoint-1 DMA address register
 0x40080994 C   FIELD 00w32 DMAADDR: DMA address
-0x40080998 B  REGISTER DTXFSTS4 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40080998 B  REGISTER TXFSTS4 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x40080998 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400809A0 B  REGISTER DIEPCTL5: OTG device endpoint-5 control register
-0x400809A0 B  REGISTER DIEPTSIZ6 (rw): OTG_HS device endpoint transfer size register
+0x400809A0 B  CLUSTER DIEP5: Device IN endpoint X
+0x400809A0 B  REGISTER CTL5: OTG device endpoint-1 control register
 0x400809A0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x400809A0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400809A0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x400809A0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x400809A0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x400809A0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400809A0 C   FIELD 19w10 PKTCNT: Packet count
-0x400809A0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x400809A0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x400809A0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x400809A0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x400809A0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x400809A0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
 0x400809A0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x400809A0 C   FIELD 29w02 MCNT: Multi count
 0x400809A0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x400809A0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400809A4 B  REGISTER DTXFSTS6 (rw): OTG_HS device IN endpoint transmit FIFO status register
-0x400809A4 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400809A8 B  REGISTER DIEPINT5: OTG device endpoint-5 interrupt register
-0x400809A8 B  REGISTER DIEPTSIZ7 (rw): OTG_HS device endpoint transfer size register
+0x400809A8 B  REGISTER INT5: OTG device endpoint-1 interrupt register
 0x400809A8 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
-0x400809A8 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400809A8 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x400809A8 C   FIELD 03w01 TOC (rw): Timeout condition
 0x400809A8 C   FIELD 04w01 ITTXFE (rw): IN token received when TxFIFO is empty
@@ -13105,23 +13302,22 @@
 0x400809A8 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x400809A8 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x400809A8 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x400809A8 C   FIELD 19w10 PKTCNT: Packet count
-0x400809A8 C   FIELD 29w02 MCNT: Multi count
-0x400809AC B  REGISTER DTXFSTS7 (rw): OTG_HS device IN endpoint transmit FIFO status register
-0x400809AC C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400809B0 B  REGISTER DIEPTSIZ5 (rw): OTG_HS device endpoint transfer size register
+0x400809B0 B  REGISTER TSIZ5 (rw): OTG_HS device endpoint transfer size register
 0x400809B0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x400809B0 C   FIELD 19w10 PKTCNT: Packet count
 0x400809B0 C   FIELD 29w02 MCNT: Multi count
-0x400809B8 B  REGISTER DTXFSTS5 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x400809B4 B  REGISTER DMA5 (rw): OTG_HS device endpoint-1 DMA address register
+0x400809B4 C   FIELD 00w32 DMAADDR: DMA address
+0x400809B8 B  REGISTER TXFSTS5 (ro): OTG_HS device IN endpoint transmit FIFO status register
 0x400809B8 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x400809C0 B  REGISTER DIEPCTL6: OTG device endpoint-6 control register
+0x400809C0 B  CLUSTER DIEP6: Device IN endpoint X
+0x400809C0 B  REGISTER CTL6: OTG device endpoint-1 control register
 0x400809C0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x400809C0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x400809C0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x400809C0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x400809C0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400809C0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x400809C0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x400809C0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x400809C0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x400809C0 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -13129,7 +13325,7 @@
 0x400809C0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x400809C0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x400809C0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400809C8 B  REGISTER DIEPINT6: OTG device endpoint-6 interrupt register
+0x400809C8 B  REGISTER INT6: OTG device endpoint-1 interrupt register
 0x400809C8 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x400809C8 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x400809C8 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -13141,13 +13337,22 @@
 0x400809C8 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x400809C8 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x400809C8 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x400809E0 B  REGISTER DIEPCTL7: OTG device endpoint-7 control register
+0x400809D0 B  REGISTER TSIZ6 (rw): OTG_HS device endpoint transfer size register
+0x400809D0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400809D0 C   FIELD 19w10 PKTCNT: Packet count
+0x400809D0 C   FIELD 29w02 MCNT: Multi count
+0x400809D4 B  REGISTER DMA6 (rw): OTG_HS device endpoint-1 DMA address register
+0x400809D4 C   FIELD 00w32 DMAADDR: DMA address
+0x400809D8 B  REGISTER TXFSTS6 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x400809D8 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
+0x400809E0 B  CLUSTER DIEP7: Device IN endpoint X
+0x400809E0 B  REGISTER CTL7: OTG device endpoint-1 control register
 0x400809E0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x400809E0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x400809E0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
 0x400809E0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x400809E0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400809E0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x400809E0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x400809E0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
 0x400809E0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x400809E0 C   FIELD 27w01 SNAK (wo): Set NAK
@@ -13155,7 +13360,7 @@
 0x400809E0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x400809E0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x400809E0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400809E8 B  REGISTER DIEPINT7: OTG device endpoint-7 interrupt register
+0x400809E8 B  REGISTER INT7: OTG device endpoint-1 interrupt register
 0x400809E8 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
 0x400809E8 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
 0x400809E8 C   FIELD 03w01 TOC (rw): Timeout condition
@@ -13167,203 +13372,298 @@
 0x400809E8 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
 0x400809E8 C   FIELD 12w01 BERR (rw): Babble error interrupt
 0x400809E8 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080B00 B  REGISTER DOEPCTL0: OTG_HS device control OUT endpoint 0 control register
+0x400809F0 B  REGISTER TSIZ7 (rw): OTG_HS device endpoint transfer size register
+0x400809F0 C   FIELD 00w19 XFRSIZ: Transfer size
+0x400809F0 C   FIELD 19w10 PKTCNT: Packet count
+0x400809F0 C   FIELD 29w02 MCNT: Multi count
+0x400809F4 B  REGISTER DMA7 (rw): OTG_HS device endpoint-1 DMA address register
+0x400809F4 C   FIELD 00w32 DMAADDR: DMA address
+0x400809F8 B  REGISTER TXFSTS7 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x400809F8 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
+0x40080A00 B  CLUSTER DIEP8: Device IN endpoint X
+0x40080A00 B  REGISTER CTL8: OTG device endpoint-1 control register
+0x40080A00 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
+0x40080A00 C   FIELD 15w01 USBAEP (rw): USB active endpoint
+0x40080A00 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
+0x40080A00 C   FIELD 17w01 NAKSTS (ro): NAK status
+0x40080A00 C   FIELD 18w02 EPTYP (rw): Endpoint type
+0x40080A00 C   FIELD 21w01 STALL (rw): STALL handshake
+0x40080A00 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
+0x40080A00 C   FIELD 26w01 CNAK (wo): Clear NAK
+0x40080A00 C   FIELD 27w01 SNAK (wo): Set NAK
+0x40080A00 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
+0x40080A00 C   FIELD 29w01 SODDFRM (wo): Set odd frame
+0x40080A00 C   FIELD 30w01 EPDIS (rw): Endpoint disable
+0x40080A00 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x40080A08 B  REGISTER INT8: OTG device endpoint-1 interrupt register
+0x40080A08 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
+0x40080A08 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
+0x40080A08 C   FIELD 03w01 TOC (rw): Timeout condition
+0x40080A08 C   FIELD 04w01 ITTXFE (rw): IN token received when TxFIFO is empty
+0x40080A08 C   FIELD 06w01 INEPNE (rw): IN endpoint NAK effective
+0x40080A08 C   FIELD 07w01 TXFE (ro): Transmit FIFO empty
+0x40080A08 C   FIELD 08w01 TXFIFOUDRN (rw): Transmit Fifo Underrun
+0x40080A08 C   FIELD 09w01 BNA (rw): Buffer not available interrupt
+0x40080A08 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
+0x40080A08 C   FIELD 12w01 BERR (rw): Babble error interrupt
+0x40080A08 C   FIELD 13w01 NAK (rw): NAK interrupt
+0x40080A10 B  REGISTER TSIZ8 (rw): OTG_HS device endpoint transfer size register
+0x40080A10 C   FIELD 00w19 XFRSIZ: Transfer size
+0x40080A10 C   FIELD 19w10 PKTCNT: Packet count
+0x40080A10 C   FIELD 29w02 MCNT: Multi count
+0x40080A14 B  REGISTER DMA8 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080A14 C   FIELD 00w32 DMAADDR: DMA address
+0x40080A18 B  REGISTER TXFSTS8 (ro): OTG_HS device IN endpoint transmit FIFO status register
+0x40080A18 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
+0x40080B00 B  CLUSTER DOEP0: Device OUT endpoint 0
+0x40080B00 B  REGISTER CTL: OTG_HS device control OUT endpoint 0 control register
 0x40080B00 C   FIELD 00w02 MPSIZ (ro): Maximum packet size
 0x40080B00 C   FIELD 15w01 USBAEP (ro): USB active endpoint
 0x40080B00 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080B00 C   FIELD 18w02 EPTYP (ro): Endpoint type
 0x40080B00 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B00 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080B00 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080B00 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080B00 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080B00 C   FIELD 30w01 EPDIS (ro): Endpoint disable
-0x40080B00 C   FIELD 31w01 EPENA (wo): Endpoint enable
-0x40080B08 B  REGISTER DOEPINT0 (rw): OTG_HS device endpoint-0 interrupt register
+0x40080B00 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x40080B08 B  REGISTER INT (rw): OTG_HS device endpoint-0 interrupt register
 0x40080B08 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080B08 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080B08 C   FIELD 03w01 STUP: SETUP phase done
 0x40080B08 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080B08 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080B08 C   FIELD 14w01 NYET: NYET interrupt
-0x40080B10 B  REGISTER DOEPTSIZ0 (rw): OTG_HS device endpoint-0 transfer size register
+0x40080B10 B  REGISTER TSIZ (rw): OTG_HS device endpoint-0 transfer size register
 0x40080B10 C   FIELD 00w07 XFRSIZ: Transfer size
 0x40080B10 C   FIELD 19w01 PKTCNT: Packet count
 0x40080B10 C   FIELD 29w02 STUPCNT: SETUP packet count
-0x40080B20 B  REGISTER DOEPCTL1: OTG device endpoint-1 control register
+0x40080B14 B  REGISTER DMA (rw): OTG_HS device endpoint-0 DMA address register
+0x40080B14 C   FIELD 00w32 DMAADDR: DMA address
+0x40080B20 B  CLUSTER DOEP1: Device IN endpoint X
+0x40080B20 B  REGISTER CTL1: OTG device endpoint-1 control register
 0x40080B20 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080B20 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080B20 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080B20 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080B20 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080B20 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B20 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080B20 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080B20 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080B20 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080B20 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080B20 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080B20 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080B20 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B28 B  REGISTER DOEPINT1 (rw): OTG_HS device endpoint-1 interrupt register
+0x40080B28 B  REGISTER INT1 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080B28 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080B28 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080B28 C   FIELD 03w01 STUP: SETUP phase done
 0x40080B28 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080B28 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080B28 C   FIELD 14w01 NYET: NYET interrupt
-0x40080B30 B  REGISTER DOEPTSIZ1 (rw): OTG_HS device endpoint-1 transfer size register
+0x40080B30 B  REGISTER TSIZ1 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080B30 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080B30 C   FIELD 19w10 PKTCNT: Packet count
 0x40080B30 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B40 B  REGISTER DOEPCTL2: OTG device endpoint-2 control register
+0x40080B34 B  REGISTER DMA1 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080B34 C   FIELD 00w32 DMAADDR: DMA address
+0x40080B40 B  CLUSTER DOEP2: Device IN endpoint X
+0x40080B40 B  REGISTER CTL2: OTG device endpoint-1 control register
 0x40080B40 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080B40 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080B40 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080B40 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080B40 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080B40 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B40 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080B40 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080B40 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080B40 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080B40 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080B40 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080B40 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080B40 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B48 B  REGISTER DOEPINT2 (rw): OTG_HS device endpoint-2 interrupt register
+0x40080B48 B  REGISTER INT2 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080B48 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080B48 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080B48 C   FIELD 03w01 STUP: SETUP phase done
 0x40080B48 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080B48 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080B48 C   FIELD 14w01 NYET: NYET interrupt
-0x40080B50 B  REGISTER DOEPTSIZ2 (rw): OTG_HS device endpoint-2 transfer size register
+0x40080B50 B  REGISTER TSIZ2 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080B50 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080B50 C   FIELD 19w10 PKTCNT: Packet count
 0x40080B50 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B60 B  REGISTER DOEPCTL3: OTG device endpoint-3 control register
+0x40080B54 B  REGISTER DMA2 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080B54 C   FIELD 00w32 DMAADDR: DMA address
+0x40080B60 B  CLUSTER DOEP3: Device IN endpoint X
+0x40080B60 B  REGISTER CTL3: OTG device endpoint-1 control register
 0x40080B60 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080B60 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080B60 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080B60 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080B60 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080B60 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B60 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080B60 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080B60 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080B60 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080B60 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080B60 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080B60 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080B60 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B68 B  REGISTER DOEPINT3 (rw): OTG_HS device endpoint-3 interrupt register
+0x40080B68 B  REGISTER INT3 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080B68 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080B68 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080B68 C   FIELD 03w01 STUP: SETUP phase done
 0x40080B68 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080B68 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080B68 C   FIELD 14w01 NYET: NYET interrupt
-0x40080B70 B  REGISTER DOEPTSIZ3 (rw): OTG_HS device endpoint-3 transfer size register
+0x40080B70 B  REGISTER TSIZ3 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080B70 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080B70 C   FIELD 19w10 PKTCNT: Packet count
 0x40080B70 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B80 B  REGISTER DOEPCTL4: OTG device endpoint-4 control register
+0x40080B74 B  REGISTER DMA3 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080B74 C   FIELD 00w32 DMAADDR: DMA address
+0x40080B80 B  CLUSTER DOEP4: Device IN endpoint X
+0x40080B80 B  REGISTER CTL4: OTG device endpoint-1 control register
 0x40080B80 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080B80 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080B80 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080B80 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080B80 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080B80 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B80 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080B80 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080B80 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080B80 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080B80 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080B80 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080B80 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080B80 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B88 B  REGISTER DOEPINT4 (rw): OTG_HS device endpoint-4 interrupt register
+0x40080B88 B  REGISTER INT4 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080B88 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080B88 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080B88 C   FIELD 03w01 STUP: SETUP phase done
 0x40080B88 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080B88 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080B88 C   FIELD 14w01 NYET: NYET interrupt
-0x40080B90 B  REGISTER DOEPTSIZ4 (rw): OTG_HS device endpoint-4 transfer size register
+0x40080B90 B  REGISTER TSIZ4 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080B90 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080B90 C   FIELD 19w10 PKTCNT: Packet count
 0x40080B90 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080BA0 B  REGISTER DOEPCTL5: OTG device endpoint-5 control register
+0x40080B94 B  REGISTER DMA4 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080B94 C   FIELD 00w32 DMAADDR: DMA address
+0x40080BA0 B  CLUSTER DOEP5: Device IN endpoint X
+0x40080BA0 B  REGISTER CTL5: OTG device endpoint-1 control register
 0x40080BA0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080BA0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080BA0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080BA0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080BA0 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080BA0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080BA0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080BA0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080BA0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080BA0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080BA0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080BA0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080BA0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080BA0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080BA8 B  REGISTER DOEPINT5 (rw): OTG_HS device endpoint-5 interrupt register
+0x40080BA8 B  REGISTER INT5 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080BA8 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080BA8 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080BA8 C   FIELD 03w01 STUP: SETUP phase done
 0x40080BA8 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080BA8 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080BA8 C   FIELD 14w01 NYET: NYET interrupt
-0x40080BB0 B  REGISTER DOEPTSIZ5 (rw): OTG_HS device endpoint-5 transfer size register
+0x40080BB0 B  REGISTER TSIZ5 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080BB0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080BB0 C   FIELD 19w10 PKTCNT: Packet count
 0x40080BB0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080BC0 B  REGISTER DOEPCTL6: OTG device endpoint-6 control register
+0x40080BB4 B  REGISTER DMA5 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080BB4 C   FIELD 00w32 DMAADDR: DMA address
+0x40080BC0 B  CLUSTER DOEP6: Device IN endpoint X
+0x40080BC0 B  REGISTER CTL6: OTG device endpoint-1 control register
 0x40080BC0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080BC0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080BC0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080BC0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080BC0 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080BC0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080BC0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080BC0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080BC0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080BC0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080BC0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080BC0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080BC0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080BC0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080BC8 B  REGISTER DOEPINT6 (rw): OTG_HS device endpoint-6 interrupt register
+0x40080BC8 B  REGISTER INT6 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080BC8 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080BC8 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080BC8 C   FIELD 03w01 STUP: SETUP phase done
 0x40080BC8 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080BC8 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080BC8 C   FIELD 14w01 NYET: NYET interrupt
-0x40080BD0 B  REGISTER DOEPTSIZ6 (rw): OTG_HS device endpoint-6 transfer size register
+0x40080BD0 B  REGISTER TSIZ6 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080BD0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080BD0 C   FIELD 19w10 PKTCNT: Packet count
 0x40080BD0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080BE0 B  REGISTER DOEPCTL7: OTG device endpoint-7 control register
+0x40080BD4 B  REGISTER DMA6 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080BD4 C   FIELD 00w32 DMAADDR: DMA address
+0x40080BE0 B  CLUSTER DOEP7: Device IN endpoint X
+0x40080BE0 B  REGISTER CTL7: OTG device endpoint-1 control register
 0x40080BE0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
 0x40080BE0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
 0x40080BE0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
 0x40080BE0 C   FIELD 17w01 NAKSTS (ro): NAK status
 0x40080BE0 C   FIELD 18w02 EPTYP (rw): Endpoint type
 0x40080BE0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080BE0 C   FIELD 21w01 Stall (rw): STALL handshake
+0x40080BE0 C   FIELD 21w01 STALL (rw): STALL handshake
 0x40080BE0 C   FIELD 26w01 CNAK (wo): Clear NAK
 0x40080BE0 C   FIELD 27w01 SNAK (wo): Set NAK
 0x40080BE0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
 0x40080BE0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
 0x40080BE0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
 0x40080BE0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080BE8 B  REGISTER DOEPINT7 (rw): OTG_HS device endpoint-7 interrupt register
+0x40080BE8 B  REGISTER INT7 (rw): OTG_HS device endpoint-1 interrupt register
 0x40080BE8 C   FIELD 00w01 XFRC: Transfer completed interrupt
 0x40080BE8 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
 0x40080BE8 C   FIELD 03w01 STUP: SETUP phase done
 0x40080BE8 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
 0x40080BE8 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
 0x40080BE8 C   FIELD 14w01 NYET: NYET interrupt
-0x40080BF0 B  REGISTER DOEPTSIZ7 (rw): OTG_HS device endpoint-7 transfer size register
+0x40080BF0 B  REGISTER TSIZ7 (rw): OTG_HS device endpoint-1 transfer size register
 0x40080BF0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x40080BF0 C   FIELD 19w10 PKTCNT: Packet count
 0x40080BF0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
+0x40080BF4 B  REGISTER DMA7 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080BF4 C   FIELD 00w32 DMAADDR: DMA address
+0x40080C00 B  CLUSTER DOEP8: Device IN endpoint X
+0x40080C00 B  REGISTER CTL8: OTG device endpoint-1 control register
+0x40080C00 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
+0x40080C00 C   FIELD 15w01 USBAEP (rw): USB active endpoint
+0x40080C00 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
+0x40080C00 C   FIELD 17w01 NAKSTS (ro): NAK status
+0x40080C00 C   FIELD 18w02 EPTYP (rw): Endpoint type
+0x40080C00 C   FIELD 20w01 SNPM (rw): Snoop mode
+0x40080C00 C   FIELD 21w01 STALL (rw): STALL handshake
+0x40080C00 C   FIELD 26w01 CNAK (wo): Clear NAK
+0x40080C00 C   FIELD 27w01 SNAK (wo): Set NAK
+0x40080C00 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
+0x40080C00 C   FIELD 29w01 SODDFRM (wo): Set odd frame
+0x40080C00 C   FIELD 30w01 EPDIS (rw): Endpoint disable
+0x40080C00 C   FIELD 31w01 EPENA (rw): Endpoint enable
+0x40080C08 B  REGISTER INT8 (rw): OTG_HS device endpoint-1 interrupt register
+0x40080C08 C   FIELD 00w01 XFRC: Transfer completed interrupt
+0x40080C08 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
+0x40080C08 C   FIELD 03w01 STUP: SETUP phase done
+0x40080C08 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
+0x40080C08 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
+0x40080C08 C   FIELD 14w01 NYET: NYET interrupt
+0x40080C10 B  REGISTER TSIZ8 (rw): OTG_HS device endpoint-1 transfer size register
+0x40080C10 C   FIELD 00w19 XFRSIZ: Transfer size
+0x40080C10 C   FIELD 19w10 PKTCNT: Packet count
+0x40080C10 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
+0x40080C14 B  REGISTER DMA8 (rw): OTG_HS device endpoint-1 DMA address register
+0x40080C14 C   FIELD 00w32 DMAADDR: DMA address
 0x40080E00 A PERIPHERAL OTG2_HS_PWRCLK
 0x40080E00 B  REGISTER PCGCR (rw): Power and clock gating control register
 0x40080E00 C   FIELD 00w01 STPPCLK: Stop PHY clock
