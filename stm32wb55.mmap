@@ -643,7 +643,7 @@
 0x40003800 C   FIELD 08w01 SSI: Internal slave select
 0x40003800 C   FIELD 09w01 SSM: Software slave management
 0x40003800 C   FIELD 10w01 RXONLY: Receive only
-0x40003800 C   FIELD 11w01 DFF: Data frame format
+0x40003800 C   FIELD 11w01 CRCL: CRC length
 0x40003800 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003800 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003800 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -668,7 +668,7 @@
 0x40003808 C   FIELD 05w01 MODF (ro): Mode fault
 0x40003808 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40003808 C   FIELD 07w01 BSY (ro): Busy flag
-0x40003808 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x40003808 C   FIELD 08w01 FRE (ro): Frame format error
 0x40003808 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40003808 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4000380C B  REGISTER DR (rw): data register
@@ -1359,7 +1359,12 @@
 0x40010004 C   FIELD 19w01 I2C_PB9_FMP: Fast-mode Plus (Fm+) driving capability activation on PB9
 0x40010004 C   FIELD 20w01 I2C1_FMP: I2C1 Fast-mode Plus driving capability activation
 0x40010004 C   FIELD 22w01 I2C3_FMP: I2C3 Fast-mode Plus driving capability activation
-0x40010004 C   FIELD 26w06 FPU_IE: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 26w01 FPU_IE0: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 27w01 FPU_IE1: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 28w01 FPU_IE2: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 29w01 FPU_IE3: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 30w01 FPU_IE4: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 31w01 FPU_IE5: Floating Point Unit interrupts enable bits
 0x40010008 B  REGISTER EXTICR1 (rw): external interrupt configuration register 1
 0x40010008 C   FIELD 00w03 EXTI0: EXTI 0 configuration bits
 0x40010008 C   FIELD 04w03 EXTI1: EXTI 1 configuration bits
@@ -1385,10 +1390,10 @@
 0x40010018 C   FIELD 01w01 SRAM2BSY (ro): SRAM2 busy by erase operation
 0x40010018 C   FIELD 31w01 C2RFD (rw): CPU2 SRAM fetch (execution) disable.
 0x4001001C B  REGISTER CFGR2: CFGR2
-0x4001001C C   FIELD 00w01 CLL (wo): Cortex-M4 LOCKUP (Hardfault) output enable bit
-0x4001001C C   FIELD 01w01 SPL (wo): SRAM2 parity lock bit
-0x4001001C C   FIELD 02w01 PVDL (wo): PVD lock enable bit
-0x4001001C C   FIELD 03w01 ECCL (wo): ECC Lock
+0x4001001C C   FIELD 00w01 CLL (rw): Cortex-M4 LOCKUP (Hardfault) output enable bit
+0x4001001C C   FIELD 01w01 SPL (rw): SRAM2 parity lock bit
+0x4001001C C   FIELD 02w01 PVDL (rw): PVD lock enable bit
+0x4001001C C   FIELD 03w01 ECCL (rw): ECC Lock
 0x4001001C C   FIELD 08w01 SPF (rw): SRAM2 parity error flag
 0x40010020 B  REGISTER SWPR (wo): SRAM2 write protection register
 0x40010020 C   FIELD 00w01 P0WP: P0WP
@@ -1773,7 +1778,7 @@
 0x40013000 C   FIELD 08w01 SSI: Internal slave select
 0x40013000 C   FIELD 09w01 SSM: Software slave management
 0x40013000 C   FIELD 10w01 RXONLY: Receive only
-0x40013000 C   FIELD 11w01 DFF: Data frame format
+0x40013000 C   FIELD 11w01 CRCL: CRC length
 0x40013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -1798,7 +1803,7 @@
 0x40013008 C   FIELD 05w01 MODF (ro): Mode fault
 0x40013008 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40013008 C   FIELD 07w01 BSY (ro): Busy flag
-0x40013008 C   FIELD 08w01 TIFRFE (ro): TI frame format error
+0x40013008 C   FIELD 08w01 FRE (ro): Frame format error
 0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4001300C B  REGISTER DR (rw): data register
@@ -4236,7 +4241,7 @@
 0x5800001C C   FIELD 04w01 HSERDYF: HSE ready interrupt flag
 0x5800001C C   FIELD 05w01 PLLRDYF: PLL ready interrupt flag
 0x5800001C C   FIELD 06w01 PLLSAI1RDYF: PLLSAI1 ready interrupt flag
-0x5800001C C   FIELD 08w01 HSECSSF: HSE Clock security system interrupt flag
+0x5800001C C   FIELD 08w01 CSSF: HSE Clock security system interrupt flag
 0x5800001C C   FIELD 09w01 LSECSSF: LSE Clock security system interrupt flag
 0x5800001C C   FIELD 10w01 HSI48RDYF: HSI48 ready interrupt flag
 0x5800001C C   FIELD 11w01 LSI2RDYF: LSI2 ready interrupt flag
@@ -4248,7 +4253,7 @@
 0x58000020 C   FIELD 04w01 HSERDYC: HSE ready interrupt clear
 0x58000020 C   FIELD 05w01 PLLRDYC: PLL ready interrupt clear
 0x58000020 C   FIELD 06w01 PLLSAI1RDYC: PLLSAI1 ready interrupt clear
-0x58000020 C   FIELD 08w01 HSECSSC: HSE Clock security system interrupt clear
+0x58000020 C   FIELD 08w01 CSSC: HSE Clock security system interrupt clear
 0x58000020 C   FIELD 09w01 LSECSSC: LSE Clock security system interrupt clear
 0x58000020 C   FIELD 10w01 HSI48RDYC: HSI48 ready interrupt clear
 0x58000020 C   FIELD 11w01 LSI2RDYC: LSI2 ready interrupt clear
@@ -4405,7 +4410,7 @@
 0x58000090 C   FIELD 02w01 LSEBYP (rw): LSE oscillator bypass
 0x58000090 C   FIELD 03w02 LSEDRV (rw): SE oscillator drive capability
 0x58000090 C   FIELD 05w01 LSECSSON (rw): LSECSSON
-0x58000090 C   FIELD 06w01 LSECSSD_ (ro): CSS on LSE failure detection
+0x58000090 C   FIELD 06w01 LSECSSD (ro): CSS on LSE failure detection
 0x58000090 C   FIELD 08w02 RTCSEL (rw): RTC clock source selection
 0x58000090 C   FIELD 15w01 RTCEN (rw): RTC clock enable
 0x58000090 C   FIELD 16w01 BDRST (rw): Backup domain software reset
@@ -4435,9 +4440,10 @@
 0x58000098 C   FIELD 07w09 HSI48CAL (ro): HSI48 clock calibration
 0x5800009C B  REGISTER HSECR: Clock HSE register
 0x5800009C C   FIELD 00w01 UNLOCKED (rw): Register lock system
+0x5800009C C   FIELD 00w32 KEY (wo): 
 0x5800009C C   FIELD 03w01 HSES (rw): HSE Sense amplifier threshold
 0x5800009C C   FIELD 04w03 HSEGMC (rw): HSE current control
-0x5800009C C   FIELD 08w06 HSETUNE (ro): HSE capacitor tuning
+0x5800009C C   FIELD 08w06 HSETUNE (rw): HSE capacitor tuning
 0x58000108 B  REGISTER EXTCFGR: Extended clock recovery register
 0x58000108 C   FIELD 00w04 SHDHPRE (rw): Shared AHB prescaler
 0x58000108 C   FIELD 04w04 C2HPRE (rw): CPU2 AHB prescaler
