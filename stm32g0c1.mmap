@@ -581,9 +581,9 @@
 0x4000282C B  REGISTER SHIFTR: RTC shift control register
 0x4000282C C   FIELD 00w15 SUBFS (wo): Subtract a fraction of a second These bits are write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). The value which is written to SUBFS is added to the synchronous prescaler counter. Since this counter counts down, this operation effectively subtracts from (delays) the clock by: Delay (seconds) = SUBFS / (PREDIV_S + 1) A fraction of a second can effectively be added to the clock (advancing the clock) when the ADD1S function is used in conjunction with SUBFS, effectively advancing the clock by: Advance (seconds) = (1 - (SUBFS / (PREDIV_S + 1))). Note: Writing to SUBFS causes RSF to be cleared. Software can then wait until RSF = 1 to be sure that the shadow registers have been updated with the shifted time.
 0x4000282C C   FIELD 31w01 ADD1S (wo): Add one second This bit is write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). This function is intended to be used with SUBFS (see description below) in order to effectively add a fraction of a second to the clock in an atomic operation.
-0x40002830 B  REGISTER TSTR: RTC timestamp time register
-0x40002834 B  REGISTER TSDR: RTC timestamp date register
-0x40002838 B  REGISTER TSSSR: RTC timestamp sub second register
+0x40002830 B  REGISTER TSTR (=TR): RTC timestamp time register
+0x40002834 B  REGISTER TSDR (=DR): RTC timestamp date register
+0x40002838 B  REGISTER TSSSR (=SSR): RTC timestamp sub second register
 0x40002840 B  REGISTER ALRMAR: Alarm register
 0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format
 0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format
