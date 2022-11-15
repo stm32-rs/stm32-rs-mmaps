@@ -4373,9 +4373,11 @@
 0x40014060 C   FIELD 00w01 BKINE (rw): BRK BKIN input enable This bit enables the BKIN alternate function input for the timerâs BRK input. BKIN input is 'ORedâ with the other BRK sources. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014060 C   FIELD 01w01 BKCMP1E (rw): BRK COMP1 enable This bit enables the COMP1 for the timerâs BRK input. COMP1 output is 'ORedâ with the other BRK sources. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014060 C   FIELD 02w01 BKCMP2E (rw): BRK COMP2 enable This bit enables the COMP2 for the timerâs BRK input. COMP2 output is 'ORedâ with the other BRK sources. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
+0x40014060 C   FIELD 03w01 BKCMP3E (rw): BRK COMP3 enable This bit enables the COMP3 for the timerâs BRK input. COMP3 output is 'ORedâ with the other BRK sources. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014060 C   FIELD 09w01 BKINP (rw): BRK BKIN input polarity This bit selects the BKIN alternate function input sensitivity. It must be programmed together with the BKP polarity bit. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014060 C   FIELD 10w01 BKCMP1P (rw): BRK COMP1 input polarity This bit selects the COMP1 input sensitivity. It must be programmed together with the BKP polarity bit. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014060 C   FIELD 11w01 BKCMP2P (rw): BRK COMP2 input polarity This bit selects the COMP2 input sensitivity. It must be programmed together with the BKP polarity bit. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
+0x40014060 C   FIELD 12w01 BKCMP3P (rw): BRK COMP3 input polarity This bit selects the COMP3 input sensitivity. It must be programmed together with the BKP polarity bit. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014068 B  REGISTER TISEL (rw): input selection register
 0x40014068 C   FIELD 00w04 TI1SEL (rw): selects TI1[0] to TI1[15] input Others: Reserved
 0x40014068 C   FIELD 08w04 TI2SEL (rw): selects TI2[0] to TI2[15] input Others: Reserved
@@ -5260,7 +5262,7 @@
 0x40021058 C   FIELD 00w02 I2S1SEL: 2S1SEL
 0x40021058 C   FIELD 02w02 I2S2SEL: I2S2SEL
 0x40021058 C   FIELD 08w02 FDCANSEL: FDCANSEL
-0x40021058 C   FIELD 12w01 USBSEL: USBSEL
+0x40021058 C   FIELD 12w02 USBSEL: USBSEL
 0x4002105C B  REGISTER BDCR (rw): RTC domain control register
 0x4002105C C   FIELD 00w01 LSEON: LSE oscillator enable
 0x4002105C C   FIELD 01w01 LSERDY (ro): LSE oscillator ready
@@ -6754,6 +6756,7 @@ INTERRUPT 014: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
 INTERRUPT 015: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 016: TIM3_TIM4 (TIM3): TIM3 global interrupt
 INTERRUPT 017: TIM6_DAC (TIM6): TIM6 + LPTIM1 and DAC global interrupt
+INTERRUPT 017: TIM6_DAC_LPTIM1 (DAC): TIM6, LPTIM1 and DAC global interrupt
 INTERRUPT 018: TIM7 (TIM7): TIM7 + LPTIM2 global interrupt
 INTERRUPT 019: TIM14 (TIM14): TIM14 global interrupt
 INTERRUPT 020: TIM15 (TIM15): Timer 15 global interrupt
