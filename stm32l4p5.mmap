@@ -9123,67 +9123,46 @@
 0x5004030C C   FIELD 00w16 RDATA_MST: Regular data of the master ADC
 0x5004030C C   FIELD 16w16 RDATA_SLV: Regular data of the slave ADC
 0x50050000 A PERIPHERAL DCMI
-0x50050000 A PERIPHERAL PSSI
-0x50050000 B  REGISTER CR (rw): PSSI control register
 0x50050000 B  REGISTER CR (rw): control register 1
 0x50050000 C   FIELD 00w01 CAPTURE: Capture enable
 0x50050000 C   FIELD 01w01 CM: Capture mode
 0x50050000 C   FIELD 02w01 CROP: Crop feature
 0x50050000 C   FIELD 03w01 JPEG: JPEG format
 0x50050000 C   FIELD 04w01 ESS: Embedded synchronization select
-0x50050000 C   FIELD 05w01 CKPOL: Parallel data clock polarity
 0x50050000 C   FIELD 05w01 PCKPOL: Pixel clock polarity
-0x50050000 C   FIELD 06w01 DEPOL: Data enable (PSSI_DE) polarity
 0x50050000 C   FIELD 06w01 HSPOL: Horizontal synchronization polarity
 0x50050000 C   FIELD 07w01 VSPOL: Vertical synchronization polarity
-0x50050000 C   FIELD 08w01 RDYPOL: Ready (PSSI_RDY) polarity
 0x50050000 C   FIELD 08w02 FCRC: Frame capture rate control
 0x50050000 C   FIELD 10w02 EDM: Extended data mode
-0x50050000 C   FIELD 10w02 EDM: Extended data mode
 0x50050000 C   FIELD 14w01 ENABLE: DCMI enable
-0x50050000 C   FIELD 14w01 ENABLE: PSSI enable
 0x50050000 C   FIELD 16w02 BSM: Byte Select mode
 0x50050000 C   FIELD 18w01 OEBS: Odd/Even Byte Select (Byte Select Start)
-0x50050000 C   FIELD 18w03 DERDYCFG: Data enable and ready configuration
 0x50050000 C   FIELD 19w01 LSM: Line Select mode
 0x50050000 C   FIELD 20w01 OELS: Odd/Even Line Select (Line Select Start)
-0x50050000 C   FIELD 30w01 DMAEN: DMA enable bit
-0x50050000 C   FIELD 31w01 OUTEN: Data direction selection bit
-0x50050004 B  REGISTER SR (ro): PSSI status register
 0x50050004 B  REGISTER SR (ro): status register
 0x50050004 C   FIELD 00w01 HSYNC: HSYNC
 0x50050004 C   FIELD 01w01 VSYNC: VSYNC
 0x50050004 C   FIELD 02w01 FNE: FIFO not empty
-0x50050004 C   FIELD 02w01 RTT4B: FIFO is ready to transfer four bytes
-0x50050004 C   FIELD 03w01 RTT1B: FIFO is ready to transfer one byte
-0x50050008 B  REGISTER RIS (ro): PSSI raw interrupt status register
 0x50050008 B  REGISTER RIS (ro): raw interrupt status register
 0x50050008 C   FIELD 00w01 FRAME_RIS: Capture complete raw interrupt status
-0x50050008 C   FIELD 01w01 OVR_RIS: Data buffer overrun/underrun raw interrupt status
 0x50050008 C   FIELD 01w01 OVR_RIS: Overrun raw interrupt status
 0x50050008 C   FIELD 02w01 ERR_RIS: Synchronization error raw interrupt status
 0x50050008 C   FIELD 03w01 VSYNC_RIS: VSYNC raw interrupt status
 0x50050008 C   FIELD 04w01 LINE_RIS: Line raw interrupt status
-0x5005000C B  REGISTER IER (rw): PSSI interrupt enable register
 0x5005000C B  REGISTER IER (rw): interrupt enable register
 0x5005000C C   FIELD 00w01 FRAME_IE: Capture complete interrupt enable
-0x5005000C C   FIELD 01w01 OVR_IE: Data buffer overrun/underrun interrupt enable
 0x5005000C C   FIELD 01w01 OVR_IE: Overrun interrupt enable
 0x5005000C C   FIELD 02w01 ERR_IE: Synchronization error interrupt enable
 0x5005000C C   FIELD 03w01 VSYNC_IE: VSYNC interrupt enable
 0x5005000C C   FIELD 04w01 LINE_IE: Line interrupt enable
-0x50050010 B  REGISTER MIS (ro): PSSI masked interrupt status register
 0x50050010 B  REGISTER MIS (ro): masked interrupt status register
 0x50050010 C   FIELD 00w01 FRAME_MIS: Capture complete masked interrupt status
-0x50050010 C   FIELD 01w01 OVR_MIS: Data buffer overrun/underrun masked interrupt status
 0x50050010 C   FIELD 01w01 OVR_MIS: Overrun masked interrupt status
 0x50050010 C   FIELD 02w01 ERR_MIS: Synchronization error masked interrupt status
 0x50050010 C   FIELD 03w01 VSYNC_MIS: VSYNC masked interrupt status
 0x50050010 C   FIELD 04w01 LINE_MIS: Line masked interrupt status
-0x50050014 B  REGISTER ICR (wo): PSSI interrupt clear register
 0x50050014 B  REGISTER ICR (wo): interrupt clear register
 0x50050014 C   FIELD 00w01 FRAME_ISC: Capture complete interrupt status clear
-0x50050014 C   FIELD 01w01 OVR_ISC: Data buffer overrun/underrun interrupt status clear
 0x50050014 C   FIELD 01w01 OVR_ISC: Overrun interrupt status clear
 0x50050014 C   FIELD 02w01 ERR_ISC: Synchronization error interrupt status clear
 0x50050014 C   FIELD 03w01 VSYNC_ISC: Vertical synch interrupt status clear
@@ -9205,15 +9184,36 @@
 0x50050024 C   FIELD 00w14 CAPCNT: Capture count
 0x50050024 C   FIELD 16w14 VLINE: Vertical line count
 0x50050028 B  REGISTER DR (ro): data register
-0x50050028 B  REGISTER DR (rw): PSSI data register
-0x50050028 C   FIELD 00w08 Byte0: 
 0x50050028 C   FIELD 00w08 Byte0: Data byte 0
-0x50050028 C   FIELD 08w08 Byte1: 
 0x50050028 C   FIELD 08w08 Byte1: Data byte 1
-0x50050028 C   FIELD 16w08 Byte2: 
 0x50050028 C   FIELD 16w08 Byte2: Data byte 2
-0x50050028 C   FIELD 24w08 Byte3: 
 0x50050028 C   FIELD 24w08 Byte3: Data byte 3
+0x50050400 A PERIPHERAL PSSI
+0x50050400 B  REGISTER CR (rw): PSSI control register
+0x50050400 C   FIELD 05w01 CKPOL: Parallel data clock polarity
+0x50050400 C   FIELD 06w01 DEPOL: Data enable (PSSI_DE) polarity
+0x50050400 C   FIELD 08w01 RDYPOL: Ready (PSSI_RDY) polarity
+0x50050400 C   FIELD 10w02 EDM: Extended data mode
+0x50050400 C   FIELD 14w01 ENABLE: PSSI enable
+0x50050400 C   FIELD 18w03 DERDYCFG: Data enable and ready configuration
+0x50050400 C   FIELD 30w01 DMAEN: DMA enable bit
+0x50050400 C   FIELD 31w01 OUTEN: Data direction selection bit
+0x50050404 B  REGISTER SR (ro): PSSI status register
+0x50050404 C   FIELD 02w01 RTT4B: FIFO is ready to transfer four bytes
+0x50050404 C   FIELD 03w01 RTT1B: FIFO is ready to transfer one byte
+0x50050408 B  REGISTER RIS (ro): PSSI raw interrupt status register
+0x50050408 C   FIELD 01w01 OVR_RIS: Data buffer overrun/underrun raw interrupt status
+0x5005040C B  REGISTER IER (rw): PSSI interrupt enable register
+0x5005040C C   FIELD 01w01 OVR_IE: Data buffer overrun/underrun interrupt enable
+0x50050410 B  REGISTER MIS (ro): PSSI masked interrupt status register
+0x50050410 C   FIELD 01w01 OVR_MIS: Data buffer overrun/underrun masked interrupt status
+0x50050414 B  REGISTER ICR (wo): PSSI interrupt clear register
+0x50050414 C   FIELD 01w01 OVR_ISC: Data buffer overrun/underrun interrupt status clear
+0x50050428 B  REGISTER DR (rw): PSSI data register
+0x50050428 C   FIELD 00w08 Byte0: 
+0x50050428 C   FIELD 08w08 Byte1: 
+0x50050428 C   FIELD 16w08 Byte2: 
+0x50050428 C   FIELD 24w08 Byte3: 
 0x50060000 A PERIPHERAL AES
 0x50060000 B  REGISTER CR (rw): control register
 0x50060000 C   FIELD 00w01 EN: AES enable
