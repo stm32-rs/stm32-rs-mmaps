@@ -5475,29 +5475,29 @@
 0x4400D7FC B  REGISTER DFSDM_SIDR (ro): This register specifies the size allocated to DFSDM registers.
 0x4400D7FC C   FIELD 00w32 SID: SID
 0x4400E000 A PERIPHERAL FDCAN1
-0x4400E000 B  REGISTER FDCAN_CREL (ro): FDCAN core release register
+0x4400E000 B  REGISTER CREL (ro): FDCAN core release register
 0x4400E000 C   FIELD 00w08 DAY: DAY
 0x4400E000 C   FIELD 08w08 MON: MON
 0x4400E000 C   FIELD 16w04 YEAR: YEAR
 0x4400E000 C   FIELD 20w04 SUBSTEP: SUBSTEP
 0x4400E000 C   FIELD 24w04 STEP: STEP
 0x4400E000 C   FIELD 28w04 REL: REL
-0x4400E004 B  REGISTER FDCAN_ENDN (ro): FDCAN Endian register
+0x4400E004 B  REGISTER ENDN (ro): FDCAN Endian register
 0x4400E004 C   FIELD 00w32 ETV: ETV
-0x4400E00C B  REGISTER FDCAN_DBTP (rw): This register is dedicated to data bit timing phase and only writable if bits FDCAN_CCCR.CCE and FDCAN_CCCR.INIT are set. The CAN time quantum may be programmed in the range from 1 to 32 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock periods. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (DTSEG1 + DTSEG2 + 3) tq for programmed values, or (Sync_Seg+Prop_Seg+Phase_Seg1+Phase_Seg2) tq for functional values. The information processing time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
+0x4400E00C B  REGISTER DBTP (rw): This register is dedicated to data bit timing phase and only writable if bits FDCAN_CCCR.CCE and FDCAN_CCCR.INIT are set. The CAN time quantum may be programmed in the range from 1 to 32 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock periods. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (DTSEG1 + DTSEG2 + 3) tq for programmed values, or (Sync_Seg+Prop_Seg+Phase_Seg1+Phase_Seg2) tq for functional values. The information processing time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
 0x4400E00C C   FIELD 00w04 DSJW: DSJW
 0x4400E00C C   FIELD 04w04 DTSEG2: DTSEG2
 0x4400E00C C   FIELD 08w05 DTSEG1: DTSEG1
 0x4400E00C C   FIELD 16w05 DBRP: DBRP
 0x4400E00C C   FIELD 23w01 TDC: TDC
-0x4400E010 B  REGISTER FDCAN_TEST: Write access to this register has to be enabled by setting bit FDCAN_CCCR.TEST to 1. All register functions are set to their reset values when bit FDCAN_CCCR.TEST is reset. Loop back mode and software control of Tx pin FDCANx_TX are hardware test modes. Programming TX differently from 00 may disturb the message transfer on the CAN bus.
+0x4400E010 B  REGISTER TEST: Write access to this register has to be enabled by setting bit FDCAN_CCCR.TEST to 1. All register functions are set to their reset values when bit FDCAN_CCCR.TEST is reset. Loop back mode and software control of Tx pin FDCANx_TX are hardware test modes. Programming TX differently from 00 may disturb the message transfer on the CAN bus.
 0x4400E010 C   FIELD 04w01 LBCK (rw): LBCK
 0x4400E010 C   FIELD 05w02 TX (rw): TX
 0x4400E010 C   FIELD 07w01 RX (ro): RX
-0x4400E014 B  REGISTER FDCAN_RWD: The RAM watchdog monitors the READY output of the message RAM. A message RAM access starts the message RAM watchdog counter with the value configured by the FDCAN_RWD.WDC bits. The counter is reloaded with FDCAN_RWD.WDC bits when the message RAM signals successful completion by activating its READY output. In case there is no response from the message RAM until the counter has counted down to 0, the counter stops and interrupt flag FDCAN_IR.WDI bit is set. The RAM watchdog counter is clocked by the fdcan_pclk clock.
+0x4400E014 B  REGISTER RWD: The RAM watchdog monitors the READY output of the message RAM. A message RAM access starts the message RAM watchdog counter with the value configured by the FDCAN_RWD.WDC bits. The counter is reloaded with FDCAN_RWD.WDC bits when the message RAM signals successful completion by activating its READY output. In case there is no response from the message RAM until the counter has counted down to 0, the counter stops and interrupt flag FDCAN_IR.WDI bit is set. The RAM watchdog counter is clocked by the fdcan_pclk clock.
 0x4400E014 C   FIELD 00w08 WDC (rw): WDC
 0x4400E014 C   FIELD 08w08 WDV (ro): WDV
-0x4400E018 B  REGISTER FDCAN_CCCR: For details about setting and resetting of single bits see Software initialization.
+0x4400E018 B  REGISTER CCCR: For details about setting and resetting of single bits see Software initialization.
 0x4400E018 C   FIELD 00w01 INIT (rw): INIT
 0x4400E018 C   FIELD 01w01 CCE (rw): CCE
 0x4400E018 C   FIELD 02w01 ASM (rw): ASM
@@ -5512,28 +5512,28 @@
 0x4400E018 C   FIELD 13w01 EFBI (rw): EFBI
 0x4400E018 C   FIELD 14w01 TXP (rw): TXP
 0x4400E018 C   FIELD 15w01 NISO (rw): NISO
-0x4400E01C B  REGISTER FDCAN_NBTP (rw): This register is dedicated to the nominal bit timing used during the arbitration phase.
+0x4400E01C B  REGISTER NBTP (rw): This register is dedicated to the nominal bit timing used during the arbitration phase.
 0x4400E01C C   FIELD 00w07 NTSEG2: NTSEG2
 0x4400E01C C   FIELD 08w08 NTSEG1: NTSEG1
 0x4400E01C C   FIELD 16w09 NBRP: NBRP
 0x4400E01C C   FIELD 25w07 NSJW: NSJW
-0x4400E020 B  REGISTER FDCAN_TSCC (rw): FDCAN timestamp counter configuration register
+0x4400E020 B  REGISTER TSCC (rw): FDCAN timestamp counter configuration register
 0x4400E020 C   FIELD 00w02 TSS: TSS
 0x4400E020 C   FIELD 16w04 TCP: TCP
-0x4400E024 B  REGISTER FDCAN_TSCV (rw): FDCAN timestamp counter value register
+0x4400E024 B  REGISTER TSCV (rw): FDCAN timestamp counter value register
 0x4400E024 C   FIELD 00w16 TSC: TSC
-0x4400E028 B  REGISTER FDCAN_TOCC (rw): FDCAN timeout counter configuration register
+0x4400E028 B  REGISTER TOCC (rw): FDCAN timeout counter configuration register
 0x4400E028 C   FIELD 00w01 ETOC: ETOC
 0x4400E028 C   FIELD 01w02 TOS: TOS
 0x4400E028 C   FIELD 16w16 TOP: TOP
-0x4400E02C B  REGISTER FDCAN_TOCV (rw): FDCAN timeout counter value register
+0x4400E02C B  REGISTER TOCV (rw): FDCAN timeout counter value register
 0x4400E02C C   FIELD 00w16 TOC: TOC
-0x4400E040 B  REGISTER FDCAN_ECR: FDCAN error counter register
+0x4400E040 B  REGISTER ECR: FDCAN error counter register
 0x4400E040 C   FIELD 00w08 TEC (ro): TEC
-0x4400E040 C   FIELD 08w07 TREC (ro): TREC
+0x4400E040 C   FIELD 08w07 REC (ro): TREC
 0x4400E040 C   FIELD 15w01 RP (ro): RP
 0x4400E040 C   FIELD 16w08 CEL (rw): CEL
-0x4400E044 B  REGISTER FDCAN_PSR: FDCAN protocol status register
+0x4400E044 B  REGISTER PSR: FDCAN protocol status register
 0x4400E044 C   FIELD 00w03 LEC (ro): LEC
 0x4400E044 C   FIELD 03w02 ACT (ro): ACT
 0x4400E044 C   FIELD 05w01 EP (ro): EP
@@ -5545,10 +5545,10 @@
 0x4400E044 C   FIELD 13w01 REDL (rw): REDL
 0x4400E044 C   FIELD 14w01 PXE (rw): PXE
 0x4400E044 C   FIELD 16w07 TDCV (ro): TDCV
-0x4400E048 B  REGISTER FDCAN_TDCR (rw): FDCAN transmitter delay compensation register
+0x4400E048 B  REGISTER TDCR (rw): FDCAN transmitter delay compensation register
 0x4400E048 C   FIELD 00w07 TDCF: TDCF
 0x4400E048 C   FIELD 08w07 TDCO: TDCO
-0x4400E050 B  REGISTER FDCAN_IR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
+0x4400E050 B  REGISTER IR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
 0x4400E050 C   FIELD 00w01 RF0N: RF0N
 0x4400E050 C   FIELD 01w01 RF0W: RF0W
 0x4400E050 C   FIELD 02w01 RF0F: RF0F
@@ -5577,7 +5577,7 @@
 0x4400E050 C   FIELD 27w01 PEA: PEA
 0x4400E050 C   FIELD 28w01 PED: PED
 0x4400E050 C   FIELD 29w01 ARA: ARA
-0x4400E054 B  REGISTER FDCAN_IE (rw): The settings in the interrupt enable register determine which status changes in the interrupt register will be signaled on an interrupt line.
+0x4400E054 B  REGISTER IE (rw): The settings in the interrupt enable register determine which status changes in the interrupt register will be signaled on an interrupt line.
 0x4400E054 C   FIELD 00w01 RF0NE: RF0NE
 0x4400E054 C   FIELD 01w01 RF0WE: RF0WE
 0x4400E054 C   FIELD 02w01 RF0FE: RF0FE
@@ -5608,7 +5608,7 @@
 0x4400E054 C   FIELD 27w01 PEAE: PEAE
 0x4400E054 C   FIELD 28w01 PEDE: PEDE
 0x4400E054 C   FIELD 29w01 ARAE: ARAE
-0x4400E058 B  REGISTER FDCAN_ILS (rw): This register assigns an interrupt generated by a specific interrupt flag from the interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
+0x4400E058 B  REGISTER ILS (rw): This register assigns an interrupt generated by a specific interrupt flag from the interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
 0x4400E058 C   FIELD 00w01 RF0NL: RF0NL
 0x4400E058 C   FIELD 01w01 RF0WL: RF0WL
 0x4400E058 C   FIELD 02w01 RF0FL: RF0FL
@@ -5639,28 +5639,28 @@
 0x4400E058 C   FIELD 27w01 PEAL: PEAL
 0x4400E058 C   FIELD 28w01 PEDL: PEDL
 0x4400E058 C   FIELD 29w01 ARAL: ARAL
-0x4400E05C B  REGISTER FDCAN_ILE (rw): Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
+0x4400E05C B  REGISTER ILE (rw): Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
 0x4400E05C C   FIELD 00w01 EINT0: EINT0
 0x4400E05C C   FIELD 01w01 EINT1: EINT1
-0x4400E080 B  REGISTER FDCAN_GFC (rw): Global settings for message ID filtering. The global filter configuration register controls the filter path for standard and extended messages as described in Figure708: Standard message ID filter path and Figure709: Extended message ID filter path.
+0x4400E080 B  REGISTER GFC (rw): Global settings for message ID filtering. The global filter configuration register controls the filter path for standard and extended messages as described in Figure708: Standard message ID filter path and Figure709: Extended message ID filter path.
 0x4400E080 C   FIELD 00w01 RRFE: RRFE
 0x4400E080 C   FIELD 01w01 RRFS: RRFS
 0x4400E080 C   FIELD 02w02 ANFE: ANFE
 0x4400E080 C   FIELD 04w02 ANFS: ANFS
-0x4400E084 B  REGISTER FDCAN_SIDFC (rw): Settings for 11-bit standard message ID filtering.The standard ID filter configuration register controls the filter path for standard messages as described in Figure708.
+0x4400E084 B  REGISTER SIDFC (rw): Settings for 11-bit standard message ID filtering.The standard ID filter configuration register controls the filter path for standard messages as described in Figure708.
 0x4400E084 C   FIELD 02w14 FLSSA: FLSSA
 0x4400E084 C   FIELD 16w08 LSS: LSS
-0x4400E088 B  REGISTER FDCAN_XIDFC (rw): Settings for 29-bit extended message ID filtering. The FDCAN extended ID filter configuration register controls the filter path for standard messages as described in Figure709: Extended message ID filter path.
+0x4400E088 B  REGISTER XIDFC (rw): Settings for 29-bit extended message ID filtering. The FDCAN extended ID filter configuration register controls the filter path for standard messages as described in Figure709: Extended message ID filter path.
 0x4400E088 C   FIELD 02w14 FLESA: FLESA
 0x4400E088 C   FIELD 16w08 LSE: LSE
-0x4400E090 B  REGISTER FDCAN_XIDAM (rw): FDCAN extended ID and mask register
+0x4400E090 B  REGISTER XIDAM (rw): FDCAN extended ID and mask register
 0x4400E090 C   FIELD 00w29 EIDM: EIDM
-0x4400E094 B  REGISTER FDCAN_HPMS (ro): This register is updated every time a message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
+0x4400E094 B  REGISTER HPMS (ro): This register is updated every time a message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
 0x4400E094 C   FIELD 00w06 BIDX: BIDX
 0x4400E094 C   FIELD 06w02 MSI: MSI
 0x4400E094 C   FIELD 08w07 FIDX: FIDX
 0x4400E094 C   FIELD 15w01 FLST: FLST
-0x4400E098 B  REGISTER FDCAN_NDAT1 (rw): FDCAN new data 1 register
+0x4400E098 B  REGISTER NDAT1 (rw): FDCAN new data 1 register
 0x4400E098 C   FIELD 00w01 ND0: ND0
 0x4400E098 C   FIELD 01w01 ND1: ND1
 0x4400E098 C   FIELD 02w01 ND2: ND2
@@ -5693,7 +5693,7 @@
 0x4400E098 C   FIELD 29w01 ND29: ND29
 0x4400E098 C   FIELD 30w01 ND30: ND30
 0x4400E098 C   FIELD 31w01 ND31: ND31
-0x4400E09C B  REGISTER FDCAN_NDAT2 (rw): FDCAN new data 2 register
+0x4400E09C B  REGISTER NDAT2 (rw): FDCAN new data 2 register
 0x4400E09C C   FIELD 00w01 ND32: ND32
 0x4400E09C C   FIELD 01w01 ND33: ND33
 0x4400E09C C   FIELD 02w01 ND34: ND34
@@ -5726,83 +5726,83 @@
 0x4400E09C C   FIELD 29w01 ND61: ND61
 0x4400E09C C   FIELD 30w01 ND62: ND62
 0x4400E09C C   FIELD 31w01 ND63: ND63
-0x4400E0A0 B  REGISTER FDCAN_RXF0C (rw): FDCAN Rx FIFO 0 configuration register
+0x4400E0A0 B  REGISTER RXF0C (rw): FDCAN Rx FIFO 0 configuration register
 0x4400E0A0 C   FIELD 02w14 F0SA: F0SA
 0x4400E0A0 C   FIELD 16w07 F0S: F0S
 0x4400E0A0 C   FIELD 24w07 F0WM: F0WM
 0x4400E0A0 C   FIELD 31w01 F0OM: F0OM
-0x4400E0A4 B  REGISTER FDCAN_RXF0S (rw): FDCAN Rx FIFO 0 status register
+0x4400E0A4 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 status register
 0x4400E0A4 C   FIELD 00w07 F0FL: F0FL
 0x4400E0A4 C   FIELD 08w06 F0GI: F0GI
 0x4400E0A4 C   FIELD 16w06 F0PI: F0PI
 0x4400E0A4 C   FIELD 24w01 F0F: F0F
 0x4400E0A4 C   FIELD 25w01 RF0L: RF0L
-0x4400E0A8 B  REGISTER FDCAN_RXF0A (rw): FDCAN Rx FIFO 0 acknowledge register
+0x4400E0A8 B  REGISTER RXF0A (rw): FDCAN Rx FIFO 0 acknowledge register
 0x4400E0A8 C   FIELD 00w06 F0AI: F0AI
-0x4400E0AC B  REGISTER FDCAN_RXBC (rw): FDCAN Rx buffer configuration register
+0x4400E0AC B  REGISTER RXBC (rw): FDCAN Rx buffer configuration register
 0x4400E0AC C   FIELD 02w14 RBSA: RBSA
-0x4400E0B0 B  REGISTER FDCAN_RXF1C (rw): FDCAN Rx FIFO 1 configuration register
+0x4400E0B0 B  REGISTER RXF1C (rw): FDCAN Rx FIFO 1 configuration register
 0x4400E0B0 C   FIELD 02w14 F1SA: F1SA
 0x4400E0B0 C   FIELD 16w07 F1S: F1S
 0x4400E0B0 C   FIELD 24w07 F1WM: F1WM
 0x4400E0B0 C   FIELD 31w01 F1OM: F1OM
-0x4400E0B4 B  REGISTER FDCAN_RXF1S (ro): FDCAN Rx FIFO 1 status register
+0x4400E0B4 B  REGISTER RXF1S (ro): FDCAN Rx FIFO 1 status register
 0x4400E0B4 C   FIELD 00w07 F1FL: F1FL
 0x4400E0B4 C   FIELD 08w06 F1GI: F1GI
 0x4400E0B4 C   FIELD 16w06 F1PI: F1PI
 0x4400E0B4 C   FIELD 24w01 F1F: F1F
 0x4400E0B4 C   FIELD 25w01 RF1L: RF1L
 0x4400E0B4 C   FIELD 30w02 DMS: DMS
-0x4400E0B8 B  REGISTER FDCAN_RXF1A (rw): FDCAN Rx FIFO 1 acknowledge register
+0x4400E0B8 B  REGISTER RXF1A (rw): FDCAN Rx FIFO 1 acknowledge register
 0x4400E0B8 C   FIELD 00w06 F1AI: F1AI
-0x4400E0BC B  REGISTER FDCAN_RXESC (ro): Configures the number of data bytes belonging to an Rx buffer / Rx FIFO element. Data field sizes higher than 8 bytes are intended for CAN FD operation only.
+0x4400E0BC B  REGISTER RXESC (ro): Configures the number of data bytes belonging to an Rx buffer / Rx FIFO element. Data field sizes higher than 8 bytes are intended for CAN FD operation only.
 0x4400E0BC C   FIELD 00w03 F0DS: F0DS
 0x4400E0BC C   FIELD 04w03 F1DS: F1DS
 0x4400E0BC C   FIELD 08w03 RBDS: RBDS
-0x4400E0C0 B  REGISTER FDCAN_TXBC (rw): FDCAN Tx buffer configuration register
+0x4400E0C0 B  REGISTER TXBC (rw): FDCAN Tx buffer configuration register
 0x4400E0C0 C   FIELD 02w14 TBSA: TBSA
 0x4400E0C0 C   FIELD 16w06 NDTB: NDTB
 0x4400E0C0 C   FIELD 24w06 TFQS: TFQS
 0x4400E0C0 C   FIELD 30w01 TFQM: TFQM
-0x4400E0C4 B  REGISTER FDCAN_TXFQS (ro): The Tx FIFO/queue status is related to the pending Tx requests listed in register FDCAN_TXBRP. Therefore the effect of add/cancellation requests may be delayed due to a running Tx scan (FDCAN_TXBRP not yet updated).
+0x4400E0C4 B  REGISTER TXFQS (ro): The Tx FIFO/queue status is related to the pending Tx requests listed in register FDCAN_TXBRP. Therefore the effect of add/cancellation requests may be delayed due to a running Tx scan (FDCAN_TXBRP not yet updated).
 0x4400E0C4 C   FIELD 00w06 TFFL: TFFL
 0x4400E0C4 C   FIELD 08w05 TFGI: TFGI
 0x4400E0C4 C   FIELD 16w05 TFQPI: TFQPI
 0x4400E0C4 C   FIELD 21w01 TFQF: TFQF
-0x4400E0C8 B  REGISTER FDCAN_TXESC (ro): Configures the number of data bytes belonging to a Tx buffer element. Data field sizes &gt;8 bytes are intended for CAN FD operation only.
+0x4400E0C8 B  REGISTER TXESC (ro): Configures the number of data bytes belonging to a Tx buffer element. Data field sizes &gt;8 bytes are intended for CAN FD operation only.
 0x4400E0C8 C   FIELD 00w03 TBDS: TBDS
-0x4400E0D0 B  REGISTER FDCAN_TXBAR (rw): FDCAN Tx buffer add request register
+0x4400E0D0 B  REGISTER TXBAR (rw): FDCAN Tx buffer add request register
 0x4400E0D0 C   FIELD 00w32 AR: AR
-0x4400E0D4 B  REGISTER FDCAN_TXBCR (rw): FDCAN Tx buffer cancellation request register
+0x4400E0D4 B  REGISTER TXBCR (rw): FDCAN Tx buffer cancellation request register
 0x4400E0D4 C   FIELD 00w32 CR: CR
-0x4400E0D8 B  REGISTER FDCAN_TXBTO (ro): FDCAN Tx buffer transmission occurred register
+0x4400E0D8 B  REGISTER TXBTO (ro): FDCAN Tx buffer transmission occurred register
 0x4400E0D8 C   FIELD 00w32 TO: TO
-0x4400E0DC B  REGISTER FDCAN_TXBCF (ro): FDCAN Tx buffer cancellation finished register
+0x4400E0DC B  REGISTER TXBCF (ro): FDCAN Tx buffer cancellation finished register
 0x4400E0DC C   FIELD 00w32 CF: CF
-0x4400E0E0 B  REGISTER FDCAN_TXBTIE (rw): FDCAN Tx buffer transmission interrupt enable register
+0x4400E0E0 B  REGISTER TXBTIE (rw): FDCAN Tx buffer transmission interrupt enable register
 0x4400E0E0 C   FIELD 00w32 TIE: TIE
-0x4400E0E4 B  REGISTER FDCAN_TXBCIE (rw): FDCAN Tx buffer cancellation finished interrupt enable register
+0x4400E0E4 B  REGISTER TXBCIE (rw): FDCAN Tx buffer cancellation finished interrupt enable register
 0x4400E0E4 C   FIELD 00w32 CFIE: CFIE
-0x4400E0F0 B  REGISTER FDCAN_TXEFC (rw): FDCAN Tx event FIFO configuration register
+0x4400E0F0 B  REGISTER TXEFC (rw): FDCAN Tx event FIFO configuration register
 0x4400E0F0 C   FIELD 02w14 EFSA: EFSA
 0x4400E0F0 C   FIELD 16w06 EFS: EFS
 0x4400E0F0 C   FIELD 24w06 EFWM: EFWM
-0x4400E0F4 B  REGISTER FDCAN_TXEFS (ro): FDCAN Tx event FIFO status register
+0x4400E0F4 B  REGISTER TXEFS (ro): FDCAN Tx event FIFO status register
 0x4400E0F4 C   FIELD 00w06 EFFL: EFFL
 0x4400E0F4 C   FIELD 08w05 EFGI: EFGI
 0x4400E0F4 C   FIELD 16w05 EFPI: EFPI
 0x4400E0F4 C   FIELD 24w01 EFF: EFF
 0x4400E0F4 C   FIELD 25w01 TEFL: TEFL
-0x4400E0F8 B  REGISTER FDCAN_TXEFA (rw): FDCAN Tx event FIFO acknowledge register
+0x4400E0F8 B  REGISTER TXEFA (rw): FDCAN Tx event FIFO acknowledge register
 0x4400E0F8 C   FIELD 00w05 EFAI: EFAI
-0x4400E100 B  REGISTER FDCAN_TTTMC (rw): FDCAN TT trigger memory configuration register
+0x4400E100 B  REGISTER TTTMC (rw): FDCAN TT trigger memory configuration register
 0x4400E100 C   FIELD 02w14 TMSA: TMSA
 0x4400E100 C   FIELD 16w07 TME: TME
-0x4400E104 B  REGISTER FDCAN_TTRMC (rw): FDCAN TT reference message configuration register
+0x4400E104 B  REGISTER TTRMC (rw): FDCAN TT reference message configuration register
 0x4400E104 C   FIELD 00w29 RID: RID
 0x4400E104 C   FIELD 30w01 XTD: XTD
 0x4400E104 C   FIELD 31w01 RMPS: RMPS
-0x4400E108 B  REGISTER FDCAN_TTOCF (rw): FDCAN TT operation configuration register
+0x4400E108 B  REGISTER TTOCF (rw): FDCAN TT operation configuration register
 0x4400E108 C   FIELD 00w02 OM: OM
 0x4400E108 C   FIELD 03w01 GEN: GEN
 0x4400E108 C   FIELD 04w01 TM: TM
@@ -5813,16 +5813,16 @@
 0x4400E108 C   FIELD 24w01 EGTF: EGTF
 0x4400E108 C   FIELD 25w01 ECC: ECC
 0x4400E108 C   FIELD 26w01 EVTP: EVTP
-0x4400E10C B  REGISTER FDCAN_TTMLM (rw): FDCAN TT matrix limits register
+0x4400E10C B  REGISTER TTMLM (rw): FDCAN TT matrix limits register
 0x4400E10C C   FIELD 00w06 CCM: CCM
 0x4400E10C C   FIELD 06w02 CSS: CSS
 0x4400E10C C   FIELD 08w04 TXEW: TXEW
 0x4400E10C C   FIELD 16w12 ENTT: ENTT
-0x4400E110 B  REGISTER FDCAN_TURCF (rw): The length of the NTU is given by: NTU = CAN clock period x NC/DC. NC is an 18-bit value. Its high part, NCH[17:16] is hard wired to 0b01. Therefore the range of NC extends from 0x10000 to 0x1FFFF. The value configured by NCL is the initial value for FDCAN_TURNA.NAV[15:0]. DC is set to 0x1000 by hardware reset and it may not be written to 0x0000. Level 1: NC 4 * DC and NTU = CAN bit time Levels 0 and 2: NC 8 * DC The actual value of FDCAN_TUR may be changed by the clock drift compensation function of TTCAN level 0 and level 2 in order to adjust the node local view of the NTU to the time master view of the NTU. DC will not be changed by the automatic drift compensation, FDCAN_TURNA.NAV may be adjusted around NC in the range of the synchronization deviation limit given by FDCAN_TTOCF.LDSDL. NC and DC should be programmed to the largest suitable values in achieve the best computational accuracy for the drift compensation process.
+0x4400E110 B  REGISTER TURCF (rw): The length of the NTU is given by: NTU = CAN clock period x NC/DC. NC is an 18-bit value. Its high part, NCH[17:16] is hard wired to 0b01. Therefore the range of NC extends from 0x10000 to 0x1FFFF. The value configured by NCL is the initial value for FDCAN_TURNA.NAV[15:0]. DC is set to 0x1000 by hardware reset and it may not be written to 0x0000. Level 1: NC 4 * DC and NTU = CAN bit time Levels 0 and 2: NC 8 * DC The actual value of FDCAN_TUR may be changed by the clock drift compensation function of TTCAN level 0 and level 2 in order to adjust the node local view of the NTU to the time master view of the NTU. DC will not be changed by the automatic drift compensation, FDCAN_TURNA.NAV may be adjusted around NC in the range of the synchronization deviation limit given by FDCAN_TTOCF.LDSDL. NC and DC should be programmed to the largest suitable values in achieve the best computational accuracy for the drift compensation process.
 0x4400E110 C   FIELD 00w16 NCL: NCL
 0x4400E110 C   FIELD 16w14 DC: DC
 0x4400E110 C   FIELD 31w01 ELT: ELT
-0x4400E114 B  REGISTER FDCAN_TTOCN: FDCAN TT operation control register
+0x4400E114 B  REGISTER TTOCN: FDCAN TT operation control register
 0x4400E114 C   FIELD 00w01 SGT (rw): SGT
 0x4400E114 C   FIELD 01w01 ECS (rw): ECS
 0x4400E114 C   FIELD 02w01 SWP (rw): SWP
@@ -5836,14 +5836,14 @@
 0x4400E114 C   FIELD 12w01 NIG (rw): NIG
 0x4400E114 C   FIELD 13w01 ESCN (rw): ESCN
 0x4400E114 C   FIELD 15w01 LCKC (ro): LCKC
-0x4400E118 B  REGISTER FDCAN_TTGTP (rw): If TTOST.WGDT is set, the next reference message will be transmitted with the Master_Ref_Mark modified by the preset value and with Disc_Bit = 1, presetting the global time in all nodes simultaneously. TP is reset to 0x0000 each time a reference message with Disc_Bit = 1 becomes valid or if the node is not the current time master. TP is locked while FDCAN_TTOST.WGTD = 1 after setting FDCAN_TTOCN.SGT until the reference message with Disc_Bit = 1 becomes valid or until the node is no longer the current time master.
+0x4400E118 B  REGISTER TTGTP (rw): If TTOST.WGDT is set, the next reference message will be transmitted with the Master_Ref_Mark modified by the preset value and with Disc_Bit = 1, presetting the global time in all nodes simultaneously. TP is reset to 0x0000 each time a reference message with Disc_Bit = 1 becomes valid or if the node is not the current time master. TP is locked while FDCAN_TTOST.WGTD = 1 after setting FDCAN_TTOCN.SGT until the reference message with Disc_Bit = 1 becomes valid or until the node is no longer the current time master.
 0x4400E118 C   FIELD 00w16 TP: TP
 0x4400E118 C   FIELD 16w16 CTP: CTP
-0x4400E11C B  REGISTER FDCAN_TTTMK: A time mark interrupt (FDCAN_TTIR.TMI = 1) is generated when the time base indicated by FDCAN_TTOCN.TMC (cycle time, local time, or global time) has the same value as TM.
+0x4400E11C B  REGISTER TTTMK: A time mark interrupt (FDCAN_TTIR.TMI = 1) is generated when the time base indicated by FDCAN_TTOCN.TMC (cycle time, local time, or global time) has the same value as TM.
 0x4400E11C C   FIELD 00w16 TM (rw): TM
 0x4400E11C C   FIELD 16w07 TICC (rw): TICC
 0x4400E11C C   FIELD 31w01 LCKM (ro): LCKM
-0x4400E120 B  REGISTER FDCAN_TTIR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register.
+0x4400E120 B  REGISTER TTIR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register.
 0x4400E120 C   FIELD 00w01 SBC: SBC
 0x4400E120 C   FIELD 01w01 SMC: SMC
 0x4400E120 C   FIELD 02w01 CSM: CSM
@@ -5863,7 +5863,7 @@
 0x4400E120 C   FIELD 16w01 WT: WT
 0x4400E120 C   FIELD 17w01 AW: AW
 0x4400E120 C   FIELD 18w01 CER: CER
-0x4400E124 B  REGISTER FDCAN_TTIE (rw): The settings in the TT interrupt enable register determine which status changes in the TT interrupt register will result in an interrupt.
+0x4400E124 B  REGISTER TTIE (rw): The settings in the TT interrupt enable register determine which status changes in the TT interrupt register will result in an interrupt.
 0x4400E124 C   FIELD 00w01 SBCE: SBCE
 0x4400E124 C   FIELD 01w01 SMCE: SMCE
 0x4400E124 C   FIELD 02w01 CSME: CSME
@@ -5883,7 +5883,7 @@
 0x4400E124 C   FIELD 16w01 WTE: WTE
 0x4400E124 C   FIELD 17w01 AWE: AWE
 0x4400E124 C   FIELD 18w01 CERE: CERE
-0x4400E128 B  REGISTER FDCAN_TTILS (rw): The TT interrupt Line select register assigns an interrupt generated by a specific interrupt flag from the TT interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
+0x4400E128 B  REGISTER TTILS (rw): The TT interrupt Line select register assigns an interrupt generated by a specific interrupt flag from the TT interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
 0x4400E128 C   FIELD 00w01 SBCL: SBCL
 0x4400E128 C   FIELD 01w01 SMCL: SMCL
 0x4400E128 C   FIELD 02w01 CSML: CSML
@@ -5903,7 +5903,7 @@
 0x4400E128 C   FIELD 16w01 WTL: WTL
 0x4400E128 C   FIELD 17w01 AWL: AWL
 0x4400E128 C   FIELD 18w01 CERL: CERL
-0x4400E12C B  REGISTER FDCAN_TTOST (ro): FDCAN TT operation status register
+0x4400E12C B  REGISTER TTOST (ro): FDCAN TT operation status register
 0x4400E12C C   FIELD 00w02 EL: EL
 0x4400E12C C   FIELD 02w02 MS: MS
 0x4400E12C C   FIELD 04w02 SYS: SYS
@@ -5918,46 +5918,46 @@
 0x4400E12C C   FIELD 29w01 AWE: AWE
 0x4400E12C C   FIELD 30w01 WECS: WECS
 0x4400E12C C   FIELD 31w01 SPL: SPL
-0x4400E130 B  REGISTER FDCAN_TURNA (ro): There is no drift compensation in TTCAN level 1.
+0x4400E130 B  REGISTER TURNA (ro): There is no drift compensation in TTCAN level 1.
 0x4400E130 C   FIELD 00w18 NAV: NAV
-0x4400E134 B  REGISTER FDCAN_TTLGT (ro): FDCAN TT local and global time register
+0x4400E134 B  REGISTER TTLGT (ro): FDCAN TT local and global time register
 0x4400E134 C   FIELD 00w16 LT: LT
 0x4400E134 C   FIELD 16w16 GT: GT
-0x4400E138 B  REGISTER FDCAN_TTCTC (ro): FDCAN TT cycle time and count register
+0x4400E138 B  REGISTER TTCTC (ro): FDCAN TT cycle time and count register
 0x4400E138 C   FIELD 00w16 CT: CT
 0x4400E138 C   FIELD 16w06 CC: CC
-0x4400E13C B  REGISTER FDCAN_TTCPT (ro): FDCAN TT capture time register
+0x4400E13C B  REGISTER TTCPT (ro): FDCAN TT capture time register
 0x4400E13C C   FIELD 00w06 CCV: CCV
 0x4400E13C C   FIELD 16w16 SWV: SWV
-0x4400E140 B  REGISTER FDCAN_TTCSM (ro): FDCAN TT cycle sync mark register
+0x4400E140 B  REGISTER TTCSM (ro): FDCAN TT cycle sync mark register
 0x4400E140 C   FIELD 00w16 CSM: CSM
-0x4400E300 B  REGISTER FDCAN_TTTS (rw): The settings in the FDCAN_TTTS register select the input to be used as event trigger and stop watch trigger.
+0x4400E300 B  REGISTER TTTS (rw): The settings in the FDCAN_TTTS register select the input to be used as event trigger and stop watch trigger.
 0x4400E300 C   FIELD 00w02 SWTDEL: SWTDEL
 0x4400E300 C   FIELD 04w02 EVTSEL: EVTSEL
 0x4400F000 A PERIPHERAL FDCAN2
-0x4400F000 B  REGISTER FDCAN_CREL (ro): FDCAN core release register
+0x4400F000 B  REGISTER CREL (ro): FDCAN core release register
 0x4400F000 C   FIELD 00w08 DAY: DAY
 0x4400F000 C   FIELD 08w08 MON: MON
 0x4400F000 C   FIELD 16w04 YEAR: YEAR
 0x4400F000 C   FIELD 20w04 SUBSTEP: SUBSTEP
 0x4400F000 C   FIELD 24w04 STEP: STEP
 0x4400F000 C   FIELD 28w04 REL: REL
-0x4400F004 B  REGISTER FDCAN_ENDN (ro): FDCAN Endian register
+0x4400F004 B  REGISTER ENDN (ro): FDCAN Endian register
 0x4400F004 C   FIELD 00w32 ETV: ETV
-0x4400F00C B  REGISTER FDCAN_DBTP (rw): This register is dedicated to data bit timing phase and only writable if bits FDCAN_CCCR.CCE and FDCAN_CCCR.INIT are set. The CAN time quantum may be programmed in the range from 1 to 32 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock periods. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (DTSEG1 + DTSEG2 + 3) tq for programmed values, or (Sync_Seg+Prop_Seg+Phase_Seg1+Phase_Seg2) tq for functional values. The information processing time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
+0x4400F00C B  REGISTER DBTP (rw): This register is dedicated to data bit timing phase and only writable if bits FDCAN_CCCR.CCE and FDCAN_CCCR.INIT are set. The CAN time quantum may be programmed in the range from 1 to 32 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock periods. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (DTSEG1 + DTSEG2 + 3) tq for programmed values, or (Sync_Seg+Prop_Seg+Phase_Seg1+Phase_Seg2) tq for functional values. The information processing time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
 0x4400F00C C   FIELD 00w04 DSJW: DSJW
 0x4400F00C C   FIELD 04w04 DTSEG2: DTSEG2
 0x4400F00C C   FIELD 08w05 DTSEG1: DTSEG1
 0x4400F00C C   FIELD 16w05 DBRP: DBRP
 0x4400F00C C   FIELD 23w01 TDC: TDC
-0x4400F010 B  REGISTER FDCAN_TEST: Write access to this register has to be enabled by setting bit FDCAN_CCCR.TEST to 1. All register functions are set to their reset values when bit FDCAN_CCCR.TEST is reset. Loop back mode and software control of Tx pin FDCANx_TX are hardware test modes. Programming TX differently from 00 may disturb the message transfer on the CAN bus.
+0x4400F010 B  REGISTER TEST: Write access to this register has to be enabled by setting bit FDCAN_CCCR.TEST to 1. All register functions are set to their reset values when bit FDCAN_CCCR.TEST is reset. Loop back mode and software control of Tx pin FDCANx_TX are hardware test modes. Programming TX differently from 00 may disturb the message transfer on the CAN bus.
 0x4400F010 C   FIELD 04w01 LBCK (rw): LBCK
 0x4400F010 C   FIELD 05w02 TX (rw): TX
 0x4400F010 C   FIELD 07w01 RX (ro): RX
-0x4400F014 B  REGISTER FDCAN_RWD: The RAM watchdog monitors the READY output of the message RAM. A message RAM access starts the message RAM watchdog counter with the value configured by the FDCAN_RWD.WDC bits. The counter is reloaded with FDCAN_RWD.WDC bits when the message RAM signals successful completion by activating its READY output. In case there is no response from the message RAM until the counter has counted down to 0, the counter stops and interrupt flag FDCAN_IR.WDI bit is set. The RAM watchdog counter is clocked by the fdcan_pclk clock.
+0x4400F014 B  REGISTER RWD: The RAM watchdog monitors the READY output of the message RAM. A message RAM access starts the message RAM watchdog counter with the value configured by the FDCAN_RWD.WDC bits. The counter is reloaded with FDCAN_RWD.WDC bits when the message RAM signals successful completion by activating its READY output. In case there is no response from the message RAM until the counter has counted down to 0, the counter stops and interrupt flag FDCAN_IR.WDI bit is set. The RAM watchdog counter is clocked by the fdcan_pclk clock.
 0x4400F014 C   FIELD 00w08 WDC (rw): WDC
 0x4400F014 C   FIELD 08w08 WDV (ro): WDV
-0x4400F018 B  REGISTER FDCAN_CCCR: For details about setting and resetting of single bits see Software initialization.
+0x4400F018 B  REGISTER CCCR: For details about setting and resetting of single bits see Software initialization.
 0x4400F018 C   FIELD 00w01 INIT (rw): INIT
 0x4400F018 C   FIELD 01w01 CCE (rw): CCE
 0x4400F018 C   FIELD 02w01 ASM (rw): ASM
@@ -5972,28 +5972,28 @@
 0x4400F018 C   FIELD 13w01 EFBI (rw): EFBI
 0x4400F018 C   FIELD 14w01 TXP (rw): TXP
 0x4400F018 C   FIELD 15w01 NISO (rw): NISO
-0x4400F01C B  REGISTER FDCAN_NBTP (rw): This register is dedicated to the nominal bit timing used during the arbitration phase.
+0x4400F01C B  REGISTER NBTP (rw): This register is dedicated to the nominal bit timing used during the arbitration phase.
 0x4400F01C C   FIELD 00w07 NTSEG2: NTSEG2
 0x4400F01C C   FIELD 08w08 NTSEG1: NTSEG1
 0x4400F01C C   FIELD 16w09 NBRP: NBRP
 0x4400F01C C   FIELD 25w07 NSJW: NSJW
-0x4400F020 B  REGISTER FDCAN_TSCC (rw): FDCAN timestamp counter configuration register
+0x4400F020 B  REGISTER TSCC (rw): FDCAN timestamp counter configuration register
 0x4400F020 C   FIELD 00w02 TSS: TSS
 0x4400F020 C   FIELD 16w04 TCP: TCP
-0x4400F024 B  REGISTER FDCAN_TSCV (rw): FDCAN timestamp counter value register
+0x4400F024 B  REGISTER TSCV (rw): FDCAN timestamp counter value register
 0x4400F024 C   FIELD 00w16 TSC: TSC
-0x4400F028 B  REGISTER FDCAN_TOCC (rw): FDCAN timeout counter configuration register
+0x4400F028 B  REGISTER TOCC (rw): FDCAN timeout counter configuration register
 0x4400F028 C   FIELD 00w01 ETOC: ETOC
 0x4400F028 C   FIELD 01w02 TOS: TOS
 0x4400F028 C   FIELD 16w16 TOP: TOP
-0x4400F02C B  REGISTER FDCAN_TOCV (rw): FDCAN timeout counter value register
+0x4400F02C B  REGISTER TOCV (rw): FDCAN timeout counter value register
 0x4400F02C C   FIELD 00w16 TOC: TOC
-0x4400F040 B  REGISTER FDCAN_ECR: FDCAN error counter register
+0x4400F040 B  REGISTER ECR: FDCAN error counter register
 0x4400F040 C   FIELD 00w08 TEC (ro): TEC
-0x4400F040 C   FIELD 08w07 TREC (ro): TREC
+0x4400F040 C   FIELD 08w07 REC (ro): TREC
 0x4400F040 C   FIELD 15w01 RP (ro): RP
 0x4400F040 C   FIELD 16w08 CEL (rw): CEL
-0x4400F044 B  REGISTER FDCAN_PSR: FDCAN protocol status register
+0x4400F044 B  REGISTER PSR: FDCAN protocol status register
 0x4400F044 C   FIELD 00w03 LEC (ro): LEC
 0x4400F044 C   FIELD 03w02 ACT (ro): ACT
 0x4400F044 C   FIELD 05w01 EP (ro): EP
@@ -6005,10 +6005,10 @@
 0x4400F044 C   FIELD 13w01 REDL (rw): REDL
 0x4400F044 C   FIELD 14w01 PXE (rw): PXE
 0x4400F044 C   FIELD 16w07 TDCV (ro): TDCV
-0x4400F048 B  REGISTER FDCAN_TDCR (rw): FDCAN transmitter delay compensation register
+0x4400F048 B  REGISTER TDCR (rw): FDCAN transmitter delay compensation register
 0x4400F048 C   FIELD 00w07 TDCF: TDCF
 0x4400F048 C   FIELD 08w07 TDCO: TDCO
-0x4400F050 B  REGISTER FDCAN_IR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
+0x4400F050 B  REGISTER IR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
 0x4400F050 C   FIELD 00w01 RF0N: RF0N
 0x4400F050 C   FIELD 01w01 RF0W: RF0W
 0x4400F050 C   FIELD 02w01 RF0F: RF0F
@@ -6037,7 +6037,7 @@
 0x4400F050 C   FIELD 27w01 PEA: PEA
 0x4400F050 C   FIELD 28w01 PED: PED
 0x4400F050 C   FIELD 29w01 ARA: ARA
-0x4400F054 B  REGISTER FDCAN_IE (rw): The settings in the interrupt enable register determine which status changes in the interrupt register will be signaled on an interrupt line.
+0x4400F054 B  REGISTER IE (rw): The settings in the interrupt enable register determine which status changes in the interrupt register will be signaled on an interrupt line.
 0x4400F054 C   FIELD 00w01 RF0NE: RF0NE
 0x4400F054 C   FIELD 01w01 RF0WE: RF0WE
 0x4400F054 C   FIELD 02w01 RF0FE: RF0FE
@@ -6068,7 +6068,7 @@
 0x4400F054 C   FIELD 27w01 PEAE: PEAE
 0x4400F054 C   FIELD 28w01 PEDE: PEDE
 0x4400F054 C   FIELD 29w01 ARAE: ARAE
-0x4400F058 B  REGISTER FDCAN_ILS (rw): This register assigns an interrupt generated by a specific interrupt flag from the interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
+0x4400F058 B  REGISTER ILS (rw): This register assigns an interrupt generated by a specific interrupt flag from the interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
 0x4400F058 C   FIELD 00w01 RF0NL: RF0NL
 0x4400F058 C   FIELD 01w01 RF0WL: RF0WL
 0x4400F058 C   FIELD 02w01 RF0FL: RF0FL
@@ -6099,28 +6099,28 @@
 0x4400F058 C   FIELD 27w01 PEAL: PEAL
 0x4400F058 C   FIELD 28w01 PEDL: PEDL
 0x4400F058 C   FIELD 29w01 ARAL: ARAL
-0x4400F05C B  REGISTER FDCAN_ILE (rw): Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
+0x4400F05C B  REGISTER ILE (rw): Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
 0x4400F05C C   FIELD 00w01 EINT0: EINT0
 0x4400F05C C   FIELD 01w01 EINT1: EINT1
-0x4400F080 B  REGISTER FDCAN_GFC (rw): Global settings for message ID filtering. The global filter configuration register controls the filter path for standard and extended messages as described in Figure708: Standard message ID filter path and Figure709: Extended message ID filter path.
+0x4400F080 B  REGISTER GFC (rw): Global settings for message ID filtering. The global filter configuration register controls the filter path for standard and extended messages as described in Figure708: Standard message ID filter path and Figure709: Extended message ID filter path.
 0x4400F080 C   FIELD 00w01 RRFE: RRFE
 0x4400F080 C   FIELD 01w01 RRFS: RRFS
 0x4400F080 C   FIELD 02w02 ANFE: ANFE
 0x4400F080 C   FIELD 04w02 ANFS: ANFS
-0x4400F084 B  REGISTER FDCAN_SIDFC (rw): Settings for 11-bit standard message ID filtering.The standard ID filter configuration register controls the filter path for standard messages as described in Figure708.
+0x4400F084 B  REGISTER SIDFC (rw): Settings for 11-bit standard message ID filtering.The standard ID filter configuration register controls the filter path for standard messages as described in Figure708.
 0x4400F084 C   FIELD 02w14 FLSSA: FLSSA
 0x4400F084 C   FIELD 16w08 LSS: LSS
-0x4400F088 B  REGISTER FDCAN_XIDFC (rw): Settings for 29-bit extended message ID filtering. The FDCAN extended ID filter configuration register controls the filter path for standard messages as described in Figure709: Extended message ID filter path.
+0x4400F088 B  REGISTER XIDFC (rw): Settings for 29-bit extended message ID filtering. The FDCAN extended ID filter configuration register controls the filter path for standard messages as described in Figure709: Extended message ID filter path.
 0x4400F088 C   FIELD 02w14 FLESA: FLESA
 0x4400F088 C   FIELD 16w08 LSE: LSE
-0x4400F090 B  REGISTER FDCAN_XIDAM (rw): FDCAN extended ID and mask register
+0x4400F090 B  REGISTER XIDAM (rw): FDCAN extended ID and mask register
 0x4400F090 C   FIELD 00w29 EIDM: EIDM
-0x4400F094 B  REGISTER FDCAN_HPMS (ro): This register is updated every time a message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
+0x4400F094 B  REGISTER HPMS (ro): This register is updated every time a message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
 0x4400F094 C   FIELD 00w06 BIDX: BIDX
 0x4400F094 C   FIELD 06w02 MSI: MSI
 0x4400F094 C   FIELD 08w07 FIDX: FIDX
 0x4400F094 C   FIELD 15w01 FLST: FLST
-0x4400F098 B  REGISTER FDCAN_NDAT1 (rw): FDCAN new data 1 register
+0x4400F098 B  REGISTER NDAT1 (rw): FDCAN new data 1 register
 0x4400F098 C   FIELD 00w01 ND0: ND0
 0x4400F098 C   FIELD 01w01 ND1: ND1
 0x4400F098 C   FIELD 02w01 ND2: ND2
@@ -6153,7 +6153,7 @@
 0x4400F098 C   FIELD 29w01 ND29: ND29
 0x4400F098 C   FIELD 30w01 ND30: ND30
 0x4400F098 C   FIELD 31w01 ND31: ND31
-0x4400F09C B  REGISTER FDCAN_NDAT2 (rw): FDCAN new data 2 register
+0x4400F09C B  REGISTER NDAT2 (rw): FDCAN new data 2 register
 0x4400F09C C   FIELD 00w01 ND32: ND32
 0x4400F09C C   FIELD 01w01 ND33: ND33
 0x4400F09C C   FIELD 02w01 ND34: ND34
@@ -6186,214 +6186,75 @@
 0x4400F09C C   FIELD 29w01 ND61: ND61
 0x4400F09C C   FIELD 30w01 ND62: ND62
 0x4400F09C C   FIELD 31w01 ND63: ND63
-0x4400F0A0 B  REGISTER FDCAN_RXF0C (rw): FDCAN Rx FIFO 0 configuration register
+0x4400F0A0 B  REGISTER RXF0C (rw): FDCAN Rx FIFO 0 configuration register
 0x4400F0A0 C   FIELD 02w14 F0SA: F0SA
 0x4400F0A0 C   FIELD 16w07 F0S: F0S
 0x4400F0A0 C   FIELD 24w07 F0WM: F0WM
 0x4400F0A0 C   FIELD 31w01 F0OM: F0OM
-0x4400F0A4 B  REGISTER FDCAN_RXF0S (rw): FDCAN Rx FIFO 0 status register
+0x4400F0A4 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 status register
 0x4400F0A4 C   FIELD 00w07 F0FL: F0FL
 0x4400F0A4 C   FIELD 08w06 F0GI: F0GI
 0x4400F0A4 C   FIELD 16w06 F0PI: F0PI
 0x4400F0A4 C   FIELD 24w01 F0F: F0F
 0x4400F0A4 C   FIELD 25w01 RF0L: RF0L
-0x4400F0A8 B  REGISTER FDCAN_RXF0A (rw): FDCAN Rx FIFO 0 acknowledge register
+0x4400F0A8 B  REGISTER RXF0A (rw): FDCAN Rx FIFO 0 acknowledge register
 0x4400F0A8 C   FIELD 00w06 F0AI: F0AI
-0x4400F0AC B  REGISTER FDCAN_RXBC (rw): FDCAN Rx buffer configuration register
+0x4400F0AC B  REGISTER RXBC (rw): FDCAN Rx buffer configuration register
 0x4400F0AC C   FIELD 02w14 RBSA: RBSA
-0x4400F0B0 B  REGISTER FDCAN_RXF1C (rw): FDCAN Rx FIFO 1 configuration register
+0x4400F0B0 B  REGISTER RXF1C (rw): FDCAN Rx FIFO 1 configuration register
 0x4400F0B0 C   FIELD 02w14 F1SA: F1SA
 0x4400F0B0 C   FIELD 16w07 F1S: F1S
 0x4400F0B0 C   FIELD 24w07 F1WM: F1WM
 0x4400F0B0 C   FIELD 31w01 F1OM: F1OM
-0x4400F0B4 B  REGISTER FDCAN_RXF1S (ro): FDCAN Rx FIFO 1 status register
+0x4400F0B4 B  REGISTER RXF1S (ro): FDCAN Rx FIFO 1 status register
 0x4400F0B4 C   FIELD 00w07 F1FL: F1FL
 0x4400F0B4 C   FIELD 08w06 F1GI: F1GI
 0x4400F0B4 C   FIELD 16w06 F1PI: F1PI
 0x4400F0B4 C   FIELD 24w01 F1F: F1F
 0x4400F0B4 C   FIELD 25w01 RF1L: RF1L
 0x4400F0B4 C   FIELD 30w02 DMS: DMS
-0x4400F0B8 B  REGISTER FDCAN_RXF1A (rw): FDCAN Rx FIFO 1 acknowledge register
+0x4400F0B8 B  REGISTER RXF1A (rw): FDCAN Rx FIFO 1 acknowledge register
 0x4400F0B8 C   FIELD 00w06 F1AI: F1AI
-0x4400F0BC B  REGISTER FDCAN_RXESC (ro): Configures the number of data bytes belonging to an Rx buffer / Rx FIFO element. Data field sizes higher than 8 bytes are intended for CAN FD operation only.
+0x4400F0BC B  REGISTER RXESC (ro): Configures the number of data bytes belonging to an Rx buffer / Rx FIFO element. Data field sizes higher than 8 bytes are intended for CAN FD operation only.
 0x4400F0BC C   FIELD 00w03 F0DS: F0DS
 0x4400F0BC C   FIELD 04w03 F1DS: F1DS
 0x4400F0BC C   FIELD 08w03 RBDS: RBDS
-0x4400F0C0 B  REGISTER FDCAN_TXBC (rw): FDCAN Tx buffer configuration register
+0x4400F0C0 B  REGISTER TXBC (rw): FDCAN Tx buffer configuration register
 0x4400F0C0 C   FIELD 02w14 TBSA: TBSA
 0x4400F0C0 C   FIELD 16w06 NDTB: NDTB
 0x4400F0C0 C   FIELD 24w06 TFQS: TFQS
 0x4400F0C0 C   FIELD 30w01 TFQM: TFQM
-0x4400F0C4 B  REGISTER FDCAN_TXFQS (ro): The Tx FIFO/queue status is related to the pending Tx requests listed in register FDCAN_TXBRP. Therefore the effect of add/cancellation requests may be delayed due to a running Tx scan (FDCAN_TXBRP not yet updated).
+0x4400F0C4 B  REGISTER TXFQS (ro): The Tx FIFO/queue status is related to the pending Tx requests listed in register FDCAN_TXBRP. Therefore the effect of add/cancellation requests may be delayed due to a running Tx scan (FDCAN_TXBRP not yet updated).
 0x4400F0C4 C   FIELD 00w06 TFFL: TFFL
 0x4400F0C4 C   FIELD 08w05 TFGI: TFGI
 0x4400F0C4 C   FIELD 16w05 TFQPI: TFQPI
 0x4400F0C4 C   FIELD 21w01 TFQF: TFQF
-0x4400F0C8 B  REGISTER FDCAN_TXESC (ro): Configures the number of data bytes belonging to a Tx buffer element. Data field sizes &gt;8 bytes are intended for CAN FD operation only.
+0x4400F0C8 B  REGISTER TXESC (ro): Configures the number of data bytes belonging to a Tx buffer element. Data field sizes &gt;8 bytes are intended for CAN FD operation only.
 0x4400F0C8 C   FIELD 00w03 TBDS: TBDS
-0x4400F0D0 B  REGISTER FDCAN_TXBAR (rw): FDCAN Tx buffer add request register
+0x4400F0D0 B  REGISTER TXBAR (rw): FDCAN Tx buffer add request register
 0x4400F0D0 C   FIELD 00w32 AR: AR
-0x4400F0D4 B  REGISTER FDCAN_TXBCR (rw): FDCAN Tx buffer cancellation request register
+0x4400F0D4 B  REGISTER TXBCR (rw): FDCAN Tx buffer cancellation request register
 0x4400F0D4 C   FIELD 00w32 CR: CR
-0x4400F0D8 B  REGISTER FDCAN_TXBTO (ro): FDCAN Tx buffer transmission occurred register
+0x4400F0D8 B  REGISTER TXBTO (ro): FDCAN Tx buffer transmission occurred register
 0x4400F0D8 C   FIELD 00w32 TO: TO
-0x4400F0DC B  REGISTER FDCAN_TXBCF (ro): FDCAN Tx buffer cancellation finished register
+0x4400F0DC B  REGISTER TXBCF (ro): FDCAN Tx buffer cancellation finished register
 0x4400F0DC C   FIELD 00w32 CF: CF
-0x4400F0E0 B  REGISTER FDCAN_TXBTIE (rw): FDCAN Tx buffer transmission interrupt enable register
+0x4400F0E0 B  REGISTER TXBTIE (rw): FDCAN Tx buffer transmission interrupt enable register
 0x4400F0E0 C   FIELD 00w32 TIE: TIE
-0x4400F0E4 B  REGISTER FDCAN_TXBCIE (rw): FDCAN Tx buffer cancellation finished interrupt enable register
+0x4400F0E4 B  REGISTER TXBCIE (rw): FDCAN Tx buffer cancellation finished interrupt enable register
 0x4400F0E4 C   FIELD 00w32 CFIE: CFIE
-0x4400F0F0 B  REGISTER FDCAN_TXEFC (rw): FDCAN Tx event FIFO configuration register
+0x4400F0F0 B  REGISTER TXEFC (rw): FDCAN Tx event FIFO configuration register
 0x4400F0F0 C   FIELD 02w14 EFSA: EFSA
 0x4400F0F0 C   FIELD 16w06 EFS: EFS
 0x4400F0F0 C   FIELD 24w06 EFWM: EFWM
-0x4400F0F4 B  REGISTER FDCAN_TXEFS (ro): FDCAN Tx event FIFO status register
+0x4400F0F4 B  REGISTER TXEFS (ro): FDCAN Tx event FIFO status register
 0x4400F0F4 C   FIELD 00w06 EFFL: EFFL
 0x4400F0F4 C   FIELD 08w05 EFGI: EFGI
 0x4400F0F4 C   FIELD 16w05 EFPI: EFPI
 0x4400F0F4 C   FIELD 24w01 EFF: EFF
 0x4400F0F4 C   FIELD 25w01 TEFL: TEFL
-0x4400F0F8 B  REGISTER FDCAN_TXEFA (rw): FDCAN Tx event FIFO acknowledge register
+0x4400F0F8 B  REGISTER TXEFA (rw): FDCAN Tx event FIFO acknowledge register
 0x4400F0F8 C   FIELD 00w05 EFAI: EFAI
-0x4400F100 B  REGISTER FDCAN_TTTMC (rw): FDCAN TT trigger memory configuration register
-0x4400F100 C   FIELD 02w14 TMSA: TMSA
-0x4400F100 C   FIELD 16w07 TME: TME
-0x4400F104 B  REGISTER FDCAN_TTRMC (rw): FDCAN TT reference message configuration register
-0x4400F104 C   FIELD 00w29 RID: RID
-0x4400F104 C   FIELD 30w01 XTD: XTD
-0x4400F104 C   FIELD 31w01 RMPS: RMPS
-0x4400F108 B  REGISTER FDCAN_TTOCF (rw): FDCAN TT operation configuration register
-0x4400F108 C   FIELD 00w02 OM: OM
-0x4400F108 C   FIELD 03w01 GEN: GEN
-0x4400F108 C   FIELD 04w01 TM: TM
-0x4400F108 C   FIELD 05w03 LDSDL: LDSDL
-0x4400F108 C   FIELD 08w07 IRTO: IRTO
-0x4400F108 C   FIELD 15w01 EECS: EECS
-0x4400F108 C   FIELD 16w08 AWL: AWL
-0x4400F108 C   FIELD 24w01 EGTF: EGTF
-0x4400F108 C   FIELD 25w01 ECC: ECC
-0x4400F108 C   FIELD 26w01 EVTP: EVTP
-0x4400F10C B  REGISTER FDCAN_TTMLM (rw): FDCAN TT matrix limits register
-0x4400F10C C   FIELD 00w06 CCM: CCM
-0x4400F10C C   FIELD 06w02 CSS: CSS
-0x4400F10C C   FIELD 08w04 TXEW: TXEW
-0x4400F10C C   FIELD 16w12 ENTT: ENTT
-0x4400F110 B  REGISTER FDCAN_TURCF (rw): The length of the NTU is given by: NTU = CAN clock period x NC/DC. NC is an 18-bit value. Its high part, NCH[17:16] is hard wired to 0b01. Therefore the range of NC extends from 0x10000 to 0x1FFFF. The value configured by NCL is the initial value for FDCAN_TURNA.NAV[15:0]. DC is set to 0x1000 by hardware reset and it may not be written to 0x0000. Level 1: NC 4 * DC and NTU = CAN bit time Levels 0 and 2: NC 8 * DC The actual value of FDCAN_TUR may be changed by the clock drift compensation function of TTCAN level 0 and level 2 in order to adjust the node local view of the NTU to the time master view of the NTU. DC will not be changed by the automatic drift compensation, FDCAN_TURNA.NAV may be adjusted around NC in the range of the synchronization deviation limit given by FDCAN_TTOCF.LDSDL. NC and DC should be programmed to the largest suitable values in achieve the best computational accuracy for the drift compensation process.
-0x4400F110 C   FIELD 00w16 NCL: NCL
-0x4400F110 C   FIELD 16w14 DC: DC
-0x4400F110 C   FIELD 31w01 ELT: ELT
-0x4400F114 B  REGISTER FDCAN_TTOCN: FDCAN TT operation control register
-0x4400F114 C   FIELD 00w01 SGT (rw): SGT
-0x4400F114 C   FIELD 01w01 ECS (rw): ECS
-0x4400F114 C   FIELD 02w01 SWP (rw): SWP
-0x4400F114 C   FIELD 03w02 SWS (rw): SWS
-0x4400F114 C   FIELD 05w01 RTIE (rw): RTIE
-0x4400F114 C   FIELD 06w02 TMC (rw): TMC
-0x4400F114 C   FIELD 08w01 TTIE (rw): TTIE
-0x4400F114 C   FIELD 09w01 GCS (rw): GCS
-0x4400F114 C   FIELD 10w01 FGP (rw): FGP
-0x4400F114 C   FIELD 11w01 TMG (rw): TMG
-0x4400F114 C   FIELD 12w01 NIG (rw): NIG
-0x4400F114 C   FIELD 13w01 ESCN (rw): ESCN
-0x4400F114 C   FIELD 15w01 LCKC (ro): LCKC
-0x4400F118 B  REGISTER FDCAN_TTGTP (rw): If TTOST.WGDT is set, the next reference message will be transmitted with the Master_Ref_Mark modified by the preset value and with Disc_Bit = 1, presetting the global time in all nodes simultaneously. TP is reset to 0x0000 each time a reference message with Disc_Bit = 1 becomes valid or if the node is not the current time master. TP is locked while FDCAN_TTOST.WGTD = 1 after setting FDCAN_TTOCN.SGT until the reference message with Disc_Bit = 1 becomes valid or until the node is no longer the current time master.
-0x4400F118 C   FIELD 00w16 TP: TP
-0x4400F118 C   FIELD 16w16 CTP: CTP
-0x4400F11C B  REGISTER FDCAN_TTTMK: A time mark interrupt (FDCAN_TTIR.TMI = 1) is generated when the time base indicated by FDCAN_TTOCN.TMC (cycle time, local time, or global time) has the same value as TM.
-0x4400F11C C   FIELD 00w16 TM (rw): TM
-0x4400F11C C   FIELD 16w07 TICC (rw): TICC
-0x4400F11C C   FIELD 31w01 LCKM (ro): LCKM
-0x4400F120 B  REGISTER FDCAN_TTIR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register.
-0x4400F120 C   FIELD 00w01 SBC: SBC
-0x4400F120 C   FIELD 01w01 SMC: SMC
-0x4400F120 C   FIELD 02w01 CSM: CSM
-0x4400F120 C   FIELD 03w01 SOG: SOG
-0x4400F120 C   FIELD 04w01 RTMI: RTMI
-0x4400F120 C   FIELD 05w01 TTMI: TTMI
-0x4400F120 C   FIELD 06w01 SWE: SWE
-0x4400F120 C   FIELD 07w01 GTW: GTW
-0x4400F120 C   FIELD 08w01 GTD: GTD
-0x4400F120 C   FIELD 09w01 GTE: GTE
-0x4400F120 C   FIELD 10w01 TXU: TXU
-0x4400F120 C   FIELD 11w01 TXO: TXO
-0x4400F120 C   FIELD 12w01 SE1: SE1
-0x4400F120 C   FIELD 13w01 SE2: SE2
-0x4400F120 C   FIELD 14w01 ELC: ELC
-0x4400F120 C   FIELD 15w01 IWTG: IWTG
-0x4400F120 C   FIELD 16w01 WT: WT
-0x4400F120 C   FIELD 17w01 AW: AW
-0x4400F120 C   FIELD 18w01 CER: CER
-0x4400F124 B  REGISTER FDCAN_TTIE (rw): The settings in the TT interrupt enable register determine which status changes in the TT interrupt register will result in an interrupt.
-0x4400F124 C   FIELD 00w01 SBCE: SBCE
-0x4400F124 C   FIELD 01w01 SMCE: SMCE
-0x4400F124 C   FIELD 02w01 CSME: CSME
-0x4400F124 C   FIELD 03w01 SOGE: SOGE
-0x4400F124 C   FIELD 04w01 RTMIE: RTMIE
-0x4400F124 C   FIELD 05w01 TTMIE: TTMIE
-0x4400F124 C   FIELD 06w01 SWEE: SWEE
-0x4400F124 C   FIELD 07w01 GTWE: GTWE
-0x4400F124 C   FIELD 08w01 GTDE: GTDE
-0x4400F124 C   FIELD 09w01 GTEE: GTEE
-0x4400F124 C   FIELD 10w01 TXUE: TXUE
-0x4400F124 C   FIELD 11w01 TXOE: TXOE
-0x4400F124 C   FIELD 12w01 SE1E: SE1E
-0x4400F124 C   FIELD 13w01 SE2E: SE2E
-0x4400F124 C   FIELD 14w01 ELCE: ELCE
-0x4400F124 C   FIELD 15w01 IWTE: IWTE
-0x4400F124 C   FIELD 16w01 WTE: WTE
-0x4400F124 C   FIELD 17w01 AWE: AWE
-0x4400F124 C   FIELD 18w01 CERE: CERE
-0x4400F128 B  REGISTER FDCAN_TTILS (rw): The TT interrupt Line select register assigns an interrupt generated by a specific interrupt flag from the TT interrupt register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via FDCAN_ILE.EINT0 and FDCAN_ILE.EINT1.
-0x4400F128 C   FIELD 00w01 SBCL: SBCL
-0x4400F128 C   FIELD 01w01 SMCL: SMCL
-0x4400F128 C   FIELD 02w01 CSML: CSML
-0x4400F128 C   FIELD 03w01 SOGL: SOGL
-0x4400F128 C   FIELD 04w01 RTMIL: RTMIL
-0x4400F128 C   FIELD 05w01 TTMIL: TTMIL
-0x4400F128 C   FIELD 06w01 SWEL: SWEL
-0x4400F128 C   FIELD 07w01 GTWL: GTWL
-0x4400F128 C   FIELD 08w01 GTDL: GTDL
-0x4400F128 C   FIELD 09w01 GTEL: GTEL
-0x4400F128 C   FIELD 10w01 TXUL: TXUL
-0x4400F128 C   FIELD 11w01 TXOL: TXOL
-0x4400F128 C   FIELD 12w01 SE1L: SE1L
-0x4400F128 C   FIELD 13w01 SE2L: SE2L
-0x4400F128 C   FIELD 14w01 ELCL: ELCL
-0x4400F128 C   FIELD 15w01 IWTL: IWTL
-0x4400F128 C   FIELD 16w01 WTL: WTL
-0x4400F128 C   FIELD 17w01 AWL: AWL
-0x4400F128 C   FIELD 18w01 CERL: CERL
-0x4400F12C B  REGISTER FDCAN_TTOST (ro): FDCAN TT operation status register
-0x4400F12C C   FIELD 00w02 EL: EL
-0x4400F12C C   FIELD 02w02 MS: MS
-0x4400F12C C   FIELD 04w02 SYS: SYS
-0x4400F12C C   FIELD 06w01 QGTP: QGTP
-0x4400F12C C   FIELD 07w01 QCS: QCS
-0x4400F12C C   FIELD 08w08 RTO: RTO
-0x4400F12C C   FIELD 22w01 WGTD: WGTD
-0x4400F12C C   FIELD 23w01 GFI: GFI
-0x4400F12C C   FIELD 24w03 TMP: TMP
-0x4400F12C C   FIELD 27w01 GSI: GSI
-0x4400F12C C   FIELD 28w01 WFE: WFE
-0x4400F12C C   FIELD 29w01 AWE: AWE
-0x4400F12C C   FIELD 30w01 WECS: WECS
-0x4400F12C C   FIELD 31w01 SPL: SPL
-0x4400F130 B  REGISTER FDCAN_TURNA (ro): There is no drift compensation in TTCAN level 1.
-0x4400F130 C   FIELD 00w18 NAV: NAV
-0x4400F134 B  REGISTER FDCAN_TTLGT (ro): FDCAN TT local and global time register
-0x4400F134 C   FIELD 00w16 LT: LT
-0x4400F134 C   FIELD 16w16 GT: GT
-0x4400F138 B  REGISTER FDCAN_TTCTC (ro): FDCAN TT cycle time and count register
-0x4400F138 C   FIELD 00w16 CT: CT
-0x4400F138 C   FIELD 16w06 CC: CC
-0x4400F13C B  REGISTER FDCAN_TTCPT (ro): FDCAN TT capture time register
-0x4400F13C C   FIELD 00w06 CCV: CCV
-0x4400F13C C   FIELD 16w16 SWV: SWV
-0x4400F140 B  REGISTER FDCAN_TTCSM (ro): FDCAN TT cycle sync mark register
-0x4400F140 C   FIELD 00w16 CSM: CSM
-0x4400F300 B  REGISTER FDCAN_TTTS (rw): The settings in the FDCAN_TTTS register select the input to be used as event trigger and stop watch trigger.
-0x4400F300 C   FIELD 00w02 SWTDEL: SWTDEL
-0x4400F300 C   FIELD 04w02 EVTSEL: EVTSEL
 0x44010000 A PERIPHERAL CCU
 0x44010000 B  REGISTER FCCAN_CCU_CREL (ro): Clock calibration unit core release register
 0x44010000 C   FIELD 00w08 DAY: DAY
@@ -25347,10 +25208,10 @@ INTERRUPT 015: DMA1_STR4 (DMA1): DMA1 stream4 global interrupt
 INTERRUPT 016: DMA1_STR5 (DMA1): DMA1 stream5 global interrupt
 INTERRUPT 017: DMA1_STR6 (DMA1): DMA1 stream6 global interrupt
 INTERRUPT 018: ADC1 (ADC): ADC1 global interrupt
-INTERRUPT 019: FDCAN1_IT0 (FDCAN1): FDCAN1 interrupt 0
-INTERRUPT 020: FDCAN2_IT0 (FDCAN2): FDCAN2 interrupt 0
-INTERRUPT 021: FDCAN1_IT1 (FDCAN1): FDCAN1 interrupt 1
-INTERRUPT 022: FDCAN2_IT1 (FDCAN2): FDCAN2 interrupt 1
+INTERRUPT 019: FDCAN1_IT0 (FDCAN1): FDCAN1 Interrupt 0
+INTERRUPT 020: FDCAN2_IT0 (FDCAN2): FDCAN2 Interrupt 0
+INTERRUPT 021: FDCAN1_IT1 (FDCAN1): FDCAN1 Interrupt 1
+INTERRUPT 022: FDCAN2_IT1 (FDCAN2): FDCAN2 Interrupt 1
 INTERRUPT 023: EXTI5 (EXTI): EXTI line 5 interrupt
 INTERRUPT 024: TIM1_BRK (TIM1): TIM1 break interrupt
 INTERRUPT 025: TIM1_UP (TIM1): TIM1 update interrupt
