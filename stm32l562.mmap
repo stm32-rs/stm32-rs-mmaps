@@ -4149,7 +4149,9 @@
 0x40014024 B  REGISTER CNT: counter
 0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
+0x40014028 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
 0x40014028 B  REGISTER PSC (rw): prescaler
+0x40014028 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x40014028 C   FIELD 00w16 PSC: Prescaler value
 0x4001402C B  REGISTER ARR (rw): auto-reload register
 0x4001402C C   FIELD 00w16 ARR: Auto-reload value
@@ -4157,8 +4159,6 @@
 0x40014030 C   FIELD 00w08 REP: Repetition counter value
 0x40014034 B  REGISTER CCR1 (rw): capture/compare register 1
 0x40014034 C   FIELD 00w16 CCR1: Capture/Compare 1 value
-0x40014038 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
-0x40014038 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x40014044 B  REGISTER BDTR (rw): break and dead-time register
 0x40014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -5259,27 +5259,8 @@
 0x40020018 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020018 C   FIELD 20w01 PRIV: privileged mode
 0x4002001C B  REGISTER CCR2 (rw): channel x configuration register
-0x4002001C C   FIELD 00w01 EN: Channel enable
 0x4002001C C   FIELD 00w18 NDT: Number of data to transfer
-0x4002001C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x4002001C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002001C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x4002001C C   FIELD 04w01 DIR: Data transfer direction
-0x4002001C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002001C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002001C C   FIELD 07w01 PINC: Peripheral increment mode
-0x4002001C C   FIELD 08w02 PSIZE: Peripheral size
-0x4002001C C   FIELD 10w02 MSIZE: Memory size
-0x4002001C C   FIELD 12w02 PL: Channel priority level
-0x4002001C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x4002001C C   FIELD 15w01 DBM: double-buffer mode
-0x4002001C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002001C C   FIELD 17w01 SECM: 
-0x4002001C C   FIELD 18w01 SSEC: 
-0x4002001C C   FIELD 19w01 DSEC: 
-0x4002001C C   FIELD 20w01 PRIV: privileged mode
 0x40020020 B  REGISTER CNDTR2 (rw): channel x number of data register
-0x40020020 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020020 C   FIELD 00w32 PA: Peripheral address
 0x40020024 B  REGISTER CPAR2 (rw): channel x peripheral address register
 0x40020024 C   FIELD 00w32 MA: Memory address
@@ -5305,27 +5286,9 @@
 0x4002002C B  REGISTER CM1AR2 (rw): channel x memory address register
 0x4002002C C   FIELD 00w18 NDT: Number of data to transfer
 0x40020030 B  REGISTER CCR3 (rw): channel x configuration register
-0x40020030 C   FIELD 00w01 EN: Channel enable
 0x40020030 C   FIELD 00w32 PA: Peripheral address
-0x40020030 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020030 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020030 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020030 C   FIELD 04w01 DIR: Data transfer direction
-0x40020030 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020030 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020030 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020030 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020030 C   FIELD 10w02 MSIZE: Memory size
-0x40020030 C   FIELD 12w02 PL: Channel priority level
-0x40020030 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020030 C   FIELD 15w01 DBM: double-buffer mode
-0x40020030 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020030 C   FIELD 17w01 SECM: 
-0x40020030 C   FIELD 18w01 SSEC: 
-0x40020030 C   FIELD 19w01 DSEC: 
-0x40020030 C   FIELD 20w01 PRIV: privileged mode
 0x40020034 B  REGISTER CNDTR3 (rw): channel x number of data register
-0x40020034 C   FIELD 00w18 NDT: Number of data to transfer
+0x40020034 C   FIELD 00w32 MA: Memory address
 0x40020038 B  REGISTER CPAR3 (rw): channel x peripheral address register
 0x40020038 C   FIELD 00w01 EN: Channel enable
 0x40020038 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5350,27 +5313,9 @@
 0x40020040 B  REGISTER CM1AR3 (rw): channel x memory address register
 0x40020040 C   FIELD 00w32 PA: Peripheral address
 0x40020044 B  REGISTER CCR4 (rw): channel x configuration register
-0x40020044 C   FIELD 00w01 EN: Channel enable
-0x40020044 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020044 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020044 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020044 C   FIELD 04w01 DIR: Data transfer direction
-0x40020044 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020044 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020044 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020044 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020044 C   FIELD 10w02 MSIZE: Memory size
-0x40020044 C   FIELD 12w02 PL: Channel priority level
-0x40020044 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020044 C   FIELD 15w01 DBM: double-buffer mode
-0x40020044 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020044 C   FIELD 17w01 SECM: 
-0x40020044 C   FIELD 18w01 SSEC: 
-0x40020044 C   FIELD 19w01 DSEC: 
-0x40020044 C   FIELD 20w01 PRIV: privileged mode
+0x40020044 C   FIELD 00w32 MA: Memory address
 0x40020048 B  REGISTER CNDTR4 (rw): channel x number of data register
 0x40020048 C   FIELD 00w01 EN: Channel enable
-0x40020048 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020048 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020048 C   FIELD 02w01 HTIE: Half transfer interrupt enable
 0x40020048 C   FIELD 03w01 TEIE: Transfer error interrupt enable
@@ -5439,27 +5384,8 @@
 0x40020068 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020068 C   FIELD 20w01 PRIV: privileged mode
 0x4002006C B  REGISTER CCR6 (rw): channel x configuration register
-0x4002006C C   FIELD 00w01 EN: Channel enable
 0x4002006C C   FIELD 00w18 NDT: Number of data to transfer
-0x4002006C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x4002006C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002006C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x4002006C C   FIELD 04w01 DIR: Data transfer direction
-0x4002006C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002006C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002006C C   FIELD 07w01 PINC: Peripheral increment mode
-0x4002006C C   FIELD 08w02 PSIZE: Peripheral size
-0x4002006C C   FIELD 10w02 MSIZE: Memory size
-0x4002006C C   FIELD 12w02 PL: Channel priority level
-0x4002006C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x4002006C C   FIELD 15w01 DBM: double-buffer mode
-0x4002006C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002006C C   FIELD 17w01 SECM: 
-0x4002006C C   FIELD 18w01 SSEC: 
-0x4002006C C   FIELD 19w01 DSEC: 
-0x4002006C C   FIELD 20w01 PRIV: privileged mode
 0x40020070 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x40020070 C   FIELD 00w16 NDT: Number of data to transfer
 0x40020070 C   FIELD 00w32 PA: Peripheral address
 0x40020074 B  REGISTER CPAR6 (rw): channel x peripheral address register
 0x40020074 C   FIELD 00w32 MA: Memory address
@@ -5474,26 +5400,9 @@
 0x4002007C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x4002007C C   FIELD 00w32 MA: peripheral address
 0x40020080 B  REGISTER CCR7 (rw): channel x configuration register
-0x40020080 C   FIELD 00w01 EN: Channel enable
-0x40020080 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020080 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020080 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020080 C   FIELD 04w01 DIR: Data transfer direction
-0x40020080 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020080 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020080 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020080 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020080 C   FIELD 10w02 MSIZE: Memory size
-0x40020080 C   FIELD 12w02 PL: Channel priority level
-0x40020080 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020080 C   FIELD 15w01 DBM: double-buffer mode
-0x40020080 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020080 C   FIELD 17w01 SECM: 
-0x40020080 C   FIELD 18w01 SSEC: 
-0x40020080 C   FIELD 19w01 DSEC: 
-0x40020080 C   FIELD 20w01 PRIV: privileged mode
+0x40020080 C   FIELD 00w32 MA: peripheral address
 0x40020084 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x40020084 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020084 C   FIELD 00w32 MA: peripheral address
 0x40020088 B  REGISTER CPAR7 (rw): channel x peripheral address register
 0x40020088 C   FIELD 00w32 MA: peripheral address
 0x4002008C B  REGISTER CM0AR7 (rw): channel x memory address register
@@ -5501,27 +5410,9 @@
 0x40020090 B  REGISTER CM1AR7 (rw): channel x memory address register
 0x40020090 C   FIELD 00w32 MA: peripheral address
 0x40020094 B  REGISTER CCR8 (rw): channel x configuration register
-0x40020094 C   FIELD 00w01 EN: Channel enable
-0x40020094 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020094 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020094 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020094 C   FIELD 04w01 DIR: Data transfer direction
-0x40020094 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020094 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020094 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020094 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020094 C   FIELD 10w02 MSIZE: Memory size
-0x40020094 C   FIELD 12w02 PL: Channel priority level
-0x40020094 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020094 C   FIELD 15w01 DBM: double-buffer mode
-0x40020094 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020094 C   FIELD 17w01 SECM: 
-0x40020094 C   FIELD 18w01 SSEC: 
-0x40020094 C   FIELD 19w01 DSEC: 
-0x40020094 C   FIELD 20w01 PRIV: privileged mode
+0x40020094 C   FIELD 00w32 MA: peripheral address
 0x40020098 B  REGISTER CNDTR8 (rw): channel x number of data register
 0x40020098 C   FIELD 00w01 EN: channel enable
-0x40020098 C   FIELD 00w16 NDT: Number of data to transfer
 0x40020098 C   FIELD 01w01 TCIE: transfer complete interrupt enable
 0x40020098 C   FIELD 02w01 HTIE: half transfer interrupt enable
 0x40020098 C   FIELD 03w01 TEIE: transfer error interrupt enable
@@ -5659,27 +5550,8 @@
 0x40020418 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020418 C   FIELD 20w01 PRIV: privileged mode
 0x4002041C B  REGISTER CCR2 (rw): channel x configuration register
-0x4002041C C   FIELD 00w01 EN: Channel enable
 0x4002041C C   FIELD 00w18 NDT: Number of data to transfer
-0x4002041C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x4002041C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002041C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x4002041C C   FIELD 04w01 DIR: Data transfer direction
-0x4002041C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002041C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002041C C   FIELD 07w01 PINC: Peripheral increment mode
-0x4002041C C   FIELD 08w02 PSIZE: Peripheral size
-0x4002041C C   FIELD 10w02 MSIZE: Memory size
-0x4002041C C   FIELD 12w02 PL: Channel priority level
-0x4002041C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x4002041C C   FIELD 15w01 DBM: double-buffer mode
-0x4002041C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002041C C   FIELD 17w01 SECM: 
-0x4002041C C   FIELD 18w01 SSEC: 
-0x4002041C C   FIELD 19w01 DSEC: 
-0x4002041C C   FIELD 20w01 PRIV: privileged mode
 0x40020420 B  REGISTER CNDTR2 (rw): channel x number of data register
-0x40020420 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020420 C   FIELD 00w32 PA: Peripheral address
 0x40020424 B  REGISTER CPAR2 (rw): channel x peripheral address register
 0x40020424 C   FIELD 00w32 MA: Memory address
@@ -5705,27 +5577,9 @@
 0x4002042C B  REGISTER CM1AR2 (rw): channel x memory address register
 0x4002042C C   FIELD 00w18 NDT: Number of data to transfer
 0x40020430 B  REGISTER CCR3 (rw): channel x configuration register
-0x40020430 C   FIELD 00w01 EN: Channel enable
 0x40020430 C   FIELD 00w32 PA: Peripheral address
-0x40020430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020430 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020430 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020430 C   FIELD 04w01 DIR: Data transfer direction
-0x40020430 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020430 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020430 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020430 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020430 C   FIELD 10w02 MSIZE: Memory size
-0x40020430 C   FIELD 12w02 PL: Channel priority level
-0x40020430 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020430 C   FIELD 15w01 DBM: double-buffer mode
-0x40020430 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020430 C   FIELD 17w01 SECM: 
-0x40020430 C   FIELD 18w01 SSEC: 
-0x40020430 C   FIELD 19w01 DSEC: 
-0x40020430 C   FIELD 20w01 PRIV: privileged mode
 0x40020434 B  REGISTER CNDTR3 (rw): channel x number of data register
-0x40020434 C   FIELD 00w18 NDT: Number of data to transfer
+0x40020434 C   FIELD 00w32 MA: Memory address
 0x40020438 B  REGISTER CPAR3 (rw): channel x peripheral address register
 0x40020438 C   FIELD 00w01 EN: Channel enable
 0x40020438 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -5750,27 +5604,9 @@
 0x40020440 B  REGISTER CM1AR3 (rw): channel x memory address register
 0x40020440 C   FIELD 00w32 PA: Peripheral address
 0x40020444 B  REGISTER CCR4 (rw): channel x configuration register
-0x40020444 C   FIELD 00w01 EN: Channel enable
-0x40020444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020444 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020444 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020444 C   FIELD 04w01 DIR: Data transfer direction
-0x40020444 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020444 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020444 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020444 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020444 C   FIELD 10w02 MSIZE: Memory size
-0x40020444 C   FIELD 12w02 PL: Channel priority level
-0x40020444 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020444 C   FIELD 15w01 DBM: double-buffer mode
-0x40020444 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020444 C   FIELD 17w01 SECM: 
-0x40020444 C   FIELD 18w01 SSEC: 
-0x40020444 C   FIELD 19w01 DSEC: 
-0x40020444 C   FIELD 20w01 PRIV: privileged mode
+0x40020444 C   FIELD 00w32 MA: Memory address
 0x40020448 B  REGISTER CNDTR4 (rw): channel x number of data register
 0x40020448 C   FIELD 00w01 EN: Channel enable
-0x40020448 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020448 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020448 C   FIELD 02w01 HTIE: Half transfer interrupt enable
 0x40020448 C   FIELD 03w01 TEIE: Transfer error interrupt enable
@@ -5839,27 +5675,8 @@
 0x40020468 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020468 C   FIELD 20w01 PRIV: privileged mode
 0x4002046C B  REGISTER CCR6 (rw): channel x configuration register
-0x4002046C C   FIELD 00w01 EN: Channel enable
 0x4002046C C   FIELD 00w18 NDT: Number of data to transfer
-0x4002046C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x4002046C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002046C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x4002046C C   FIELD 04w01 DIR: Data transfer direction
-0x4002046C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002046C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002046C C   FIELD 07w01 PINC: Peripheral increment mode
-0x4002046C C   FIELD 08w02 PSIZE: Peripheral size
-0x4002046C C   FIELD 10w02 MSIZE: Memory size
-0x4002046C C   FIELD 12w02 PL: Channel priority level
-0x4002046C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x4002046C C   FIELD 15w01 DBM: double-buffer mode
-0x4002046C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002046C C   FIELD 17w01 SECM: 
-0x4002046C C   FIELD 18w01 SSEC: 
-0x4002046C C   FIELD 19w01 DSEC: 
-0x4002046C C   FIELD 20w01 PRIV: privileged mode
 0x40020470 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x40020470 C   FIELD 00w16 NDT: Number of data to transfer
 0x40020470 C   FIELD 00w32 PA: Peripheral address
 0x40020474 B  REGISTER CPAR6 (rw): channel x peripheral address register
 0x40020474 C   FIELD 00w32 MA: Memory address
@@ -5874,26 +5691,9 @@
 0x4002047C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x4002047C C   FIELD 00w32 MA: peripheral address
 0x40020480 B  REGISTER CCR7 (rw): channel x configuration register
-0x40020480 C   FIELD 00w01 EN: Channel enable
-0x40020480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020480 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020480 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020480 C   FIELD 04w01 DIR: Data transfer direction
-0x40020480 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020480 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020480 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020480 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020480 C   FIELD 10w02 MSIZE: Memory size
-0x40020480 C   FIELD 12w02 PL: Channel priority level
-0x40020480 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020480 C   FIELD 15w01 DBM: double-buffer mode
-0x40020480 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020480 C   FIELD 17w01 SECM: 
-0x40020480 C   FIELD 18w01 SSEC: 
-0x40020480 C   FIELD 19w01 DSEC: 
-0x40020480 C   FIELD 20w01 PRIV: privileged mode
+0x40020480 C   FIELD 00w32 MA: peripheral address
 0x40020484 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x40020484 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020484 C   FIELD 00w32 MA: peripheral address
 0x40020488 B  REGISTER CPAR7 (rw): channel x peripheral address register
 0x40020488 C   FIELD 00w32 MA: peripheral address
 0x4002048C B  REGISTER CM0AR7 (rw): channel x memory address register
@@ -5901,27 +5701,9 @@
 0x40020490 B  REGISTER CM1AR7 (rw): channel x memory address register
 0x40020490 C   FIELD 00w32 MA: peripheral address
 0x40020494 B  REGISTER CCR8 (rw): channel x configuration register
-0x40020494 C   FIELD 00w01 EN: Channel enable
-0x40020494 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020494 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020494 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x40020494 C   FIELD 04w01 DIR: Data transfer direction
-0x40020494 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020494 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020494 C   FIELD 07w01 PINC: Peripheral increment mode
-0x40020494 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020494 C   FIELD 10w02 MSIZE: Memory size
-0x40020494 C   FIELD 12w02 PL: Channel priority level
-0x40020494 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020494 C   FIELD 15w01 DBM: double-buffer mode
-0x40020494 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020494 C   FIELD 17w01 SECM: 
-0x40020494 C   FIELD 18w01 SSEC: 
-0x40020494 C   FIELD 19w01 DSEC: 
-0x40020494 C   FIELD 20w01 PRIV: privileged mode
+0x40020494 C   FIELD 00w32 MA: peripheral address
 0x40020498 B  REGISTER CNDTR8 (rw): channel x number of data register
 0x40020498 C   FIELD 00w01 EN: channel enable
-0x40020498 C   FIELD 00w16 NDT: Number of data to transfer
 0x40020498 C   FIELD 01w01 TCIE: transfer complete interrupt enable
 0x40020498 C   FIELD 02w01 HTIE: half transfer interrupt enable
 0x40020498 C   FIELD 03w01 TEIE: transfer error interrupt enable
@@ -18691,7 +18473,9 @@
 0x50014024 B  REGISTER CNT: counter
 0x50014024 C   FIELD 00w16 CNT (rw): counter value
 0x50014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
+0x50014028 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
 0x50014028 B  REGISTER PSC (rw): prescaler
+0x50014028 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x50014028 C   FIELD 00w16 PSC: Prescaler value
 0x5001402C B  REGISTER ARR (rw): auto-reload register
 0x5001402C C   FIELD 00w16 ARR: Auto-reload value
@@ -18699,8 +18483,6 @@
 0x50014030 C   FIELD 00w08 REP: Repetition counter value
 0x50014034 B  REGISTER CCR1 (rw): capture/compare register 1
 0x50014034 C   FIELD 00w16 CCR1: Capture/Compare 1 value
-0x50014038 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
-0x50014038 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x50014044 B  REGISTER BDTR (rw): break and dead-time register
 0x50014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x50014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -19801,27 +19583,8 @@
 0x50020018 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020018 C   FIELD 20w01 PRIV: privileged mode
 0x5002001C B  REGISTER CCR2 (rw): channel x configuration register
-0x5002001C C   FIELD 00w01 EN: Channel enable
 0x5002001C C   FIELD 00w18 NDT: Number of data to transfer
-0x5002001C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x5002001C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002001C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x5002001C C   FIELD 04w01 DIR: Data transfer direction
-0x5002001C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002001C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002001C C   FIELD 07w01 PINC: Peripheral increment mode
-0x5002001C C   FIELD 08w02 PSIZE: Peripheral size
-0x5002001C C   FIELD 10w02 MSIZE: Memory size
-0x5002001C C   FIELD 12w02 PL: Channel priority level
-0x5002001C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x5002001C C   FIELD 15w01 DBM: double-buffer mode
-0x5002001C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002001C C   FIELD 17w01 SECM: 
-0x5002001C C   FIELD 18w01 SSEC: 
-0x5002001C C   FIELD 19w01 DSEC: 
-0x5002001C C   FIELD 20w01 PRIV: privileged mode
 0x50020020 B  REGISTER CNDTR2 (rw): channel x number of data register
-0x50020020 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020020 C   FIELD 00w32 PA: Peripheral address
 0x50020024 B  REGISTER CPAR2 (rw): channel x peripheral address register
 0x50020024 C   FIELD 00w32 MA: Memory address
@@ -19847,27 +19610,9 @@
 0x5002002C B  REGISTER CM1AR2 (rw): channel x memory address register
 0x5002002C C   FIELD 00w18 NDT: Number of data to transfer
 0x50020030 B  REGISTER CCR3 (rw): channel x configuration register
-0x50020030 C   FIELD 00w01 EN: Channel enable
 0x50020030 C   FIELD 00w32 PA: Peripheral address
-0x50020030 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020030 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020030 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020030 C   FIELD 04w01 DIR: Data transfer direction
-0x50020030 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020030 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020030 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020030 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020030 C   FIELD 10w02 MSIZE: Memory size
-0x50020030 C   FIELD 12w02 PL: Channel priority level
-0x50020030 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020030 C   FIELD 15w01 DBM: double-buffer mode
-0x50020030 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020030 C   FIELD 17w01 SECM: 
-0x50020030 C   FIELD 18w01 SSEC: 
-0x50020030 C   FIELD 19w01 DSEC: 
-0x50020030 C   FIELD 20w01 PRIV: privileged mode
 0x50020034 B  REGISTER CNDTR3 (rw): channel x number of data register
-0x50020034 C   FIELD 00w18 NDT: Number of data to transfer
+0x50020034 C   FIELD 00w32 MA: Memory address
 0x50020038 B  REGISTER CPAR3 (rw): channel x peripheral address register
 0x50020038 C   FIELD 00w01 EN: Channel enable
 0x50020038 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -19892,27 +19637,9 @@
 0x50020040 B  REGISTER CM1AR3 (rw): channel x memory address register
 0x50020040 C   FIELD 00w32 PA: Peripheral address
 0x50020044 B  REGISTER CCR4 (rw): channel x configuration register
-0x50020044 C   FIELD 00w01 EN: Channel enable
-0x50020044 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020044 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020044 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020044 C   FIELD 04w01 DIR: Data transfer direction
-0x50020044 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020044 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020044 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020044 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020044 C   FIELD 10w02 MSIZE: Memory size
-0x50020044 C   FIELD 12w02 PL: Channel priority level
-0x50020044 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020044 C   FIELD 15w01 DBM: double-buffer mode
-0x50020044 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020044 C   FIELD 17w01 SECM: 
-0x50020044 C   FIELD 18w01 SSEC: 
-0x50020044 C   FIELD 19w01 DSEC: 
-0x50020044 C   FIELD 20w01 PRIV: privileged mode
+0x50020044 C   FIELD 00w32 MA: Memory address
 0x50020048 B  REGISTER CNDTR4 (rw): channel x number of data register
 0x50020048 C   FIELD 00w01 EN: Channel enable
-0x50020048 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020048 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020048 C   FIELD 02w01 HTIE: Half transfer interrupt enable
 0x50020048 C   FIELD 03w01 TEIE: Transfer error interrupt enable
@@ -19981,27 +19708,8 @@
 0x50020068 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020068 C   FIELD 20w01 PRIV: privileged mode
 0x5002006C B  REGISTER CCR6 (rw): channel x configuration register
-0x5002006C C   FIELD 00w01 EN: Channel enable
 0x5002006C C   FIELD 00w18 NDT: Number of data to transfer
-0x5002006C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x5002006C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002006C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x5002006C C   FIELD 04w01 DIR: Data transfer direction
-0x5002006C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002006C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002006C C   FIELD 07w01 PINC: Peripheral increment mode
-0x5002006C C   FIELD 08w02 PSIZE: Peripheral size
-0x5002006C C   FIELD 10w02 MSIZE: Memory size
-0x5002006C C   FIELD 12w02 PL: Channel priority level
-0x5002006C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x5002006C C   FIELD 15w01 DBM: double-buffer mode
-0x5002006C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002006C C   FIELD 17w01 SECM: 
-0x5002006C C   FIELD 18w01 SSEC: 
-0x5002006C C   FIELD 19w01 DSEC: 
-0x5002006C C   FIELD 20w01 PRIV: privileged mode
 0x50020070 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x50020070 C   FIELD 00w16 NDT: Number of data to transfer
 0x50020070 C   FIELD 00w32 PA: Peripheral address
 0x50020074 B  REGISTER CPAR6 (rw): channel x peripheral address register
 0x50020074 C   FIELD 00w32 MA: Memory address
@@ -20016,26 +19724,9 @@
 0x5002007C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x5002007C C   FIELD 00w32 MA: peripheral address
 0x50020080 B  REGISTER CCR7 (rw): channel x configuration register
-0x50020080 C   FIELD 00w01 EN: Channel enable
-0x50020080 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020080 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020080 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020080 C   FIELD 04w01 DIR: Data transfer direction
-0x50020080 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020080 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020080 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020080 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020080 C   FIELD 10w02 MSIZE: Memory size
-0x50020080 C   FIELD 12w02 PL: Channel priority level
-0x50020080 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020080 C   FIELD 15w01 DBM: double-buffer mode
-0x50020080 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020080 C   FIELD 17w01 SECM: 
-0x50020080 C   FIELD 18w01 SSEC: 
-0x50020080 C   FIELD 19w01 DSEC: 
-0x50020080 C   FIELD 20w01 PRIV: privileged mode
+0x50020080 C   FIELD 00w32 MA: peripheral address
 0x50020084 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x50020084 C   FIELD 00w16 NDT: Number of data to transfer
+0x50020084 C   FIELD 00w32 MA: peripheral address
 0x50020088 B  REGISTER CPAR7 (rw): channel x peripheral address register
 0x50020088 C   FIELD 00w32 MA: peripheral address
 0x5002008C B  REGISTER CM0AR7 (rw): channel x memory address register
@@ -20043,27 +19734,9 @@
 0x50020090 B  REGISTER CM1AR7 (rw): channel x memory address register
 0x50020090 C   FIELD 00w32 MA: peripheral address
 0x50020094 B  REGISTER CCR8 (rw): channel x configuration register
-0x50020094 C   FIELD 00w01 EN: Channel enable
-0x50020094 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020094 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020094 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020094 C   FIELD 04w01 DIR: Data transfer direction
-0x50020094 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020094 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020094 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020094 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020094 C   FIELD 10w02 MSIZE: Memory size
-0x50020094 C   FIELD 12w02 PL: Channel priority level
-0x50020094 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020094 C   FIELD 15w01 DBM: double-buffer mode
-0x50020094 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020094 C   FIELD 17w01 SECM: 
-0x50020094 C   FIELD 18w01 SSEC: 
-0x50020094 C   FIELD 19w01 DSEC: 
-0x50020094 C   FIELD 20w01 PRIV: privileged mode
+0x50020094 C   FIELD 00w32 MA: peripheral address
 0x50020098 B  REGISTER CNDTR8 (rw): channel x number of data register
 0x50020098 C   FIELD 00w01 EN: channel enable
-0x50020098 C   FIELD 00w16 NDT: Number of data to transfer
 0x50020098 C   FIELD 01w01 TCIE: transfer complete interrupt enable
 0x50020098 C   FIELD 02w01 HTIE: half transfer interrupt enable
 0x50020098 C   FIELD 03w01 TEIE: transfer error interrupt enable
@@ -20201,27 +19874,8 @@
 0x50020418 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020418 C   FIELD 20w01 PRIV: privileged mode
 0x5002041C B  REGISTER CCR2 (rw): channel x configuration register
-0x5002041C C   FIELD 00w01 EN: Channel enable
 0x5002041C C   FIELD 00w18 NDT: Number of data to transfer
-0x5002041C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x5002041C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002041C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x5002041C C   FIELD 04w01 DIR: Data transfer direction
-0x5002041C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002041C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002041C C   FIELD 07w01 PINC: Peripheral increment mode
-0x5002041C C   FIELD 08w02 PSIZE: Peripheral size
-0x5002041C C   FIELD 10w02 MSIZE: Memory size
-0x5002041C C   FIELD 12w02 PL: Channel priority level
-0x5002041C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x5002041C C   FIELD 15w01 DBM: double-buffer mode
-0x5002041C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002041C C   FIELD 17w01 SECM: 
-0x5002041C C   FIELD 18w01 SSEC: 
-0x5002041C C   FIELD 19w01 DSEC: 
-0x5002041C C   FIELD 20w01 PRIV: privileged mode
 0x50020420 B  REGISTER CNDTR2 (rw): channel x number of data register
-0x50020420 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020420 C   FIELD 00w32 PA: Peripheral address
 0x50020424 B  REGISTER CPAR2 (rw): channel x peripheral address register
 0x50020424 C   FIELD 00w32 MA: Memory address
@@ -20247,27 +19901,9 @@
 0x5002042C B  REGISTER CM1AR2 (rw): channel x memory address register
 0x5002042C C   FIELD 00w18 NDT: Number of data to transfer
 0x50020430 B  REGISTER CCR3 (rw): channel x configuration register
-0x50020430 C   FIELD 00w01 EN: Channel enable
 0x50020430 C   FIELD 00w32 PA: Peripheral address
-0x50020430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020430 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020430 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020430 C   FIELD 04w01 DIR: Data transfer direction
-0x50020430 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020430 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020430 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020430 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020430 C   FIELD 10w02 MSIZE: Memory size
-0x50020430 C   FIELD 12w02 PL: Channel priority level
-0x50020430 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020430 C   FIELD 15w01 DBM: double-buffer mode
-0x50020430 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020430 C   FIELD 17w01 SECM: 
-0x50020430 C   FIELD 18w01 SSEC: 
-0x50020430 C   FIELD 19w01 DSEC: 
-0x50020430 C   FIELD 20w01 PRIV: privileged mode
 0x50020434 B  REGISTER CNDTR3 (rw): channel x number of data register
-0x50020434 C   FIELD 00w18 NDT: Number of data to transfer
+0x50020434 C   FIELD 00w32 MA: Memory address
 0x50020438 B  REGISTER CPAR3 (rw): channel x peripheral address register
 0x50020438 C   FIELD 00w01 EN: Channel enable
 0x50020438 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
@@ -20292,27 +19928,9 @@
 0x50020440 B  REGISTER CM1AR3 (rw): channel x memory address register
 0x50020440 C   FIELD 00w32 PA: Peripheral address
 0x50020444 B  REGISTER CCR4 (rw): channel x configuration register
-0x50020444 C   FIELD 00w01 EN: Channel enable
-0x50020444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020444 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020444 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020444 C   FIELD 04w01 DIR: Data transfer direction
-0x50020444 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020444 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020444 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020444 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020444 C   FIELD 10w02 MSIZE: Memory size
-0x50020444 C   FIELD 12w02 PL: Channel priority level
-0x50020444 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020444 C   FIELD 15w01 DBM: double-buffer mode
-0x50020444 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020444 C   FIELD 17w01 SECM: 
-0x50020444 C   FIELD 18w01 SSEC: 
-0x50020444 C   FIELD 19w01 DSEC: 
-0x50020444 C   FIELD 20w01 PRIV: privileged mode
+0x50020444 C   FIELD 00w32 MA: Memory address
 0x50020448 B  REGISTER CNDTR4 (rw): channel x number of data register
 0x50020448 C   FIELD 00w01 EN: Channel enable
-0x50020448 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020448 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020448 C   FIELD 02w01 HTIE: Half transfer interrupt enable
 0x50020448 C   FIELD 03w01 TEIE: Transfer error interrupt enable
@@ -20381,27 +19999,8 @@
 0x50020468 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020468 C   FIELD 20w01 PRIV: privileged mode
 0x5002046C B  REGISTER CCR6 (rw): channel x configuration register
-0x5002046C C   FIELD 00w01 EN: Channel enable
 0x5002046C C   FIELD 00w18 NDT: Number of data to transfer
-0x5002046C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x5002046C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002046C C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x5002046C C   FIELD 04w01 DIR: Data transfer direction
-0x5002046C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002046C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002046C C   FIELD 07w01 PINC: Peripheral increment mode
-0x5002046C C   FIELD 08w02 PSIZE: Peripheral size
-0x5002046C C   FIELD 10w02 MSIZE: Memory size
-0x5002046C C   FIELD 12w02 PL: Channel priority level
-0x5002046C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x5002046C C   FIELD 15w01 DBM: double-buffer mode
-0x5002046C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002046C C   FIELD 17w01 SECM: 
-0x5002046C C   FIELD 18w01 SSEC: 
-0x5002046C C   FIELD 19w01 DSEC: 
-0x5002046C C   FIELD 20w01 PRIV: privileged mode
 0x50020470 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x50020470 C   FIELD 00w16 NDT: Number of data to transfer
 0x50020470 C   FIELD 00w32 PA: Peripheral address
 0x50020474 B  REGISTER CPAR6 (rw): channel x peripheral address register
 0x50020474 C   FIELD 00w32 MA: Memory address
@@ -20416,26 +20015,9 @@
 0x5002047C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x5002047C C   FIELD 00w32 MA: peripheral address
 0x50020480 B  REGISTER CCR7 (rw): channel x configuration register
-0x50020480 C   FIELD 00w01 EN: Channel enable
-0x50020480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020480 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020480 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020480 C   FIELD 04w01 DIR: Data transfer direction
-0x50020480 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020480 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020480 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020480 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020480 C   FIELD 10w02 MSIZE: Memory size
-0x50020480 C   FIELD 12w02 PL: Channel priority level
-0x50020480 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020480 C   FIELD 15w01 DBM: double-buffer mode
-0x50020480 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020480 C   FIELD 17w01 SECM: 
-0x50020480 C   FIELD 18w01 SSEC: 
-0x50020480 C   FIELD 19w01 DSEC: 
-0x50020480 C   FIELD 20w01 PRIV: privileged mode
+0x50020480 C   FIELD 00w32 MA: peripheral address
 0x50020484 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x50020484 C   FIELD 00w16 NDT: Number of data to transfer
+0x50020484 C   FIELD 00w32 MA: peripheral address
 0x50020488 B  REGISTER CPAR7 (rw): channel x peripheral address register
 0x50020488 C   FIELD 00w32 MA: peripheral address
 0x5002048C B  REGISTER CM0AR7 (rw): channel x memory address register
@@ -20443,27 +20025,9 @@
 0x50020490 B  REGISTER CM1AR7 (rw): channel x memory address register
 0x50020490 C   FIELD 00w32 MA: peripheral address
 0x50020494 B  REGISTER CCR8 (rw): channel x configuration register
-0x50020494 C   FIELD 00w01 EN: Channel enable
-0x50020494 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020494 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020494 C   FIELD 03w01 TEIE: Transfer error interupt enable
-0x50020494 C   FIELD 04w01 DIR: Data transfer direction
-0x50020494 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020494 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020494 C   FIELD 07w01 PINC: Peripheral increment mode
-0x50020494 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020494 C   FIELD 10w02 MSIZE: Memory size
-0x50020494 C   FIELD 12w02 PL: Channel priority level
-0x50020494 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020494 C   FIELD 15w01 DBM: double-buffer mode
-0x50020494 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020494 C   FIELD 17w01 SECM: 
-0x50020494 C   FIELD 18w01 SSEC: 
-0x50020494 C   FIELD 19w01 DSEC: 
-0x50020494 C   FIELD 20w01 PRIV: privileged mode
+0x50020494 C   FIELD 00w32 MA: peripheral address
 0x50020498 B  REGISTER CNDTR8 (rw): channel x number of data register
 0x50020498 C   FIELD 00w01 EN: channel enable
-0x50020498 C   FIELD 00w16 NDT: Number of data to transfer
 0x50020498 C   FIELD 01w01 TCIE: transfer complete interrupt enable
 0x50020498 C   FIELD 02w01 HTIE: half transfer interrupt enable
 0x50020498 C   FIELD 03w01 TEIE: transfer error interrupt enable
@@ -29316,11 +28880,10 @@ INTERRUPT 042: TIM1_UP (TIM1): TIM1 Update
 INTERRUPT 043: TIM1_TRG_COM (TIM1): TIM1 Trigger and Commutation
 INTERRUPT 044: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
 INTERRUPT 045: TIM2 (TIM2): TIM2 global interrupt
-INTERRUPT 046: TIM3 (TIM3): TIM3 global interrupt
-INTERRUPT 047: TIM4 (TIM4): TIM4 global interrupt
+INTERRUPT 046: TIM2_3 (TIM2): TIM3 global interrupt
+INTERRUPT 047: TIM2_4 (TIM2): TIM4 global interrupt
+INTERRUPT 048: TIM2_5 (TIM2): TIM5 global interrupt
 INTERRUPT 048: TIM5 (TIM5): TIM5 global interrupt
-INTERRUPT 049: TIM6 (TIM6): TIM6 global interrupt
-INTERRUPT 050: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 051: TIM8_BRK (TIM8): TIM8 Break Interrupt
 INTERRUPT 052: TIM8_UP (TIM8): TIM8 Update Interrupt
 INTERRUPT 053: TIM8_TRG_COM (TIM8): TIM8 Trigger and Commutation Interrupt
