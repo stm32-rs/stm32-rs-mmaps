@@ -1009,7 +1009,7 @@
 0x40003800 C   FIELD 08w01 SSI: Internal slave select
 0x40003800 C   FIELD 09w01 SSM: Software slave management
 0x40003800 C   FIELD 10w01 RXONLY: Receive only
-0x40003800 C   FIELD 11w01 DFF: Data frame format
+0x40003800 C   FIELD 11w01 CRCL: CRC length
 0x40003800 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003800 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003800 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -1056,7 +1056,7 @@
 0x40003C00 C   FIELD 08w01 SSI: Internal slave select
 0x40003C00 C   FIELD 09w01 SSM: Software slave management
 0x40003C00 C   FIELD 10w01 RXONLY: Receive only
-0x40003C00 C   FIELD 11w01 DFF: Data frame format
+0x40003C00 C   FIELD 11w01 CRCL: CRC length
 0x40003C00 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40003C00 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40003C00 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -3126,17 +3126,11 @@
 0x4000D44C C   FIELD 07w01 EF: Enable function
 0x4000D450 B  REGISTER BTABLE (rw): Buffer table address
 0x4000D450 C   FIELD 03w13 BTABLE: Buffer table
-0x4000D452 B  REGISTER COUNT0_TX (rw): Transmission byte count 0
-0x4000D452 C   FIELD 00w10 COUNT0_TX: Transmission byte count
 0x4000D454 B  REGISTER LPMCSR (rw): LPM control and status register
 0x4000D454 C   FIELD 00w01 LPMEN: LPM support enable
 0x4000D454 C   FIELD 01w01 LPMACK: LPM Token acknowledge enable
 0x4000D454 C   FIELD 03w01 REMWAKE: RemoteWake value
 0x4000D454 C   FIELD 04w04 BESL: BESL value
-0x4000D456 B  REGISTER COUNT0_RX: Reception byte count 0
-0x4000D456 C   FIELD 00w10 COUNT0_RX (ro): Reception byte count
-0x4000D456 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D456 C   FIELD 15w01 BL_SIZE (rw): Block size
 0x4000D458 B  REGISTER BCDR (rw): Battery charging detector
 0x4000D458 C   FIELD 00w01 BCDEN: Battery charging detector (BCD) enable
 0x4000D458 C   FIELD 01w01 DCDEN: Data contact detection (DCD) mode enable
@@ -3147,64 +3141,6 @@
 0x4000D458 C   FIELD 06w01 SDET: Secondary detection (SD) status
 0x4000D458 C   FIELD 07w01 PS2DET: DM pull-up detection status
 0x4000D458 C   FIELD 15w01 DPPU: DP pull-up control
-0x4000D45A B  REGISTER COUNT1_TX (rw): Transmission byte count 0
-0x4000D45A C   FIELD 00w10 COUNT1_TX: Transmission byte count
-0x4000D45C B  REGISTER ADDR0_RX (rw): Reception buffer address 0
-0x4000D45C C   FIELD 01w15 ADDR0_RX: Reception buffer address
-0x4000D45E B  REGISTER COUNT1_RX: Reception byte count 0
-0x4000D45E C   FIELD 00w10 COUNT1_RX (ro): Reception byte count
-0x4000D45E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D45E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D462 B  REGISTER COUNT2_TX (rw): Transmission byte count 0
-0x4000D462 C   FIELD 00w10 COUNT2_TX: Transmission byte count
-0x4000D464 B  REGISTER ADDR1_RX (rw): Reception buffer address 0
-0x4000D464 C   FIELD 01w15 ADDR1_RX: Reception buffer address
-0x4000D466 B  REGISTER COUNT2_RX: Reception byte count 0
-0x4000D466 C   FIELD 00w10 COUNT2_RX (ro): Reception byte count
-0x4000D466 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D466 C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D46A B  REGISTER COUNT3_TX (rw): Transmission byte count 0
-0x4000D46A C   FIELD 00w10 COUNT3_TX: Transmission byte count
-0x4000D46C B  REGISTER ADDR2_RX (rw): Reception buffer address 0
-0x4000D46C C   FIELD 01w15 ADDR2_RX: Reception buffer address
-0x4000D46E B  REGISTER COUNT3_RX: Reception byte count 0
-0x4000D46E C   FIELD 00w10 COUNT3_RX (ro): Reception byte count
-0x4000D46E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D46E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D472 B  REGISTER COUNT4_TX (rw): Transmission byte count 0
-0x4000D472 C   FIELD 00w10 COUNT4_TX: Transmission byte count
-0x4000D474 B  REGISTER ADDR3_RX (rw): Reception buffer address 0
-0x4000D474 C   FIELD 01w15 ADDR3_RX: Reception buffer address
-0x4000D476 B  REGISTER COUNT4_RX: Reception byte count 0
-0x4000D476 C   FIELD 00w10 COUNT4_RX (ro): Reception byte count
-0x4000D476 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D476 C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D47A B  REGISTER COUNT5_TX (rw): Transmission byte count 0
-0x4000D47A C   FIELD 00w10 COUNT5_TX: Transmission byte count
-0x4000D47C B  REGISTER ADDR4_RX (rw): Reception buffer address 0
-0x4000D47C C   FIELD 01w15 ADDR4_RX: Reception buffer address
-0x4000D47E B  REGISTER COUNT5_RX: Reception byte count 0
-0x4000D47E C   FIELD 00w10 COUNT5_RX (ro): Reception byte count
-0x4000D47E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D47E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D482 B  REGISTER COUNT6_TX (rw): Transmission byte count 0
-0x4000D482 C   FIELD 00w10 COUNT6_TX: Transmission byte count
-0x4000D484 B  REGISTER ADDR5_RX (rw): Reception buffer address 0
-0x4000D484 C   FIELD 01w15 ADDR5_RX: Reception buffer address
-0x4000D486 B  REGISTER COUNT6_RX: Reception byte count 0
-0x4000D486 C   FIELD 00w10 COUNT6_RX (ro): Reception byte count
-0x4000D486 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D486 C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D48A B  REGISTER COUNT7_TX (rw): Transmission byte count 0
-0x4000D48A C   FIELD 00w10 COUNT7_TX: Transmission byte count
-0x4000D48C B  REGISTER ADDR6_RX (rw): Reception buffer address 0
-0x4000D48C C   FIELD 01w15 ADDR6_RX: Reception buffer address
-0x4000D48E B  REGISTER COUNT7_RX: Reception byte count 0
-0x4000D48E C   FIELD 00w10 COUNT7_RX (ro): Reception byte count
-0x4000D48E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x4000D48E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x4000D494 B  REGISTER ADDR7_RX (rw): Reception buffer address 0
-0x4000D494 C   FIELD 01w15 ADDR7_RX: Reception buffer address
 0x4000DC00 A PERIPHERAL UCPD1
 0x4000DC00 B  REGISTER CFG1 (rw): UCPD configuration register
 0x4000DC00 C   FIELD 00w06 HBITCLKDIV: HBITCLKDIV
@@ -3674,7 +3610,7 @@
 0x40013000 C   FIELD 08w01 SSI: Internal slave select
 0x40013000 C   FIELD 09w01 SSM: Software slave management
 0x40013000 C   FIELD 10w01 RXONLY: Receive only
-0x40013000 C   FIELD 11w01 DFF: Data frame format
+0x40013000 C   FIELD 11w01 CRCL: CRC length
 0x40013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x40013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x40013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -4149,7 +4085,9 @@
 0x40014024 B  REGISTER CNT: counter
 0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
+0x40014028 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
 0x40014028 B  REGISTER PSC (rw): prescaler
+0x40014028 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x40014028 C   FIELD 00w16 PSC: Prescaler value
 0x4001402C B  REGISTER ARR (rw): auto-reload register
 0x4001402C C   FIELD 00w16 ARR: Auto-reload value
@@ -4157,8 +4095,6 @@
 0x40014030 C   FIELD 00w08 REP: Repetition counter value
 0x40014034 B  REGISTER CCR1 (rw): capture/compare register 1
 0x40014034 C   FIELD 00w16 CCR1: Capture/Compare 1 value
-0x40014038 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
-0x40014038 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x40014044 B  REGISTER BDTR (rw): break and dead-time register
 0x40014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -5240,158 +5176,86 @@
 0x40020014 B  REGISTER CM0AR1 (rw): channel x memory address register
 0x40020014 C   FIELD 00w32 MA: Memory address
 0x40020018 B  REGISTER CM1AR1 (rw): channel x memory address register
-0x40020018 C   FIELD 00w01 EN: Channel enable
-0x40020018 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020018 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020018 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020018 C   FIELD 04w01 DIR: Data transfer direction
-0x40020018 C   FIELD 05w01 CIRC: Circular mode
-0x40020018 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020018 C   FIELD 07w01 MINC: Memory increment mode
-0x40020018 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020018 C   FIELD 10w02 MSIZE: Memory size
-0x40020018 C   FIELD 12w02 PL: Channel priority level
-0x40020018 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020018 C   FIELD 15w01 DBM: double-buffer mode
-0x40020018 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020018 C   FIELD 17w01 SECM: secure mode
-0x40020018 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020018 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020018 C   FIELD 20w01 PRIV: privileged mode
+0x40020018 C   FIELD 00w32 MA: peripheral address
 0x4002001C B  REGISTER CCR2 (rw): channel x configuration register
 0x4002001C C   FIELD 00w01 EN: Channel enable
-0x4002001C C   FIELD 00w18 NDT: Number of data to transfer
 0x4002001C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x4002001C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002001C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x4002001C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x4002001C C   FIELD 04w01 DIR: Data transfer direction
-0x4002001C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002001C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002001C C   FIELD 07w01 PINC: Peripheral increment mode
+0x4002001C C   FIELD 05w01 CIRC: Circular mode
+0x4002001C C   FIELD 06w01 PINC: Peripheral increment mode
+0x4002001C C   FIELD 07w01 MINC: Memory increment mode
 0x4002001C C   FIELD 08w02 PSIZE: Peripheral size
 0x4002001C C   FIELD 10w02 MSIZE: Memory size
 0x4002001C C   FIELD 12w02 PL: Channel priority level
 0x4002001C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x4002001C C   FIELD 15w01 DBM: double-buffer mode
-0x4002001C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002001C C   FIELD 17w01 SECM: 
-0x4002001C C   FIELD 18w01 SSEC: 
-0x4002001C C   FIELD 19w01 DSEC: 
+0x4002001C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x4002001C C   FIELD 17w01 SECM: secure mode
+0x4002001C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x4002001C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x4002001C C   FIELD 20w01 PRIV: privileged mode
 0x40020020 B  REGISTER CNDTR2 (rw): channel x number of data register
 0x40020020 C   FIELD 00w18 NDT: Number of data to transfer
-0x40020020 C   FIELD 00w32 PA: Peripheral address
 0x40020024 B  REGISTER CPAR2 (rw): channel x peripheral address register
-0x40020024 C   FIELD 00w32 MA: Memory address
+0x40020024 C   FIELD 00w32 PA: Peripheral address
 0x40020028 B  REGISTER CM0AR2 (rw): channel x memory address register
-0x40020028 C   FIELD 00w01 EN: Channel enable
-0x40020028 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020028 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020028 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020028 C   FIELD 04w01 DIR: Data transfer direction
-0x40020028 C   FIELD 05w01 CIRC: Circular mode
-0x40020028 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020028 C   FIELD 07w01 MINC: Memory increment mode
-0x40020028 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020028 C   FIELD 10w02 MSIZE: Memory size
-0x40020028 C   FIELD 12w02 PL: Channel priority level
-0x40020028 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020028 C   FIELD 15w01 DBM: double-buffer mode
-0x40020028 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020028 C   FIELD 17w01 SECM: secure mode
-0x40020028 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020028 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020028 C   FIELD 20w01 PRIV: privileged mode
+0x40020028 C   FIELD 00w32 MA: Memory address
 0x4002002C B  REGISTER CM1AR2 (rw): channel x memory address register
-0x4002002C C   FIELD 00w18 NDT: Number of data to transfer
+0x4002002C C   FIELD 00w32 MA: peripheral address
 0x40020030 B  REGISTER CCR3 (rw): channel x configuration register
 0x40020030 C   FIELD 00w01 EN: Channel enable
-0x40020030 C   FIELD 00w32 PA: Peripheral address
 0x40020030 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020030 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020030 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020030 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020030 C   FIELD 04w01 DIR: Data transfer direction
-0x40020030 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020030 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020030 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020030 C   FIELD 05w01 CIRC: Circular mode
+0x40020030 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020030 C   FIELD 07w01 MINC: Memory increment mode
 0x40020030 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020030 C   FIELD 10w02 MSIZE: Memory size
 0x40020030 C   FIELD 12w02 PL: Channel priority level
 0x40020030 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020030 C   FIELD 15w01 DBM: double-buffer mode
-0x40020030 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020030 C   FIELD 17w01 SECM: 
-0x40020030 C   FIELD 18w01 SSEC: 
-0x40020030 C   FIELD 19w01 DSEC: 
+0x40020030 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020030 C   FIELD 17w01 SECM: secure mode
+0x40020030 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020030 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020030 C   FIELD 20w01 PRIV: privileged mode
 0x40020034 B  REGISTER CNDTR3 (rw): channel x number of data register
 0x40020034 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020038 B  REGISTER CPAR3 (rw): channel x peripheral address register
-0x40020038 C   FIELD 00w01 EN: Channel enable
-0x40020038 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020038 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020038 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020038 C   FIELD 04w01 DIR: Data transfer direction
-0x40020038 C   FIELD 05w01 CIRC: Circular mode
-0x40020038 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020038 C   FIELD 07w01 MINC: Memory increment mode
-0x40020038 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020038 C   FIELD 10w02 MSIZE: Memory size
-0x40020038 C   FIELD 12w02 PL: Channel priority level
-0x40020038 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020038 C   FIELD 15w01 DBM: double-buffer mode
-0x40020038 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020038 C   FIELD 17w01 SECM: secure mode
-0x40020038 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020038 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020038 C   FIELD 20w01 PRIV: privileged mode
+0x40020038 C   FIELD 00w32 PA: Peripheral address
 0x4002003C B  REGISTER CM0AR3 (rw): channel x memory address register
-0x4002003C C   FIELD 00w18 NDT: Number of data to transfer
+0x4002003C C   FIELD 00w32 MA: Memory address
 0x40020040 B  REGISTER CM1AR3 (rw): channel x memory address register
-0x40020040 C   FIELD 00w32 PA: Peripheral address
+0x40020040 C   FIELD 00w32 MA: peripheral address
 0x40020044 B  REGISTER CCR4 (rw): channel x configuration register
 0x40020044 C   FIELD 00w01 EN: Channel enable
 0x40020044 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020044 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020044 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020044 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020044 C   FIELD 04w01 DIR: Data transfer direction
-0x40020044 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020044 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020044 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020044 C   FIELD 05w01 CIRC: Circular mode
+0x40020044 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020044 C   FIELD 07w01 MINC: Memory increment mode
 0x40020044 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020044 C   FIELD 10w02 MSIZE: Memory size
 0x40020044 C   FIELD 12w02 PL: Channel priority level
 0x40020044 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020044 C   FIELD 15w01 DBM: double-buffer mode
-0x40020044 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020044 C   FIELD 17w01 SECM: 
-0x40020044 C   FIELD 18w01 SSEC: 
-0x40020044 C   FIELD 19w01 DSEC: 
+0x40020044 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020044 C   FIELD 17w01 SECM: secure mode
+0x40020044 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020044 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020044 C   FIELD 20w01 PRIV: privileged mode
 0x40020048 B  REGISTER CNDTR4 (rw): channel x number of data register
-0x40020048 C   FIELD 00w01 EN: Channel enable
 0x40020048 C   FIELD 00w18 NDT: Number of data to transfer
-0x40020048 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020048 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020048 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020048 C   FIELD 04w01 DIR: Data transfer direction
-0x40020048 C   FIELD 05w01 CIRC: Circular mode
-0x40020048 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020048 C   FIELD 07w01 MINC: Memory increment mode
-0x40020048 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020048 C   FIELD 10w02 MSIZE: Memory size
-0x40020048 C   FIELD 12w02 PL: Channel priority level
-0x40020048 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020048 C   FIELD 15w01 DBM: double-buffer mode
-0x40020048 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020048 C   FIELD 17w01 SECM: secure mode
-0x40020048 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020048 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020048 C   FIELD 20w01 PRIV: privileged mode
 0x4002004C B  REGISTER CPAR4 (rw): channel x peripheral address register
-0x4002004C C   FIELD 00w18 NDT: Number of data to transfer
+0x4002004C C   FIELD 00w32 PA: Peripheral address
 0x40020050 B  REGISTER CM0AR4 (rw): channel x memory address register
-0x40020050 C   FIELD 00w32 PA: Peripheral address
+0x40020050 C   FIELD 00w32 MA: Memory address
 0x40020054 B  REGISTER CM1AR4 (rw): channel x memory address register
 0x40020054 C   FIELD 00w32 MA: Memory address
 0x40020058 B  REGISTER CCR5 (rw): channel x configuration register
@@ -5420,82 +5284,57 @@
 0x40020064 B  REGISTER CM0AR5 (rw): channel x memory address register
 0x40020064 C   FIELD 00w32 MA: Memory address
 0x40020068 B  REGISTER CM1AR5 (rw): channel x memory address register
-0x40020068 C   FIELD 00w01 EN: Channel enable
-0x40020068 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020068 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020068 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020068 C   FIELD 04w01 DIR: Data transfer direction
-0x40020068 C   FIELD 05w01 CIRC: Circular mode
-0x40020068 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020068 C   FIELD 07w01 MINC: Memory increment mode
-0x40020068 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020068 C   FIELD 10w02 MSIZE: Memory size
-0x40020068 C   FIELD 12w02 PL: Channel priority level
-0x40020068 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020068 C   FIELD 15w01 DBM: double-buffer mode
-0x40020068 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020068 C   FIELD 17w01 SECM: secure mode
-0x40020068 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020068 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020068 C   FIELD 20w01 PRIV: privileged mode
+0x40020068 C   FIELD 00w32 MA: peripheral address
 0x4002006C B  REGISTER CCR6 (rw): channel x configuration register
 0x4002006C C   FIELD 00w01 EN: Channel enable
-0x4002006C C   FIELD 00w18 NDT: Number of data to transfer
 0x4002006C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x4002006C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002006C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x4002006C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x4002006C C   FIELD 04w01 DIR: Data transfer direction
-0x4002006C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002006C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002006C C   FIELD 07w01 PINC: Peripheral increment mode
+0x4002006C C   FIELD 05w01 CIRC: Circular mode
+0x4002006C C   FIELD 06w01 PINC: Peripheral increment mode
+0x4002006C C   FIELD 07w01 MINC: Memory increment mode
 0x4002006C C   FIELD 08w02 PSIZE: Peripheral size
 0x4002006C C   FIELD 10w02 MSIZE: Memory size
 0x4002006C C   FIELD 12w02 PL: Channel priority level
 0x4002006C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x4002006C C   FIELD 15w01 DBM: double-buffer mode
-0x4002006C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002006C C   FIELD 17w01 SECM: 
-0x4002006C C   FIELD 18w01 SSEC: 
-0x4002006C C   FIELD 19w01 DSEC: 
+0x4002006C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x4002006C C   FIELD 17w01 SECM: secure mode
+0x4002006C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x4002006C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x4002006C C   FIELD 20w01 PRIV: privileged mode
 0x40020070 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x40020070 C   FIELD 00w16 NDT: Number of data to transfer
-0x40020070 C   FIELD 00w32 PA: Peripheral address
+0x40020070 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020074 B  REGISTER CPAR6 (rw): channel x peripheral address register
-0x40020074 C   FIELD 00w32 MA: Memory address
+0x40020074 C   FIELD 00w32 PA: Peripheral address
 0x40020078 B  REGISTER CM0AR6 (rw): channel x memory address register
-0x40020078 C   FIELD 00w04 C1S: DMA channel 1 selection
-0x40020078 C   FIELD 04w04 C2S: DMA channel 2 selection
-0x40020078 C   FIELD 08w04 C3S: DMA channel 3 selection
-0x40020078 C   FIELD 12w04 C4S: DMA channel 4 selection
-0x40020078 C   FIELD 16w04 C5S: DMA channel 5 selection
-0x40020078 C   FIELD 20w04 C6S: DMA channel 6 selection
-0x40020078 C   FIELD 24w04 C7S: DMA channel 7 selection
+0x40020078 C   FIELD 00w32 MA: Memory address
 0x4002007C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x4002007C C   FIELD 00w32 MA: peripheral address
 0x40020080 B  REGISTER CCR7 (rw): channel x configuration register
 0x40020080 C   FIELD 00w01 EN: Channel enable
 0x40020080 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020080 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020080 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020080 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020080 C   FIELD 04w01 DIR: Data transfer direction
-0x40020080 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020080 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020080 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020080 C   FIELD 05w01 CIRC: Circular mode
+0x40020080 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020080 C   FIELD 07w01 MINC: Memory increment mode
 0x40020080 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020080 C   FIELD 10w02 MSIZE: Memory size
 0x40020080 C   FIELD 12w02 PL: Channel priority level
 0x40020080 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020080 C   FIELD 15w01 DBM: double-buffer mode
-0x40020080 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020080 C   FIELD 17w01 SECM: 
-0x40020080 C   FIELD 18w01 SSEC: 
-0x40020080 C   FIELD 19w01 DSEC: 
+0x40020080 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020080 C   FIELD 17w01 SECM: secure mode
+0x40020080 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020080 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020080 C   FIELD 20w01 PRIV: privileged mode
 0x40020084 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x40020084 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020084 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020088 B  REGISTER CPAR7 (rw): channel x peripheral address register
-0x40020088 C   FIELD 00w32 MA: peripheral address
+0x40020088 C   FIELD 00w32 PA: Peripheral address
 0x4002008C B  REGISTER CM0AR7 (rw): channel x memory address register
 0x4002008C C   FIELD 00w32 MA: peripheral address
 0x40020090 B  REGISTER CM1AR7 (rw): channel x memory address register
@@ -5504,45 +5343,27 @@
 0x40020094 C   FIELD 00w01 EN: Channel enable
 0x40020094 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020094 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020094 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020094 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020094 C   FIELD 04w01 DIR: Data transfer direction
-0x40020094 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020094 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020094 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020094 C   FIELD 05w01 CIRC: Circular mode
+0x40020094 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020094 C   FIELD 07w01 MINC: Memory increment mode
 0x40020094 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020094 C   FIELD 10w02 MSIZE: Memory size
 0x40020094 C   FIELD 12w02 PL: Channel priority level
 0x40020094 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020094 C   FIELD 15w01 DBM: double-buffer mode
-0x40020094 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020094 C   FIELD 17w01 SECM: 
-0x40020094 C   FIELD 18w01 SSEC: 
-0x40020094 C   FIELD 19w01 DSEC: 
+0x40020094 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020094 C   FIELD 17w01 SECM: secure mode
+0x40020094 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020094 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020094 C   FIELD 20w01 PRIV: privileged mode
 0x40020098 B  REGISTER CNDTR8 (rw): channel x number of data register
-0x40020098 C   FIELD 00w01 EN: channel enable
-0x40020098 C   FIELD 00w16 NDT: Number of data to transfer
-0x40020098 C   FIELD 01w01 TCIE: transfer complete interrupt enable
-0x40020098 C   FIELD 02w01 HTIE: half transfer interrupt enable
-0x40020098 C   FIELD 03w01 TEIE: transfer error interrupt enable
-0x40020098 C   FIELD 04w01 DIR: data transfer direction
-0x40020098 C   FIELD 05w01 CIRC: circular mode
-0x40020098 C   FIELD 06w01 PINC: peripheral increment mode
-0x40020098 C   FIELD 07w01 MINC: memory increment mode
-0x40020098 C   FIELD 08w02 PSIZE: peripheral size
-0x40020098 C   FIELD 10w02 MSIZE: memory size
-0x40020098 C   FIELD 12w02 PL: priority level
-0x40020098 C   FIELD 14w01 MEM2MEM: memory-to-memory mode
-0x40020098 C   FIELD 15w01 DBM: double-buffer mode
-0x40020098 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020098 C   FIELD 17w01 SECM: secure mode
-0x40020098 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020098 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020098 C   FIELD 20w01 PRIV: privileged mode
+0x40020098 C   FIELD 00w18 NDT: Number of data to transfer
 0x4002009C B  REGISTER CPAR8 (rw): channel x peripheral address register
-0x4002009C C   FIELD 00w18 NDT: number of data to transfer
+0x4002009C C   FIELD 00w32 PA: Peripheral address
 0x400200A0 B  REGISTER CM0AR8 (rw): channel x peripheral address register
-0x400200A0 C   FIELD 00w32 PA: peripheral address
+0x400200A0 C   FIELD 00w32 MA: Memory address
 0x400200A4 B  REGISTER CM1AR8 (rw): channel x peripheral address register
 0x400200A4 C   FIELD 00w32 MA: peripheral address
 0x400200A8 B  REGISTER CSELR (rw): channel selection register
@@ -5640,158 +5461,86 @@
 0x40020414 B  REGISTER CM0AR1 (rw): channel x memory address register
 0x40020414 C   FIELD 00w32 MA: Memory address
 0x40020418 B  REGISTER CM1AR1 (rw): channel x memory address register
-0x40020418 C   FIELD 00w01 EN: Channel enable
-0x40020418 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020418 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020418 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020418 C   FIELD 04w01 DIR: Data transfer direction
-0x40020418 C   FIELD 05w01 CIRC: Circular mode
-0x40020418 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020418 C   FIELD 07w01 MINC: Memory increment mode
-0x40020418 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020418 C   FIELD 10w02 MSIZE: Memory size
-0x40020418 C   FIELD 12w02 PL: Channel priority level
-0x40020418 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020418 C   FIELD 15w01 DBM: double-buffer mode
-0x40020418 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020418 C   FIELD 17w01 SECM: secure mode
-0x40020418 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020418 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020418 C   FIELD 20w01 PRIV: privileged mode
+0x40020418 C   FIELD 00w32 MA: peripheral address
 0x4002041C B  REGISTER CCR2 (rw): channel x configuration register
 0x4002041C C   FIELD 00w01 EN: Channel enable
-0x4002041C C   FIELD 00w18 NDT: Number of data to transfer
 0x4002041C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x4002041C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002041C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x4002041C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x4002041C C   FIELD 04w01 DIR: Data transfer direction
-0x4002041C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002041C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002041C C   FIELD 07w01 PINC: Peripheral increment mode
+0x4002041C C   FIELD 05w01 CIRC: Circular mode
+0x4002041C C   FIELD 06w01 PINC: Peripheral increment mode
+0x4002041C C   FIELD 07w01 MINC: Memory increment mode
 0x4002041C C   FIELD 08w02 PSIZE: Peripheral size
 0x4002041C C   FIELD 10w02 MSIZE: Memory size
 0x4002041C C   FIELD 12w02 PL: Channel priority level
 0x4002041C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x4002041C C   FIELD 15w01 DBM: double-buffer mode
-0x4002041C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002041C C   FIELD 17w01 SECM: 
-0x4002041C C   FIELD 18w01 SSEC: 
-0x4002041C C   FIELD 19w01 DSEC: 
+0x4002041C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x4002041C C   FIELD 17w01 SECM: secure mode
+0x4002041C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x4002041C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x4002041C C   FIELD 20w01 PRIV: privileged mode
 0x40020420 B  REGISTER CNDTR2 (rw): channel x number of data register
 0x40020420 C   FIELD 00w18 NDT: Number of data to transfer
-0x40020420 C   FIELD 00w32 PA: Peripheral address
 0x40020424 B  REGISTER CPAR2 (rw): channel x peripheral address register
-0x40020424 C   FIELD 00w32 MA: Memory address
+0x40020424 C   FIELD 00w32 PA: Peripheral address
 0x40020428 B  REGISTER CM0AR2 (rw): channel x memory address register
-0x40020428 C   FIELD 00w01 EN: Channel enable
-0x40020428 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020428 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020428 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020428 C   FIELD 04w01 DIR: Data transfer direction
-0x40020428 C   FIELD 05w01 CIRC: Circular mode
-0x40020428 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020428 C   FIELD 07w01 MINC: Memory increment mode
-0x40020428 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020428 C   FIELD 10w02 MSIZE: Memory size
-0x40020428 C   FIELD 12w02 PL: Channel priority level
-0x40020428 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020428 C   FIELD 15w01 DBM: double-buffer mode
-0x40020428 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020428 C   FIELD 17w01 SECM: secure mode
-0x40020428 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020428 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020428 C   FIELD 20w01 PRIV: privileged mode
+0x40020428 C   FIELD 00w32 MA: Memory address
 0x4002042C B  REGISTER CM1AR2 (rw): channel x memory address register
-0x4002042C C   FIELD 00w18 NDT: Number of data to transfer
+0x4002042C C   FIELD 00w32 MA: peripheral address
 0x40020430 B  REGISTER CCR3 (rw): channel x configuration register
 0x40020430 C   FIELD 00w01 EN: Channel enable
-0x40020430 C   FIELD 00w32 PA: Peripheral address
 0x40020430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020430 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020430 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020430 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020430 C   FIELD 04w01 DIR: Data transfer direction
-0x40020430 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020430 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020430 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020430 C   FIELD 05w01 CIRC: Circular mode
+0x40020430 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020430 C   FIELD 07w01 MINC: Memory increment mode
 0x40020430 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020430 C   FIELD 10w02 MSIZE: Memory size
 0x40020430 C   FIELD 12w02 PL: Channel priority level
 0x40020430 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020430 C   FIELD 15w01 DBM: double-buffer mode
-0x40020430 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020430 C   FIELD 17w01 SECM: 
-0x40020430 C   FIELD 18w01 SSEC: 
-0x40020430 C   FIELD 19w01 DSEC: 
+0x40020430 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020430 C   FIELD 17w01 SECM: secure mode
+0x40020430 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020430 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020430 C   FIELD 20w01 PRIV: privileged mode
 0x40020434 B  REGISTER CNDTR3 (rw): channel x number of data register
 0x40020434 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020438 B  REGISTER CPAR3 (rw): channel x peripheral address register
-0x40020438 C   FIELD 00w01 EN: Channel enable
-0x40020438 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020438 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020438 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020438 C   FIELD 04w01 DIR: Data transfer direction
-0x40020438 C   FIELD 05w01 CIRC: Circular mode
-0x40020438 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020438 C   FIELD 07w01 MINC: Memory increment mode
-0x40020438 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020438 C   FIELD 10w02 MSIZE: Memory size
-0x40020438 C   FIELD 12w02 PL: Channel priority level
-0x40020438 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020438 C   FIELD 15w01 DBM: double-buffer mode
-0x40020438 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020438 C   FIELD 17w01 SECM: secure mode
-0x40020438 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020438 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020438 C   FIELD 20w01 PRIV: privileged mode
+0x40020438 C   FIELD 00w32 PA: Peripheral address
 0x4002043C B  REGISTER CM0AR3 (rw): channel x memory address register
-0x4002043C C   FIELD 00w18 NDT: Number of data to transfer
+0x4002043C C   FIELD 00w32 MA: Memory address
 0x40020440 B  REGISTER CM1AR3 (rw): channel x memory address register
-0x40020440 C   FIELD 00w32 PA: Peripheral address
+0x40020440 C   FIELD 00w32 MA: peripheral address
 0x40020444 B  REGISTER CCR4 (rw): channel x configuration register
 0x40020444 C   FIELD 00w01 EN: Channel enable
 0x40020444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020444 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020444 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020444 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020444 C   FIELD 04w01 DIR: Data transfer direction
-0x40020444 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020444 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020444 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020444 C   FIELD 05w01 CIRC: Circular mode
+0x40020444 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020444 C   FIELD 07w01 MINC: Memory increment mode
 0x40020444 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020444 C   FIELD 10w02 MSIZE: Memory size
 0x40020444 C   FIELD 12w02 PL: Channel priority level
 0x40020444 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020444 C   FIELD 15w01 DBM: double-buffer mode
-0x40020444 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020444 C   FIELD 17w01 SECM: 
-0x40020444 C   FIELD 18w01 SSEC: 
-0x40020444 C   FIELD 19w01 DSEC: 
+0x40020444 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020444 C   FIELD 17w01 SECM: secure mode
+0x40020444 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020444 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020444 C   FIELD 20w01 PRIV: privileged mode
 0x40020448 B  REGISTER CNDTR4 (rw): channel x number of data register
-0x40020448 C   FIELD 00w01 EN: Channel enable
 0x40020448 C   FIELD 00w18 NDT: Number of data to transfer
-0x40020448 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020448 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020448 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020448 C   FIELD 04w01 DIR: Data transfer direction
-0x40020448 C   FIELD 05w01 CIRC: Circular mode
-0x40020448 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020448 C   FIELD 07w01 MINC: Memory increment mode
-0x40020448 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020448 C   FIELD 10w02 MSIZE: Memory size
-0x40020448 C   FIELD 12w02 PL: Channel priority level
-0x40020448 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020448 C   FIELD 15w01 DBM: double-buffer mode
-0x40020448 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020448 C   FIELD 17w01 SECM: secure mode
-0x40020448 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020448 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020448 C   FIELD 20w01 PRIV: privileged mode
 0x4002044C B  REGISTER CPAR4 (rw): channel x peripheral address register
-0x4002044C C   FIELD 00w18 NDT: Number of data to transfer
+0x4002044C C   FIELD 00w32 PA: Peripheral address
 0x40020450 B  REGISTER CM0AR4 (rw): channel x memory address register
-0x40020450 C   FIELD 00w32 PA: Peripheral address
+0x40020450 C   FIELD 00w32 MA: Memory address
 0x40020454 B  REGISTER CM1AR4 (rw): channel x memory address register
 0x40020454 C   FIELD 00w32 MA: Memory address
 0x40020458 B  REGISTER CCR5 (rw): channel x configuration register
@@ -5820,82 +5569,57 @@
 0x40020464 B  REGISTER CM0AR5 (rw): channel x memory address register
 0x40020464 C   FIELD 00w32 MA: Memory address
 0x40020468 B  REGISTER CM1AR5 (rw): channel x memory address register
-0x40020468 C   FIELD 00w01 EN: Channel enable
-0x40020468 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020468 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020468 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020468 C   FIELD 04w01 DIR: Data transfer direction
-0x40020468 C   FIELD 05w01 CIRC: Circular mode
-0x40020468 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020468 C   FIELD 07w01 MINC: Memory increment mode
-0x40020468 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020468 C   FIELD 10w02 MSIZE: Memory size
-0x40020468 C   FIELD 12w02 PL: Channel priority level
-0x40020468 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020468 C   FIELD 15w01 DBM: double-buffer mode
-0x40020468 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020468 C   FIELD 17w01 SECM: secure mode
-0x40020468 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020468 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020468 C   FIELD 20w01 PRIV: privileged mode
+0x40020468 C   FIELD 00w32 MA: peripheral address
 0x4002046C B  REGISTER CCR6 (rw): channel x configuration register
 0x4002046C C   FIELD 00w01 EN: Channel enable
-0x4002046C C   FIELD 00w18 NDT: Number of data to transfer
 0x4002046C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x4002046C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002046C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x4002046C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x4002046C C   FIELD 04w01 DIR: Data transfer direction
-0x4002046C C   FIELD 05w01 CIRC: Ciruclar mode
-0x4002046C C   FIELD 07w01 MINC: Memory increment mdoe
-0x4002046C C   FIELD 07w01 PINC: Peripheral increment mode
+0x4002046C C   FIELD 05w01 CIRC: Circular mode
+0x4002046C C   FIELD 06w01 PINC: Peripheral increment mode
+0x4002046C C   FIELD 07w01 MINC: Memory increment mode
 0x4002046C C   FIELD 08w02 PSIZE: Peripheral size
 0x4002046C C   FIELD 10w02 MSIZE: Memory size
 0x4002046C C   FIELD 12w02 PL: Channel priority level
 0x4002046C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x4002046C C   FIELD 15w01 DBM: double-buffer mode
-0x4002046C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x4002046C C   FIELD 17w01 SECM: 
-0x4002046C C   FIELD 18w01 SSEC: 
-0x4002046C C   FIELD 19w01 DSEC: 
+0x4002046C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x4002046C C   FIELD 17w01 SECM: secure mode
+0x4002046C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x4002046C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x4002046C C   FIELD 20w01 PRIV: privileged mode
 0x40020470 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x40020470 C   FIELD 00w16 NDT: Number of data to transfer
-0x40020470 C   FIELD 00w32 PA: Peripheral address
+0x40020470 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020474 B  REGISTER CPAR6 (rw): channel x peripheral address register
-0x40020474 C   FIELD 00w32 MA: Memory address
+0x40020474 C   FIELD 00w32 PA: Peripheral address
 0x40020478 B  REGISTER CM0AR6 (rw): channel x memory address register
-0x40020478 C   FIELD 00w04 C1S: DMA channel 1 selection
-0x40020478 C   FIELD 04w04 C2S: DMA channel 2 selection
-0x40020478 C   FIELD 08w04 C3S: DMA channel 3 selection
-0x40020478 C   FIELD 12w04 C4S: DMA channel 4 selection
-0x40020478 C   FIELD 16w04 C5S: DMA channel 5 selection
-0x40020478 C   FIELD 20w04 C6S: DMA channel 6 selection
-0x40020478 C   FIELD 24w04 C7S: DMA channel 7 selection
+0x40020478 C   FIELD 00w32 MA: Memory address
 0x4002047C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x4002047C C   FIELD 00w32 MA: peripheral address
 0x40020480 B  REGISTER CCR7 (rw): channel x configuration register
 0x40020480 C   FIELD 00w01 EN: Channel enable
 0x40020480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020480 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020480 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020480 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020480 C   FIELD 04w01 DIR: Data transfer direction
-0x40020480 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020480 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020480 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020480 C   FIELD 05w01 CIRC: Circular mode
+0x40020480 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020480 C   FIELD 07w01 MINC: Memory increment mode
 0x40020480 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020480 C   FIELD 10w02 MSIZE: Memory size
 0x40020480 C   FIELD 12w02 PL: Channel priority level
 0x40020480 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020480 C   FIELD 15w01 DBM: double-buffer mode
-0x40020480 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020480 C   FIELD 17w01 SECM: 
-0x40020480 C   FIELD 18w01 SSEC: 
-0x40020480 C   FIELD 19w01 DSEC: 
+0x40020480 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020480 C   FIELD 17w01 SECM: secure mode
+0x40020480 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020480 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020480 C   FIELD 20w01 PRIV: privileged mode
 0x40020484 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x40020484 C   FIELD 00w16 NDT: Number of data to transfer
+0x40020484 C   FIELD 00w18 NDT: Number of data to transfer
 0x40020488 B  REGISTER CPAR7 (rw): channel x peripheral address register
-0x40020488 C   FIELD 00w32 MA: peripheral address
+0x40020488 C   FIELD 00w32 PA: Peripheral address
 0x4002048C B  REGISTER CM0AR7 (rw): channel x memory address register
 0x4002048C C   FIELD 00w32 MA: peripheral address
 0x40020490 B  REGISTER CM1AR7 (rw): channel x memory address register
@@ -5904,45 +5628,27 @@
 0x40020494 C   FIELD 00w01 EN: Channel enable
 0x40020494 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x40020494 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020494 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x40020494 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x40020494 C   FIELD 04w01 DIR: Data transfer direction
-0x40020494 C   FIELD 05w01 CIRC: Ciruclar mode
-0x40020494 C   FIELD 07w01 MINC: Memory increment mdoe
-0x40020494 C   FIELD 07w01 PINC: Peripheral increment mode
+0x40020494 C   FIELD 05w01 CIRC: Circular mode
+0x40020494 C   FIELD 06w01 PINC: Peripheral increment mode
+0x40020494 C   FIELD 07w01 MINC: Memory increment mode
 0x40020494 C   FIELD 08w02 PSIZE: Peripheral size
 0x40020494 C   FIELD 10w02 MSIZE: Memory size
 0x40020494 C   FIELD 12w02 PL: Channel priority level
 0x40020494 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x40020494 C   FIELD 15w01 DBM: double-buffer mode
-0x40020494 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x40020494 C   FIELD 17w01 SECM: 
-0x40020494 C   FIELD 18w01 SSEC: 
-0x40020494 C   FIELD 19w01 DSEC: 
+0x40020494 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x40020494 C   FIELD 17w01 SECM: secure mode
+0x40020494 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x40020494 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x40020494 C   FIELD 20w01 PRIV: privileged mode
 0x40020498 B  REGISTER CNDTR8 (rw): channel x number of data register
-0x40020498 C   FIELD 00w01 EN: channel enable
-0x40020498 C   FIELD 00w16 NDT: Number of data to transfer
-0x40020498 C   FIELD 01w01 TCIE: transfer complete interrupt enable
-0x40020498 C   FIELD 02w01 HTIE: half transfer interrupt enable
-0x40020498 C   FIELD 03w01 TEIE: transfer error interrupt enable
-0x40020498 C   FIELD 04w01 DIR: data transfer direction
-0x40020498 C   FIELD 05w01 CIRC: circular mode
-0x40020498 C   FIELD 06w01 PINC: peripheral increment mode
-0x40020498 C   FIELD 07w01 MINC: memory increment mode
-0x40020498 C   FIELD 08w02 PSIZE: peripheral size
-0x40020498 C   FIELD 10w02 MSIZE: memory size
-0x40020498 C   FIELD 12w02 PL: priority level
-0x40020498 C   FIELD 14w01 MEM2MEM: memory-to-memory mode
-0x40020498 C   FIELD 15w01 DBM: double-buffer mode
-0x40020498 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x40020498 C   FIELD 17w01 SECM: secure mode
-0x40020498 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x40020498 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x40020498 C   FIELD 20w01 PRIV: privileged mode
+0x40020498 C   FIELD 00w18 NDT: Number of data to transfer
 0x4002049C B  REGISTER CPAR8 (rw): channel x peripheral address register
-0x4002049C C   FIELD 00w18 NDT: number of data to transfer
+0x4002049C C   FIELD 00w32 PA: Peripheral address
 0x400204A0 B  REGISTER CM0AR8 (rw): channel x peripheral address register
-0x400204A0 C   FIELD 00w32 PA: peripheral address
+0x400204A0 C   FIELD 00w32 MA: Memory address
 0x400204A4 B  REGISTER CM1AR8 (rw): channel x peripheral address register
 0x400204A4 C   FIELD 00w32 MA: peripheral address
 0x400204A8 B  REGISTER CSELR (rw): channel selection register
@@ -6060,6 +5766,22 @@
 0x40020834 C   FIELD 17w02 SPOL: Sync polarity
 0x40020834 C   FIELD 19w05 NBREQ: Nb request
 0x40020834 C   FIELD 24w05 SYNC_ID: SYNC_ID
+0x40020838 B  REGISTER C14CR (rw): DMA Multiplexer Channel 10 Control register
+0x40020838 C   FIELD 00w07 DMAREQ_ID: DMA request identification
+0x40020838 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
+0x40020838 C   FIELD 09w01 EGE: Event generation enable
+0x40020838 C   FIELD 16w01 SE: Synchronization enable
+0x40020838 C   FIELD 17w02 SPOL: Synchronization polarity
+0x40020838 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
+0x40020838 C   FIELD 24w05 SYNC_ID: Synchronization identification
+0x4002083C B  REGISTER C15CR (rw): DMA Multiplexer Channel 10 Control register
+0x4002083C C   FIELD 00w07 DMAREQ_ID: DMA request identification
+0x4002083C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
+0x4002083C C   FIELD 09w01 EGE: Event generation enable
+0x4002083C C   FIELD 16w01 SE: Synchronization enable
+0x4002083C C   FIELD 17w02 SPOL: Synchronization polarity
+0x4002083C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
+0x4002083C C   FIELD 24w05 SYNC_ID: Synchronization identification
 0x40020880 B  REGISTER CSR (rw): DMA Multiplexer Channel Status register
 0x40020880 C   FIELD 00w01 SOF0: Synchronization Overrun Flag 0
 0x40020880 C   FIELD 01w01 SOF1: Synchronization Overrun Flag 1
@@ -6118,22 +5840,6 @@
 0x4002090C C   FIELD 16w01 GE: Generation Enable
 0x4002090C C   FIELD 17w02 GPOL: Generation Polarity
 0x4002090C C   FIELD 19w05 GNBREQ: Number of Request
-0x40020938 B  REGISTER C14CR (rw): DMA Multiplexer Channel 10 Control register
-0x40020938 C   FIELD 00w07 DMAREQ_ID: DMA request identification
-0x40020938 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
-0x40020938 C   FIELD 09w01 EGE: Event generation enable
-0x40020938 C   FIELD 16w01 SE: Synchronization enable
-0x40020938 C   FIELD 17w02 SPOL: Synchronization polarity
-0x40020938 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
-0x40020938 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x4002093C B  REGISTER C15CR (rw): DMA Multiplexer Channel 10 Control register
-0x4002093C C   FIELD 00w07 DMAREQ_ID: DMA request identification
-0x4002093C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
-0x4002093C C   FIELD 09w01 EGE: Event generation enable
-0x4002093C C   FIELD 16w01 SE: Synchronization enable
-0x4002093C C   FIELD 17w02 SPOL: Synchronization polarity
-0x4002093C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
-0x4002093C C   FIELD 24w05 SYNC_ID: Synchronization identification
 0x40020940 B  REGISTER RGSR (ro): DMA Request Generator Status Register
 0x40020940 C   FIELD 00w01 OF0: Generator Overrun Flag 0
 0x40020940 C   FIELD 01w01 OF1: Generator Overrun Flag 1
@@ -13691,7 +13397,7 @@
 0x42021C30 C   FIELD 13w01 SEC13: I/O pin of Port x secure bit enable
 0x42021C30 C   FIELD 14w01 SEC14: I/O pin of Port x secure bit enable
 0x42021C30 C   FIELD 15w01 SEC15: I/O pin of Port x secure bit enable
-0x42028000 A PERIPHERAL ADC
+0x42028000 A PERIPHERAL ADC1
 0x42028000 B  REGISTER ISR (rw): interrupt and status register
 0x42028000 C   FIELD 00w01 ADRDY: ADRDY
 0x42028000 C   FIELD 01w01 EOSMP: EOSMP
@@ -13850,6 +13556,165 @@
 0x420280B4 B  REGISTER CALFACT (rw): Calibration Factors
 0x420280B4 C   FIELD 00w07 CALFACT_S: CALFACT_S
 0x420280B4 C   FIELD 16w07 CALFACT_D: CALFACT_D
+0x42028100 A PERIPHERAL ADC2
+0x42028100 B  REGISTER ISR (rw): interrupt and status register
+0x42028100 C   FIELD 00w01 ADRDY: ADRDY
+0x42028100 C   FIELD 01w01 EOSMP: EOSMP
+0x42028100 C   FIELD 02w01 EOC: EOC
+0x42028100 C   FIELD 03w01 EOS: EOS
+0x42028100 C   FIELD 04w01 OVR: OVR
+0x42028100 C   FIELD 05w01 JEOC: JEOC
+0x42028100 C   FIELD 06w01 JEOS: JEOS
+0x42028100 C   FIELD 07w01 AWD1: AWD1
+0x42028100 C   FIELD 08w01 AWD2: AWD2
+0x42028100 C   FIELD 09w01 AWD3: AWD3
+0x42028100 C   FIELD 10w01 JQOVF: JQOVF
+0x42028104 B  REGISTER IER (rw): interrupt enable register
+0x42028104 C   FIELD 00w01 ADRDYIE: ADRDYIE
+0x42028104 C   FIELD 01w01 EOSMPIE: EOSMPIE
+0x42028104 C   FIELD 02w01 EOCIE: EOCIE
+0x42028104 C   FIELD 03w01 EOSIE: EOSIE
+0x42028104 C   FIELD 04w01 OVRIE: OVRIE
+0x42028104 C   FIELD 05w01 JEOCIE: JEOCIE
+0x42028104 C   FIELD 06w01 JEOSIE: JEOSIE
+0x42028104 C   FIELD 07w01 AWD1IE: AWD1IE
+0x42028104 C   FIELD 08w01 AWD2IE: AWD2IE
+0x42028104 C   FIELD 09w01 AWD3IE: AWD3IE
+0x42028104 C   FIELD 10w01 JQOVFIE: JQOVFIE
+0x42028108 B  REGISTER CR (rw): control register
+0x42028108 C   FIELD 00w01 ADEN: ADEN
+0x42028108 C   FIELD 01w01 ADDIS: ADDIS
+0x42028108 C   FIELD 02w01 ADSTART: ADSTART
+0x42028108 C   FIELD 03w01 JADSTART: JADSTART
+0x42028108 C   FIELD 04w01 ADSTP: ADSTP
+0x42028108 C   FIELD 05w01 JADSTP: JADSTP
+0x42028108 C   FIELD 28w01 ADVREGEN: ADVREGEN
+0x42028108 C   FIELD 29w01 DEEPPWD: DEEPPWD
+0x42028108 C   FIELD 30w01 ADCALDIF: ADCALDIF
+0x42028108 C   FIELD 31w01 ADCAL: ADCAL
+0x4202810C B  REGISTER CFGR (rw): configuration register
+0x4202810C C   FIELD 00w01 DMAEN: DMAEN
+0x4202810C C   FIELD 01w01 DMACFG: DMACFG
+0x4202810C C   FIELD 03w02 RES: RES
+0x4202810C C   FIELD 05w01 ALIGN: ALIGN
+0x4202810C C   FIELD 06w04 EXTSEL: EXTSEL
+0x4202810C C   FIELD 10w02 EXTEN: EXTEN
+0x4202810C C   FIELD 12w01 OVRMOD: OVRMOD
+0x4202810C C   FIELD 13w01 CONT: CONT
+0x4202810C C   FIELD 14w01 AUTDLY: AUTDLY
+0x4202810C C   FIELD 16w01 DISCEN: DISCEN
+0x4202810C C   FIELD 17w03 DISCNUM: DISCNUM
+0x4202810C C   FIELD 20w01 JDISCEN: JDISCEN
+0x4202810C C   FIELD 21w01 JQM: JQM
+0x4202810C C   FIELD 22w01 AWD1SGL: AWD1SGL
+0x4202810C C   FIELD 23w01 AWD1EN: AWD1EN
+0x4202810C C   FIELD 24w01 JAWD1EN: JAWD1EN
+0x4202810C C   FIELD 25w01 JAUTO: JAUTO
+0x4202810C C   FIELD 26w05 AWDCH1CH: AWDCH1CH
+0x4202810C C   FIELD 31w01 JQDIS: JQDIS
+0x42028110 B  REGISTER CFGR2 (rw): configuration register
+0x42028110 C   FIELD 00w01 ROVSE: DMAEN
+0x42028110 C   FIELD 01w01 JOVSE: DMACFG
+0x42028110 C   FIELD 02w03 OVSR: RES
+0x42028110 C   FIELD 05w04 OVSS: ALIGN
+0x42028110 C   FIELD 09w01 TOVS: EXTSEL
+0x42028110 C   FIELD 10w01 ROVSM: EXTEN
+0x42028114 B  REGISTER SMPR1 (rw): sample time register 1
+0x42028114 C   FIELD 00w03 SMP0: SMP0
+0x42028114 C   FIELD 03w03 SMP1: SMP1
+0x42028114 C   FIELD 06w03 SMP2: SMP2
+0x42028114 C   FIELD 09w03 SMP3: SMP3
+0x42028114 C   FIELD 12w03 SMP4: SMP4
+0x42028114 C   FIELD 15w03 SMP5: SMP5
+0x42028114 C   FIELD 18w03 SMP6: SMP6
+0x42028114 C   FIELD 21w03 SMP7: SMP7
+0x42028114 C   FIELD 24w03 SMP8: SMP8
+0x42028114 C   FIELD 27w03 SMP9: SMP9
+0x42028118 B  REGISTER SMPR2 (rw): sample time register 2
+0x42028118 C   FIELD 00w03 SMP10: SMP10
+0x42028118 C   FIELD 03w03 SMP11: SMP11
+0x42028118 C   FIELD 06w03 SMP12: SMP12
+0x42028118 C   FIELD 09w03 SMP13: SMP13
+0x42028118 C   FIELD 12w03 SMP14: SMP14
+0x42028118 C   FIELD 15w03 SMP15: SMP15
+0x42028118 C   FIELD 18w03 SMP16: SMP16
+0x42028118 C   FIELD 21w03 SMP17: SMP17
+0x42028118 C   FIELD 24w03 SMP18: SMP18
+0x42028120 B  REGISTER TR1 (rw): watchdog threshold register 1
+0x42028120 C   FIELD 00w12 LT1: LT1
+0x42028120 C   FIELD 16w12 HT1: HT1
+0x42028124 B  REGISTER TR2 (rw): watchdog threshold register
+0x42028124 C   FIELD 00w08 LT2: LT2
+0x42028124 C   FIELD 16w08 HT2: HT2
+0x42028128 B  REGISTER TR3 (rw): watchdog threshold register 3
+0x42028128 C   FIELD 00w08 LT3: LT3
+0x42028128 C   FIELD 16w08 HT3: HT3
+0x42028130 B  REGISTER SQR1 (rw): regular sequence register 1
+0x42028130 C   FIELD 00w04 L: L
+0x42028130 C   FIELD 06w05 SQ1: SQ1
+0x42028130 C   FIELD 12w05 SQ2: SQ2
+0x42028130 C   FIELD 18w05 SQ3: SQ3
+0x42028130 C   FIELD 24w05 SQ4: SQ4
+0x42028134 B  REGISTER SQR2 (rw): regular sequence register 2
+0x42028134 C   FIELD 00w05 SQ5: SQ5
+0x42028134 C   FIELD 06w05 SQ6: SQ6
+0x42028134 C   FIELD 12w05 SQ7: SQ7
+0x42028134 C   FIELD 18w05 SQ8: SQ8
+0x42028134 C   FIELD 24w05 SQ9: SQ9
+0x42028138 B  REGISTER SQR3 (rw): regular sequence register 3
+0x42028138 C   FIELD 00w05 SQ10: SQ10
+0x42028138 C   FIELD 06w05 SQ11: SQ11
+0x42028138 C   FIELD 12w05 SQ12: SQ12
+0x42028138 C   FIELD 18w05 SQ13: SQ13
+0x42028138 C   FIELD 24w05 SQ14: SQ14
+0x4202813C B  REGISTER SQR4 (rw): regular sequence register 4
+0x4202813C C   FIELD 00w05 SQ15: SQ15
+0x4202813C C   FIELD 06w05 SQ16: SQ16
+0x42028140 B  REGISTER DR (ro): regular Data Register
+0x42028140 C   FIELD 00w16 RDATA: regularDATA
+0x4202814C B  REGISTER JSQR (rw): injected sequence register
+0x4202814C C   FIELD 00w02 JL: JL
+0x4202814C C   FIELD 02w04 JEXTSEL: JEXTSEL
+0x4202814C C   FIELD 06w02 JEXTEN: JEXTEN
+0x4202814C C   FIELD 08w05 JSQ1: JSQ1
+0x4202814C C   FIELD 14w05 JSQ2: JSQ2
+0x4202814C C   FIELD 20w05 JSQ3: JSQ3
+0x4202814C C   FIELD 26w05 JSQ4: JSQ4
+0x42028160 B  REGISTER OFR1 (rw): offset register 1
+0x42028160 C   FIELD 00w12 OFFSET1: OFFSET1
+0x42028160 C   FIELD 26w05 OFFSET1_CH: OFFSET1_CH
+0x42028160 C   FIELD 31w01 OFFSET1_EN: OFFSET1_EN
+0x42028164 B  REGISTER OFR2 (rw): offset register 2
+0x42028164 C   FIELD 00w12 OFFSET2: OFFSET2
+0x42028164 C   FIELD 26w05 OFFSET2_CH: OFFSET2_CH
+0x42028164 C   FIELD 31w01 OFFSET2_EN: OFFSET2_EN
+0x42028168 B  REGISTER OFR3 (rw): offset register 3
+0x42028168 C   FIELD 00w12 OFFSET3: OFFSET3
+0x42028168 C   FIELD 26w05 OFFSET3_CH: OFFSET3_CH
+0x42028168 C   FIELD 31w01 OFFSET3_EN: OFFSET3_EN
+0x4202816C B  REGISTER OFR4 (rw): offset register 4
+0x4202816C C   FIELD 00w12 OFFSET4: OFFSET4
+0x4202816C C   FIELD 26w05 OFFSET4_CH: OFFSET4_CH
+0x4202816C C   FIELD 31w01 OFFSET4_EN: OFFSET4_EN
+0x42028180 B  REGISTER JDR1 (ro): injected data register 1
+0x42028180 C   FIELD 00w16 JDATA: JDATA1
+0x42028184 B  REGISTER JDR2 (ro): injected data register 2
+0x42028184 C   FIELD 00w16 JDATA: JDATA2
+0x42028188 B  REGISTER JDR3 (ro): injected data register 3
+0x42028188 C   FIELD 00w16 JDATA: JDATA3
+0x4202818C B  REGISTER JDR4 (ro): injected data register 4
+0x4202818C C   FIELD 00w16 JDATA: JDATA4
+0x420281A0 B  REGISTER AWD2CR (rw): Analog Watchdog 2 Configuration Register
+0x420281A0 C   FIELD 00w19 AWD2CH: AWD2CH
+0x420281A4 B  REGISTER AWD3CR (rw): Analog Watchdog 3 Configuration Register
+0x420281A4 C   FIELD 00w19 AWD3CH: AWD3CH
+0x420281B0 B  REGISTER DIFSEL: Differential Mode Selection Register 2
+0x420281B0 C   FIELD 00w01 DIFSEL_0 (ro): Differential mode for channel 0
+0x420281B0 C   FIELD 01w15 DIFSEL_1_15 (rw): Differential mode for channels 15 to 1
+0x420281B0 C   FIELD 16w03 DIFSEL_16_18 (ro): Differential mode for channels 18 to 16
+0x420281B4 B  REGISTER CALFACT (rw): Calibration Factors
+0x420281B4 C   FIELD 00w07 CALFACT_S: CALFACT_S
+0x420281B4 C   FIELD 16w07 CALFACT_D: CALFACT_D
 0x42028300 A PERIPHERAL ADC_Common
 0x42028300 B  REGISTER CSR (ro): ADC Common status register
 0x42028300 C   FIELD 00w01 ADDRDY_MST: ADDRDY_MST
@@ -13952,6 +13817,165 @@
 0x420C0058 C   FIELD 00w32 AES_SUSP6R: AES suspend register 6
 0x420C005C B  REGISTER SUSP7R (rw): AES suspend register 7
 0x420C005C C   FIELD 00w32 AES_SUSP7R: AES suspend register 7
+0x420C0400 A PERIPHERAL HASH
+0x420C0400 B  REGISTER CR: control register
+0x420C0400 C   FIELD 02w01 INIT (wo): Initialize message digest calculation
+0x420C0400 C   FIELD 03w01 DMAE (rw): DMA enable
+0x420C0400 C   FIELD 04w02 DATATYPE (rw): Data type selection
+0x420C0400 C   FIELD 06w01 MODE (rw): Mode selection
+0x420C0400 C   FIELD 07w01 ALGO0 (rw): Algorithm selection
+0x420C0400 C   FIELD 08w04 NBW (ro): Number of words already pushed
+0x420C0400 C   FIELD 12w01 DINNE (ro): DIN not empty
+0x420C0400 C   FIELD 13w01 MDMAT (rw): Multiple DMA Transfers
+0x420C0400 C   FIELD 16w01 LKEY (rw): Long key selection
+0x420C0400 C   FIELD 18w01 ALGO1 (rw): Algorithm selection
+0x420C0404 B  REGISTER DIN (rw): data input register
+0x420C0404 C   FIELD 00w32 DATAIN: Data input
+0x420C0408 B  REGISTER STR: start register
+0x420C0408 C   FIELD 00w05 NBLW (rw): Number of valid bits in the last word of the message
+0x420C0408 C   FIELD 08w01 DCAL (rw): Digest calculation
+0x420C040C B  REGISTER HRA0 (ro): HASH aliased digest register 0
+0x420C040C C   FIELD 00w32 H0: H0
+0x420C0410 B  REGISTER HRA1 (ro): HASH aliased digest register 1
+0x420C0410 C   FIELD 00w32 H1: H1
+0x420C0414 B  REGISTER HRA2 (ro): HASH aliased digest register 2
+0x420C0414 C   FIELD 00w32 H2: H2
+0x420C0418 B  REGISTER HRA3 (ro): HASH aliased digest register 3
+0x420C0418 C   FIELD 00w32 H3: H3
+0x420C041C B  REGISTER HRA4 (ro): HASH aliased digest register 4
+0x420C041C C   FIELD 00w32 H4: H4
+0x420C0420 B  REGISTER IMR (rw): interrupt enable register
+0x420C0420 C   FIELD 00w01 DINIE: Data input interrupt enable
+0x420C0420 C   FIELD 01w01 DCIE: Digest calculation completion interrupt enable
+0x420C0424 B  REGISTER SR: status register
+0x420C0424 C   FIELD 00w01 DINIS (rw): Data input interrupt status
+0x420C0424 C   FIELD 01w01 DCIS (rw): Digest calculation completion interrupt status
+0x420C0424 C   FIELD 02w01 DMAS (ro): DMA Status
+0x420C0424 C   FIELD 03w01 BUSY (ro): Busy bit
+0x420C04F8 B  REGISTER CSR0 (rw): context swap registers
+0x420C04F8 C   FIELD 00w32 CSR0: CSR0
+0x420C04FC B  REGISTER CSR1 (rw): context swap registers
+0x420C04FC C   FIELD 00w32 CSR1: CSR1
+0x420C0500 B  REGISTER CSR2 (rw): context swap registers
+0x420C0500 C   FIELD 00w32 CSR2: CSR2
+0x420C0504 B  REGISTER CSR3 (rw): context swap registers
+0x420C0504 C   FIELD 00w32 CSR3: CSR3
+0x420C0508 B  REGISTER CSR4 (rw): context swap registers
+0x420C0508 C   FIELD 00w32 CSR4: CSR4
+0x420C050C B  REGISTER CSR5 (rw): context swap registers
+0x420C050C C   FIELD 00w32 CSR5: CSR5
+0x420C0510 B  REGISTER CSR6 (rw): context swap registers
+0x420C0510 C   FIELD 00w32 CSR6: CSR6
+0x420C0514 B  REGISTER CSR7 (rw): context swap registers
+0x420C0514 C   FIELD 00w32 CSR7: CSR7
+0x420C0518 B  REGISTER CSR8 (rw): context swap registers
+0x420C0518 C   FIELD 00w32 CSR8: CSR8
+0x420C051C B  REGISTER CSR9 (rw): context swap registers
+0x420C051C C   FIELD 00w32 CSR9: CSR9
+0x420C0520 B  REGISTER CSR10 (rw): context swap registers
+0x420C0520 C   FIELD 00w32 CSR10: CSR10
+0x420C0524 B  REGISTER CSR11 (rw): context swap registers
+0x420C0524 C   FIELD 00w32 CSR11: CSR11
+0x420C0528 B  REGISTER CSR12 (rw): context swap registers
+0x420C0528 C   FIELD 00w32 CSR12: CSR12
+0x420C052C B  REGISTER CSR13 (rw): context swap registers
+0x420C052C C   FIELD 00w32 CSR13: CSR13
+0x420C0530 B  REGISTER CSR14 (rw): context swap registers
+0x420C0530 C   FIELD 00w32 CSR14: CSR14
+0x420C0534 B  REGISTER CSR15 (rw): context swap registers
+0x420C0534 C   FIELD 00w32 CSR15: CSR15
+0x420C0538 B  REGISTER CSR16 (rw): context swap registers
+0x420C0538 C   FIELD 00w32 CSR16: CSR16
+0x420C053C B  REGISTER CSR17 (rw): context swap registers
+0x420C053C C   FIELD 00w32 CSR17: CSR17
+0x420C0540 B  REGISTER CSR18 (rw): context swap registers
+0x420C0540 C   FIELD 00w32 CSR18: CSR18
+0x420C0544 B  REGISTER CSR19 (rw): context swap registers
+0x420C0544 C   FIELD 00w32 CSR19: CSR19
+0x420C0548 B  REGISTER CSR20 (rw): context swap registers
+0x420C0548 C   FIELD 00w32 CSR20: CSR20
+0x420C054C B  REGISTER CSR21 (rw): context swap registers
+0x420C054C C   FIELD 00w32 CSR21: CSR21
+0x420C0550 B  REGISTER CSR22 (rw): context swap registers
+0x420C0550 C   FIELD 00w32 CSR22: CSR22
+0x420C0554 B  REGISTER CSR23 (rw): context swap registers
+0x420C0554 C   FIELD 00w32 CSR23: CSR23
+0x420C0558 B  REGISTER CSR24 (rw): context swap registers
+0x420C0558 C   FIELD 00w32 CSR24: CSR24
+0x420C055C B  REGISTER CSR25 (rw): context swap registers
+0x420C055C C   FIELD 00w32 CSR25: CSR25
+0x420C0560 B  REGISTER CSR26 (rw): context swap registers
+0x420C0560 C   FIELD 00w32 CSR26: CSR26
+0x420C0564 B  REGISTER CSR27 (rw): context swap registers
+0x420C0564 C   FIELD 00w32 CSR27: CSR27
+0x420C0568 B  REGISTER CSR28 (rw): context swap registers
+0x420C0568 C   FIELD 00w32 CSR28: CSR28
+0x420C056C B  REGISTER CSR29 (rw): context swap registers
+0x420C056C C   FIELD 00w32 CSR29: CSR29
+0x420C0570 B  REGISTER CSR30 (rw): context swap registers
+0x420C0570 C   FIELD 00w32 CSR30: CSR30
+0x420C0574 B  REGISTER CSR31 (rw): context swap registers
+0x420C0574 C   FIELD 00w32 CSR31: CSR31
+0x420C0578 B  REGISTER CSR32 (rw): context swap registers
+0x420C0578 C   FIELD 00w32 CSR32: CSR32
+0x420C057C B  REGISTER CSR33 (rw): context swap registers
+0x420C057C C   FIELD 00w32 CSR33: CSR33
+0x420C0580 B  REGISTER CSR34 (rw): context swap registers
+0x420C0580 C   FIELD 00w32 CSR34: CSR34
+0x420C0584 B  REGISTER CSR35 (rw): context swap registers
+0x420C0584 C   FIELD 00w32 CSR35: CSR35
+0x420C0588 B  REGISTER CSR36 (rw): context swap registers
+0x420C0588 C   FIELD 00w32 CSR36: CSR36
+0x420C058C B  REGISTER CSR37 (rw): context swap registers
+0x420C058C C   FIELD 00w32 CSR37: CSR37
+0x420C0590 B  REGISTER CSR38 (rw): context swap registers
+0x420C0590 C   FIELD 00w32 CSR38: CSR38
+0x420C0594 B  REGISTER CSR39 (rw): context swap registers
+0x420C0594 C   FIELD 00w32 CSR39: CSR39
+0x420C0598 B  REGISTER CSR40 (rw): context swap registers
+0x420C0598 C   FIELD 00w32 CSR40: CSR40
+0x420C059C B  REGISTER CSR41 (rw): context swap registers
+0x420C059C C   FIELD 00w32 CSR41: CSR41
+0x420C05A0 B  REGISTER CSR42 (rw): context swap registers
+0x420C05A0 C   FIELD 00w32 CSR42: CSR42
+0x420C05A4 B  REGISTER CSR43 (rw): context swap registers
+0x420C05A4 C   FIELD 00w32 CSR43: CSR43
+0x420C05A8 B  REGISTER CSR44 (rw): context swap registers
+0x420C05A8 C   FIELD 00w32 CSR44: CSR44
+0x420C05AC B  REGISTER CSR45 (rw): context swap registers
+0x420C05AC C   FIELD 00w32 CSR45: CSR45
+0x420C05B0 B  REGISTER CSR46 (rw): context swap registers
+0x420C05B0 C   FIELD 00w32 CSR46: CSR46
+0x420C05B4 B  REGISTER CSR47 (rw): context swap registers
+0x420C05B4 C   FIELD 00w32 CSR47: CSR47
+0x420C05B8 B  REGISTER CSR48 (rw): context swap registers
+0x420C05B8 C   FIELD 00w32 CSR48: CSR48
+0x420C05BC B  REGISTER CSR49 (rw): context swap registers
+0x420C05BC C   FIELD 00w32 CSR49: CSR49
+0x420C05C0 B  REGISTER CSR50 (rw): context swap registers
+0x420C05C0 C   FIELD 00w32 CSR50: CSR50
+0x420C05C4 B  REGISTER CSR51 (rw): context swap registers
+0x420C05C4 C   FIELD 00w32 CSR51: CSR51
+0x420C05C8 B  REGISTER CSR52 (rw): context swap registers
+0x420C05C8 C   FIELD 00w32 CSR52: CSR52
+0x420C05CC B  REGISTER CSR53 (rw): context swap registers
+0x420C05CC C   FIELD 00w32 CSR53: CSR53
+0x420C0710 B  REGISTER HR0 (ro): digest register 0
+0x420C0710 C   FIELD 00w32 H0: H0
+0x420C0714 B  REGISTER HR1 (ro): digest register 1
+0x420C0714 C   FIELD 00w32 H1: H1
+0x420C0718 B  REGISTER HR2 (ro): digest register 4
+0x420C0718 C   FIELD 00w32 H2: H2
+0x420C071C B  REGISTER HR3 (ro): digest register 3
+0x420C071C C   FIELD 00w32 H3: H3
+0x420C0720 B  REGISTER HR4 (ro): digest register 4
+0x420C0720 C   FIELD 00w32 H4: H4
+0x420C0724 B  REGISTER HR5 (ro): supplementary digest register 5
+0x420C0724 C   FIELD 00w32 H5: H5
+0x420C0728 B  REGISTER HR6 (ro): supplementary digest register 6
+0x420C0728 C   FIELD 00w32 H6: H6
+0x420C072C B  REGISTER HR7 (ro): supplementary digest register 7
+0x420C072C C   FIELD 00w32 H7: H7
 0x420C0800 A PERIPHERAL RNG
 0x420C0800 B  REGISTER CR (rw): RNG control register
 0x420C0800 C   FIELD 02w01 RNGEN: Random number generator enable
@@ -15551,7 +15575,7 @@
 0x50003800 C   FIELD 08w01 SSI: Internal slave select
 0x50003800 C   FIELD 09w01 SSM: Software slave management
 0x50003800 C   FIELD 10w01 RXONLY: Receive only
-0x50003800 C   FIELD 11w01 DFF: Data frame format
+0x50003800 C   FIELD 11w01 CRCL: CRC length
 0x50003800 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x50003800 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x50003800 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -15598,7 +15622,7 @@
 0x50003C00 C   FIELD 08w01 SSI: Internal slave select
 0x50003C00 C   FIELD 09w01 SSM: Software slave management
 0x50003C00 C   FIELD 10w01 RXONLY: Receive only
-0x50003C00 C   FIELD 11w01 DFF: Data frame format
+0x50003C00 C   FIELD 11w01 CRCL: CRC length
 0x50003C00 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x50003C00 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x50003C00 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -17668,17 +17692,11 @@
 0x5000D44C C   FIELD 07w01 EF: Enable function
 0x5000D450 B  REGISTER BTABLE (rw): Buffer table address
 0x5000D450 C   FIELD 03w13 BTABLE: Buffer table
-0x5000D452 B  REGISTER COUNT0_TX (rw): Transmission byte count 0
-0x5000D452 C   FIELD 00w10 COUNT0_TX: Transmission byte count
 0x5000D454 B  REGISTER LPMCSR (rw): LPM control and status register
 0x5000D454 C   FIELD 00w01 LPMEN: LPM support enable
 0x5000D454 C   FIELD 01w01 LPMACK: LPM Token acknowledge enable
 0x5000D454 C   FIELD 03w01 REMWAKE: RemoteWake value
 0x5000D454 C   FIELD 04w04 BESL: BESL value
-0x5000D456 B  REGISTER COUNT0_RX: Reception byte count 0
-0x5000D456 C   FIELD 00w10 COUNT0_RX (ro): Reception byte count
-0x5000D456 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D456 C   FIELD 15w01 BL_SIZE (rw): Block size
 0x5000D458 B  REGISTER BCDR (rw): Battery charging detector
 0x5000D458 C   FIELD 00w01 BCDEN: Battery charging detector (BCD) enable
 0x5000D458 C   FIELD 01w01 DCDEN: Data contact detection (DCD) mode enable
@@ -17689,64 +17707,6 @@
 0x5000D458 C   FIELD 06w01 SDET: Secondary detection (SD) status
 0x5000D458 C   FIELD 07w01 PS2DET: DM pull-up detection status
 0x5000D458 C   FIELD 15w01 DPPU: DP pull-up control
-0x5000D45A B  REGISTER COUNT1_TX (rw): Transmission byte count 0
-0x5000D45A C   FIELD 00w10 COUNT1_TX: Transmission byte count
-0x5000D45C B  REGISTER ADDR0_RX (rw): Reception buffer address 0
-0x5000D45C C   FIELD 01w15 ADDR0_RX: Reception buffer address
-0x5000D45E B  REGISTER COUNT1_RX: Reception byte count 0
-0x5000D45E C   FIELD 00w10 COUNT1_RX (ro): Reception byte count
-0x5000D45E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D45E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D462 B  REGISTER COUNT2_TX (rw): Transmission byte count 0
-0x5000D462 C   FIELD 00w10 COUNT2_TX: Transmission byte count
-0x5000D464 B  REGISTER ADDR1_RX (rw): Reception buffer address 0
-0x5000D464 C   FIELD 01w15 ADDR1_RX: Reception buffer address
-0x5000D466 B  REGISTER COUNT2_RX: Reception byte count 0
-0x5000D466 C   FIELD 00w10 COUNT2_RX (ro): Reception byte count
-0x5000D466 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D466 C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D46A B  REGISTER COUNT3_TX (rw): Transmission byte count 0
-0x5000D46A C   FIELD 00w10 COUNT3_TX: Transmission byte count
-0x5000D46C B  REGISTER ADDR2_RX (rw): Reception buffer address 0
-0x5000D46C C   FIELD 01w15 ADDR2_RX: Reception buffer address
-0x5000D46E B  REGISTER COUNT3_RX: Reception byte count 0
-0x5000D46E C   FIELD 00w10 COUNT3_RX (ro): Reception byte count
-0x5000D46E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D46E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D472 B  REGISTER COUNT4_TX (rw): Transmission byte count 0
-0x5000D472 C   FIELD 00w10 COUNT4_TX: Transmission byte count
-0x5000D474 B  REGISTER ADDR3_RX (rw): Reception buffer address 0
-0x5000D474 C   FIELD 01w15 ADDR3_RX: Reception buffer address
-0x5000D476 B  REGISTER COUNT4_RX: Reception byte count 0
-0x5000D476 C   FIELD 00w10 COUNT4_RX (ro): Reception byte count
-0x5000D476 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D476 C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D47A B  REGISTER COUNT5_TX (rw): Transmission byte count 0
-0x5000D47A C   FIELD 00w10 COUNT5_TX: Transmission byte count
-0x5000D47C B  REGISTER ADDR4_RX (rw): Reception buffer address 0
-0x5000D47C C   FIELD 01w15 ADDR4_RX: Reception buffer address
-0x5000D47E B  REGISTER COUNT5_RX: Reception byte count 0
-0x5000D47E C   FIELD 00w10 COUNT5_RX (ro): Reception byte count
-0x5000D47E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D47E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D482 B  REGISTER COUNT6_TX (rw): Transmission byte count 0
-0x5000D482 C   FIELD 00w10 COUNT6_TX: Transmission byte count
-0x5000D484 B  REGISTER ADDR5_RX (rw): Reception buffer address 0
-0x5000D484 C   FIELD 01w15 ADDR5_RX: Reception buffer address
-0x5000D486 B  REGISTER COUNT6_RX: Reception byte count 0
-0x5000D486 C   FIELD 00w10 COUNT6_RX (ro): Reception byte count
-0x5000D486 C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D486 C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D48A B  REGISTER COUNT7_TX (rw): Transmission byte count 0
-0x5000D48A C   FIELD 00w10 COUNT7_TX: Transmission byte count
-0x5000D48C B  REGISTER ADDR6_RX (rw): Reception buffer address 0
-0x5000D48C C   FIELD 01w15 ADDR6_RX: Reception buffer address
-0x5000D48E B  REGISTER COUNT7_RX: Reception byte count 0
-0x5000D48E C   FIELD 00w10 COUNT7_RX (ro): Reception byte count
-0x5000D48E C   FIELD 10w05 NUM_BLOCK (rw): Number of blocks
-0x5000D48E C   FIELD 15w01 BL_SIZE (rw): Block size
-0x5000D494 B  REGISTER ADDR7_RX (rw): Reception buffer address 0
-0x5000D494 C   FIELD 01w15 ADDR7_RX: Reception buffer address
 0x5000DC00 A PERIPHERAL SEC_UCPD1
 0x5000DC00 B  REGISTER CFG1 (rw): UCPD configuration register
 0x5000DC00 C   FIELD 00w06 HBITCLKDIV: HBITCLKDIV
@@ -18216,7 +18176,7 @@
 0x50013000 C   FIELD 08w01 SSI: Internal slave select
 0x50013000 C   FIELD 09w01 SSM: Software slave management
 0x50013000 C   FIELD 10w01 RXONLY: Receive only
-0x50013000 C   FIELD 11w01 DFF: Data frame format
+0x50013000 C   FIELD 11w01 CRCL: CRC length
 0x50013000 C   FIELD 12w01 CRCNEXT: CRC transfer next
 0x50013000 C   FIELD 13w01 CRCEN: Hardware CRC calculation enable
 0x50013000 C   FIELD 14w01 BIDIOE: Output enable in bidirectional mode
@@ -18691,7 +18651,9 @@
 0x50014024 B  REGISTER CNT: counter
 0x50014024 C   FIELD 00w16 CNT (rw): counter value
 0x50014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
+0x50014028 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
 0x50014028 B  REGISTER PSC (rw): prescaler
+0x50014028 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x50014028 C   FIELD 00w16 PSC: Prescaler value
 0x5001402C B  REGISTER ARR (rw): auto-reload register
 0x5001402C C   FIELD 00w16 ARR: Auto-reload value
@@ -18699,8 +18661,6 @@
 0x50014030 C   FIELD 00w08 REP: Repetition counter value
 0x50014034 B  REGISTER CCR1 (rw): capture/compare register 1
 0x50014034 C   FIELD 00w16 CCR1: Capture/Compare 1 value
-0x50014038 B  REGISTER CCR2 (rw): TIM15 capture/compare register 2
-0x50014038 C   FIELD 00w16 CCR2: Capture/Compare 2 value
 0x50014044 B  REGISTER BDTR (rw): break and dead-time register
 0x50014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x50014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -19782,158 +19742,86 @@
 0x50020014 B  REGISTER CM0AR1 (rw): channel x memory address register
 0x50020014 C   FIELD 00w32 MA: Memory address
 0x50020018 B  REGISTER CM1AR1 (rw): channel x memory address register
-0x50020018 C   FIELD 00w01 EN: Channel enable
-0x50020018 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020018 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020018 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020018 C   FIELD 04w01 DIR: Data transfer direction
-0x50020018 C   FIELD 05w01 CIRC: Circular mode
-0x50020018 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020018 C   FIELD 07w01 MINC: Memory increment mode
-0x50020018 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020018 C   FIELD 10w02 MSIZE: Memory size
-0x50020018 C   FIELD 12w02 PL: Channel priority level
-0x50020018 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020018 C   FIELD 15w01 DBM: double-buffer mode
-0x50020018 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020018 C   FIELD 17w01 SECM: secure mode
-0x50020018 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020018 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020018 C   FIELD 20w01 PRIV: privileged mode
+0x50020018 C   FIELD 00w32 MA: peripheral address
 0x5002001C B  REGISTER CCR2 (rw): channel x configuration register
 0x5002001C C   FIELD 00w01 EN: Channel enable
-0x5002001C C   FIELD 00w18 NDT: Number of data to transfer
 0x5002001C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x5002001C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002001C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x5002001C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x5002001C C   FIELD 04w01 DIR: Data transfer direction
-0x5002001C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002001C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002001C C   FIELD 07w01 PINC: Peripheral increment mode
+0x5002001C C   FIELD 05w01 CIRC: Circular mode
+0x5002001C C   FIELD 06w01 PINC: Peripheral increment mode
+0x5002001C C   FIELD 07w01 MINC: Memory increment mode
 0x5002001C C   FIELD 08w02 PSIZE: Peripheral size
 0x5002001C C   FIELD 10w02 MSIZE: Memory size
 0x5002001C C   FIELD 12w02 PL: Channel priority level
 0x5002001C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x5002001C C   FIELD 15w01 DBM: double-buffer mode
-0x5002001C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002001C C   FIELD 17w01 SECM: 
-0x5002001C C   FIELD 18w01 SSEC: 
-0x5002001C C   FIELD 19w01 DSEC: 
+0x5002001C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x5002001C C   FIELD 17w01 SECM: secure mode
+0x5002001C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x5002001C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x5002001C C   FIELD 20w01 PRIV: privileged mode
 0x50020020 B  REGISTER CNDTR2 (rw): channel x number of data register
 0x50020020 C   FIELD 00w18 NDT: Number of data to transfer
-0x50020020 C   FIELD 00w32 PA: Peripheral address
 0x50020024 B  REGISTER CPAR2 (rw): channel x peripheral address register
-0x50020024 C   FIELD 00w32 MA: Memory address
+0x50020024 C   FIELD 00w32 PA: Peripheral address
 0x50020028 B  REGISTER CM0AR2 (rw): channel x memory address register
-0x50020028 C   FIELD 00w01 EN: Channel enable
-0x50020028 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020028 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020028 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020028 C   FIELD 04w01 DIR: Data transfer direction
-0x50020028 C   FIELD 05w01 CIRC: Circular mode
-0x50020028 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020028 C   FIELD 07w01 MINC: Memory increment mode
-0x50020028 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020028 C   FIELD 10w02 MSIZE: Memory size
-0x50020028 C   FIELD 12w02 PL: Channel priority level
-0x50020028 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020028 C   FIELD 15w01 DBM: double-buffer mode
-0x50020028 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020028 C   FIELD 17w01 SECM: secure mode
-0x50020028 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020028 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020028 C   FIELD 20w01 PRIV: privileged mode
+0x50020028 C   FIELD 00w32 MA: Memory address
 0x5002002C B  REGISTER CM1AR2 (rw): channel x memory address register
-0x5002002C C   FIELD 00w18 NDT: Number of data to transfer
+0x5002002C C   FIELD 00w32 MA: peripheral address
 0x50020030 B  REGISTER CCR3 (rw): channel x configuration register
 0x50020030 C   FIELD 00w01 EN: Channel enable
-0x50020030 C   FIELD 00w32 PA: Peripheral address
 0x50020030 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020030 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020030 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020030 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020030 C   FIELD 04w01 DIR: Data transfer direction
-0x50020030 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020030 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020030 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020030 C   FIELD 05w01 CIRC: Circular mode
+0x50020030 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020030 C   FIELD 07w01 MINC: Memory increment mode
 0x50020030 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020030 C   FIELD 10w02 MSIZE: Memory size
 0x50020030 C   FIELD 12w02 PL: Channel priority level
 0x50020030 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020030 C   FIELD 15w01 DBM: double-buffer mode
-0x50020030 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020030 C   FIELD 17w01 SECM: 
-0x50020030 C   FIELD 18w01 SSEC: 
-0x50020030 C   FIELD 19w01 DSEC: 
+0x50020030 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020030 C   FIELD 17w01 SECM: secure mode
+0x50020030 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020030 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020030 C   FIELD 20w01 PRIV: privileged mode
 0x50020034 B  REGISTER CNDTR3 (rw): channel x number of data register
 0x50020034 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020038 B  REGISTER CPAR3 (rw): channel x peripheral address register
-0x50020038 C   FIELD 00w01 EN: Channel enable
-0x50020038 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020038 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020038 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020038 C   FIELD 04w01 DIR: Data transfer direction
-0x50020038 C   FIELD 05w01 CIRC: Circular mode
-0x50020038 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020038 C   FIELD 07w01 MINC: Memory increment mode
-0x50020038 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020038 C   FIELD 10w02 MSIZE: Memory size
-0x50020038 C   FIELD 12w02 PL: Channel priority level
-0x50020038 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020038 C   FIELD 15w01 DBM: double-buffer mode
-0x50020038 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020038 C   FIELD 17w01 SECM: secure mode
-0x50020038 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020038 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020038 C   FIELD 20w01 PRIV: privileged mode
+0x50020038 C   FIELD 00w32 PA: Peripheral address
 0x5002003C B  REGISTER CM0AR3 (rw): channel x memory address register
-0x5002003C C   FIELD 00w18 NDT: Number of data to transfer
+0x5002003C C   FIELD 00w32 MA: Memory address
 0x50020040 B  REGISTER CM1AR3 (rw): channel x memory address register
-0x50020040 C   FIELD 00w32 PA: Peripheral address
+0x50020040 C   FIELD 00w32 MA: peripheral address
 0x50020044 B  REGISTER CCR4 (rw): channel x configuration register
 0x50020044 C   FIELD 00w01 EN: Channel enable
 0x50020044 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020044 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020044 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020044 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020044 C   FIELD 04w01 DIR: Data transfer direction
-0x50020044 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020044 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020044 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020044 C   FIELD 05w01 CIRC: Circular mode
+0x50020044 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020044 C   FIELD 07w01 MINC: Memory increment mode
 0x50020044 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020044 C   FIELD 10w02 MSIZE: Memory size
 0x50020044 C   FIELD 12w02 PL: Channel priority level
 0x50020044 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020044 C   FIELD 15w01 DBM: double-buffer mode
-0x50020044 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020044 C   FIELD 17w01 SECM: 
-0x50020044 C   FIELD 18w01 SSEC: 
-0x50020044 C   FIELD 19w01 DSEC: 
+0x50020044 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020044 C   FIELD 17w01 SECM: secure mode
+0x50020044 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020044 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020044 C   FIELD 20w01 PRIV: privileged mode
 0x50020048 B  REGISTER CNDTR4 (rw): channel x number of data register
-0x50020048 C   FIELD 00w01 EN: Channel enable
 0x50020048 C   FIELD 00w18 NDT: Number of data to transfer
-0x50020048 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020048 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020048 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020048 C   FIELD 04w01 DIR: Data transfer direction
-0x50020048 C   FIELD 05w01 CIRC: Circular mode
-0x50020048 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020048 C   FIELD 07w01 MINC: Memory increment mode
-0x50020048 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020048 C   FIELD 10w02 MSIZE: Memory size
-0x50020048 C   FIELD 12w02 PL: Channel priority level
-0x50020048 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020048 C   FIELD 15w01 DBM: double-buffer mode
-0x50020048 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020048 C   FIELD 17w01 SECM: secure mode
-0x50020048 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020048 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020048 C   FIELD 20w01 PRIV: privileged mode
 0x5002004C B  REGISTER CPAR4 (rw): channel x peripheral address register
-0x5002004C C   FIELD 00w18 NDT: Number of data to transfer
+0x5002004C C   FIELD 00w32 PA: Peripheral address
 0x50020050 B  REGISTER CM0AR4 (rw): channel x memory address register
-0x50020050 C   FIELD 00w32 PA: Peripheral address
+0x50020050 C   FIELD 00w32 MA: Memory address
 0x50020054 B  REGISTER CM1AR4 (rw): channel x memory address register
 0x50020054 C   FIELD 00w32 MA: Memory address
 0x50020058 B  REGISTER CCR5 (rw): channel x configuration register
@@ -19962,82 +19850,57 @@
 0x50020064 B  REGISTER CM0AR5 (rw): channel x memory address register
 0x50020064 C   FIELD 00w32 MA: Memory address
 0x50020068 B  REGISTER CM1AR5 (rw): channel x memory address register
-0x50020068 C   FIELD 00w01 EN: Channel enable
-0x50020068 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020068 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020068 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020068 C   FIELD 04w01 DIR: Data transfer direction
-0x50020068 C   FIELD 05w01 CIRC: Circular mode
-0x50020068 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020068 C   FIELD 07w01 MINC: Memory increment mode
-0x50020068 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020068 C   FIELD 10w02 MSIZE: Memory size
-0x50020068 C   FIELD 12w02 PL: Channel priority level
-0x50020068 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020068 C   FIELD 15w01 DBM: double-buffer mode
-0x50020068 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020068 C   FIELD 17w01 SECM: secure mode
-0x50020068 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020068 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020068 C   FIELD 20w01 PRIV: privileged mode
+0x50020068 C   FIELD 00w32 MA: peripheral address
 0x5002006C B  REGISTER CCR6 (rw): channel x configuration register
 0x5002006C C   FIELD 00w01 EN: Channel enable
-0x5002006C C   FIELD 00w18 NDT: Number of data to transfer
 0x5002006C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x5002006C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002006C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x5002006C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x5002006C C   FIELD 04w01 DIR: Data transfer direction
-0x5002006C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002006C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002006C C   FIELD 07w01 PINC: Peripheral increment mode
+0x5002006C C   FIELD 05w01 CIRC: Circular mode
+0x5002006C C   FIELD 06w01 PINC: Peripheral increment mode
+0x5002006C C   FIELD 07w01 MINC: Memory increment mode
 0x5002006C C   FIELD 08w02 PSIZE: Peripheral size
 0x5002006C C   FIELD 10w02 MSIZE: Memory size
 0x5002006C C   FIELD 12w02 PL: Channel priority level
 0x5002006C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x5002006C C   FIELD 15w01 DBM: double-buffer mode
-0x5002006C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002006C C   FIELD 17w01 SECM: 
-0x5002006C C   FIELD 18w01 SSEC: 
-0x5002006C C   FIELD 19w01 DSEC: 
+0x5002006C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x5002006C C   FIELD 17w01 SECM: secure mode
+0x5002006C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x5002006C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x5002006C C   FIELD 20w01 PRIV: privileged mode
 0x50020070 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x50020070 C   FIELD 00w16 NDT: Number of data to transfer
-0x50020070 C   FIELD 00w32 PA: Peripheral address
+0x50020070 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020074 B  REGISTER CPAR6 (rw): channel x peripheral address register
-0x50020074 C   FIELD 00w32 MA: Memory address
+0x50020074 C   FIELD 00w32 PA: Peripheral address
 0x50020078 B  REGISTER CM0AR6 (rw): channel x memory address register
-0x50020078 C   FIELD 00w04 C1S: DMA channel 1 selection
-0x50020078 C   FIELD 04w04 C2S: DMA channel 2 selection
-0x50020078 C   FIELD 08w04 C3S: DMA channel 3 selection
-0x50020078 C   FIELD 12w04 C4S: DMA channel 4 selection
-0x50020078 C   FIELD 16w04 C5S: DMA channel 5 selection
-0x50020078 C   FIELD 20w04 C6S: DMA channel 6 selection
-0x50020078 C   FIELD 24w04 C7S: DMA channel 7 selection
+0x50020078 C   FIELD 00w32 MA: Memory address
 0x5002007C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x5002007C C   FIELD 00w32 MA: peripheral address
 0x50020080 B  REGISTER CCR7 (rw): channel x configuration register
 0x50020080 C   FIELD 00w01 EN: Channel enable
 0x50020080 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020080 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020080 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020080 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020080 C   FIELD 04w01 DIR: Data transfer direction
-0x50020080 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020080 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020080 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020080 C   FIELD 05w01 CIRC: Circular mode
+0x50020080 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020080 C   FIELD 07w01 MINC: Memory increment mode
 0x50020080 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020080 C   FIELD 10w02 MSIZE: Memory size
 0x50020080 C   FIELD 12w02 PL: Channel priority level
 0x50020080 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020080 C   FIELD 15w01 DBM: double-buffer mode
-0x50020080 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020080 C   FIELD 17w01 SECM: 
-0x50020080 C   FIELD 18w01 SSEC: 
-0x50020080 C   FIELD 19w01 DSEC: 
+0x50020080 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020080 C   FIELD 17w01 SECM: secure mode
+0x50020080 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020080 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020080 C   FIELD 20w01 PRIV: privileged mode
 0x50020084 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x50020084 C   FIELD 00w16 NDT: Number of data to transfer
+0x50020084 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020088 B  REGISTER CPAR7 (rw): channel x peripheral address register
-0x50020088 C   FIELD 00w32 MA: peripheral address
+0x50020088 C   FIELD 00w32 PA: Peripheral address
 0x5002008C B  REGISTER CM0AR7 (rw): channel x memory address register
 0x5002008C C   FIELD 00w32 MA: peripheral address
 0x50020090 B  REGISTER CM1AR7 (rw): channel x memory address register
@@ -20046,45 +19909,27 @@
 0x50020094 C   FIELD 00w01 EN: Channel enable
 0x50020094 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020094 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020094 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020094 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020094 C   FIELD 04w01 DIR: Data transfer direction
-0x50020094 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020094 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020094 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020094 C   FIELD 05w01 CIRC: Circular mode
+0x50020094 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020094 C   FIELD 07w01 MINC: Memory increment mode
 0x50020094 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020094 C   FIELD 10w02 MSIZE: Memory size
 0x50020094 C   FIELD 12w02 PL: Channel priority level
 0x50020094 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020094 C   FIELD 15w01 DBM: double-buffer mode
-0x50020094 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020094 C   FIELD 17w01 SECM: 
-0x50020094 C   FIELD 18w01 SSEC: 
-0x50020094 C   FIELD 19w01 DSEC: 
+0x50020094 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020094 C   FIELD 17w01 SECM: secure mode
+0x50020094 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020094 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020094 C   FIELD 20w01 PRIV: privileged mode
 0x50020098 B  REGISTER CNDTR8 (rw): channel x number of data register
-0x50020098 C   FIELD 00w01 EN: channel enable
-0x50020098 C   FIELD 00w16 NDT: Number of data to transfer
-0x50020098 C   FIELD 01w01 TCIE: transfer complete interrupt enable
-0x50020098 C   FIELD 02w01 HTIE: half transfer interrupt enable
-0x50020098 C   FIELD 03w01 TEIE: transfer error interrupt enable
-0x50020098 C   FIELD 04w01 DIR: data transfer direction
-0x50020098 C   FIELD 05w01 CIRC: circular mode
-0x50020098 C   FIELD 06w01 PINC: peripheral increment mode
-0x50020098 C   FIELD 07w01 MINC: memory increment mode
-0x50020098 C   FIELD 08w02 PSIZE: peripheral size
-0x50020098 C   FIELD 10w02 MSIZE: memory size
-0x50020098 C   FIELD 12w02 PL: priority level
-0x50020098 C   FIELD 14w01 MEM2MEM: memory-to-memory mode
-0x50020098 C   FIELD 15w01 DBM: double-buffer mode
-0x50020098 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020098 C   FIELD 17w01 SECM: secure mode
-0x50020098 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020098 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020098 C   FIELD 20w01 PRIV: privileged mode
+0x50020098 C   FIELD 00w18 NDT: Number of data to transfer
 0x5002009C B  REGISTER CPAR8 (rw): channel x peripheral address register
-0x5002009C C   FIELD 00w18 NDT: number of data to transfer
+0x5002009C C   FIELD 00w32 PA: Peripheral address
 0x500200A0 B  REGISTER CM0AR8 (rw): channel x peripheral address register
-0x500200A0 C   FIELD 00w32 PA: peripheral address
+0x500200A0 C   FIELD 00w32 MA: Memory address
 0x500200A4 B  REGISTER CM1AR8 (rw): channel x peripheral address register
 0x500200A4 C   FIELD 00w32 MA: peripheral address
 0x500200A8 B  REGISTER CSELR (rw): channel selection register
@@ -20182,158 +20027,86 @@
 0x50020414 B  REGISTER CM0AR1 (rw): channel x memory address register
 0x50020414 C   FIELD 00w32 MA: Memory address
 0x50020418 B  REGISTER CM1AR1 (rw): channel x memory address register
-0x50020418 C   FIELD 00w01 EN: Channel enable
-0x50020418 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020418 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020418 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020418 C   FIELD 04w01 DIR: Data transfer direction
-0x50020418 C   FIELD 05w01 CIRC: Circular mode
-0x50020418 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020418 C   FIELD 07w01 MINC: Memory increment mode
-0x50020418 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020418 C   FIELD 10w02 MSIZE: Memory size
-0x50020418 C   FIELD 12w02 PL: Channel priority level
-0x50020418 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020418 C   FIELD 15w01 DBM: double-buffer mode
-0x50020418 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020418 C   FIELD 17w01 SECM: secure mode
-0x50020418 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020418 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020418 C   FIELD 20w01 PRIV: privileged mode
+0x50020418 C   FIELD 00w32 MA: peripheral address
 0x5002041C B  REGISTER CCR2 (rw): channel x configuration register
 0x5002041C C   FIELD 00w01 EN: Channel enable
-0x5002041C C   FIELD 00w18 NDT: Number of data to transfer
 0x5002041C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x5002041C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002041C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x5002041C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x5002041C C   FIELD 04w01 DIR: Data transfer direction
-0x5002041C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002041C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002041C C   FIELD 07w01 PINC: Peripheral increment mode
+0x5002041C C   FIELD 05w01 CIRC: Circular mode
+0x5002041C C   FIELD 06w01 PINC: Peripheral increment mode
+0x5002041C C   FIELD 07w01 MINC: Memory increment mode
 0x5002041C C   FIELD 08w02 PSIZE: Peripheral size
 0x5002041C C   FIELD 10w02 MSIZE: Memory size
 0x5002041C C   FIELD 12w02 PL: Channel priority level
 0x5002041C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x5002041C C   FIELD 15w01 DBM: double-buffer mode
-0x5002041C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002041C C   FIELD 17w01 SECM: 
-0x5002041C C   FIELD 18w01 SSEC: 
-0x5002041C C   FIELD 19w01 DSEC: 
+0x5002041C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x5002041C C   FIELD 17w01 SECM: secure mode
+0x5002041C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x5002041C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x5002041C C   FIELD 20w01 PRIV: privileged mode
 0x50020420 B  REGISTER CNDTR2 (rw): channel x number of data register
 0x50020420 C   FIELD 00w18 NDT: Number of data to transfer
-0x50020420 C   FIELD 00w32 PA: Peripheral address
 0x50020424 B  REGISTER CPAR2 (rw): channel x peripheral address register
-0x50020424 C   FIELD 00w32 MA: Memory address
+0x50020424 C   FIELD 00w32 PA: Peripheral address
 0x50020428 B  REGISTER CM0AR2 (rw): channel x memory address register
-0x50020428 C   FIELD 00w01 EN: Channel enable
-0x50020428 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020428 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020428 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020428 C   FIELD 04w01 DIR: Data transfer direction
-0x50020428 C   FIELD 05w01 CIRC: Circular mode
-0x50020428 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020428 C   FIELD 07w01 MINC: Memory increment mode
-0x50020428 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020428 C   FIELD 10w02 MSIZE: Memory size
-0x50020428 C   FIELD 12w02 PL: Channel priority level
-0x50020428 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020428 C   FIELD 15w01 DBM: double-buffer mode
-0x50020428 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020428 C   FIELD 17w01 SECM: secure mode
-0x50020428 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020428 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020428 C   FIELD 20w01 PRIV: privileged mode
+0x50020428 C   FIELD 00w32 MA: Memory address
 0x5002042C B  REGISTER CM1AR2 (rw): channel x memory address register
-0x5002042C C   FIELD 00w18 NDT: Number of data to transfer
+0x5002042C C   FIELD 00w32 MA: peripheral address
 0x50020430 B  REGISTER CCR3 (rw): channel x configuration register
 0x50020430 C   FIELD 00w01 EN: Channel enable
-0x50020430 C   FIELD 00w32 PA: Peripheral address
 0x50020430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020430 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020430 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020430 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020430 C   FIELD 04w01 DIR: Data transfer direction
-0x50020430 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020430 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020430 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020430 C   FIELD 05w01 CIRC: Circular mode
+0x50020430 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020430 C   FIELD 07w01 MINC: Memory increment mode
 0x50020430 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020430 C   FIELD 10w02 MSIZE: Memory size
 0x50020430 C   FIELD 12w02 PL: Channel priority level
 0x50020430 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020430 C   FIELD 15w01 DBM: double-buffer mode
-0x50020430 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020430 C   FIELD 17w01 SECM: 
-0x50020430 C   FIELD 18w01 SSEC: 
-0x50020430 C   FIELD 19w01 DSEC: 
+0x50020430 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020430 C   FIELD 17w01 SECM: secure mode
+0x50020430 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020430 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020430 C   FIELD 20w01 PRIV: privileged mode
 0x50020434 B  REGISTER CNDTR3 (rw): channel x number of data register
 0x50020434 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020438 B  REGISTER CPAR3 (rw): channel x peripheral address register
-0x50020438 C   FIELD 00w01 EN: Channel enable
-0x50020438 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020438 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020438 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020438 C   FIELD 04w01 DIR: Data transfer direction
-0x50020438 C   FIELD 05w01 CIRC: Circular mode
-0x50020438 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020438 C   FIELD 07w01 MINC: Memory increment mode
-0x50020438 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020438 C   FIELD 10w02 MSIZE: Memory size
-0x50020438 C   FIELD 12w02 PL: Channel priority level
-0x50020438 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020438 C   FIELD 15w01 DBM: double-buffer mode
-0x50020438 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020438 C   FIELD 17w01 SECM: secure mode
-0x50020438 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020438 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020438 C   FIELD 20w01 PRIV: privileged mode
+0x50020438 C   FIELD 00w32 PA: Peripheral address
 0x5002043C B  REGISTER CM0AR3 (rw): channel x memory address register
-0x5002043C C   FIELD 00w18 NDT: Number of data to transfer
+0x5002043C C   FIELD 00w32 MA: Memory address
 0x50020440 B  REGISTER CM1AR3 (rw): channel x memory address register
-0x50020440 C   FIELD 00w32 PA: Peripheral address
+0x50020440 C   FIELD 00w32 MA: peripheral address
 0x50020444 B  REGISTER CCR4 (rw): channel x configuration register
 0x50020444 C   FIELD 00w01 EN: Channel enable
 0x50020444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020444 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020444 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020444 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020444 C   FIELD 04w01 DIR: Data transfer direction
-0x50020444 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020444 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020444 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020444 C   FIELD 05w01 CIRC: Circular mode
+0x50020444 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020444 C   FIELD 07w01 MINC: Memory increment mode
 0x50020444 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020444 C   FIELD 10w02 MSIZE: Memory size
 0x50020444 C   FIELD 12w02 PL: Channel priority level
 0x50020444 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020444 C   FIELD 15w01 DBM: double-buffer mode
-0x50020444 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020444 C   FIELD 17w01 SECM: 
-0x50020444 C   FIELD 18w01 SSEC: 
-0x50020444 C   FIELD 19w01 DSEC: 
+0x50020444 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020444 C   FIELD 17w01 SECM: secure mode
+0x50020444 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020444 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020444 C   FIELD 20w01 PRIV: privileged mode
 0x50020448 B  REGISTER CNDTR4 (rw): channel x number of data register
-0x50020448 C   FIELD 00w01 EN: Channel enable
 0x50020448 C   FIELD 00w18 NDT: Number of data to transfer
-0x50020448 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020448 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020448 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020448 C   FIELD 04w01 DIR: Data transfer direction
-0x50020448 C   FIELD 05w01 CIRC: Circular mode
-0x50020448 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020448 C   FIELD 07w01 MINC: Memory increment mode
-0x50020448 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020448 C   FIELD 10w02 MSIZE: Memory size
-0x50020448 C   FIELD 12w02 PL: Channel priority level
-0x50020448 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020448 C   FIELD 15w01 DBM: double-buffer mode
-0x50020448 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020448 C   FIELD 17w01 SECM: secure mode
-0x50020448 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020448 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020448 C   FIELD 20w01 PRIV: privileged mode
 0x5002044C B  REGISTER CPAR4 (rw): channel x peripheral address register
-0x5002044C C   FIELD 00w18 NDT: Number of data to transfer
+0x5002044C C   FIELD 00w32 PA: Peripheral address
 0x50020450 B  REGISTER CM0AR4 (rw): channel x memory address register
-0x50020450 C   FIELD 00w32 PA: Peripheral address
+0x50020450 C   FIELD 00w32 MA: Memory address
 0x50020454 B  REGISTER CM1AR4 (rw): channel x memory address register
 0x50020454 C   FIELD 00w32 MA: Memory address
 0x50020458 B  REGISTER CCR5 (rw): channel x configuration register
@@ -20362,82 +20135,57 @@
 0x50020464 B  REGISTER CM0AR5 (rw): channel x memory address register
 0x50020464 C   FIELD 00w32 MA: Memory address
 0x50020468 B  REGISTER CM1AR5 (rw): channel x memory address register
-0x50020468 C   FIELD 00w01 EN: Channel enable
-0x50020468 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x50020468 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020468 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x50020468 C   FIELD 04w01 DIR: Data transfer direction
-0x50020468 C   FIELD 05w01 CIRC: Circular mode
-0x50020468 C   FIELD 06w01 PINC: Peripheral increment mode
-0x50020468 C   FIELD 07w01 MINC: Memory increment mode
-0x50020468 C   FIELD 08w02 PSIZE: Peripheral size
-0x50020468 C   FIELD 10w02 MSIZE: Memory size
-0x50020468 C   FIELD 12w02 PL: Channel priority level
-0x50020468 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x50020468 C   FIELD 15w01 DBM: double-buffer mode
-0x50020468 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020468 C   FIELD 17w01 SECM: secure mode
-0x50020468 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020468 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020468 C   FIELD 20w01 PRIV: privileged mode
+0x50020468 C   FIELD 00w32 MA: peripheral address
 0x5002046C B  REGISTER CCR6 (rw): channel x configuration register
 0x5002046C C   FIELD 00w01 EN: Channel enable
-0x5002046C C   FIELD 00w18 NDT: Number of data to transfer
 0x5002046C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x5002046C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x5002046C C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x5002046C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x5002046C C   FIELD 04w01 DIR: Data transfer direction
-0x5002046C C   FIELD 05w01 CIRC: Ciruclar mode
-0x5002046C C   FIELD 07w01 MINC: Memory increment mdoe
-0x5002046C C   FIELD 07w01 PINC: Peripheral increment mode
+0x5002046C C   FIELD 05w01 CIRC: Circular mode
+0x5002046C C   FIELD 06w01 PINC: Peripheral increment mode
+0x5002046C C   FIELD 07w01 MINC: Memory increment mode
 0x5002046C C   FIELD 08w02 PSIZE: Peripheral size
 0x5002046C C   FIELD 10w02 MSIZE: Memory size
 0x5002046C C   FIELD 12w02 PL: Channel priority level
 0x5002046C C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x5002046C C   FIELD 15w01 DBM: double-buffer mode
-0x5002046C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x5002046C C   FIELD 17w01 SECM: 
-0x5002046C C   FIELD 18w01 SSEC: 
-0x5002046C C   FIELD 19w01 DSEC: 
+0x5002046C C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x5002046C C   FIELD 17w01 SECM: secure mode
+0x5002046C C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x5002046C C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x5002046C C   FIELD 20w01 PRIV: privileged mode
 0x50020470 B  REGISTER CNDTR6 (rw): channel x number of data register
-0x50020470 C   FIELD 00w16 NDT: Number of data to transfer
-0x50020470 C   FIELD 00w32 PA: Peripheral address
+0x50020470 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020474 B  REGISTER CPAR6 (rw): channel x peripheral address register
-0x50020474 C   FIELD 00w32 MA: Memory address
+0x50020474 C   FIELD 00w32 PA: Peripheral address
 0x50020478 B  REGISTER CM0AR6 (rw): channel x memory address register
-0x50020478 C   FIELD 00w04 C1S: DMA channel 1 selection
-0x50020478 C   FIELD 04w04 C2S: DMA channel 2 selection
-0x50020478 C   FIELD 08w04 C3S: DMA channel 3 selection
-0x50020478 C   FIELD 12w04 C4S: DMA channel 4 selection
-0x50020478 C   FIELD 16w04 C5S: DMA channel 5 selection
-0x50020478 C   FIELD 20w04 C6S: DMA channel 6 selection
-0x50020478 C   FIELD 24w04 C7S: DMA channel 7 selection
+0x50020478 C   FIELD 00w32 MA: Memory address
 0x5002047C B  REGISTER CM1AR6 (rw): channel x memory address register
 0x5002047C C   FIELD 00w32 MA: peripheral address
 0x50020480 B  REGISTER CCR7 (rw): channel x configuration register
 0x50020480 C   FIELD 00w01 EN: Channel enable
 0x50020480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020480 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020480 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020480 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020480 C   FIELD 04w01 DIR: Data transfer direction
-0x50020480 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020480 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020480 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020480 C   FIELD 05w01 CIRC: Circular mode
+0x50020480 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020480 C   FIELD 07w01 MINC: Memory increment mode
 0x50020480 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020480 C   FIELD 10w02 MSIZE: Memory size
 0x50020480 C   FIELD 12w02 PL: Channel priority level
 0x50020480 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020480 C   FIELD 15w01 DBM: double-buffer mode
-0x50020480 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020480 C   FIELD 17w01 SECM: 
-0x50020480 C   FIELD 18w01 SSEC: 
-0x50020480 C   FIELD 19w01 DSEC: 
+0x50020480 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020480 C   FIELD 17w01 SECM: secure mode
+0x50020480 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020480 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020480 C   FIELD 20w01 PRIV: privileged mode
 0x50020484 B  REGISTER CNDTR7 (rw): channel x number of data register
-0x50020484 C   FIELD 00w16 NDT: Number of data to transfer
+0x50020484 C   FIELD 00w18 NDT: Number of data to transfer
 0x50020488 B  REGISTER CPAR7 (rw): channel x peripheral address register
-0x50020488 C   FIELD 00w32 MA: peripheral address
+0x50020488 C   FIELD 00w32 PA: Peripheral address
 0x5002048C B  REGISTER CM0AR7 (rw): channel x memory address register
 0x5002048C C   FIELD 00w32 MA: peripheral address
 0x50020490 B  REGISTER CM1AR7 (rw): channel x memory address register
@@ -20446,45 +20194,27 @@
 0x50020494 C   FIELD 00w01 EN: Channel enable
 0x50020494 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x50020494 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x50020494 C   FIELD 03w01 TEIE: Transfer error interupt enable
+0x50020494 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x50020494 C   FIELD 04w01 DIR: Data transfer direction
-0x50020494 C   FIELD 05w01 CIRC: Ciruclar mode
-0x50020494 C   FIELD 07w01 MINC: Memory increment mdoe
-0x50020494 C   FIELD 07w01 PINC: Peripheral increment mode
+0x50020494 C   FIELD 05w01 CIRC: Circular mode
+0x50020494 C   FIELD 06w01 PINC: Peripheral increment mode
+0x50020494 C   FIELD 07w01 MINC: Memory increment mode
 0x50020494 C   FIELD 08w02 PSIZE: Peripheral size
 0x50020494 C   FIELD 10w02 MSIZE: Memory size
 0x50020494 C   FIELD 12w02 PL: Channel priority level
 0x50020494 C   FIELD 14w01 MEM2MEM: Memory to memory mode
 0x50020494 C   FIELD 15w01 DBM: double-buffer mode
-0x50020494 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-bufer mode
-0x50020494 C   FIELD 17w01 SECM: 
-0x50020494 C   FIELD 18w01 SSEC: 
-0x50020494 C   FIELD 19w01 DSEC: 
+0x50020494 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
+0x50020494 C   FIELD 17w01 SECM: secure mode
+0x50020494 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
+0x50020494 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
 0x50020494 C   FIELD 20w01 PRIV: privileged mode
 0x50020498 B  REGISTER CNDTR8 (rw): channel x number of data register
-0x50020498 C   FIELD 00w01 EN: channel enable
-0x50020498 C   FIELD 00w16 NDT: Number of data to transfer
-0x50020498 C   FIELD 01w01 TCIE: transfer complete interrupt enable
-0x50020498 C   FIELD 02w01 HTIE: half transfer interrupt enable
-0x50020498 C   FIELD 03w01 TEIE: transfer error interrupt enable
-0x50020498 C   FIELD 04w01 DIR: data transfer direction
-0x50020498 C   FIELD 05w01 CIRC: circular mode
-0x50020498 C   FIELD 06w01 PINC: peripheral increment mode
-0x50020498 C   FIELD 07w01 MINC: memory increment mode
-0x50020498 C   FIELD 08w02 PSIZE: peripheral size
-0x50020498 C   FIELD 10w02 MSIZE: memory size
-0x50020498 C   FIELD 12w02 PL: priority level
-0x50020498 C   FIELD 14w01 MEM2MEM: memory-to-memory mode
-0x50020498 C   FIELD 15w01 DBM: double-buffer mode
-0x50020498 C   FIELD 16w01 CT: current target memory of DMA transfer in double-buffer mode
-0x50020498 C   FIELD 17w01 SECM: secure mode
-0x50020498 C   FIELD 18w01 SSEC: security of the DMA transfer from the source
-0x50020498 C   FIELD 19w01 DSEC: security of the DMA transfer to the destination
-0x50020498 C   FIELD 20w01 PRIV: privileged mode
+0x50020498 C   FIELD 00w18 NDT: Number of data to transfer
 0x5002049C B  REGISTER CPAR8 (rw): channel x peripheral address register
-0x5002049C C   FIELD 00w18 NDT: number of data to transfer
+0x5002049C C   FIELD 00w32 PA: Peripheral address
 0x500204A0 B  REGISTER CM0AR8 (rw): channel x peripheral address register
-0x500204A0 C   FIELD 00w32 PA: peripheral address
+0x500204A0 C   FIELD 00w32 MA: Memory address
 0x500204A4 B  REGISTER CM1AR8 (rw): channel x peripheral address register
 0x500204A4 C   FIELD 00w32 MA: peripheral address
 0x500204A8 B  REGISTER CSELR (rw): channel selection register
@@ -20602,6 +20332,22 @@
 0x50020834 C   FIELD 17w02 SPOL: Sync polarity
 0x50020834 C   FIELD 19w05 NBREQ: Nb request
 0x50020834 C   FIELD 24w05 SYNC_ID: SYNC_ID
+0x50020838 B  REGISTER C14CR (rw): DMA Multiplexer Channel 10 Control register
+0x50020838 C   FIELD 00w07 DMAREQ_ID: DMA request identification
+0x50020838 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
+0x50020838 C   FIELD 09w01 EGE: Event generation enable
+0x50020838 C   FIELD 16w01 SE: Synchronization enable
+0x50020838 C   FIELD 17w02 SPOL: Synchronization polarity
+0x50020838 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
+0x50020838 C   FIELD 24w05 SYNC_ID: Synchronization identification
+0x5002083C B  REGISTER C15CR (rw): DMA Multiplexer Channel 10 Control register
+0x5002083C C   FIELD 00w07 DMAREQ_ID: DMA request identification
+0x5002083C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
+0x5002083C C   FIELD 09w01 EGE: Event generation enable
+0x5002083C C   FIELD 16w01 SE: Synchronization enable
+0x5002083C C   FIELD 17w02 SPOL: Synchronization polarity
+0x5002083C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
+0x5002083C C   FIELD 24w05 SYNC_ID: Synchronization identification
 0x50020880 B  REGISTER CSR (rw): DMA Multiplexer Channel Status register
 0x50020880 C   FIELD 00w01 SOF0: Synchronization Overrun Flag 0
 0x50020880 C   FIELD 01w01 SOF1: Synchronization Overrun Flag 1
@@ -20660,22 +20406,6 @@
 0x5002090C C   FIELD 16w01 GE: Generation Enable
 0x5002090C C   FIELD 17w02 GPOL: Generation Polarity
 0x5002090C C   FIELD 19w05 GNBREQ: Number of Request
-0x50020938 B  REGISTER C14CR (rw): DMA Multiplexer Channel 10 Control register
-0x50020938 C   FIELD 00w07 DMAREQ_ID: DMA request identification
-0x50020938 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
-0x50020938 C   FIELD 09w01 EGE: Event generation enable
-0x50020938 C   FIELD 16w01 SE: Synchronization enable
-0x50020938 C   FIELD 17w02 SPOL: Synchronization polarity
-0x50020938 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
-0x50020938 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x5002093C B  REGISTER C15CR (rw): DMA Multiplexer Channel 10 Control register
-0x5002093C C   FIELD 00w07 DMAREQ_ID: DMA request identification
-0x5002093C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
-0x5002093C C   FIELD 09w01 EGE: Event generation enable
-0x5002093C C   FIELD 16w01 SE: Synchronization enable
-0x5002093C C   FIELD 17w02 SPOL: Synchronization polarity
-0x5002093C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
-0x5002093C C   FIELD 24w05 SYNC_ID: Synchronization identification
 0x50020940 B  REGISTER RGSR (ro): DMA Request Generator Status Register
 0x50020940 C   FIELD 00w01 OF0: Generator Overrun Flag 0
 0x50020940 C   FIELD 01w01 OF1: Generator Overrun Flag 1
@@ -28233,7 +27963,7 @@
 0x52021C30 C   FIELD 13w01 SEC13: I/O pin of Port x secure bit enable
 0x52021C30 C   FIELD 14w01 SEC14: I/O pin of Port x secure bit enable
 0x52021C30 C   FIELD 15w01 SEC15: I/O pin of Port x secure bit enable
-0x52028000 A PERIPHERAL SEC_ADC
+0x52028000 A PERIPHERAL SEC_ADC1
 0x52028000 B  REGISTER ISR (rw): interrupt and status register
 0x52028000 C   FIELD 00w01 ADRDY: ADRDY
 0x52028000 C   FIELD 01w01 EOSMP: EOSMP
@@ -28392,6 +28122,165 @@
 0x520280B4 B  REGISTER CALFACT (rw): Calibration Factors
 0x520280B4 C   FIELD 00w07 CALFACT_S: CALFACT_S
 0x520280B4 C   FIELD 16w07 CALFACT_D: CALFACT_D
+0x52028100 A PERIPHERAL SEC_ADC2
+0x52028100 B  REGISTER ISR (rw): interrupt and status register
+0x52028100 C   FIELD 00w01 ADRDY: ADRDY
+0x52028100 C   FIELD 01w01 EOSMP: EOSMP
+0x52028100 C   FIELD 02w01 EOC: EOC
+0x52028100 C   FIELD 03w01 EOS: EOS
+0x52028100 C   FIELD 04w01 OVR: OVR
+0x52028100 C   FIELD 05w01 JEOC: JEOC
+0x52028100 C   FIELD 06w01 JEOS: JEOS
+0x52028100 C   FIELD 07w01 AWD1: AWD1
+0x52028100 C   FIELD 08w01 AWD2: AWD2
+0x52028100 C   FIELD 09w01 AWD3: AWD3
+0x52028100 C   FIELD 10w01 JQOVF: JQOVF
+0x52028104 B  REGISTER IER (rw): interrupt enable register
+0x52028104 C   FIELD 00w01 ADRDYIE: ADRDYIE
+0x52028104 C   FIELD 01w01 EOSMPIE: EOSMPIE
+0x52028104 C   FIELD 02w01 EOCIE: EOCIE
+0x52028104 C   FIELD 03w01 EOSIE: EOSIE
+0x52028104 C   FIELD 04w01 OVRIE: OVRIE
+0x52028104 C   FIELD 05w01 JEOCIE: JEOCIE
+0x52028104 C   FIELD 06w01 JEOSIE: JEOSIE
+0x52028104 C   FIELD 07w01 AWD1IE: AWD1IE
+0x52028104 C   FIELD 08w01 AWD2IE: AWD2IE
+0x52028104 C   FIELD 09w01 AWD3IE: AWD3IE
+0x52028104 C   FIELD 10w01 JQOVFIE: JQOVFIE
+0x52028108 B  REGISTER CR (rw): control register
+0x52028108 C   FIELD 00w01 ADEN: ADEN
+0x52028108 C   FIELD 01w01 ADDIS: ADDIS
+0x52028108 C   FIELD 02w01 ADSTART: ADSTART
+0x52028108 C   FIELD 03w01 JADSTART: JADSTART
+0x52028108 C   FIELD 04w01 ADSTP: ADSTP
+0x52028108 C   FIELD 05w01 JADSTP: JADSTP
+0x52028108 C   FIELD 28w01 ADVREGEN: ADVREGEN
+0x52028108 C   FIELD 29w01 DEEPPWD: DEEPPWD
+0x52028108 C   FIELD 30w01 ADCALDIF: ADCALDIF
+0x52028108 C   FIELD 31w01 ADCAL: ADCAL
+0x5202810C B  REGISTER CFGR (rw): configuration register
+0x5202810C C   FIELD 00w01 DMAEN: DMAEN
+0x5202810C C   FIELD 01w01 DMACFG: DMACFG
+0x5202810C C   FIELD 03w02 RES: RES
+0x5202810C C   FIELD 05w01 ALIGN: ALIGN
+0x5202810C C   FIELD 06w04 EXTSEL: EXTSEL
+0x5202810C C   FIELD 10w02 EXTEN: EXTEN
+0x5202810C C   FIELD 12w01 OVRMOD: OVRMOD
+0x5202810C C   FIELD 13w01 CONT: CONT
+0x5202810C C   FIELD 14w01 AUTDLY: AUTDLY
+0x5202810C C   FIELD 16w01 DISCEN: DISCEN
+0x5202810C C   FIELD 17w03 DISCNUM: DISCNUM
+0x5202810C C   FIELD 20w01 JDISCEN: JDISCEN
+0x5202810C C   FIELD 21w01 JQM: JQM
+0x5202810C C   FIELD 22w01 AWD1SGL: AWD1SGL
+0x5202810C C   FIELD 23w01 AWD1EN: AWD1EN
+0x5202810C C   FIELD 24w01 JAWD1EN: JAWD1EN
+0x5202810C C   FIELD 25w01 JAUTO: JAUTO
+0x5202810C C   FIELD 26w05 AWDCH1CH: AWDCH1CH
+0x5202810C C   FIELD 31w01 JQDIS: JQDIS
+0x52028110 B  REGISTER CFGR2 (rw): configuration register
+0x52028110 C   FIELD 00w01 ROVSE: DMAEN
+0x52028110 C   FIELD 01w01 JOVSE: DMACFG
+0x52028110 C   FIELD 02w03 OVSR: RES
+0x52028110 C   FIELD 05w04 OVSS: ALIGN
+0x52028110 C   FIELD 09w01 TOVS: EXTSEL
+0x52028110 C   FIELD 10w01 ROVSM: EXTEN
+0x52028114 B  REGISTER SMPR1 (rw): sample time register 1
+0x52028114 C   FIELD 00w03 SMP0: SMP0
+0x52028114 C   FIELD 03w03 SMP1: SMP1
+0x52028114 C   FIELD 06w03 SMP2: SMP2
+0x52028114 C   FIELD 09w03 SMP3: SMP3
+0x52028114 C   FIELD 12w03 SMP4: SMP4
+0x52028114 C   FIELD 15w03 SMP5: SMP5
+0x52028114 C   FIELD 18w03 SMP6: SMP6
+0x52028114 C   FIELD 21w03 SMP7: SMP7
+0x52028114 C   FIELD 24w03 SMP8: SMP8
+0x52028114 C   FIELD 27w03 SMP9: SMP9
+0x52028118 B  REGISTER SMPR2 (rw): sample time register 2
+0x52028118 C   FIELD 00w03 SMP10: SMP10
+0x52028118 C   FIELD 03w03 SMP11: SMP11
+0x52028118 C   FIELD 06w03 SMP12: SMP12
+0x52028118 C   FIELD 09w03 SMP13: SMP13
+0x52028118 C   FIELD 12w03 SMP14: SMP14
+0x52028118 C   FIELD 15w03 SMP15: SMP15
+0x52028118 C   FIELD 18w03 SMP16: SMP16
+0x52028118 C   FIELD 21w03 SMP17: SMP17
+0x52028118 C   FIELD 24w03 SMP18: SMP18
+0x52028120 B  REGISTER TR1 (rw): watchdog threshold register 1
+0x52028120 C   FIELD 00w12 LT1: LT1
+0x52028120 C   FIELD 16w12 HT1: HT1
+0x52028124 B  REGISTER TR2 (rw): watchdog threshold register
+0x52028124 C   FIELD 00w08 LT2: LT2
+0x52028124 C   FIELD 16w08 HT2: HT2
+0x52028128 B  REGISTER TR3 (rw): watchdog threshold register 3
+0x52028128 C   FIELD 00w08 LT3: LT3
+0x52028128 C   FIELD 16w08 HT3: HT3
+0x52028130 B  REGISTER SQR1 (rw): regular sequence register 1
+0x52028130 C   FIELD 00w04 L: L
+0x52028130 C   FIELD 06w05 SQ1: SQ1
+0x52028130 C   FIELD 12w05 SQ2: SQ2
+0x52028130 C   FIELD 18w05 SQ3: SQ3
+0x52028130 C   FIELD 24w05 SQ4: SQ4
+0x52028134 B  REGISTER SQR2 (rw): regular sequence register 2
+0x52028134 C   FIELD 00w05 SQ5: SQ5
+0x52028134 C   FIELD 06w05 SQ6: SQ6
+0x52028134 C   FIELD 12w05 SQ7: SQ7
+0x52028134 C   FIELD 18w05 SQ8: SQ8
+0x52028134 C   FIELD 24w05 SQ9: SQ9
+0x52028138 B  REGISTER SQR3 (rw): regular sequence register 3
+0x52028138 C   FIELD 00w05 SQ10: SQ10
+0x52028138 C   FIELD 06w05 SQ11: SQ11
+0x52028138 C   FIELD 12w05 SQ12: SQ12
+0x52028138 C   FIELD 18w05 SQ13: SQ13
+0x52028138 C   FIELD 24w05 SQ14: SQ14
+0x5202813C B  REGISTER SQR4 (rw): regular sequence register 4
+0x5202813C C   FIELD 00w05 SQ15: SQ15
+0x5202813C C   FIELD 06w05 SQ16: SQ16
+0x52028140 B  REGISTER DR (ro): regular Data Register
+0x52028140 C   FIELD 00w16 RDATA: regularDATA
+0x5202814C B  REGISTER JSQR (rw): injected sequence register
+0x5202814C C   FIELD 00w02 JL: JL
+0x5202814C C   FIELD 02w04 JEXTSEL: JEXTSEL
+0x5202814C C   FIELD 06w02 JEXTEN: JEXTEN
+0x5202814C C   FIELD 08w05 JSQ1: JSQ1
+0x5202814C C   FIELD 14w05 JSQ2: JSQ2
+0x5202814C C   FIELD 20w05 JSQ3: JSQ3
+0x5202814C C   FIELD 26w05 JSQ4: JSQ4
+0x52028160 B  REGISTER OFR1 (rw): offset register 1
+0x52028160 C   FIELD 00w12 OFFSET1: OFFSET1
+0x52028160 C   FIELD 26w05 OFFSET1_CH: OFFSET1_CH
+0x52028160 C   FIELD 31w01 OFFSET1_EN: OFFSET1_EN
+0x52028164 B  REGISTER OFR2 (rw): offset register 2
+0x52028164 C   FIELD 00w12 OFFSET2: OFFSET2
+0x52028164 C   FIELD 26w05 OFFSET2_CH: OFFSET2_CH
+0x52028164 C   FIELD 31w01 OFFSET2_EN: OFFSET2_EN
+0x52028168 B  REGISTER OFR3 (rw): offset register 3
+0x52028168 C   FIELD 00w12 OFFSET3: OFFSET3
+0x52028168 C   FIELD 26w05 OFFSET3_CH: OFFSET3_CH
+0x52028168 C   FIELD 31w01 OFFSET3_EN: OFFSET3_EN
+0x5202816C B  REGISTER OFR4 (rw): offset register 4
+0x5202816C C   FIELD 00w12 OFFSET4: OFFSET4
+0x5202816C C   FIELD 26w05 OFFSET4_CH: OFFSET4_CH
+0x5202816C C   FIELD 31w01 OFFSET4_EN: OFFSET4_EN
+0x52028180 B  REGISTER JDR1 (ro): injected data register 1
+0x52028180 C   FIELD 00w16 JDATA: JDATA1
+0x52028184 B  REGISTER JDR2 (ro): injected data register 2
+0x52028184 C   FIELD 00w16 JDATA: JDATA2
+0x52028188 B  REGISTER JDR3 (ro): injected data register 3
+0x52028188 C   FIELD 00w16 JDATA: JDATA3
+0x5202818C B  REGISTER JDR4 (ro): injected data register 4
+0x5202818C C   FIELD 00w16 JDATA: JDATA4
+0x520281A0 B  REGISTER AWD2CR (rw): Analog Watchdog 2 Configuration Register
+0x520281A0 C   FIELD 00w19 AWD2CH: AWD2CH
+0x520281A4 B  REGISTER AWD3CR (rw): Analog Watchdog 3 Configuration Register
+0x520281A4 C   FIELD 00w19 AWD3CH: AWD3CH
+0x520281B0 B  REGISTER DIFSEL: Differential Mode Selection Register 2
+0x520281B0 C   FIELD 00w01 DIFSEL_0 (ro): Differential mode for channel 0
+0x520281B0 C   FIELD 01w15 DIFSEL_1_15 (rw): Differential mode for channels 15 to 1
+0x520281B0 C   FIELD 16w03 DIFSEL_16_18 (ro): Differential mode for channels 18 to 16
+0x520281B4 B  REGISTER CALFACT (rw): Calibration Factors
+0x520281B4 C   FIELD 00w07 CALFACT_S: CALFACT_S
+0x520281B4 C   FIELD 16w07 CALFACT_D: CALFACT_D
 0x52028300 A PERIPHERAL SEC_ADC_Common
 0x52028300 B  REGISTER CSR (ro): ADC Common status register
 0x52028300 C   FIELD 00w01 ADDRDY_MST: ADDRDY_MST
@@ -28494,6 +28383,165 @@
 0x520C0058 C   FIELD 00w32 AES_SUSP6R: AES suspend register 6
 0x520C005C B  REGISTER SUSP7R (rw): AES suspend register 7
 0x520C005C C   FIELD 00w32 AES_SUSP7R: AES suspend register 7
+0x520C0400 A PERIPHERAL SEC_HASH
+0x520C0400 B  REGISTER CR: control register
+0x520C0400 C   FIELD 02w01 INIT (wo): Initialize message digest calculation
+0x520C0400 C   FIELD 03w01 DMAE (rw): DMA enable
+0x520C0400 C   FIELD 04w02 DATATYPE (rw): Data type selection
+0x520C0400 C   FIELD 06w01 MODE (rw): Mode selection
+0x520C0400 C   FIELD 07w01 ALGO0 (rw): Algorithm selection
+0x520C0400 C   FIELD 08w04 NBW (ro): Number of words already pushed
+0x520C0400 C   FIELD 12w01 DINNE (ro): DIN not empty
+0x520C0400 C   FIELD 13w01 MDMAT (rw): Multiple DMA Transfers
+0x520C0400 C   FIELD 16w01 LKEY (rw): Long key selection
+0x520C0400 C   FIELD 18w01 ALGO1 (rw): Algorithm selection
+0x520C0404 B  REGISTER DIN (rw): data input register
+0x520C0404 C   FIELD 00w32 DATAIN: Data input
+0x520C0408 B  REGISTER STR: start register
+0x520C0408 C   FIELD 00w05 NBLW (rw): Number of valid bits in the last word of the message
+0x520C0408 C   FIELD 08w01 DCAL (rw): Digest calculation
+0x520C040C B  REGISTER HRA0 (ro): HASH aliased digest register 0
+0x520C040C C   FIELD 00w32 H0: H0
+0x520C0410 B  REGISTER HRA1 (ro): HASH aliased digest register 1
+0x520C0410 C   FIELD 00w32 H1: H1
+0x520C0414 B  REGISTER HRA2 (ro): HASH aliased digest register 2
+0x520C0414 C   FIELD 00w32 H2: H2
+0x520C0418 B  REGISTER HRA3 (ro): HASH aliased digest register 3
+0x520C0418 C   FIELD 00w32 H3: H3
+0x520C041C B  REGISTER HRA4 (ro): HASH aliased digest register 4
+0x520C041C C   FIELD 00w32 H4: H4
+0x520C0420 B  REGISTER IMR (rw): interrupt enable register
+0x520C0420 C   FIELD 00w01 DINIE: Data input interrupt enable
+0x520C0420 C   FIELD 01w01 DCIE: Digest calculation completion interrupt enable
+0x520C0424 B  REGISTER SR: status register
+0x520C0424 C   FIELD 00w01 DINIS (rw): Data input interrupt status
+0x520C0424 C   FIELD 01w01 DCIS (rw): Digest calculation completion interrupt status
+0x520C0424 C   FIELD 02w01 DMAS (ro): DMA Status
+0x520C0424 C   FIELD 03w01 BUSY (ro): Busy bit
+0x520C04F8 B  REGISTER CSR0 (rw): context swap registers
+0x520C04F8 C   FIELD 00w32 CSR0: CSR0
+0x520C04FC B  REGISTER CSR1 (rw): context swap registers
+0x520C04FC C   FIELD 00w32 CSR1: CSR1
+0x520C0500 B  REGISTER CSR2 (rw): context swap registers
+0x520C0500 C   FIELD 00w32 CSR2: CSR2
+0x520C0504 B  REGISTER CSR3 (rw): context swap registers
+0x520C0504 C   FIELD 00w32 CSR3: CSR3
+0x520C0508 B  REGISTER CSR4 (rw): context swap registers
+0x520C0508 C   FIELD 00w32 CSR4: CSR4
+0x520C050C B  REGISTER CSR5 (rw): context swap registers
+0x520C050C C   FIELD 00w32 CSR5: CSR5
+0x520C0510 B  REGISTER CSR6 (rw): context swap registers
+0x520C0510 C   FIELD 00w32 CSR6: CSR6
+0x520C0514 B  REGISTER CSR7 (rw): context swap registers
+0x520C0514 C   FIELD 00w32 CSR7: CSR7
+0x520C0518 B  REGISTER CSR8 (rw): context swap registers
+0x520C0518 C   FIELD 00w32 CSR8: CSR8
+0x520C051C B  REGISTER CSR9 (rw): context swap registers
+0x520C051C C   FIELD 00w32 CSR9: CSR9
+0x520C0520 B  REGISTER CSR10 (rw): context swap registers
+0x520C0520 C   FIELD 00w32 CSR10: CSR10
+0x520C0524 B  REGISTER CSR11 (rw): context swap registers
+0x520C0524 C   FIELD 00w32 CSR11: CSR11
+0x520C0528 B  REGISTER CSR12 (rw): context swap registers
+0x520C0528 C   FIELD 00w32 CSR12: CSR12
+0x520C052C B  REGISTER CSR13 (rw): context swap registers
+0x520C052C C   FIELD 00w32 CSR13: CSR13
+0x520C0530 B  REGISTER CSR14 (rw): context swap registers
+0x520C0530 C   FIELD 00w32 CSR14: CSR14
+0x520C0534 B  REGISTER CSR15 (rw): context swap registers
+0x520C0534 C   FIELD 00w32 CSR15: CSR15
+0x520C0538 B  REGISTER CSR16 (rw): context swap registers
+0x520C0538 C   FIELD 00w32 CSR16: CSR16
+0x520C053C B  REGISTER CSR17 (rw): context swap registers
+0x520C053C C   FIELD 00w32 CSR17: CSR17
+0x520C0540 B  REGISTER CSR18 (rw): context swap registers
+0x520C0540 C   FIELD 00w32 CSR18: CSR18
+0x520C0544 B  REGISTER CSR19 (rw): context swap registers
+0x520C0544 C   FIELD 00w32 CSR19: CSR19
+0x520C0548 B  REGISTER CSR20 (rw): context swap registers
+0x520C0548 C   FIELD 00w32 CSR20: CSR20
+0x520C054C B  REGISTER CSR21 (rw): context swap registers
+0x520C054C C   FIELD 00w32 CSR21: CSR21
+0x520C0550 B  REGISTER CSR22 (rw): context swap registers
+0x520C0550 C   FIELD 00w32 CSR22: CSR22
+0x520C0554 B  REGISTER CSR23 (rw): context swap registers
+0x520C0554 C   FIELD 00w32 CSR23: CSR23
+0x520C0558 B  REGISTER CSR24 (rw): context swap registers
+0x520C0558 C   FIELD 00w32 CSR24: CSR24
+0x520C055C B  REGISTER CSR25 (rw): context swap registers
+0x520C055C C   FIELD 00w32 CSR25: CSR25
+0x520C0560 B  REGISTER CSR26 (rw): context swap registers
+0x520C0560 C   FIELD 00w32 CSR26: CSR26
+0x520C0564 B  REGISTER CSR27 (rw): context swap registers
+0x520C0564 C   FIELD 00w32 CSR27: CSR27
+0x520C0568 B  REGISTER CSR28 (rw): context swap registers
+0x520C0568 C   FIELD 00w32 CSR28: CSR28
+0x520C056C B  REGISTER CSR29 (rw): context swap registers
+0x520C056C C   FIELD 00w32 CSR29: CSR29
+0x520C0570 B  REGISTER CSR30 (rw): context swap registers
+0x520C0570 C   FIELD 00w32 CSR30: CSR30
+0x520C0574 B  REGISTER CSR31 (rw): context swap registers
+0x520C0574 C   FIELD 00w32 CSR31: CSR31
+0x520C0578 B  REGISTER CSR32 (rw): context swap registers
+0x520C0578 C   FIELD 00w32 CSR32: CSR32
+0x520C057C B  REGISTER CSR33 (rw): context swap registers
+0x520C057C C   FIELD 00w32 CSR33: CSR33
+0x520C0580 B  REGISTER CSR34 (rw): context swap registers
+0x520C0580 C   FIELD 00w32 CSR34: CSR34
+0x520C0584 B  REGISTER CSR35 (rw): context swap registers
+0x520C0584 C   FIELD 00w32 CSR35: CSR35
+0x520C0588 B  REGISTER CSR36 (rw): context swap registers
+0x520C0588 C   FIELD 00w32 CSR36: CSR36
+0x520C058C B  REGISTER CSR37 (rw): context swap registers
+0x520C058C C   FIELD 00w32 CSR37: CSR37
+0x520C0590 B  REGISTER CSR38 (rw): context swap registers
+0x520C0590 C   FIELD 00w32 CSR38: CSR38
+0x520C0594 B  REGISTER CSR39 (rw): context swap registers
+0x520C0594 C   FIELD 00w32 CSR39: CSR39
+0x520C0598 B  REGISTER CSR40 (rw): context swap registers
+0x520C0598 C   FIELD 00w32 CSR40: CSR40
+0x520C059C B  REGISTER CSR41 (rw): context swap registers
+0x520C059C C   FIELD 00w32 CSR41: CSR41
+0x520C05A0 B  REGISTER CSR42 (rw): context swap registers
+0x520C05A0 C   FIELD 00w32 CSR42: CSR42
+0x520C05A4 B  REGISTER CSR43 (rw): context swap registers
+0x520C05A4 C   FIELD 00w32 CSR43: CSR43
+0x520C05A8 B  REGISTER CSR44 (rw): context swap registers
+0x520C05A8 C   FIELD 00w32 CSR44: CSR44
+0x520C05AC B  REGISTER CSR45 (rw): context swap registers
+0x520C05AC C   FIELD 00w32 CSR45: CSR45
+0x520C05B0 B  REGISTER CSR46 (rw): context swap registers
+0x520C05B0 C   FIELD 00w32 CSR46: CSR46
+0x520C05B4 B  REGISTER CSR47 (rw): context swap registers
+0x520C05B4 C   FIELD 00w32 CSR47: CSR47
+0x520C05B8 B  REGISTER CSR48 (rw): context swap registers
+0x520C05B8 C   FIELD 00w32 CSR48: CSR48
+0x520C05BC B  REGISTER CSR49 (rw): context swap registers
+0x520C05BC C   FIELD 00w32 CSR49: CSR49
+0x520C05C0 B  REGISTER CSR50 (rw): context swap registers
+0x520C05C0 C   FIELD 00w32 CSR50: CSR50
+0x520C05C4 B  REGISTER CSR51 (rw): context swap registers
+0x520C05C4 C   FIELD 00w32 CSR51: CSR51
+0x520C05C8 B  REGISTER CSR52 (rw): context swap registers
+0x520C05C8 C   FIELD 00w32 CSR52: CSR52
+0x520C05CC B  REGISTER CSR53 (rw): context swap registers
+0x520C05CC C   FIELD 00w32 CSR53: CSR53
+0x520C0710 B  REGISTER HR0 (ro): digest register 0
+0x520C0710 C   FIELD 00w32 H0: H0
+0x520C0714 B  REGISTER HR1 (ro): digest register 1
+0x520C0714 C   FIELD 00w32 H1: H1
+0x520C0718 B  REGISTER HR2 (ro): digest register 4
+0x520C0718 C   FIELD 00w32 H2: H2
+0x520C071C B  REGISTER HR3 (ro): digest register 3
+0x520C071C C   FIELD 00w32 H3: H3
+0x520C0720 B  REGISTER HR4 (ro): digest register 4
+0x520C0720 C   FIELD 00w32 H4: H4
+0x520C0724 B  REGISTER HR5 (ro): supplementary digest register 5
+0x520C0724 C   FIELD 00w32 H5: H5
+0x520C0728 B  REGISTER HR6 (ro): supplementary digest register 6
+0x520C0728 C   FIELD 00w32 H6: H6
+0x520C072C B  REGISTER HR7 (ro): supplementary digest register 7
+0x520C072C C   FIELD 00w32 H7: H7
 0x520C0800 A PERIPHERAL SEC_RNG
 0x520C0800 B  REGISTER CR (rw): RNG control register
 0x520C0800 C   FIELD 02w01 RNGEN: Random number generator enable
@@ -29280,6 +29328,7 @@ INTERRUPT 004: TAMP (EXTI): TAMPTamper global interrupt (EXTI line 19)
 INTERRUPT 005: TAMP_S (EXTI): Tamper secure global interrupt (EXTI line 20)
 INTERRUPT 006: FLASH (FLASH): Flash global interrupt
 INTERRUPT 007: FLASH_S (FLASH): Flash memory secure global interrupt
+INTERRUPT 008: GTZC (GTZC_TZIC): TZIC secure global interrupt
 INTERRUPT 009: RCC (RCC): RCC global interrupt
 INTERRUPT 010: RCC_S (RCC): RCC SECURE GLOBAL INTERRUPT
 INTERRUPT 011: EXTI0 (EXTI): EXTI line0 interrupt
@@ -29309,6 +29358,7 @@ INTERRUPT 034: DMA1_CH6 (DMA1): DMA1 Channel6 interrupt
 INTERRUPT 035: DMA1_CH7 (DMA1): DMA1 Channel 7 interrupt
 INTERRUPT 036: DMA1_Channel8 (DMA1): DMA1_Channel8
 INTERRUPT 037: ADC1_2 (ADC_Common): ADC1_2 global interrupt
+INTERRUPT 038: DAC (DAC): DAC global interrupt
 INTERRUPT 039: FDCAN1_IT0 (FDCAN1): FDCAN1 Interrupt 0
 INTERRUPT 040: FDCAN1_IT1 (FDCAN1): FDCAN1 Interrupt 1
 INTERRUPT 041: TIM1_BRK (TIM1): TIM1 Break
@@ -29344,6 +29394,7 @@ INTERRUPT 070: TIM16 (TIM16): TIM16 global interrupt
 INTERRUPT 071: TIM17 (TIM17): TIM17 global interrupt
 INTERRUPT 072: COMP (COMP): COMP1 and COMP2 interrupts
 INTERRUPT 073: USB_FS (USB): USB FS global interrupt
+INTERRUPT 074: CRS (CRS): Clock recovery system global interrupt
 INTERRUPT 075: FMC (FMC): FMC global interrupt
 INTERRUPT 076: OCTOSPI1 (OCTOSPI1): OCTOSPI1 global interrupt
 INTERRUPT 078: SDMMC1 (SDMMC1): SDMMC1 global interrupt
@@ -29362,6 +29413,7 @@ INTERRUPT 091: SAI2 (SAI2): SAI2 global interrupt
 INTERRUPT 092: TSC (TSC): TSC global interrupt
 INTERRUPT 093: AES (AES): AES global interrupts
 INTERRUPT 094: RNG (RNG): RNG global interrupt
+INTERRUPT 096: HASH (HASH): HASH interrupt
 INTERRUPT 097: PKA (PKA): PKA global interrupts
 INTERRUPT 098: LPTIM3 (LPTIM3): LPTIM3
 INTERRUPT 099: SPI3 (SPI3): SPI3
