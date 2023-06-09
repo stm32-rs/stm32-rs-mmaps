@@ -8219,12 +8219,12 @@
 0x50000004 C   FIELD 19w01 DBCDNE: Debounce done
 0x50000004 C   FIELD 20w01 IDCHNG: ID input pin changed
 0x50000008 B  REGISTER GAHBCFG (rw): OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-0x50000008 C   FIELD 00w01 GINT: Global interrupt mask
+0x50000008 C   FIELD 00w01 GINTMSK: Global interrupt mask
 0x50000008 C   FIELD 07w01 TXFELVL: TxFIFO empty level
 0x50000008 C   FIELD 08w01 PTXFELVL: Periodic TxFIFO empty level
 0x5000000C B  REGISTER GUSBCFG: OTG_FS USB configuration register (OTG_FS_GUSBCFG)
 0x5000000C C   FIELD 00w03 TOCAL (rw): FS timeout calibration
-0x5000000C C   FIELD 06w01 PHYSEL (wo): Full Speed serial transceiver select
+0x5000000C C   FIELD 06w01 PHYSEL (ro): Full Speed serial transceiver select
 0x5000000C C   FIELD 08w01 SRPCAP (rw): SRP-capable
 0x5000000C C   FIELD 09w01 HNPCAP (rw): HNP-capable
 0x5000000C C   FIELD 10w04 TRDT (rw): USB turnaround time
@@ -8256,7 +8256,8 @@
 0x50000014 C   FIELD 18w01 IEPINT (ro): IN endpoint interrupt
 0x50000014 C   FIELD 19w01 OEPINT (ro): OUT endpoint interrupt
 0x50000014 C   FIELD 20w01 IISOIXFR (rw): Incomplete isochronous IN transfer
-0x50000014 C   FIELD 21w01 IPXFR_INCOMPISOOUT (rw): Incomplete periodic transfer(Host mode)/Incomplete isochronous OUT transfer(Device mode)
+0x50000014 C   FIELD 21w01 INCOMPISOOUT (rw): Incomplete isochronous OUT transfer
+0x50000014 C   FIELD 21w01 IPXFR (rw): Incomplete periodic transfer
 0x50000014 C   FIELD 23w01 RSTDET (rw): Reset detected interrupt
 0x50000014 C   FIELD 24w01 HPRTINT (ro): Host port interrupt
 0x50000014 C   FIELD 25w01 HCINT (ro): Host channels interrupt

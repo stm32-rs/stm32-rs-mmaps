@@ -8278,18 +8278,18 @@
 0x50000004 C   FIELD 18w01 ADTOCHG: A-device timeout change
 0x50000004 C   FIELD 19w01 DBCDNE: Debounce done
 0x50000008 B  REGISTER GAHBCFG (rw): OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-0x50000008 C   FIELD 00w01 GINT: Global interrupt mask
+0x50000008 C   FIELD 00w01 GINTMSK: Global interrupt mask
 0x50000008 C   FIELD 07w01 TXFELVL: TxFIFO empty level
 0x50000008 C   FIELD 08w01 PTXFELVL: Periodic TxFIFO empty level
 0x5000000C B  REGISTER GUSBCFG: OTG_FS USB configuration register (OTG_FS_GUSBCFG)
 0x5000000C C   FIELD 00w03 TOCAL (rw): FS timeout calibration
-0x5000000C C   FIELD 06w01 PHYSEL (wo): Full Speed serial transceiver select
+0x5000000C C   FIELD 06w01 PHYSEL (ro): Full Speed serial transceiver select
 0x5000000C C   FIELD 08w01 SRPCAP (rw): SRP-capable
 0x5000000C C   FIELD 09w01 HNPCAP (rw): HNP-capable
 0x5000000C C   FIELD 10w04 TRDT (rw): USB turnaround time
 0x5000000C C   FIELD 29w01 FHMOD (rw): Force host mode
 0x5000000C C   FIELD 30w01 FDMOD (rw): Force device mode
-0x5000000C C   FIELD 31w01 CTXPKT (rw): Corrupt Tx packet
+0x5000000C C   FIELD 31w01 CTXPKT (rw): Never set this bit to 1. This bit is for debug purposes only. Corrupt Tx packet.
 0x50000010 B  REGISTER GRSTCTL: OTG_FS reset register (OTG_FS_GRSTCTL)
 0x50000010 C   FIELD 00w01 CSRST (rw): Core soft reset
 0x50000010 C   FIELD 01w01 HSRST (rw): HCLK soft reset
@@ -8316,7 +8316,8 @@
 0x50000014 C   FIELD 18w01 IEPINT (ro): IN endpoint interrupt
 0x50000014 C   FIELD 19w01 OEPINT (ro): OUT endpoint interrupt
 0x50000014 C   FIELD 20w01 IISOIXFR (rw): Incomplete isochronous IN transfer
-0x50000014 C   FIELD 21w01 IPXFR_INCOMPISOOUT (rw): Incomplete periodic transfer(Host mode)/Incomplete isochronous OUT transfer(Device mode)
+0x50000014 C   FIELD 21w01 INCOMPISOOUT (rw): Incomplete isochronous OUT transfer
+0x50000014 C   FIELD 21w01 IPXFR (rw): Incomplete periodic transfer
 0x50000014 C   FIELD 24w01 HPRTINT (ro): Host port interrupt
 0x50000014 C   FIELD 25w01 HCINT (ro): Host channels interrupt
 0x50000014 C   FIELD 26w01 PTXFE (ro): Periodic TxFIFO empty
@@ -8380,7 +8381,7 @@
 0x50000028 C   FIELD 00w16 TX0FSA: Endpoint 0 transmit RAM start address
 0x50000028 C   FIELD 16w16 NPTXFD: Non-periodic TxFIFO depth
 0x50000028 C   FIELD 16w16 TX0FD: Endpoint 0 TxFIFO depth
-0x5000002C B  REGISTER GNPTXSTS (ro): OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
+0x5000002C B  REGISTER HNPTXSTS (ro): OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
 0x5000002C C   FIELD 00w16 NPTXFSAV: Non-periodic TxFIFO space available
 0x5000002C C   FIELD 16w08 NPTQXSAV: Non-periodic transmit request queue space available
 0x5000002C C   FIELD 24w07 NPTXQTOP: Top of the non-periodic transmit request queue
