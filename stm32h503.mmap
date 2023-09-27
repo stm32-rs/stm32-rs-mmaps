@@ -8783,9 +8783,9 @@
 0x44020C18 B  REGISTER CSICFGR: RCC CSI calibration register
 0x44020C18 C   FIELD 00w08 CSICAL (rw): CSI clock calibration Set by hardware by option byte loading during system reset NRESET. Adjusted by software through trimming bits CSITRIM. This field represents the sum of engineering option byte calibration value and CSITRIM bits value.
 0x44020C18 C   FIELD 16w06 CSITRIM (rw): CSI clock trimming Set by software to adjust calibration. CSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_CSI_OPT) in order to form the calibration trimming value. CSICAL = CSITRIM + FLASH_CSI_OPT. Note: The reset value of the field is 0x20.
-0x44020C1C B  REGISTER CFGR: RCC clock configuration register
-0x44020C1C C   FIELD 00w03 SW (rw): system clock and trace clock switch Set and reset by software to select system clock and trace clock sources (sys_ck). Set by hardware in order to: - force the selection of the HSI or CSI (depending on STOPWUCK selection) when leaving a system Stop mode - force the selection of the HSI in case of failure of the HSE when used directly or indirectly as system clock others: reserved
-0x44020C1C C   FIELD 03w03 SWS (ro): system clock switch status Set and reset by hardware to indicate which clock source is used as system clock. 000: HSI used as system clock (hsi_ck) (default after reset). others: reserved
+0x44020C1C B  REGISTER CFGR1: RCC clock configuration register
+0x44020C1C C   FIELD 00w02 SW (rw): system clock and trace clock switch Set and reset by software to select system clock and trace clock sources (sys_ck). Set by hardware in order to: - force the selection of the HSI or CSI (depending on STOPWUCK selection) when leaving a system Stop mode - force the selection of the HSI in case of failure of the HSE when used directly or indirectly as system clock others: reserved
+0x44020C1C C   FIELD 03w02 SWS (ro): system clock switch status Set and reset by hardware to indicate which clock source is used as system clock. 000: HSI used as system clock (hsi_ck) (default after reset). others: reserved
 0x44020C1C C   FIELD 06w01 STOPWUCK (rw): system clock selection after a wakeup from system Stop Set and reset by software to select the system wakeup clock from system Stop. The selected clock is also used as emergency clock for the clock security system (CSS) on HSE. 0: HSI selected as wakeup clock from system Stop (default after reset) STOPWUCK must not be modified when CSS is enabled (by HSECSSON bit) and the system clock is HSE (SWS = 10) or a switch on HSE is requested (SW =10).
 0x44020C1C C   FIELD 07w01 STOPKERWUCK (rw): kernel clock selection after a wakeup from system Stop Set and reset by software to select the kernel wakeup clock from system Stop.
 0x44020C1C C   FIELD 08w06 RTCPRE (rw): HSE division factor for RTC clock Set and cleared by software to divide the HSE to generate a clock for RTC. Caution: The software must set these bits correctly to ensure that the clock supplied to the RTC is lower than 1 MHz. These bits must be configured if needed before selecting the RTC clock source. ...
@@ -8810,7 +8810,7 @@
 0x44020C28 C   FIELD 02w02 PLL1RGE (rw): PLL1 input frequency range Set and reset by software to select the proper reference frequency range used for PLL1. This bit must be written before enabling the PLL1.
 0x44020C28 C   FIELD 04w01 PLL1FRACEN (rw): PLL1 fractional latch enable Set and reset by software to latch the content of FRACN1 into the sigma-delta modulator. In order to latch the FRACN1 value into the sigma-delta modulator, PLL1FRACEN must be set to 0, then set to 1. The transition 0 to 1 transfers the content of FRACN1 into the modulator.
 0x44020C28 C   FIELD 05w01 PLL1VCOSEL (rw): PLL1 VCO selection Set and reset by software to select the proper VCO frequency range used for PLL1. This bit must be written before enabling the PLL1.
-0x44020C28 C   FIELD 08w06 DIVM1 (rw): prescaler for PLL1 Set and cleared by software to configure the prescaler of the PLL1. The hardware does not allow any modification of this prescaler when PLL1 is enabled (PLL1ON = 1 or PLL1RDY = 1). In order to save power when PLL1 is not used, the value of DIVM1 must be set to 0. ... ...
+0x44020C28 C   FIELD 08w06 PLL1M (rw): prescaler for PLL1 Set and cleared by software to configure the prescaler of the PLL1. The hardware does not allow any modification of this prescaler when PLL1 is enabled (PLL1ON = 1 or PLL1RDY = 1). In order to save power when PLL1 is not used, the value of DIVM1 must be set to 0. ... ...
 0x44020C28 C   FIELD 16w01 PLL1PEN (rw): PLL1 DIVP divider output enable Set and reset by software to enable the pll1_p_ck output of the PLL1. This bit can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0). In order to save power, when the pll1_p_ck output of the PLL1 is not used, the pll1_p_ck must be disabled.
 0x44020C28 C   FIELD 17w01 PLL1QEN (rw): PLL1 DIVQ divider output enable Set and reset by software to enable the pll1_q_ck output of the PLL1. In order to save power, when the pll1_q_ck output of the PLL1 is not used, the pll1_q_ck must be disabled. This bit can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0).
 0x44020C28 C   FIELD 18w01 PLL1REN (rw): PLL1 DIVR divider output enable Set and reset by software to enable the pll1_r_ck output of the PLL1. To save power, DIVR1EN and DIVR1 bits must be set to 0 when the pll1_r_ck is not used. This bit can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0).
@@ -8819,7 +8819,7 @@
 0x44020C2C C   FIELD 02w02 PLL2RGE (rw): PLL2 input frequency range Set and reset by software to select the proper reference frequency range used for PLL2. These bits must be written before enabling the PLL2.
 0x44020C2C C   FIELD 04w01 PLL2FRACEN (rw): PLL2 fractional latch enable Set and reset by software to enable the pll2_p_ck output of the PLL2. To save power, when the pll2_p_ck output of the PLL2 is not used, the pll2_p_ck must be disabled.
 0x44020C2C C   FIELD 05w01 PLL2VCOSEL (rw): PLL2 VCO selection Set and reset by software to select the proper VCO frequency range used for PLL2. This bit must be written before enabling the PLL2.
-0x44020C2C C   FIELD 08w06 DIVM2 (rw): prescaler for PLL2 Set and cleared by software to configure the prescaler of the PLL2. The hardware does not allow any modification of this prescaler when PLL2 is enabled (PLL2ON = 1 or PLL2RDY = 1). In order to save power when PLL2 is not used, the value of DIVM2 must be set to 0. ... ...
+0x44020C2C C   FIELD 08w06 PLL2M (rw): prescaler for PLL2 Set and cleared by software to configure the prescaler of the PLL2. The hardware does not allow any modification of this prescaler when PLL2 is enabled (PLL2ON = 1 or PLL2RDY = 1). In order to save power when PLL2 is not used, the value of DIVM2 must be set to 0. ... ...
 0x44020C2C C   FIELD 16w01 PLL2PEN (rw): PLL2 DIVP divider output enable Set and reset by software to enable the pll2_p_ck output of the PLL2. To save power, when the pll2_p_ck output of the PLL2 is not used, the pll2_p_ck must be disabled.
 0x44020C2C C   FIELD 17w01 PLL2QEN (rw): PLL2 DIVQ divider output enable Set and reset by software to enable the pll2_q_ck output of the PLL2. To save power, when the pll2_q_ck output of the PLL2 is not used, the pll2_q_ck must be disabled.
 0x44020C2C C   FIELD 18w01 PLL2REN (rw): PLL2 DIVR divider output enable Set and reset by software to enable the pll2_r_ck output of the PLL2. To save power, DIVR2EN and DIVR2 bits must be set to 0 when the pll2_r_ck is not used.
@@ -8877,7 +8877,7 @@
 0x44020C64 C   FIELD 02w01 GPIOCRST (rw): GPIOC block reset Set and reset by software.
 0x44020C64 C   FIELD 03w01 GPIODRST (rw): GPIOD block reset Set and reset by software.
 0x44020C64 C   FIELD 07w01 GPIOHRST (rw): GPIOH block reset Set and reset by software.
-0x44020C64 C   FIELD 10w01 ADC1RST (rw): ADC1 block reset Set and reset by software.
+0x44020C64 C   FIELD 10w01 ADCRST (rw): ADC block reset
 0x44020C64 C   FIELD 11w01 DAC12RST (rw): DAC block reset Set and reset by software.
 0x44020C64 C   FIELD 17w01 HASHRST (rw): HASH block reset Set and reset by software.
 0x44020C64 C   FIELD 18w01 RNGRST (rw): RNG block reset Set and reset by software.
@@ -8899,12 +8899,12 @@
 0x44020C78 B  REGISTER APB1HRSTR: RCC APB1 peripheral high reset register
 0x44020C78 C   FIELD 03w01 DTSRST (rw): DTS block reset Set and reset by software.
 0x44020C78 C   FIELD 05w01 LPTIM2RST (rw): LPTIM2 block reset Set and reset by software.
-0x44020C78 C   FIELD 09w01 FDCAN1RST (rw): FDCAN1 block reset Set and reset by software.
+0x44020C78 C   FIELD 09w01 FDCANRST (rw): FDCAN block reset
 0x44020C7C B  REGISTER APB2RSTR: RCC APB2 peripheral reset register
 0x44020C7C C   FIELD 11w01 TIM1RST (rw): TIM1 block reset Set and reset by software.
 0x44020C7C C   FIELD 12w01 SPI1RST (rw): SPI1 block reset Set and reset by software.
 0x44020C7C C   FIELD 14w01 USART1RST (rw): USART1 block reset Set and reset by software.
-0x44020C7C C   FIELD 24w01 USBFSRST (rw): USBFS block reset Set and reset by software.
+0x44020C7C C   FIELD 24w01 USBRST (rw): USB block reset
 0x44020C80 B  REGISTER APB3RSTR: RCC APB3 peripheral reset register
 0x44020C80 C   FIELD 01w01 SBSRST (rw): SBS block reset Set and reset by software.
 0x44020C80 C   FIELD 06w01 LPUART1RST (rw): LPUART1 block reset Set and reset by software.
@@ -8917,6 +8917,7 @@
 0x44020C88 C   FIELD 08w01 FLITFEN (rw): Flash interface clock enable Set and reset by software.
 0x44020C88 C   FIELD 12w01 CRCEN (rw): CRC clock enable Set and reset by software.
 0x44020C88 C   FIELD 17w01 RAMCFGEN (rw): RAMCFG clock enable Set and reset by software.
+0x44020C88 C   FIELD 24w01 GTZC1EN (rw): GTZC1 clock enable
 0x44020C88 C   FIELD 28w01 BKPRAMEN (rw): BKPRAM clock enable Set and reset by software
 0x44020C88 C   FIELD 31w01 SRAM1EN (rw): SRAM1 clock enable Set and reset by software.
 0x44020C8C B  REGISTER AHB2ENR: RCC AHB2 peripheral clock register
@@ -8925,7 +8926,7 @@
 0x44020C8C C   FIELD 02w01 GPIOCEN (rw): GPIOC clock enable Set and reset by software.
 0x44020C8C C   FIELD 03w01 GPIODEN (rw): GPIOD clock enable Set and reset by software.
 0x44020C8C C   FIELD 07w01 GPIOHEN (rw): GPIOH clock enable Set and reset by software.
-0x44020C8C C   FIELD 10w01 ADC1EN (rw): ADC1 peripherals clock enabled Set and reset by software.
+0x44020C8C C   FIELD 10w01 ADCEN (rw): ADC peripherals clock enabled
 0x44020C8C C   FIELD 11w01 DAC12EN (rw): DAC clock enable Set and reset by software.
 0x44020C8C C   FIELD 17w01 HASHEN (rw): HASH clock enable Set and reset by software.
 0x44020C8C C   FIELD 18w01 RNGEN (rw): RNG clock enable Set and reset by software.
@@ -8949,12 +8950,12 @@
 0x44020CA0 B  REGISTER APB1HENR: RCC APB1 peripheral clock register
 0x44020CA0 C   FIELD 03w01 DTSEN (rw): DTS clock enable Set and reset by software.
 0x44020CA0 C   FIELD 05w01 LPTIM2EN (rw): LPTIM2 clock enable Set and reset by software.
-0x44020CA0 C   FIELD 09w01 FDCAN1EN (rw): FDCAN1 peripheral clock enable Set and reset by software.
+0x44020CA0 C   FIELD 09w01 FDCANEN (rw): FDCAN peripheral clock enable
 0x44020CA4 B  REGISTER APB2ENR: RCC APB2 peripheral clock register
 0x44020CA4 C   FIELD 11w01 TIM1EN (rw): TIM1 clock enable Set and reset by software.
 0x44020CA4 C   FIELD 12w01 SPI1EN (rw): SPI1 clock enable Set and reset by software.
 0x44020CA4 C   FIELD 14w01 USART1EN (rw): USART1 clock enable Set and reset by software.
-0x44020CA4 C   FIELD 24w01 USBFSEN (rw): USBFS clock enable Set and reset by software.
+0x44020CA4 C   FIELD 24w01 USBEN (rw): USB clock enable
 0x44020CA8 B  REGISTER APB3ENR: RCC APB3 peripheral clock register
 0x44020CA8 C   FIELD 01w01 SBSEN (rw): SBS clock enable Set and reset by software.
 0x44020CA8 C   FIELD 06w01 LPUART1EN (rw): LPUART1 clock enable Set and reset by software.
@@ -8968,6 +8969,7 @@
 0x44020CB0 C   FIELD 08w01 FLITFLPEN (rw): Flash interface (FLITF) clock enable during sleep mode Set and reset by software.
 0x44020CB0 C   FIELD 12w01 CRCLPEN (rw): CRC clock enable during sleep mode Set and reset by software.
 0x44020CB0 C   FIELD 17w01 RAMCFGLPEN (rw): RAMCFG clock enable during sleep mode Set and reset by software.
+0x44020CB0 C   FIELD 24w01 GTZC1LPEN (rw): GTZC1 clock enable during sleep mode
 0x44020CB0 C   FIELD 28w01 BKPRAMLPEN (rw): BKPRAM clock enable during sleep mode Set and reset by software
 0x44020CB0 C   FIELD 29w01 ICACHELPEN (rw): ICACHE clock enable during sleep mode Set and reset by software
 0x44020CB0 C   FIELD 31w01 SRAM1LPEN (rw): SRAM1 clock enable during sleep mode Set and reset by software
@@ -8977,7 +8979,7 @@
 0x44020CB4 C   FIELD 02w01 GPIOCLPEN (rw): GPIOC clock enable during sleep mode Set and reset by software.
 0x44020CB4 C   FIELD 03w01 GPIODLPEN (rw): GPIOD clock enable during sleep mode Set and reset by software.
 0x44020CB4 C   FIELD 07w01 GPIOHLPEN (rw): GPIOH clock enable during sleep mode Set and reset by software.
-0x44020CB4 C   FIELD 10w01 ADC1LPEN (rw): ADC1 peripherals clock enable during sleep mode Set and reset by software.
+0x44020CB4 C   FIELD 10w01 ADCLPEN (rw): ADC peripherals clock enable during sleep mode
 0x44020CB4 C   FIELD 11w01 DAC12LPEN (rw): DAC clock enable during sleep mode Set and reset by software.
 0x44020CB4 C   FIELD 17w01 HASHLPEN (rw): HASH clock enable during sleep mode Set and reset by software.
 0x44020CB4 C   FIELD 18w01 RNGLPEN (rw): RNG clock enable during sleep mode Set and reset by software.
@@ -9001,12 +9003,12 @@
 0x44020CC8 B  REGISTER APB1HLPENR: RCC APB1 sleep clock register
 0x44020CC8 C   FIELD 03w01 DTSLPEN (rw): DTS clock enable during sleep mode Set and reset by software.
 0x44020CC8 C   FIELD 05w01 LPTIM2LPEN (rw): LPTIM2 clock enable during sleep mode Set and reset by software.
-0x44020CC8 C   FIELD 09w01 FDCAN1LPEN (rw): FDCAN1 peripheral clock enable during sleep mode Set and reset by software.
+0x44020CC8 C   FIELD 09w01 FDCANLPEN (rw): FDCAN peripheral clock enable during sleep mode
 0x44020CCC B  REGISTER APB2LPENR: RCC APB2 sleep clock register
 0x44020CCC C   FIELD 11w01 TIM1LPEN (rw): TIM1 clock enable during sleep mode Set and reset by software.
 0x44020CCC C   FIELD 12w01 SPI1LPEN (rw): SPI1 clock enable during sleep mode Set and reset by software.
 0x44020CCC C   FIELD 14w01 USART1LPEN (rw): USART1 clock enable during sleep mode Set and reset by software.
-0x44020CCC C   FIELD 24w01 USBFSLPEN (rw): USBFS clock enable during sleep mode Set and reset by software.
+0x44020CCC C   FIELD 24w01 USBLPEN (rw): USB clock enable during sleep mode
 0x44020CD0 B  REGISTER APB3LPENR: RCC APB3 sleep clock register
 0x44020CD0 C   FIELD 01w01 SBSLPEN (rw): SBS clock enable during sleep mode Set and reset by software.
 0x44020CD0 C   FIELD 06w01 LPUART1LPEN (rw): LPUART1 clock enable during sleep mode Set and reset by software.
@@ -9029,16 +9031,16 @@
 0x44020CE0 C   FIELD 24w03 LPUART1SEL (rw): LPUART1 kernel clock source selection others: reserved, the kernel clock is disabled
 0x44020CE4 B  REGISTER CCIPR4: RCC kernel clock configuration register
 0x44020CE4 C   FIELD 02w02 SYSTICKSEL (rw): SYSTICK clock source selection Note: rcc_hclk frequency must be four times higher than lsi_ker_ck/lse_ck (period (LSI/LSE) ≥ 4 * period (HCLK).
-0x44020CE4 C   FIELD 04w02 USBFSSEL (rw): USBFS kernel clock source selection
+0x44020CE4 C   FIELD 04w02 USBSEL (rw): USB kernel clock source selection
 0x44020CE4 C   FIELD 16w02 I2C1SEL (rw): I2C1 kernel clock source selection
 0x44020CE4 C   FIELD 18w02 I2C2SEL (rw): I2C2 kernel clock source selection
 0x44020CE4 C   FIELD 24w02 I3C1SEL (rw): I3C1 kernel clock source selection
 0x44020CE4 C   FIELD 26w02 I3C2SEL (rw): I3C2 kernel clock source selection
 0x44020CE8 B  REGISTER CCIPR5: RCC kernel clock configuration register
 0x44020CE8 C   FIELD 00w03 ADCDACSEL (rw): ADC and DAC kernel clock source selection others: reserved, the kernel clock is disabled
-0x44020CE8 C   FIELD 03w01 DACSEL (rw): DAC hold clock
+0x44020CE8 C   FIELD 03w01 DAC1SEL (rw): DAC hold clock
 0x44020CE8 C   FIELD 04w02 RNGSEL (rw): RNG kernel clock source selection
-0x44020CE8 C   FIELD 08w02 FDCAN1SEL (rw): FDCAN1 kernel clock source selection
+0x44020CE8 C   FIELD 08w02 FDCANSEL (rw): FDCAN1 kernel clock source selection
 0x44020CE8 C   FIELD 30w02 CKPERSEL (rw): per_ck clock source selection
 0x44020CF0 B  REGISTER BDCR: RCC Backup domain control register
 0x44020CF0 C   FIELD 00w01 LSEON (rw): LSE oscillator enabled Set and reset by software.
@@ -9063,6 +9065,8 @@
 0x44020CF4 C   FIELD 29w01 IWDGRSTF (rw): independent watchdog reset flag Reset by software by writing the RMVF bit. Set by hardware when an independent watchdog reset occurs.
 0x44020CF4 C   FIELD 30w01 WWDGRSTF (rw): window watchdog reset flag Reset by software by writing the RMVF bit. Set by hardware when a window watchdog reset occurs.
 0x44020CF4 C   FIELD 31w01 LPWRRSTF (rw): Low-power reset flag Set by hardware when a reset occurs due to Stop or Standby mode entry, whereas the corresponding nRST_STOP, nRST_STBY option bit is cleared. Cleared by writing to the RMVF bit.
+0x44020D14 B  REGISTER PRIVCFGR (rw): RCC privilege configuration register
+0x44020D14 C   FIELD 01w01 PRIV (rw): RCC functions privilege configuration
 0x44022000 A PERIPHERAL EXTI
 0x44022000 B  REGISTER RTSR1: EXTI rising trigger selection register
 0x44022000 C   FIELD 00w01 RT0 (rw): Rising trigger event configuration bit of configurable event input x (x = 16 to 0) When EXTI_PRIVCFGR.PRIVx is disabled, RTx can be accessed with unprivileged and privileged access. When EXTI_PRIVCFGR.PRIVx is enabled, RTx can only be accessed with privileged access. Unprivileged write to this bit x is discarded, unprivileged read returns 0.
