@@ -7787,11 +7787,16 @@
 0x44000500 B  REGISTER PMCR: SBS product mode and configuration register
 0x44000500 C   FIELD 08w01 BOOSTEN (rw): booster enable Set this bit to reduce the total harmonic distortion of the analog switch when the processor supply is below 2.7 V. The booster can be activated to guaranty AC performance on analog switch when the supply is below 2.7 V. When the booster is activated, the analog switch performances are the same as with the full voltage range.
 0x44000500 C   FIELD 09w01 BOOSTVDDSEL (rw): booster V<sub>DD</sub> selection Note: Booster must not be used when V<sub>DDA</sub> < 2.7 V, but V<sub>DD</sub> > 2.7 V (add current consumption). Note: When both V<sub>DD</sub> < 2.7 V and V<sub>DDA</sub> < 2.7 V, booster is needed to get full AC performances from I/O analog switches.
-0x44000500 C   FIELD 16w01 PB6_FMPLUS (rw): Fast-mode Plus command on PB(6)
-0x44000500 C   FIELD 17w01 PB7_FMPLUS (rw): Fast-mode Plus command on PB(7)
-0x44000500 C   FIELD 18w01 PB8_FMPLUS (rw): Fast-mode Plus command on PB(8)
+0x44000500 C   FIELD 16w01 PB6_FMP (rw): Fast-mode Plus command on PB(6)
+0x44000500 C   FIELD 17w01 PB7_FMP (rw): Fast-mode Plus command on PB(7)
+0x44000500 C   FIELD 18w01 PB8_FMP (rw): Fast-mode Plus command on PB(8)
 0x44000504 B  REGISTER FPUIMR: SBS FPU interrupt mask register
-0x44000504 C   FIELD 00w06 FPU_IE (rw): FPU interrupt enable Set and cleared by software to enable the Cortex-M33 FPU interrupts FPU_IE[5]: inexact interrupt enable (interrupt disabled at reset) FPU_IE[4]: input abnormal interrupt enable FPU_IE[3]: overflow interrupt enable FPU_IE[2]: underflow interrupt enable FPU_IE[1]: divide-by-zero interrupt enable FPU_IE[0]: invalid operation interrupt enable
+0x44000504 C   FIELD 00w01 FPU_IE0: FPU interrupt enable
+0x44000504 C   FIELD 01w01 FPU_IE1: FPU interrupt enable
+0x44000504 C   FIELD 02w01 FPU_IE2: FPU interrupt enable
+0x44000504 C   FIELD 03w01 FPU_IE3: FPU interrupt enable
+0x44000504 C   FIELD 04w01 FPU_IE4: FPU interrupt enable
+0x44000504 C   FIELD 05w01 FPU_IE5: FPU interrupt enable
 0x44000508 B  REGISTER MESR: SBS memory erase status register
 0x44000508 C   FIELD 00w01 MCLR (rw): erase after reset status This bit shows the status of the protection for SRAM2, BKPRAM, ICACHE, ICACHE. It is set by hardware and reset by software
 0x44000508 C   FIELD 16w01 IPMEE (rw): end-of-erase status for ICACHE This bit shows the status of the protection for ICACHE. It is set by hardware and reset by software.
