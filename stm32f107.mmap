@@ -95,7 +95,7 @@
 0x40000020 C   FIELD 08w01 CC3E: Capture/Compare 3 output enable
 0x40000020 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
 0x40000024 C   FIELD 00w16 CNT: counter value
 0x40000028 B  REGISTER PSC (rw): prescaler
@@ -212,7 +212,7 @@
 0x40000420 C   FIELD 08w01 CC3E: Capture/Compare 3 output enable
 0x40000420 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000420 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
 0x40000424 C   FIELD 00w16 CNT: counter value
 0x40000428 B  REGISTER PSC (rw): prescaler
@@ -329,7 +329,7 @@
 0x40000820 C   FIELD 08w01 CC3E: Capture/Compare 3 output enable
 0x40000820 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000820 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
 0x40000824 C   FIELD 00w16 CNT: counter value
 0x40000828 B  REGISTER PSC (rw): prescaler
@@ -446,7 +446,7 @@
 0x40000C20 C   FIELD 08w01 CC3E: Capture/Compare 3 output enable
 0x40000C20 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000C20 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000C24 B  REGISTER CNT (rw): counter
 0x40000C24 C   FIELD 00w16 CNT: counter value
 0x40000C28 B  REGISTER PSC (rw): prescaler
@@ -1351,15 +1351,15 @@
 0x40006584 C   FIELD 08w01 TGT: TGT
 0x40006584 C   FIELD 16w16 TIME: TIME
 0x40006588 B  REGISTER TDLR0 (rw): CAN_TDL0R
-0x40006588 C   FIELD 00w08 DATA0: DATA0
-0x40006588 C   FIELD 08w08 DATA1: DATA1
-0x40006588 C   FIELD 16w08 DATA2: DATA2
-0x40006588 C   FIELD 24w08 DATA3: DATA3
+0x40006588 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006588 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006588 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006588 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000658C B  REGISTER TDHR0 (rw): CAN_TDH0R
-0x4000658C C   FIELD 00w08 DATA4: DATA4
-0x4000658C C   FIELD 08w08 DATA5: DATA5
-0x4000658C C   FIELD 16w08 DATA6: DATA6
-0x4000658C C   FIELD 24w08 DATA7: DATA7
+0x4000658C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000658C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000658C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000658C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006590 B  CLUSTER TX1: CAN Transmit cluster
 0x40006590 B  REGISTER TIR1 (rw): CAN_TI0R
 0x40006590 C   FIELD 00w01 TXRQ: TXRQ
@@ -1372,15 +1372,15 @@
 0x40006594 C   FIELD 08w01 TGT: TGT
 0x40006594 C   FIELD 16w16 TIME: TIME
 0x40006598 B  REGISTER TDLR1 (rw): CAN_TDL0R
-0x40006598 C   FIELD 00w08 DATA0: DATA0
-0x40006598 C   FIELD 08w08 DATA1: DATA1
-0x40006598 C   FIELD 16w08 DATA2: DATA2
-0x40006598 C   FIELD 24w08 DATA3: DATA3
+0x40006598 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006598 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006598 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006598 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000659C B  REGISTER TDHR1 (rw): CAN_TDH0R
-0x4000659C C   FIELD 00w08 DATA4: DATA4
-0x4000659C C   FIELD 08w08 DATA5: DATA5
-0x4000659C C   FIELD 16w08 DATA6: DATA6
-0x4000659C C   FIELD 24w08 DATA7: DATA7
+0x4000659C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000659C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000659C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000659C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400065A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400065A0 B  REGISTER TIR2 (rw): CAN_TI0R
 0x400065A0 C   FIELD 00w01 TXRQ: TXRQ
@@ -1393,15 +1393,15 @@
 0x400065A4 C   FIELD 08w01 TGT: TGT
 0x400065A4 C   FIELD 16w16 TIME: TIME
 0x400065A8 B  REGISTER TDLR2 (rw): CAN_TDL0R
-0x400065A8 C   FIELD 00w08 DATA0: DATA0
-0x400065A8 C   FIELD 08w08 DATA1: DATA1
-0x400065A8 C   FIELD 16w08 DATA2: DATA2
-0x400065A8 C   FIELD 24w08 DATA3: DATA3
+0x400065A8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400065A8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400065A8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400065A8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400065AC B  REGISTER TDHR2 (rw): CAN_TDH0R
-0x400065AC C   FIELD 00w08 DATA4: DATA4
-0x400065AC C   FIELD 08w08 DATA5: DATA5
-0x400065AC C   FIELD 16w08 DATA6: DATA6
-0x400065AC C   FIELD 24w08 DATA7: DATA7
+0x400065AC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400065AC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400065AC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400065AC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400065B0 B  CLUSTER RX0: CAN Receive cluster
 0x400065B0 B  REGISTER RIR0 (ro): CAN_RI0R
 0x400065B0 C   FIELD 01w01 RTR: RTR
@@ -1413,15 +1413,15 @@
 0x400065B4 C   FIELD 08w08 FMI: FMI
 0x400065B4 C   FIELD 16w16 TIME: TIME
 0x400065B8 B  REGISTER RDLR0 (ro): CAN_RDL0R
-0x400065B8 C   FIELD 00w08 DATA0: DATA0
-0x400065B8 C   FIELD 08w08 DATA1: DATA1
-0x400065B8 C   FIELD 16w08 DATA2: DATA2
-0x400065B8 C   FIELD 24w08 DATA3: DATA3
+0x400065B8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400065B8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400065B8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400065B8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400065BC B  REGISTER RDHR0 (ro): CAN_RDH0R
-0x400065BC C   FIELD 00w08 DATA4: DATA4
-0x400065BC C   FIELD 08w08 DATA5: DATA5
-0x400065BC C   FIELD 16w08 DATA6: DATA6
-0x400065BC C   FIELD 24w08 DATA7: DATA7
+0x400065BC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400065BC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400065BC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400065BC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400065C0 B  CLUSTER RX1: CAN Receive cluster
 0x400065C0 B  REGISTER RIR1 (ro): CAN_RI0R
 0x400065C0 C   FIELD 01w01 RTR: RTR
@@ -1433,15 +1433,15 @@
 0x400065C4 C   FIELD 08w08 FMI: FMI
 0x400065C4 C   FIELD 16w16 TIME: TIME
 0x400065C8 B  REGISTER RDLR1 (ro): CAN_RDL0R
-0x400065C8 C   FIELD 00w08 DATA0: DATA0
-0x400065C8 C   FIELD 08w08 DATA1: DATA1
-0x400065C8 C   FIELD 16w08 DATA2: DATA2
-0x400065C8 C   FIELD 24w08 DATA3: DATA3
+0x400065C8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400065C8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400065C8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400065C8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400065CC B  REGISTER RDHR1 (ro): CAN_RDH0R
-0x400065CC C   FIELD 00w08 DATA4: DATA4
-0x400065CC C   FIELD 08w08 DATA5: DATA5
-0x400065CC C   FIELD 16w08 DATA6: DATA6
-0x400065CC C   FIELD 24w08 DATA7: DATA7
+0x400065CC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400065CC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400065CC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400065CC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006600 B  REGISTER FMR (rw): CAN_FMR
 0x40006600 C   FIELD 00w01 FINIT: FINIT
 0x40006600 C   FIELD 08w06 CAN2SB: CAN2SB
@@ -1562,144 +1562,144 @@
 0x4000661C C   FIELD 26w01 FACT26: Filter active
 0x4000661C C   FIELD 27w01 FACT27: Filter active
 0x40006640 B  CLUSTER FB0: CAN Filter Bank cluster
-0x40006640 B  REGISTER FR10 (rw): Filter bank 0 register 1
+0x40006640 B  REGISTER FR10 (rw): Filter bank x register 1
 0x40006640 C   FIELD 00w32 FB: Filter bits
-0x40006644 B  REGISTER FR20 (rw): Filter bank 0 register 2
+0x40006644 B  REGISTER FR20 (rw): Filter bank x register 2
 0x40006644 C   FIELD 00w32 FB: Filter bits
 0x40006648 B  CLUSTER FB1: CAN Filter Bank cluster
-0x40006648 B  REGISTER FR11 (rw): Filter bank 0 register 1
+0x40006648 B  REGISTER FR11 (rw): Filter bank x register 1
 0x40006648 C   FIELD 00w32 FB: Filter bits
-0x4000664C B  REGISTER FR21 (rw): Filter bank 0 register 2
+0x4000664C B  REGISTER FR21 (rw): Filter bank x register 2
 0x4000664C C   FIELD 00w32 FB: Filter bits
 0x40006650 B  CLUSTER FB2: CAN Filter Bank cluster
-0x40006650 B  REGISTER FR12 (rw): Filter bank 0 register 1
+0x40006650 B  REGISTER FR12 (rw): Filter bank x register 1
 0x40006650 C   FIELD 00w32 FB: Filter bits
-0x40006654 B  REGISTER FR22 (rw): Filter bank 0 register 2
+0x40006654 B  REGISTER FR22 (rw): Filter bank x register 2
 0x40006654 C   FIELD 00w32 FB: Filter bits
 0x40006658 B  CLUSTER FB3: CAN Filter Bank cluster
-0x40006658 B  REGISTER FR13 (rw): Filter bank 0 register 1
+0x40006658 B  REGISTER FR13 (rw): Filter bank x register 1
 0x40006658 C   FIELD 00w32 FB: Filter bits
-0x4000665C B  REGISTER FR23 (rw): Filter bank 0 register 2
+0x4000665C B  REGISTER FR23 (rw): Filter bank x register 2
 0x4000665C C   FIELD 00w32 FB: Filter bits
 0x40006660 B  CLUSTER FB4: CAN Filter Bank cluster
-0x40006660 B  REGISTER FR14 (rw): Filter bank 0 register 1
+0x40006660 B  REGISTER FR14 (rw): Filter bank x register 1
 0x40006660 C   FIELD 00w32 FB: Filter bits
-0x40006664 B  REGISTER FR24 (rw): Filter bank 0 register 2
+0x40006664 B  REGISTER FR24 (rw): Filter bank x register 2
 0x40006664 C   FIELD 00w32 FB: Filter bits
 0x40006668 B  CLUSTER FB5: CAN Filter Bank cluster
-0x40006668 B  REGISTER FR15 (rw): Filter bank 0 register 1
+0x40006668 B  REGISTER FR15 (rw): Filter bank x register 1
 0x40006668 C   FIELD 00w32 FB: Filter bits
-0x4000666C B  REGISTER FR25 (rw): Filter bank 0 register 2
+0x4000666C B  REGISTER FR25 (rw): Filter bank x register 2
 0x4000666C C   FIELD 00w32 FB: Filter bits
 0x40006670 B  CLUSTER FB6: CAN Filter Bank cluster
-0x40006670 B  REGISTER FR16 (rw): Filter bank 0 register 1
+0x40006670 B  REGISTER FR16 (rw): Filter bank x register 1
 0x40006670 C   FIELD 00w32 FB: Filter bits
-0x40006674 B  REGISTER FR26 (rw): Filter bank 0 register 2
+0x40006674 B  REGISTER FR26 (rw): Filter bank x register 2
 0x40006674 C   FIELD 00w32 FB: Filter bits
 0x40006678 B  CLUSTER FB7: CAN Filter Bank cluster
-0x40006678 B  REGISTER FR17 (rw): Filter bank 0 register 1
+0x40006678 B  REGISTER FR17 (rw): Filter bank x register 1
 0x40006678 C   FIELD 00w32 FB: Filter bits
-0x4000667C B  REGISTER FR27 (rw): Filter bank 0 register 2
+0x4000667C B  REGISTER FR27 (rw): Filter bank x register 2
 0x4000667C C   FIELD 00w32 FB: Filter bits
 0x40006680 B  CLUSTER FB8: CAN Filter Bank cluster
-0x40006680 B  REGISTER FR18 (rw): Filter bank 0 register 1
+0x40006680 B  REGISTER FR18 (rw): Filter bank x register 1
 0x40006680 C   FIELD 00w32 FB: Filter bits
-0x40006684 B  REGISTER FR28 (rw): Filter bank 0 register 2
+0x40006684 B  REGISTER FR28 (rw): Filter bank x register 2
 0x40006684 C   FIELD 00w32 FB: Filter bits
 0x40006688 B  CLUSTER FB9: CAN Filter Bank cluster
-0x40006688 B  REGISTER FR19 (rw): Filter bank 0 register 1
+0x40006688 B  REGISTER FR19 (rw): Filter bank x register 1
 0x40006688 C   FIELD 00w32 FB: Filter bits
-0x4000668C B  REGISTER FR29 (rw): Filter bank 0 register 2
+0x4000668C B  REGISTER FR29 (rw): Filter bank x register 2
 0x4000668C C   FIELD 00w32 FB: Filter bits
 0x40006690 B  CLUSTER FB10: CAN Filter Bank cluster
-0x40006690 B  REGISTER FR110 (rw): Filter bank 0 register 1
+0x40006690 B  REGISTER FR110 (rw): Filter bank x register 1
 0x40006690 C   FIELD 00w32 FB: Filter bits
-0x40006694 B  REGISTER FR210 (rw): Filter bank 0 register 2
+0x40006694 B  REGISTER FR210 (rw): Filter bank x register 2
 0x40006694 C   FIELD 00w32 FB: Filter bits
 0x40006698 B  CLUSTER FB11: CAN Filter Bank cluster
-0x40006698 B  REGISTER FR111 (rw): Filter bank 0 register 1
+0x40006698 B  REGISTER FR111 (rw): Filter bank x register 1
 0x40006698 C   FIELD 00w32 FB: Filter bits
-0x4000669C B  REGISTER FR211 (rw): Filter bank 0 register 2
+0x4000669C B  REGISTER FR211 (rw): Filter bank x register 2
 0x4000669C C   FIELD 00w32 FB: Filter bits
 0x400066A0 B  CLUSTER FB12: CAN Filter Bank cluster
-0x400066A0 B  REGISTER FR112 (rw): Filter bank 0 register 1
+0x400066A0 B  REGISTER FR112 (rw): Filter bank x register 1
 0x400066A0 C   FIELD 00w32 FB: Filter bits
-0x400066A4 B  REGISTER FR212 (rw): Filter bank 0 register 2
+0x400066A4 B  REGISTER FR212 (rw): Filter bank x register 2
 0x400066A4 C   FIELD 00w32 FB: Filter bits
 0x400066A8 B  CLUSTER FB13: CAN Filter Bank cluster
-0x400066A8 B  REGISTER FR113 (rw): Filter bank 0 register 1
+0x400066A8 B  REGISTER FR113 (rw): Filter bank x register 1
 0x400066A8 C   FIELD 00w32 FB: Filter bits
-0x400066AC B  REGISTER FR213 (rw): Filter bank 0 register 2
+0x400066AC B  REGISTER FR213 (rw): Filter bank x register 2
 0x400066AC C   FIELD 00w32 FB: Filter bits
 0x400066B0 B  CLUSTER FB14: CAN Filter Bank cluster
-0x400066B0 B  REGISTER FR114 (rw): Filter bank 0 register 1
+0x400066B0 B  REGISTER FR114 (rw): Filter bank x register 1
 0x400066B0 C   FIELD 00w32 FB: Filter bits
-0x400066B4 B  REGISTER FR214 (rw): Filter bank 0 register 2
+0x400066B4 B  REGISTER FR214 (rw): Filter bank x register 2
 0x400066B4 C   FIELD 00w32 FB: Filter bits
 0x400066B8 B  CLUSTER FB15: CAN Filter Bank cluster
-0x400066B8 B  REGISTER FR115 (rw): Filter bank 0 register 1
+0x400066B8 B  REGISTER FR115 (rw): Filter bank x register 1
 0x400066B8 C   FIELD 00w32 FB: Filter bits
-0x400066BC B  REGISTER FR215 (rw): Filter bank 0 register 2
+0x400066BC B  REGISTER FR215 (rw): Filter bank x register 2
 0x400066BC C   FIELD 00w32 FB: Filter bits
 0x400066C0 B  CLUSTER FB16: CAN Filter Bank cluster
-0x400066C0 B  REGISTER FR116 (rw): Filter bank 0 register 1
+0x400066C0 B  REGISTER FR116 (rw): Filter bank x register 1
 0x400066C0 C   FIELD 00w32 FB: Filter bits
-0x400066C4 B  REGISTER FR216 (rw): Filter bank 0 register 2
+0x400066C4 B  REGISTER FR216 (rw): Filter bank x register 2
 0x400066C4 C   FIELD 00w32 FB: Filter bits
 0x400066C8 B  CLUSTER FB17: CAN Filter Bank cluster
-0x400066C8 B  REGISTER FR117 (rw): Filter bank 0 register 1
+0x400066C8 B  REGISTER FR117 (rw): Filter bank x register 1
 0x400066C8 C   FIELD 00w32 FB: Filter bits
-0x400066CC B  REGISTER FR217 (rw): Filter bank 0 register 2
+0x400066CC B  REGISTER FR217 (rw): Filter bank x register 2
 0x400066CC C   FIELD 00w32 FB: Filter bits
 0x400066D0 B  CLUSTER FB18: CAN Filter Bank cluster
-0x400066D0 B  REGISTER FR118 (rw): Filter bank 0 register 1
+0x400066D0 B  REGISTER FR118 (rw): Filter bank x register 1
 0x400066D0 C   FIELD 00w32 FB: Filter bits
-0x400066D4 B  REGISTER FR218 (rw): Filter bank 0 register 2
+0x400066D4 B  REGISTER FR218 (rw): Filter bank x register 2
 0x400066D4 C   FIELD 00w32 FB: Filter bits
 0x400066D8 B  CLUSTER FB19: CAN Filter Bank cluster
-0x400066D8 B  REGISTER FR119 (rw): Filter bank 0 register 1
+0x400066D8 B  REGISTER FR119 (rw): Filter bank x register 1
 0x400066D8 C   FIELD 00w32 FB: Filter bits
-0x400066DC B  REGISTER FR219 (rw): Filter bank 0 register 2
+0x400066DC B  REGISTER FR219 (rw): Filter bank x register 2
 0x400066DC C   FIELD 00w32 FB: Filter bits
 0x400066E0 B  CLUSTER FB20: CAN Filter Bank cluster
-0x400066E0 B  REGISTER FR120 (rw): Filter bank 0 register 1
+0x400066E0 B  REGISTER FR120 (rw): Filter bank x register 1
 0x400066E0 C   FIELD 00w32 FB: Filter bits
-0x400066E4 B  REGISTER FR220 (rw): Filter bank 0 register 2
+0x400066E4 B  REGISTER FR220 (rw): Filter bank x register 2
 0x400066E4 C   FIELD 00w32 FB: Filter bits
 0x400066E8 B  CLUSTER FB21: CAN Filter Bank cluster
-0x400066E8 B  REGISTER FR121 (rw): Filter bank 0 register 1
+0x400066E8 B  REGISTER FR121 (rw): Filter bank x register 1
 0x400066E8 C   FIELD 00w32 FB: Filter bits
-0x400066EC B  REGISTER FR221 (rw): Filter bank 0 register 2
+0x400066EC B  REGISTER FR221 (rw): Filter bank x register 2
 0x400066EC C   FIELD 00w32 FB: Filter bits
 0x400066F0 B  CLUSTER FB22: CAN Filter Bank cluster
-0x400066F0 B  REGISTER FR122 (rw): Filter bank 0 register 1
+0x400066F0 B  REGISTER FR122 (rw): Filter bank x register 1
 0x400066F0 C   FIELD 00w32 FB: Filter bits
-0x400066F4 B  REGISTER FR222 (rw): Filter bank 0 register 2
+0x400066F4 B  REGISTER FR222 (rw): Filter bank x register 2
 0x400066F4 C   FIELD 00w32 FB: Filter bits
 0x400066F8 B  CLUSTER FB23: CAN Filter Bank cluster
-0x400066F8 B  REGISTER FR123 (rw): Filter bank 0 register 1
+0x400066F8 B  REGISTER FR123 (rw): Filter bank x register 1
 0x400066F8 C   FIELD 00w32 FB: Filter bits
-0x400066FC B  REGISTER FR223 (rw): Filter bank 0 register 2
+0x400066FC B  REGISTER FR223 (rw): Filter bank x register 2
 0x400066FC C   FIELD 00w32 FB: Filter bits
 0x40006700 B  CLUSTER FB24: CAN Filter Bank cluster
-0x40006700 B  REGISTER FR124 (rw): Filter bank 0 register 1
+0x40006700 B  REGISTER FR124 (rw): Filter bank x register 1
 0x40006700 C   FIELD 00w32 FB: Filter bits
-0x40006704 B  REGISTER FR224 (rw): Filter bank 0 register 2
+0x40006704 B  REGISTER FR224 (rw): Filter bank x register 2
 0x40006704 C   FIELD 00w32 FB: Filter bits
 0x40006708 B  CLUSTER FB25: CAN Filter Bank cluster
-0x40006708 B  REGISTER FR125 (rw): Filter bank 0 register 1
+0x40006708 B  REGISTER FR125 (rw): Filter bank x register 1
 0x40006708 C   FIELD 00w32 FB: Filter bits
-0x4000670C B  REGISTER FR225 (rw): Filter bank 0 register 2
+0x4000670C B  REGISTER FR225 (rw): Filter bank x register 2
 0x4000670C C   FIELD 00w32 FB: Filter bits
 0x40006710 B  CLUSTER FB26: CAN Filter Bank cluster
-0x40006710 B  REGISTER FR126 (rw): Filter bank 0 register 1
+0x40006710 B  REGISTER FR126 (rw): Filter bank x register 1
 0x40006710 C   FIELD 00w32 FB: Filter bits
-0x40006714 B  REGISTER FR226 (rw): Filter bank 0 register 2
+0x40006714 B  REGISTER FR226 (rw): Filter bank x register 2
 0x40006714 C   FIELD 00w32 FB: Filter bits
 0x40006718 B  CLUSTER FB27: CAN Filter Bank cluster
-0x40006718 B  REGISTER FR127 (rw): Filter bank 0 register 1
+0x40006718 B  REGISTER FR127 (rw): Filter bank x register 1
 0x40006718 C   FIELD 00w32 FB: Filter bits
-0x4000671C B  REGISTER FR227 (rw): Filter bank 0 register 2
+0x4000671C B  REGISTER FR227 (rw): Filter bank x register 2
 0x4000671C C   FIELD 00w32 FB: Filter bits
 0x40006800 A PERIPHERAL CAN2
 0x40006800 B  REGISTER MCR (rw): CAN_MCR
@@ -1797,15 +1797,15 @@
 0x40006984 C   FIELD 08w01 TGT: TGT
 0x40006984 C   FIELD 16w16 TIME: TIME
 0x40006988 B  REGISTER TDLR0 (rw): CAN_TDL0R
-0x40006988 C   FIELD 00w08 DATA0: DATA0
-0x40006988 C   FIELD 08w08 DATA1: DATA1
-0x40006988 C   FIELD 16w08 DATA2: DATA2
-0x40006988 C   FIELD 24w08 DATA3: DATA3
+0x40006988 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006988 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006988 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006988 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000698C B  REGISTER TDHR0 (rw): CAN_TDH0R
-0x4000698C C   FIELD 00w08 DATA4: DATA4
-0x4000698C C   FIELD 08w08 DATA5: DATA5
-0x4000698C C   FIELD 16w08 DATA6: DATA6
-0x4000698C C   FIELD 24w08 DATA7: DATA7
+0x4000698C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000698C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000698C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000698C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006990 B  CLUSTER TX1: CAN Transmit cluster
 0x40006990 B  REGISTER TIR1 (rw): CAN_TI0R
 0x40006990 C   FIELD 00w01 TXRQ: TXRQ
@@ -1818,15 +1818,15 @@
 0x40006994 C   FIELD 08w01 TGT: TGT
 0x40006994 C   FIELD 16w16 TIME: TIME
 0x40006998 B  REGISTER TDLR1 (rw): CAN_TDL0R
-0x40006998 C   FIELD 00w08 DATA0: DATA0
-0x40006998 C   FIELD 08w08 DATA1: DATA1
-0x40006998 C   FIELD 16w08 DATA2: DATA2
-0x40006998 C   FIELD 24w08 DATA3: DATA3
+0x40006998 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006998 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006998 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006998 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000699C B  REGISTER TDHR1 (rw): CAN_TDH0R
-0x4000699C C   FIELD 00w08 DATA4: DATA4
-0x4000699C C   FIELD 08w08 DATA5: DATA5
-0x4000699C C   FIELD 16w08 DATA6: DATA6
-0x4000699C C   FIELD 24w08 DATA7: DATA7
+0x4000699C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000699C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000699C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000699C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400069A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400069A0 B  REGISTER TIR2 (rw): CAN_TI0R
 0x400069A0 C   FIELD 00w01 TXRQ: TXRQ
@@ -1839,15 +1839,15 @@
 0x400069A4 C   FIELD 08w01 TGT: TGT
 0x400069A4 C   FIELD 16w16 TIME: TIME
 0x400069A8 B  REGISTER TDLR2 (rw): CAN_TDL0R
-0x400069A8 C   FIELD 00w08 DATA0: DATA0
-0x400069A8 C   FIELD 08w08 DATA1: DATA1
-0x400069A8 C   FIELD 16w08 DATA2: DATA2
-0x400069A8 C   FIELD 24w08 DATA3: DATA3
+0x400069A8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400069A8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400069A8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400069A8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400069AC B  REGISTER TDHR2 (rw): CAN_TDH0R
-0x400069AC C   FIELD 00w08 DATA4: DATA4
-0x400069AC C   FIELD 08w08 DATA5: DATA5
-0x400069AC C   FIELD 16w08 DATA6: DATA6
-0x400069AC C   FIELD 24w08 DATA7: DATA7
+0x400069AC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400069AC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400069AC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400069AC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400069B0 B  CLUSTER RX0: CAN Receive cluster
 0x400069B0 B  REGISTER RIR0 (ro): CAN_RI0R
 0x400069B0 C   FIELD 01w01 RTR: RTR
@@ -1859,15 +1859,15 @@
 0x400069B4 C   FIELD 08w08 FMI: FMI
 0x400069B4 C   FIELD 16w16 TIME: TIME
 0x400069B8 B  REGISTER RDLR0 (ro): CAN_RDL0R
-0x400069B8 C   FIELD 00w08 DATA0: DATA0
-0x400069B8 C   FIELD 08w08 DATA1: DATA1
-0x400069B8 C   FIELD 16w08 DATA2: DATA2
-0x400069B8 C   FIELD 24w08 DATA3: DATA3
+0x400069B8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400069B8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400069B8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400069B8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400069BC B  REGISTER RDHR0 (ro): CAN_RDH0R
-0x400069BC C   FIELD 00w08 DATA4: DATA4
-0x400069BC C   FIELD 08w08 DATA5: DATA5
-0x400069BC C   FIELD 16w08 DATA6: DATA6
-0x400069BC C   FIELD 24w08 DATA7: DATA7
+0x400069BC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400069BC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400069BC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400069BC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400069C0 B  CLUSTER RX1: CAN Receive cluster
 0x400069C0 B  REGISTER RIR1 (ro): CAN_RI0R
 0x400069C0 C   FIELD 01w01 RTR: RTR
@@ -1879,15 +1879,15 @@
 0x400069C4 C   FIELD 08w08 FMI: FMI
 0x400069C4 C   FIELD 16w16 TIME: TIME
 0x400069C8 B  REGISTER RDLR1 (ro): CAN_RDL0R
-0x400069C8 C   FIELD 00w08 DATA0: DATA0
-0x400069C8 C   FIELD 08w08 DATA1: DATA1
-0x400069C8 C   FIELD 16w08 DATA2: DATA2
-0x400069C8 C   FIELD 24w08 DATA3: DATA3
+0x400069C8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400069C8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400069C8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400069C8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400069CC B  REGISTER RDHR1 (ro): CAN_RDH0R
-0x400069CC C   FIELD 00w08 DATA4: DATA4
-0x400069CC C   FIELD 08w08 DATA5: DATA5
-0x400069CC C   FIELD 16w08 DATA6: DATA6
-0x400069CC C   FIELD 24w08 DATA7: DATA7
+0x400069CC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400069CC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400069CC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400069CC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006C04 A PERIPHERAL BKP
 0x40006C04 B  REGISTER DR1 (rw): Backup data register (BKP_DR)
 0x40006C04 C   FIELD 00w16 D: Backup data
@@ -2296,7 +2296,7 @@
 0x40010810 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40010810 C   FIELD 00w01 BS0: Set bit 0
 0x40010810 C   FIELD 01w01 BS1: Set bit 1
-0x40010810 C   FIELD 02w01 BS2: Set bit 1
+0x40010810 C   FIELD 02w01 BS2: Set bit 2
 0x40010810 C   FIELD 03w01 BS3: Set bit 3
 0x40010810 C   FIELD 04w01 BS4: Set bit 4
 0x40010810 C   FIELD 05w01 BS5: Set bit 5
@@ -2329,7 +2329,7 @@
 0x40010814 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40010814 C   FIELD 00w01 BR0: Reset bit 0
 0x40010814 C   FIELD 01w01 BR1: Reset bit 1
-0x40010814 C   FIELD 02w01 BR2: Reset bit 1
+0x40010814 C   FIELD 02w01 BR2: Reset bit 2
 0x40010814 C   FIELD 03w01 BR3: Reset bit 3
 0x40010814 C   FIELD 04w01 BR4: Reset bit 4
 0x40010814 C   FIELD 05w01 BR5: Reset bit 5
@@ -2433,7 +2433,7 @@
 0x40010C10 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40010C10 C   FIELD 00w01 BS0: Set bit 0
 0x40010C10 C   FIELD 01w01 BS1: Set bit 1
-0x40010C10 C   FIELD 02w01 BS2: Set bit 1
+0x40010C10 C   FIELD 02w01 BS2: Set bit 2
 0x40010C10 C   FIELD 03w01 BS3: Set bit 3
 0x40010C10 C   FIELD 04w01 BS4: Set bit 4
 0x40010C10 C   FIELD 05w01 BS5: Set bit 5
@@ -2466,7 +2466,7 @@
 0x40010C14 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40010C14 C   FIELD 00w01 BR0: Reset bit 0
 0x40010C14 C   FIELD 01w01 BR1: Reset bit 1
-0x40010C14 C   FIELD 02w01 BR2: Reset bit 1
+0x40010C14 C   FIELD 02w01 BR2: Reset bit 2
 0x40010C14 C   FIELD 03w01 BR3: Reset bit 3
 0x40010C14 C   FIELD 04w01 BR4: Reset bit 4
 0x40010C14 C   FIELD 05w01 BR5: Reset bit 5
@@ -2570,7 +2570,7 @@
 0x40011010 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40011010 C   FIELD 00w01 BS0: Set bit 0
 0x40011010 C   FIELD 01w01 BS1: Set bit 1
-0x40011010 C   FIELD 02w01 BS2: Set bit 1
+0x40011010 C   FIELD 02w01 BS2: Set bit 2
 0x40011010 C   FIELD 03w01 BS3: Set bit 3
 0x40011010 C   FIELD 04w01 BS4: Set bit 4
 0x40011010 C   FIELD 05w01 BS5: Set bit 5
@@ -2603,7 +2603,7 @@
 0x40011014 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40011014 C   FIELD 00w01 BR0: Reset bit 0
 0x40011014 C   FIELD 01w01 BR1: Reset bit 1
-0x40011014 C   FIELD 02w01 BR2: Reset bit 1
+0x40011014 C   FIELD 02w01 BR2: Reset bit 2
 0x40011014 C   FIELD 03w01 BR3: Reset bit 3
 0x40011014 C   FIELD 04w01 BR4: Reset bit 4
 0x40011014 C   FIELD 05w01 BR5: Reset bit 5
@@ -2707,7 +2707,7 @@
 0x40011410 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40011410 C   FIELD 00w01 BS0: Set bit 0
 0x40011410 C   FIELD 01w01 BS1: Set bit 1
-0x40011410 C   FIELD 02w01 BS2: Set bit 1
+0x40011410 C   FIELD 02w01 BS2: Set bit 2
 0x40011410 C   FIELD 03w01 BS3: Set bit 3
 0x40011410 C   FIELD 04w01 BS4: Set bit 4
 0x40011410 C   FIELD 05w01 BS5: Set bit 5
@@ -2740,7 +2740,7 @@
 0x40011414 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40011414 C   FIELD 00w01 BR0: Reset bit 0
 0x40011414 C   FIELD 01w01 BR1: Reset bit 1
-0x40011414 C   FIELD 02w01 BR2: Reset bit 1
+0x40011414 C   FIELD 02w01 BR2: Reset bit 2
 0x40011414 C   FIELD 03w01 BR3: Reset bit 3
 0x40011414 C   FIELD 04w01 BR4: Reset bit 4
 0x40011414 C   FIELD 05w01 BR5: Reset bit 5
@@ -2844,7 +2844,7 @@
 0x40011810 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40011810 C   FIELD 00w01 BS0: Set bit 0
 0x40011810 C   FIELD 01w01 BS1: Set bit 1
-0x40011810 C   FIELD 02w01 BS2: Set bit 1
+0x40011810 C   FIELD 02w01 BS2: Set bit 2
 0x40011810 C   FIELD 03w01 BS3: Set bit 3
 0x40011810 C   FIELD 04w01 BS4: Set bit 4
 0x40011810 C   FIELD 05w01 BS5: Set bit 5
@@ -2877,7 +2877,7 @@
 0x40011814 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40011814 C   FIELD 00w01 BR0: Reset bit 0
 0x40011814 C   FIELD 01w01 BR1: Reset bit 1
-0x40011814 C   FIELD 02w01 BR2: Reset bit 1
+0x40011814 C   FIELD 02w01 BR2: Reset bit 2
 0x40011814 C   FIELD 03w01 BR3: Reset bit 3
 0x40011814 C   FIELD 04w01 BR4: Reset bit 4
 0x40011814 C   FIELD 05w01 BR5: Reset bit 5
@@ -2981,7 +2981,7 @@
 0x40011C10 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40011C10 C   FIELD 00w01 BS0: Set bit 0
 0x40011C10 C   FIELD 01w01 BS1: Set bit 1
-0x40011C10 C   FIELD 02w01 BS2: Set bit 1
+0x40011C10 C   FIELD 02w01 BS2: Set bit 2
 0x40011C10 C   FIELD 03w01 BS3: Set bit 3
 0x40011C10 C   FIELD 04w01 BS4: Set bit 4
 0x40011C10 C   FIELD 05w01 BS5: Set bit 5
@@ -3014,7 +3014,7 @@
 0x40011C14 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40011C14 C   FIELD 00w01 BR0: Reset bit 0
 0x40011C14 C   FIELD 01w01 BR1: Reset bit 1
-0x40011C14 C   FIELD 02w01 BR2: Reset bit 1
+0x40011C14 C   FIELD 02w01 BR2: Reset bit 2
 0x40011C14 C   FIELD 03w01 BR3: Reset bit 3
 0x40011C14 C   FIELD 04w01 BR4: Reset bit 4
 0x40011C14 C   FIELD 05w01 BR5: Reset bit 5
@@ -3118,7 +3118,7 @@
 0x40012010 B  REGISTER BSRR (wo): Port bit set/reset register (GPIOn_BSRR)
 0x40012010 C   FIELD 00w01 BS0: Set bit 0
 0x40012010 C   FIELD 01w01 BS1: Set bit 1
-0x40012010 C   FIELD 02w01 BS2: Set bit 1
+0x40012010 C   FIELD 02w01 BS2: Set bit 2
 0x40012010 C   FIELD 03w01 BS3: Set bit 3
 0x40012010 C   FIELD 04w01 BS4: Set bit 4
 0x40012010 C   FIELD 05w01 BS5: Set bit 5
@@ -3151,7 +3151,7 @@
 0x40012014 B  REGISTER BRR (wo): Port bit reset register (GPIOn_BRR)
 0x40012014 C   FIELD 00w01 BR0: Reset bit 0
 0x40012014 C   FIELD 01w01 BR1: Reset bit 1
-0x40012014 C   FIELD 02w01 BR2: Reset bit 1
+0x40012014 C   FIELD 02w01 BR2: Reset bit 2
 0x40012014 C   FIELD 03w01 BR3: Reset bit 3
 0x40012014 C   FIELD 04w01 BR4: Reset bit 4
 0x40012014 C   FIELD 05w01 BR5: Reset bit 5
@@ -3219,62 +3219,62 @@
 0x40012408 C   FIELD 22w01 SWSTART: Start conversion of regular channels
 0x40012408 C   FIELD 23w01 TSVREFE: Temperature sensor and VREFINT enable
 0x4001240C B  REGISTER SMPR1 (rw): sample time register 1
-0x4001240C C   FIELD 00w03 SMP10: Channel 10 sampling time selection
-0x4001240C C   FIELD 03w03 SMP11: Channel 11 sampling time selection
-0x4001240C C   FIELD 06w03 SMP12: Channel 12 sampling time selection
-0x4001240C C   FIELD 09w03 SMP13: Channel 13 sampling time selection
-0x4001240C C   FIELD 12w03 SMP14: Channel 14 sampling time selection
-0x4001240C C   FIELD 15w03 SMP15: Channel 15 sampling time selection
-0x4001240C C   FIELD 18w03 SMP16: Channel 16 sampling time selection
-0x4001240C C   FIELD 21w03 SMP17: Channel 17 sampling time selection
+0x4001240C C   FIELD 00w03 SMP10: Channel 10 sample time selection
+0x4001240C C   FIELD 03w03 SMP11: Channel 11 sample time selection
+0x4001240C C   FIELD 06w03 SMP12: Channel 12 sample time selection
+0x4001240C C   FIELD 09w03 SMP13: Channel 13 sample time selection
+0x4001240C C   FIELD 12w03 SMP14: Channel 14 sample time selection
+0x4001240C C   FIELD 15w03 SMP15: Channel 15 sample time selection
+0x4001240C C   FIELD 18w03 SMP16: Channel 16 sample time selection
+0x4001240C C   FIELD 21w03 SMP17: Channel 17 sample time selection
 0x40012410 B  REGISTER SMPR2 (rw): sample time register 2
-0x40012410 C   FIELD 00w03 SMP0: Channel 0 sampling time selection
-0x40012410 C   FIELD 03w03 SMP1: Channel 1 sampling time selection
-0x40012410 C   FIELD 06w03 SMP2: Channel 2 sampling time selection
-0x40012410 C   FIELD 09w03 SMP3: Channel 3 sampling time selection
-0x40012410 C   FIELD 12w03 SMP4: Channel 4 sampling time selection
-0x40012410 C   FIELD 15w03 SMP5: Channel 5 sampling time selection
-0x40012410 C   FIELD 18w03 SMP6: Channel 6 sampling time selection
-0x40012410 C   FIELD 21w03 SMP7: Channel 7 sampling time selection
-0x40012410 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
-0x40012410 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
+0x40012410 C   FIELD 00w03 SMP0: Channel 0 sample time selection
+0x40012410 C   FIELD 03w03 SMP1: Channel 1 sample time selection
+0x40012410 C   FIELD 06w03 SMP2: Channel 2 sample time selection
+0x40012410 C   FIELD 09w03 SMP3: Channel 3 sample time selection
+0x40012410 C   FIELD 12w03 SMP4: Channel 4 sample time selection
+0x40012410 C   FIELD 15w03 SMP5: Channel 5 sample time selection
+0x40012410 C   FIELD 18w03 SMP6: Channel 6 sample time selection
+0x40012410 C   FIELD 21w03 SMP7: Channel 7 sample time selection
+0x40012410 C   FIELD 24w03 SMP8: Channel 8 sample time selection
+0x40012410 C   FIELD 27w03 SMP9: Channel 9 sample time selection
 0x40012414 B  REGISTER JOFR1 (rw): injected channel data offset register x
-0x40012414 C   FIELD 00w12 JOFFSET1: Data offset for injected channel x
+0x40012414 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012418 B  REGISTER JOFR2 (rw): injected channel data offset register x
-0x40012418 C   FIELD 00w12 JOFFSET2: Data offset for injected channel x
+0x40012418 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x4001241C B  REGISTER JOFR3 (rw): injected channel data offset register x
-0x4001241C C   FIELD 00w12 JOFFSET3: Data offset for injected channel x
+0x4001241C C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012420 B  REGISTER JOFR4 (rw): injected channel data offset register x
-0x40012420 C   FIELD 00w12 JOFFSET4: Data offset for injected channel x
+0x40012420 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012424 B  REGISTER HTR (rw): watchdog higher threshold register
 0x40012424 C   FIELD 00w12 HT: Analog watchdog higher threshold
 0x40012428 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40012428 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x4001242C B  REGISTER SQR1 (rw): regular sequence register 1
-0x4001242C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x4001242C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x4001242C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x4001242C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x4001242C C   FIELD 00w05 SQ13: 13 conversion in regular sequence
+0x4001242C C   FIELD 05w05 SQ14: 14 conversion in regular sequence
+0x4001242C C   FIELD 10w05 SQ15: 15 conversion in regular sequence
+0x4001242C C   FIELD 15w05 SQ16: 16 conversion in regular sequence
 0x4001242C C   FIELD 20w04 L: Regular channel sequence length
 0x40012430 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40012430 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40012430 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40012430 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40012430 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40012430 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40012430 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40012430 C   FIELD 00w05 SQ7: 7 conversion in regular sequence
+0x40012430 C   FIELD 05w05 SQ8: 8 conversion in regular sequence
+0x40012430 C   FIELD 10w05 SQ9: 9 conversion in regular sequence
+0x40012430 C   FIELD 15w05 SQ10: 10 conversion in regular sequence
+0x40012430 C   FIELD 20w05 SQ11: 11 conversion in regular sequence
+0x40012430 C   FIELD 25w05 SQ12: 12 conversion in regular sequence
 0x40012434 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40012434 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40012434 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40012434 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40012434 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40012434 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40012434 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40012434 C   FIELD 00w05 SQ1: 1 conversion in regular sequence
+0x40012434 C   FIELD 05w05 SQ2: 2 conversion in regular sequence
+0x40012434 C   FIELD 10w05 SQ3: 3 conversion in regular sequence
+0x40012434 C   FIELD 15w05 SQ4: 4 conversion in regular sequence
+0x40012434 C   FIELD 20w05 SQ5: 5 conversion in regular sequence
+0x40012434 C   FIELD 25w05 SQ6: 6 conversion in regular sequence
 0x40012438 B  REGISTER JSQR (rw): injected sequence register
-0x40012438 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40012438 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40012438 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40012438 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40012438 C   FIELD 00w05 JSQ1: 1 conversion in injected sequence
+0x40012438 C   FIELD 05w05 JSQ2: 2 conversion in injected sequence
+0x40012438 C   FIELD 10w05 JSQ3: 3 conversion in injected sequence
+0x40012438 C   FIELD 15w05 JSQ4: 4 conversion in injected sequence
 0x40012438 C   FIELD 20w02 JL: Injected sequence length
 0x4001243C B  REGISTER JDR1 (ro): injected data register x
 0x4001243C C   FIELD 00w16 JDATA: Injected data
@@ -3322,62 +3322,62 @@
 0x40012808 C   FIELD 22w01 SWSTART: Start conversion of regular channels
 0x40012808 C   FIELD 23w01 TSVREFE: Temperature sensor and VREFINT enable
 0x4001280C B  REGISTER SMPR1 (rw): sample time register 1
-0x4001280C C   FIELD 00w03 SMP10: Channel 10 sampling time selection
-0x4001280C C   FIELD 03w03 SMP11: Channel 11 sampling time selection
-0x4001280C C   FIELD 06w03 SMP12: Channel 12 sampling time selection
-0x4001280C C   FIELD 09w03 SMP13: Channel 13 sampling time selection
-0x4001280C C   FIELD 12w03 SMP14: Channel 14 sampling time selection
-0x4001280C C   FIELD 15w03 SMP15: Channel 15 sampling time selection
-0x4001280C C   FIELD 18w03 SMP16: Channel 16 sampling time selection
-0x4001280C C   FIELD 21w03 SMP17: Channel 17 sampling time selection
+0x4001280C C   FIELD 00w03 SMP10: Channel 10 sample time selection
+0x4001280C C   FIELD 03w03 SMP11: Channel 11 sample time selection
+0x4001280C C   FIELD 06w03 SMP12: Channel 12 sample time selection
+0x4001280C C   FIELD 09w03 SMP13: Channel 13 sample time selection
+0x4001280C C   FIELD 12w03 SMP14: Channel 14 sample time selection
+0x4001280C C   FIELD 15w03 SMP15: Channel 15 sample time selection
+0x4001280C C   FIELD 18w03 SMP16: Channel 16 sample time selection
+0x4001280C C   FIELD 21w03 SMP17: Channel 17 sample time selection
 0x40012810 B  REGISTER SMPR2 (rw): sample time register 2
-0x40012810 C   FIELD 00w03 SMP0: Channel 0 sampling time selection
-0x40012810 C   FIELD 03w03 SMP1: Channel 1 sampling time selection
-0x40012810 C   FIELD 06w03 SMP2: Channel 2 sampling time selection
-0x40012810 C   FIELD 09w03 SMP3: Channel 3 sampling time selection
-0x40012810 C   FIELD 12w03 SMP4: Channel 4 sampling time selection
-0x40012810 C   FIELD 15w03 SMP5: Channel 5 sampling time selection
-0x40012810 C   FIELD 18w03 SMP6: Channel 6 sampling time selection
-0x40012810 C   FIELD 21w03 SMP7: Channel 7 sampling time selection
-0x40012810 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
-0x40012810 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
+0x40012810 C   FIELD 00w03 SMP0: Channel 0 sample time selection
+0x40012810 C   FIELD 03w03 SMP1: Channel 1 sample time selection
+0x40012810 C   FIELD 06w03 SMP2: Channel 2 sample time selection
+0x40012810 C   FIELD 09w03 SMP3: Channel 3 sample time selection
+0x40012810 C   FIELD 12w03 SMP4: Channel 4 sample time selection
+0x40012810 C   FIELD 15w03 SMP5: Channel 5 sample time selection
+0x40012810 C   FIELD 18w03 SMP6: Channel 6 sample time selection
+0x40012810 C   FIELD 21w03 SMP7: Channel 7 sample time selection
+0x40012810 C   FIELD 24w03 SMP8: Channel 8 sample time selection
+0x40012810 C   FIELD 27w03 SMP9: Channel 9 sample time selection
 0x40012814 B  REGISTER JOFR1 (rw): injected channel data offset register x
-0x40012814 C   FIELD 00w12 JOFFSET1: Data offset for injected channel x
+0x40012814 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012818 B  REGISTER JOFR2 (rw): injected channel data offset register x
-0x40012818 C   FIELD 00w12 JOFFSET2: Data offset for injected channel x
+0x40012818 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x4001281C B  REGISTER JOFR3 (rw): injected channel data offset register x
-0x4001281C C   FIELD 00w12 JOFFSET3: Data offset for injected channel x
+0x4001281C C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012820 B  REGISTER JOFR4 (rw): injected channel data offset register x
-0x40012820 C   FIELD 00w12 JOFFSET4: Data offset for injected channel x
+0x40012820 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012824 B  REGISTER HTR (rw): watchdog higher threshold register
 0x40012824 C   FIELD 00w12 HT: Analog watchdog higher threshold
 0x40012828 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40012828 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x4001282C B  REGISTER SQR1 (rw): regular sequence register 1
-0x4001282C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x4001282C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x4001282C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x4001282C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x4001282C C   FIELD 00w05 SQ13: 13 conversion in regular sequence
+0x4001282C C   FIELD 05w05 SQ14: 14 conversion in regular sequence
+0x4001282C C   FIELD 10w05 SQ15: 15 conversion in regular sequence
+0x4001282C C   FIELD 15w05 SQ16: 16 conversion in regular sequence
 0x4001282C C   FIELD 20w04 L: Regular channel sequence length
 0x40012830 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40012830 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40012830 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40012830 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40012830 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40012830 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40012830 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40012830 C   FIELD 00w05 SQ7: 7 conversion in regular sequence
+0x40012830 C   FIELD 05w05 SQ8: 8 conversion in regular sequence
+0x40012830 C   FIELD 10w05 SQ9: 9 conversion in regular sequence
+0x40012830 C   FIELD 15w05 SQ10: 10 conversion in regular sequence
+0x40012830 C   FIELD 20w05 SQ11: 11 conversion in regular sequence
+0x40012830 C   FIELD 25w05 SQ12: 12 conversion in regular sequence
 0x40012834 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40012834 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40012834 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40012834 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40012834 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40012834 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40012834 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40012834 C   FIELD 00w05 SQ1: 1 conversion in regular sequence
+0x40012834 C   FIELD 05w05 SQ2: 2 conversion in regular sequence
+0x40012834 C   FIELD 10w05 SQ3: 3 conversion in regular sequence
+0x40012834 C   FIELD 15w05 SQ4: 4 conversion in regular sequence
+0x40012834 C   FIELD 20w05 SQ5: 5 conversion in regular sequence
+0x40012834 C   FIELD 25w05 SQ6: 6 conversion in regular sequence
 0x40012838 B  REGISTER JSQR (rw): injected sequence register
-0x40012838 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40012838 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40012838 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40012838 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40012838 C   FIELD 00w05 JSQ1: 1 conversion in injected sequence
+0x40012838 C   FIELD 05w05 JSQ2: 2 conversion in injected sequence
+0x40012838 C   FIELD 10w05 JSQ3: 3 conversion in injected sequence
+0x40012838 C   FIELD 15w05 JSQ4: 4 conversion in injected sequence
 0x40012838 C   FIELD 20w02 JL: Injected sequence length
 0x4001283C B  REGISTER JDR1 (ro): injected data register x
 0x4001283C C   FIELD 00w16 JDATA: Injected data
@@ -3508,7 +3508,7 @@
 0x40012C20 C   FIELD 10w01 CC3NE: Capture/Compare 3 complementary output enable
 0x40012C20 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40012C20 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40012C20 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40012C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40012C24 B  REGISTER CNT (rw): counter
 0x40012C24 C   FIELD 00w16 CNT: counter value
 0x40012C28 B  REGISTER PSC (rw): prescaler
@@ -3711,7 +3711,7 @@
 0x40013420 C   FIELD 10w01 CC3NE: Capture/Compare 3 complementary output enable
 0x40013420 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40013420 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40013420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40013420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40013424 B  REGISTER CNT (rw): counter
 0x40013424 C   FIELD 00w16 CNT: counter value
 0x40013428 B  REGISTER PSC (rw): prescaler
@@ -3834,62 +3834,62 @@
 0x40013C08 C   FIELD 22w01 SWSTART: Start conversion of regular channels
 0x40013C08 C   FIELD 23w01 TSVREFE: Temperature sensor and VREFINT enable
 0x40013C0C B  REGISTER SMPR1 (rw): sample time register 1
-0x40013C0C C   FIELD 00w03 SMP10: Channel 10 sampling time selection
-0x40013C0C C   FIELD 03w03 SMP11: Channel 11 sampling time selection
-0x40013C0C C   FIELD 06w03 SMP12: Channel 12 sampling time selection
-0x40013C0C C   FIELD 09w03 SMP13: Channel 13 sampling time selection
-0x40013C0C C   FIELD 12w03 SMP14: Channel 14 sampling time selection
-0x40013C0C C   FIELD 15w03 SMP15: Channel 15 sampling time selection
-0x40013C0C C   FIELD 18w03 SMP16: Channel 16 sampling time selection
-0x40013C0C C   FIELD 21w03 SMP17: Channel 17 sampling time selection
+0x40013C0C C   FIELD 00w03 SMP10: Channel 10 sample time selection
+0x40013C0C C   FIELD 03w03 SMP11: Channel 11 sample time selection
+0x40013C0C C   FIELD 06w03 SMP12: Channel 12 sample time selection
+0x40013C0C C   FIELD 09w03 SMP13: Channel 13 sample time selection
+0x40013C0C C   FIELD 12w03 SMP14: Channel 14 sample time selection
+0x40013C0C C   FIELD 15w03 SMP15: Channel 15 sample time selection
+0x40013C0C C   FIELD 18w03 SMP16: Channel 16 sample time selection
+0x40013C0C C   FIELD 21w03 SMP17: Channel 17 sample time selection
 0x40013C10 B  REGISTER SMPR2 (rw): sample time register 2
-0x40013C10 C   FIELD 00w03 SMP0: Channel 0 sampling time selection
-0x40013C10 C   FIELD 03w03 SMP1: Channel 1 sampling time selection
-0x40013C10 C   FIELD 06w03 SMP2: Channel 2 sampling time selection
-0x40013C10 C   FIELD 09w03 SMP3: Channel 3 sampling time selection
-0x40013C10 C   FIELD 12w03 SMP4: Channel 4 sampling time selection
-0x40013C10 C   FIELD 15w03 SMP5: Channel 5 sampling time selection
-0x40013C10 C   FIELD 18w03 SMP6: Channel 6 sampling time selection
-0x40013C10 C   FIELD 21w03 SMP7: Channel 7 sampling time selection
-0x40013C10 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
-0x40013C10 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
+0x40013C10 C   FIELD 00w03 SMP0: Channel 0 sample time selection
+0x40013C10 C   FIELD 03w03 SMP1: Channel 1 sample time selection
+0x40013C10 C   FIELD 06w03 SMP2: Channel 2 sample time selection
+0x40013C10 C   FIELD 09w03 SMP3: Channel 3 sample time selection
+0x40013C10 C   FIELD 12w03 SMP4: Channel 4 sample time selection
+0x40013C10 C   FIELD 15w03 SMP5: Channel 5 sample time selection
+0x40013C10 C   FIELD 18w03 SMP6: Channel 6 sample time selection
+0x40013C10 C   FIELD 21w03 SMP7: Channel 7 sample time selection
+0x40013C10 C   FIELD 24w03 SMP8: Channel 8 sample time selection
+0x40013C10 C   FIELD 27w03 SMP9: Channel 9 sample time selection
 0x40013C14 B  REGISTER JOFR1 (rw): injected channel data offset register x
-0x40013C14 C   FIELD 00w12 JOFFSET1: Data offset for injected channel x
+0x40013C14 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40013C18 B  REGISTER JOFR2 (rw): injected channel data offset register x
-0x40013C18 C   FIELD 00w12 JOFFSET2: Data offset for injected channel x
+0x40013C18 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40013C1C B  REGISTER JOFR3 (rw): injected channel data offset register x
-0x40013C1C C   FIELD 00w12 JOFFSET3: Data offset for injected channel x
+0x40013C1C C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40013C20 B  REGISTER JOFR4 (rw): injected channel data offset register x
-0x40013C20 C   FIELD 00w12 JOFFSET4: Data offset for injected channel x
+0x40013C20 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40013C24 B  REGISTER HTR (rw): watchdog higher threshold register
 0x40013C24 C   FIELD 00w12 HT: Analog watchdog higher threshold
 0x40013C28 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40013C28 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x40013C2C B  REGISTER SQR1 (rw): regular sequence register 1
-0x40013C2C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x40013C2C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x40013C2C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x40013C2C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x40013C2C C   FIELD 00w05 SQ13: 13 conversion in regular sequence
+0x40013C2C C   FIELD 05w05 SQ14: 14 conversion in regular sequence
+0x40013C2C C   FIELD 10w05 SQ15: 15 conversion in regular sequence
+0x40013C2C C   FIELD 15w05 SQ16: 16 conversion in regular sequence
 0x40013C2C C   FIELD 20w04 L: Regular channel sequence length
 0x40013C30 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40013C30 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40013C30 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40013C30 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40013C30 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40013C30 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40013C30 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40013C30 C   FIELD 00w05 SQ7: 7 conversion in regular sequence
+0x40013C30 C   FIELD 05w05 SQ8: 8 conversion in regular sequence
+0x40013C30 C   FIELD 10w05 SQ9: 9 conversion in regular sequence
+0x40013C30 C   FIELD 15w05 SQ10: 10 conversion in regular sequence
+0x40013C30 C   FIELD 20w05 SQ11: 11 conversion in regular sequence
+0x40013C30 C   FIELD 25w05 SQ12: 12 conversion in regular sequence
 0x40013C34 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40013C34 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40013C34 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40013C34 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40013C34 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40013C34 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40013C34 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40013C34 C   FIELD 00w05 SQ1: 1 conversion in regular sequence
+0x40013C34 C   FIELD 05w05 SQ2: 2 conversion in regular sequence
+0x40013C34 C   FIELD 10w05 SQ3: 3 conversion in regular sequence
+0x40013C34 C   FIELD 15w05 SQ4: 4 conversion in regular sequence
+0x40013C34 C   FIELD 20w05 SQ5: 5 conversion in regular sequence
+0x40013C34 C   FIELD 25w05 SQ6: 6 conversion in regular sequence
 0x40013C38 B  REGISTER JSQR (rw): injected sequence register
-0x40013C38 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40013C38 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40013C38 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40013C38 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40013C38 C   FIELD 00w05 JSQ1: 1 conversion in injected sequence
+0x40013C38 C   FIELD 05w05 JSQ2: 2 conversion in injected sequence
+0x40013C38 C   FIELD 10w05 JSQ3: 3 conversion in injected sequence
+0x40013C38 C   FIELD 15w05 JSQ4: 4 conversion in injected sequence
 0x40013C38 C   FIELD 20w02 JL: Injected sequence length
 0x40013C3C B  REGISTER JDR1 (ro): injected data register x
 0x40013C3C C   FIELD 00w16 JDATA: Injected data
