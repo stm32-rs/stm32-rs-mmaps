@@ -4780,7 +4780,7 @@
 0x40028004 C   FIELD 00w01 PM: Promiscuous mode
 0x40028004 C   FIELD 01w01 HU: Hash unicast
 0x40028004 C   FIELD 02w01 HM: Hash multicast
-0x40028004 C   FIELD 03w01 DAIF: Destination address unique filtering
+0x40028004 C   FIELD 03w01 DAIF: Destination address inverse filtering
 0x40028004 C   FIELD 04w01 PAM: Pass all multicast
 0x40028004 C   FIELD 05w01 BFD: Broadcast frames disable
 0x40028004 C   FIELD 06w02 PCF: Pass control frames
@@ -4789,17 +4789,17 @@
 0x40028004 C   FIELD 10w01 HPF: Hash or perfect filter
 0x40028004 C   FIELD 31w01 RA: Receive all
 0x40028008 B  REGISTER MACHTHR (rw): Ethernet MAC hash table high register
-0x40028008 C   FIELD 00w32 HTH: Upper 32 bits of hash table
+0x40028008 C   FIELD 00w32 HTH: Hash table high
 0x4002800C B  REGISTER MACHTLR (rw): Ethernet MAC hash table low register
-0x4002800C C   FIELD 00w32 HTL: Lower 32 bits of hash table
+0x4002800C C   FIELD 00w32 HTL: Hash table low
 0x40028010 B  REGISTER MACMIIAR (rw): Ethernet MAC MII address register (ETH_MACMIIAR)
 0x40028010 C   FIELD 00w01 MB: MII busy
 0x40028010 C   FIELD 01w01 MW: MII write
 0x40028010 C   FIELD 02w03 CR: Clock range
-0x40028010 C   FIELD 06w05 MR: MII register - select the desired MII register in the PHY device
-0x40028010 C   FIELD 11w05 PA: PHY address - select which of possible 32 PHYs is being accessed
+0x40028010 C   FIELD 06w05 MR: MII register
+0x40028010 C   FIELD 11w05 PA: PHY address
 0x40028014 B  REGISTER MACMIIDR (rw): Ethernet MAC MII data register (ETH_MACMIIDR)
-0x40028014 C   FIELD 00w16 MD: MII data read from/written to the PHY
+0x40028014 C   FIELD 00w16 MD: MII data
 0x40028018 B  REGISTER MACFCR (rw): Ethernet MAC flow control register (ETH_MACFCR)
 0x40028018 C   FIELD 00w01 FCB: Flow control busy/back pressure activate
 0x40028018 C   FIELD 01w01 TFCE: Transmit flow control enable
@@ -4807,14 +4807,14 @@
 0x40028018 C   FIELD 03w01 UPFD: Unicast pause frame detect
 0x40028018 C   FIELD 04w02 PLT: Pause low threshold
 0x40028018 C   FIELD 07w01 ZQPD: Zero-quanta pause disable
-0x40028018 C   FIELD 16w16 PT: Pause time
+0x40028018 C   FIELD 16w16 PT: Pass control frames
 0x4002801C B  REGISTER MACVLANTR (rw): Ethernet MAC VLAN tag register (ETH_MACVLANTR)
 0x4002801C C   FIELD 00w16 VLANTI: VLAN tag identifier (for receive frames)
 0x4002801C C   FIELD 16w01 VLANTC: 12-bit VLAN tag comparison
 0x40028028 B  REGISTER MACRWUFFR (rw): Ethernet MAC remote wakeup frame filter register (ETH_MACRWUFFR)
 0x4002802C B  REGISTER MACPMTCSR (rw): Ethernet MAC PMT control and status register (ETH_MACPMTCSR)
 0x4002802C C   FIELD 00w01 PD: Power down
-0x4002802C C   FIELD 01w01 MPE: Magic packet enable
+0x4002802C C   FIELD 01w01 MPE: Magic Packet enable
 0x4002802C C   FIELD 02w01 WFE: Wakeup frame enable
 0x4002802C C   FIELD 05w01 MPR: Magic packet received
 0x4002802C C   FIELD 06w01 WFR: Wakeup frame received
