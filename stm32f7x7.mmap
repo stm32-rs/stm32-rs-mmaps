@@ -55,42 +55,42 @@
 0x40000014 C   FIELD 06w01 TG: Trigger generation
 0x40000018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
 0x40000018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
-0x40000018 C   FIELD 00w02 CC1S: CC1S
 0x40000018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40000018 C   FIELD 02w01 OC1FE: OC1FE
+0x40000018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40000018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40000018 C   FIELD 03w01 OC1PE: OC1PE
-0x40000018 C   FIELD 04w03 OC1M: OC1M
+0x40000018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40000018 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40000018 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40000018 C   FIELD 07w01 OC1CE: OC1CE
-0x40000018 C   FIELD 08w02 CC2S: CC2S
+0x40000018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40000018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40000018 C   FIELD 10w01 OC2FE: OC2FE
+0x40000018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40000018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40000018 C   FIELD 11w01 OC2PE: OC2PE
-0x40000018 C   FIELD 12w03 OC2M: OC2M
+0x40000018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40000018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000018 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40000018 C   FIELD 15w01 OC2CE: OC2CE
+0x40000018 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
 0x40000018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40000018 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x4000001C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000001C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
-0x4000001C C   FIELD 00w02 CC3S: CC3S
+0x4000001C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x4000001C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x4000001C C   FIELD 02w01 OC3FE: OC3FE
+0x4000001C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x4000001C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
-0x4000001C C   FIELD 03w01 OC3PE: OC3PE
-0x4000001C C   FIELD 04w03 OC3M: OC3M
+0x4000001C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
+0x4000001C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x4000001C C   FIELD 04w04 IC3F: Input capture 3 filter
-0x4000001C C   FIELD 07w01 OC3CE: OC3CE
-0x4000001C C   FIELD 08w02 CC4S: CC4S
+0x4000001C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x4000001C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x4000001C C   FIELD 10w01 OC4FE: OC4FE
+0x4000001C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4000001C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x4000001C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
-0x4000001C C   FIELD 11w01 OC4PE: OC4PE
-0x4000001C C   FIELD 12w03 OC4M: OC4M
+0x4000001C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
+0x4000001C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4000001C C   FIELD 12w04 IC4F: Input capture 4 filter
-0x4000001C C   FIELD 15w01 OC4CE: O24CE
+0x4000001C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x4000001C C   FIELD 16w01 OC3M_3: Output Compare 3 mode, bit 3
 0x4000001C C   FIELD 24w01 OC4M_3: Output Compare 4 mode, bit 3
 0x40000020 B  REGISTER CCER (rw): capture/compare enable register
@@ -104,7 +104,7 @@
 0x40000020 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000020 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40000020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
 0x40000024 C   FIELD 00w32 CNT: Counter value
@@ -185,42 +185,42 @@
 0x40000414 C   FIELD 06w01 TG: Trigger generation
 0x40000418 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
 0x40000418 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
-0x40000418 C   FIELD 00w02 CC1S: CC1S
 0x40000418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40000418 C   FIELD 02w01 OC1FE: OC1FE
+0x40000418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40000418 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40000418 C   FIELD 03w01 OC1PE: OC1PE
-0x40000418 C   FIELD 04w03 OC1M: OC1M
+0x40000418 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40000418 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40000418 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40000418 C   FIELD 07w01 OC1CE: OC1CE
-0x40000418 C   FIELD 08w02 CC2S: CC2S
+0x40000418 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40000418 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40000418 C   FIELD 10w01 OC2FE: OC2FE
+0x40000418 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40000418 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000418 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40000418 C   FIELD 11w01 OC2PE: OC2PE
-0x40000418 C   FIELD 12w03 OC2M: OC2M
+0x40000418 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40000418 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000418 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40000418 C   FIELD 15w01 OC2CE: OC2CE
+0x40000418 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
 0x40000418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40000418 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x4000041C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000041C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
-0x4000041C C   FIELD 00w02 CC3S: CC3S
+0x4000041C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x4000041C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x4000041C C   FIELD 02w01 OC3FE: OC3FE
+0x4000041C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x4000041C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
-0x4000041C C   FIELD 03w01 OC3PE: OC3PE
-0x4000041C C   FIELD 04w03 OC3M: OC3M
+0x4000041C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
+0x4000041C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x4000041C C   FIELD 04w04 IC3F: Input capture 3 filter
-0x4000041C C   FIELD 07w01 OC3CE: OC3CE
-0x4000041C C   FIELD 08w02 CC4S: CC4S
+0x4000041C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x4000041C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x4000041C C   FIELD 10w01 OC4FE: OC4FE
+0x4000041C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4000041C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x4000041C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
-0x4000041C C   FIELD 11w01 OC4PE: OC4PE
-0x4000041C C   FIELD 12w03 OC4M: OC4M
+0x4000041C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
+0x4000041C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4000041C C   FIELD 12w04 IC4F: Input capture 4 filter
-0x4000041C C   FIELD 15w01 OC4CE: O24CE
+0x4000041C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x4000041C C   FIELD 16w01 OC3M_3: Output Compare 3 mode, bit 3
 0x4000041C C   FIELD 24w01 OC4M_3: Output Compare 4 mode, bit 3
 0x40000420 B  REGISTER CCER (rw): capture/compare enable register
@@ -234,7 +234,7 @@
 0x40000420 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000420 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40000420 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
 0x40000424 C   FIELD 00w16 CNT: Counter value
@@ -313,42 +313,42 @@
 0x40000814 C   FIELD 06w01 TG: Trigger generation
 0x40000818 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
 0x40000818 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
-0x40000818 C   FIELD 00w02 CC1S: CC1S
 0x40000818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40000818 C   FIELD 02w01 OC1FE: OC1FE
+0x40000818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40000818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40000818 C   FIELD 03w01 OC1PE: OC1PE
-0x40000818 C   FIELD 04w03 OC1M: OC1M
+0x40000818 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40000818 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40000818 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40000818 C   FIELD 07w01 OC1CE: OC1CE
-0x40000818 C   FIELD 08w02 CC2S: CC2S
+0x40000818 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40000818 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40000818 C   FIELD 10w01 OC2FE: OC2FE
+0x40000818 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40000818 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000818 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40000818 C   FIELD 11w01 OC2PE: OC2PE
-0x40000818 C   FIELD 12w03 OC2M: OC2M
+0x40000818 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40000818 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000818 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40000818 C   FIELD 15w01 OC2CE: OC2CE
+0x40000818 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
 0x40000818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40000818 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x4000081C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000081C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
-0x4000081C C   FIELD 00w02 CC3S: CC3S
+0x4000081C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x4000081C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x4000081C C   FIELD 02w01 OC3FE: OC3FE
+0x4000081C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x4000081C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
-0x4000081C C   FIELD 03w01 OC3PE: OC3PE
-0x4000081C C   FIELD 04w03 OC3M: OC3M
+0x4000081C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
+0x4000081C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x4000081C C   FIELD 04w04 IC3F: Input capture 3 filter
-0x4000081C C   FIELD 07w01 OC3CE: OC3CE
-0x4000081C C   FIELD 08w02 CC4S: CC4S
+0x4000081C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x4000081C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x4000081C C   FIELD 10w01 OC4FE: OC4FE
+0x4000081C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4000081C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x4000081C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
-0x4000081C C   FIELD 11w01 OC4PE: OC4PE
-0x4000081C C   FIELD 12w03 OC4M: OC4M
+0x4000081C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
+0x4000081C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4000081C C   FIELD 12w04 IC4F: Input capture 4 filter
-0x4000081C C   FIELD 15w01 OC4CE: O24CE
+0x4000081C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x4000081C C   FIELD 16w01 OC3M_3: Output Compare 3 mode, bit 3
 0x4000081C C   FIELD 24w01 OC4M_3: Output Compare 4 mode, bit 3
 0x40000820 B  REGISTER CCER (rw): capture/compare enable register
@@ -362,7 +362,7 @@
 0x40000820 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000820 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40000820 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
 0x40000824 C   FIELD 00w16 CNT: Counter value
@@ -441,42 +441,42 @@
 0x40000C14 C   FIELD 06w01 TG: Trigger generation
 0x40000C18 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
 0x40000C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
-0x40000C18 C   FIELD 00w02 CC1S: CC1S
 0x40000C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40000C18 C   FIELD 02w01 OC1FE: OC1FE
+0x40000C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40000C18 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000C18 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40000C18 C   FIELD 03w01 OC1PE: OC1PE
-0x40000C18 C   FIELD 04w03 OC1M: OC1M
+0x40000C18 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40000C18 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40000C18 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40000C18 C   FIELD 07w01 OC1CE: OC1CE
-0x40000C18 C   FIELD 08w02 CC2S: CC2S
+0x40000C18 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40000C18 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40000C18 C   FIELD 10w01 OC2FE: OC2FE
+0x40000C18 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40000C18 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000C18 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40000C18 C   FIELD 11w01 OC2PE: OC2PE
-0x40000C18 C   FIELD 12w03 OC2M: OC2M
+0x40000C18 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40000C18 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000C18 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40000C18 C   FIELD 15w01 OC2CE: OC2CE
+0x40000C18 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
 0x40000C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40000C18 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x40000C1C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x40000C1C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
-0x40000C1C C   FIELD 00w02 CC3S: CC3S
+0x40000C1C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x40000C1C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x40000C1C C   FIELD 02w01 OC3FE: OC3FE
+0x40000C1C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x40000C1C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
-0x40000C1C C   FIELD 03w01 OC3PE: OC3PE
-0x40000C1C C   FIELD 04w03 OC3M: OC3M
+0x40000C1C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
+0x40000C1C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x40000C1C C   FIELD 04w04 IC3F: Input capture 3 filter
-0x40000C1C C   FIELD 07w01 OC3CE: OC3CE
-0x40000C1C C   FIELD 08w02 CC4S: CC4S
+0x40000C1C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x40000C1C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x40000C1C C   FIELD 10w01 OC4FE: OC4FE
+0x40000C1C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x40000C1C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x40000C1C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
-0x40000C1C C   FIELD 11w01 OC4PE: OC4PE
-0x40000C1C C   FIELD 12w03 OC4M: OC4M
+0x40000C1C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
+0x40000C1C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x40000C1C C   FIELD 12w04 IC4F: Input capture 4 filter
-0x40000C1C C   FIELD 15w01 OC4CE: O24CE
+0x40000C1C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x40000C1C C   FIELD 16w01 OC3M_3: Output Compare 3 mode, bit 3
 0x40000C1C C   FIELD 24w01 OC4M_3: Output Compare 4 mode, bit 3
 0x40000C20 B  REGISTER CCER (rw): capture/compare enable register
@@ -490,7 +490,7 @@
 0x40000C20 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
 0x40000C20 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40000C20 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
+0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000C24 B  REGISTER CNT (rw): counter
 0x40000C24 C   FIELD 00w32 CNT: Counter value
@@ -597,18 +597,18 @@
 0x40001818 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40001818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40001818 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40001818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40001818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40001818 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
+0x40001818 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
 0x40001818 C   FIELD 04w03 IC1F: Input capture 1 filter
-0x40001818 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40001818 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40001818 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x40001818 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40001818 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
+0x40001818 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40001818 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40001818 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
+0x40001818 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
 0x40001818 C   FIELD 12w03 IC2F: Input capture 2 filter
-0x40001818 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40001818 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40001818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40001818 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x40001820 B  REGISTER CCER (rw): capture/compare enable register
@@ -652,10 +652,10 @@
 0x40001C18 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40001C18 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40001C18 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40001C18 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40001C18 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40001C18 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40001C18 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40001C18 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40001C18 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40001C18 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40001C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40001C20 B  REGISTER CCER (rw): capture/compare enable register
@@ -696,10 +696,10 @@
 0x40002018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40002018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40002018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40002018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40002018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40002018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40002018 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40002018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40002018 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40002018 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40002018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40002020 B  REGISTER CCER (rw): capture/compare enable register
@@ -1086,15 +1086,15 @@
 0x40003584 C   FIELD 08w01 TGT: TGT
 0x40003584 C   FIELD 16w16 TIME: TIME
 0x40003588 B  REGISTER TDLR0 (rw): mailbox data low register
-0x40003588 C   FIELD 00w08 DATA0: DATA0
-0x40003588 C   FIELD 08w08 DATA1: DATA1
-0x40003588 C   FIELD 16w08 DATA2: DATA2
-0x40003588 C   FIELD 24w08 DATA3: DATA3
+0x40003588 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40003588 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40003588 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40003588 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000358C B  REGISTER TDHR0 (rw): mailbox data high register
-0x4000358C C   FIELD 00w08 DATA4: DATA4
-0x4000358C C   FIELD 08w08 DATA5: DATA5
-0x4000358C C   FIELD 16w08 DATA6: DATA6
-0x4000358C C   FIELD 24w08 DATA7: DATA7
+0x4000358C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000358C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000358C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000358C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40003590 B  CLUSTER TX1: CAN Transmit cluster
 0x40003590 B  REGISTER TIR1 (rw): TX mailbox identifier register
 0x40003590 C   FIELD 00w01 TXRQ: TXRQ
@@ -1107,15 +1107,15 @@
 0x40003594 C   FIELD 08w01 TGT: TGT
 0x40003594 C   FIELD 16w16 TIME: TIME
 0x40003598 B  REGISTER TDLR1 (rw): mailbox data low register
-0x40003598 C   FIELD 00w08 DATA0: DATA0
-0x40003598 C   FIELD 08w08 DATA1: DATA1
-0x40003598 C   FIELD 16w08 DATA2: DATA2
-0x40003598 C   FIELD 24w08 DATA3: DATA3
+0x40003598 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40003598 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40003598 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40003598 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000359C B  REGISTER TDHR1 (rw): mailbox data high register
-0x4000359C C   FIELD 00w08 DATA4: DATA4
-0x4000359C C   FIELD 08w08 DATA5: DATA5
-0x4000359C C   FIELD 16w08 DATA6: DATA6
-0x4000359C C   FIELD 24w08 DATA7: DATA7
+0x4000359C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000359C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000359C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000359C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400035A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400035A0 B  REGISTER TIR2 (rw): TX mailbox identifier register
 0x400035A0 C   FIELD 00w01 TXRQ: TXRQ
@@ -1128,15 +1128,15 @@
 0x400035A4 C   FIELD 08w01 TGT: TGT
 0x400035A4 C   FIELD 16w16 TIME: TIME
 0x400035A8 B  REGISTER TDLR2 (rw): mailbox data low register
-0x400035A8 C   FIELD 00w08 DATA0: DATA0
-0x400035A8 C   FIELD 08w08 DATA1: DATA1
-0x400035A8 C   FIELD 16w08 DATA2: DATA2
-0x400035A8 C   FIELD 24w08 DATA3: DATA3
+0x400035A8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400035A8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400035A8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400035A8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400035AC B  REGISTER TDHR2 (rw): mailbox data high register
-0x400035AC C   FIELD 00w08 DATA4: DATA4
-0x400035AC C   FIELD 08w08 DATA5: DATA5
-0x400035AC C   FIELD 16w08 DATA6: DATA6
-0x400035AC C   FIELD 24w08 DATA7: DATA7
+0x400035AC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400035AC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400035AC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400035AC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400035B0 B  CLUSTER RX0: CAN Receive cluster
 0x400035B0 B  REGISTER RIR0 (ro): receive FIFO mailbox identifier register
 0x400035B0 C   FIELD 01w01 RTR: RTR
@@ -1148,15 +1148,15 @@
 0x400035B4 C   FIELD 08w08 FMI: FMI
 0x400035B4 C   FIELD 16w16 TIME: TIME
 0x400035B8 B  REGISTER RDLR0 (ro): mailbox data high register
-0x400035B8 C   FIELD 00w08 DATA0: DATA0
-0x400035B8 C   FIELD 08w08 DATA1: DATA1
-0x400035B8 C   FIELD 16w08 DATA2: DATA2
-0x400035B8 C   FIELD 24w08 DATA3: DATA3
+0x400035B8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400035B8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400035B8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400035B8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400035BC B  REGISTER RDHR0 (ro): receive FIFO mailbox data high register
-0x400035BC C   FIELD 00w08 DATA4: DATA4
-0x400035BC C   FIELD 08w08 DATA5: DATA5
-0x400035BC C   FIELD 16w08 DATA6: DATA6
-0x400035BC C   FIELD 24w08 DATA7: DATA7
+0x400035BC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400035BC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400035BC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400035BC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400035C0 B  CLUSTER RX1: CAN Receive cluster
 0x400035C0 B  REGISTER RIR1 (ro): receive FIFO mailbox identifier register
 0x400035C0 C   FIELD 01w01 RTR: RTR
@@ -1168,15 +1168,15 @@
 0x400035C4 C   FIELD 08w08 FMI: FMI
 0x400035C4 C   FIELD 16w16 TIME: TIME
 0x400035C8 B  REGISTER RDLR1 (ro): mailbox data high register
-0x400035C8 C   FIELD 00w08 DATA0: DATA0
-0x400035C8 C   FIELD 08w08 DATA1: DATA1
-0x400035C8 C   FIELD 16w08 DATA2: DATA2
-0x400035C8 C   FIELD 24w08 DATA3: DATA3
+0x400035C8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400035C8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400035C8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400035C8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400035CC B  REGISTER RDHR1 (ro): receive FIFO mailbox data high register
-0x400035CC C   FIELD 00w08 DATA4: DATA4
-0x400035CC C   FIELD 08w08 DATA5: DATA5
-0x400035CC C   FIELD 16w08 DATA6: DATA6
-0x400035CC C   FIELD 24w08 DATA7: DATA7
+0x400035CC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400035CC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400035CC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400035CC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40003600 B  REGISTER FMR (rw): filter master register
 0x40003600 C   FIELD 00w01 FINIT: FINIT
 0x40003600 C   FIELD 08w06 CAN2SB: CAN2SB
@@ -2527,15 +2527,15 @@
 0x40006584 C   FIELD 08w01 TGT: TGT
 0x40006584 C   FIELD 16w16 TIME: TIME
 0x40006588 B  REGISTER TDLR0 (rw): mailbox data low register
-0x40006588 C   FIELD 00w08 DATA0: DATA0
-0x40006588 C   FIELD 08w08 DATA1: DATA1
-0x40006588 C   FIELD 16w08 DATA2: DATA2
-0x40006588 C   FIELD 24w08 DATA3: DATA3
+0x40006588 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006588 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006588 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006588 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000658C B  REGISTER TDHR0 (rw): mailbox data high register
-0x4000658C C   FIELD 00w08 DATA4: DATA4
-0x4000658C C   FIELD 08w08 DATA5: DATA5
-0x4000658C C   FIELD 16w08 DATA6: DATA6
-0x4000658C C   FIELD 24w08 DATA7: DATA7
+0x4000658C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000658C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000658C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000658C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006590 B  CLUSTER TX1: CAN Transmit cluster
 0x40006590 B  REGISTER TIR1 (rw): TX mailbox identifier register
 0x40006590 C   FIELD 00w01 TXRQ: TXRQ
@@ -2548,15 +2548,15 @@
 0x40006594 C   FIELD 08w01 TGT: TGT
 0x40006594 C   FIELD 16w16 TIME: TIME
 0x40006598 B  REGISTER TDLR1 (rw): mailbox data low register
-0x40006598 C   FIELD 00w08 DATA0: DATA0
-0x40006598 C   FIELD 08w08 DATA1: DATA1
-0x40006598 C   FIELD 16w08 DATA2: DATA2
-0x40006598 C   FIELD 24w08 DATA3: DATA3
+0x40006598 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006598 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006598 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006598 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000659C B  REGISTER TDHR1 (rw): mailbox data high register
-0x4000659C C   FIELD 00w08 DATA4: DATA4
-0x4000659C C   FIELD 08w08 DATA5: DATA5
-0x4000659C C   FIELD 16w08 DATA6: DATA6
-0x4000659C C   FIELD 24w08 DATA7: DATA7
+0x4000659C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000659C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000659C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000659C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400065A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400065A0 B  REGISTER TIR2 (rw): TX mailbox identifier register
 0x400065A0 C   FIELD 00w01 TXRQ: TXRQ
@@ -2569,15 +2569,15 @@
 0x400065A4 C   FIELD 08w01 TGT: TGT
 0x400065A4 C   FIELD 16w16 TIME: TIME
 0x400065A8 B  REGISTER TDLR2 (rw): mailbox data low register
-0x400065A8 C   FIELD 00w08 DATA0: DATA0
-0x400065A8 C   FIELD 08w08 DATA1: DATA1
-0x400065A8 C   FIELD 16w08 DATA2: DATA2
-0x400065A8 C   FIELD 24w08 DATA3: DATA3
+0x400065A8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400065A8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400065A8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400065A8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400065AC B  REGISTER TDHR2 (rw): mailbox data high register
-0x400065AC C   FIELD 00w08 DATA4: DATA4
-0x400065AC C   FIELD 08w08 DATA5: DATA5
-0x400065AC C   FIELD 16w08 DATA6: DATA6
-0x400065AC C   FIELD 24w08 DATA7: DATA7
+0x400065AC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400065AC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400065AC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400065AC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400065B0 B  CLUSTER RX0: CAN Receive cluster
 0x400065B0 B  REGISTER RIR0 (ro): receive FIFO mailbox identifier register
 0x400065B0 C   FIELD 01w01 RTR: RTR
@@ -2589,15 +2589,15 @@
 0x400065B4 C   FIELD 08w08 FMI: FMI
 0x400065B4 C   FIELD 16w16 TIME: TIME
 0x400065B8 B  REGISTER RDLR0 (ro): mailbox data high register
-0x400065B8 C   FIELD 00w08 DATA0: DATA0
-0x400065B8 C   FIELD 08w08 DATA1: DATA1
-0x400065B8 C   FIELD 16w08 DATA2: DATA2
-0x400065B8 C   FIELD 24w08 DATA3: DATA3
+0x400065B8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400065B8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400065B8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400065B8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400065BC B  REGISTER RDHR0 (ro): receive FIFO mailbox data high register
-0x400065BC C   FIELD 00w08 DATA4: DATA4
-0x400065BC C   FIELD 08w08 DATA5: DATA5
-0x400065BC C   FIELD 16w08 DATA6: DATA6
-0x400065BC C   FIELD 24w08 DATA7: DATA7
+0x400065BC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400065BC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400065BC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400065BC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400065C0 B  CLUSTER RX1: CAN Receive cluster
 0x400065C0 B  REGISTER RIR1 (ro): receive FIFO mailbox identifier register
 0x400065C0 C   FIELD 01w01 RTR: RTR
@@ -2609,15 +2609,15 @@
 0x400065C4 C   FIELD 08w08 FMI: FMI
 0x400065C4 C   FIELD 16w16 TIME: TIME
 0x400065C8 B  REGISTER RDLR1 (ro): mailbox data high register
-0x400065C8 C   FIELD 00w08 DATA0: DATA0
-0x400065C8 C   FIELD 08w08 DATA1: DATA1
-0x400065C8 C   FIELD 16w08 DATA2: DATA2
-0x400065C8 C   FIELD 24w08 DATA3: DATA3
+0x400065C8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400065C8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400065C8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400065C8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400065CC B  REGISTER RDHR1 (ro): receive FIFO mailbox data high register
-0x400065CC C   FIELD 00w08 DATA4: DATA4
-0x400065CC C   FIELD 08w08 DATA5: DATA5
-0x400065CC C   FIELD 16w08 DATA6: DATA6
-0x400065CC C   FIELD 24w08 DATA7: DATA7
+0x400065CC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400065CC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400065CC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400065CC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006600 B  REGISTER FMR (rw): filter master register
 0x40006600 C   FIELD 00w01 FINIT: FINIT
 0x40006600 C   FIELD 08w06 CAN2SB: CAN2SB
@@ -2973,15 +2973,15 @@
 0x40006984 C   FIELD 08w01 TGT: TGT
 0x40006984 C   FIELD 16w16 TIME: TIME
 0x40006988 B  REGISTER TDLR0 (rw): mailbox data low register
-0x40006988 C   FIELD 00w08 DATA0: DATA0
-0x40006988 C   FIELD 08w08 DATA1: DATA1
-0x40006988 C   FIELD 16w08 DATA2: DATA2
-0x40006988 C   FIELD 24w08 DATA3: DATA3
+0x40006988 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006988 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006988 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006988 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000698C B  REGISTER TDHR0 (rw): mailbox data high register
-0x4000698C C   FIELD 00w08 DATA4: DATA4
-0x4000698C C   FIELD 08w08 DATA5: DATA5
-0x4000698C C   FIELD 16w08 DATA6: DATA6
-0x4000698C C   FIELD 24w08 DATA7: DATA7
+0x4000698C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000698C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000698C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000698C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006990 B  CLUSTER TX1: CAN Transmit cluster
 0x40006990 B  REGISTER TIR1 (rw): TX mailbox identifier register
 0x40006990 C   FIELD 00w01 TXRQ: TXRQ
@@ -2994,15 +2994,15 @@
 0x40006994 C   FIELD 08w01 TGT: TGT
 0x40006994 C   FIELD 16w16 TIME: TIME
 0x40006998 B  REGISTER TDLR1 (rw): mailbox data low register
-0x40006998 C   FIELD 00w08 DATA0: DATA0
-0x40006998 C   FIELD 08w08 DATA1: DATA1
-0x40006998 C   FIELD 16w08 DATA2: DATA2
-0x40006998 C   FIELD 24w08 DATA3: DATA3
+0x40006998 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x40006998 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x40006998 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x40006998 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x4000699C B  REGISTER TDHR1 (rw): mailbox data high register
-0x4000699C C   FIELD 00w08 DATA4: DATA4
-0x4000699C C   FIELD 08w08 DATA5: DATA5
-0x4000699C C   FIELD 16w08 DATA6: DATA6
-0x4000699C C   FIELD 24w08 DATA7: DATA7
+0x4000699C C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x4000699C C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x4000699C C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x4000699C C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400069A0 B  CLUSTER TX2: CAN Transmit cluster
 0x400069A0 B  REGISTER TIR2 (rw): TX mailbox identifier register
 0x400069A0 C   FIELD 00w01 TXRQ: TXRQ
@@ -3015,15 +3015,15 @@
 0x400069A4 C   FIELD 08w01 TGT: TGT
 0x400069A4 C   FIELD 16w16 TIME: TIME
 0x400069A8 B  REGISTER TDLR2 (rw): mailbox data low register
-0x400069A8 C   FIELD 00w08 DATA0: DATA0
-0x400069A8 C   FIELD 08w08 DATA1: DATA1
-0x400069A8 C   FIELD 16w08 DATA2: DATA2
-0x400069A8 C   FIELD 24w08 DATA3: DATA3
+0x400069A8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400069A8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400069A8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400069A8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400069AC B  REGISTER TDHR2 (rw): mailbox data high register
-0x400069AC C   FIELD 00w08 DATA4: DATA4
-0x400069AC C   FIELD 08w08 DATA5: DATA5
-0x400069AC C   FIELD 16w08 DATA6: DATA6
-0x400069AC C   FIELD 24w08 DATA7: DATA7
+0x400069AC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400069AC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400069AC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400069AC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400069B0 B  CLUSTER RX0: CAN Receive cluster
 0x400069B0 B  REGISTER RIR0 (ro): receive FIFO mailbox identifier register
 0x400069B0 C   FIELD 01w01 RTR: RTR
@@ -3035,15 +3035,15 @@
 0x400069B4 C   FIELD 08w08 FMI: FMI
 0x400069B4 C   FIELD 16w16 TIME: TIME
 0x400069B8 B  REGISTER RDLR0 (ro): mailbox data high register
-0x400069B8 C   FIELD 00w08 DATA0: DATA0
-0x400069B8 C   FIELD 08w08 DATA1: DATA1
-0x400069B8 C   FIELD 16w08 DATA2: DATA2
-0x400069B8 C   FIELD 24w08 DATA3: DATA3
+0x400069B8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400069B8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400069B8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400069B8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400069BC B  REGISTER RDHR0 (ro): receive FIFO mailbox data high register
-0x400069BC C   FIELD 00w08 DATA4: DATA4
-0x400069BC C   FIELD 08w08 DATA5: DATA5
-0x400069BC C   FIELD 16w08 DATA6: DATA6
-0x400069BC C   FIELD 24w08 DATA7: DATA7
+0x400069BC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400069BC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400069BC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400069BC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x400069C0 B  CLUSTER RX1: CAN Receive cluster
 0x400069C0 B  REGISTER RIR1 (ro): receive FIFO mailbox identifier register
 0x400069C0 C   FIELD 01w01 RTR: RTR
@@ -3055,15 +3055,15 @@
 0x400069C4 C   FIELD 08w08 FMI: FMI
 0x400069C4 C   FIELD 16w16 TIME: TIME
 0x400069C8 B  REGISTER RDLR1 (ro): mailbox data high register
-0x400069C8 C   FIELD 00w08 DATA0: DATA0
-0x400069C8 C   FIELD 08w08 DATA1: DATA1
-0x400069C8 C   FIELD 16w08 DATA2: DATA2
-0x400069C8 C   FIELD 24w08 DATA3: DATA3
+0x400069C8 C   FIELD 00w08 DATA0: Data byte 0 of the message
+0x400069C8 C   FIELD 08w08 DATA1: Data byte 1 of the message
+0x400069C8 C   FIELD 16w08 DATA2: Data byte 2 of the message
+0x400069C8 C   FIELD 24w08 DATA3: Data byte 3 of the message
 0x400069CC B  REGISTER RDHR1 (ro): receive FIFO mailbox data high register
-0x400069CC C   FIELD 00w08 DATA4: DATA4
-0x400069CC C   FIELD 08w08 DATA5: DATA5
-0x400069CC C   FIELD 16w08 DATA6: DATA6
-0x400069CC C   FIELD 24w08 DATA7: DATA7
+0x400069CC C   FIELD 00w08 DATA4: Data byte 4 of the message
+0x400069CC C   FIELD 08w08 DATA5: Data byte 5 of the message
+0x400069CC C   FIELD 16w08 DATA6: Data byte 6 of the message
+0x400069CC C   FIELD 24w08 DATA7: Data byte 7 of the message
 0x40006A00 B  REGISTER FMR (rw): filter master register
 0x40006A00 C   FIELD 00w01 FINIT: FINIT
 0x40006A00 C   FIELD 08w06 CAN2SB: CAN2SB
@@ -3785,20 +3785,20 @@
 0x40010018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40010018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40010018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40010018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40010018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40010018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40010018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40010018 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40010018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40010018 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40010018 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40010018 C   FIELD 07w01 OC1CE: Output Compare 1 clear enable
+0x40010018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40010018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x40010018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40010018 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
+0x40010018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40010018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40010018 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
-0x40010018 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40010018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40010018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40010018 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40010018 C   FIELD 15w01 OC2CE: Output Compare 2 clear enable
+0x40010018 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
 0x40010018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40010018 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x4001001C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
@@ -3835,12 +3835,12 @@
 0x40010020 C   FIELD 10w01 CC3NE: Capture/Compare 3 complementary output enable
 0x40010020 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40010020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40010020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
-0x40010020 C   FIELD 15w01 CC4NP: Capture/Compare 4 complementary output polarity
+0x40010020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
+0x40010020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40010020 C   FIELD 16w01 CC5E: Capture/Compare 5 output enable
-0x40010020 C   FIELD 17w01 CC5P: Capture/Compare 5 output polarity
+0x40010020 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40010020 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
-0x40010020 C   FIELD 21w01 CC6P: Capture/Compare 6 output polarity
+0x40010020 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
 0x40010024 B  REGISTER CNT (rw): counter
 0x40010024 C   FIELD 00w16 CNT: counter value
 0x40010024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
@@ -3984,20 +3984,20 @@
 0x40010418 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40010418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40010418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40010418 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40010418 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40010418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40010418 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40010418 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40010418 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40010418 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40010418 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40010418 C   FIELD 07w01 OC1CE: Output Compare 1 clear enable
+0x40010418 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40010418 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x40010418 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40010418 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
+0x40010418 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40010418 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40010418 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
-0x40010418 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40010418 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40010418 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40010418 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40010418 C   FIELD 15w01 OC2CE: Output Compare 2 clear enable
+0x40010418 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
 0x40010418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40010418 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x4001041C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
@@ -4034,12 +4034,12 @@
 0x40010420 C   FIELD 10w01 CC3NE: Capture/Compare 3 complementary output enable
 0x40010420 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
 0x40010420 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
-0x40010420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
-0x40010420 C   FIELD 15w01 CC4NP: Capture/Compare 4 complementary output polarity
+0x40010420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
+0x40010420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40010420 C   FIELD 16w01 CC5E: Capture/Compare 5 output enable
-0x40010420 C   FIELD 17w01 CC5P: Capture/Compare 5 output polarity
+0x40010420 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40010420 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
-0x40010420 C   FIELD 21w01 CC6P: Capture/Compare 6 output polarity
+0x40010420 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
 0x40010424 B  REGISTER CNT (rw): counter
 0x40010424 C   FIELD 00w16 CNT: counter value
 0x40010424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
@@ -4478,26 +4478,26 @@
 0x40012008 C   FIELD 28w02 EXTEN: External trigger enable for regular channels
 0x40012008 C   FIELD 30w01 SWSTART: Start conversion of regular channels
 0x4001200C B  REGISTER SMPR1 (rw): sample time register 1
-0x4001200C C   FIELD 00w03 SMP10: Channel 10 sampling time selection
-0x4001200C C   FIELD 03w03 SMP11: Channel 11 sampling time selection
-0x4001200C C   FIELD 06w03 SMP12: Channel 12 sampling time selection
-0x4001200C C   FIELD 09w03 SMP13: Channel 13 sampling time selection
-0x4001200C C   FIELD 12w03 SMP14: Channel 14 sampling time selection
-0x4001200C C   FIELD 15w03 SMP15: Channel 15 sampling time selection
-0x4001200C C   FIELD 18w03 SMP16: Channel 16 sampling time selection
-0x4001200C C   FIELD 21w03 SMP17: Channel 17 sampling time selection
-0x4001200C C   FIELD 24w03 SMP18: Channel 18 sampling time selection
+0x4001200C C   FIELD 00w03 SMP10: Channel 10 sample time selection
+0x4001200C C   FIELD 03w03 SMP11: Channel 11 sample time selection
+0x4001200C C   FIELD 06w03 SMP12: Channel 12 sample time selection
+0x4001200C C   FIELD 09w03 SMP13: Channel 13 sample time selection
+0x4001200C C   FIELD 12w03 SMP14: Channel 14 sample time selection
+0x4001200C C   FIELD 15w03 SMP15: Channel 15 sample time selection
+0x4001200C C   FIELD 18w03 SMP16: Channel 16 sample time selection
+0x4001200C C   FIELD 21w03 SMP17: Channel 17 sample time selection
+0x4001200C C   FIELD 24w03 SMP18: Channel 18 sample time selection
 0x40012010 B  REGISTER SMPR2 (rw): sample time register 2
-0x40012010 C   FIELD 00w03 SMP0: Channel 0 sampling time selection
-0x40012010 C   FIELD 03w03 SMP1: Channel 1 sampling time selection
-0x40012010 C   FIELD 06w03 SMP2: Channel 2 sampling time selection
-0x40012010 C   FIELD 09w03 SMP3: Channel 3 sampling time selection
-0x40012010 C   FIELD 12w03 SMP4: Channel 4 sampling time selection
-0x40012010 C   FIELD 15w03 SMP5: Channel 5 sampling time selection
-0x40012010 C   FIELD 18w03 SMP6: Channel 6 sampling time selection
-0x40012010 C   FIELD 21w03 SMP7: Channel 7 sampling time selection
-0x40012010 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
-0x40012010 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
+0x40012010 C   FIELD 00w03 SMP0: Channel 0 sample time selection
+0x40012010 C   FIELD 03w03 SMP1: Channel 1 sample time selection
+0x40012010 C   FIELD 06w03 SMP2: Channel 2 sample time selection
+0x40012010 C   FIELD 09w03 SMP3: Channel 3 sample time selection
+0x40012010 C   FIELD 12w03 SMP4: Channel 4 sample time selection
+0x40012010 C   FIELD 15w03 SMP5: Channel 5 sample time selection
+0x40012010 C   FIELD 18w03 SMP6: Channel 6 sample time selection
+0x40012010 C   FIELD 21w03 SMP7: Channel 7 sample time selection
+0x40012010 C   FIELD 24w03 SMP8: Channel 8 sample time selection
+0x40012010 C   FIELD 27w03 SMP9: Channel 9 sample time selection
 0x40012014 B  REGISTER JOFR1 (rw): injected channel data offset register x
 0x40012014 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012018 B  REGISTER JOFR2 (rw): injected channel data offset register x
@@ -4511,30 +4511,30 @@
 0x40012028 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40012028 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x4001202C B  REGISTER SQR1 (rw): regular sequence register 1
-0x4001202C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x4001202C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x4001202C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x4001202C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x4001202C C   FIELD 00w05 SQ13: 13 conversion in regular sequence
+0x4001202C C   FIELD 05w05 SQ14: 14 conversion in regular sequence
+0x4001202C C   FIELD 10w05 SQ15: 15 conversion in regular sequence
+0x4001202C C   FIELD 15w05 SQ16: 16 conversion in regular sequence
 0x4001202C C   FIELD 20w04 L: Regular channel sequence length
 0x40012030 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40012030 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40012030 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40012030 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40012030 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40012030 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40012030 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40012030 C   FIELD 00w05 SQ7: 7 conversion in regular sequence
+0x40012030 C   FIELD 05w05 SQ8: 8 conversion in regular sequence
+0x40012030 C   FIELD 10w05 SQ9: 9 conversion in regular sequence
+0x40012030 C   FIELD 15w05 SQ10: 10 conversion in regular sequence
+0x40012030 C   FIELD 20w05 SQ11: 11 conversion in regular sequence
+0x40012030 C   FIELD 25w05 SQ12: 12 conversion in regular sequence
 0x40012034 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40012034 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40012034 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40012034 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40012034 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40012034 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40012034 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40012034 C   FIELD 00w05 SQ1: 1 conversion in regular sequence
+0x40012034 C   FIELD 05w05 SQ2: 2 conversion in regular sequence
+0x40012034 C   FIELD 10w05 SQ3: 3 conversion in regular sequence
+0x40012034 C   FIELD 15w05 SQ4: 4 conversion in regular sequence
+0x40012034 C   FIELD 20w05 SQ5: 5 conversion in regular sequence
+0x40012034 C   FIELD 25w05 SQ6: 6 conversion in regular sequence
 0x40012038 B  REGISTER JSQR (rw): injected sequence register
-0x40012038 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40012038 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40012038 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40012038 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40012038 C   FIELD 00w05 JSQ1: 1 conversion in injected sequence
+0x40012038 C   FIELD 05w05 JSQ2: 2 conversion in injected sequence
+0x40012038 C   FIELD 10w05 JSQ3: 3 conversion in injected sequence
+0x40012038 C   FIELD 15w05 JSQ4: 4 conversion in injected sequence
 0x40012038 C   FIELD 20w02 JL: Injected sequence length
 0x4001203C B  REGISTER JDR1 (ro): injected data register x
 0x4001203C C   FIELD 00w16 JDATA: Injected data
@@ -4583,26 +4583,26 @@
 0x40012108 C   FIELD 28w02 EXTEN: External trigger enable for regular channels
 0x40012108 C   FIELD 30w01 SWSTART: Start conversion of regular channels
 0x4001210C B  REGISTER SMPR1 (rw): sample time register 1
-0x4001210C C   FIELD 00w03 SMP10: Channel 10 sampling time selection
-0x4001210C C   FIELD 03w03 SMP11: Channel 11 sampling time selection
-0x4001210C C   FIELD 06w03 SMP12: Channel 12 sampling time selection
-0x4001210C C   FIELD 09w03 SMP13: Channel 13 sampling time selection
-0x4001210C C   FIELD 12w03 SMP14: Channel 14 sampling time selection
-0x4001210C C   FIELD 15w03 SMP15: Channel 15 sampling time selection
-0x4001210C C   FIELD 18w03 SMP16: Channel 16 sampling time selection
-0x4001210C C   FIELD 21w03 SMP17: Channel 17 sampling time selection
-0x4001210C C   FIELD 24w03 SMP18: Channel 18 sampling time selection
+0x4001210C C   FIELD 00w03 SMP10: Channel 10 sample time selection
+0x4001210C C   FIELD 03w03 SMP11: Channel 11 sample time selection
+0x4001210C C   FIELD 06w03 SMP12: Channel 12 sample time selection
+0x4001210C C   FIELD 09w03 SMP13: Channel 13 sample time selection
+0x4001210C C   FIELD 12w03 SMP14: Channel 14 sample time selection
+0x4001210C C   FIELD 15w03 SMP15: Channel 15 sample time selection
+0x4001210C C   FIELD 18w03 SMP16: Channel 16 sample time selection
+0x4001210C C   FIELD 21w03 SMP17: Channel 17 sample time selection
+0x4001210C C   FIELD 24w03 SMP18: Channel 18 sample time selection
 0x40012110 B  REGISTER SMPR2 (rw): sample time register 2
-0x40012110 C   FIELD 00w03 SMP0: Channel 0 sampling time selection
-0x40012110 C   FIELD 03w03 SMP1: Channel 1 sampling time selection
-0x40012110 C   FIELD 06w03 SMP2: Channel 2 sampling time selection
-0x40012110 C   FIELD 09w03 SMP3: Channel 3 sampling time selection
-0x40012110 C   FIELD 12w03 SMP4: Channel 4 sampling time selection
-0x40012110 C   FIELD 15w03 SMP5: Channel 5 sampling time selection
-0x40012110 C   FIELD 18w03 SMP6: Channel 6 sampling time selection
-0x40012110 C   FIELD 21w03 SMP7: Channel 7 sampling time selection
-0x40012110 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
-0x40012110 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
+0x40012110 C   FIELD 00w03 SMP0: Channel 0 sample time selection
+0x40012110 C   FIELD 03w03 SMP1: Channel 1 sample time selection
+0x40012110 C   FIELD 06w03 SMP2: Channel 2 sample time selection
+0x40012110 C   FIELD 09w03 SMP3: Channel 3 sample time selection
+0x40012110 C   FIELD 12w03 SMP4: Channel 4 sample time selection
+0x40012110 C   FIELD 15w03 SMP5: Channel 5 sample time selection
+0x40012110 C   FIELD 18w03 SMP6: Channel 6 sample time selection
+0x40012110 C   FIELD 21w03 SMP7: Channel 7 sample time selection
+0x40012110 C   FIELD 24w03 SMP8: Channel 8 sample time selection
+0x40012110 C   FIELD 27w03 SMP9: Channel 9 sample time selection
 0x40012114 B  REGISTER JOFR1 (rw): injected channel data offset register x
 0x40012114 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012118 B  REGISTER JOFR2 (rw): injected channel data offset register x
@@ -4616,30 +4616,30 @@
 0x40012128 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40012128 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x4001212C B  REGISTER SQR1 (rw): regular sequence register 1
-0x4001212C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x4001212C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x4001212C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x4001212C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x4001212C C   FIELD 00w05 SQ13: 13 conversion in regular sequence
+0x4001212C C   FIELD 05w05 SQ14: 14 conversion in regular sequence
+0x4001212C C   FIELD 10w05 SQ15: 15 conversion in regular sequence
+0x4001212C C   FIELD 15w05 SQ16: 16 conversion in regular sequence
 0x4001212C C   FIELD 20w04 L: Regular channel sequence length
 0x40012130 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40012130 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40012130 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40012130 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40012130 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40012130 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40012130 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40012130 C   FIELD 00w05 SQ7: 7 conversion in regular sequence
+0x40012130 C   FIELD 05w05 SQ8: 8 conversion in regular sequence
+0x40012130 C   FIELD 10w05 SQ9: 9 conversion in regular sequence
+0x40012130 C   FIELD 15w05 SQ10: 10 conversion in regular sequence
+0x40012130 C   FIELD 20w05 SQ11: 11 conversion in regular sequence
+0x40012130 C   FIELD 25w05 SQ12: 12 conversion in regular sequence
 0x40012134 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40012134 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40012134 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40012134 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40012134 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40012134 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40012134 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40012134 C   FIELD 00w05 SQ1: 1 conversion in regular sequence
+0x40012134 C   FIELD 05w05 SQ2: 2 conversion in regular sequence
+0x40012134 C   FIELD 10w05 SQ3: 3 conversion in regular sequence
+0x40012134 C   FIELD 15w05 SQ4: 4 conversion in regular sequence
+0x40012134 C   FIELD 20w05 SQ5: 5 conversion in regular sequence
+0x40012134 C   FIELD 25w05 SQ6: 6 conversion in regular sequence
 0x40012138 B  REGISTER JSQR (rw): injected sequence register
-0x40012138 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40012138 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40012138 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40012138 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40012138 C   FIELD 00w05 JSQ1: 1 conversion in injected sequence
+0x40012138 C   FIELD 05w05 JSQ2: 2 conversion in injected sequence
+0x40012138 C   FIELD 10w05 JSQ3: 3 conversion in injected sequence
+0x40012138 C   FIELD 15w05 JSQ4: 4 conversion in injected sequence
 0x40012138 C   FIELD 20w02 JL: Injected sequence length
 0x4001213C B  REGISTER JDR1 (ro): injected data register x
 0x4001213C C   FIELD 00w16 JDATA: Injected data
@@ -4688,26 +4688,26 @@
 0x40012208 C   FIELD 28w02 EXTEN: External trigger enable for regular channels
 0x40012208 C   FIELD 30w01 SWSTART: Start conversion of regular channels
 0x4001220C B  REGISTER SMPR1 (rw): sample time register 1
-0x4001220C C   FIELD 00w03 SMP10: Channel 10 sampling time selection
-0x4001220C C   FIELD 03w03 SMP11: Channel 11 sampling time selection
-0x4001220C C   FIELD 06w03 SMP12: Channel 12 sampling time selection
-0x4001220C C   FIELD 09w03 SMP13: Channel 13 sampling time selection
-0x4001220C C   FIELD 12w03 SMP14: Channel 14 sampling time selection
-0x4001220C C   FIELD 15w03 SMP15: Channel 15 sampling time selection
-0x4001220C C   FIELD 18w03 SMP16: Channel 16 sampling time selection
-0x4001220C C   FIELD 21w03 SMP17: Channel 17 sampling time selection
-0x4001220C C   FIELD 24w03 SMP18: Channel 18 sampling time selection
+0x4001220C C   FIELD 00w03 SMP10: Channel 10 sample time selection
+0x4001220C C   FIELD 03w03 SMP11: Channel 11 sample time selection
+0x4001220C C   FIELD 06w03 SMP12: Channel 12 sample time selection
+0x4001220C C   FIELD 09w03 SMP13: Channel 13 sample time selection
+0x4001220C C   FIELD 12w03 SMP14: Channel 14 sample time selection
+0x4001220C C   FIELD 15w03 SMP15: Channel 15 sample time selection
+0x4001220C C   FIELD 18w03 SMP16: Channel 16 sample time selection
+0x4001220C C   FIELD 21w03 SMP17: Channel 17 sample time selection
+0x4001220C C   FIELD 24w03 SMP18: Channel 18 sample time selection
 0x40012210 B  REGISTER SMPR2 (rw): sample time register 2
-0x40012210 C   FIELD 00w03 SMP0: Channel 0 sampling time selection
-0x40012210 C   FIELD 03w03 SMP1: Channel 1 sampling time selection
-0x40012210 C   FIELD 06w03 SMP2: Channel 2 sampling time selection
-0x40012210 C   FIELD 09w03 SMP3: Channel 3 sampling time selection
-0x40012210 C   FIELD 12w03 SMP4: Channel 4 sampling time selection
-0x40012210 C   FIELD 15w03 SMP5: Channel 5 sampling time selection
-0x40012210 C   FIELD 18w03 SMP6: Channel 6 sampling time selection
-0x40012210 C   FIELD 21w03 SMP7: Channel 7 sampling time selection
-0x40012210 C   FIELD 24w03 SMP8: Channel 8 sampling time selection
-0x40012210 C   FIELD 27w03 SMP9: Channel 9 sampling time selection
+0x40012210 C   FIELD 00w03 SMP0: Channel 0 sample time selection
+0x40012210 C   FIELD 03w03 SMP1: Channel 1 sample time selection
+0x40012210 C   FIELD 06w03 SMP2: Channel 2 sample time selection
+0x40012210 C   FIELD 09w03 SMP3: Channel 3 sample time selection
+0x40012210 C   FIELD 12w03 SMP4: Channel 4 sample time selection
+0x40012210 C   FIELD 15w03 SMP5: Channel 5 sample time selection
+0x40012210 C   FIELD 18w03 SMP6: Channel 6 sample time selection
+0x40012210 C   FIELD 21w03 SMP7: Channel 7 sample time selection
+0x40012210 C   FIELD 24w03 SMP8: Channel 8 sample time selection
+0x40012210 C   FIELD 27w03 SMP9: Channel 9 sample time selection
 0x40012214 B  REGISTER JOFR1 (rw): injected channel data offset register x
 0x40012214 C   FIELD 00w12 JOFFSET: Data offset for injected channel x
 0x40012218 B  REGISTER JOFR2 (rw): injected channel data offset register x
@@ -4721,30 +4721,30 @@
 0x40012228 B  REGISTER LTR (rw): watchdog lower threshold register
 0x40012228 C   FIELD 00w12 LT: Analog watchdog lower threshold
 0x4001222C B  REGISTER SQR1 (rw): regular sequence register 1
-0x4001222C C   FIELD 00w05 SQ13: 13th conversion in regular sequence
-0x4001222C C   FIELD 05w05 SQ14: 14th conversion in regular sequence
-0x4001222C C   FIELD 10w05 SQ15: 15th conversion in regular sequence
-0x4001222C C   FIELD 15w05 SQ16: 16th conversion in regular sequence
+0x4001222C C   FIELD 00w05 SQ13: 13 conversion in regular sequence
+0x4001222C C   FIELD 05w05 SQ14: 14 conversion in regular sequence
+0x4001222C C   FIELD 10w05 SQ15: 15 conversion in regular sequence
+0x4001222C C   FIELD 15w05 SQ16: 16 conversion in regular sequence
 0x4001222C C   FIELD 20w04 L: Regular channel sequence length
 0x40012230 B  REGISTER SQR2 (rw): regular sequence register 2
-0x40012230 C   FIELD 00w05 SQ7: 7th conversion in regular sequence
-0x40012230 C   FIELD 05w05 SQ8: 8th conversion in regular sequence
-0x40012230 C   FIELD 10w05 SQ9: 9th conversion in regular sequence
-0x40012230 C   FIELD 15w05 SQ10: 10th conversion in regular sequence
-0x40012230 C   FIELD 20w05 SQ11: 11th conversion in regular sequence
-0x40012230 C   FIELD 25w05 SQ12: 12th conversion in regular sequence
+0x40012230 C   FIELD 00w05 SQ7: 7 conversion in regular sequence
+0x40012230 C   FIELD 05w05 SQ8: 8 conversion in regular sequence
+0x40012230 C   FIELD 10w05 SQ9: 9 conversion in regular sequence
+0x40012230 C   FIELD 15w05 SQ10: 10 conversion in regular sequence
+0x40012230 C   FIELD 20w05 SQ11: 11 conversion in regular sequence
+0x40012230 C   FIELD 25w05 SQ12: 12 conversion in regular sequence
 0x40012234 B  REGISTER SQR3 (rw): regular sequence register 3
-0x40012234 C   FIELD 00w05 SQ1: 1st conversion in regular sequence
-0x40012234 C   FIELD 05w05 SQ2: 2nd conversion in regular sequence
-0x40012234 C   FIELD 10w05 SQ3: 3rd conversion in regular sequence
-0x40012234 C   FIELD 15w05 SQ4: 4th conversion in regular sequence
-0x40012234 C   FIELD 20w05 SQ5: 5th conversion in regular sequence
-0x40012234 C   FIELD 25w05 SQ6: 6th conversion in regular sequence
+0x40012234 C   FIELD 00w05 SQ1: 1 conversion in regular sequence
+0x40012234 C   FIELD 05w05 SQ2: 2 conversion in regular sequence
+0x40012234 C   FIELD 10w05 SQ3: 3 conversion in regular sequence
+0x40012234 C   FIELD 15w05 SQ4: 4 conversion in regular sequence
+0x40012234 C   FIELD 20w05 SQ5: 5 conversion in regular sequence
+0x40012234 C   FIELD 25w05 SQ6: 6 conversion in regular sequence
 0x40012238 B  REGISTER JSQR (rw): injected sequence register
-0x40012238 C   FIELD 00w05 JSQ1: 1st conversion in injected sequence
-0x40012238 C   FIELD 05w05 JSQ2: 2nd conversion in injected sequence
-0x40012238 C   FIELD 10w05 JSQ3: 3rd conversion in injected sequence
-0x40012238 C   FIELD 15w05 JSQ4: 4th conversion in injected sequence
+0x40012238 C   FIELD 00w05 JSQ1: 1 conversion in injected sequence
+0x40012238 C   FIELD 05w05 JSQ2: 2 conversion in injected sequence
+0x40012238 C   FIELD 10w05 JSQ3: 3 conversion in injected sequence
+0x40012238 C   FIELD 15w05 JSQ4: 4 conversion in injected sequence
 0x40012238 C   FIELD 20w02 JL: Injected sequence length
 0x4001223C B  REGISTER JDR1 (ro): injected data register x
 0x4001223C C   FIELD 00w16 JDATA: Injected data
@@ -5041,9 +5041,9 @@
 0x40013804 C   FIELD 23w01 MII_RMII_SEL: Ethernet PHY interface selection
 0x40013808 B  REGISTER EXTICR1 (rw): external interrupt configuration register 1
 0x40013808 C   FIELD 00w04 EXTI0: EXTI x configuration (x = 0 to 3)
-0x40013808 C   FIELD 04w04 EXTI1: EXTI x configuration (x = 0 to 3)
-0x40013808 C   FIELD 08w04 EXTI2: EXTI x configuration (x = 0 to 3)
-0x40013808 C   FIELD 12w04 EXTI3: EXTI x configuration (x = 0 to 3)
+0x40013808 C   FIELD 04w04 EXTI1: EXTI x configuration (x = 1 to 3)
+0x40013808 C   FIELD 08w04 EXTI2: EXTI x configuration (x = 2 to 3)
+0x40013808 C   FIELD 12w04 EXTI3: EXTI x configuration (x = 3 to 3)
 0x4001380C B  REGISTER EXTICR2 (rw): external interrupt configuration register 2
 0x4001380C C   FIELD 00w04 EXTI4: EXTI x configuration (x = 4 to 7)
 0x4001380C C   FIELD 04w04 EXTI5: EXTI x configuration (x = 4 to 7)
@@ -5052,7 +5052,7 @@
 0x40013810 B  REGISTER EXTICR3 (rw): external interrupt configuration register 3
 0x40013810 C   FIELD 00w04 EXTI8: EXTI x configuration (x = 8 to 11)
 0x40013810 C   FIELD 04w04 EXTI9: EXTI x configuration (x = 8 to 11)
-0x40013810 C   FIELD 08w04 EXTI10: EXTI10
+0x40013810 C   FIELD 08w04 EXTI10: EXTI x configuration (x = 8 to 11)
 0x40013810 C   FIELD 12w04 EXTI11: EXTI x configuration (x = 8 to 11)
 0x40013814 B  REGISTER EXTICR4 (rw): external interrupt configuration register 4
 0x40013814 C   FIELD 00w04 EXTI12: EXTI x configuration (x = 12 to 15)
@@ -5242,18 +5242,18 @@
 0x40014018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40014018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40014018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
+0x40014018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
 0x40014018 C   FIELD 04w03 IC1F: Input capture 1 filter
-0x40014018 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40014018 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x40014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
-0x40014018 C   FIELD 10w01 OC2FE: Output Compare 2 fast enable
+0x40014018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40014018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40014018 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
+0x40014018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
 0x40014018 C   FIELD 12w03 IC2F: Input capture 2 filter
-0x40014018 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40014018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40014018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40014018 C   FIELD 24w01 OC2M_3: Output Compare 2 mode, bit 3
 0x40014020 B  REGISTER CCER (rw): capture/compare enable register
@@ -5297,10 +5297,10 @@
 0x40014418 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40014418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014418 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40014418 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40014418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014418 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40014418 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40014418 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40014418 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40014418 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40014418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40014420 B  REGISTER CCER (rw): capture/compare enable register
@@ -5341,10 +5341,10 @@
 0x40014818 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
 0x40014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014818 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40014818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40014818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014818 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40014818 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40014818 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40014818 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40014818 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40014818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode, bit 3
 0x40014820 B  REGISTER CCER (rw): capture/compare enable register
@@ -7022,7 +7022,7 @@
 0x40020018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40020018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40020018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40020018 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40020018 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40020018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40020018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40020018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -7211,7 +7211,7 @@
 0x40020418 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40020418 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40020418 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40020418 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40020418 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40020418 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40020418 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40020418 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -7400,7 +7400,7 @@
 0x40020818 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40020818 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40020818 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40020818 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40020818 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40020818 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40020818 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40020818 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -7589,7 +7589,7 @@
 0x40020C18 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40020C18 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40020C18 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40020C18 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40020C18 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40020C18 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40020C18 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40020C18 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -7778,7 +7778,7 @@
 0x40021018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40021018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40021018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40021018 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40021018 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40021018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40021018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40021018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -7967,7 +7967,7 @@
 0x40021418 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40021418 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40021418 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40021418 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40021418 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40021418 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40021418 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40021418 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -8156,7 +8156,7 @@
 0x40021818 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40021818 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40021818 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40021818 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40021818 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40021818 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40021818 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40021818 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -8345,7 +8345,7 @@
 0x40021C18 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40021C18 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40021C18 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40021C18 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40021C18 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40021C18 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40021C18 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40021C18 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -8534,7 +8534,7 @@
 0x40022018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40022018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40022018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40022018 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40022018 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40022018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40022018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40022018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -8723,7 +8723,7 @@
 0x40022418 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40022418 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40022418 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40022418 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40022418 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40022418 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40022418 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40022418 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
@@ -8912,7 +8912,7 @@
 0x40022818 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
 0x40022818 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
 0x40022818 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x40022818 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
+0x40022818 C   FIELD 16w01 BR0: Port x reset bit y (y = 0..15)
 0x40022818 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
 0x40022818 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
 0x40022818 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
