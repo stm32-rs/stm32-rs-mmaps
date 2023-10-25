@@ -1227,13 +1227,7 @@
 0x40005C48 C   FIELD 14w01 RXDM: Receive data - line status
 0x40005C48 C   FIELD 15w01 RXDP: Receive data + line status
 0x40005C4C B  REGISTER DADDR (rw): device address
-0x40005C4C C   FIELD 00w01 ADD: Device address
-0x40005C4C C   FIELD 01w01 ADD1: Device address
-0x40005C4C C   FIELD 02w01 ADD2: Device address
-0x40005C4C C   FIELD 03w01 ADD3: Device address
-0x40005C4C C   FIELD 04w01 ADD4: Device address
-0x40005C4C C   FIELD 05w01 ADD5: Device address
-0x40005C4C C   FIELD 06w01 ADD6: Device address
+0x40005C4C C   FIELD 00w07 ADD: Device address
 0x40005C4C C   FIELD 07w01 EF: Enable function
 0x40005C50 B  REGISTER BTABLE (rw): Buffer table address
 0x40005C50 C   FIELD 03w13 BTABLE: Buffer table
@@ -1781,24 +1775,26 @@
 0x40007800 C   FIELD 23w01 PECEN (rw): PEC enable
 0x40007804 B  REGISTER CFGR (rw): configuration register
 0x40007804 B  REGISTER CR2 (rw): Control register 2
-0x40007804 C   FIELD 00w04 OAR: Own Address
+0x40007804 C   FIELD 00w03 SFT: Signal Free Time
 0x40007804 C   FIELD 00w10 SADD: Slave address bit 9:8 (master mode)
-0x40007804 C   FIELD 04w01 LSTN: Listen mode
-0x40007804 C   FIELD 05w03 SFT: Signal Free Time
-0x40007804 C   FIELD 08w01 RXTOL: Rx-Tolerance
-0x40007804 C   FIELD 09w01 BRESTP: Rx-stop on bit rising error
-0x40007804 C   FIELD 10w01 BREGEN: Generate error-bit on bit rising error
+0x40007804 C   FIELD 03w01 RXTOL: Rx-Tolerance
+0x40007804 C   FIELD 04w01 BRESTP: Rx-stop on bit rising error
+0x40007804 C   FIELD 05w01 BREGEN: Generate error-bit on bit rising error
+0x40007804 C   FIELD 06w01 LBPEGEN: Generate Error-Bit on Long Bit Period Error
+0x40007804 C   FIELD 07w01 BRDNOGEN: Avoid Error-Bit Generation in Broadcast
+0x40007804 C   FIELD 08w01 SFTOP: SFT Option Bit
 0x40007804 C   FIELD 10w01 RD_WRN: Transfer direction (master mode)
 0x40007804 C   FIELD 11w01 ADD10: 10-bit addressing mode (master mode)
-0x40007804 C   FIELD 11w01 LBPEGEN: Generate Error-Bit on Long Bit Period Error
 0x40007804 C   FIELD 12w01 HEAD10R: 10-bit address header only read direction (master receiver mode)
 0x40007804 C   FIELD 13w01 START: Start generation
 0x40007804 C   FIELD 14w01 STOP: Stop generation (master mode)
 0x40007804 C   FIELD 15w01 NACK: NACK generation (slave mode)
 0x40007804 C   FIELD 16w08 NBYTES: Number of bytes
+0x40007804 C   FIELD 16w15 OAR: Own Address
 0x40007804 C   FIELD 24w01 RELOAD: NBYTES reload mode
 0x40007804 C   FIELD 25w01 AUTOEND: Automatic end mode (master mode)
 0x40007804 C   FIELD 26w01 PECBYTE: Packet error checking byte
+0x40007804 C   FIELD 31w01 LSTN: Listen mode
 0x40007808 B  REGISTER OAR1 (rw): Own address register 1
 0x40007808 B  REGISTER TXDR (wo): Tx data register
 0x40007808 C   FIELD 00w08 TXD: Tx Data register
