@@ -2358,6 +2358,208 @@
 0x400064E8 C   FIELD 00w05 EFAI: EFAI
 0x40006500 B  REGISTER CKDIV (rw): FDCAN CFG clock divider register
 0x40006500 C   FIELD 00w04 PDIV: input clock divider. the APB clock could be divided prior to be used by the CAN sub
+0x40006800 A PERIPHERAL FDCAN2
+0x40006800 B  REGISTER CREL (ro): FDCAN Core Release Register
+0x40006800 C   FIELD 00w08 DAY: DAY
+0x40006800 C   FIELD 08w08 MON: MON
+0x40006800 C   FIELD 16w04 YEAR: YEAR
+0x40006800 C   FIELD 20w04 SUBSTEP: SUBSTEP
+0x40006800 C   FIELD 24w04 STEP: STEP
+0x40006800 C   FIELD 28w04 REL: REL
+0x40006804 B  REGISTER ENDN (ro): FDCAN Core Release Register
+0x40006804 C   FIELD 00w32 ETV: ETV
+0x4000680C B  REGISTER DBTP (rw): This register is only writable if bits CCCR.CCE and CCCR.INIT are set. The CAN bit time may be programed in the range of 4 to 25 time quanta. The CAN time quantum may be programmed in the range of 1 to 1024 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock period. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (programmed values) [DTSEG1 + DTSEG2 + 3] tq or (functional values) [Sync_Seg + Prop_Seg + Phase_Seg1 + Phase_Seg2] tq. The Information Processing Time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
+0x4000680C C   FIELD 00w04 DSJW (rw): DSJW
+0x4000680C C   FIELD 04w04 DTSEG2 (rw): DTSEG2
+0x4000680C C   FIELD 08w05 DTSEG1 (wo): DTSEG1
+0x4000680C C   FIELD 16w05 DBRP (rw): DBRP
+0x4000680C C   FIELD 23w01 TDC (ro): TDC
+0x40006810 B  REGISTER TEST (rw): Write access to the Test Register has to be enabled by setting bit CCCR[TEST] to 1 . All Test Register functions are set to their reset values when bit CCCR[TEST] is reset. Loop Back mode and software control of Tx pin FDCANx_TX are hardware test modes. Programming TX differently from 00 may disturb the message transfer on the CAN bus.
+0x40006810 C   FIELD 04w01 LBCK (rw): LBCK
+0x40006810 C   FIELD 05w02 TX (rw): TX
+0x40006810 C   FIELD 07w01 RX: RX
+0x40006814 B  REGISTER RWD: The RAM Watchdog monitors the READY output of the Message RAM. A Message RAM access starts the Message RAM Watchdog Counter with the value configured by the RWD[WDC] bits. The counter is reloaded with RWD[WDC] bits when the Message RAM signals successful completion by activating its READY output. In case there is no response from the Message RAM until the counter has counted down to 0, the counter stops and interrupt flag IR[WDI] bit is set. The RAM Watchdog Counter is clocked by the fdcan_pclk clock.
+0x40006814 C   FIELD 00w08 WDC (rw): WDC
+0x40006814 C   FIELD 08w08 WDV (ro): WDV
+0x40006818 B  REGISTER CCCR (rw): For details about setting and resetting of single bits see Software initialization.
+0x40006818 C   FIELD 00w01 INIT: INIT
+0x40006818 C   FIELD 01w01 CCE: CCE
+0x40006818 C   FIELD 02w01 ASM: ASM
+0x40006818 C   FIELD 03w01 CSA: CSA
+0x40006818 C   FIELD 04w01 CSR: CSR
+0x40006818 C   FIELD 05w01 MON: MON
+0x40006818 C   FIELD 06w01 DAR: DAR
+0x40006818 C   FIELD 07w01 TEST: TEST
+0x40006818 C   FIELD 08w01 FDOE: FDOE
+0x40006818 C   FIELD 09w01 BRSE: BRSE
+0x40006818 C   FIELD 12w01 PXHD: PXHD
+0x40006818 C   FIELD 13w01 EFBI: EFBI
+0x40006818 C   FIELD 14w01 TXP: TXP
+0x40006818 C   FIELD 15w01 NISO: NISO
+0x4000681C B  REGISTER NBTP (rw): FDCAN_NBTP
+0x4000681C C   FIELD 00w07 NTSEG2: TSEG2
+0x4000681C C   FIELD 08w08 NTSEG1: NTSEG1
+0x4000681C C   FIELD 16w09 NBRP: NBRP
+0x4000681C C   FIELD 25w07 NSJW: NSJW
+0x40006820 B  REGISTER TSCC (rw): FDCAN Timestamp Counter Configuration Register
+0x40006820 C   FIELD 00w02 TSS: TSS
+0x40006820 C   FIELD 16w04 TCP: TCP
+0x40006824 B  REGISTER TSCV (rw): FDCAN Timestamp Counter Value Register
+0x40006824 C   FIELD 00w16 TSC: TSC
+0x40006828 B  REGISTER TOCC: FDCAN Timeout Counter Configuration Register
+0x40006828 C   FIELD 00w01 ETOC (rw): ETOC
+0x40006828 C   FIELD 01w02 TOS (wo): TOS
+0x40006828 C   FIELD 16w16 TOP (rw): TOP
+0x4000682C B  REGISTER TOCV (rw): FDCAN Timeout Counter Value Register
+0x4000682C C   FIELD 00w16 TOC: TOC
+0x40006840 B  REGISTER ECR (ro): FDCAN Error Counter Register
+0x40006840 C   FIELD 00w08 TEC: TEC
+0x40006840 C   FIELD 08w07 REC: TREC
+0x40006840 C   FIELD 15w01 RP: RP
+0x40006840 C   FIELD 16w08 CEL: CEL
+0x40006844 B  REGISTER PSR: FDCAN Protocol Status Register
+0x40006844 C   FIELD 00w03 LEC (rw): LEC
+0x40006844 C   FIELD 03w02 ACT (wo): ACT
+0x40006844 C   FIELD 05w01 EP (rw): EP
+0x40006844 C   FIELD 06w01 EW (rw): EW
+0x40006844 C   FIELD 07w01 BO (rw): BO
+0x40006844 C   FIELD 08w03 DLEC (wo): DLEC
+0x40006844 C   FIELD 11w01 RESI (rw): RESI
+0x40006844 C   FIELD 12w01 RBRS (rw): RBRS
+0x40006844 C   FIELD 13w01 REDL (rw): REDL
+0x40006844 C   FIELD 14w01 PXE (rw): PXE
+0x40006844 C   FIELD 16w07 TDCV (rw): TDCV
+0x40006848 B  REGISTER TDCR (rw): FDCAN Transmitter Delay Compensation Register
+0x40006848 C   FIELD 00w07 TDCF: TDCF
+0x40006848 C   FIELD 08w07 TDCO: TDCO
+0x40006850 B  REGISTER IR (rw): The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
+0x40006850 C   FIELD 00w01 RF0N: Rx FIFO 0 new message
+0x40006850 C   FIELD 01w01 RF0F: Rx FIFO 0 full
+0x40006850 C   FIELD 02w01 RF0L: Rx FIFO 0 message lost
+0x40006850 C   FIELD 03w01 RF1N: Rx FIFO 1 new message
+0x40006850 C   FIELD 04w01 RF1F: Rx FIFO 1 full
+0x40006850 C   FIELD 05w01 RF1L: Rx FIFO 1 message lost
+0x40006850 C   FIELD 06w01 HPM: High-priority message
+0x40006850 C   FIELD 07w01 TC: Transmission completed
+0x40006850 C   FIELD 08w01 TCF: Transmission cancellation finished
+0x40006850 C   FIELD 09w01 TFE: Tx FIFO empty
+0x40006850 C   FIELD 10w01 TEFN: Tx even FIFO new entry
+0x40006850 C   FIELD 11w01 TEFF: Tx event FIFO full
+0x40006850 C   FIELD 12w01 TEFL: Tx event FIFO element lost
+0x40006850 C   FIELD 13w01 TSW: Timestamp wraparound
+0x40006850 C   FIELD 14w01 MRAF: Message RAM access failure
+0x40006850 C   FIELD 15w01 TOO: Timeout occurred
+0x40006850 C   FIELD 16w01 ELO: Error logging overflow
+0x40006850 C   FIELD 17w01 EP: Error passive
+0x40006850 C   FIELD 18w01 EW: Warning status
+0x40006850 C   FIELD 19w01 BO: Bus_off status
+0x40006850 C   FIELD 20w01 WDI: Watchdog interrupt
+0x40006850 C   FIELD 21w01 PEA: Protocol error in arbitration phase
+0x40006850 C   FIELD 22w01 PED: Protocol error in data phase
+0x40006850 C   FIELD 23w01 ARA: Access to reserved address
+0x40006854 B  REGISTER IE (rw): The settings in the Interrupt Enable register determine which status changes in the Interrupt Register will be signaled on an interrupt line.
+0x40006854 C   FIELD 00w01 RF0NE: Rx FIFO 0 new message enable
+0x40006854 C   FIELD 01w01 RF0FE: Rx FIFO 0 full enable
+0x40006854 C   FIELD 02w01 RF0LE: Rx FIFO 0 message lost enable
+0x40006854 C   FIELD 03w01 RF1NE: Rx FIFO 1 new message enable
+0x40006854 C   FIELD 04w01 RF1FE: Rx FIFO 1 full enable
+0x40006854 C   FIELD 05w01 RF1LE: Rx FIFO 1 message lost enable
+0x40006854 C   FIELD 06w01 HPME: High-priority message enable
+0x40006854 C   FIELD 07w01 TCE: Transmission completed enable
+0x40006854 C   FIELD 08w01 TCFE: Transmission cancellation finished enable
+0x40006854 C   FIELD 09w01 TFEE: Tx FIFO empty enable
+0x40006854 C   FIELD 10w01 TEFNE: Tx even FIFO new entry enable
+0x40006854 C   FIELD 11w01 TEFFE: Tx event FIFO full enable
+0x40006854 C   FIELD 12w01 TEFLE: Tx event FIFO element lost enable
+0x40006854 C   FIELD 13w01 TSWE: Timestamp wraparound enable
+0x40006854 C   FIELD 14w01 MRAFE: Message RAM access failure enable
+0x40006854 C   FIELD 15w01 TOOE: Timeout occurred enable
+0x40006854 C   FIELD 16w01 ELOE: Error logging overflow enable
+0x40006854 C   FIELD 17w01 EPE: Error passive enable
+0x40006854 C   FIELD 18w01 EWE: Warning status enable
+0x40006854 C   FIELD 19w01 BOE: Bus_off status enable
+0x40006854 C   FIELD 20w01 WDIE: Watchdog interrupt enable
+0x40006854 C   FIELD 21w01 PEAE: Protocol error in arbitration phase enable
+0x40006854 C   FIELD 22w01 PEDE: Protocol error in data phase enable
+0x40006854 C   FIELD 23w01 ARAE: Access to reserved address enable
+0x40006858 B  REGISTER ILS (rw): The Interrupt Line Select register assigns an interrupt generated by a specific interrupt flag from the Interrupt Register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via ILE[EINT0] and ILE[EINT1].
+0x40006858 C   FIELD 00w01 RXFIFO0: RX FIFO bit grouping the following interruption
+0x40006858 C   FIELD 01w01 RXFIFO1: RX FIFO bit grouping the following interruption
+0x40006858 C   FIELD 02w01 SMSG: Status message bit grouping the following interruption
+0x40006858 C   FIELD 03w01 TFERR: TX FIFO error grouping the following interruption
+0x40006858 C   FIELD 04w01 MISC: Interrupt regrouping the following interruption
+0x40006858 C   FIELD 05w01 BERR: Bit and line error grouping the following interruption
+0x40006858 C   FIELD 06w01 PERR: Protocol error grouping the following interruption
+0x4000685C B  REGISTER ILE (rw): Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
+0x4000685C C   FIELD 00w01 EINT0: EINT0
+0x4000685C C   FIELD 01w01 EINT1: EINT1
+0x40006880 B  REGISTER RXGFC: Global settings for Message ID filtering. The Global Filter Configuration controls the filter path for standard and extended messages as described in Figure706: Standard Message ID filter path and Figure707: Extended Message ID filter path.
+0x40006880 C   FIELD 00w01 RRFE (rw): RRFE
+0x40006880 C   FIELD 01w01 RRFS (rw): RRFS
+0x40006880 C   FIELD 02w02 ANFE (wo): ANFE
+0x40006880 C   FIELD 04w02 ANFS (wo): ANFS
+0x40006880 C   FIELD 08w01 F1OM: FIFO 1 operation mode
+0x40006880 C   FIELD 09w01 F0OM: FIFO 0 operation mode
+0x40006880 C   FIELD 16w05 LSS: List size standard
+0x40006880 C   FIELD 24w04 LSE: List size extended
+0x40006884 B  REGISTER XIDAM (rw): FDCAN Extended ID and Mask Register
+0x40006884 C   FIELD 00w29 EIDM: EIDM
+0x40006888 B  REGISTER HPMS (ro): This register is updated every time a Message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
+0x40006888 C   FIELD 00w06 BIDX: BIDX
+0x40006888 C   FIELD 06w02 MSI: MSI
+0x40006888 C   FIELD 08w07 FIDX: FIDX
+0x40006888 C   FIELD 15w01 FLST: FLST
+0x40006890 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
+0x40006890 C   FIELD 00w07 F0FL: F0FL
+0x40006890 C   FIELD 08w06 F0GI: F0GI
+0x40006890 C   FIELD 16w06 F0PI: F0PI
+0x40006890 C   FIELD 24w01 F0F: F0F
+0x40006890 C   FIELD 25w01 RF0L: RF0L
+0x40006894 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
+0x40006894 C   FIELD 00w06 F0AI: F0AI
+0x40006898 B  REGISTER RXF1S (ro): FDCAN Rx FIFO 1 Status Register
+0x40006898 C   FIELD 00w07 F1FL: F1FL
+0x40006898 C   FIELD 08w06 F1GI: F1GI
+0x40006898 C   FIELD 16w06 F1PI: F1PI
+0x40006898 C   FIELD 24w01 F1F: F1F
+0x40006898 C   FIELD 25w01 RF1L: RF1L
+0x40006898 C   FIELD 30w02 DMS: DMS
+0x4000689C B  REGISTER RXF1A (rw): FDCAN Rx FIFO 1 Acknowledge Register
+0x4000689C C   FIELD 00w06 F1AI: F1AI
+0x400068C0 B  REGISTER TXBC (rw): FDCAN Tx Buffer Configuration Register
+0x400068C0 C   FIELD 02w14 TBSA: TBSA
+0x400068C0 C   FIELD 16w06 NDTB: NDTB
+0x400068C0 C   FIELD 24w06 TFQS: TFQS
+0x400068C0 C   FIELD 30w01 TFQM: TFQM
+0x400068C4 B  REGISTER TXFQS (ro): The Tx FIFO/Queue status is related to the pending Tx requests listed in register TXBRP. Therefore the effect of Add/Cancellation requests may be delayed due to a running Tx scan (TXBRP not yet updated).
+0x400068C4 C   FIELD 00w03 TFFL: TFFL
+0x400068C4 C   FIELD 08w02 TFGI: TFGI
+0x400068C4 C   FIELD 16w02 TFQPI: TFQPI
+0x400068C4 C   FIELD 21w01 TFQF: TFQF
+0x400068C8 B  REGISTER TXBRP (ro): FDCAN Tx Buffer Request Pending Register
+0x400068C8 C   FIELD 00w03 TRP: TRP
+0x400068CC B  REGISTER TXBAR (rw): FDCAN Tx Buffer Add Request Register
+0x400068CC C   FIELD 00w03 AR: AR
+0x400068D0 B  REGISTER TXBCR (rw): FDCAN Tx Buffer Cancellation Request Register
+0x400068D0 C   FIELD 00w03 CR: CR
+0x400068D4 B  REGISTER TXBTO (ro): FDCAN Tx Buffer Transmission Occurred Register
+0x400068D4 C   FIELD 00w03 TO: TO
+0x400068D8 B  REGISTER TXBCF (ro): FDCAN Tx Buffer Cancellation Finished Register
+0x400068D8 C   FIELD 00w03 CF: CF
+0x400068DC B  REGISTER TXBTIE (rw): FDCAN Tx Buffer Transmission Interrupt Enable Register
+0x400068DC C   FIELD 00w03 TIE: TIE
+0x400068E0 B  REGISTER TXBCIE (rw): FDCAN Tx Buffer Cancellation Finished Interrupt Enable Register
+0x400068E0 C   FIELD 00w03 CFIE: CFIE
+0x400068E4 B  REGISTER TXEFS (ro): FDCAN Tx Event FIFO Status Register
+0x400068E4 C   FIELD 00w03 EFFL: EFFL
+0x400068E4 C   FIELD 08w02 EFGI: EFGI
+0x400068E4 C   FIELD 16w02 EFPI: EFPI
+0x400068E4 C   FIELD 24w01 EFF: EFF
+0x400068E4 C   FIELD 25w01 TEFL: TEFL
+0x400068E8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
+0x400068E8 C   FIELD 00w05 EFAI: EFAI
+0x40006900 B  REGISTER CKDIV (rw): FDCAN CFG clock divider register
+0x40006900 C   FIELD 00w04 PDIV: input clock divider. the APB clock could be divided prior to be used by the CAN sub
 0x40007000 A PERIPHERAL PWR
 0x40007000 B  REGISTER CR1 (rw): Power control register 1
 0x40007000 C   FIELD 00w03 LPMS: Low-power mode selection
