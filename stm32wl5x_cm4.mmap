@@ -285,9 +285,9 @@
 0x4000285C C   FIELD 04w01 CTSOVF: Clear timestamp overflow flag
 0x4000285C C   FIELD 05w01 CITSF: Clear internal timestamp flag
 0x4000285C C   FIELD 06w01 CSSRUF: Clear SSR underflow flag
-0x40002870 B  REGISTER ALRABINR (rw): RTC alarm A binary mode register
+0x40002870 B  REGISTER ALRABINR (rw): Alarm A binary mode register
 0x40002870 C   FIELD 00w32 SS: Synchronous counter alarm value in Binary mode
-0x40002874 B  REGISTER ALRBBINR (rw): RTC alarm A binary mode register
+0x40002874 B  REGISTER ALRBBINR (rw): Alarm B binary mode register
 0x40002874 C   FIELD 00w32 SS: Synchronous counter alarm value in Binary mode
 0x40002C00 A PERIPHERAL WWDG
 0x40002C00 B  REGISTER CR (rw): Control register
@@ -2550,7 +2550,7 @@
 0x4002048C B  REGISTER CMAR7 (rw): channel x memory address register
 0x4002048C C   FIELD 00w32 MA: peripheral address
 0x40020800 A PERIPHERAL DMAMUX
-0x40020800 B  REGISTER CCR0 (rw): request line multiplexer channel x configuration register
+0x40020800 B  REGISTER CCR0 (rw): DMA Multiplexer Channel 0 Control register
 0x40020800 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020800 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020800 C   FIELD 09w01 EGE: Event generation enable
@@ -2558,7 +2558,7 @@
 0x40020800 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020800 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020800 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020804 B  REGISTER CCR1 (rw): request line multiplexer channel x configuration register
+0x40020804 B  REGISTER CCR1 (rw): DMA Multiplexer Channel 1 Control register
 0x40020804 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020804 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020804 C   FIELD 09w01 EGE: Event generation enable
@@ -2566,7 +2566,7 @@
 0x40020804 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020804 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020804 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020808 B  REGISTER CCR2 (rw): request line multiplexer channel x configuration register
+0x40020808 B  REGISTER CCR2 (rw): DMA Multiplexer Channel 2 Control register
 0x40020808 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020808 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020808 C   FIELD 09w01 EGE: Event generation enable
@@ -2574,7 +2574,7 @@
 0x40020808 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020808 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020808 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x4002080C B  REGISTER CCR3 (rw): request line multiplexer channel x configuration register
+0x4002080C B  REGISTER CCR3 (rw): DMA Multiplexer Channel 3 Control register
 0x4002080C C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x4002080C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x4002080C C   FIELD 09w01 EGE: Event generation enable
@@ -2582,7 +2582,7 @@
 0x4002080C C   FIELD 17w02 SPOL: Synchronization polarity
 0x4002080C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x4002080C C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020810 B  REGISTER CCR4 (rw): request line multiplexer channel x configuration register
+0x40020810 B  REGISTER CCR4 (rw): DMA Multiplexer Channel 4 Control register
 0x40020810 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020810 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020810 C   FIELD 09w01 EGE: Event generation enable
@@ -2590,7 +2590,7 @@
 0x40020810 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020810 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020810 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020814 B  REGISTER CCR5 (rw): request line multiplexer channel x configuration register
+0x40020814 B  REGISTER CCR5 (rw): DMA Multiplexer Channel 5 Control register
 0x40020814 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020814 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020814 C   FIELD 09w01 EGE: Event generation enable
@@ -2598,7 +2598,7 @@
 0x40020814 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020814 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020814 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020818 B  REGISTER CCR6 (rw): request line multiplexer channel x configuration register
+0x40020818 B  REGISTER CCR6 (rw): DMA Multiplexer Channel 6 Control register
 0x40020818 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020818 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020818 C   FIELD 09w01 EGE: Event generation enable
@@ -2606,7 +2606,7 @@
 0x40020818 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020818 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020818 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x4002081C B  REGISTER CCR7 (rw): request line multiplexer channel x configuration register
+0x4002081C B  REGISTER CCR7 (rw): DMA Multiplexer Channel 7 Control register
 0x4002081C C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x4002081C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x4002081C C   FIELD 09w01 EGE: Event generation enable
@@ -2614,7 +2614,7 @@
 0x4002081C C   FIELD 17w02 SPOL: Synchronization polarity
 0x4002081C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x4002081C C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020820 B  REGISTER CCR8 (rw): request line multiplexer channel x configuration register
+0x40020820 B  REGISTER CCR8 (rw): DMA Multiplexer Channel 8 Control register
 0x40020820 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020820 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020820 C   FIELD 09w01 EGE: Event generation enable
@@ -2622,7 +2622,7 @@
 0x40020820 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020820 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020820 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020824 B  REGISTER CCR9 (rw): request line multiplexer channel x configuration register
+0x40020824 B  REGISTER CCR9 (rw): DMA Multiplexer Channel 9 Control register
 0x40020824 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020824 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020824 C   FIELD 09w01 EGE: Event generation enable
@@ -2630,7 +2630,7 @@
 0x40020824 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020824 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020824 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020828 B  REGISTER CCR10 (rw): request line multiplexer channel x configuration register
+0x40020828 B  REGISTER CCR10 (rw): DMA Multiplexer Channel 10 Control register
 0x40020828 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020828 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020828 C   FIELD 09w01 EGE: Event generation enable
@@ -2638,7 +2638,7 @@
 0x40020828 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020828 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020828 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x4002082C B  REGISTER CCR11 (rw): request line multiplexer channel x configuration register
+0x4002082C B  REGISTER CCR11 (rw): DMA Multiplexer Channel 11 Control register
 0x4002082C C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x4002082C C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x4002082C C   FIELD 09w01 EGE: Event generation enable
@@ -2646,7 +2646,7 @@
 0x4002082C C   FIELD 17w02 SPOL: Synchronization polarity
 0x4002082C C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x4002082C C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020830 B  REGISTER CCR12 (rw): request line multiplexer channel x configuration register
+0x40020830 B  REGISTER CCR12 (rw): DMA Multiplexer Channel 12 Control register
 0x40020830 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020830 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020830 C   FIELD 09w01 EGE: Event generation enable
@@ -2654,7 +2654,7 @@
 0x40020830 C   FIELD 17w02 SPOL: Synchronization polarity
 0x40020830 C   FIELD 19w05 NBREQ: Number of DMA requests minus 1 to forward
 0x40020830 C   FIELD 24w05 SYNC_ID: Synchronization identification
-0x40020834 B  REGISTER CCR13 (rw): request line multiplexer channel x configuration register
+0x40020834 B  REGISTER CCR13 (rw): DMA Multiplexer Channel 13 Control register
 0x40020834 C   FIELD 00w08 DMAREQ_ID: DMA request identification
 0x40020834 C   FIELD 08w01 SOIE: Synchronization overrun interrupt enable
 0x40020834 C   FIELD 09w01 EGE: Event generation enable
@@ -4176,67 +4176,67 @@
 0x5800143C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5800143C C   FIELD 08w04 COREID: COREID
 0x5800143C C   FIELD 31w01 LOCK: Lock indication
-0x58001480 B  REGISTER RLR0 (ro): HSEM Read lock register
+0x58001480 B  REGISTER RLR0 (ro): Semaphore 0 read lock register
 0x58001480 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58001480 C   FIELD 08w04 COREID: COREID
 0x58001480 C   FIELD 31w01 LOCK: Lock indication
-0x58001484 B  REGISTER RLR1 (ro): HSEM Read lock register
+0x58001484 B  REGISTER RLR1 (ro): Semaphore 1 read lock register
 0x58001484 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58001484 C   FIELD 08w04 COREID: COREID
 0x58001484 C   FIELD 31w01 LOCK: Lock indication
-0x58001488 B  REGISTER RLR2 (ro): HSEM Read lock register
+0x58001488 B  REGISTER RLR2 (ro): Semaphore 2 read lock register
 0x58001488 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58001488 C   FIELD 08w04 COREID: COREID
 0x58001488 C   FIELD 31w01 LOCK: Lock indication
-0x5800148C B  REGISTER RLR3 (ro): HSEM Read lock register
+0x5800148C B  REGISTER RLR3 (ro): Semaphore 3 read lock register
 0x5800148C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5800148C C   FIELD 08w04 COREID: COREID
 0x5800148C C   FIELD 31w01 LOCK: Lock indication
-0x58001490 B  REGISTER RLR4 (ro): HSEM Read lock register
+0x58001490 B  REGISTER RLR4 (ro): Semaphore 4 read lock register
 0x58001490 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58001490 C   FIELD 08w04 COREID: COREID
 0x58001490 C   FIELD 31w01 LOCK: Lock indication
-0x58001494 B  REGISTER RLR5 (ro): HSEM Read lock register
+0x58001494 B  REGISTER RLR5 (ro): Semaphore 5 read lock register
 0x58001494 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58001494 C   FIELD 08w04 COREID: COREID
 0x58001494 C   FIELD 31w01 LOCK: Lock indication
-0x58001498 B  REGISTER RLR6 (ro): HSEM Read lock register
+0x58001498 B  REGISTER RLR6 (ro): Semaphore 6 read lock register
 0x58001498 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58001498 C   FIELD 08w04 COREID: COREID
 0x58001498 C   FIELD 31w01 LOCK: Lock indication
-0x5800149C B  REGISTER RLR7 (ro): HSEM Read lock register
+0x5800149C B  REGISTER RLR7 (ro): Semaphore 7 read lock register
 0x5800149C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5800149C C   FIELD 08w04 COREID: COREID
 0x5800149C C   FIELD 31w01 LOCK: Lock indication
-0x580014A0 B  REGISTER RLR8 (ro): HSEM Read lock register
+0x580014A0 B  REGISTER RLR8 (ro): Semaphore 8 read lock register
 0x580014A0 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014A0 C   FIELD 08w04 COREID: COREID
 0x580014A0 C   FIELD 31w01 LOCK: Lock indication
-0x580014A4 B  REGISTER RLR9 (ro): HSEM Read lock register
+0x580014A4 B  REGISTER RLR9 (ro): Semaphore 9 read lock register
 0x580014A4 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014A4 C   FIELD 08w04 COREID: COREID
 0x580014A4 C   FIELD 31w01 LOCK: Lock indication
-0x580014A8 B  REGISTER RLR10 (ro): HSEM Read lock register
+0x580014A8 B  REGISTER RLR10 (ro): Semaphore 10 read lock register
 0x580014A8 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014A8 C   FIELD 08w04 COREID: COREID
 0x580014A8 C   FIELD 31w01 LOCK: Lock indication
-0x580014AC B  REGISTER RLR11 (ro): HSEM Read lock register
+0x580014AC B  REGISTER RLR11 (ro): Semaphore 11 read lock register
 0x580014AC C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014AC C   FIELD 08w04 COREID: COREID
 0x580014AC C   FIELD 31w01 LOCK: Lock indication
-0x580014B0 B  REGISTER RLR12 (ro): HSEM Read lock register
+0x580014B0 B  REGISTER RLR12 (ro): Semaphore 12 read lock register
 0x580014B0 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014B0 C   FIELD 08w04 COREID: COREID
 0x580014B0 C   FIELD 31w01 LOCK: Lock indication
-0x580014B4 B  REGISTER RLR13 (ro): HSEM Read lock register
+0x580014B4 B  REGISTER RLR13 (ro): Semaphore 13 read lock register
 0x580014B4 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014B4 C   FIELD 08w04 COREID: COREID
 0x580014B4 C   FIELD 31w01 LOCK: Lock indication
-0x580014B8 B  REGISTER RLR14 (ro): HSEM Read lock register
+0x580014B8 B  REGISTER RLR14 (ro): Semaphore 14 read lock register
 0x580014B8 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014B8 C   FIELD 08w04 COREID: COREID
 0x580014B8 C   FIELD 31w01 LOCK: Lock indication
-0x580014BC B  REGISTER RLR15 (ro): HSEM Read lock register
+0x580014BC B  REGISTER RLR15 (ro): Semaphore 15 read lock register
 0x580014BC C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580014BC C   FIELD 08w04 COREID: COREID
 0x580014BC C   FIELD 31w01 LOCK: Lock indication
