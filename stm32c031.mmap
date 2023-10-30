@@ -1697,7 +1697,7 @@
 0x4002003C B  REGISTER CMAR3: DMA channel 3 memory address register
 0x4002003C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020800 A PERIPHERAL DMAMUX
-0x40020800 B  REGISTER CCR0: DMAMUX request line multiplexer channel 0 configuration register
+0x40020800 B  REGISTER CCR0: DMA Multiplexer Channel 0 Control register
 0x40020800 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020800 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020800 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1705,7 +1705,7 @@
 0x40020800 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020800 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020800 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources).
-0x40020804 B  REGISTER CCR1: DMAMUX request line multiplexer channel 1 configuration register
+0x40020804 B  REGISTER CCR1: DMA Multiplexer Channel 1 Control register
 0x40020804 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020804 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020804 C   FIELD 09w01 EGE (rw): Event generation enable
@@ -1713,7 +1713,7 @@
 0x40020804 C   FIELD 17w02 SPOL (rw): Synchronization polarity Defines the edge polarity of the selected synchronization input:
 0x40020804 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020804 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources).
-0x40020808 B  REGISTER CCR2: DMAMUX request line multiplexer channel 2 configuration register
+0x40020808 B  REGISTER CCR2: DMA Multiplexer Channel 2 Control register
 0x40020808 C   FIELD 00w06 DMAREQ_ID (rw): DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
 0x40020808 C   FIELD 08w01 SOIE (rw): Synchronization overrun interrupt enable
 0x40020808 C   FIELD 09w01 EGE (rw): Event generation enable
