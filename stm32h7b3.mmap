@@ -8412,7 +8412,7 @@
 0x400177F0 B  REGISTER BDMADR (rw): Burst DMA Data register
 0x400177F0 C   FIELD 00w32 BDMADR: Burst DMA Data register
 0x40017800 A PERIPHERAL DFSDM1
-0x40017800 B  CLUSTER CH0: Cluster CH0, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x40017800 B  CLUSTER CH0: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x40017800 B  REGISTER CFGR10: DFSDM channel 0 configuration register
 0x40017800 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x40017800 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8440,7 +8440,7 @@
 0x40017810 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x40017814 B  REGISTER DLYR0: 
 0x40017814 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x40017820 B  CLUSTER CH1: Cluster CH1, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x40017820 B  CLUSTER CH1: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x40017820 B  REGISTER CFGR11: DFSDM channel 0 configuration register
 0x40017820 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x40017820 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8468,7 +8468,7 @@
 0x40017830 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x40017834 B  REGISTER DLYR1: 
 0x40017834 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x40017840 B  CLUSTER CH2: Cluster CH2, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x40017840 B  CLUSTER CH2: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x40017840 B  REGISTER CFGR12: DFSDM channel 0 configuration register
 0x40017840 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x40017840 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8496,7 +8496,7 @@
 0x40017850 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x40017854 B  REGISTER DLYR2: 
 0x40017854 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x40017860 B  CLUSTER CH3: Cluster CH3, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x40017860 B  CLUSTER CH3: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x40017860 B  REGISTER CFGR13: DFSDM channel 0 configuration register
 0x40017860 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x40017860 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8524,7 +8524,7 @@
 0x40017870 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x40017874 B  REGISTER DLYR3: 
 0x40017874 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x40017880 B  CLUSTER CH4: Cluster CH4, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x40017880 B  CLUSTER CH4: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x40017880 B  REGISTER CFGR14: DFSDM channel 0 configuration register
 0x40017880 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x40017880 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8552,7 +8552,7 @@
 0x40017890 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x40017894 B  REGISTER DLYR4: 
 0x40017894 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x400178A0 B  CLUSTER CH5: Cluster CH5, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x400178A0 B  CLUSTER CH5: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x400178A0 B  REGISTER CFGR15: DFSDM channel 0 configuration register
 0x400178A0 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x400178A0 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8580,7 +8580,7 @@
 0x400178B0 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x400178B4 B  REGISTER DLYR5: 
 0x400178B4 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x400178C0 B  CLUSTER CH6: Cluster CH6, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x400178C0 B  CLUSTER CH6: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x400178C0 B  REGISTER CFGR16: DFSDM channel 0 configuration register
 0x400178C0 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x400178C0 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8608,7 +8608,7 @@
 0x400178D0 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x400178D4 B  REGISTER DLYR6: 
 0x400178D4 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x400178E0 B  CLUSTER CH7: Cluster CH7, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x400178E0 B  CLUSTER CH7: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x400178E0 B  REGISTER CFGR17: DFSDM channel 0 configuration register
 0x400178E0 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x400178E0 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -8708,7 +8708,7 @@
 0x40017934 B  REGISTER EXMIN0: 
 0x40017934 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017934 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017938 B  REGISTER FLTCNVTIMR0: 
+0x40017938 B  REGISTER CNVTIMR0: 
 0x40017938 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017980 B  CLUSTER FLT1: Cluster FLT1, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017980 B  REGISTER CR11: 
@@ -8782,7 +8782,7 @@
 0x400179B4 B  REGISTER EXMIN1: 
 0x400179B4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x400179B4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x400179B8 B  REGISTER FLTCNVTIMR1: 
+0x400179B8 B  REGISTER CNVTIMR1: 
 0x400179B8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017A00 B  CLUSTER FLT2: Cluster FLT2, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017A00 B  REGISTER CR12: 
@@ -8856,7 +8856,7 @@
 0x40017A34 B  REGISTER EXMIN2: 
 0x40017A34 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017A34 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017A38 B  REGISTER FLTCNVTIMR2: 
+0x40017A38 B  REGISTER CNVTIMR2: 
 0x40017A38 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017A80 B  CLUSTER FLT3: Cluster FLT3, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017A80 B  REGISTER CR13: 
@@ -8930,7 +8930,7 @@
 0x40017AB4 B  REGISTER EXMIN3: 
 0x40017AB4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017AB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017AB8 B  REGISTER FLTCNVTIMR3: 
+0x40017AB8 B  REGISTER CNVTIMR3: 
 0x40017AB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017B00 B  CLUSTER FLT4: Cluster FLT4, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017B00 B  REGISTER CR14: 
@@ -9004,7 +9004,7 @@
 0x40017B34 B  REGISTER EXMIN4: 
 0x40017B34 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017B34 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017B38 B  REGISTER FLTCNVTIMR4: 
+0x40017B38 B  REGISTER CNVTIMR4: 
 0x40017B38 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017B80 B  CLUSTER FLT5: Cluster FLT5, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017B80 B  REGISTER CR15: 
@@ -9078,7 +9078,7 @@
 0x40017BB4 B  REGISTER EXMIN5: 
 0x40017BB4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017BB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017BB8 B  REGISTER FLTCNVTIMR5: 
+0x40017BB8 B  REGISTER CNVTIMR5: 
 0x40017BB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017C00 B  CLUSTER FLT6: Cluster FLT6, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017C00 B  REGISTER CR16: 
@@ -9152,7 +9152,7 @@
 0x40017C34 B  REGISTER EXMIN6: 
 0x40017C34 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017C34 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017C38 B  REGISTER FLTCNVTIMR6: 
+0x40017C38 B  REGISTER CNVTIMR6: 
 0x40017C38 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40017C80 B  CLUSTER FLT7: Cluster FLT7, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x40017C80 B  REGISTER CR17: 
@@ -9226,7 +9226,7 @@
 0x40017CB4 B  REGISTER EXMIN7: 
 0x40017CB4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x40017CB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x40017CB8 B  REGISTER FLTCNVTIMR7: 
+0x40017CB8 B  REGISTER CNVTIMR7: 
 0x40017CB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x40020000 A PERIPHERAL DMA1
 0x40020000 B  REGISTER LISR (ro): low interrupt status register
@@ -13298,7 +13298,7 @@
 0x48022C04 C   FIELD 29w01 CTCIF8: Channel x transfer complete clear This bit is set and cleared by software.
 0x48022C04 C   FIELD 30w01 CHTIF8: Channel x half transfer clear This bit is set and cleared by software.
 0x48022C04 C   FIELD 31w01 CTEIF8: Channel x transfer error clear This bit is set and cleared by software.
-0x48022C08 B  CLUSTER CH0: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C08 B  CLUSTER CH0: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C08 B  REGISTER CR0 (rw): DMA channel x configuration register
 0x48022C08 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C08 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13322,7 +13322,7 @@
 0x48022C14 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C18 B  REGISTER M1AR0 (rw): This register must not be written when the channel is enabled
 0x48022C18 C   FIELD 00w32 MA: Memory address
-0x48022C1C B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C1C B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C1C B  REGISTER CR1 (rw): DMA channel x configuration register
 0x48022C1C C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C1C C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13346,7 +13346,7 @@
 0x48022C28 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C2C B  REGISTER M1AR1 (rw): This register must not be written when the channel is enabled
 0x48022C2C C   FIELD 00w32 MA: Memory address
-0x48022C30 B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C30 B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C30 B  REGISTER CR2 (rw): DMA channel x configuration register
 0x48022C30 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C30 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13370,7 +13370,7 @@
 0x48022C3C C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C40 B  REGISTER M1AR2 (rw): This register must not be written when the channel is enabled
 0x48022C40 C   FIELD 00w32 MA: Memory address
-0x48022C44 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C44 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C44 B  REGISTER CR3 (rw): DMA channel x configuration register
 0x48022C44 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C44 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13394,7 +13394,7 @@
 0x48022C50 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C54 B  REGISTER M1AR3 (rw): This register must not be written when the channel is enabled
 0x48022C54 C   FIELD 00w32 MA: Memory address
-0x48022C58 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C58 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C58 B  REGISTER CR4 (rw): DMA channel x configuration register
 0x48022C58 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C58 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13418,7 +13418,7 @@
 0x48022C64 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C68 B  REGISTER M1AR4 (rw): This register must not be written when the channel is enabled
 0x48022C68 C   FIELD 00w32 MA: Memory address
-0x48022C6C B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C6C B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C6C B  REGISTER CR5 (rw): DMA channel x configuration register
 0x48022C6C C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C6C C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13442,7 +13442,7 @@
 0x48022C78 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C7C B  REGISTER M1AR5 (rw): This register must not be written when the channel is enabled
 0x48022C7C C   FIELD 00w32 MA: Memory address
-0x48022C80 B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C80 B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C80 B  REGISTER CR6 (rw): DMA channel x configuration register
 0x48022C80 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C80 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -13466,7 +13466,7 @@
 0x48022C8C C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x48022C90 B  REGISTER M1AR6 (rw): This register must not be written when the channel is enabled
 0x48022C90 C   FIELD 00w32 MA: Memory address
-0x48022C94 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x48022C94 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x48022C94 B  REGISTER CR7 (rw): DMA channel x configuration register
 0x48022C94 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x48022C94 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -17439,7 +17439,7 @@
 0x58004810 B  REGISTER WINR (rw): Window register
 0x58004810 C   FIELD 00w12 WIN: Watchdog counter window value These bits are write access protected see Section23.3.6. These bits contain the high limit of the window value to be compared to the downcounter. To prevent a reset, the downcounter must be reloaded when its value is lower than the window register value and greater than 0x0 The WVU bit in the IWDG_SR register must be reset in order to be able to change the reload value. Note: Reading this register returns the reload value from the VDD voltage domain. This value may not be valid if a write operation to this register is ongoing. For this reason the value read from this register is valid only when the WVU bit in the IWDG_SR register is reset.
 0x58006C00 A PERIPHERAL DFSDM2
-0x58006C00 B  CLUSTER CH0: Cluster CH0, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006C00 B  CLUSTER CH0: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006C00 B  REGISTER CFGR10: DFSDM channel 0 configuration register
 0x58006C00 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006C00 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17467,7 +17467,7 @@
 0x58006C10 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006C14 B  REGISTER DLYR0: 
 0x58006C14 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006C20 B  CLUSTER CH1: Cluster CH1, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006C20 B  CLUSTER CH1: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006C20 B  REGISTER CFGR11: DFSDM channel 0 configuration register
 0x58006C20 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006C20 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17495,7 +17495,7 @@
 0x58006C30 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006C34 B  REGISTER DLYR1: 
 0x58006C34 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006C40 B  CLUSTER CH2: Cluster CH2, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006C40 B  CLUSTER CH2: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006C40 B  REGISTER CFGR12: DFSDM channel 0 configuration register
 0x58006C40 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006C40 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17523,7 +17523,7 @@
 0x58006C50 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006C54 B  REGISTER DLYR2: 
 0x58006C54 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006C60 B  CLUSTER CH3: Cluster CH3, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006C60 B  CLUSTER CH3: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006C60 B  REGISTER CFGR13: DFSDM channel 0 configuration register
 0x58006C60 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006C60 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17551,7 +17551,7 @@
 0x58006C70 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006C74 B  REGISTER DLYR3: 
 0x58006C74 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006C80 B  CLUSTER CH4: Cluster CH4, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006C80 B  CLUSTER CH4: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006C80 B  REGISTER CFGR14: DFSDM channel 0 configuration register
 0x58006C80 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006C80 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17579,7 +17579,7 @@
 0x58006C90 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006C94 B  REGISTER DLYR4: 
 0x58006C94 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006CA0 B  CLUSTER CH5: Cluster CH5, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006CA0 B  CLUSTER CH5: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006CA0 B  REGISTER CFGR15: DFSDM channel 0 configuration register
 0x58006CA0 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006CA0 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17607,7 +17607,7 @@
 0x58006CB0 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006CB4 B  REGISTER DLYR5: 
 0x58006CB4 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006CC0 B  CLUSTER CH6: Cluster CH6, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006CC0 B  CLUSTER CH6: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006CC0 B  REGISTER CFGR16: DFSDM channel 0 configuration register
 0x58006CC0 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006CC0 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17635,7 +17635,7 @@
 0x58006CD0 C   FIELD 16w16 INDAT1 (rw): Input data for channel y or channel y+1 Input parallel channel data to be processed by the digital filter if DATMPX[1:0]=1 or DATMPX[1:0]=2. Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if DATMPX[1:0]=1). If DATPACK[1:0]=0 (standard mode) INDAT0[15:0] is write protected (not used for input sample). If DATPACK[1:0]=1 (interleaved mode) Second channel y data sample is stored into INDAT1[15:0]. First channel y data sample is stored into INDAT0[15:0]. Both samples are read sequentially by DFSDM_FLTx filter as two channel y data samples. If DATPACK[1:0]=2 (dual mode). For even y channels: sample in INDAT1[15:0] is automatically copied into INDAT0[15:0] of channel (y+1). For odd y channels: INDAT1[15:0] is write protected. See for more details. INDAT0[15:1] is in the16-bit signed format.
 0x58006CD4 B  REGISTER DLYR6: 
 0x58006CD4 C   FIELD 00w06 PLSSKP (rw): Pulses to skip for input data skipping function immediately after writing to this field. Reading of PLSSKP[5:0] returns current value of pulses which will be skipped. If PLSSKP[5:0]=0 then all required data samples were already skipped. Note: User can update PLSSKP[5:0] also when PLSSKP[5:0] is not zero. 0-63: Defines the number of serial input samples that will be skipped. Skipping is applied
-0x58006CE0 B  CLUSTER CH7: Cluster CH7, containing CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR, CH?DATINR, CH?DLYR
+0x58006CE0 B  CLUSTER CH7: DFSDM Channel cluster: contains CH?CFGR1, CH?CFGR2, CH?AWSCDR, CH?WDATR and CH?DATINR registers
 0x58006CE0 B  REGISTER CFGR17: DFSDM channel 0 configuration register
 0x58006CE0 C   FIELD 00w02 SITP (rw): Serial interface type for channel y This value can only be modified when CHEN=0 (in DFSDM_CHyCFGR1 register).
 0x58006CE0 C   FIELD 02w02 SPICKSEL (rw): SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -17735,7 +17735,7 @@
 0x58006D34 B  REGISTER EXMIN0: 
 0x58006D34 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58006D34 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58006D38 B  REGISTER FLTCNVTIMR0: 
+0x58006D38 B  REGISTER CNVTIMR0: 
 0x58006D38 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58006D80 B  CLUSTER FLT1: Cluster FLT1, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58006D80 B  REGISTER CR11: 
@@ -17809,7 +17809,7 @@
 0x58006DB4 B  REGISTER EXMIN1: 
 0x58006DB4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58006DB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58006DB8 B  REGISTER FLTCNVTIMR1: 
+0x58006DB8 B  REGISTER CNVTIMR1: 
 0x58006DB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58006E00 B  CLUSTER FLT2: Cluster FLT2, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58006E00 B  REGISTER CR12: 
@@ -17883,7 +17883,7 @@
 0x58006E34 B  REGISTER EXMIN2: 
 0x58006E34 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58006E34 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58006E38 B  REGISTER FLTCNVTIMR2: 
+0x58006E38 B  REGISTER CNVTIMR2: 
 0x58006E38 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58006E80 B  CLUSTER FLT3: Cluster FLT3, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58006E80 B  REGISTER CR13: 
@@ -17957,7 +17957,7 @@
 0x58006EB4 B  REGISTER EXMIN3: 
 0x58006EB4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58006EB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58006EB8 B  REGISTER FLTCNVTIMR3: 
+0x58006EB8 B  REGISTER CNVTIMR3: 
 0x58006EB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58006F00 B  CLUSTER FLT4: Cluster FLT4, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58006F00 B  REGISTER CR14: 
@@ -18031,7 +18031,7 @@
 0x58006F34 B  REGISTER EXMIN4: 
 0x58006F34 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58006F34 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58006F38 B  REGISTER FLTCNVTIMR4: 
+0x58006F38 B  REGISTER CNVTIMR4: 
 0x58006F38 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58006F80 B  CLUSTER FLT5: Cluster FLT5, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58006F80 B  REGISTER CR15: 
@@ -18105,7 +18105,7 @@
 0x58006FB4 B  REGISTER EXMIN5: 
 0x58006FB4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58006FB4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58006FB8 B  REGISTER FLTCNVTIMR5: 
+0x58006FB8 B  REGISTER CNVTIMR5: 
 0x58006FB8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58007000 B  CLUSTER FLT6: Cluster FLT6, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58007000 B  REGISTER CR16: 
@@ -18179,7 +18179,7 @@
 0x58007034 B  REGISTER EXMIN6: 
 0x58007034 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x58007034 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x58007038 B  REGISTER FLTCNVTIMR6: 
+0x58007038 B  REGISTER CNVTIMR6: 
 0x58007038 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58007080 B  CLUSTER FLT7: Cluster FLT7, containing FLT?CR1, FLT?CR2, FLT?ISR, FLT?ICR, FLT?JCHGR, FLT?FCR, FLT?JDATAR, FLT?RDATAR, FLT?AWHTR, FLT?AWLTR, FLT?AWSR, FLT?AWCFR, FLT?EXMAX, FLT?EXMIN, FLT?CNVTIMR
 0x58007080 B  REGISTER CR17: 
@@ -18253,7 +18253,7 @@
 0x580070B4 B  REGISTER EXMIN7: 
 0x580070B4 C   FIELD 00w03 EXMINCH (ro): Extremes detector minimum data channel These bits contain information about the channel on which the data is stored into EXMIN[23:0]. Bits are cleared by reading of this register.
 0x580070B4 C   FIELD 08w24 EXMIN (rw): Extremes detector minimum value These bits are set by hardware and indicate the lowest value converted by DFSDM_FLTx. EXMIN[23:0] bits are reset to value (0x7FFFFF) by reading of this register.
-0x580070B8 B  REGISTER FLTCNVTIMR7: 
+0x580070B8 B  REGISTER CNVTIMR7: 
 0x580070B8 C   FIELD 04w28 CNVCNT (ro): 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDMCLK The timer has an input clock from DFSDM clock (system clock fDFSDMCLK). Conversion time measurement is started on each conversion start and stopped when conversion finishes (interval between first and last serial sample). Only in case of filter bypass (FOSR[9:0] = 0) is the conversion time measurement stopped and CNVCNT[27:0] = 0. The counted time is: if FAST=0 (or first conversion in continuous mode if FAST=1): t = [FOSR * (IOSR-1 + FORD) + FORD] / fCKIN ..... for Sincx filters t = [FOSR * (IOSR-1 + 4) + 2] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = [FOSR * IOSR] / fCKIN in case if FOSR = FOSR[9:0]+1 = 1 (filter bypassed, active only integrator): CNVCNT = 0 (counting is stopped, conversion time: t = IOSR / fCKIN) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input (from internal ADC or from CPU/DMA write) Note: When conversion is interrupted (e.g. by disable/enable selected channel) the timer counts also this interruption time.
 0x58020000 A PERIPHERAL GPIOA
 0x58020000 B  REGISTER MODER (rw): GPIO port mode register
@@ -20854,7 +20854,7 @@
 0x58025404 C   FIELD 29w01 CTCIF8: Channel x transfer complete clear This bit is set and cleared by software.
 0x58025404 C   FIELD 30w01 CHTIF8: Channel x half transfer clear This bit is set and cleared by software.
 0x58025404 C   FIELD 31w01 CTEIF8: Channel x transfer error clear This bit is set and cleared by software.
-0x58025408 B  CLUSTER CH0: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x58025408 B  CLUSTER CH0: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x58025408 B  REGISTER CR0 (rw): DMA channel x configuration register
 0x58025408 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x58025408 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -20878,7 +20878,7 @@
 0x58025414 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x58025418 B  REGISTER M1AR0 (rw): This register must not be written when the channel is enabled
 0x58025418 C   FIELD 00w32 MA: Memory address
-0x5802541C B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x5802541C B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x5802541C B  REGISTER CR1 (rw): DMA channel x configuration register
 0x5802541C C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x5802541C C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -20902,7 +20902,7 @@
 0x58025428 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x5802542C B  REGISTER M1AR1 (rw): This register must not be written when the channel is enabled
 0x5802542C C   FIELD 00w32 MA: Memory address
-0x58025430 B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x58025430 B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x58025430 B  REGISTER CR2 (rw): DMA channel x configuration register
 0x58025430 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x58025430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -20926,7 +20926,7 @@
 0x5802543C C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x58025440 B  REGISTER M1AR2 (rw): This register must not be written when the channel is enabled
 0x58025440 C   FIELD 00w32 MA: Memory address
-0x58025444 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x58025444 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x58025444 B  REGISTER CR3 (rw): DMA channel x configuration register
 0x58025444 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x58025444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -20950,7 +20950,7 @@
 0x58025450 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x58025454 B  REGISTER M1AR3 (rw): This register must not be written when the channel is enabled
 0x58025454 C   FIELD 00w32 MA: Memory address
-0x58025458 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x58025458 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x58025458 B  REGISTER CR4 (rw): DMA channel x configuration register
 0x58025458 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x58025458 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -20974,7 +20974,7 @@
 0x58025464 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x58025468 B  REGISTER M1AR4 (rw): This register must not be written when the channel is enabled
 0x58025468 C   FIELD 00w32 MA: Memory address
-0x5802546C B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x5802546C B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x5802546C B  REGISTER CR5 (rw): DMA channel x configuration register
 0x5802546C C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x5802546C C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -20998,7 +20998,7 @@
 0x58025478 C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x5802547C B  REGISTER M1AR5 (rw): This register must not be written when the channel is enabled
 0x5802547C C   FIELD 00w32 MA: Memory address
-0x58025480 B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x58025480 B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x58025480 B  REGISTER CR6 (rw): DMA channel x configuration register
 0x58025480 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x58025480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
@@ -21022,7 +21022,7 @@
 0x5802548C C   FIELD 00w32 MA: Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA[0] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA[1:0] are ignored. Access is automatically aligned to a word address.
 0x58025490 B  REGISTER M1AR6 (rw): This register must not be written when the channel is enabled
 0x58025490 C   FIELD 00w32 MA: Memory address
-0x58025494 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR registers?
+0x58025494 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
 0x58025494 B  REGISTER CR7 (rw): DMA channel x configuration register
 0x58025494 C   FIELD 00w01 EN: Channel enable This bit is set and cleared by software.
 0x58025494 C   FIELD 01w01 TCIE: Transfer complete interrupt enable This bit is set and cleared by software.
