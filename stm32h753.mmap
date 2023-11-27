@@ -17686,7 +17686,7 @@
 0x58004010 C   FIELD 16w07 PREDIV_A: Asynchronous prescaler factor This is the asynchronous division factor: ck_apre frequency = RTCCLK frequency/(PREDIV_A+1)
 0x58004014 B  REGISTER WUTR (rw): This register can be written only when WUTWF is set to 1 in RTC_ISR.This register is write protected. The write access procedure is described in RTC register write protection on page9.
 0x58004014 C   FIELD 00w16 WUT: Wakeup auto-reload value bits When the wakeup timer is enabled (WUTE set to 1), the WUTF flag is set every (WUT[15:0] + 1) ck_wut cycles. The ck_wut period is selected through WUCKSEL[2:0] bits of the RTC_CR register When WUCKSEL[2] = 1, the wakeup timer becomes 17-bits and WUCKSEL[1] effectively becomes WUT[16] the most-significant bit to be reloaded into the timer. The first assertion of WUTF occurs (WUT+1) ck_wut cycles after WUTE is set. Setting WUT[15:0] to 0x0000 with WUCKSEL[2:0] =011 (RTCCLK/2) is forbidden.
-0x5800401C B  REGISTER ALRMAR (rw): Alarm register
+0x5800401C B  REGISTER ALRMAR (rw): Alarm A register
 0x5800401C C   FIELD 00w04 SU: Second units in BCD format
 0x5800401C C   FIELD 04w03 ST: Second tens in BCD format
 0x5800401C C   FIELD 07w01 MSK1: Alarm seconds mask
@@ -17701,7 +17701,7 @@
 0x5800401C C   FIELD 28w02 DT: Date tens in BCD format
 0x5800401C C   FIELD 30w01 WDSEL: Week day selection
 0x5800401C C   FIELD 31w01 MSK4: Alarm date mask
-0x58004020 B  REGISTER ALRMBR (rw): Alarm register
+0x58004020 B  REGISTER ALRMBR (rw): Alarm B register
 0x58004020 C   FIELD 00w04 SU: Second units in BCD format
 0x58004020 C   FIELD 04w03 ST: Second tens in BCD format
 0x58004020 C   FIELD 07w01 MSK1: Alarm seconds mask
@@ -17753,10 +17753,10 @@
 0x58004040 C   FIELD 22w01 TAMP3IE: Tamper 3 interrupt enable
 0x58004040 C   FIELD 23w01 TAMP3NOERASE: Tamper 3 no erase
 0x58004040 C   FIELD 24w01 TAMP3MF: Tamper 3 mask flag
-0x58004044 B  REGISTER ALRMASSR (rw): Alarm sub-second register
+0x58004044 B  REGISTER ALRMASSR (rw): Alarm A sub-second register
 0x58004044 C   FIELD 00w15 SS: Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x58004044 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
-0x58004048 B  REGISTER ALRMBSSR (rw): Alarm sub-second register
+0x58004048 B  REGISTER ALRMBSSR (rw): Alarm B sub-second register
 0x58004048 C   FIELD 00w15 SS: Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x58004048 C   FIELD 24w04 MASKSS: Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
 0x5800404C B  REGISTER OR (rw): RTC option register
@@ -21416,131 +21416,131 @@
 0x58026310 B  REGISTER CDR2 (ro): ADC x common regular data register for 32-bit dual mode
 0x58026310 C   FIELD 00w32 RDATA_ALT: Regular data of the master/slave alternated ADCs
 0x58026400 A PERIPHERAL HSEM
-0x58026400 B  REGISTER R0 (rw): HSEM register HSEM_R0 HSEM_R31
+0x58026400 B  REGISTER R0 (rw): HSEM register HSEM_R0
 0x58026400 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026400 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026400 C   FIELD 31w01 LOCK: Lock indication
-0x58026404 B  REGISTER R1 (rw): HSEM register HSEM_R1 HSEM_R31
+0x58026404 B  REGISTER R1 (rw): HSEM register HSEM_R1
 0x58026404 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026404 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026404 C   FIELD 31w01 LOCK: Lock indication
-0x58026408 B  REGISTER R2 (rw): HSEM register HSEM_R2 HSEM_R31
+0x58026408 B  REGISTER R2 (rw): HSEM register HSEM_R2
 0x58026408 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026408 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026408 C   FIELD 31w01 LOCK: Lock indication
-0x5802640C B  REGISTER R3 (rw): HSEM register HSEM_R3 HSEM_R31
+0x5802640C B  REGISTER R3 (rw): HSEM register HSEM_R3
 0x5802640C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802640C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802640C C   FIELD 31w01 LOCK: Lock indication
-0x58026410 B  REGISTER R4 (rw): HSEM register HSEM_R4 HSEM_R31
+0x58026410 B  REGISTER R4 (rw): HSEM register HSEM_R4
 0x58026410 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026410 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026410 C   FIELD 31w01 LOCK: Lock indication
-0x58026414 B  REGISTER R5 (rw): HSEM register HSEM_R5 HSEM_R31
+0x58026414 B  REGISTER R5 (rw): HSEM register HSEM_R5
 0x58026414 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026414 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026414 C   FIELD 31w01 LOCK: Lock indication
-0x58026418 B  REGISTER R6 (rw): HSEM register HSEM_R6 HSEM_R31
+0x58026418 B  REGISTER R6 (rw): HSEM register HSEM_R6
 0x58026418 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026418 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026418 C   FIELD 31w01 LOCK: Lock indication
-0x5802641C B  REGISTER R7 (rw): HSEM register HSEM_R7 HSEM_R31
+0x5802641C B  REGISTER R7 (rw): HSEM register HSEM_R7
 0x5802641C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802641C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802641C C   FIELD 31w01 LOCK: Lock indication
-0x58026420 B  REGISTER R8 (rw): HSEM register HSEM_R8 HSEM_R31
+0x58026420 B  REGISTER R8 (rw): HSEM register HSEM_R8
 0x58026420 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026420 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026420 C   FIELD 31w01 LOCK: Lock indication
-0x58026424 B  REGISTER R9 (rw): HSEM register HSEM_R9 HSEM_R31
+0x58026424 B  REGISTER R9 (rw): HSEM register HSEM_R9
 0x58026424 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026424 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026424 C   FIELD 31w01 LOCK: Lock indication
-0x58026428 B  REGISTER R10 (rw): HSEM register HSEM_R10 HSEM_R31
+0x58026428 B  REGISTER R10 (rw): HSEM register HSEM_R10
 0x58026428 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026428 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026428 C   FIELD 31w01 LOCK: Lock indication
-0x5802642C B  REGISTER R11 (rw): HSEM register HSEM_R11 HSEM_R31
+0x5802642C B  REGISTER R11 (rw): HSEM register HSEM_R11
 0x5802642C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802642C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802642C C   FIELD 31w01 LOCK: Lock indication
-0x58026430 B  REGISTER R12 (rw): HSEM register HSEM_R12 HSEM_R31
+0x58026430 B  REGISTER R12 (rw): HSEM register HSEM_R12
 0x58026430 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026430 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026430 C   FIELD 31w01 LOCK: Lock indication
-0x58026434 B  REGISTER R13 (rw): HSEM register HSEM_R13 HSEM_R31
+0x58026434 B  REGISTER R13 (rw): HSEM register HSEM_R13
 0x58026434 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026434 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026434 C   FIELD 31w01 LOCK: Lock indication
-0x58026438 B  REGISTER R14 (rw): HSEM register HSEM_R14 HSEM_R31
+0x58026438 B  REGISTER R14 (rw): HSEM register HSEM_R14
 0x58026438 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026438 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026438 C   FIELD 31w01 LOCK: Lock indication
-0x5802643C B  REGISTER R15 (rw): HSEM register HSEM_R15 HSEM_R31
+0x5802643C B  REGISTER R15 (rw): HSEM register HSEM_R15
 0x5802643C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802643C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802643C C   FIELD 31w01 LOCK: Lock indication
-0x58026440 B  REGISTER R16 (rw): HSEM register HSEM_R16 HSEM_R31
+0x58026440 B  REGISTER R16 (rw): HSEM register HSEM_R16
 0x58026440 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026440 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026440 C   FIELD 31w01 LOCK: Lock indication
-0x58026444 B  REGISTER R17 (rw): HSEM register HSEM_R17 HSEM_R31
+0x58026444 B  REGISTER R17 (rw): HSEM register HSEM_R17
 0x58026444 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026444 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026444 C   FIELD 31w01 LOCK: Lock indication
-0x58026448 B  REGISTER R18 (rw): HSEM register HSEM_R18 HSEM_R31
+0x58026448 B  REGISTER R18 (rw): HSEM register HSEM_R18
 0x58026448 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026448 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026448 C   FIELD 31w01 LOCK: Lock indication
-0x5802644C B  REGISTER R19 (rw): HSEM register HSEM_R19 HSEM_R31
+0x5802644C B  REGISTER R19 (rw): HSEM register HSEM_R19
 0x5802644C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802644C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802644C C   FIELD 31w01 LOCK: Lock indication
-0x58026450 B  REGISTER R20 (rw): HSEM register HSEM_R20 HSEM_R31
+0x58026450 B  REGISTER R20 (rw): HSEM register HSEM_R20
 0x58026450 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026450 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026450 C   FIELD 31w01 LOCK: Lock indication
-0x58026454 B  REGISTER R21 (rw): HSEM register HSEM_R21 HSEM_R31
+0x58026454 B  REGISTER R21 (rw): HSEM register HSEM_R21
 0x58026454 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026454 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026454 C   FIELD 31w01 LOCK: Lock indication
-0x58026458 B  REGISTER R22 (rw): HSEM register HSEM_R22 HSEM_R31
+0x58026458 B  REGISTER R22 (rw): HSEM register HSEM_R22
 0x58026458 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026458 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026458 C   FIELD 31w01 LOCK: Lock indication
-0x5802645C B  REGISTER R23 (rw): HSEM register HSEM_R23 HSEM_R31
+0x5802645C B  REGISTER R23 (rw): HSEM register HSEM_R23
 0x5802645C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802645C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802645C C   FIELD 31w01 LOCK: Lock indication
-0x58026460 B  REGISTER R24 (rw): HSEM register HSEM_R24 HSEM_R31
+0x58026460 B  REGISTER R24 (rw): HSEM register HSEM_R24
 0x58026460 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026460 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026460 C   FIELD 31w01 LOCK: Lock indication
-0x58026464 B  REGISTER R25 (rw): HSEM register HSEM_R25 HSEM_R31
+0x58026464 B  REGISTER R25 (rw): HSEM register HSEM_R25
 0x58026464 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026464 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026464 C   FIELD 31w01 LOCK: Lock indication
-0x58026468 B  REGISTER R26 (rw): HSEM register HSEM_R26 HSEM_R31
+0x58026468 B  REGISTER R26 (rw): HSEM register HSEM_R26
 0x58026468 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026468 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026468 C   FIELD 31w01 LOCK: Lock indication
-0x5802646C B  REGISTER R27 (rw): HSEM register HSEM_R27 HSEM_R31
+0x5802646C B  REGISTER R27 (rw): HSEM register HSEM_R27
 0x5802646C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802646C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802646C C   FIELD 31w01 LOCK: Lock indication
-0x58026470 B  REGISTER R28 (rw): HSEM register HSEM_R28 HSEM_R31
+0x58026470 B  REGISTER R28 (rw): HSEM register HSEM_R28
 0x58026470 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026470 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026470 C   FIELD 31w01 LOCK: Lock indication
-0x58026474 B  REGISTER R29 (rw): HSEM register HSEM_R29 HSEM_R31
+0x58026474 B  REGISTER R29 (rw): HSEM register HSEM_R29
 0x58026474 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026474 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026474 C   FIELD 31w01 LOCK: Lock indication
-0x58026478 B  REGISTER R30 (rw): HSEM register HSEM_R30 HSEM_R31
+0x58026478 B  REGISTER R30 (rw): HSEM register HSEM_R30
 0x58026478 C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x58026478 C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x58026478 C   FIELD 31w01 LOCK: Lock indication
-0x5802647C B  REGISTER R31 (rw): HSEM register HSEM_R31 HSEM_R31
+0x5802647C B  REGISTER R31 (rw): HSEM register HSEM_R31
 0x5802647C C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x5802647C C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x5802647C C   FIELD 31w01 LOCK: Lock indication
