@@ -569,9 +569,9 @@
 0x40012400 C   FIELD 02w01 EOC (rw): End of conversion flag This bit is set by hardware at the end of each conversion of a channel when a new data result is available in the ADC_DR register. It is cleared by software writing 1 to it or by reading the ADC_DR register.
 0x40012400 C   FIELD 03w01 EOS (rw): End of sequence flag This bit is set by hardware at the end of the conversion of a sequence of channels selected by the CHSEL bits. It is cleared by software writing 1 to it.
 0x40012400 C   FIELD 04w01 OVR (rw): ADC overrun This bit is set by hardware when an overrun occurs, meaning that a new conversion has complete while the EOC flag was already set. It is cleared by software writing 1 to it.
-0x40012400 C   FIELD 07w01 AWD1 (rw): Analog watchdog 1 flag This bit is set by hardware when the converted voltage crosses the values programmed in ADC_TR1 and ADC_HR1 registers. It is cleared by software by programming it to 1.
-0x40012400 C   FIELD 08w01 AWD2 (rw): Analog watchdog 2 flag This bit is set by hardware when the converted voltage crosses the values programmed in ADC_AWD2TR and ADC_AWD2TR registers. It is cleared by software programming it it.
-0x40012400 C   FIELD 09w01 AWD3 (rw): Analog watchdog 3 flag This bit is set by hardware when the converted voltage crosses the values programmed in ADC_AWD3TR and ADC_AWD3TR registers. It is cleared by software by programming it to 1.
+0x40012400 C   FIELD 07w01 AWD1 (rw): Analog watchdog 1 flag
+0x40012400 C   FIELD 08w01 AWD2 (rw): Analog watchdog 2 flag
+0x40012400 C   FIELD 09w01 AWD3 (rw): Analog watchdog 3 flag
 0x40012400 C   FIELD 11w01 EOCAL (rw): End Of Calibration flag This bit is set by hardware when calibration is complete. It is cleared by software writing 1 to it.
 0x40012400 C   FIELD 13w01 CCRDY (rw): Channel Configuration Ready flag This flag bit is set by hardware when the channel configuration is applied after programming to ADC_CHSELR register or changing CHSELRMOD or SCANDIR. It is cleared by software by programming it to it. Note: When the software configures the channels (by programming ADC_CHSELR or changing CHSELRMOD or SCANDIR), it must wait until the CCRDY flag rises before configuring again or starting conversions, otherwise the new configuration (or the START bit) is ignored. Once the flag is asserted, if the software needs to configure again the channels, it must clear the CCRDY flag before proceeding with a new configuration.
 0x40012404 B  REGISTER IER (rw): ADC interrupt enable register
@@ -580,9 +580,9 @@
 0x40012404 C   FIELD 02w01 EOCIE (rw): End of conversion interrupt enable This bit is set and cleared by software to enable/disable the end of conversion interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 03w01 EOSIE (rw): End of conversion sequence interrupt enable This bit is set and cleared by software to enable/disable the end of sequence of conversions interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 04w01 OVRIE (rw): Overrun interrupt enable This bit is set and cleared by software to enable/disable the overrun interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
-0x40012404 C   FIELD 07w01 AWD1IE (rw): Analog watchdog 1 interrupt enable This bit is set and cleared by software to enable/disable the analog watchdog interrupt. Note: The Software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
-0x40012404 C   FIELD 08w01 AWD2IE (rw): Analog watchdog 2 interrupt enable This bit is set and cleared by software to enable/disable the analog watchdog interrupt. Note: The Software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
-0x40012404 C   FIELD 09w01 AWD3IE (rw): Analog watchdog 3 interrupt enable This bit is set and cleared by software to enable/disable the analog watchdog interrupt. Note: The Software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
+0x40012404 C   FIELD 07w01 AWD1IE (rw): Analog watchdog 1 interrupt enable
+0x40012404 C   FIELD 08w01 AWD2IE (rw): Analog watchdog 2 interrupt enable
+0x40012404 C   FIELD 09w01 AWD3IE (rw): Analog watchdog 3 interrupt enable
 0x40012404 C   FIELD 11w01 EOCALIE (rw): End of calibration interrupt enable This bit is set and cleared by software to enable/disable the end of calibration interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012404 C   FIELD 13w01 CCRDYIE (rw): Channel Configuration Ready Interrupt enable This bit is set and cleared by software to enable/disable the channel configuration ready interrupt. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012408 B  REGISTER CR (rw): ADC control register
@@ -617,27 +617,27 @@
 0x40012410 C   FIELD 29w01 LFTRIG (rw): Low frequency trigger mode enable This bit is set and cleared by software. Note: The software is allowed to write this bit only when ADSTART bit is cleared to 0 (this ensures that no conversion is ongoing).
 0x40012410 C   FIELD 30w02 CKMODE (rw): ADC clock mode These bits are set and cleared by software to define how the analog ADC is clocked: In all synchronous clock modes, there is no jitter in the delay from a timer trigger to the start of a conversion. Note: The software is allowed to write these bits only when the ADC is disabled (ADCALÂ =Â 0, ADSTARTÂ =Â 0, ADSTPÂ =Â 0, ADDISÂ =Â 0 and ADENÂ =Â 0).
 0x40012414 B  REGISTER SMPR (rw): ADC sampling time register
-0x40012414 C   FIELD 00w03 SMP1 (rw): Sampling time selection 1 These bits are written by software to select the sampling time that applies to all channels. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 04w03 SMP2 (rw): Sampling time selection 2 These bits are written by software to select the sampling time that applies to all channels. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 08w01 SMPSEL0 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 09w01 SMPSEL1 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 10w01 SMPSEL2 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 11w01 SMPSEL3 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 12w01 SMPSEL4 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 13w01 SMPSEL5 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 14w01 SMPSEL6 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 15w01 SMPSEL7 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 16w01 SMPSEL8 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 17w01 SMPSEL9 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 18w01 SMPSEL10 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 19w01 SMPSEL11 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 20w01 SMPSEL12 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 21w01 SMPSEL13 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 22w01 SMPSEL14 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 23w01 SMPSEL15 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 24w01 SMPSEL16 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 25w01 SMPSEL17 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012414 C   FIELD 26w01 SMPSEL18 (rw): Channel-x sampling time selection These bits are written by software to define which sampling time is used. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
+0x40012414 C   FIELD 00w03 SMP1 (rw): Sampling time selection 1
+0x40012414 C   FIELD 04w03 SMP2 (rw): Sampling time selection 2
+0x40012414 C   FIELD 08w01 SMPSEL0 (rw): Channel-0 sampling time selection
+0x40012414 C   FIELD 09w01 SMPSEL1 (rw): Channel-1 sampling time selection
+0x40012414 C   FIELD 10w01 SMPSEL2 (rw): Channel-2 sampling time selection
+0x40012414 C   FIELD 11w01 SMPSEL3 (rw): Channel-3 sampling time selection
+0x40012414 C   FIELD 12w01 SMPSEL4 (rw): Channel-4 sampling time selection
+0x40012414 C   FIELD 13w01 SMPSEL5 (rw): Channel-5 sampling time selection
+0x40012414 C   FIELD 14w01 SMPSEL6 (rw): Channel-6 sampling time selection
+0x40012414 C   FIELD 15w01 SMPSEL7 (rw): Channel-7 sampling time selection
+0x40012414 C   FIELD 16w01 SMPSEL8 (rw): Channel-8 sampling time selection
+0x40012414 C   FIELD 17w01 SMPSEL9 (rw): Channel-9 sampling time selection
+0x40012414 C   FIELD 18w01 SMPSEL10 (rw): Channel-10 sampling time selection
+0x40012414 C   FIELD 19w01 SMPSEL11 (rw): Channel-11 sampling time selection
+0x40012414 C   FIELD 20w01 SMPSEL12 (rw): Channel-12 sampling time selection
+0x40012414 C   FIELD 21w01 SMPSEL13 (rw): Channel-13 sampling time selection
+0x40012414 C   FIELD 22w01 SMPSEL14 (rw): Channel-14 sampling time selection
+0x40012414 C   FIELD 23w01 SMPSEL15 (rw): Channel-15 sampling time selection
+0x40012414 C   FIELD 24w01 SMPSEL16 (rw): Channel-16 sampling time selection
+0x40012414 C   FIELD 25w01 SMPSEL17 (rw): Channel-17 sampling time selection
+0x40012414 C   FIELD 26w01 SMPSEL18 (rw): Channel-18 sampling time selection
 0x40012420 B  REGISTER AWD1TR (rw): ADC watchdog threshold register
 0x40012420 C   FIELD 00w12 LT1 (rw): Analog watchdog 1 lower threshold These bits are written by software to define the lower threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
 0x40012420 C   FIELD 16w12 HT1 (rw): Analog watchdog 1 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
@@ -646,33 +646,33 @@
 0x40012424 C   FIELD 16w12 HT2 (rw): Analog watchdog 2 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
 0x40012428 B  REGISTER CHSELR0 (rw): ADC channel selection register
 0x40012428 B  REGISTER CHSELR1 (rw): ADC channel selection register
-0x40012428 C   FIELD 00w01 CHSEL0 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 00w04 SQ1 (rw): 1st conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 01w01 CHSEL1 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 02w01 CHSEL2 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 03w01 CHSEL3 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 04w01 CHSEL4 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 04w04 SQ2 (rw): 2nd conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 05w01 CHSEL5 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 06w01 CHSEL6 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 07w01 CHSEL7 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 08w01 CHSEL8 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 08w04 SQ3 (rw): 3rd conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 09w01 CHSEL9 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 10w01 CHSEL10 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 11w01 CHSEL11 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 12w01 CHSEL12 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 12w04 SQ4 (rw): 4th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 13w01 CHSEL13 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 14w01 CHSEL14 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 15w01 CHSEL15 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 16w01 CHSEL16 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 16w04 SQ5 (rw): 5th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 17w01 CHSEL17 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 18w01 CHSEL18 (rw): Channel-x selection These bits are written by software and define which channels are part of the sequence of channels to be converted. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing). If CCRDY is not yet asserted after channel configuration (writing ADC_CHSELR register or changing CHSELRMOD or SCANDIR), the value written to this bit is ignored.
-0x40012428 C   FIELD 20w04 SQ6 (rw): 6th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 24w04 SQ7 (rw): 7th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. Refer to SQ8[3:0] for a definition of channel selection. Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
-0x40012428 C   FIELD 28w04 SQ8 (rw): 8th conversion of the sequence These bits are programmed by software with the channel number (0...14) assigned to the 8th conversion of the sequence. 0b1111 indicates the end of the sequence. When 0b1111 (end of sequence) is programmed to the lower sequence channels, these bits are ignored. ... Note: The software is allowed to write this bit only when ADSTARTÂ =Â 0 (which ensures that no conversion is ongoing).
+0x40012428 C   FIELD 00w01 CHSEL0 (rw): Channel-0 selection
+0x40012428 C   FIELD 00w04 SQ1 (rw): 1 conversion of the sequence
+0x40012428 C   FIELD 01w01 CHSEL1 (rw): Channel-1 selection
+0x40012428 C   FIELD 02w01 CHSEL2 (rw): Channel-2 selection
+0x40012428 C   FIELD 03w01 CHSEL3 (rw): Channel-3 selection
+0x40012428 C   FIELD 04w01 CHSEL4 (rw): Channel-4 selection
+0x40012428 C   FIELD 04w04 SQ2 (rw): 2 conversion of the sequence
+0x40012428 C   FIELD 05w01 CHSEL5 (rw): Channel-5 selection
+0x40012428 C   FIELD 06w01 CHSEL6 (rw): Channel-6 selection
+0x40012428 C   FIELD 07w01 CHSEL7 (rw): Channel-7 selection
+0x40012428 C   FIELD 08w01 CHSEL8 (rw): Channel-8 selection
+0x40012428 C   FIELD 08w04 SQ3 (rw): 3 conversion of the sequence
+0x40012428 C   FIELD 09w01 CHSEL9 (rw): Channel-9 selection
+0x40012428 C   FIELD 10w01 CHSEL10 (rw): Channel-10 selection
+0x40012428 C   FIELD 11w01 CHSEL11 (rw): Channel-11 selection
+0x40012428 C   FIELD 12w01 CHSEL12 (rw): Channel-12 selection
+0x40012428 C   FIELD 12w04 SQ4 (rw): 4 conversion of the sequence
+0x40012428 C   FIELD 13w01 CHSEL13 (rw): Channel-13 selection
+0x40012428 C   FIELD 14w01 CHSEL14 (rw): Channel-14 selection
+0x40012428 C   FIELD 15w01 CHSEL15 (rw): Channel-15 selection
+0x40012428 C   FIELD 16w01 CHSEL16 (rw): Channel-16 selection
+0x40012428 C   FIELD 16w04 SQ5 (rw): 5 conversion of the sequence
+0x40012428 C   FIELD 17w01 CHSEL17 (rw): Channel-17 selection
+0x40012428 C   FIELD 18w01 CHSEL18 (rw): Channel-18 selection
+0x40012428 C   FIELD 20w04 SQ6 (rw): 6 conversion of the sequence
+0x40012428 C   FIELD 24w04 SQ7 (rw): 7 conversion of the sequence
+0x40012428 C   FIELD 28w04 SQ8 (rw): 8 conversion of the sequence
 0x4001242C B  REGISTER AWD3TR (rw): ADC watchdog threshold register
 0x4001242C C   FIELD 00w12 LT3 (rw): Analog watchdog 3lower threshold These bits are written by software to define the lower threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
 0x4001242C C   FIELD 16w12 HT3 (rw): Analog watchdog 3 higher threshold These bits are written by software to define the higher threshold for the analog watchdog. Refer to ADC_AWDxTR) on pageÂ 395.
@@ -1543,176 +1543,176 @@
 0x40023014 C   FIELD 00w32 POL: Programmable polynomial
 0x50000000 A PERIPHERAL GPIOA
 0x50000000 B  REGISTER MODER (rw): GPIO port mode register
-0x50000000 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x50000000 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x50000000 C   FIELD 00w02 MODER0: Port x configuration pin 0
+0x50000000 C   FIELD 02w02 MODER1: Port x configuration pin 1
+0x50000000 C   FIELD 04w02 MODER2: Port x configuration pin 2
+0x50000000 C   FIELD 06w02 MODER3: Port x configuration pin 3
+0x50000000 C   FIELD 08w02 MODER4: Port x configuration pin 4
+0x50000000 C   FIELD 10w02 MODER5: Port x configuration pin 5
+0x50000000 C   FIELD 12w02 MODER6: Port x configuration pin 6
+0x50000000 C   FIELD 14w02 MODER7: Port x configuration pin 7
+0x50000000 C   FIELD 16w02 MODER8: Port x configuration pin 8
+0x50000000 C   FIELD 18w02 MODER9: Port x configuration pin 9
+0x50000000 C   FIELD 20w02 MODER10: Port x configuration pin 10
+0x50000000 C   FIELD 22w02 MODER11: Port x configuration pin 11
+0x50000000 C   FIELD 24w02 MODER12: Port x configuration pin 12
+0x50000000 C   FIELD 26w02 MODER13: Port x configuration pin 13
+0x50000000 C   FIELD 28w02 MODER14: Port x configuration pin 14
+0x50000000 C   FIELD 30w02 MODER15: Port x configuration pin 15
 0x50000004 B  REGISTER OTYPER (rw): GPIO port output type register
-0x50000004 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
-0x50000004 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000004 C   FIELD 00w01 OT0: Port x configuration pin 0
+0x50000004 C   FIELD 01w01 OT1: Port x configuration pin 1
+0x50000004 C   FIELD 02w01 OT2: Port x configuration pin 2
+0x50000004 C   FIELD 03w01 OT3: Port x configuration pin 3
+0x50000004 C   FIELD 04w01 OT4: Port x configuration pin 4
+0x50000004 C   FIELD 05w01 OT5: Port x configuration pin 5
+0x50000004 C   FIELD 06w01 OT6: Port x configuration pin 6
+0x50000004 C   FIELD 07w01 OT7: Port x configuration pin 7
+0x50000004 C   FIELD 08w01 OT8: Port x configuration pin 8
+0x50000004 C   FIELD 09w01 OT9: Port x configuration pin 9
+0x50000004 C   FIELD 10w01 OT10: Port x configuration pin 10
+0x50000004 C   FIELD 11w01 OT11: Port x configuration pin 11
+0x50000004 C   FIELD 12w01 OT12: Port x configuration pin 12
+0x50000004 C   FIELD 13w01 OT13: Port x configuration pin 13
+0x50000004 C   FIELD 14w01 OT14: Port x configuration pin 14
+0x50000004 C   FIELD 15w01 OT15: Port x configuration pin 15
 0x50000008 B  REGISTER OSPEEDR (rw): GPIO port output speed register
-0x50000008 C   FIELD 00w02 OSPEEDR0: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 02w02 OSPEEDR1: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 04w02 OSPEEDR2: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 06w02 OSPEEDR3: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 08w02 OSPEEDR4: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 10w02 OSPEEDR5: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 12w02 OSPEEDR6: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 14w02 OSPEEDR7: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 16w02 OSPEEDR8: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 18w02 OSPEEDR9: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 20w02 OSPEEDR10: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 22w02 OSPEEDR11: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 24w02 OSPEEDR12: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 26w02 OSPEEDR13: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 28w02 OSPEEDR14: Port x configuration bits (y = 0..15)
-0x50000008 C   FIELD 30w02 OSPEEDR15: Port x configuration bits (y = 0..15)
+0x50000008 C   FIELD 00w02 OSPEEDR0: Port x configuration pin 0
+0x50000008 C   FIELD 02w02 OSPEEDR1: Port x configuration pin 1
+0x50000008 C   FIELD 04w02 OSPEEDR2: Port x configuration pin 2
+0x50000008 C   FIELD 06w02 OSPEEDR3: Port x configuration pin 3
+0x50000008 C   FIELD 08w02 OSPEEDR4: Port x configuration pin 4
+0x50000008 C   FIELD 10w02 OSPEEDR5: Port x configuration pin 5
+0x50000008 C   FIELD 12w02 OSPEEDR6: Port x configuration pin 6
+0x50000008 C   FIELD 14w02 OSPEEDR7: Port x configuration pin 7
+0x50000008 C   FIELD 16w02 OSPEEDR8: Port x configuration pin 8
+0x50000008 C   FIELD 18w02 OSPEEDR9: Port x configuration pin 9
+0x50000008 C   FIELD 20w02 OSPEEDR10: Port x configuration pin 10
+0x50000008 C   FIELD 22w02 OSPEEDR11: Port x configuration pin 11
+0x50000008 C   FIELD 24w02 OSPEEDR12: Port x configuration pin 12
+0x50000008 C   FIELD 26w02 OSPEEDR13: Port x configuration pin 13
+0x50000008 C   FIELD 28w02 OSPEEDR14: Port x configuration pin 14
+0x50000008 C   FIELD 30w02 OSPEEDR15: Port x configuration pin 15
 0x5000000C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
-0x5000000C C   FIELD 00w02 PUPDR0: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 02w02 PUPDR1: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 04w02 PUPDR2: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 06w02 PUPDR3: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 08w02 PUPDR4: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 10w02 PUPDR5: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 12w02 PUPDR6: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 14w02 PUPDR7: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 16w02 PUPDR8: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 18w02 PUPDR9: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 20w02 PUPDR10: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 22w02 PUPDR11: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 24w02 PUPDR12: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 26w02 PUPDR13: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 28w02 PUPDR14: Port x configuration bits (y = 0..15)
-0x5000000C C   FIELD 30w02 PUPDR15: Port x configuration bits (y = 0..15)
+0x5000000C C   FIELD 00w02 PUPDR0: Port x configuration pin 0
+0x5000000C C   FIELD 02w02 PUPDR1: Port x configuration pin 1
+0x5000000C C   FIELD 04w02 PUPDR2: Port x configuration pin 2
+0x5000000C C   FIELD 06w02 PUPDR3: Port x configuration pin 3
+0x5000000C C   FIELD 08w02 PUPDR4: Port x configuration pin 4
+0x5000000C C   FIELD 10w02 PUPDR5: Port x configuration pin 5
+0x5000000C C   FIELD 12w02 PUPDR6: Port x configuration pin 6
+0x5000000C C   FIELD 14w02 PUPDR7: Port x configuration pin 7
+0x5000000C C   FIELD 16w02 PUPDR8: Port x configuration pin 8
+0x5000000C C   FIELD 18w02 PUPDR9: Port x configuration pin 9
+0x5000000C C   FIELD 20w02 PUPDR10: Port x configuration pin 10
+0x5000000C C   FIELD 22w02 PUPDR11: Port x configuration pin 11
+0x5000000C C   FIELD 24w02 PUPDR12: Port x configuration pin 12
+0x5000000C C   FIELD 26w02 PUPDR13: Port x configuration pin 13
+0x5000000C C   FIELD 28w02 PUPDR14: Port x configuration pin 14
+0x5000000C C   FIELD 30w02 PUPDR15: Port x configuration pin 15
 0x50000010 B  REGISTER IDR (ro): GPIO port input data register
-0x50000010 C   FIELD 00w01 IDR0: Port input data (y = 0..15)
-0x50000010 C   FIELD 01w01 IDR1: Port input data (y = 0..15)
-0x50000010 C   FIELD 02w01 IDR2: Port input data (y = 0..15)
-0x50000010 C   FIELD 03w01 IDR3: Port input data (y = 0..15)
-0x50000010 C   FIELD 04w01 IDR4: Port input data (y = 0..15)
-0x50000010 C   FIELD 05w01 IDR5: Port input data (y = 0..15)
-0x50000010 C   FIELD 06w01 IDR6: Port input data (y = 0..15)
-0x50000010 C   FIELD 07w01 IDR7: Port input data (y = 0..15)
-0x50000010 C   FIELD 08w01 IDR8: Port input data (y = 0..15)
-0x50000010 C   FIELD 09w01 IDR9: Port input data (y = 0..15)
-0x50000010 C   FIELD 10w01 IDR10: Port input data (y = 0..15)
-0x50000010 C   FIELD 11w01 IDR11: Port input data (y = 0..15)
-0x50000010 C   FIELD 12w01 IDR12: Port input data (y = 0..15)
-0x50000010 C   FIELD 13w01 IDR13: Port input data (y = 0..15)
-0x50000010 C   FIELD 14w01 IDR14: Port input data (y = 0..15)
-0x50000010 C   FIELD 15w01 IDR15: Port input data (y = 0..15)
+0x50000010 C   FIELD 00w01 IDR0: Port input data pin 0
+0x50000010 C   FIELD 01w01 IDR1: Port input data pin 1
+0x50000010 C   FIELD 02w01 IDR2: Port input data pin 2
+0x50000010 C   FIELD 03w01 IDR3: Port input data pin 3
+0x50000010 C   FIELD 04w01 IDR4: Port input data pin 4
+0x50000010 C   FIELD 05w01 IDR5: Port input data pin 5
+0x50000010 C   FIELD 06w01 IDR6: Port input data pin 6
+0x50000010 C   FIELD 07w01 IDR7: Port input data pin 7
+0x50000010 C   FIELD 08w01 IDR8: Port input data pin 8
+0x50000010 C   FIELD 09w01 IDR9: Port input data pin 9
+0x50000010 C   FIELD 10w01 IDR10: Port input data pin 10
+0x50000010 C   FIELD 11w01 IDR11: Port input data pin 11
+0x50000010 C   FIELD 12w01 IDR12: Port input data pin 12
+0x50000010 C   FIELD 13w01 IDR13: Port input data pin 13
+0x50000010 C   FIELD 14w01 IDR14: Port input data pin 14
+0x50000010 C   FIELD 15w01 IDR15: Port input data pin 15
 0x50000014 B  REGISTER ODR (rw): GPIO port output data register
-0x50000014 C   FIELD 00w01 ODR0: Port output data (y = 0..15)
-0x50000014 C   FIELD 01w01 ODR1: Port output data (y = 0..15)
-0x50000014 C   FIELD 02w01 ODR2: Port output data (y = 0..15)
-0x50000014 C   FIELD 03w01 ODR3: Port output data (y = 0..15)
-0x50000014 C   FIELD 04w01 ODR4: Port output data (y = 0..15)
-0x50000014 C   FIELD 05w01 ODR5: Port output data (y = 0..15)
-0x50000014 C   FIELD 06w01 ODR6: Port output data (y = 0..15)
-0x50000014 C   FIELD 07w01 ODR7: Port output data (y = 0..15)
-0x50000014 C   FIELD 08w01 ODR8: Port output data (y = 0..15)
-0x50000014 C   FIELD 09w01 ODR9: Port output data (y = 0..15)
-0x50000014 C   FIELD 10w01 ODR10: Port output data (y = 0..15)
-0x50000014 C   FIELD 11w01 ODR11: Port output data (y = 0..15)
-0x50000014 C   FIELD 12w01 ODR12: Port output data (y = 0..15)
-0x50000014 C   FIELD 13w01 ODR13: Port output data (y = 0..15)
-0x50000014 C   FIELD 14w01 ODR14: Port output data (y = 0..15)
-0x50000014 C   FIELD 15w01 ODR15: Port output data (y = 0..15)
+0x50000014 C   FIELD 00w01 ODR0: Port output data pin 0
+0x50000014 C   FIELD 01w01 ODR1: Port output data pin 1
+0x50000014 C   FIELD 02w01 ODR2: Port output data pin 2
+0x50000014 C   FIELD 03w01 ODR3: Port output data pin 3
+0x50000014 C   FIELD 04w01 ODR4: Port output data pin 4
+0x50000014 C   FIELD 05w01 ODR5: Port output data pin 5
+0x50000014 C   FIELD 06w01 ODR6: Port output data pin 6
+0x50000014 C   FIELD 07w01 ODR7: Port output data pin 7
+0x50000014 C   FIELD 08w01 ODR8: Port output data pin 8
+0x50000014 C   FIELD 09w01 ODR9: Port output data pin 9
+0x50000014 C   FIELD 10w01 ODR10: Port output data pin 10
+0x50000014 C   FIELD 11w01 ODR11: Port output data pin 11
+0x50000014 C   FIELD 12w01 ODR12: Port output data pin 12
+0x50000014 C   FIELD 13w01 ODR13: Port output data pin 13
+0x50000014 C   FIELD 14w01 ODR14: Port output data pin 14
+0x50000014 C   FIELD 15w01 ODR15: Port output data pin 15
 0x50000018 B  REGISTER BSRR (wo): GPIO port bit set/reset register
-0x50000018 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
-0x50000018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
-0x50000018 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50000018 C   FIELD 00w01 BS0: Port x set pin 0
+0x50000018 C   FIELD 01w01 BS1: Port x set pin 1
+0x50000018 C   FIELD 02w01 BS2: Port x set pin 2
+0x50000018 C   FIELD 03w01 BS3: Port x set pin 3
+0x50000018 C   FIELD 04w01 BS4: Port x set pin 4
+0x50000018 C   FIELD 05w01 BS5: Port x set pin 5
+0x50000018 C   FIELD 06w01 BS6: Port x set pin 6
+0x50000018 C   FIELD 07w01 BS7: Port x set pin 7
+0x50000018 C   FIELD 08w01 BS8: Port x set pin 8
+0x50000018 C   FIELD 09w01 BS9: Port x set pin 9
+0x50000018 C   FIELD 10w01 BS10: Port x set pin 10
+0x50000018 C   FIELD 11w01 BS11: Port x set pin 11
+0x50000018 C   FIELD 12w01 BS12: Port x set pin 12
+0x50000018 C   FIELD 13w01 BS13: Port x set pin 13
+0x50000018 C   FIELD 14w01 BS14: Port x set pin 14
+0x50000018 C   FIELD 15w01 BS15: Port x set pin 15
+0x50000018 C   FIELD 16w01 BR0: Port x reset pin 0
+0x50000018 C   FIELD 17w01 BR1: Port x reset pin 1
+0x50000018 C   FIELD 18w01 BR2: Port x reset pin 2
+0x50000018 C   FIELD 19w01 BR3: Port x reset pin 3
+0x50000018 C   FIELD 20w01 BR4: Port x reset pin 4
+0x50000018 C   FIELD 21w01 BR5: Port x reset pin 5
+0x50000018 C   FIELD 22w01 BR6: Port x reset pin 6
+0x50000018 C   FIELD 23w01 BR7: Port x reset pin 7
+0x50000018 C   FIELD 24w01 BR8: Port x reset pin 8
+0x50000018 C   FIELD 25w01 BR9: Port x reset pin 9
+0x50000018 C   FIELD 26w01 BR10: Port x reset pin 10
+0x50000018 C   FIELD 27w01 BR11: Port x reset pin 11
+0x50000018 C   FIELD 28w01 BR12: Port x reset pin 12
+0x50000018 C   FIELD 29w01 BR13: Port x reset pin 13
+0x50000018 C   FIELD 30w01 BR14: Port x reset pin 14
+0x50000018 C   FIELD 31w01 BR15: Port x reset pin 15
 0x5000001C B  REGISTER LCKR (rw): GPIO port configuration lock register
-0x5000001C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
-0x5000001C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000001C C   FIELD 00w01 LCK0: Port x lock pin 0
+0x5000001C C   FIELD 01w01 LCK1: Port x lock pin 1
+0x5000001C C   FIELD 02w01 LCK2: Port x lock pin 2
+0x5000001C C   FIELD 03w01 LCK3: Port x lock pin 3
+0x5000001C C   FIELD 04w01 LCK4: Port x lock pin 4
+0x5000001C C   FIELD 05w01 LCK5: Port x lock pin 5
+0x5000001C C   FIELD 06w01 LCK6: Port x lock pin 6
+0x5000001C C   FIELD 07w01 LCK7: Port x lock pin 7
+0x5000001C C   FIELD 08w01 LCK8: Port x lock pin 8
+0x5000001C C   FIELD 09w01 LCK9: Port x lock pin 9
+0x5000001C C   FIELD 10w01 LCK10: Port x lock pin 10
+0x5000001C C   FIELD 11w01 LCK11: Port x lock pin 11
+0x5000001C C   FIELD 12w01 LCK12: Port x lock pin 12
+0x5000001C C   FIELD 13w01 LCK13: Port x lock pin 13
+0x5000001C C   FIELD 14w01 LCK14: Port x lock pin 14
+0x5000001C C   FIELD 15w01 LCK15: Port x lock pin 15
 0x5000001C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
 0x50000020 B  REGISTER AFRL (rw): GPIO alternate function low register
-0x50000020 C   FIELD 00w04 AFSEL0: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 04w04 AFSEL1: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 08w04 AFSEL2: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 12w04 AFSEL3: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 16w04 AFSEL4: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 20w04 AFSEL5: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 24w04 AFSEL6: Alternate function selection for port x bit y (y = 0..7)
-0x50000020 C   FIELD 28w04 AFSEL7: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 00w04 AFREL0: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 04w04 AFREL1: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 08w04 AFREL2: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 12w04 AFREL3: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 16w04 AFREL4: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 20w04 AFREL5: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 24w04 AFREL6: Alternate function selection for port x bit y (y = 0..7)
+0x50000020 C   FIELD 28w04 AFREL7: Alternate function selection for port x bit y (y = 0..7)
 0x50000024 B  REGISTER AFRH (rw): GPIO alternate function high register
-0x50000024 C   FIELD 00w04 AFSEL8: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 04w04 AFSEL9: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 08w04 AFSEL10: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 12w04 AFSEL11: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 16w04 AFSEL12: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 20w04 AFSEL13: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 24w04 AFSEL14: Alternate function selection for port x bit y (y = 8..15)
-0x50000024 C   FIELD 28w04 AFSEL15: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 00w04 AFREL8: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 04w04 AFREL9: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 08w04 AFREL10: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 12w04 AFREL11: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 16w04 AFREL12: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 20w04 AFREL13: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 24w04 AFREL14: Alternate function selection for port x bit y (y = 8..15)
+0x50000024 C   FIELD 28w04 AFREL15: Alternate function selection for port x bit y (y = 8..15)
 0x50000028 B  REGISTER BRR (wo): port bit reset register
 0x50000028 C   FIELD 00w01 BR0: Port Reset bit
 0x50000028 C   FIELD 01w01 BR1: Port Reset bit
@@ -1732,176 +1732,176 @@
 0x50000028 C   FIELD 15w01 BR15: Port Reset bit
 0x50000400 A PERIPHERAL GPIOB
 0x50000400 B  REGISTER MODER (rw): GPIO port mode register
-0x50000400 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x50000400 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x50000400 C   FIELD 00w02 MODER0: Port x configuration pin 0
+0x50000400 C   FIELD 02w02 MODER1: Port x configuration pin 1
+0x50000400 C   FIELD 04w02 MODER2: Port x configuration pin 2
+0x50000400 C   FIELD 06w02 MODER3: Port x configuration pin 3
+0x50000400 C   FIELD 08w02 MODER4: Port x configuration pin 4
+0x50000400 C   FIELD 10w02 MODER5: Port x configuration pin 5
+0x50000400 C   FIELD 12w02 MODER6: Port x configuration pin 6
+0x50000400 C   FIELD 14w02 MODER7: Port x configuration pin 7
+0x50000400 C   FIELD 16w02 MODER8: Port x configuration pin 8
+0x50000400 C   FIELD 18w02 MODER9: Port x configuration pin 9
+0x50000400 C   FIELD 20w02 MODER10: Port x configuration pin 10
+0x50000400 C   FIELD 22w02 MODER11: Port x configuration pin 11
+0x50000400 C   FIELD 24w02 MODER12: Port x configuration pin 12
+0x50000400 C   FIELD 26w02 MODER13: Port x configuration pin 13
+0x50000400 C   FIELD 28w02 MODER14: Port x configuration pin 14
+0x50000400 C   FIELD 30w02 MODER15: Port x configuration pin 15
 0x50000404 B  REGISTER OTYPER (rw): GPIO port output type register
-0x50000404 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
-0x50000404 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000404 C   FIELD 00w01 OT0: Port x configuration pin 0
+0x50000404 C   FIELD 01w01 OT1: Port x configuration pin 1
+0x50000404 C   FIELD 02w01 OT2: Port x configuration pin 2
+0x50000404 C   FIELD 03w01 OT3: Port x configuration pin 3
+0x50000404 C   FIELD 04w01 OT4: Port x configuration pin 4
+0x50000404 C   FIELD 05w01 OT5: Port x configuration pin 5
+0x50000404 C   FIELD 06w01 OT6: Port x configuration pin 6
+0x50000404 C   FIELD 07w01 OT7: Port x configuration pin 7
+0x50000404 C   FIELD 08w01 OT8: Port x configuration pin 8
+0x50000404 C   FIELD 09w01 OT9: Port x configuration pin 9
+0x50000404 C   FIELD 10w01 OT10: Port x configuration pin 10
+0x50000404 C   FIELD 11w01 OT11: Port x configuration pin 11
+0x50000404 C   FIELD 12w01 OT12: Port x configuration pin 12
+0x50000404 C   FIELD 13w01 OT13: Port x configuration pin 13
+0x50000404 C   FIELD 14w01 OT14: Port x configuration pin 14
+0x50000404 C   FIELD 15w01 OT15: Port x configuration pin 15
 0x50000408 B  REGISTER OSPEEDR (rw): GPIO port output speed register
-0x50000408 C   FIELD 00w02 OSPEEDR0: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 02w02 OSPEEDR1: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 04w02 OSPEEDR2: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 06w02 OSPEEDR3: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 08w02 OSPEEDR4: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 10w02 OSPEEDR5: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 12w02 OSPEEDR6: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 14w02 OSPEEDR7: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 16w02 OSPEEDR8: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 18w02 OSPEEDR9: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 20w02 OSPEEDR10: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 22w02 OSPEEDR11: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 24w02 OSPEEDR12: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 26w02 OSPEEDR13: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 28w02 OSPEEDR14: Port x configuration bits (y = 0..15)
-0x50000408 C   FIELD 30w02 OSPEEDR15: Port x configuration bits (y = 0..15)
+0x50000408 C   FIELD 00w02 OSPEEDR0: Port x configuration pin 0
+0x50000408 C   FIELD 02w02 OSPEEDR1: Port x configuration pin 1
+0x50000408 C   FIELD 04w02 OSPEEDR2: Port x configuration pin 2
+0x50000408 C   FIELD 06w02 OSPEEDR3: Port x configuration pin 3
+0x50000408 C   FIELD 08w02 OSPEEDR4: Port x configuration pin 4
+0x50000408 C   FIELD 10w02 OSPEEDR5: Port x configuration pin 5
+0x50000408 C   FIELD 12w02 OSPEEDR6: Port x configuration pin 6
+0x50000408 C   FIELD 14w02 OSPEEDR7: Port x configuration pin 7
+0x50000408 C   FIELD 16w02 OSPEEDR8: Port x configuration pin 8
+0x50000408 C   FIELD 18w02 OSPEEDR9: Port x configuration pin 9
+0x50000408 C   FIELD 20w02 OSPEEDR10: Port x configuration pin 10
+0x50000408 C   FIELD 22w02 OSPEEDR11: Port x configuration pin 11
+0x50000408 C   FIELD 24w02 OSPEEDR12: Port x configuration pin 12
+0x50000408 C   FIELD 26w02 OSPEEDR13: Port x configuration pin 13
+0x50000408 C   FIELD 28w02 OSPEEDR14: Port x configuration pin 14
+0x50000408 C   FIELD 30w02 OSPEEDR15: Port x configuration pin 15
 0x5000040C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
-0x5000040C C   FIELD 00w02 PUPDR0: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 02w02 PUPDR1: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 04w02 PUPDR2: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 06w02 PUPDR3: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 08w02 PUPDR4: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 10w02 PUPDR5: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 12w02 PUPDR6: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 14w02 PUPDR7: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 16w02 PUPDR8: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 18w02 PUPDR9: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 20w02 PUPDR10: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 22w02 PUPDR11: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 24w02 PUPDR12: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 26w02 PUPDR13: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 28w02 PUPDR14: Port x configuration bits (y = 0..15)
-0x5000040C C   FIELD 30w02 PUPDR15: Port x configuration bits (y = 0..15)
+0x5000040C C   FIELD 00w02 PUPDR0: Port x configuration pin 0
+0x5000040C C   FIELD 02w02 PUPDR1: Port x configuration pin 1
+0x5000040C C   FIELD 04w02 PUPDR2: Port x configuration pin 2
+0x5000040C C   FIELD 06w02 PUPDR3: Port x configuration pin 3
+0x5000040C C   FIELD 08w02 PUPDR4: Port x configuration pin 4
+0x5000040C C   FIELD 10w02 PUPDR5: Port x configuration pin 5
+0x5000040C C   FIELD 12w02 PUPDR6: Port x configuration pin 6
+0x5000040C C   FIELD 14w02 PUPDR7: Port x configuration pin 7
+0x5000040C C   FIELD 16w02 PUPDR8: Port x configuration pin 8
+0x5000040C C   FIELD 18w02 PUPDR9: Port x configuration pin 9
+0x5000040C C   FIELD 20w02 PUPDR10: Port x configuration pin 10
+0x5000040C C   FIELD 22w02 PUPDR11: Port x configuration pin 11
+0x5000040C C   FIELD 24w02 PUPDR12: Port x configuration pin 12
+0x5000040C C   FIELD 26w02 PUPDR13: Port x configuration pin 13
+0x5000040C C   FIELD 28w02 PUPDR14: Port x configuration pin 14
+0x5000040C C   FIELD 30w02 PUPDR15: Port x configuration pin 15
 0x50000410 B  REGISTER IDR (ro): GPIO port input data register
-0x50000410 C   FIELD 00w01 IDR0: Port input data (y = 0..15)
-0x50000410 C   FIELD 01w01 IDR1: Port input data (y = 0..15)
-0x50000410 C   FIELD 02w01 IDR2: Port input data (y = 0..15)
-0x50000410 C   FIELD 03w01 IDR3: Port input data (y = 0..15)
-0x50000410 C   FIELD 04w01 IDR4: Port input data (y = 0..15)
-0x50000410 C   FIELD 05w01 IDR5: Port input data (y = 0..15)
-0x50000410 C   FIELD 06w01 IDR6: Port input data (y = 0..15)
-0x50000410 C   FIELD 07w01 IDR7: Port input data (y = 0..15)
-0x50000410 C   FIELD 08w01 IDR8: Port input data (y = 0..15)
-0x50000410 C   FIELD 09w01 IDR9: Port input data (y = 0..15)
-0x50000410 C   FIELD 10w01 IDR10: Port input data (y = 0..15)
-0x50000410 C   FIELD 11w01 IDR11: Port input data (y = 0..15)
-0x50000410 C   FIELD 12w01 IDR12: Port input data (y = 0..15)
-0x50000410 C   FIELD 13w01 IDR13: Port input data (y = 0..15)
-0x50000410 C   FIELD 14w01 IDR14: Port input data (y = 0..15)
-0x50000410 C   FIELD 15w01 IDR15: Port input data (y = 0..15)
+0x50000410 C   FIELD 00w01 IDR0: Port input data pin 0
+0x50000410 C   FIELD 01w01 IDR1: Port input data pin 1
+0x50000410 C   FIELD 02w01 IDR2: Port input data pin 2
+0x50000410 C   FIELD 03w01 IDR3: Port input data pin 3
+0x50000410 C   FIELD 04w01 IDR4: Port input data pin 4
+0x50000410 C   FIELD 05w01 IDR5: Port input data pin 5
+0x50000410 C   FIELD 06w01 IDR6: Port input data pin 6
+0x50000410 C   FIELD 07w01 IDR7: Port input data pin 7
+0x50000410 C   FIELD 08w01 IDR8: Port input data pin 8
+0x50000410 C   FIELD 09w01 IDR9: Port input data pin 9
+0x50000410 C   FIELD 10w01 IDR10: Port input data pin 10
+0x50000410 C   FIELD 11w01 IDR11: Port input data pin 11
+0x50000410 C   FIELD 12w01 IDR12: Port input data pin 12
+0x50000410 C   FIELD 13w01 IDR13: Port input data pin 13
+0x50000410 C   FIELD 14w01 IDR14: Port input data pin 14
+0x50000410 C   FIELD 15w01 IDR15: Port input data pin 15
 0x50000414 B  REGISTER ODR (rw): GPIO port output data register
-0x50000414 C   FIELD 00w01 ODR0: Port output data (y = 0..15)
-0x50000414 C   FIELD 01w01 ODR1: Port output data (y = 0..15)
-0x50000414 C   FIELD 02w01 ODR2: Port output data (y = 0..15)
-0x50000414 C   FIELD 03w01 ODR3: Port output data (y = 0..15)
-0x50000414 C   FIELD 04w01 ODR4: Port output data (y = 0..15)
-0x50000414 C   FIELD 05w01 ODR5: Port output data (y = 0..15)
-0x50000414 C   FIELD 06w01 ODR6: Port output data (y = 0..15)
-0x50000414 C   FIELD 07w01 ODR7: Port output data (y = 0..15)
-0x50000414 C   FIELD 08w01 ODR8: Port output data (y = 0..15)
-0x50000414 C   FIELD 09w01 ODR9: Port output data (y = 0..15)
-0x50000414 C   FIELD 10w01 ODR10: Port output data (y = 0..15)
-0x50000414 C   FIELD 11w01 ODR11: Port output data (y = 0..15)
-0x50000414 C   FIELD 12w01 ODR12: Port output data (y = 0..15)
-0x50000414 C   FIELD 13w01 ODR13: Port output data (y = 0..15)
-0x50000414 C   FIELD 14w01 ODR14: Port output data (y = 0..15)
-0x50000414 C   FIELD 15w01 ODR15: Port output data (y = 0..15)
+0x50000414 C   FIELD 00w01 ODR0: Port output data pin 0
+0x50000414 C   FIELD 01w01 ODR1: Port output data pin 1
+0x50000414 C   FIELD 02w01 ODR2: Port output data pin 2
+0x50000414 C   FIELD 03w01 ODR3: Port output data pin 3
+0x50000414 C   FIELD 04w01 ODR4: Port output data pin 4
+0x50000414 C   FIELD 05w01 ODR5: Port output data pin 5
+0x50000414 C   FIELD 06w01 ODR6: Port output data pin 6
+0x50000414 C   FIELD 07w01 ODR7: Port output data pin 7
+0x50000414 C   FIELD 08w01 ODR8: Port output data pin 8
+0x50000414 C   FIELD 09w01 ODR9: Port output data pin 9
+0x50000414 C   FIELD 10w01 ODR10: Port output data pin 10
+0x50000414 C   FIELD 11w01 ODR11: Port output data pin 11
+0x50000414 C   FIELD 12w01 ODR12: Port output data pin 12
+0x50000414 C   FIELD 13w01 ODR13: Port output data pin 13
+0x50000414 C   FIELD 14w01 ODR14: Port output data pin 14
+0x50000414 C   FIELD 15w01 ODR15: Port output data pin 15
 0x50000418 B  REGISTER BSRR (wo): GPIO port bit set/reset register
-0x50000418 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
-0x50000418 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
-0x50000418 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50000418 C   FIELD 00w01 BS0: Port x set pin 0
+0x50000418 C   FIELD 01w01 BS1: Port x set pin 1
+0x50000418 C   FIELD 02w01 BS2: Port x set pin 2
+0x50000418 C   FIELD 03w01 BS3: Port x set pin 3
+0x50000418 C   FIELD 04w01 BS4: Port x set pin 4
+0x50000418 C   FIELD 05w01 BS5: Port x set pin 5
+0x50000418 C   FIELD 06w01 BS6: Port x set pin 6
+0x50000418 C   FIELD 07w01 BS7: Port x set pin 7
+0x50000418 C   FIELD 08w01 BS8: Port x set pin 8
+0x50000418 C   FIELD 09w01 BS9: Port x set pin 9
+0x50000418 C   FIELD 10w01 BS10: Port x set pin 10
+0x50000418 C   FIELD 11w01 BS11: Port x set pin 11
+0x50000418 C   FIELD 12w01 BS12: Port x set pin 12
+0x50000418 C   FIELD 13w01 BS13: Port x set pin 13
+0x50000418 C   FIELD 14w01 BS14: Port x set pin 14
+0x50000418 C   FIELD 15w01 BS15: Port x set pin 15
+0x50000418 C   FIELD 16w01 BR0: Port x reset pin 0
+0x50000418 C   FIELD 17w01 BR1: Port x reset pin 1
+0x50000418 C   FIELD 18w01 BR2: Port x reset pin 2
+0x50000418 C   FIELD 19w01 BR3: Port x reset pin 3
+0x50000418 C   FIELD 20w01 BR4: Port x reset pin 4
+0x50000418 C   FIELD 21w01 BR5: Port x reset pin 5
+0x50000418 C   FIELD 22w01 BR6: Port x reset pin 6
+0x50000418 C   FIELD 23w01 BR7: Port x reset pin 7
+0x50000418 C   FIELD 24w01 BR8: Port x reset pin 8
+0x50000418 C   FIELD 25w01 BR9: Port x reset pin 9
+0x50000418 C   FIELD 26w01 BR10: Port x reset pin 10
+0x50000418 C   FIELD 27w01 BR11: Port x reset pin 11
+0x50000418 C   FIELD 28w01 BR12: Port x reset pin 12
+0x50000418 C   FIELD 29w01 BR13: Port x reset pin 13
+0x50000418 C   FIELD 30w01 BR14: Port x reset pin 14
+0x50000418 C   FIELD 31w01 BR15: Port x reset pin 15
 0x5000041C B  REGISTER LCKR (rw): GPIO port configuration lock register
-0x5000041C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
-0x5000041C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000041C C   FIELD 00w01 LCK0: Port x lock pin 0
+0x5000041C C   FIELD 01w01 LCK1: Port x lock pin 1
+0x5000041C C   FIELD 02w01 LCK2: Port x lock pin 2
+0x5000041C C   FIELD 03w01 LCK3: Port x lock pin 3
+0x5000041C C   FIELD 04w01 LCK4: Port x lock pin 4
+0x5000041C C   FIELD 05w01 LCK5: Port x lock pin 5
+0x5000041C C   FIELD 06w01 LCK6: Port x lock pin 6
+0x5000041C C   FIELD 07w01 LCK7: Port x lock pin 7
+0x5000041C C   FIELD 08w01 LCK8: Port x lock pin 8
+0x5000041C C   FIELD 09w01 LCK9: Port x lock pin 9
+0x5000041C C   FIELD 10w01 LCK10: Port x lock pin 10
+0x5000041C C   FIELD 11w01 LCK11: Port x lock pin 11
+0x5000041C C   FIELD 12w01 LCK12: Port x lock pin 12
+0x5000041C C   FIELD 13w01 LCK13: Port x lock pin 13
+0x5000041C C   FIELD 14w01 LCK14: Port x lock pin 14
+0x5000041C C   FIELD 15w01 LCK15: Port x lock pin 15
 0x5000041C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
 0x50000420 B  REGISTER AFRL (rw): GPIO alternate function low register
-0x50000420 C   FIELD 00w04 AFSEL0: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 04w04 AFSEL1: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 08w04 AFSEL2: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 12w04 AFSEL3: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 16w04 AFSEL4: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 20w04 AFSEL5: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 24w04 AFSEL6: Alternate function selection for port x bit y (y = 0..7)
-0x50000420 C   FIELD 28w04 AFSEL7: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 00w04 AFREL0: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 04w04 AFREL1: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 08w04 AFREL2: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 12w04 AFREL3: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 16w04 AFREL4: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 20w04 AFREL5: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 24w04 AFREL6: Alternate function selection for port x bit y (y = 0..7)
+0x50000420 C   FIELD 28w04 AFREL7: Alternate function selection for port x bit y (y = 0..7)
 0x50000424 B  REGISTER AFRH (rw): GPIO alternate function high register
-0x50000424 C   FIELD 00w04 AFSEL8: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 04w04 AFSEL9: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 08w04 AFSEL10: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 12w04 AFSEL11: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 16w04 AFSEL12: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 20w04 AFSEL13: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 24w04 AFSEL14: Alternate function selection for port x bit y (y = 8..15)
-0x50000424 C   FIELD 28w04 AFSEL15: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 00w04 AFREL8: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 04w04 AFREL9: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 08w04 AFREL10: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 12w04 AFREL11: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 16w04 AFREL12: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 20w04 AFREL13: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 24w04 AFREL14: Alternate function selection for port x bit y (y = 8..15)
+0x50000424 C   FIELD 28w04 AFREL15: Alternate function selection for port x bit y (y = 8..15)
 0x50000428 B  REGISTER BRR (wo): port bit reset register
 0x50000428 C   FIELD 00w01 BR0: Port Reset bit
 0x50000428 C   FIELD 01w01 BR1: Port Reset bit
@@ -1921,176 +1921,176 @@
 0x50000428 C   FIELD 15w01 BR15: Port Reset bit
 0x50000800 A PERIPHERAL GPIOC
 0x50000800 B  REGISTER MODER (rw): GPIO port mode register
-0x50000800 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x50000800 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x50000800 C   FIELD 00w02 MODER0: Port x configuration pin 0
+0x50000800 C   FIELD 02w02 MODER1: Port x configuration pin 1
+0x50000800 C   FIELD 04w02 MODER2: Port x configuration pin 2
+0x50000800 C   FIELD 06w02 MODER3: Port x configuration pin 3
+0x50000800 C   FIELD 08w02 MODER4: Port x configuration pin 4
+0x50000800 C   FIELD 10w02 MODER5: Port x configuration pin 5
+0x50000800 C   FIELD 12w02 MODER6: Port x configuration pin 6
+0x50000800 C   FIELD 14w02 MODER7: Port x configuration pin 7
+0x50000800 C   FIELD 16w02 MODER8: Port x configuration pin 8
+0x50000800 C   FIELD 18w02 MODER9: Port x configuration pin 9
+0x50000800 C   FIELD 20w02 MODER10: Port x configuration pin 10
+0x50000800 C   FIELD 22w02 MODER11: Port x configuration pin 11
+0x50000800 C   FIELD 24w02 MODER12: Port x configuration pin 12
+0x50000800 C   FIELD 26w02 MODER13: Port x configuration pin 13
+0x50000800 C   FIELD 28w02 MODER14: Port x configuration pin 14
+0x50000800 C   FIELD 30w02 MODER15: Port x configuration pin 15
 0x50000804 B  REGISTER OTYPER (rw): GPIO port output type register
-0x50000804 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
-0x50000804 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000804 C   FIELD 00w01 OT0: Port x configuration pin 0
+0x50000804 C   FIELD 01w01 OT1: Port x configuration pin 1
+0x50000804 C   FIELD 02w01 OT2: Port x configuration pin 2
+0x50000804 C   FIELD 03w01 OT3: Port x configuration pin 3
+0x50000804 C   FIELD 04w01 OT4: Port x configuration pin 4
+0x50000804 C   FIELD 05w01 OT5: Port x configuration pin 5
+0x50000804 C   FIELD 06w01 OT6: Port x configuration pin 6
+0x50000804 C   FIELD 07w01 OT7: Port x configuration pin 7
+0x50000804 C   FIELD 08w01 OT8: Port x configuration pin 8
+0x50000804 C   FIELD 09w01 OT9: Port x configuration pin 9
+0x50000804 C   FIELD 10w01 OT10: Port x configuration pin 10
+0x50000804 C   FIELD 11w01 OT11: Port x configuration pin 11
+0x50000804 C   FIELD 12w01 OT12: Port x configuration pin 12
+0x50000804 C   FIELD 13w01 OT13: Port x configuration pin 13
+0x50000804 C   FIELD 14w01 OT14: Port x configuration pin 14
+0x50000804 C   FIELD 15w01 OT15: Port x configuration pin 15
 0x50000808 B  REGISTER OSPEEDR (rw): GPIO port output speed register
-0x50000808 C   FIELD 00w02 OSPEEDR0: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 02w02 OSPEEDR1: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 04w02 OSPEEDR2: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 06w02 OSPEEDR3: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 08w02 OSPEEDR4: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 10w02 OSPEEDR5: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 12w02 OSPEEDR6: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 14w02 OSPEEDR7: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 16w02 OSPEEDR8: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 18w02 OSPEEDR9: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 20w02 OSPEEDR10: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 22w02 OSPEEDR11: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 24w02 OSPEEDR12: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 26w02 OSPEEDR13: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 28w02 OSPEEDR14: Port x configuration bits (y = 0..15)
-0x50000808 C   FIELD 30w02 OSPEEDR15: Port x configuration bits (y = 0..15)
+0x50000808 C   FIELD 00w02 OSPEEDR0: Port x configuration pin 0
+0x50000808 C   FIELD 02w02 OSPEEDR1: Port x configuration pin 1
+0x50000808 C   FIELD 04w02 OSPEEDR2: Port x configuration pin 2
+0x50000808 C   FIELD 06w02 OSPEEDR3: Port x configuration pin 3
+0x50000808 C   FIELD 08w02 OSPEEDR4: Port x configuration pin 4
+0x50000808 C   FIELD 10w02 OSPEEDR5: Port x configuration pin 5
+0x50000808 C   FIELD 12w02 OSPEEDR6: Port x configuration pin 6
+0x50000808 C   FIELD 14w02 OSPEEDR7: Port x configuration pin 7
+0x50000808 C   FIELD 16w02 OSPEEDR8: Port x configuration pin 8
+0x50000808 C   FIELD 18w02 OSPEEDR9: Port x configuration pin 9
+0x50000808 C   FIELD 20w02 OSPEEDR10: Port x configuration pin 10
+0x50000808 C   FIELD 22w02 OSPEEDR11: Port x configuration pin 11
+0x50000808 C   FIELD 24w02 OSPEEDR12: Port x configuration pin 12
+0x50000808 C   FIELD 26w02 OSPEEDR13: Port x configuration pin 13
+0x50000808 C   FIELD 28w02 OSPEEDR14: Port x configuration pin 14
+0x50000808 C   FIELD 30w02 OSPEEDR15: Port x configuration pin 15
 0x5000080C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
-0x5000080C C   FIELD 00w02 PUPDR0: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 02w02 PUPDR1: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 04w02 PUPDR2: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 06w02 PUPDR3: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 08w02 PUPDR4: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 10w02 PUPDR5: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 12w02 PUPDR6: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 14w02 PUPDR7: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 16w02 PUPDR8: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 18w02 PUPDR9: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 20w02 PUPDR10: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 22w02 PUPDR11: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 24w02 PUPDR12: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 26w02 PUPDR13: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 28w02 PUPDR14: Port x configuration bits (y = 0..15)
-0x5000080C C   FIELD 30w02 PUPDR15: Port x configuration bits (y = 0..15)
+0x5000080C C   FIELD 00w02 PUPDR0: Port x configuration pin 0
+0x5000080C C   FIELD 02w02 PUPDR1: Port x configuration pin 1
+0x5000080C C   FIELD 04w02 PUPDR2: Port x configuration pin 2
+0x5000080C C   FIELD 06w02 PUPDR3: Port x configuration pin 3
+0x5000080C C   FIELD 08w02 PUPDR4: Port x configuration pin 4
+0x5000080C C   FIELD 10w02 PUPDR5: Port x configuration pin 5
+0x5000080C C   FIELD 12w02 PUPDR6: Port x configuration pin 6
+0x5000080C C   FIELD 14w02 PUPDR7: Port x configuration pin 7
+0x5000080C C   FIELD 16w02 PUPDR8: Port x configuration pin 8
+0x5000080C C   FIELD 18w02 PUPDR9: Port x configuration pin 9
+0x5000080C C   FIELD 20w02 PUPDR10: Port x configuration pin 10
+0x5000080C C   FIELD 22w02 PUPDR11: Port x configuration pin 11
+0x5000080C C   FIELD 24w02 PUPDR12: Port x configuration pin 12
+0x5000080C C   FIELD 26w02 PUPDR13: Port x configuration pin 13
+0x5000080C C   FIELD 28w02 PUPDR14: Port x configuration pin 14
+0x5000080C C   FIELD 30w02 PUPDR15: Port x configuration pin 15
 0x50000810 B  REGISTER IDR (ro): GPIO port input data register
-0x50000810 C   FIELD 00w01 IDR0: Port input data (y = 0..15)
-0x50000810 C   FIELD 01w01 IDR1: Port input data (y = 0..15)
-0x50000810 C   FIELD 02w01 IDR2: Port input data (y = 0..15)
-0x50000810 C   FIELD 03w01 IDR3: Port input data (y = 0..15)
-0x50000810 C   FIELD 04w01 IDR4: Port input data (y = 0..15)
-0x50000810 C   FIELD 05w01 IDR5: Port input data (y = 0..15)
-0x50000810 C   FIELD 06w01 IDR6: Port input data (y = 0..15)
-0x50000810 C   FIELD 07w01 IDR7: Port input data (y = 0..15)
-0x50000810 C   FIELD 08w01 IDR8: Port input data (y = 0..15)
-0x50000810 C   FIELD 09w01 IDR9: Port input data (y = 0..15)
-0x50000810 C   FIELD 10w01 IDR10: Port input data (y = 0..15)
-0x50000810 C   FIELD 11w01 IDR11: Port input data (y = 0..15)
-0x50000810 C   FIELD 12w01 IDR12: Port input data (y = 0..15)
-0x50000810 C   FIELD 13w01 IDR13: Port input data (y = 0..15)
-0x50000810 C   FIELD 14w01 IDR14: Port input data (y = 0..15)
-0x50000810 C   FIELD 15w01 IDR15: Port input data (y = 0..15)
+0x50000810 C   FIELD 00w01 IDR0: Port input data pin 0
+0x50000810 C   FIELD 01w01 IDR1: Port input data pin 1
+0x50000810 C   FIELD 02w01 IDR2: Port input data pin 2
+0x50000810 C   FIELD 03w01 IDR3: Port input data pin 3
+0x50000810 C   FIELD 04w01 IDR4: Port input data pin 4
+0x50000810 C   FIELD 05w01 IDR5: Port input data pin 5
+0x50000810 C   FIELD 06w01 IDR6: Port input data pin 6
+0x50000810 C   FIELD 07w01 IDR7: Port input data pin 7
+0x50000810 C   FIELD 08w01 IDR8: Port input data pin 8
+0x50000810 C   FIELD 09w01 IDR9: Port input data pin 9
+0x50000810 C   FIELD 10w01 IDR10: Port input data pin 10
+0x50000810 C   FIELD 11w01 IDR11: Port input data pin 11
+0x50000810 C   FIELD 12w01 IDR12: Port input data pin 12
+0x50000810 C   FIELD 13w01 IDR13: Port input data pin 13
+0x50000810 C   FIELD 14w01 IDR14: Port input data pin 14
+0x50000810 C   FIELD 15w01 IDR15: Port input data pin 15
 0x50000814 B  REGISTER ODR (rw): GPIO port output data register
-0x50000814 C   FIELD 00w01 ODR0: Port output data (y = 0..15)
-0x50000814 C   FIELD 01w01 ODR1: Port output data (y = 0..15)
-0x50000814 C   FIELD 02w01 ODR2: Port output data (y = 0..15)
-0x50000814 C   FIELD 03w01 ODR3: Port output data (y = 0..15)
-0x50000814 C   FIELD 04w01 ODR4: Port output data (y = 0..15)
-0x50000814 C   FIELD 05w01 ODR5: Port output data (y = 0..15)
-0x50000814 C   FIELD 06w01 ODR6: Port output data (y = 0..15)
-0x50000814 C   FIELD 07w01 ODR7: Port output data (y = 0..15)
-0x50000814 C   FIELD 08w01 ODR8: Port output data (y = 0..15)
-0x50000814 C   FIELD 09w01 ODR9: Port output data (y = 0..15)
-0x50000814 C   FIELD 10w01 ODR10: Port output data (y = 0..15)
-0x50000814 C   FIELD 11w01 ODR11: Port output data (y = 0..15)
-0x50000814 C   FIELD 12w01 ODR12: Port output data (y = 0..15)
-0x50000814 C   FIELD 13w01 ODR13: Port output data (y = 0..15)
-0x50000814 C   FIELD 14w01 ODR14: Port output data (y = 0..15)
-0x50000814 C   FIELD 15w01 ODR15: Port output data (y = 0..15)
+0x50000814 C   FIELD 00w01 ODR0: Port output data pin 0
+0x50000814 C   FIELD 01w01 ODR1: Port output data pin 1
+0x50000814 C   FIELD 02w01 ODR2: Port output data pin 2
+0x50000814 C   FIELD 03w01 ODR3: Port output data pin 3
+0x50000814 C   FIELD 04w01 ODR4: Port output data pin 4
+0x50000814 C   FIELD 05w01 ODR5: Port output data pin 5
+0x50000814 C   FIELD 06w01 ODR6: Port output data pin 6
+0x50000814 C   FIELD 07w01 ODR7: Port output data pin 7
+0x50000814 C   FIELD 08w01 ODR8: Port output data pin 8
+0x50000814 C   FIELD 09w01 ODR9: Port output data pin 9
+0x50000814 C   FIELD 10w01 ODR10: Port output data pin 10
+0x50000814 C   FIELD 11w01 ODR11: Port output data pin 11
+0x50000814 C   FIELD 12w01 ODR12: Port output data pin 12
+0x50000814 C   FIELD 13w01 ODR13: Port output data pin 13
+0x50000814 C   FIELD 14w01 ODR14: Port output data pin 14
+0x50000814 C   FIELD 15w01 ODR15: Port output data pin 15
 0x50000818 B  REGISTER BSRR (wo): GPIO port bit set/reset register
-0x50000818 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
-0x50000818 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
-0x50000818 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50000818 C   FIELD 00w01 BS0: Port x set pin 0
+0x50000818 C   FIELD 01w01 BS1: Port x set pin 1
+0x50000818 C   FIELD 02w01 BS2: Port x set pin 2
+0x50000818 C   FIELD 03w01 BS3: Port x set pin 3
+0x50000818 C   FIELD 04w01 BS4: Port x set pin 4
+0x50000818 C   FIELD 05w01 BS5: Port x set pin 5
+0x50000818 C   FIELD 06w01 BS6: Port x set pin 6
+0x50000818 C   FIELD 07w01 BS7: Port x set pin 7
+0x50000818 C   FIELD 08w01 BS8: Port x set pin 8
+0x50000818 C   FIELD 09w01 BS9: Port x set pin 9
+0x50000818 C   FIELD 10w01 BS10: Port x set pin 10
+0x50000818 C   FIELD 11w01 BS11: Port x set pin 11
+0x50000818 C   FIELD 12w01 BS12: Port x set pin 12
+0x50000818 C   FIELD 13w01 BS13: Port x set pin 13
+0x50000818 C   FIELD 14w01 BS14: Port x set pin 14
+0x50000818 C   FIELD 15w01 BS15: Port x set pin 15
+0x50000818 C   FIELD 16w01 BR0: Port x reset pin 0
+0x50000818 C   FIELD 17w01 BR1: Port x reset pin 1
+0x50000818 C   FIELD 18w01 BR2: Port x reset pin 2
+0x50000818 C   FIELD 19w01 BR3: Port x reset pin 3
+0x50000818 C   FIELD 20w01 BR4: Port x reset pin 4
+0x50000818 C   FIELD 21w01 BR5: Port x reset pin 5
+0x50000818 C   FIELD 22w01 BR6: Port x reset pin 6
+0x50000818 C   FIELD 23w01 BR7: Port x reset pin 7
+0x50000818 C   FIELD 24w01 BR8: Port x reset pin 8
+0x50000818 C   FIELD 25w01 BR9: Port x reset pin 9
+0x50000818 C   FIELD 26w01 BR10: Port x reset pin 10
+0x50000818 C   FIELD 27w01 BR11: Port x reset pin 11
+0x50000818 C   FIELD 28w01 BR12: Port x reset pin 12
+0x50000818 C   FIELD 29w01 BR13: Port x reset pin 13
+0x50000818 C   FIELD 30w01 BR14: Port x reset pin 14
+0x50000818 C   FIELD 31w01 BR15: Port x reset pin 15
 0x5000081C B  REGISTER LCKR (rw): GPIO port configuration lock register
-0x5000081C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
-0x5000081C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000081C C   FIELD 00w01 LCK0: Port x lock pin 0
+0x5000081C C   FIELD 01w01 LCK1: Port x lock pin 1
+0x5000081C C   FIELD 02w01 LCK2: Port x lock pin 2
+0x5000081C C   FIELD 03w01 LCK3: Port x lock pin 3
+0x5000081C C   FIELD 04w01 LCK4: Port x lock pin 4
+0x5000081C C   FIELD 05w01 LCK5: Port x lock pin 5
+0x5000081C C   FIELD 06w01 LCK6: Port x lock pin 6
+0x5000081C C   FIELD 07w01 LCK7: Port x lock pin 7
+0x5000081C C   FIELD 08w01 LCK8: Port x lock pin 8
+0x5000081C C   FIELD 09w01 LCK9: Port x lock pin 9
+0x5000081C C   FIELD 10w01 LCK10: Port x lock pin 10
+0x5000081C C   FIELD 11w01 LCK11: Port x lock pin 11
+0x5000081C C   FIELD 12w01 LCK12: Port x lock pin 12
+0x5000081C C   FIELD 13w01 LCK13: Port x lock pin 13
+0x5000081C C   FIELD 14w01 LCK14: Port x lock pin 14
+0x5000081C C   FIELD 15w01 LCK15: Port x lock pin 15
 0x5000081C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
 0x50000820 B  REGISTER AFRL (rw): GPIO alternate function low register
-0x50000820 C   FIELD 00w04 AFSEL0: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 04w04 AFSEL1: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 08w04 AFSEL2: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 12w04 AFSEL3: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 16w04 AFSEL4: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 20w04 AFSEL5: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 24w04 AFSEL6: Alternate function selection for port x bit y (y = 0..7)
-0x50000820 C   FIELD 28w04 AFSEL7: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 00w04 AFREL0: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 04w04 AFREL1: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 08w04 AFREL2: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 12w04 AFREL3: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 16w04 AFREL4: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 20w04 AFREL5: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 24w04 AFREL6: Alternate function selection for port x bit y (y = 0..7)
+0x50000820 C   FIELD 28w04 AFREL7: Alternate function selection for port x bit y (y = 0..7)
 0x50000824 B  REGISTER AFRH (rw): GPIO alternate function high register
-0x50000824 C   FIELD 00w04 AFSEL8: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 04w04 AFSEL9: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 08w04 AFSEL10: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 12w04 AFSEL11: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 16w04 AFSEL12: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 20w04 AFSEL13: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 24w04 AFSEL14: Alternate function selection for port x bit y (y = 8..15)
-0x50000824 C   FIELD 28w04 AFSEL15: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 00w04 AFREL8: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 04w04 AFREL9: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 08w04 AFREL10: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 12w04 AFREL11: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 16w04 AFREL12: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 20w04 AFREL13: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 24w04 AFREL14: Alternate function selection for port x bit y (y = 8..15)
+0x50000824 C   FIELD 28w04 AFREL15: Alternate function selection for port x bit y (y = 8..15)
 0x50000828 B  REGISTER BRR (wo): port bit reset register
 0x50000828 C   FIELD 00w01 BR0: Port Reset bit
 0x50000828 C   FIELD 01w01 BR1: Port Reset bit
@@ -2110,176 +2110,176 @@
 0x50000828 C   FIELD 15w01 BR15: Port Reset bit
 0x50000C00 A PERIPHERAL GPIOD
 0x50000C00 B  REGISTER MODER (rw): GPIO port mode register
-0x50000C00 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x50000C00 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x50000C00 C   FIELD 00w02 MODER0: Port x configuration pin 0
+0x50000C00 C   FIELD 02w02 MODER1: Port x configuration pin 1
+0x50000C00 C   FIELD 04w02 MODER2: Port x configuration pin 2
+0x50000C00 C   FIELD 06w02 MODER3: Port x configuration pin 3
+0x50000C00 C   FIELD 08w02 MODER4: Port x configuration pin 4
+0x50000C00 C   FIELD 10w02 MODER5: Port x configuration pin 5
+0x50000C00 C   FIELD 12w02 MODER6: Port x configuration pin 6
+0x50000C00 C   FIELD 14w02 MODER7: Port x configuration pin 7
+0x50000C00 C   FIELD 16w02 MODER8: Port x configuration pin 8
+0x50000C00 C   FIELD 18w02 MODER9: Port x configuration pin 9
+0x50000C00 C   FIELD 20w02 MODER10: Port x configuration pin 10
+0x50000C00 C   FIELD 22w02 MODER11: Port x configuration pin 11
+0x50000C00 C   FIELD 24w02 MODER12: Port x configuration pin 12
+0x50000C00 C   FIELD 26w02 MODER13: Port x configuration pin 13
+0x50000C00 C   FIELD 28w02 MODER14: Port x configuration pin 14
+0x50000C00 C   FIELD 30w02 MODER15: Port x configuration pin 15
 0x50000C04 B  REGISTER OTYPER (rw): GPIO port output type register
-0x50000C04 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
-0x50000C04 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50000C04 C   FIELD 00w01 OT0: Port x configuration pin 0
+0x50000C04 C   FIELD 01w01 OT1: Port x configuration pin 1
+0x50000C04 C   FIELD 02w01 OT2: Port x configuration pin 2
+0x50000C04 C   FIELD 03w01 OT3: Port x configuration pin 3
+0x50000C04 C   FIELD 04w01 OT4: Port x configuration pin 4
+0x50000C04 C   FIELD 05w01 OT5: Port x configuration pin 5
+0x50000C04 C   FIELD 06w01 OT6: Port x configuration pin 6
+0x50000C04 C   FIELD 07w01 OT7: Port x configuration pin 7
+0x50000C04 C   FIELD 08w01 OT8: Port x configuration pin 8
+0x50000C04 C   FIELD 09w01 OT9: Port x configuration pin 9
+0x50000C04 C   FIELD 10w01 OT10: Port x configuration pin 10
+0x50000C04 C   FIELD 11w01 OT11: Port x configuration pin 11
+0x50000C04 C   FIELD 12w01 OT12: Port x configuration pin 12
+0x50000C04 C   FIELD 13w01 OT13: Port x configuration pin 13
+0x50000C04 C   FIELD 14w01 OT14: Port x configuration pin 14
+0x50000C04 C   FIELD 15w01 OT15: Port x configuration pin 15
 0x50000C08 B  REGISTER OSPEEDR (rw): GPIO port output speed register
-0x50000C08 C   FIELD 00w02 OSPEEDR0: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 02w02 OSPEEDR1: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 04w02 OSPEEDR2: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 06w02 OSPEEDR3: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 08w02 OSPEEDR4: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 10w02 OSPEEDR5: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 12w02 OSPEEDR6: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 14w02 OSPEEDR7: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 16w02 OSPEEDR8: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 18w02 OSPEEDR9: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 20w02 OSPEEDR10: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 22w02 OSPEEDR11: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 24w02 OSPEEDR12: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 26w02 OSPEEDR13: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 28w02 OSPEEDR14: Port x configuration bits (y = 0..15)
-0x50000C08 C   FIELD 30w02 OSPEEDR15: Port x configuration bits (y = 0..15)
+0x50000C08 C   FIELD 00w02 OSPEEDR0: Port x configuration pin 0
+0x50000C08 C   FIELD 02w02 OSPEEDR1: Port x configuration pin 1
+0x50000C08 C   FIELD 04w02 OSPEEDR2: Port x configuration pin 2
+0x50000C08 C   FIELD 06w02 OSPEEDR3: Port x configuration pin 3
+0x50000C08 C   FIELD 08w02 OSPEEDR4: Port x configuration pin 4
+0x50000C08 C   FIELD 10w02 OSPEEDR5: Port x configuration pin 5
+0x50000C08 C   FIELD 12w02 OSPEEDR6: Port x configuration pin 6
+0x50000C08 C   FIELD 14w02 OSPEEDR7: Port x configuration pin 7
+0x50000C08 C   FIELD 16w02 OSPEEDR8: Port x configuration pin 8
+0x50000C08 C   FIELD 18w02 OSPEEDR9: Port x configuration pin 9
+0x50000C08 C   FIELD 20w02 OSPEEDR10: Port x configuration pin 10
+0x50000C08 C   FIELD 22w02 OSPEEDR11: Port x configuration pin 11
+0x50000C08 C   FIELD 24w02 OSPEEDR12: Port x configuration pin 12
+0x50000C08 C   FIELD 26w02 OSPEEDR13: Port x configuration pin 13
+0x50000C08 C   FIELD 28w02 OSPEEDR14: Port x configuration pin 14
+0x50000C08 C   FIELD 30w02 OSPEEDR15: Port x configuration pin 15
 0x50000C0C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
-0x50000C0C C   FIELD 00w02 PUPDR0: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 02w02 PUPDR1: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 04w02 PUPDR2: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 06w02 PUPDR3: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 08w02 PUPDR4: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 10w02 PUPDR5: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 12w02 PUPDR6: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 14w02 PUPDR7: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 16w02 PUPDR8: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 18w02 PUPDR9: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 20w02 PUPDR10: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 22w02 PUPDR11: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 24w02 PUPDR12: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 26w02 PUPDR13: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 28w02 PUPDR14: Port x configuration bits (y = 0..15)
-0x50000C0C C   FIELD 30w02 PUPDR15: Port x configuration bits (y = 0..15)
+0x50000C0C C   FIELD 00w02 PUPDR0: Port x configuration pin 0
+0x50000C0C C   FIELD 02w02 PUPDR1: Port x configuration pin 1
+0x50000C0C C   FIELD 04w02 PUPDR2: Port x configuration pin 2
+0x50000C0C C   FIELD 06w02 PUPDR3: Port x configuration pin 3
+0x50000C0C C   FIELD 08w02 PUPDR4: Port x configuration pin 4
+0x50000C0C C   FIELD 10w02 PUPDR5: Port x configuration pin 5
+0x50000C0C C   FIELD 12w02 PUPDR6: Port x configuration pin 6
+0x50000C0C C   FIELD 14w02 PUPDR7: Port x configuration pin 7
+0x50000C0C C   FIELD 16w02 PUPDR8: Port x configuration pin 8
+0x50000C0C C   FIELD 18w02 PUPDR9: Port x configuration pin 9
+0x50000C0C C   FIELD 20w02 PUPDR10: Port x configuration pin 10
+0x50000C0C C   FIELD 22w02 PUPDR11: Port x configuration pin 11
+0x50000C0C C   FIELD 24w02 PUPDR12: Port x configuration pin 12
+0x50000C0C C   FIELD 26w02 PUPDR13: Port x configuration pin 13
+0x50000C0C C   FIELD 28w02 PUPDR14: Port x configuration pin 14
+0x50000C0C C   FIELD 30w02 PUPDR15: Port x configuration pin 15
 0x50000C10 B  REGISTER IDR (ro): GPIO port input data register
-0x50000C10 C   FIELD 00w01 IDR0: Port input data (y = 0..15)
-0x50000C10 C   FIELD 01w01 IDR1: Port input data (y = 0..15)
-0x50000C10 C   FIELD 02w01 IDR2: Port input data (y = 0..15)
-0x50000C10 C   FIELD 03w01 IDR3: Port input data (y = 0..15)
-0x50000C10 C   FIELD 04w01 IDR4: Port input data (y = 0..15)
-0x50000C10 C   FIELD 05w01 IDR5: Port input data (y = 0..15)
-0x50000C10 C   FIELD 06w01 IDR6: Port input data (y = 0..15)
-0x50000C10 C   FIELD 07w01 IDR7: Port input data (y = 0..15)
-0x50000C10 C   FIELD 08w01 IDR8: Port input data (y = 0..15)
-0x50000C10 C   FIELD 09w01 IDR9: Port input data (y = 0..15)
-0x50000C10 C   FIELD 10w01 IDR10: Port input data (y = 0..15)
-0x50000C10 C   FIELD 11w01 IDR11: Port input data (y = 0..15)
-0x50000C10 C   FIELD 12w01 IDR12: Port input data (y = 0..15)
-0x50000C10 C   FIELD 13w01 IDR13: Port input data (y = 0..15)
-0x50000C10 C   FIELD 14w01 IDR14: Port input data (y = 0..15)
-0x50000C10 C   FIELD 15w01 IDR15: Port input data (y = 0..15)
+0x50000C10 C   FIELD 00w01 IDR0: Port input data pin 0
+0x50000C10 C   FIELD 01w01 IDR1: Port input data pin 1
+0x50000C10 C   FIELD 02w01 IDR2: Port input data pin 2
+0x50000C10 C   FIELD 03w01 IDR3: Port input data pin 3
+0x50000C10 C   FIELD 04w01 IDR4: Port input data pin 4
+0x50000C10 C   FIELD 05w01 IDR5: Port input data pin 5
+0x50000C10 C   FIELD 06w01 IDR6: Port input data pin 6
+0x50000C10 C   FIELD 07w01 IDR7: Port input data pin 7
+0x50000C10 C   FIELD 08w01 IDR8: Port input data pin 8
+0x50000C10 C   FIELD 09w01 IDR9: Port input data pin 9
+0x50000C10 C   FIELD 10w01 IDR10: Port input data pin 10
+0x50000C10 C   FIELD 11w01 IDR11: Port input data pin 11
+0x50000C10 C   FIELD 12w01 IDR12: Port input data pin 12
+0x50000C10 C   FIELD 13w01 IDR13: Port input data pin 13
+0x50000C10 C   FIELD 14w01 IDR14: Port input data pin 14
+0x50000C10 C   FIELD 15w01 IDR15: Port input data pin 15
 0x50000C14 B  REGISTER ODR (rw): GPIO port output data register
-0x50000C14 C   FIELD 00w01 ODR0: Port output data (y = 0..15)
-0x50000C14 C   FIELD 01w01 ODR1: Port output data (y = 0..15)
-0x50000C14 C   FIELD 02w01 ODR2: Port output data (y = 0..15)
-0x50000C14 C   FIELD 03w01 ODR3: Port output data (y = 0..15)
-0x50000C14 C   FIELD 04w01 ODR4: Port output data (y = 0..15)
-0x50000C14 C   FIELD 05w01 ODR5: Port output data (y = 0..15)
-0x50000C14 C   FIELD 06w01 ODR6: Port output data (y = 0..15)
-0x50000C14 C   FIELD 07w01 ODR7: Port output data (y = 0..15)
-0x50000C14 C   FIELD 08w01 ODR8: Port output data (y = 0..15)
-0x50000C14 C   FIELD 09w01 ODR9: Port output data (y = 0..15)
-0x50000C14 C   FIELD 10w01 ODR10: Port output data (y = 0..15)
-0x50000C14 C   FIELD 11w01 ODR11: Port output data (y = 0..15)
-0x50000C14 C   FIELD 12w01 ODR12: Port output data (y = 0..15)
-0x50000C14 C   FIELD 13w01 ODR13: Port output data (y = 0..15)
-0x50000C14 C   FIELD 14w01 ODR14: Port output data (y = 0..15)
-0x50000C14 C   FIELD 15w01 ODR15: Port output data (y = 0..15)
+0x50000C14 C   FIELD 00w01 ODR0: Port output data pin 0
+0x50000C14 C   FIELD 01w01 ODR1: Port output data pin 1
+0x50000C14 C   FIELD 02w01 ODR2: Port output data pin 2
+0x50000C14 C   FIELD 03w01 ODR3: Port output data pin 3
+0x50000C14 C   FIELD 04w01 ODR4: Port output data pin 4
+0x50000C14 C   FIELD 05w01 ODR5: Port output data pin 5
+0x50000C14 C   FIELD 06w01 ODR6: Port output data pin 6
+0x50000C14 C   FIELD 07w01 ODR7: Port output data pin 7
+0x50000C14 C   FIELD 08w01 ODR8: Port output data pin 8
+0x50000C14 C   FIELD 09w01 ODR9: Port output data pin 9
+0x50000C14 C   FIELD 10w01 ODR10: Port output data pin 10
+0x50000C14 C   FIELD 11w01 ODR11: Port output data pin 11
+0x50000C14 C   FIELD 12w01 ODR12: Port output data pin 12
+0x50000C14 C   FIELD 13w01 ODR13: Port output data pin 13
+0x50000C14 C   FIELD 14w01 ODR14: Port output data pin 14
+0x50000C14 C   FIELD 15w01 ODR15: Port output data pin 15
 0x50000C18 B  REGISTER BSRR (wo): GPIO port bit set/reset register
-0x50000C18 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
-0x50000C18 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
-0x50000C18 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50000C18 C   FIELD 00w01 BS0: Port x set pin 0
+0x50000C18 C   FIELD 01w01 BS1: Port x set pin 1
+0x50000C18 C   FIELD 02w01 BS2: Port x set pin 2
+0x50000C18 C   FIELD 03w01 BS3: Port x set pin 3
+0x50000C18 C   FIELD 04w01 BS4: Port x set pin 4
+0x50000C18 C   FIELD 05w01 BS5: Port x set pin 5
+0x50000C18 C   FIELD 06w01 BS6: Port x set pin 6
+0x50000C18 C   FIELD 07w01 BS7: Port x set pin 7
+0x50000C18 C   FIELD 08w01 BS8: Port x set pin 8
+0x50000C18 C   FIELD 09w01 BS9: Port x set pin 9
+0x50000C18 C   FIELD 10w01 BS10: Port x set pin 10
+0x50000C18 C   FIELD 11w01 BS11: Port x set pin 11
+0x50000C18 C   FIELD 12w01 BS12: Port x set pin 12
+0x50000C18 C   FIELD 13w01 BS13: Port x set pin 13
+0x50000C18 C   FIELD 14w01 BS14: Port x set pin 14
+0x50000C18 C   FIELD 15w01 BS15: Port x set pin 15
+0x50000C18 C   FIELD 16w01 BR0: Port x reset pin 0
+0x50000C18 C   FIELD 17w01 BR1: Port x reset pin 1
+0x50000C18 C   FIELD 18w01 BR2: Port x reset pin 2
+0x50000C18 C   FIELD 19w01 BR3: Port x reset pin 3
+0x50000C18 C   FIELD 20w01 BR4: Port x reset pin 4
+0x50000C18 C   FIELD 21w01 BR5: Port x reset pin 5
+0x50000C18 C   FIELD 22w01 BR6: Port x reset pin 6
+0x50000C18 C   FIELD 23w01 BR7: Port x reset pin 7
+0x50000C18 C   FIELD 24w01 BR8: Port x reset pin 8
+0x50000C18 C   FIELD 25w01 BR9: Port x reset pin 9
+0x50000C18 C   FIELD 26w01 BR10: Port x reset pin 10
+0x50000C18 C   FIELD 27w01 BR11: Port x reset pin 11
+0x50000C18 C   FIELD 28w01 BR12: Port x reset pin 12
+0x50000C18 C   FIELD 29w01 BR13: Port x reset pin 13
+0x50000C18 C   FIELD 30w01 BR14: Port x reset pin 14
+0x50000C18 C   FIELD 31w01 BR15: Port x reset pin 15
 0x50000C1C B  REGISTER LCKR (rw): GPIO port configuration lock register
-0x50000C1C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
-0x50000C1C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x50000C1C C   FIELD 00w01 LCK0: Port x lock pin 0
+0x50000C1C C   FIELD 01w01 LCK1: Port x lock pin 1
+0x50000C1C C   FIELD 02w01 LCK2: Port x lock pin 2
+0x50000C1C C   FIELD 03w01 LCK3: Port x lock pin 3
+0x50000C1C C   FIELD 04w01 LCK4: Port x lock pin 4
+0x50000C1C C   FIELD 05w01 LCK5: Port x lock pin 5
+0x50000C1C C   FIELD 06w01 LCK6: Port x lock pin 6
+0x50000C1C C   FIELD 07w01 LCK7: Port x lock pin 7
+0x50000C1C C   FIELD 08w01 LCK8: Port x lock pin 8
+0x50000C1C C   FIELD 09w01 LCK9: Port x lock pin 9
+0x50000C1C C   FIELD 10w01 LCK10: Port x lock pin 10
+0x50000C1C C   FIELD 11w01 LCK11: Port x lock pin 11
+0x50000C1C C   FIELD 12w01 LCK12: Port x lock pin 12
+0x50000C1C C   FIELD 13w01 LCK13: Port x lock pin 13
+0x50000C1C C   FIELD 14w01 LCK14: Port x lock pin 14
+0x50000C1C C   FIELD 15w01 LCK15: Port x lock pin 15
 0x50000C1C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
 0x50000C20 B  REGISTER AFRL (rw): GPIO alternate function low register
-0x50000C20 C   FIELD 00w04 AFSEL0: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 04w04 AFSEL1: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 08w04 AFSEL2: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 12w04 AFSEL3: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 16w04 AFSEL4: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 20w04 AFSEL5: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 24w04 AFSEL6: Alternate function selection for port x bit y (y = 0..7)
-0x50000C20 C   FIELD 28w04 AFSEL7: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 00w04 AFREL0: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 04w04 AFREL1: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 08w04 AFREL2: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 12w04 AFREL3: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 16w04 AFREL4: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 20w04 AFREL5: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 24w04 AFREL6: Alternate function selection for port x bit y (y = 0..7)
+0x50000C20 C   FIELD 28w04 AFREL7: Alternate function selection for port x bit y (y = 0..7)
 0x50000C24 B  REGISTER AFRH (rw): GPIO alternate function high register
-0x50000C24 C   FIELD 00w04 AFSEL8: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 04w04 AFSEL9: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 08w04 AFSEL10: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 12w04 AFSEL11: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 16w04 AFSEL12: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 20w04 AFSEL13: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 24w04 AFSEL14: Alternate function selection for port x bit y (y = 8..15)
-0x50000C24 C   FIELD 28w04 AFSEL15: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 00w04 AFREL8: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 04w04 AFREL9: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 08w04 AFREL10: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 12w04 AFREL11: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 16w04 AFREL12: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 20w04 AFREL13: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 24w04 AFREL14: Alternate function selection for port x bit y (y = 8..15)
+0x50000C24 C   FIELD 28w04 AFREL15: Alternate function selection for port x bit y (y = 8..15)
 0x50000C28 B  REGISTER BRR (wo): port bit reset register
 0x50000C28 C   FIELD 00w01 BR0: Port Reset bit
 0x50000C28 C   FIELD 01w01 BR1: Port Reset bit
@@ -2299,176 +2299,176 @@
 0x50000C28 C   FIELD 15w01 BR15: Port Reset bit
 0x50001000 A PERIPHERAL GPIOE
 0x50001000 B  REGISTER MODER (rw): GPIO port mode register
-0x50001000 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x50001000 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x50001000 C   FIELD 00w02 MODER0: Port x configuration pin 0
+0x50001000 C   FIELD 02w02 MODER1: Port x configuration pin 1
+0x50001000 C   FIELD 04w02 MODER2: Port x configuration pin 2
+0x50001000 C   FIELD 06w02 MODER3: Port x configuration pin 3
+0x50001000 C   FIELD 08w02 MODER4: Port x configuration pin 4
+0x50001000 C   FIELD 10w02 MODER5: Port x configuration pin 5
+0x50001000 C   FIELD 12w02 MODER6: Port x configuration pin 6
+0x50001000 C   FIELD 14w02 MODER7: Port x configuration pin 7
+0x50001000 C   FIELD 16w02 MODER8: Port x configuration pin 8
+0x50001000 C   FIELD 18w02 MODER9: Port x configuration pin 9
+0x50001000 C   FIELD 20w02 MODER10: Port x configuration pin 10
+0x50001000 C   FIELD 22w02 MODER11: Port x configuration pin 11
+0x50001000 C   FIELD 24w02 MODER12: Port x configuration pin 12
+0x50001000 C   FIELD 26w02 MODER13: Port x configuration pin 13
+0x50001000 C   FIELD 28w02 MODER14: Port x configuration pin 14
+0x50001000 C   FIELD 30w02 MODER15: Port x configuration pin 15
 0x50001004 B  REGISTER OTYPER (rw): GPIO port output type register
-0x50001004 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
-0x50001004 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50001004 C   FIELD 00w01 OT0: Port x configuration pin 0
+0x50001004 C   FIELD 01w01 OT1: Port x configuration pin 1
+0x50001004 C   FIELD 02w01 OT2: Port x configuration pin 2
+0x50001004 C   FIELD 03w01 OT3: Port x configuration pin 3
+0x50001004 C   FIELD 04w01 OT4: Port x configuration pin 4
+0x50001004 C   FIELD 05w01 OT5: Port x configuration pin 5
+0x50001004 C   FIELD 06w01 OT6: Port x configuration pin 6
+0x50001004 C   FIELD 07w01 OT7: Port x configuration pin 7
+0x50001004 C   FIELD 08w01 OT8: Port x configuration pin 8
+0x50001004 C   FIELD 09w01 OT9: Port x configuration pin 9
+0x50001004 C   FIELD 10w01 OT10: Port x configuration pin 10
+0x50001004 C   FIELD 11w01 OT11: Port x configuration pin 11
+0x50001004 C   FIELD 12w01 OT12: Port x configuration pin 12
+0x50001004 C   FIELD 13w01 OT13: Port x configuration pin 13
+0x50001004 C   FIELD 14w01 OT14: Port x configuration pin 14
+0x50001004 C   FIELD 15w01 OT15: Port x configuration pin 15
 0x50001008 B  REGISTER OSPEEDR (rw): GPIO port output speed register
-0x50001008 C   FIELD 00w02 OSPEEDR0: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 02w02 OSPEEDR1: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 04w02 OSPEEDR2: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 06w02 OSPEEDR3: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 08w02 OSPEEDR4: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 10w02 OSPEEDR5: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 12w02 OSPEEDR6: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 14w02 OSPEEDR7: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 16w02 OSPEEDR8: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 18w02 OSPEEDR9: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 20w02 OSPEEDR10: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 22w02 OSPEEDR11: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 24w02 OSPEEDR12: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 26w02 OSPEEDR13: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 28w02 OSPEEDR14: Port x configuration bits (y = 0..15)
-0x50001008 C   FIELD 30w02 OSPEEDR15: Port x configuration bits (y = 0..15)
+0x50001008 C   FIELD 00w02 OSPEEDR0: Port x configuration pin 0
+0x50001008 C   FIELD 02w02 OSPEEDR1: Port x configuration pin 1
+0x50001008 C   FIELD 04w02 OSPEEDR2: Port x configuration pin 2
+0x50001008 C   FIELD 06w02 OSPEEDR3: Port x configuration pin 3
+0x50001008 C   FIELD 08w02 OSPEEDR4: Port x configuration pin 4
+0x50001008 C   FIELD 10w02 OSPEEDR5: Port x configuration pin 5
+0x50001008 C   FIELD 12w02 OSPEEDR6: Port x configuration pin 6
+0x50001008 C   FIELD 14w02 OSPEEDR7: Port x configuration pin 7
+0x50001008 C   FIELD 16w02 OSPEEDR8: Port x configuration pin 8
+0x50001008 C   FIELD 18w02 OSPEEDR9: Port x configuration pin 9
+0x50001008 C   FIELD 20w02 OSPEEDR10: Port x configuration pin 10
+0x50001008 C   FIELD 22w02 OSPEEDR11: Port x configuration pin 11
+0x50001008 C   FIELD 24w02 OSPEEDR12: Port x configuration pin 12
+0x50001008 C   FIELD 26w02 OSPEEDR13: Port x configuration pin 13
+0x50001008 C   FIELD 28w02 OSPEEDR14: Port x configuration pin 14
+0x50001008 C   FIELD 30w02 OSPEEDR15: Port x configuration pin 15
 0x5000100C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
-0x5000100C C   FIELD 00w02 PUPDR0: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 02w02 PUPDR1: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 04w02 PUPDR2: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 06w02 PUPDR3: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 08w02 PUPDR4: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 10w02 PUPDR5: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 12w02 PUPDR6: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 14w02 PUPDR7: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 16w02 PUPDR8: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 18w02 PUPDR9: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 20w02 PUPDR10: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 22w02 PUPDR11: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 24w02 PUPDR12: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 26w02 PUPDR13: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 28w02 PUPDR14: Port x configuration bits (y = 0..15)
-0x5000100C C   FIELD 30w02 PUPDR15: Port x configuration bits (y = 0..15)
+0x5000100C C   FIELD 00w02 PUPDR0: Port x configuration pin 0
+0x5000100C C   FIELD 02w02 PUPDR1: Port x configuration pin 1
+0x5000100C C   FIELD 04w02 PUPDR2: Port x configuration pin 2
+0x5000100C C   FIELD 06w02 PUPDR3: Port x configuration pin 3
+0x5000100C C   FIELD 08w02 PUPDR4: Port x configuration pin 4
+0x5000100C C   FIELD 10w02 PUPDR5: Port x configuration pin 5
+0x5000100C C   FIELD 12w02 PUPDR6: Port x configuration pin 6
+0x5000100C C   FIELD 14w02 PUPDR7: Port x configuration pin 7
+0x5000100C C   FIELD 16w02 PUPDR8: Port x configuration pin 8
+0x5000100C C   FIELD 18w02 PUPDR9: Port x configuration pin 9
+0x5000100C C   FIELD 20w02 PUPDR10: Port x configuration pin 10
+0x5000100C C   FIELD 22w02 PUPDR11: Port x configuration pin 11
+0x5000100C C   FIELD 24w02 PUPDR12: Port x configuration pin 12
+0x5000100C C   FIELD 26w02 PUPDR13: Port x configuration pin 13
+0x5000100C C   FIELD 28w02 PUPDR14: Port x configuration pin 14
+0x5000100C C   FIELD 30w02 PUPDR15: Port x configuration pin 15
 0x50001010 B  REGISTER IDR (ro): GPIO port input data register
-0x50001010 C   FIELD 00w01 IDR0: Port input data (y = 0..15)
-0x50001010 C   FIELD 01w01 IDR1: Port input data (y = 0..15)
-0x50001010 C   FIELD 02w01 IDR2: Port input data (y = 0..15)
-0x50001010 C   FIELD 03w01 IDR3: Port input data (y = 0..15)
-0x50001010 C   FIELD 04w01 IDR4: Port input data (y = 0..15)
-0x50001010 C   FIELD 05w01 IDR5: Port input data (y = 0..15)
-0x50001010 C   FIELD 06w01 IDR6: Port input data (y = 0..15)
-0x50001010 C   FIELD 07w01 IDR7: Port input data (y = 0..15)
-0x50001010 C   FIELD 08w01 IDR8: Port input data (y = 0..15)
-0x50001010 C   FIELD 09w01 IDR9: Port input data (y = 0..15)
-0x50001010 C   FIELD 10w01 IDR10: Port input data (y = 0..15)
-0x50001010 C   FIELD 11w01 IDR11: Port input data (y = 0..15)
-0x50001010 C   FIELD 12w01 IDR12: Port input data (y = 0..15)
-0x50001010 C   FIELD 13w01 IDR13: Port input data (y = 0..15)
-0x50001010 C   FIELD 14w01 IDR14: Port input data (y = 0..15)
-0x50001010 C   FIELD 15w01 IDR15: Port input data (y = 0..15)
+0x50001010 C   FIELD 00w01 IDR0: Port input data pin 0
+0x50001010 C   FIELD 01w01 IDR1: Port input data pin 1
+0x50001010 C   FIELD 02w01 IDR2: Port input data pin 2
+0x50001010 C   FIELD 03w01 IDR3: Port input data pin 3
+0x50001010 C   FIELD 04w01 IDR4: Port input data pin 4
+0x50001010 C   FIELD 05w01 IDR5: Port input data pin 5
+0x50001010 C   FIELD 06w01 IDR6: Port input data pin 6
+0x50001010 C   FIELD 07w01 IDR7: Port input data pin 7
+0x50001010 C   FIELD 08w01 IDR8: Port input data pin 8
+0x50001010 C   FIELD 09w01 IDR9: Port input data pin 9
+0x50001010 C   FIELD 10w01 IDR10: Port input data pin 10
+0x50001010 C   FIELD 11w01 IDR11: Port input data pin 11
+0x50001010 C   FIELD 12w01 IDR12: Port input data pin 12
+0x50001010 C   FIELD 13w01 IDR13: Port input data pin 13
+0x50001010 C   FIELD 14w01 IDR14: Port input data pin 14
+0x50001010 C   FIELD 15w01 IDR15: Port input data pin 15
 0x50001014 B  REGISTER ODR (rw): GPIO port output data register
-0x50001014 C   FIELD 00w01 ODR0: Port output data (y = 0..15)
-0x50001014 C   FIELD 01w01 ODR1: Port output data (y = 0..15)
-0x50001014 C   FIELD 02w01 ODR2: Port output data (y = 0..15)
-0x50001014 C   FIELD 03w01 ODR3: Port output data (y = 0..15)
-0x50001014 C   FIELD 04w01 ODR4: Port output data (y = 0..15)
-0x50001014 C   FIELD 05w01 ODR5: Port output data (y = 0..15)
-0x50001014 C   FIELD 06w01 ODR6: Port output data (y = 0..15)
-0x50001014 C   FIELD 07w01 ODR7: Port output data (y = 0..15)
-0x50001014 C   FIELD 08w01 ODR8: Port output data (y = 0..15)
-0x50001014 C   FIELD 09w01 ODR9: Port output data (y = 0..15)
-0x50001014 C   FIELD 10w01 ODR10: Port output data (y = 0..15)
-0x50001014 C   FIELD 11w01 ODR11: Port output data (y = 0..15)
-0x50001014 C   FIELD 12w01 ODR12: Port output data (y = 0..15)
-0x50001014 C   FIELD 13w01 ODR13: Port output data (y = 0..15)
-0x50001014 C   FIELD 14w01 ODR14: Port output data (y = 0..15)
-0x50001014 C   FIELD 15w01 ODR15: Port output data (y = 0..15)
+0x50001014 C   FIELD 00w01 ODR0: Port output data pin 0
+0x50001014 C   FIELD 01w01 ODR1: Port output data pin 1
+0x50001014 C   FIELD 02w01 ODR2: Port output data pin 2
+0x50001014 C   FIELD 03w01 ODR3: Port output data pin 3
+0x50001014 C   FIELD 04w01 ODR4: Port output data pin 4
+0x50001014 C   FIELD 05w01 ODR5: Port output data pin 5
+0x50001014 C   FIELD 06w01 ODR6: Port output data pin 6
+0x50001014 C   FIELD 07w01 ODR7: Port output data pin 7
+0x50001014 C   FIELD 08w01 ODR8: Port output data pin 8
+0x50001014 C   FIELD 09w01 ODR9: Port output data pin 9
+0x50001014 C   FIELD 10w01 ODR10: Port output data pin 10
+0x50001014 C   FIELD 11w01 ODR11: Port output data pin 11
+0x50001014 C   FIELD 12w01 ODR12: Port output data pin 12
+0x50001014 C   FIELD 13w01 ODR13: Port output data pin 13
+0x50001014 C   FIELD 14w01 ODR14: Port output data pin 14
+0x50001014 C   FIELD 15w01 ODR15: Port output data pin 15
 0x50001018 B  REGISTER BSRR (wo): GPIO port bit set/reset register
-0x50001018 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
-0x50001018 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
-0x50001018 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50001018 C   FIELD 00w01 BS0: Port x set pin 0
+0x50001018 C   FIELD 01w01 BS1: Port x set pin 1
+0x50001018 C   FIELD 02w01 BS2: Port x set pin 2
+0x50001018 C   FIELD 03w01 BS3: Port x set pin 3
+0x50001018 C   FIELD 04w01 BS4: Port x set pin 4
+0x50001018 C   FIELD 05w01 BS5: Port x set pin 5
+0x50001018 C   FIELD 06w01 BS6: Port x set pin 6
+0x50001018 C   FIELD 07w01 BS7: Port x set pin 7
+0x50001018 C   FIELD 08w01 BS8: Port x set pin 8
+0x50001018 C   FIELD 09w01 BS9: Port x set pin 9
+0x50001018 C   FIELD 10w01 BS10: Port x set pin 10
+0x50001018 C   FIELD 11w01 BS11: Port x set pin 11
+0x50001018 C   FIELD 12w01 BS12: Port x set pin 12
+0x50001018 C   FIELD 13w01 BS13: Port x set pin 13
+0x50001018 C   FIELD 14w01 BS14: Port x set pin 14
+0x50001018 C   FIELD 15w01 BS15: Port x set pin 15
+0x50001018 C   FIELD 16w01 BR0: Port x reset pin 0
+0x50001018 C   FIELD 17w01 BR1: Port x reset pin 1
+0x50001018 C   FIELD 18w01 BR2: Port x reset pin 2
+0x50001018 C   FIELD 19w01 BR3: Port x reset pin 3
+0x50001018 C   FIELD 20w01 BR4: Port x reset pin 4
+0x50001018 C   FIELD 21w01 BR5: Port x reset pin 5
+0x50001018 C   FIELD 22w01 BR6: Port x reset pin 6
+0x50001018 C   FIELD 23w01 BR7: Port x reset pin 7
+0x50001018 C   FIELD 24w01 BR8: Port x reset pin 8
+0x50001018 C   FIELD 25w01 BR9: Port x reset pin 9
+0x50001018 C   FIELD 26w01 BR10: Port x reset pin 10
+0x50001018 C   FIELD 27w01 BR11: Port x reset pin 11
+0x50001018 C   FIELD 28w01 BR12: Port x reset pin 12
+0x50001018 C   FIELD 29w01 BR13: Port x reset pin 13
+0x50001018 C   FIELD 30w01 BR14: Port x reset pin 14
+0x50001018 C   FIELD 31w01 BR15: Port x reset pin 15
 0x5000101C B  REGISTER LCKR (rw): GPIO port configuration lock register
-0x5000101C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
-0x5000101C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000101C C   FIELD 00w01 LCK0: Port x lock pin 0
+0x5000101C C   FIELD 01w01 LCK1: Port x lock pin 1
+0x5000101C C   FIELD 02w01 LCK2: Port x lock pin 2
+0x5000101C C   FIELD 03w01 LCK3: Port x lock pin 3
+0x5000101C C   FIELD 04w01 LCK4: Port x lock pin 4
+0x5000101C C   FIELD 05w01 LCK5: Port x lock pin 5
+0x5000101C C   FIELD 06w01 LCK6: Port x lock pin 6
+0x5000101C C   FIELD 07w01 LCK7: Port x lock pin 7
+0x5000101C C   FIELD 08w01 LCK8: Port x lock pin 8
+0x5000101C C   FIELD 09w01 LCK9: Port x lock pin 9
+0x5000101C C   FIELD 10w01 LCK10: Port x lock pin 10
+0x5000101C C   FIELD 11w01 LCK11: Port x lock pin 11
+0x5000101C C   FIELD 12w01 LCK12: Port x lock pin 12
+0x5000101C C   FIELD 13w01 LCK13: Port x lock pin 13
+0x5000101C C   FIELD 14w01 LCK14: Port x lock pin 14
+0x5000101C C   FIELD 15w01 LCK15: Port x lock pin 15
 0x5000101C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
 0x50001020 B  REGISTER AFRL (rw): GPIO alternate function low register
-0x50001020 C   FIELD 00w04 AFSEL0: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 04w04 AFSEL1: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 08w04 AFSEL2: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 12w04 AFSEL3: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 16w04 AFSEL4: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 20w04 AFSEL5: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 24w04 AFSEL6: Alternate function selection for port x bit y (y = 0..7)
-0x50001020 C   FIELD 28w04 AFSEL7: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 00w04 AFREL0: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 04w04 AFREL1: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 08w04 AFREL2: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 12w04 AFREL3: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 16w04 AFREL4: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 20w04 AFREL5: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 24w04 AFREL6: Alternate function selection for port x bit y (y = 0..7)
+0x50001020 C   FIELD 28w04 AFREL7: Alternate function selection for port x bit y (y = 0..7)
 0x50001024 B  REGISTER AFRH (rw): GPIO alternate function high register
-0x50001024 C   FIELD 00w04 AFSEL8: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 04w04 AFSEL9: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 08w04 AFSEL10: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 12w04 AFSEL11: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 16w04 AFSEL12: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 20w04 AFSEL13: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 24w04 AFSEL14: Alternate function selection for port x bit y (y = 8..15)
-0x50001024 C   FIELD 28w04 AFSEL15: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 00w04 AFREL8: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 04w04 AFREL9: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 08w04 AFREL10: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 12w04 AFREL11: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 16w04 AFREL12: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 20w04 AFREL13: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 24w04 AFREL14: Alternate function selection for port x bit y (y = 8..15)
+0x50001024 C   FIELD 28w04 AFREL15: Alternate function selection for port x bit y (y = 8..15)
 0x50001028 B  REGISTER BRR (wo): port bit reset register
 0x50001028 C   FIELD 00w01 BR0: Port Reset bit
 0x50001028 C   FIELD 01w01 BR1: Port Reset bit
@@ -2488,176 +2488,176 @@
 0x50001028 C   FIELD 15w01 BR15: Port Reset bit
 0x50001400 A PERIPHERAL GPIOF
 0x50001400 B  REGISTER MODER (rw): GPIO port mode register
-0x50001400 C   FIELD 00w02 MODER0: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 02w02 MODER1: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 04w02 MODER2: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 06w02 MODER3: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 08w02 MODER4: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 10w02 MODER5: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 12w02 MODER6: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 14w02 MODER7: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 16w02 MODER8: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 18w02 MODER9: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 20w02 MODER10: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 22w02 MODER11: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 24w02 MODER12: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 26w02 MODER13: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 28w02 MODER14: Port x configuration bits (y = 0..15)
-0x50001400 C   FIELD 30w02 MODER15: Port x configuration bits (y = 0..15)
+0x50001400 C   FIELD 00w02 MODER0: Port x configuration pin 0
+0x50001400 C   FIELD 02w02 MODER1: Port x configuration pin 1
+0x50001400 C   FIELD 04w02 MODER2: Port x configuration pin 2
+0x50001400 C   FIELD 06w02 MODER3: Port x configuration pin 3
+0x50001400 C   FIELD 08w02 MODER4: Port x configuration pin 4
+0x50001400 C   FIELD 10w02 MODER5: Port x configuration pin 5
+0x50001400 C   FIELD 12w02 MODER6: Port x configuration pin 6
+0x50001400 C   FIELD 14w02 MODER7: Port x configuration pin 7
+0x50001400 C   FIELD 16w02 MODER8: Port x configuration pin 8
+0x50001400 C   FIELD 18w02 MODER9: Port x configuration pin 9
+0x50001400 C   FIELD 20w02 MODER10: Port x configuration pin 10
+0x50001400 C   FIELD 22w02 MODER11: Port x configuration pin 11
+0x50001400 C   FIELD 24w02 MODER12: Port x configuration pin 12
+0x50001400 C   FIELD 26w02 MODER13: Port x configuration pin 13
+0x50001400 C   FIELD 28w02 MODER14: Port x configuration pin 14
+0x50001400 C   FIELD 30w02 MODER15: Port x configuration pin 15
 0x50001404 B  REGISTER OTYPER (rw): GPIO port output type register
-0x50001404 C   FIELD 00w01 OT0: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 01w01 OT1: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 02w01 OT2: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 03w01 OT3: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 04w01 OT4: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 05w01 OT5: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 06w01 OT6: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 07w01 OT7: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 08w01 OT8: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 09w01 OT9: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 10w01 OT10: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 11w01 OT11: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 12w01 OT12: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 13w01 OT13: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 14w01 OT14: Port x configuration bits (y = 0..15)
-0x50001404 C   FIELD 15w01 OT15: Port x configuration bits (y = 0..15)
+0x50001404 C   FIELD 00w01 OT0: Port x configuration pin 0
+0x50001404 C   FIELD 01w01 OT1: Port x configuration pin 1
+0x50001404 C   FIELD 02w01 OT2: Port x configuration pin 2
+0x50001404 C   FIELD 03w01 OT3: Port x configuration pin 3
+0x50001404 C   FIELD 04w01 OT4: Port x configuration pin 4
+0x50001404 C   FIELD 05w01 OT5: Port x configuration pin 5
+0x50001404 C   FIELD 06w01 OT6: Port x configuration pin 6
+0x50001404 C   FIELD 07w01 OT7: Port x configuration pin 7
+0x50001404 C   FIELD 08w01 OT8: Port x configuration pin 8
+0x50001404 C   FIELD 09w01 OT9: Port x configuration pin 9
+0x50001404 C   FIELD 10w01 OT10: Port x configuration pin 10
+0x50001404 C   FIELD 11w01 OT11: Port x configuration pin 11
+0x50001404 C   FIELD 12w01 OT12: Port x configuration pin 12
+0x50001404 C   FIELD 13w01 OT13: Port x configuration pin 13
+0x50001404 C   FIELD 14w01 OT14: Port x configuration pin 14
+0x50001404 C   FIELD 15w01 OT15: Port x configuration pin 15
 0x50001408 B  REGISTER OSPEEDR (rw): GPIO port output speed register
-0x50001408 C   FIELD 00w02 OSPEEDR0: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 02w02 OSPEEDR1: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 04w02 OSPEEDR2: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 06w02 OSPEEDR3: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 08w02 OSPEEDR4: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 10w02 OSPEEDR5: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 12w02 OSPEEDR6: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 14w02 OSPEEDR7: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 16w02 OSPEEDR8: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 18w02 OSPEEDR9: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 20w02 OSPEEDR10: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 22w02 OSPEEDR11: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 24w02 OSPEEDR12: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 26w02 OSPEEDR13: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 28w02 OSPEEDR14: Port x configuration bits (y = 0..15)
-0x50001408 C   FIELD 30w02 OSPEEDR15: Port x configuration bits (y = 0..15)
+0x50001408 C   FIELD 00w02 OSPEEDR0: Port x configuration pin 0
+0x50001408 C   FIELD 02w02 OSPEEDR1: Port x configuration pin 1
+0x50001408 C   FIELD 04w02 OSPEEDR2: Port x configuration pin 2
+0x50001408 C   FIELD 06w02 OSPEEDR3: Port x configuration pin 3
+0x50001408 C   FIELD 08w02 OSPEEDR4: Port x configuration pin 4
+0x50001408 C   FIELD 10w02 OSPEEDR5: Port x configuration pin 5
+0x50001408 C   FIELD 12w02 OSPEEDR6: Port x configuration pin 6
+0x50001408 C   FIELD 14w02 OSPEEDR7: Port x configuration pin 7
+0x50001408 C   FIELD 16w02 OSPEEDR8: Port x configuration pin 8
+0x50001408 C   FIELD 18w02 OSPEEDR9: Port x configuration pin 9
+0x50001408 C   FIELD 20w02 OSPEEDR10: Port x configuration pin 10
+0x50001408 C   FIELD 22w02 OSPEEDR11: Port x configuration pin 11
+0x50001408 C   FIELD 24w02 OSPEEDR12: Port x configuration pin 12
+0x50001408 C   FIELD 26w02 OSPEEDR13: Port x configuration pin 13
+0x50001408 C   FIELD 28w02 OSPEEDR14: Port x configuration pin 14
+0x50001408 C   FIELD 30w02 OSPEEDR15: Port x configuration pin 15
 0x5000140C B  REGISTER PUPDR (rw): GPIO port pull-up/pull-down register
-0x5000140C C   FIELD 00w02 PUPDR0: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 02w02 PUPDR1: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 04w02 PUPDR2: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 06w02 PUPDR3: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 08w02 PUPDR4: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 10w02 PUPDR5: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 12w02 PUPDR6: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 14w02 PUPDR7: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 16w02 PUPDR8: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 18w02 PUPDR9: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 20w02 PUPDR10: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 22w02 PUPDR11: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 24w02 PUPDR12: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 26w02 PUPDR13: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 28w02 PUPDR14: Port x configuration bits (y = 0..15)
-0x5000140C C   FIELD 30w02 PUPDR15: Port x configuration bits (y = 0..15)
+0x5000140C C   FIELD 00w02 PUPDR0: Port x configuration pin 0
+0x5000140C C   FIELD 02w02 PUPDR1: Port x configuration pin 1
+0x5000140C C   FIELD 04w02 PUPDR2: Port x configuration pin 2
+0x5000140C C   FIELD 06w02 PUPDR3: Port x configuration pin 3
+0x5000140C C   FIELD 08w02 PUPDR4: Port x configuration pin 4
+0x5000140C C   FIELD 10w02 PUPDR5: Port x configuration pin 5
+0x5000140C C   FIELD 12w02 PUPDR6: Port x configuration pin 6
+0x5000140C C   FIELD 14w02 PUPDR7: Port x configuration pin 7
+0x5000140C C   FIELD 16w02 PUPDR8: Port x configuration pin 8
+0x5000140C C   FIELD 18w02 PUPDR9: Port x configuration pin 9
+0x5000140C C   FIELD 20w02 PUPDR10: Port x configuration pin 10
+0x5000140C C   FIELD 22w02 PUPDR11: Port x configuration pin 11
+0x5000140C C   FIELD 24w02 PUPDR12: Port x configuration pin 12
+0x5000140C C   FIELD 26w02 PUPDR13: Port x configuration pin 13
+0x5000140C C   FIELD 28w02 PUPDR14: Port x configuration pin 14
+0x5000140C C   FIELD 30w02 PUPDR15: Port x configuration pin 15
 0x50001410 B  REGISTER IDR (ro): GPIO port input data register
-0x50001410 C   FIELD 00w01 IDR0: Port input data (y = 0..15)
-0x50001410 C   FIELD 01w01 IDR1: Port input data (y = 0..15)
-0x50001410 C   FIELD 02w01 IDR2: Port input data (y = 0..15)
-0x50001410 C   FIELD 03w01 IDR3: Port input data (y = 0..15)
-0x50001410 C   FIELD 04w01 IDR4: Port input data (y = 0..15)
-0x50001410 C   FIELD 05w01 IDR5: Port input data (y = 0..15)
-0x50001410 C   FIELD 06w01 IDR6: Port input data (y = 0..15)
-0x50001410 C   FIELD 07w01 IDR7: Port input data (y = 0..15)
-0x50001410 C   FIELD 08w01 IDR8: Port input data (y = 0..15)
-0x50001410 C   FIELD 09w01 IDR9: Port input data (y = 0..15)
-0x50001410 C   FIELD 10w01 IDR10: Port input data (y = 0..15)
-0x50001410 C   FIELD 11w01 IDR11: Port input data (y = 0..15)
-0x50001410 C   FIELD 12w01 IDR12: Port input data (y = 0..15)
-0x50001410 C   FIELD 13w01 IDR13: Port input data (y = 0..15)
-0x50001410 C   FIELD 14w01 IDR14: Port input data (y = 0..15)
-0x50001410 C   FIELD 15w01 IDR15: Port input data (y = 0..15)
+0x50001410 C   FIELD 00w01 IDR0: Port input data pin 0
+0x50001410 C   FIELD 01w01 IDR1: Port input data pin 1
+0x50001410 C   FIELD 02w01 IDR2: Port input data pin 2
+0x50001410 C   FIELD 03w01 IDR3: Port input data pin 3
+0x50001410 C   FIELD 04w01 IDR4: Port input data pin 4
+0x50001410 C   FIELD 05w01 IDR5: Port input data pin 5
+0x50001410 C   FIELD 06w01 IDR6: Port input data pin 6
+0x50001410 C   FIELD 07w01 IDR7: Port input data pin 7
+0x50001410 C   FIELD 08w01 IDR8: Port input data pin 8
+0x50001410 C   FIELD 09w01 IDR9: Port input data pin 9
+0x50001410 C   FIELD 10w01 IDR10: Port input data pin 10
+0x50001410 C   FIELD 11w01 IDR11: Port input data pin 11
+0x50001410 C   FIELD 12w01 IDR12: Port input data pin 12
+0x50001410 C   FIELD 13w01 IDR13: Port input data pin 13
+0x50001410 C   FIELD 14w01 IDR14: Port input data pin 14
+0x50001410 C   FIELD 15w01 IDR15: Port input data pin 15
 0x50001414 B  REGISTER ODR (rw): GPIO port output data register
-0x50001414 C   FIELD 00w01 ODR0: Port output data (y = 0..15)
-0x50001414 C   FIELD 01w01 ODR1: Port output data (y = 0..15)
-0x50001414 C   FIELD 02w01 ODR2: Port output data (y = 0..15)
-0x50001414 C   FIELD 03w01 ODR3: Port output data (y = 0..15)
-0x50001414 C   FIELD 04w01 ODR4: Port output data (y = 0..15)
-0x50001414 C   FIELD 05w01 ODR5: Port output data (y = 0..15)
-0x50001414 C   FIELD 06w01 ODR6: Port output data (y = 0..15)
-0x50001414 C   FIELD 07w01 ODR7: Port output data (y = 0..15)
-0x50001414 C   FIELD 08w01 ODR8: Port output data (y = 0..15)
-0x50001414 C   FIELD 09w01 ODR9: Port output data (y = 0..15)
-0x50001414 C   FIELD 10w01 ODR10: Port output data (y = 0..15)
-0x50001414 C   FIELD 11w01 ODR11: Port output data (y = 0..15)
-0x50001414 C   FIELD 12w01 ODR12: Port output data (y = 0..15)
-0x50001414 C   FIELD 13w01 ODR13: Port output data (y = 0..15)
-0x50001414 C   FIELD 14w01 ODR14: Port output data (y = 0..15)
-0x50001414 C   FIELD 15w01 ODR15: Port output data (y = 0..15)
+0x50001414 C   FIELD 00w01 ODR0: Port output data pin 0
+0x50001414 C   FIELD 01w01 ODR1: Port output data pin 1
+0x50001414 C   FIELD 02w01 ODR2: Port output data pin 2
+0x50001414 C   FIELD 03w01 ODR3: Port output data pin 3
+0x50001414 C   FIELD 04w01 ODR4: Port output data pin 4
+0x50001414 C   FIELD 05w01 ODR5: Port output data pin 5
+0x50001414 C   FIELD 06w01 ODR6: Port output data pin 6
+0x50001414 C   FIELD 07w01 ODR7: Port output data pin 7
+0x50001414 C   FIELD 08w01 ODR8: Port output data pin 8
+0x50001414 C   FIELD 09w01 ODR9: Port output data pin 9
+0x50001414 C   FIELD 10w01 ODR10: Port output data pin 10
+0x50001414 C   FIELD 11w01 ODR11: Port output data pin 11
+0x50001414 C   FIELD 12w01 ODR12: Port output data pin 12
+0x50001414 C   FIELD 13w01 ODR13: Port output data pin 13
+0x50001414 C   FIELD 14w01 ODR14: Port output data pin 14
+0x50001414 C   FIELD 15w01 ODR15: Port output data pin 15
 0x50001418 B  REGISTER BSRR (wo): GPIO port bit set/reset register
-0x50001418 C   FIELD 00w01 BS0: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 01w01 BS1: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 02w01 BS2: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 03w01 BS3: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 04w01 BS4: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 05w01 BS5: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 06w01 BS6: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 07w01 BS7: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 08w01 BS8: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 09w01 BS9: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 10w01 BS10: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 11w01 BS11: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 12w01 BS12: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 13w01 BS13: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 14w01 BS14: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 15w01 BS15: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 16w01 BR0: Port x set bit y (y= 0..15)
-0x50001418 C   FIELD 17w01 BR1: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 18w01 BR2: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 19w01 BR3: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 20w01 BR4: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 21w01 BR5: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 22w01 BR6: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 23w01 BR7: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 24w01 BR8: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 25w01 BR9: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 26w01 BR10: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 27w01 BR11: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 28w01 BR12: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 29w01 BR13: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 30w01 BR14: Port x reset bit y (y = 0..15)
-0x50001418 C   FIELD 31w01 BR15: Port x reset bit y (y = 0..15)
+0x50001418 C   FIELD 00w01 BS0: Port x set pin 0
+0x50001418 C   FIELD 01w01 BS1: Port x set pin 1
+0x50001418 C   FIELD 02w01 BS2: Port x set pin 2
+0x50001418 C   FIELD 03w01 BS3: Port x set pin 3
+0x50001418 C   FIELD 04w01 BS4: Port x set pin 4
+0x50001418 C   FIELD 05w01 BS5: Port x set pin 5
+0x50001418 C   FIELD 06w01 BS6: Port x set pin 6
+0x50001418 C   FIELD 07w01 BS7: Port x set pin 7
+0x50001418 C   FIELD 08w01 BS8: Port x set pin 8
+0x50001418 C   FIELD 09w01 BS9: Port x set pin 9
+0x50001418 C   FIELD 10w01 BS10: Port x set pin 10
+0x50001418 C   FIELD 11w01 BS11: Port x set pin 11
+0x50001418 C   FIELD 12w01 BS12: Port x set pin 12
+0x50001418 C   FIELD 13w01 BS13: Port x set pin 13
+0x50001418 C   FIELD 14w01 BS14: Port x set pin 14
+0x50001418 C   FIELD 15w01 BS15: Port x set pin 15
+0x50001418 C   FIELD 16w01 BR0: Port x reset pin 0
+0x50001418 C   FIELD 17w01 BR1: Port x reset pin 1
+0x50001418 C   FIELD 18w01 BR2: Port x reset pin 2
+0x50001418 C   FIELD 19w01 BR3: Port x reset pin 3
+0x50001418 C   FIELD 20w01 BR4: Port x reset pin 4
+0x50001418 C   FIELD 21w01 BR5: Port x reset pin 5
+0x50001418 C   FIELD 22w01 BR6: Port x reset pin 6
+0x50001418 C   FIELD 23w01 BR7: Port x reset pin 7
+0x50001418 C   FIELD 24w01 BR8: Port x reset pin 8
+0x50001418 C   FIELD 25w01 BR9: Port x reset pin 9
+0x50001418 C   FIELD 26w01 BR10: Port x reset pin 10
+0x50001418 C   FIELD 27w01 BR11: Port x reset pin 11
+0x50001418 C   FIELD 28w01 BR12: Port x reset pin 12
+0x50001418 C   FIELD 29w01 BR13: Port x reset pin 13
+0x50001418 C   FIELD 30w01 BR14: Port x reset pin 14
+0x50001418 C   FIELD 31w01 BR15: Port x reset pin 15
 0x5000141C B  REGISTER LCKR (rw): GPIO port configuration lock register
-0x5000141C C   FIELD 00w01 LCK0: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 01w01 LCK1: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 02w01 LCK2: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 03w01 LCK3: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 04w01 LCK4: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 05w01 LCK5: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 06w01 LCK6: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 07w01 LCK7: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 08w01 LCK8: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 09w01 LCK9: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 10w01 LCK10: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 11w01 LCK11: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 12w01 LCK12: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 13w01 LCK13: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 14w01 LCK14: Port x lock bit y (y= 0..15)
-0x5000141C C   FIELD 15w01 LCK15: Port x lock bit y (y= 0..15)
+0x5000141C C   FIELD 00w01 LCK0: Port x lock pin 0
+0x5000141C C   FIELD 01w01 LCK1: Port x lock pin 1
+0x5000141C C   FIELD 02w01 LCK2: Port x lock pin 2
+0x5000141C C   FIELD 03w01 LCK3: Port x lock pin 3
+0x5000141C C   FIELD 04w01 LCK4: Port x lock pin 4
+0x5000141C C   FIELD 05w01 LCK5: Port x lock pin 5
+0x5000141C C   FIELD 06w01 LCK6: Port x lock pin 6
+0x5000141C C   FIELD 07w01 LCK7: Port x lock pin 7
+0x5000141C C   FIELD 08w01 LCK8: Port x lock pin 8
+0x5000141C C   FIELD 09w01 LCK9: Port x lock pin 9
+0x5000141C C   FIELD 10w01 LCK10: Port x lock pin 10
+0x5000141C C   FIELD 11w01 LCK11: Port x lock pin 11
+0x5000141C C   FIELD 12w01 LCK12: Port x lock pin 12
+0x5000141C C   FIELD 13w01 LCK13: Port x lock pin 13
+0x5000141C C   FIELD 14w01 LCK14: Port x lock pin 14
+0x5000141C C   FIELD 15w01 LCK15: Port x lock pin 15
 0x5000141C C   FIELD 16w01 LCKK: Port x lock bit y (y= 0..15)
 0x50001420 B  REGISTER AFRL (rw): GPIO alternate function low register
-0x50001420 C   FIELD 00w04 AFSEL0: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 04w04 AFSEL1: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 08w04 AFSEL2: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 12w04 AFSEL3: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 16w04 AFSEL4: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 20w04 AFSEL5: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 24w04 AFSEL6: Alternate function selection for port x bit y (y = 0..7)
-0x50001420 C   FIELD 28w04 AFSEL7: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 00w04 AFREL0: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 04w04 AFREL1: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 08w04 AFREL2: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 12w04 AFREL3: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 16w04 AFREL4: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 20w04 AFREL5: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 24w04 AFREL6: Alternate function selection for port x bit y (y = 0..7)
+0x50001420 C   FIELD 28w04 AFREL7: Alternate function selection for port x bit y (y = 0..7)
 0x50001424 B  REGISTER AFRH (rw): GPIO alternate function high register
-0x50001424 C   FIELD 00w04 AFSEL8: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 04w04 AFSEL9: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 08w04 AFSEL10: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 12w04 AFSEL11: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 16w04 AFSEL12: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 20w04 AFSEL13: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 24w04 AFSEL14: Alternate function selection for port x bit y (y = 8..15)
-0x50001424 C   FIELD 28w04 AFSEL15: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 00w04 AFREL8: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 04w04 AFREL9: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 08w04 AFREL10: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 12w04 AFREL11: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 16w04 AFREL12: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 20w04 AFREL13: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 24w04 AFREL14: Alternate function selection for port x bit y (y = 8..15)
+0x50001424 C   FIELD 28w04 AFREL15: Alternate function selection for port x bit y (y = 8..15)
 0x50001428 B  REGISTER BRR (wo): port bit reset register
 0x50001428 C   FIELD 00w01 BR0: Port Reset bit
 0x50001428 C   FIELD 01w01 BR1: Port Reset bit
