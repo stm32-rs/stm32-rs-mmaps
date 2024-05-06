@@ -21353,16 +21353,30 @@
 0x5802480C C   FIELD 24w01 USB33DEN (wo): VDD33USB voltage level detector enable.
 0x5802480C C   FIELD 25w01 USBREGEN (rw): USB regulator enable.
 0x5802480C C   FIELD 26w01 USB33RDY (ro): USB supply ready.
-0x58024810 B  REGISTER CPUCR: This register allows controlling CPU1 power.
+0x58024810 B  REGISTER CPU1CR: This register allows controlling CPU1 power.
 0x58024810 C   FIELD 00w01 PDDS_D1 (rw): D1 domain Power Down Deepsleep selection. This bit allows CPU1 to define the Deepsleep mode for D1 domain.
 0x58024810 C   FIELD 01w01 PDDS_D2 (rw): D2 domain Power Down Deepsleep. This bit allows CPU1 to define the Deepsleep mode for D2 domain.
 0x58024810 C   FIELD 02w01 PDDS_D3 (rw): System D3 domain Power Down Deepsleep. This bit allows CPU1 to define the Deepsleep mode for System D3 domain.
+0x58024810 C   FIELD 04w01 HOLD2F: CPU2 in hold wakeup flag. This flag also generates a CPU1 interrupt. CPU1 has been woken up from a CPU2 wakeup source with CPU2 on hold. This flag is set by hardware and cleared only by a system reset or by setting the CPU1 CSSF bit.
 0x58024810 C   FIELD 05w01 STOPF (ro): STOP flag This bit is set by hardware and cleared only by any reset or by setting the CPU1 CSSF bit.
 0x58024810 C   FIELD 06w01 SBF (ro): System Standby flag This bit is set by hardware and cleared only by a POR (Power-on Reset) or by setting the CPU1 CSSF bit
 0x58024810 C   FIELD 07w01 SBF_D1 (ro): D1 domain DStandby flag This bit is set by hardware and cleared by any system reset or by setting the CPU1 CSSF bit. Once set, this bit can be cleared only when the D1 domain is no longer in DStandby mode.
 0x58024810 C   FIELD 08w01 SBF_D2 (ro): D2 domain DStandby flag This bit is set by hardware and cleared by any system reset or by setting the CPU1 CSSF bit. Once set, this bit can be cleared only when the D2 domain is no longer in DStandby mode.
 0x58024810 C   FIELD 09w01 CSSF (rw): Clear D1 domain CPU1 Standby, Stop and HOLD flags (always read as 0) This bit is cleared to 0 by hardware.
+0x58024810 C   FIELD 10w01 HOLD2: Hold the CPU2 and allocated peripherals when exiting from Stop mode.
 0x58024810 C   FIELD 11w01 RUN_D3 (rw): Keep system D3 domain in Run mode regardless of the CPU sub-systems modes
+0x58024814 B  REGISTER CPU2CR: This register allows controlling CPU2 power
+0x58024814 C   FIELD 00w01 PDDS_D1: D1 domain Power Down Deepsleep selection. This bit allows CPU2 to define the Deepsleep mode for D1 domain
+0x58024814 C   FIELD 01w01 PDDS_D2: D2 domain Power Down Deepsleep selection. This bit allows CPU2 to define the Deepsleep mode for D2 domain
+0x58024814 C   FIELD 02w01 PDDS_D3: D3 domain Power Down Deepsleep selection. This bit allows CPU2 to define the Deepsleep mode for D3 domain
+0x58024814 C   FIELD 04w01 HOLD1F: CPU1 in hold wakeup flag. This flag also generates a CPU2 interrupt. CPU2 has been woken up from a CPU1 wakeup source with CPU1 on hold. This flag is set by hardware and cleared only by a system reset or by setting the CPU2 CSSF bit.
+0x58024814 C   FIELD 05w01 STOPF: Stop Flag. This bit is set by hardware and cleared only by any reset or by setting the CPU2 CSSF bit.
+0x58024814 C   FIELD 06w01 SBF: System Standby flag. This bit is set by hardware and cleared only by a POR (Power-on Reset) or by setting the CPU2 CSSF bit
+0x58024814 C   FIELD 07w01 SBF_D1: D1 domain DStandby flag. This bit is set by hardware and cleared only by a POR (Power-on Reset) or by setting the CPU2 CSSF bit
+0x58024814 C   FIELD 08w01 SBF_D2: D2 domain DStandby flag. This bit is set by hardware and cleared by any Reset or by setting the CPU2 CSSF bit. Once set, this bit can be cleared only when the D2 domain is no longer in DStandby mode.
+0x58024814 C   FIELD 09w01 CSSF: Clear D2 domain CPU2 Standby, Stop and HOLD flags (always read as 0)
+0x58024814 C   FIELD 10w01 HOLD1: Hold the CPU1 and allocated peripherals when exiting from Stop mode.
+0x58024814 C   FIELD 11w01 RUN_D3: Keep D3 domain in Run mode regardless of the other CPU subsystems modes.
 0x58024818 B  REGISTER D3CR: This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
 0x58024818 C   FIELD 13w01 VOSRDY (ro): VOS Ready bit for VCORE voltage scaling output selection. This bit is set to 1 by hardware when Bypass mode is selected in PWR control register 3 (PWR_CR3).
 0x58024818 C   FIELD 14w02 VOS (rw): Voltage scaling selection according to performance These bits control the VCORE voltage level and allow to obtains the best trade-off between power consumption and performance: When increasing the performance, the voltage scaling shall be changed before increasing the system frequency. When decreasing performance, the system frequency shall first be decreased before changing the voltage scaling.
@@ -22364,138 +22378,270 @@
 0x580264FC C   FIELD 00w08 PROCID: Semaphore ProcessID
 0x580264FC C   FIELD 08w08 MASTERID: Semaphore MasterID
 0x580264FC C   FIELD 31w01 LOCK: Lock indication
-0x58026500 B  REGISTER IER (rw): HSEM Interrupt enable register
-0x58026500 C   FIELD 00w01 ISEM0: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 01w01 ISEM1: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 02w01 ISEM2: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 03w01 ISEM3: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 04w01 ISEM4: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 05w01 ISEM5: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 06w01 ISEM6: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 07w01 ISEM7: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 08w01 ISEM8: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 09w01 ISEM9: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 10w01 ISEM10: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 11w01 ISEM11: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 12w01 ISEM12: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 13w01 ISEM13: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 14w01 ISEM14: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 15w01 ISEM15: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 16w01 ISEM16: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 17w01 ISEM17: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 18w01 ISEM18: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 19w01 ISEM19: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 20w01 ISEM20: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 21w01 ISEM21: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 22w01 ISEM22: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 23w01 ISEM23: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 24w01 ISEM24: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 25w01 ISEM25: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 26w01 ISEM26: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 27w01 ISEM27: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 28w01 ISEM28: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 29w01 ISEM29: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 30w01 ISEM30: Interrupt semaphore n enable bit
-0x58026500 C   FIELD 31w01 ISEM31: Interrupt(N) semaphore n enable bit.
-0x58026504 B  REGISTER ICR (ro): HSEM Interrupt clear register
-0x58026504 C   FIELD 00w01 ISEM0: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 01w01 ISEM1: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 02w01 ISEM2: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 03w01 ISEM3: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 04w01 ISEM4: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 05w01 ISEM5: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 06w01 ISEM6: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 07w01 ISEM7: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 08w01 ISEM8: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 09w01 ISEM9: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 10w01 ISEM10: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 11w01 ISEM11: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 12w01 ISEM12: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 13w01 ISEM13: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 14w01 ISEM14: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 15w01 ISEM15: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 16w01 ISEM16: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 17w01 ISEM17: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 18w01 ISEM18: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 19w01 ISEM19: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 20w01 ISEM20: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 21w01 ISEM21: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 22w01 ISEM22: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 23w01 ISEM23: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 24w01 ISEM24: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 25w01 ISEM25: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 26w01 ISEM26: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 27w01 ISEM27: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 28w01 ISEM28: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 29w01 ISEM29: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 30w01 ISEM30: Interrupt(N) semaphore n clear bit
-0x58026504 C   FIELD 31w01 ISEM31: Interrupt(N) semaphore n clear bit
-0x58026508 B  REGISTER ISR (ro): HSEM Interrupt status register
-0x58026508 C   FIELD 00w01 ISEM0: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 01w01 ISEM1: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 02w01 ISEM2: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 03w01 ISEM3: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 04w01 ISEM4: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 05w01 ISEM5: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 06w01 ISEM6: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 07w01 ISEM7: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 08w01 ISEM8: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 09w01 ISEM9: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 10w01 ISEM10: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 11w01 ISEM11: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 12w01 ISEM12: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 13w01 ISEM13: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 14w01 ISEM14: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 15w01 ISEM15: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 16w01 ISEM16: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 17w01 ISEM17: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 18w01 ISEM18: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 19w01 ISEM19: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 20w01 ISEM20: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 21w01 ISEM21: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 22w01 ISEM22: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 23w01 ISEM23: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 24w01 ISEM24: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 25w01 ISEM25: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 26w01 ISEM26: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 27w01 ISEM27: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 28w01 ISEM28: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 29w01 ISEM29: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 30w01 ISEM30: Interrupt(N) semaphore n status bit before enable (mask)
-0x58026508 C   FIELD 31w01 ISEM31: Interrupt(N) semaphore n status bit before enable (mask)
-0x5802650C B  REGISTER MISR (ro): HSEM Masked interrupt status register
-0x5802650C C   FIELD 00w01 ISEM0: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 01w01 ISEM1: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 02w01 ISEM2: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 03w01 ISEM3: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 04w01 ISEM4: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 05w01 ISEM5: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 06w01 ISEM6: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 07w01 ISEM7: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 08w01 ISEM8: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 09w01 ISEM9: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 10w01 ISEM10: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 11w01 ISEM11: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 12w01 ISEM12: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 13w01 ISEM13: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 14w01 ISEM14: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 15w01 ISEM15: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 16w01 ISEM16: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 17w01 ISEM17: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 18w01 ISEM18: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 19w01 ISEM19: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 20w01 ISEM20: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 21w01 ISEM21: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 22w01 ISEM22: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 23w01 ISEM23: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 24w01 ISEM24: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 25w01 ISEM25: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 26w01 ISEM26: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 27w01 ISEM27: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 28w01 ISEM28: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 29w01 ISEM29: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 30w01 ISEM30: masked interrupt(N) semaphore n status bit after enable (mask)
-0x5802650C C   FIELD 31w01 ISEM31: masked interrupt(N) semaphore n status bit after enable (mask)
+0x58026500 B  REGISTER C1IER (rw): HSEM Interrupt enable register of Line 1
+0x58026500 C   FIELD 00w01 ISEM0: Interrupt(1) semaphore 0 enable bit
+0x58026500 C   FIELD 01w01 ISEM1: Interrupt(1) semaphore 1 enable bit
+0x58026500 C   FIELD 02w01 ISEM2: Interrupt(1) semaphore 2 enable bit
+0x58026500 C   FIELD 03w01 ISEM3: Interrupt(1) semaphore 3 enable bit
+0x58026500 C   FIELD 04w01 ISEM4: Interrupt(1) semaphore 4 enable bit
+0x58026500 C   FIELD 05w01 ISEM5: Interrupt(1) semaphore 5 enable bit
+0x58026500 C   FIELD 06w01 ISEM6: Interrupt(1) semaphore 6 enable bit
+0x58026500 C   FIELD 07w01 ISEM7: Interrupt(1) semaphore 7 enable bit
+0x58026500 C   FIELD 08w01 ISEM8: Interrupt(1) semaphore 8 enable bit
+0x58026500 C   FIELD 09w01 ISEM9: Interrupt(1) semaphore 9 enable bit
+0x58026500 C   FIELD 10w01 ISEM10: Interrupt(1) semaphore 10 enable bit
+0x58026500 C   FIELD 11w01 ISEM11: Interrupt(1) semaphore 11 enable bit
+0x58026500 C   FIELD 12w01 ISEM12: Interrupt(1) semaphore 12 enable bit
+0x58026500 C   FIELD 13w01 ISEM13: Interrupt(1) semaphore 13 enable bit
+0x58026500 C   FIELD 14w01 ISEM14: Interrupt(1) semaphore 14 enable bit
+0x58026500 C   FIELD 15w01 ISEM15: Interrupt(1) semaphore 15 enable bit
+0x58026500 C   FIELD 16w01 ISEM16: Interrupt(1) semaphore 16 enable bit
+0x58026500 C   FIELD 17w01 ISEM17: Interrupt(1) semaphore 17 enable bit
+0x58026500 C   FIELD 18w01 ISEM18: Interrupt(1) semaphore 18 enable bit
+0x58026500 C   FIELD 19w01 ISEM19: Interrupt(1) semaphore 19 enable bit
+0x58026500 C   FIELD 20w01 ISEM20: Interrupt(1) semaphore 20 enable bit
+0x58026500 C   FIELD 21w01 ISEM21: Interrupt(1) semaphore 21 enable bit
+0x58026500 C   FIELD 22w01 ISEM22: Interrupt(1) semaphore 22 enable bit
+0x58026500 C   FIELD 23w01 ISEM23: Interrupt(1) semaphore 23 enable bit
+0x58026500 C   FIELD 24w01 ISEM24: Interrupt(1) semaphore 24 enable bit
+0x58026500 C   FIELD 25w01 ISEM25: Interrupt(1) semaphore 25 enable bit
+0x58026500 C   FIELD 26w01 ISEM26: Interrupt(1) semaphore 26 enable bit
+0x58026500 C   FIELD 27w01 ISEM27: Interrupt(1) semaphore 27 enable bit
+0x58026500 C   FIELD 28w01 ISEM28: Interrupt(1) semaphore 28 enable bit
+0x58026500 C   FIELD 29w01 ISEM29: Interrupt(1) semaphore 29 enable bit
+0x58026500 C   FIELD 30w01 ISEM30: Interrupt(1) semaphore 30 enable bit
+0x58026500 C   FIELD 31w01 ISEM31: Interrupt(1) semaphore 31 enable bit
+0x58026504 B  REGISTER C1ICR (rw): HSEM Interrupt clear register of Line 1
+0x58026504 C   FIELD 00w01 ISEM0: Interrupt(1) semaphore 0 clear
+0x58026504 C   FIELD 01w01 ISEM1: Interrupt(1) semaphore 1 clear
+0x58026504 C   FIELD 02w01 ISEM2: Interrupt(1) semaphore 2 clear
+0x58026504 C   FIELD 03w01 ISEM3: Interrupt(1) semaphore 3 clear
+0x58026504 C   FIELD 04w01 ISEM4: Interrupt(1) semaphore 4 clear
+0x58026504 C   FIELD 05w01 ISEM5: Interrupt(1) semaphore 5 clear
+0x58026504 C   FIELD 06w01 ISEM6: Interrupt(1) semaphore 6 clear
+0x58026504 C   FIELD 07w01 ISEM7: Interrupt(1) semaphore 7 clear
+0x58026504 C   FIELD 08w01 ISEM8: Interrupt(1) semaphore 8 clear
+0x58026504 C   FIELD 09w01 ISEM9: Interrupt(1) semaphore 9 clear
+0x58026504 C   FIELD 10w01 ISEM10: Interrupt(1) semaphore 10 clear
+0x58026504 C   FIELD 11w01 ISEM11: Interrupt(1) semaphore 11 clear
+0x58026504 C   FIELD 12w01 ISEM12: Interrupt(1) semaphore 12 clear
+0x58026504 C   FIELD 13w01 ISEM13: Interrupt(1) semaphore 13 clear
+0x58026504 C   FIELD 14w01 ISEM14: Interrupt(1) semaphore 14 clear
+0x58026504 C   FIELD 15w01 ISEM15: Interrupt(1) semaphore 15 clear
+0x58026504 C   FIELD 16w01 ISEM16: Interrupt(1) semaphore 16 clear
+0x58026504 C   FIELD 17w01 ISEM17: Interrupt(1) semaphore 17 clear
+0x58026504 C   FIELD 18w01 ISEM18: Interrupt(1) semaphore 18 clear
+0x58026504 C   FIELD 19w01 ISEM19: Interrupt(1) semaphore 19 clear
+0x58026504 C   FIELD 20w01 ISEM20: Interrupt(1) semaphore 20 clear
+0x58026504 C   FIELD 21w01 ISEM21: Interrupt(1) semaphore 21 clear
+0x58026504 C   FIELD 22w01 ISEM22: Interrupt(1) semaphore 22 clear
+0x58026504 C   FIELD 23w01 ISEM23: Interrupt(1) semaphore 23 clear
+0x58026504 C   FIELD 24w01 ISEM24: Interrupt(1) semaphore 24 clear
+0x58026504 C   FIELD 25w01 ISEM25: Interrupt(1) semaphore 25 clear
+0x58026504 C   FIELD 26w01 ISEM26: Interrupt(1) semaphore 26 clear
+0x58026504 C   FIELD 27w01 ISEM27: Interrupt(1) semaphore 27 clear
+0x58026504 C   FIELD 28w01 ISEM28: Interrupt(1) semaphore 28 clear
+0x58026504 C   FIELD 29w01 ISEM29: Interrupt(1) semaphore 29 clear
+0x58026504 C   FIELD 30w01 ISEM30: Interrupt(1) semaphore 30 clear
+0x58026504 C   FIELD 31w01 ISEM31: Interrupt(1) semaphore 31 clear
+0x58026508 B  REGISTER C1ISR (ro): HSEM Interrupt status register of Line 1
+0x58026508 C   FIELD 00w01 ISEM0: Interrupt(1) semaphore 0 status bit
+0x58026508 C   FIELD 01w01 ISEM1: Interrupt(1) semaphore 1 status bit
+0x58026508 C   FIELD 02w01 ISEM2: Interrupt(1) semaphore 2 status bit
+0x58026508 C   FIELD 03w01 ISEM3: Interrupt(1) semaphore 3 status bit
+0x58026508 C   FIELD 04w01 ISEM4: Interrupt(1) semaphore 4 status bit
+0x58026508 C   FIELD 05w01 ISEM5: Interrupt(1) semaphore 5 status bit
+0x58026508 C   FIELD 06w01 ISEM6: Interrupt(1) semaphore 6 status bit
+0x58026508 C   FIELD 07w01 ISEM7: Interrupt(1) semaphore 7 status bit
+0x58026508 C   FIELD 08w01 ISEM8: Interrupt(1) semaphore 8 status bit
+0x58026508 C   FIELD 09w01 ISEM9: Interrupt(1) semaphore 9 status bit
+0x58026508 C   FIELD 10w01 ISEM10: Interrupt(1) semaphore 10 status bit
+0x58026508 C   FIELD 11w01 ISEM11: Interrupt(1) semaphore 11 status bit
+0x58026508 C   FIELD 12w01 ISEM12: Interrupt(1) semaphore 12 status bit
+0x58026508 C   FIELD 13w01 ISEM13: Interrupt(1) semaphore 13 status bit
+0x58026508 C   FIELD 14w01 ISEM14: Interrupt(1) semaphore 14 status bit
+0x58026508 C   FIELD 15w01 ISEM15: Interrupt(1) semaphore 15 status bit
+0x58026508 C   FIELD 16w01 ISEM16: Interrupt(1) semaphore 16 status bit
+0x58026508 C   FIELD 17w01 ISEM17: Interrupt(1) semaphore 17 status bit
+0x58026508 C   FIELD 18w01 ISEM18: Interrupt(1) semaphore 18 status bit
+0x58026508 C   FIELD 19w01 ISEM19: Interrupt(1) semaphore 19 status bit
+0x58026508 C   FIELD 20w01 ISEM20: Interrupt(1) semaphore 20 status bit
+0x58026508 C   FIELD 21w01 ISEM21: Interrupt(1) semaphore 21 status bit
+0x58026508 C   FIELD 22w01 ISEM22: Interrupt(1) semaphore 22 status bit
+0x58026508 C   FIELD 23w01 ISEM23: Interrupt(1) semaphore 23 status bit
+0x58026508 C   FIELD 24w01 ISEM24: Interrupt(1) semaphore 24 status bit
+0x58026508 C   FIELD 25w01 ISEM25: Interrupt(1) semaphore 25 status bit
+0x58026508 C   FIELD 26w01 ISEM26: Interrupt(1) semaphore 26 status bit
+0x58026508 C   FIELD 27w01 ISEM27: Interrupt(1) semaphore 27 status bit
+0x58026508 C   FIELD 28w01 ISEM28: Interrupt(1) semaphore 28 status bit
+0x58026508 C   FIELD 29w01 ISEM29: Interrupt(1) semaphore 29 status bit
+0x58026508 C   FIELD 30w01 ISEM30: Interrupt(1) semaphore 30 status bit
+0x58026508 C   FIELD 31w01 ISEM31: Interrupt(1) semaphore 31 status bit
+0x5802650C B  REGISTER C1MISR (ro): HSEM Masked interrupt status of Line 1
+0x5802650C C   FIELD 00w01 ISEM0: masked interrupt(1) semaphore 0 status bit
+0x5802650C C   FIELD 01w01 ISEM1: masked interrupt(1) semaphore 1 status bit
+0x5802650C C   FIELD 02w01 ISEM2: masked interrupt(1) semaphore 2 status bit
+0x5802650C C   FIELD 03w01 ISEM3: masked interrupt(1) semaphore 3 status bit
+0x5802650C C   FIELD 04w01 ISEM4: masked interrupt(1) semaphore 4 status bit
+0x5802650C C   FIELD 05w01 ISEM5: masked interrupt(1) semaphore 5 status bit
+0x5802650C C   FIELD 06w01 ISEM6: masked interrupt(1) semaphore 6 status bit
+0x5802650C C   FIELD 07w01 ISEM7: masked interrupt(1) semaphore 7 status bit
+0x5802650C C   FIELD 08w01 ISEM8: masked interrupt(1) semaphore 8 status bit
+0x5802650C C   FIELD 09w01 ISEM9: masked interrupt(1) semaphore 9 status bit
+0x5802650C C   FIELD 10w01 ISEM10: masked interrupt(1) semaphore 10 status bit
+0x5802650C C   FIELD 11w01 ISEM11: masked interrupt(1) semaphore 11 status bit
+0x5802650C C   FIELD 12w01 ISEM12: masked interrupt(1) semaphore 12 status bit
+0x5802650C C   FIELD 13w01 ISEM13: masked interrupt(1) semaphore 13 status bit
+0x5802650C C   FIELD 14w01 ISEM14: masked interrupt(1) semaphore 14 status bit
+0x5802650C C   FIELD 15w01 ISEM15: masked interrupt(1) semaphore 15 status bit
+0x5802650C C   FIELD 16w01 ISEM16: masked interrupt(1) semaphore 16 status bit
+0x5802650C C   FIELD 17w01 ISEM17: masked interrupt(1) semaphore 17 status bit
+0x5802650C C   FIELD 18w01 ISEM18: masked interrupt(1) semaphore 18 status bit
+0x5802650C C   FIELD 19w01 ISEM19: masked interrupt(1) semaphore 19 status bit
+0x5802650C C   FIELD 20w01 ISEM20: masked interrupt(1) semaphore 20 status bit
+0x5802650C C   FIELD 21w01 ISEM21: masked interrupt(1) semaphore 21 status bit
+0x5802650C C   FIELD 22w01 ISEM22: masked interrupt(1) semaphore 22 status bit
+0x5802650C C   FIELD 23w01 ISEM23: masked interrupt(1) semaphore 23 status bit
+0x5802650C C   FIELD 24w01 ISEM24: masked interrupt(1) semaphore 24 status bit
+0x5802650C C   FIELD 25w01 ISEM25: masked interrupt(1) semaphore 25 status bit
+0x5802650C C   FIELD 26w01 ISEM26: masked interrupt(1) semaphore 26 status bit
+0x5802650C C   FIELD 27w01 ISEM27: masked interrupt(1) semaphore 27 status bit
+0x5802650C C   FIELD 28w01 ISEM28: masked interrupt(1) semaphore 28 status bit
+0x5802650C C   FIELD 29w01 ISEM29: masked interrupt(1) semaphore 29 status bit
+0x5802650C C   FIELD 30w01 ISEM30: masked interrupt(1) semaphore 30 status bit
+0x5802650C C   FIELD 31w01 ISEM31: masked interrupt(1) semaphore 31 status bit
+0x58026510 B  REGISTER C2IER: HSEM Interrupt enable register of Line 2
+0x58026510 C   FIELD 00w01 ISEM0: Interrupt(2) semaphore 0 enable bit
+0x58026510 C   FIELD 01w01 ISEM1: Interrupt(2) semaphore 1 enable bit
+0x58026510 C   FIELD 02w01 ISEM2: Interrupt(2) semaphore 2 enable bit
+0x58026510 C   FIELD 03w01 ISEM3: Interrupt(2) semaphore 3 enable bit
+0x58026510 C   FIELD 04w01 ISEM4: Interrupt(2) semaphore 4 enable bit
+0x58026510 C   FIELD 05w01 ISEM5: Interrupt(2) semaphore 5 enable bit
+0x58026510 C   FIELD 06w01 ISEM6: Interrupt(2) semaphore 6 enable bit
+0x58026510 C   FIELD 07w01 ISEM7: Interrupt(2) semaphore 7 enable bit
+0x58026510 C   FIELD 08w01 ISEM8: Interrupt(2) semaphore 8 enable bit
+0x58026510 C   FIELD 09w01 ISEM9: Interrupt(2) semaphore 9 enable bit
+0x58026510 C   FIELD 10w01 ISEM10: Interrupt(2) semaphore 10 enable bit
+0x58026510 C   FIELD 11w01 ISEM11: Interrupt(2) semaphore 11 enable bit
+0x58026510 C   FIELD 12w01 ISEM12: Interrupt(2) semaphore 12 enable bit
+0x58026510 C   FIELD 13w01 ISEM13: Interrupt(2) semaphore 13 enable bit
+0x58026510 C   FIELD 14w01 ISEM14: Interrupt(2) semaphore 14 enable bit
+0x58026510 C   FIELD 15w01 ISEM15: Interrupt(2) semaphore 15 enable bit
+0x58026510 C   FIELD 16w01 ISEM16: Interrupt(2) semaphore 16 enable bit
+0x58026510 C   FIELD 17w01 ISEM17: Interrupt(2) semaphore 17 enable bit
+0x58026510 C   FIELD 18w01 ISEM18: Interrupt(2) semaphore 18 enable bit
+0x58026510 C   FIELD 19w01 ISEM19: Interrupt(2) semaphore 19 enable bit
+0x58026510 C   FIELD 20w01 ISEM20: Interrupt(2) semaphore 20 enable bit
+0x58026510 C   FIELD 21w01 ISEM21: Interrupt(2) semaphore 21 enable bit
+0x58026510 C   FIELD 22w01 ISEM22: Interrupt(2) semaphore 22 enable bit
+0x58026510 C   FIELD 23w01 ISEM23: Interrupt(2) semaphore 23 enable bit
+0x58026510 C   FIELD 24w01 ISEM24: Interrupt(2) semaphore 24 enable bit
+0x58026510 C   FIELD 25w01 ISEM25: Interrupt(2) semaphore 25 enable bit
+0x58026510 C   FIELD 26w01 ISEM26: Interrupt(2) semaphore 26 enable bit
+0x58026510 C   FIELD 27w01 ISEM27: Interrupt(2) semaphore 27 enable bit
+0x58026510 C   FIELD 28w01 ISEM28: Interrupt(2) semaphore 28 enable bit
+0x58026510 C   FIELD 29w01 ISEM29: Interrupt(2) semaphore 29 enable bit
+0x58026510 C   FIELD 30w01 ISEM30: Interrupt(2) semaphore 30 enable bit
+0x58026510 C   FIELD 31w01 ISEM31: Interrupt(2) semaphore 31 enable bit
+0x58026514 B  REGISTER C2ICR (rw): HSEM Interrupt clear register of Line 2
+0x58026514 C   FIELD 00w01 ISEM0: Interrupt(2) semaphore 0 clear
+0x58026514 C   FIELD 01w01 ISEM1: Interrupt(2) semaphore 1 clear
+0x58026514 C   FIELD 02w01 ISEM2: Interrupt(2) semaphore 2 clear
+0x58026514 C   FIELD 03w01 ISEM3: Interrupt(2) semaphore 3 clear
+0x58026514 C   FIELD 04w01 ISEM4: Interrupt(2) semaphore 4 clear
+0x58026514 C   FIELD 05w01 ISEM5: Interrupt(2) semaphore 5 clear
+0x58026514 C   FIELD 06w01 ISEM6: Interrupt(2) semaphore 6 clear
+0x58026514 C   FIELD 07w01 ISEM7: Interrupt(2) semaphore 7 clear
+0x58026514 C   FIELD 08w01 ISEM8: Interrupt(2) semaphore 8 clear
+0x58026514 C   FIELD 09w01 ISEM9: Interrupt(2) semaphore 9 clear
+0x58026514 C   FIELD 10w01 ISEM10: Interrupt(2) semaphore 10 clear
+0x58026514 C   FIELD 11w01 ISEM11: Interrupt(2) semaphore 11 clear
+0x58026514 C   FIELD 12w01 ISEM12: Interrupt(2) semaphore 12 clear
+0x58026514 C   FIELD 13w01 ISEM13: Interrupt(2) semaphore 13 clear
+0x58026514 C   FIELD 14w01 ISEM14: Interrupt(2) semaphore 14 clear
+0x58026514 C   FIELD 15w01 ISEM15: Interrupt(2) semaphore 15 clear
+0x58026514 C   FIELD 16w01 ISEM16: Interrupt(2) semaphore 16 clear
+0x58026514 C   FIELD 17w01 ISEM17: Interrupt(2) semaphore 17 clear
+0x58026514 C   FIELD 18w01 ISEM18: Interrupt(2) semaphore 18 clear
+0x58026514 C   FIELD 19w01 ISEM19: Interrupt(2) semaphore 19 clear
+0x58026514 C   FIELD 20w01 ISEM20: Interrupt(2) semaphore 20 clear
+0x58026514 C   FIELD 21w01 ISEM21: Interrupt(2) semaphore 21 clear
+0x58026514 C   FIELD 22w01 ISEM22: Interrupt(2) semaphore 22 clear
+0x58026514 C   FIELD 23w01 ISEM23: Interrupt(2) semaphore 23 clear
+0x58026514 C   FIELD 24w01 ISEM24: Interrupt(2) semaphore 24 clear
+0x58026514 C   FIELD 25w01 ISEM25: Interrupt(2) semaphore 25 clear
+0x58026514 C   FIELD 26w01 ISEM26: Interrupt(2) semaphore 26 clear
+0x58026514 C   FIELD 27w01 ISEM27: Interrupt(2) semaphore 27 clear
+0x58026514 C   FIELD 28w01 ISEM28: Interrupt(2) semaphore 28 clear
+0x58026514 C   FIELD 29w01 ISEM29: Interrupt(2) semaphore 29 clear
+0x58026514 C   FIELD 30w01 ISEM30: Interrupt(2) semaphore 30 clear
+0x58026514 C   FIELD 31w01 ISEM31: Interrupt(2) semaphore 31 clear
+0x58026518 B  REGISTER C2ISR: HSEM Interrupt status register of Line 2
+0x58026518 C   FIELD 00w01 ISEM0: Interrupt(2) semaphore 0 status bit
+0x58026518 C   FIELD 01w01 ISEM1: Interrupt(2) semaphore 1 status bit
+0x58026518 C   FIELD 02w01 ISEM2: Interrupt(2) semaphore 2 status bit
+0x58026518 C   FIELD 03w01 ISEM3: Interrupt(2) semaphore 3 status bit
+0x58026518 C   FIELD 04w01 ISEM4: Interrupt(2) semaphore 4 status bit
+0x58026518 C   FIELD 05w01 ISEM5: Interrupt(2) semaphore 5 status bit
+0x58026518 C   FIELD 06w01 ISEM6: Interrupt(2) semaphore 6 status bit
+0x58026518 C   FIELD 07w01 ISEM7: Interrupt(2) semaphore 7 status bit
+0x58026518 C   FIELD 08w01 ISEM8: Interrupt(2) semaphore 8 status bit
+0x58026518 C   FIELD 09w01 ISEM9: Interrupt(2) semaphore 9 status bit
+0x58026518 C   FIELD 10w01 ISEM10: Interrupt(2) semaphore 10 status bit
+0x58026518 C   FIELD 11w01 ISEM11: Interrupt(2) semaphore 11 status bit
+0x58026518 C   FIELD 12w01 ISEM12: Interrupt(2) semaphore 12 status bit
+0x58026518 C   FIELD 13w01 ISEM13: Interrupt(2) semaphore 13 status bit
+0x58026518 C   FIELD 14w01 ISEM14: Interrupt(2) semaphore 14 status bit
+0x58026518 C   FIELD 15w01 ISEM15: Interrupt(2) semaphore 15 status bit
+0x58026518 C   FIELD 16w01 ISEM16: Interrupt(2) semaphore 16 status bit
+0x58026518 C   FIELD 17w01 ISEM17: Interrupt(2) semaphore 17 status bit
+0x58026518 C   FIELD 18w01 ISEM18: Interrupt(2) semaphore 18 status bit
+0x58026518 C   FIELD 19w01 ISEM19: Interrupt(2) semaphore 19 status bit
+0x58026518 C   FIELD 20w01 ISEM20: Interrupt(2) semaphore 20 status bit
+0x58026518 C   FIELD 21w01 ISEM21: Interrupt(2) semaphore 21 status bit
+0x58026518 C   FIELD 22w01 ISEM22: Interrupt(2) semaphore 22 status bit
+0x58026518 C   FIELD 23w01 ISEM23: Interrupt(2) semaphore 23 status bit
+0x58026518 C   FIELD 24w01 ISEM24: Interrupt(2) semaphore 24 status bit
+0x58026518 C   FIELD 25w01 ISEM25: Interrupt(2) semaphore 25 status bit
+0x58026518 C   FIELD 26w01 ISEM26: Interrupt(2) semaphore 26 status bit
+0x58026518 C   FIELD 27w01 ISEM27: Interrupt(2) semaphore 27 status bit
+0x58026518 C   FIELD 28w01 ISEM28: Interrupt(2) semaphore 28 status bit
+0x58026518 C   FIELD 29w01 ISEM29: Interrupt(2) semaphore 29 status bit
+0x58026518 C   FIELD 30w01 ISEM30: Interrupt(2) semaphore 30 status bit
+0x58026518 C   FIELD 31w01 ISEM31: Interrupt(2) semaphore 31 status bit
+0x5802651C B  REGISTER C2MISR: HSEM Masked interrupt status register of Line 2
+0x5802651C C   FIELD 00w01 ISEM0: masked interrupt(2) semaphore 0 status bit
+0x5802651C C   FIELD 01w01 ISEM1: masked interrupt(2) semaphore 1 status bit
+0x5802651C C   FIELD 02w01 ISEM2: masked interrupt(2) semaphore 2 status bit
+0x5802651C C   FIELD 03w01 ISEM3: masked interrupt(2) semaphore 3 status bit
+0x5802651C C   FIELD 04w01 ISEM4: masked interrupt(2) semaphore 4 status bit
+0x5802651C C   FIELD 05w01 ISEM5: masked interrupt(2) semaphore 5 status bit
+0x5802651C C   FIELD 06w01 ISEM6: masked interrupt(2) semaphore 6 status bit
+0x5802651C C   FIELD 07w01 ISEM7: masked interrupt(2) semaphore 7 status bit
+0x5802651C C   FIELD 08w01 ISEM8: masked interrupt(2) semaphore 8 status bit
+0x5802651C C   FIELD 09w01 ISEM9: masked interrupt(2) semaphore 9 status bit
+0x5802651C C   FIELD 10w01 ISEM10: masked interrupt(2) semaphore 10 status bit
+0x5802651C C   FIELD 11w01 ISEM11: masked interrupt(2) semaphore 11 status bit
+0x5802651C C   FIELD 12w01 ISEM12: masked interrupt(2) semaphore 12 status bit
+0x5802651C C   FIELD 13w01 ISEM13: masked interrupt(2) semaphore 13 status bit
+0x5802651C C   FIELD 14w01 ISEM14: masked interrupt(2) semaphore 14 status bit
+0x5802651C C   FIELD 15w01 ISEM15: masked interrupt(2) semaphore 15 status bit
+0x5802651C C   FIELD 16w01 ISEM16: masked interrupt(2) semaphore 16 status bit
+0x5802651C C   FIELD 17w01 ISEM17: masked interrupt(2) semaphore 17 status bit
+0x5802651C C   FIELD 18w01 ISEM18: masked interrupt(2) semaphore 18 status bit
+0x5802651C C   FIELD 19w01 ISEM19: masked interrupt(2) semaphore 19 status bit
+0x5802651C C   FIELD 20w01 ISEM20: masked interrupt(2) semaphore 20 status bit
+0x5802651C C   FIELD 21w01 ISEM21: masked interrupt(2) semaphore 21 status bit
+0x5802651C C   FIELD 22w01 ISEM22: masked interrupt(2) semaphore 22 status bit
+0x5802651C C   FIELD 23w01 ISEM23: masked interrupt(2) semaphore 23 status bit
+0x5802651C C   FIELD 24w01 ISEM24: masked interrupt(2) semaphore 24 status bit
+0x5802651C C   FIELD 25w01 ISEM25: masked interrupt(2) semaphore 25 status bit
+0x5802651C C   FIELD 26w01 ISEM26: masked interrupt(2) semaphore 26 status bit
+0x5802651C C   FIELD 27w01 ISEM27: masked interrupt(2) semaphore 27 status bit
+0x5802651C C   FIELD 28w01 ISEM28: masked interrupt(2) semaphore 28 status bit
+0x5802651C C   FIELD 29w01 ISEM29: masked interrupt(2) semaphore 29 status bit
+0x5802651C C   FIELD 30w01 ISEM30: masked interrupt(2) semaphore 30 status bit
+0x5802651C C   FIELD 31w01 ISEM31: masked interrupt(2) semaphore 31 status bit
 0x58026540 B  REGISTER CR (rw): HSEM Clear register
 0x58026540 C   FIELD 08w08 MASTERID: MasterID of semaphores to be cleared
 0x58026540 C   FIELD 16w16 KEY: Semaphore clear Key
