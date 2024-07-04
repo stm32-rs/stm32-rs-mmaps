@@ -16333,7 +16333,11 @@
 0x52005018 C   FIELD 00w32 ADDRESS: [31 0]: Address Address to be send to the external Flash memory Writes to this field are ignored when BUSY = 0 or when FMODE = 11 (memory-mapped mode). In dual flash mode, ADDRESS[0] is automatically stuck to 0 as the address should always be even
 0x5200501C B  REGISTER ABR (rw): QUADSPI alternate bytes registers
 0x5200501C C   FIELD 00w32 ALTERNATE: Alternate Bytes Optional data to be send to the external SPI device right after the address. This field can be written only when BUSY = 0.
-0x52005020 B  REGISTER DR (rw): QUADSPI data register
+0x52005020 B  REGISTER DR (rw): Data register: full word (32 bit) access
+0x52005020 B  REGISTER DR16: Data register: half word (16 bit) access
+0x52005020 B  REGISTER DR8: Data register: one byte (8 bit) access
+0x52005020 C   FIELD 00w08 DATA: Data
+0x52005020 C   FIELD 00w16 DATA: Data
 0x52005020 C   FIELD 00w32 DATA: Data Data to be sent/received to/from the external SPI device. In indirect write mode, data written to this register is stored on the FIFO before it is sent to the Flash memory during the data phase. If the FIFO is too full, a write operation is stalled until the FIFO has enough space to accept the amount of data being written. In indirect read mode, reading this register gives (via the FIFO) the data which was received from the Flash memory. If the FIFO does not have as many bytes as requested by the read operation and if BUSY=1, the read operation is stalled until enough data is present or until the transfer is complete, whichever happens first. In automatic polling mode, this register contains the last data read from the Flash memory (without masking). Word, halfword, and byte accesses to this register are supported. In indirect write mode, a byte write adds 1 byte to the FIFO, a halfword write 2, and a word write 4. Similarly, in indirect read mode, a byte read removes 1 byte from the FIFO, a halfword read 2, and a word read 4. Accesses in indirect mode must be aligned to the bottom of this register: a byte read must read DATA[7:0] and a halfword read must read DATA[15:0].
 0x52005024 B  REGISTER PSMKR (rw): QUADSPI polling status mask register
 0x52005024 C   FIELD 00w32 MASK: Status mask Mask to be applied to the status bytes received in polling mode. For bit n: This field can be written only when BUSY = 0.
