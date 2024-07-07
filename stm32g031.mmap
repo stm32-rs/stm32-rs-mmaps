@@ -109,25 +109,19 @@
 0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
-0x40000024 C   FIELD 00w16 CNT_L: Low counter value
-0x40000024 C   FIELD 16w16 CNT_H: High counter value (TIM2 only)
+0x40000024 C   FIELD 00w32 CNT: Counter value
 0x40000028 B  REGISTER PSC (rw): prescaler
 0x40000028 C   FIELD 00w16 PSC: Prescaler value
 0x4000002C B  REGISTER ARR (rw): auto-reload register
-0x4000002C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x4000002C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x4000002C C   FIELD 00w32 ARR: Auto-reload value
 0x40000034 B  REGISTER CCR1 (rw): capture/compare register
-0x40000034 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000034 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000034 C   FIELD 00w32 CCR: Capture/Compare value
 0x40000038 B  REGISTER CCR2 (rw): capture/compare register
-0x40000038 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000038 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000038 C   FIELD 00w32 CCR: Capture/Compare value
 0x4000003C B  REGISTER CCR3 (rw): capture/compare register
-0x4000003C C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x4000003C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x4000003C C   FIELD 00w32 CCR: Capture/Compare value
 0x40000040 B  REGISTER CCR4 (rw): capture/compare register
-0x40000040 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000040 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000040 C   FIELD 00w32 CCR: Capture/Compare value
 0x40000048 B  REGISTER DCR (rw): DMA control register
 0x40000048 C   FIELD 00w05 DBA: DMA base address
 0x40000048 C   FIELD 08w05 DBL: DMA burst length
@@ -251,25 +245,19 @@
 0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
-0x40000424 C   FIELD 00w16 CNT_L: Low counter value
-0x40000424 C   FIELD 16w16 CNT_H: High counter value (TIM2 only)
+0x40000424 C   FIELD 00w16 CNT: Counter value
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
-0x4000042C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x4000042C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x4000042C C   FIELD 00w16 ARR: Auto-reload value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
-0x40000434 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000434 C   FIELD 00w16 CCR: Capture/Compare 1 value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
-0x40000438 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000438 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000438 C   FIELD 00w16 CCR: Capture/Compare 1 value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
-0x4000043C C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x4000043C C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x4000043C C   FIELD 00w16 CCR: Capture/Compare 1 value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
-0x40000440 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000440 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000440 C   FIELD 00w16 CCR: Capture/Compare 1 value
 0x40000448 B  REGISTER DCR (rw): DMA control register
 0x40000448 C   FIELD 00w05 DBA: DMA base address
 0x40000448 C   FIELD 08w05 DBL: DMA burst length
@@ -869,19 +857,25 @@
 0x40007004 C   FIELD 00w01 PVDE: Power voltage detector enable
 0x40007004 C   FIELD 01w03 PVDFT: Power voltage detector falling threshold selection
 0x40007004 C   FIELD 04w03 PVDRT: Power voltage detector rising threshold selection
+0x40007004 C   FIELD 07w01 PVMENDAC: PVMENDAC
+0x40007004 C   FIELD 08w01 PVMENUSB: PVMENUSB
+0x40007004 C   FIELD 09w01 IOSV: IOSV
+0x40007004 C   FIELD 10w01 USV: USV
 0x40007008 B  REGISTER CR3 (rw): Power control register 3
 0x40007008 C   FIELD 00w01 EWUP1: Enable Wakeup pin WKUP1
 0x40007008 C   FIELD 01w01 EWUP2: Enable Wakeup pin WKUP2
+0x40007008 C   FIELD 02w01 EWUP3: Enable Wakeup pin WKUP3
 0x40007008 C   FIELD 03w01 EWUP4: Enable Wakeup pin WKUP4
 0x40007008 C   FIELD 04w01 EWUP5: Enable WKUP5 wakeup pin
 0x40007008 C   FIELD 05w01 EWUP6: Enable WKUP6 wakeup pin
 0x40007008 C   FIELD 08w01 RRS: SRAM retention in Standby mode
-0x40007008 C   FIELD 09w01 ULPEN: Enable the periodical sampling mode for PDR detection
+0x40007008 C   FIELD 09w01 ENB_ULP: Ultra-low-power enable
 0x40007008 C   FIELD 10w01 APC: Apply pull-up and pull-down configuration
 0x40007008 C   FIELD 15w01 EIWUL: Enable internal wakeup line
 0x4000700C B  REGISTER CR4 (rw): Power control register 4
 0x4000700C C   FIELD 00w01 WP1: Wakeup pin WKUP1 polarity
 0x4000700C C   FIELD 01w01 WP2: Wakeup pin WKUP2 polarity
+0x4000700C C   FIELD 02w01 WP3: Wakeup pin WKUP3 polarity
 0x4000700C C   FIELD 03w01 WP4: Wakeup pin WKUP4 polarity
 0x4000700C C   FIELD 04w01 WP5: Wakeup pin WKUP5 polarity
 0x4000700C C   FIELD 05w01 WP6: WKUP6 wakeup pin polarity
@@ -890,6 +884,7 @@
 0x40007010 B  REGISTER SR1 (ro): Power status register 1
 0x40007010 C   FIELD 00w01 WUF1: Wakeup flag 1
 0x40007010 C   FIELD 01w01 WUF2: Wakeup flag 2
+0x40007010 C   FIELD 02w01 WUF3: Wakeup flag 3
 0x40007010 C   FIELD 03w01 WUF4: Wakeup flag 4
 0x40007010 C   FIELD 04w01 WUF5: Wakeup flag 5
 0x40007010 C   FIELD 05w01 WUF6: Wakeup flag 6
@@ -901,9 +896,12 @@
 0x40007014 C   FIELD 09w01 REGLPF: Low-power regulator flag
 0x40007014 C   FIELD 10w01 VOSF: Voltage scaling flag
 0x40007014 C   FIELD 11w01 PVDO: Power voltage detector output
+0x40007014 C   FIELD 12w01 PVMOUSB: USB supply voltage monitoring output flag
+0x40007014 C   FIELD 15w01 PVMODAC: VDDA monitoring output flag
 0x40007018 B  REGISTER SCR (wo): Power status clear register
 0x40007018 C   FIELD 00w01 CWUF1: Clear wakeup flag 1
 0x40007018 C   FIELD 01w01 CWUF2: Clear wakeup flag 2
+0x40007018 C   FIELD 02w01 CWUF3: Clear wakeup flag 3
 0x40007018 C   FIELD 03w01 CWUF4: Clear wakeup flag 4
 0x40007018 C   FIELD 04w01 CWUF5: Clear wakeup flag 5
 0x40007018 C   FIELD 05w01 CWUF6: Clear wakeup flag 6
@@ -977,8 +975,19 @@
 0x4000702C C   FIELD 14w01 PD14: Port B pull-down bit y (y=0..15)
 0x4000702C C   FIELD 15w01 PD15: Port B pull-down bit y (y=0..15)
 0x40007030 B  REGISTER PUCRC (rw): Power Port C pull-up control register
+0x40007030 C   FIELD 00w01 PU0: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 01w01 PU1: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 02w01 PU2: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 03w01 PU3: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 04w01 PU4: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 05w01 PU5: Port C pull-up bit y (y=0..15)
 0x40007030 C   FIELD 06w01 PU6: Port C pull-up bit y (y=0..15)
 0x40007030 C   FIELD 07w01 PU7: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 08w01 PU8: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 09w01 PU9: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 10w01 PU10: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 11w01 PU11: Port C pull-up bit y (y=0..15)
+0x40007030 C   FIELD 12w01 PU12: Port C pull-up bit y (y=0..15)
 0x40007030 C   FIELD 13w01 PU13: Port C pull-up bit y (y=0..15)
 0x40007030 C   FIELD 14w01 PU14: Port C pull-up bit y (y=0..15)
 0x40007030 C   FIELD 15w01 PU15: Port C pull-up bit y (y=0..15)
@@ -1004,6 +1013,18 @@
 0x40007038 C   FIELD 01w01 PU1: Port D pull-up bit y (y=0..15)
 0x40007038 C   FIELD 02w01 PU2: Port D pull-up bit y (y=0..15)
 0x40007038 C   FIELD 03w01 PU3: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 04w01 PU4: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 05w01 PU5: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 06w01 PU6: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 07w01 PU7: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 08w01 PU8: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 09w01 PU9: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 10w01 PU10: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 11w01 PU11: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 12w01 PU12: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 13w01 PU13: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 14w01 PU14: Port D pull-up bit y (y=0..15)
+0x40007038 C   FIELD 15w01 PU15: Port D pull-up bit y (y=0..15)
 0x4000703C B  REGISTER PDCRD (rw): Power Port D pull-down control register
 0x4000703C C   FIELD 00w01 PD0: Port D pull-down bit y (y=0..15)
 0x4000703C C   FIELD 01w01 PD1: Port D pull-down bit y (y=0..15)
@@ -1012,16 +1033,79 @@
 0x4000703C C   FIELD 04w01 PD4: Port D pull-down bit y (y=0..15)
 0x4000703C C   FIELD 05w01 PD5: Port D pull-down bit y (y=0..15)
 0x4000703C C   FIELD 06w01 PD6: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 07w01 PD7: Port D pull-down bit y (y=0..15)
 0x4000703C C   FIELD 08w01 PD8: Port D pull-down bit y (y=0..15)
 0x4000703C C   FIELD 09w01 PD9: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 10w01 PD10: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 11w01 PD11: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 12w01 PD12: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 13w01 PD13: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 14w01 PD14: Port D pull-down bit y (y=0..15)
+0x4000703C C   FIELD 15w01 PD15: Port D pull-down bit y (y=0..15)
+0x40007040 B  REGISTER PUCRE (rw): Power Port E pull-UP control register
+0x40007040 C   FIELD 00w01 PU0: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 01w01 PU1: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 02w01 PU2: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 03w01 PU3: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 04w01 PU4: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 05w01 PU5: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 06w01 PU6: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 07w01 PU7: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 08w01 PU8: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 09w01 PU9: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 10w01 PU10: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 11w01 PU11: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 12w01 PU12: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 13w01 PU13: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 14w01 PU14: Port E pull-up bit y (y=0..15)
+0x40007040 C   FIELD 15w01 PU15: Port E pull-up bit y (y=0..15)
+0x40007044 B  REGISTER PDCRE (rw): Power Port E pull-down control register
+0x40007044 C   FIELD 00w01 PD0: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 01w01 PD1: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 02w01 PD2: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 03w01 PD3: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 04w01 PD4: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 05w01 PD5: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 06w01 PD6: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 07w01 PD7: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 08w01 PD8: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 09w01 PD9: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 10w01 PD10: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 11w01 PD11: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 12w01 PD12: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 13w01 PD13: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 14w01 PD14: Port E pull-down bit y (y=0..15)
+0x40007044 C   FIELD 15w01 PD15: Port E pull-down bit y (y=0..15)
 0x40007048 B  REGISTER PUCRF (rw): Power Port F pull-up control register
 0x40007048 C   FIELD 00w01 PU0: Port F pull-up bit y (y=0..15)
 0x40007048 C   FIELD 01w01 PU1: Port F pull-up bit y (y=0..15)
 0x40007048 C   FIELD 02w01 PU2: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 03w01 PU3: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 04w01 PU4: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 05w01 PU5: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 06w01 PU6: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 07w01 PU7: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 08w01 PU8: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 09w01 PU9: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 10w01 PU10: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 11w01 PU11: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 12w01 PU12: Port F pull-up bit y (y=0..15)
+0x40007048 C   FIELD 13w01 PU13: Port F pull-up bit y (y=0..15)
 0x4000704C B  REGISTER PDCRF (rw): Power Port F pull-down control register
 0x4000704C C   FIELD 00w01 PD0: Port F pull-down bit y (y=0..15)
 0x4000704C C   FIELD 01w01 PD1: Port F pull-down bit y (y=0..15)
 0x4000704C C   FIELD 02w01 PD2: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 03w01 PD3: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 04w01 PD4: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 05w01 PD5: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 06w01 PD6: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 07w01 PD7: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 08w01 PD8: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 09w01 PD9: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 10w01 PD10: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 11w01 PD11: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 12w01 PD12: Port F pull-down bit y (y=0..15)
+0x4000704C C   FIELD 13w01 PD13: Port F pull-down bit y (y=0..15)
 0x40007C00 A PERIPHERAL LPTIM1
 0x40007C00 B  REGISTER ISR (ro): Interrupt and Status Register
 0x40007C00 C   FIELD 00w01 CMPM: Compare match
@@ -1295,28 +1379,27 @@
 0x40010000 A PERIPHERAL SYSCFG
 0x40010000 B  REGISTER CFGR1 (rw): SYSCFG configuration register 1
 0x40010000 C   FIELD 00w02 MEM_MODE: Memory mapping selection bits
-0x40010000 C   FIELD 04w01 PA11_PA12_RMP: PA11 and PA12 remapping bit.
+0x40010000 C   FIELD 03w01 PA11_RMP: PA11_RMP
+0x40010000 C   FIELD 04w01 PA12_RMP: PA11 and PA12 remapping bit.
 0x40010000 C   FIELD 05w01 IR_POL: IR output polarity selection
 0x40010000 C   FIELD 06w02 IR_MOD: IR Modulation Envelope signal selection.
 0x40010000 C   FIELD 08w01 BOOSTEN: I/O analog switch voltage booster enable
-0x40010000 C   FIELD 16w04 I2C_PBx_FMP: Fast Mode Plus (FM+) driving capability activation bits
+0x40010000 C   FIELD 09w01 UCPD1_STROBE: Strobe signal bit for UCPD1
+0x40010000 C   FIELD 10w01 UCPD2_STROBE: Strobe signal bit for UCPD2
+0x40010000 C   FIELD 16w01 I2C_PBx_FMP: Fast Mode Plus (FM+) driving capability activation bits
+0x40010000 C   FIELD 17w01 I2C_PB7_FMP: I2C_PB7_FMP
+0x40010000 C   FIELD 18w01 I2C_PB8_FMP: I2C_PB8_FMP
+0x40010000 C   FIELD 19w01 I2C_PB9_FMP: I2C_PB9_FMP
 0x40010000 C   FIELD 20w01 I2C1_FMP: FM+ driving capability activation for I2C1
 0x40010000 C   FIELD 21w01 I2C2_FMP: FM+ driving capability activation for I2C2
-0x40010000 C   FIELD 22w02 I2C_PAx_FMP: Fast Mode Plus (FM+) driving capability activation bits
+0x40010000 C   FIELD 22w01 I2C_PA9_FMP: Fast Mode Plus (FM+) driving capability activation bits
+0x40010000 C   FIELD 23w01 I2C_PA10_FMP: Fast Mode Plus (FM+) driving capability activation bits
+0x40010000 C   FIELD 24w01 I2C3_FMP: I2C3_FMP
 0x40010018 B  REGISTER CFGR2 (rw): SYSCFG configuration register 1
 0x40010018 C   FIELD 00w01 LOCKUP_LOCK: Cortex-M0+ LOCKUP bit enable bit
 0x40010018 C   FIELD 01w01 SRAM_PARITY_LOCK: SRAM parity lock bit
-0x40010018 C   FIELD 02w01 PVD_LOCK: PVD lock enable bit
 0x40010018 C   FIELD 03w01 ECC_LOCK: ECC error lock bit
 0x40010018 C   FIELD 08w01 SRAM_PEF: SRAM parity error flag
-0x40010018 C   FIELD 16w01 PA1_CDEN: PA1_CDEN
-0x40010018 C   FIELD 17w01 PA3_CDEN: PA3_CDEN
-0x40010018 C   FIELD 18w01 PA5_CDEN: PA5_CDEN
-0x40010018 C   FIELD 19w01 PA6_CDEN: PA6_CDEN
-0x40010018 C   FIELD 20w01 PA13_CDEN: PA13_CDEN
-0x40010018 C   FIELD 21w01 PB0_CDEN: PB0_CDEN
-0x40010018 C   FIELD 22w01 PB1_CDEN: PB1_CDEN
-0x40010018 C   FIELD 23w01 PB2_CDEN: PB2_CDEN
 0x40010030 A PERIPHERAL VREFBUF
 0x40010030 B  REGISTER CSR: VREFBUF control and status register
 0x40010030 C   FIELD 00w01 ENVR (rw): Voltage reference buffer mode enable This bit is used to enable the voltage reference buffer mode.
@@ -1325,84 +1408,111 @@
 0x40010030 C   FIELD 04w03 VRS (rw): Voltage reference scale These bits select the value generated by the voltage reference buffer. Other: Reserved
 0x40010034 B  REGISTER CCR (rw): VREFBUF calibration control register
 0x40010034 C   FIELD 00w06 TRIM: Trimming code These bits are automatically initialized after reset with the trimming value stored in the Flash memory during the production test. Writing into these bits allows to tune the internal reference buffer voltage.
-0x40010080 A PERIPHERAL SYSCFG_ITLINE
-0x40010100 B  REGISTER ITLINE0 (ro): interrupt line 0 status register
-0x40010100 C   FIELD 00w01 WWDG: Window watchdog interrupt pending flag
-0x40010104 B  REGISTER ITLINE1 (ro): interrupt line 1 status register
-0x40010104 C   FIELD 00w01 PVDOUT: PVD supply monitoring interrupt request pending (EXTI line 16).
-0x40010108 B  REGISTER ITLINE2 (ro): interrupt line 2 status register
-0x40010108 C   FIELD 00w01 TAMP: TAMP
-0x40010108 C   FIELD 01w01 RTC: RTC
-0x4001010C B  REGISTER ITLINE3 (ro): interrupt line 3 status register
-0x4001010C C   FIELD 00w01 FLASH_ITF: FLASH_ITF
-0x4001010C C   FIELD 01w01 FLASH_ECC: FLASH_ECC
-0x40010110 B  REGISTER ITLINE4 (ro): interrupt line 4 status register
-0x40010110 C   FIELD 00w01 RCC: RCC
-0x40010114 B  REGISTER ITLINE5 (ro): interrupt line 5 status register
-0x40010114 C   FIELD 00w01 EXTI0: EXTI0
-0x40010114 C   FIELD 01w01 EXTI1: EXTI1
-0x40010118 B  REGISTER ITLINE6 (ro): interrupt line 6 status register
-0x40010118 C   FIELD 00w01 EXTI2: EXTI2
-0x40010118 C   FIELD 01w01 EXTI3: EXTI3
-0x4001011C B  REGISTER ITLINE7 (ro): interrupt line 7 status register
-0x4001011C C   FIELD 00w01 EXTI4: EXTI4
-0x4001011C C   FIELD 01w01 EXTI5: EXTI5
-0x4001011C C   FIELD 02w01 EXTI6: EXTI6
-0x4001011C C   FIELD 03w01 EXTI7: EXTI7
-0x4001011C C   FIELD 04w01 EXTI8: EXTI8
-0x4001011C C   FIELD 05w01 EXTI9: EXTI9
-0x4001011C C   FIELD 06w01 EXTI10: EXTI10
-0x4001011C C   FIELD 07w01 EXTI11: EXTI11
-0x4001011C C   FIELD 08w01 EXTI12: EXTI12
-0x4001011C C   FIELD 09w01 EXTI13: EXTI13
-0x4001011C C   FIELD 10w01 EXTI14: EXTI14
-0x4001011C C   FIELD 11w01 EXTI15: EXTI15
-0x40010124 B  REGISTER ITLINE9 (ro): interrupt line 9 status register
-0x40010124 C   FIELD 00w01 DMA1_CH1: DMA1_CH1
-0x40010128 B  REGISTER ITLINE10 (ro): interrupt line 10 status register
-0x40010128 C   FIELD 00w01 DMA1_CH2: DMA1_CH1
-0x40010128 C   FIELD 01w01 DMA1_CH3: DMA1_CH3
-0x4001012C B  REGISTER ITLINE11 (ro): interrupt line 11 status register
-0x4001012C C   FIELD 00w01 DMAMUX: DMAMUX
-0x4001012C C   FIELD 01w01 DMA1_CH4: DMA1_CH4
-0x4001012C C   FIELD 02w01 DMA1_CH5: DMA1_CH5
-0x40010130 B  REGISTER ITLINE12 (ro): interrupt line 12 status register
-0x40010130 C   FIELD 00w01 ADC: ADC
-0x40010134 B  REGISTER ITLINE13 (ro): interrupt line 13 status register
-0x40010134 C   FIELD 00w01 TIM1_CCU: TIM1_CCU
-0x40010134 C   FIELD 01w01 TIM1_TRG: TIM1_TRG
-0x40010134 C   FIELD 02w01 TIM1_UPD: TIM1_UPD
-0x40010134 C   FIELD 03w01 TIM1_BRK: TIM1_BRK
-0x40010138 B  REGISTER ITLINE14 (ro): interrupt line 14 status register
-0x40010138 C   FIELD 00w01 TIM1_CC: TIM1_CC
-0x4001013C B  REGISTER ITLINE15 (ro): interrupt line 15 status register
-0x4001013C C   FIELD 00w01 TIM2: TIM2
-0x40010140 B  REGISTER ITLINE16 (ro): interrupt line 16 status register
-0x40010140 C   FIELD 00w01 TIM3: TIM3
-0x40010144 B  REGISTER ITLINE17 (ro): interrupt line 17 status register
-0x40010144 C   FIELD 02w01 LPTIM1: LPTIM1
-0x40010148 B  REGISTER ITLINE18 (ro): interrupt line 18 status register
-0x40010148 C   FIELD 01w01 LPTIM2: LPTIM2
-0x4001014C B  REGISTER ITLINE19 (ro): interrupt line 19 status register
-0x4001014C C   FIELD 00w01 TIM14: TIM14
-0x40010154 B  REGISTER ITLINE21 (ro): interrupt line 21 status register
-0x40010154 C   FIELD 00w01 TIM16: TIM16
-0x40010158 B  REGISTER ITLINE22 (ro): interrupt line 22 status register
-0x40010158 C   FIELD 00w01 TIM17: TIM17
-0x4001015C B  REGISTER ITLINE23 (ro): interrupt line 23 status register
-0x4001015C C   FIELD 00w01 I2C1: I2C1
-0x40010160 B  REGISTER ITLINE24 (ro): interrupt line 24 status register
-0x40010160 C   FIELD 00w01 I2C2: I2C2
-0x40010164 B  REGISTER ITLINE25 (ro): interrupt line 25 status register
-0x40010164 C   FIELD 00w01 SPI1: SPI1
-0x40010168 B  REGISTER ITLINE26 (ro): interrupt line 26 status register
-0x40010168 C   FIELD 00w01 SPI2: SPI2
-0x4001016C B  REGISTER ITLINE27 (ro): interrupt line 27 status register
-0x4001016C C   FIELD 00w01 USART1: USART1
-0x40010170 B  REGISTER ITLINE28 (ro): interrupt line 28 status register
-0x40010170 C   FIELD 00w01 USART2: USART2
-0x40010174 B  REGISTER ITLINE29 (ro): interrupt line 29 status register
-0x40010174 C   FIELD 02w01 USART5: USART5
+0x40010080 B  REGISTER ITLINE0 (ro): interrupt line 0 status register
+0x40010080 C   FIELD 00w01 WWDG: Window watchdog interrupt pending flag
+0x40010088 B  REGISTER ITLINE2 (ro): interrupt line 2 status register
+0x40010088 C   FIELD 00w01 TAMP: TAMP
+0x40010088 C   FIELD 01w01 RTC: RTC
+0x4001008C B  REGISTER ITLINE3 (ro): interrupt line 3 status register
+0x4001008C C   FIELD 00w01 FLASH_ITF: FLASH_ITF
+0x4001008C C   FIELD 01w01 FLASH_ECC: FLASH_ECC
+0x40010090 B  REGISTER ITLINE4 (ro): interrupt line 4 status register
+0x40010090 C   FIELD 00w01 RCC: RCC
+0x40010090 C   FIELD 01w01 CRS: CRS
+0x40010094 B  REGISTER ITLINE5 (ro): interrupt line 5 status register
+0x40010094 C   FIELD 00w01 EXTI0: EXTI0
+0x40010094 C   FIELD 01w01 EXTI1: EXTI1
+0x40010098 B  REGISTER ITLINE6 (ro): interrupt line 6 status register
+0x40010098 C   FIELD 00w01 EXTI2: EXTI2
+0x40010098 C   FIELD 01w01 EXTI3: EXTI3
+0x4001009C B  REGISTER ITLINE7 (ro): interrupt line 7 status register
+0x4001009C C   FIELD 00w01 EXTI4: EXTI4
+0x4001009C C   FIELD 01w01 EXTI5: EXTI5
+0x4001009C C   FIELD 02w01 EXTI6: EXTI6
+0x4001009C C   FIELD 03w01 EXTI7: EXTI7
+0x4001009C C   FIELD 04w01 EXTI8: EXTI8
+0x4001009C C   FIELD 05w01 EXTI9: EXTI9
+0x4001009C C   FIELD 06w01 EXTI10: EXTI10
+0x4001009C C   FIELD 07w01 EXTI11: EXTI11
+0x4001009C C   FIELD 08w01 EXTI12: EXTI12
+0x4001009C C   FIELD 09w01 EXTI13: EXTI13
+0x4001009C C   FIELD 10w01 EXTI14: EXTI14
+0x4001009C C   FIELD 11w01 EXTI15: EXTI15
+0x400100A0 B  REGISTER ITLINE8 (ro): interrupt line 8 status register
+0x400100A0 C   FIELD 00w01 UCPD1: UCPD1
+0x400100A0 C   FIELD 01w01 UCPD2: UCPD2
+0x400100A0 C   FIELD 02w01 USB: USB
+0x400100A4 B  REGISTER ITLINE9 (ro): interrupt line 9 status register
+0x400100A4 C   FIELD 00w01 DMA1_CH1: DMA1_CH1
+0x400100A8 B  REGISTER ITLINE10 (ro): interrupt line 10 status register
+0x400100A8 C   FIELD 00w01 DMA1_CH2: DMA1_CH1
+0x400100A8 C   FIELD 01w01 DMA1_CH3: DMA1_CH3
+0x400100AC B  REGISTER ITLINE11 (ro): interrupt line 11 status register
+0x400100AC C   FIELD 00w01 DMAMUX: DMAMUX
+0x400100AC C   FIELD 01w01 DMA1_CH4: DMA1_CH4
+0x400100AC C   FIELD 02w01 DMA1_CH5: DMA1_CH5
+0x400100B0 B  REGISTER ITLINE12 (ro): interrupt line 12 status register
+0x400100B0 C   FIELD 00w01 ADC: ADC
+0x400100B0 C   FIELD 01w01 COMP1: COMP1
+0x400100B0 C   FIELD 02w01 COMP2: COMP2
+0x400100B0 C   FIELD 03w01 COMP3: COMP3
+0x400100B4 B  REGISTER ITLINE13 (ro): interrupt line 13 status register
+0x400100B4 C   FIELD 00w01 TIM1_CCU: TIM1_CCU
+0x400100B4 C   FIELD 01w01 TIM1_TRG: TIM1_TRG
+0x400100B4 C   FIELD 02w01 TIM1_UPD: TIM1_UPD
+0x400100B4 C   FIELD 03w01 TIM1_BRK: TIM1_BRK
+0x400100B8 B  REGISTER ITLINE14 (ro): interrupt line 14 status register
+0x400100B8 C   FIELD 00w01 TIM1_CC: TIM1_CC
+0x400100BC B  REGISTER ITLINE15 (ro): interrupt line 15 status register
+0x400100BC C   FIELD 00w01 TIM2: TIM2
+0x400100C0 B  REGISTER ITLINE16 (ro): interrupt line 16 status register
+0x400100C0 C   FIELD 00w01 TIM3: TIM3
+0x400100C0 C   FIELD 01w01 TIM4: TIM4
+0x400100C4 B  REGISTER ITLINE17 (ro): interrupt line 17 status register
+0x400100C4 C   FIELD 00w01 TIM6: TIM6
+0x400100C4 C   FIELD 01w01 DAC: DAC
+0x400100C4 C   FIELD 02w01 LPTIM1: LPTIM1
+0x400100C8 B  REGISTER ITLINE18 (ro): interrupt line 18 status register
+0x400100C8 C   FIELD 00w01 TIM7: TIM7
+0x400100C8 C   FIELD 01w01 LPTIM2: LPTIM2
+0x400100CC B  REGISTER ITLINE19 (ro): interrupt line 19 status register
+0x400100CC C   FIELD 00w01 TIM14: TIM14
+0x400100D0 B  REGISTER ITLINE20 (ro): interrupt line 20 status register
+0x400100D0 C   FIELD 00w01 TIM15: TIM15
+0x400100D4 B  REGISTER ITLINE21 (ro): interrupt line 21 status register
+0x400100D4 C   FIELD 00w01 TIM16: TIM16
+0x400100D4 C   FIELD 01w01 FDCAN1_IT0: FDCAN1_IT0
+0x400100D4 C   FIELD 02w01 FDCAN2_IT0: FDCAN2_IT0
+0x400100D8 B  REGISTER ITLINE22 (ro): interrupt line 22 status register
+0x400100D8 C   FIELD 00w01 TIM17: TIM17
+0x400100D8 C   FIELD 01w01 FDCAN1_IT1: FDCAN1_IT1
+0x400100D8 C   FIELD 02w01 FDCAN2_IT1: FDCAN2_IT1
+0x400100DC B  REGISTER ITLINE23 (ro): interrupt line 23 status register
+0x400100DC C   FIELD 00w01 I2C1: I2C1
+0x400100E0 B  REGISTER ITLINE24 (ro): interrupt line 24 status register
+0x400100E0 C   FIELD 00w01 I2C2: I2C2
+0x400100E0 C   FIELD 01w01 I2C3: I2C3
+0x400100E4 B  REGISTER ITLINE25 (ro): interrupt line 25 status register
+0x400100E4 C   FIELD 00w01 SPI1: SPI1
+0x400100E8 B  REGISTER ITLINE26 (ro): interrupt line 26 status register
+0x400100E8 C   FIELD 00w01 SPI2: SPI2
+0x400100E8 C   FIELD 14w01 SPI3: SPI3
+0x400100EC B  REGISTER ITLINE27 (ro): interrupt line 27 status register
+0x400100EC C   FIELD 00w01 USART1: USART1
+0x400100F0 B  REGISTER ITLINE28 (ro): interrupt line 28 status register
+0x400100F0 C   FIELD 00w01 USART2: USART2
+0x400100F0 C   FIELD 01w01 LPUART2: LPUART2
+0x400100F4 B  REGISTER ITLINE29 (ro): interrupt line 29 status register
+0x400100F4 C   FIELD 00w01 USART3: USART3
+0x400100F4 C   FIELD 01w01 USART4: USART4
+0x400100F4 C   FIELD 02w01 LPUART1: LPUART1
+0x400100F4 C   FIELD 03w01 USART5: USART5
+0x400100F4 C   FIELD 04w01 USART6: USART6
+0x400100F8 B  REGISTER ITLINE30 (ro): interrupt line 25 status register
+0x400100F8 C   FIELD 00w01 CEC: CEC
+0x400100FC B  REGISTER ITLINE31 (ro): interrupt line 25 status register
+0x400100FC C   FIELD 00w01 RNG: RNG
+0x400100FC C   FIELD 01w01 AES: AES
 0x40012400 A PERIPHERAL ADC
 0x40012400 B  REGISTER ISR (rw): ADC interrupt and status register
 0x40012400 C   FIELD 00w01 ADRDY: ADC ready flag
@@ -1460,25 +1570,7 @@
 0x40012414 B  REGISTER SMPR (rw): ADC sampling time register
 0x40012414 C   FIELD 00w03 SMP1: Sampling time selection
 0x40012414 C   FIELD 04w03 SMP2: Sampling time selection
-0x40012414 C   FIELD 08w01 SMPSEL0: Channel sampling time selection
-0x40012414 C   FIELD 09w01 SMPSEL1: Channel sampling time selection
-0x40012414 C   FIELD 10w01 SMPSEL2: Channel sampling time selection
-0x40012414 C   FIELD 11w01 SMPSEL3: Channel sampling time selection
-0x40012414 C   FIELD 12w01 SMPSEL4: Channel sampling time selection
-0x40012414 C   FIELD 13w01 SMPSEL5: Channel sampling time selection
-0x40012414 C   FIELD 14w01 SMPSEL6: Channel sampling time selection
-0x40012414 C   FIELD 15w01 SMPSEL7: Channel sampling time selection
-0x40012414 C   FIELD 16w01 SMPSEL8: Channel sampling time selection
-0x40012414 C   FIELD 17w01 SMPSEL9: Channel sampling time selection
-0x40012414 C   FIELD 18w01 SMPSEL10: Channel sampling time selection
-0x40012414 C   FIELD 19w01 SMPSEL11: Channel sampling time selection
-0x40012414 C   FIELD 20w01 SMPSEL12: Channel sampling time selection
-0x40012414 C   FIELD 21w01 SMPSEL13: Channel sampling time selection
-0x40012414 C   FIELD 22w01 SMPSEL14: Channel sampling time selection
-0x40012414 C   FIELD 23w01 SMPSEL15: Channel sampling time selection
-0x40012414 C   FIELD 24w01 SMPSEL16: Channel sampling time selection
-0x40012414 C   FIELD 25w01 SMPSEL17: Channel sampling time selection
-0x40012414 C   FIELD 26w01 SMPSEL18: Channel sampling time selection
+0x40012414 C   FIELD 08w19 SMPSEL: Channel sampling time selection
 0x40012420 B  REGISTER AWD1TR (rw): watchdog threshold register
 0x40012420 C   FIELD 00w12 LT1: ADC analog watchdog 1 threshold low
 0x40012420 C   FIELD 16w12 HT1: ADC analog watchdog 1 threshold high
@@ -1502,45 +1594,9 @@
 0x40012440 B  REGISTER DR (ro): ADC group regular conversion data register
 0x40012440 C   FIELD 00w16 DATA: ADC group regular conversion data
 0x400124A0 B  REGISTER AWD2CR (rw): ADC analog watchdog 2 configuration register
-0x400124A0 C   FIELD 00w01 AWD2CH0: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 01w01 AWD2CH1: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 02w01 AWD2CH2: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 03w01 AWD2CH3: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 04w01 AWD2CH4: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 05w01 AWD2CH5: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 06w01 AWD2CH6: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 07w01 AWD2CH7: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 08w01 AWD2CH8: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 09w01 AWD2CH9: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 10w01 AWD2CH10: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 11w01 AWD2CH11: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 12w01 AWD2CH12: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 13w01 AWD2CH13: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 14w01 AWD2CH14: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 15w01 AWD2CH15: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 16w01 AWD2CH16: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 17w01 AWD2CH17: ADC analog watchdog 2 monitored channel selection
-0x400124A0 C   FIELD 18w01 AWD2CH18: ADC analog watchdog 2 monitored channel selection
+0x400124A0 C   FIELD 00w19 AWD2CH: ADC analog watchdog 2 monitored channel selection
 0x400124A4 B  REGISTER AWD3CR (rw): ADC analog watchdog 3 configuration register
-0x400124A4 C   FIELD 00w01 AWD3CH0: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 01w01 AWD3CH1: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 02w01 AWD3CH2: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 03w01 AWD3CH3: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 04w01 AWD3CH4: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 05w01 AWD3CH5: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 06w01 AWD3CH6: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 07w01 AWD3CH7: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 08w01 AWD3CH8: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 09w01 AWD3CH9: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 10w01 AWD3CH10: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 11w01 AWD3CH11: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 12w01 AWD3CH12: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 13w01 AWD3CH13: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 14w01 AWD3CH14: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 15w01 AWD3CH15: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 16w01 AWD3CH16: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 17w01 AWD3CH17: ADC analog watchdog 3 monitored channel selection
-0x400124A4 C   FIELD 18w01 AWD3CH18: ADC analog watchdog 3 monitored channel selection
+0x400124A4 C   FIELD 00w19 AWD3CH: ADC analog watchdog 3 monitored channel selection
 0x400124B4 B  REGISTER CALFACT (rw): ADC calibration factors register
 0x400124B4 C   FIELD 00w07 CALFACT: ADC calibration factor in single-ended mode
 0x40012708 B  REGISTER CCR (rw): ADC common control register
@@ -2163,149 +2219,149 @@
 0x4001580C C   FIELD 15w01 DBG_TIM14_STOP: DBG_TIM14_STOP
 0x4001580C C   FIELD 17w01 DBG_TIM16_STOP: DBG_TIM16_STOP
 0x4001580C C   FIELD 18w01 DBG_TIM17_STOP: DBG_TIM17_STOP
-0x40020000 A PERIPHERAL DMA
-0x40020000 B  REGISTER ISR (ro): DMA interrupt status register
-0x40020000 C   FIELD 00w01 GIF1: Channel 1 Global interrupt flag
-0x40020000 C   FIELD 01w01 TCIF1: Channel 1 Transfer Complete flag
-0x40020000 C   FIELD 02w01 HTIF1: Channel 1 Half Transfer Complete flag
-0x40020000 C   FIELD 03w01 TEIF1: Channel 1 Transfer Error flag
-0x40020000 C   FIELD 04w01 GIF2: Channel 2 Global interrupt flag
-0x40020000 C   FIELD 05w01 TCIF2: Channel 2 Transfer Complete flag
-0x40020000 C   FIELD 06w01 HTIF2: Channel 2 Half Transfer Complete flag
-0x40020000 C   FIELD 07w01 TEIF2: Channel 2 Transfer Error flag
-0x40020000 C   FIELD 08w01 GIF3: Channel 3 Global interrupt flag
-0x40020000 C   FIELD 09w01 TCIF3: Channel 3 Transfer Complete flag
-0x40020000 C   FIELD 10w01 HTIF3: Channel 3 Half Transfer Complete flag
-0x40020000 C   FIELD 11w01 TEIF3: Channel 3 Transfer Error flag
-0x40020000 C   FIELD 12w01 GIF4: Channel 4 Global interrupt flag
-0x40020000 C   FIELD 13w01 TCIF4: Channel 4 Transfer Complete flag
-0x40020000 C   FIELD 14w01 HTIF4: Channel 4 Half Transfer Complete flag
-0x40020000 C   FIELD 15w01 TEIF4: Channel 4 Transfer Error flag
-0x40020000 C   FIELD 16w01 GIF5: Channel 5 Global interrupt flag
-0x40020000 C   FIELD 17w01 TCIF5: Channel 5 Transfer Complete flag
-0x40020000 C   FIELD 18w01 HTIF5: Channel 5 Half Transfer Complete flag
-0x40020000 C   FIELD 19w01 TEIF5: Channel 5 Transfer Error flag
-0x40020004 B  REGISTER IFCR (wo): DMA interrupt flag clear register
-0x40020004 C   FIELD 00w01 CGIF1: Channel 1 Global interrupt clear
-0x40020004 C   FIELD 01w01 CTCIF1: Channel 1 Transfer Complete clear
-0x40020004 C   FIELD 02w01 CHTIF1: Channel 1 Half Transfer clear
-0x40020004 C   FIELD 03w01 CTEIF1: Channel 1 Transfer Error clear
-0x40020004 C   FIELD 04w01 CGIF2: Channel 2 Global interrupt clear
-0x40020004 C   FIELD 05w01 CTCIF2: Channel 2 Transfer Complete clear
-0x40020004 C   FIELD 06w01 CHTIF2: Channel 2 Half Transfer clear
-0x40020004 C   FIELD 07w01 CTEIF2: Channel 2 Transfer Error clear
-0x40020004 C   FIELD 08w01 CGIF3: Channel 3 Global interrupt clear
-0x40020004 C   FIELD 09w01 CTCIF3: Channel 3 Transfer Complete clear
-0x40020004 C   FIELD 10w01 CHTIF3: Channel 3 Half Transfer clear
-0x40020004 C   FIELD 11w01 CTEIF3: Channel 3 Transfer Error clear
-0x40020004 C   FIELD 12w01 CGIF4: Channel 4 Global interrupt clear
-0x40020004 C   FIELD 13w01 CTCIF4: Channel 4 Transfer Complete clear
-0x40020004 C   FIELD 14w01 CHTIF4: Channel 4 Half Transfer clear
-0x40020004 C   FIELD 15w01 CTEIF4: Channel 4 Transfer Error clear
-0x40020004 C   FIELD 16w01 CGIF5: Channel 5 Global interrupt clear
-0x40020004 C   FIELD 17w01 CTCIF5: Channel 5 Transfer Complete clear
-0x40020004 C   FIELD 18w01 CHTIF5: Channel 5 Half Transfer clear
-0x40020004 C   FIELD 19w01 CTEIF5: Channel 5 Transfer Error clear
+0x40020000 A PERIPHERAL DMA1
+0x40020000 B  REGISTER ISR: DMA interrupt status register
+0x40020000 C   FIELD 00w01 GIF1 (ro): Channel 1 Global interrupt flag
+0x40020000 C   FIELD 01w01 TCIF1 (ro): Channel 1 Transfer Complete flag
+0x40020000 C   FIELD 02w01 HTIF1 (ro): Channel 1 Half Transfer Complete flag
+0x40020000 C   FIELD 03w01 TEIF1 (ro): Channel 1 Transfer Error flag
+0x40020000 C   FIELD 04w01 GIF2 (ro): Channel 2 Global interrupt flag
+0x40020000 C   FIELD 05w01 TCIF2 (ro): Channel 2 Transfer Complete flag
+0x40020000 C   FIELD 06w01 HTIF2 (ro): Channel 2 Half Transfer Complete flag
+0x40020000 C   FIELD 07w01 TEIF2 (ro): Channel 2 Transfer Error flag
+0x40020000 C   FIELD 08w01 GIF3 (ro): Channel 3 Global interrupt flag
+0x40020000 C   FIELD 09w01 TCIF3 (ro): Channel 3 Transfer Complete flag
+0x40020000 C   FIELD 10w01 HTIF3 (ro): Channel 3 Half Transfer Complete flag
+0x40020000 C   FIELD 11w01 TEIF3 (ro): Channel 3 Transfer Error flag
+0x40020000 C   FIELD 12w01 GIF4 (ro): Channel 4 Global interrupt flag
+0x40020000 C   FIELD 13w01 TCIF4 (ro): Channel 4 Transfer Complete flag
+0x40020000 C   FIELD 14w01 HTIF4 (ro): Channel 4 Half Transfer Complete flag
+0x40020000 C   FIELD 15w01 TEIF4 (ro): Channel 4 Transfer Error flag
+0x40020000 C   FIELD 16w01 GIF5 (ro): Channel 5 Global interrupt flag
+0x40020000 C   FIELD 17w01 TCIF5 (ro): Channel 5 Transfer Complete flag
+0x40020000 C   FIELD 18w01 HTIF5 (ro): Channel 5 Half Transfer Complete flag
+0x40020000 C   FIELD 19w01 TEIF5 (ro): Channel 5 Transfer Error flag
+0x40020004 B  REGISTER IFCR: DMA interrupt flag clear register
+0x40020004 C   FIELD 00w01 CGIF1 (wo): Channel 1 Global interrupt clear
+0x40020004 C   FIELD 01w01 CTCIF1 (wo): Channel 1 Transfer Complete clear
+0x40020004 C   FIELD 02w01 CHTIF1 (wo): Channel 1 Half Transfer clear
+0x40020004 C   FIELD 03w01 CTEIF1 (wo): Channel 1 Transfer Error clear
+0x40020004 C   FIELD 04w01 CGIF2 (wo): Channel 2 Global interrupt clear
+0x40020004 C   FIELD 05w01 CTCIF2 (wo): Channel 2 Transfer Complete clear
+0x40020004 C   FIELD 06w01 CHTIF2 (wo): Channel 2 Half Transfer clear
+0x40020004 C   FIELD 07w01 CTEIF2 (wo): Channel 2 Transfer Error clear
+0x40020004 C   FIELD 08w01 CGIF3 (wo): Channel 3 Global interrupt clear
+0x40020004 C   FIELD 09w01 CTCIF3 (wo): Channel 3 Transfer Complete clear
+0x40020004 C   FIELD 10w01 CHTIF3 (wo): Channel 3 Half Transfer clear
+0x40020004 C   FIELD 11w01 CTEIF3 (wo): Channel 3 Transfer Error clear
+0x40020004 C   FIELD 12w01 CGIF4 (wo): Channel 4 Global interrupt clear
+0x40020004 C   FIELD 13w01 CTCIF4 (wo): Channel 4 Transfer Complete clear
+0x40020004 C   FIELD 14w01 CHTIF4 (wo): Channel 4 Half Transfer clear
+0x40020004 C   FIELD 15w01 CTEIF4 (wo): Channel 4 Transfer Error clear
+0x40020004 C   FIELD 16w01 CGIF5 (wo): Channel 5 Global interrupt clear
+0x40020004 C   FIELD 17w01 CTCIF5 (wo): Channel 5 Transfer Complete clear
+0x40020004 C   FIELD 18w01 CHTIF5 (wo): Channel 5 Half Transfer clear
+0x40020004 C   FIELD 19w01 CTEIF5 (wo): Channel 5 Transfer Error clear
 0x40020008 B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
-0x40020008 B  REGISTER CR1 (rw): DMA channel x configuration register
-0x40020008 C   FIELD 00w01 EN: Channel enable
-0x40020008 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020008 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020008 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020008 C   FIELD 04w01 DIR: Data transfer direction
-0x40020008 C   FIELD 05w01 CIRC: Circular mode
-0x40020008 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020008 C   FIELD 07w01 MINC: Memory increment mode
-0x40020008 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020008 C   FIELD 10w02 MSIZE: Memory size
-0x40020008 C   FIELD 12w02 PL: Channel priority level
-0x40020008 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x4002000C B  REGISTER NDTR1 (rw): DMA channel x number of data register
-0x4002000C C   FIELD 00w16 NDT: Number of data to transfer
-0x40020010 B  REGISTER PAR1 (rw): DMA channel x peripheral address register
-0x40020010 C   FIELD 00w32 PA: Peripheral address
-0x40020014 B  REGISTER MAR1 (rw): DMA channel x memory address register
-0x40020014 C   FIELD 00w32 MA: Memory address
+0x40020008 B  REGISTER CR1: DMA channel 1 configuration register
+0x40020008 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
+0x40020008 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020008 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002000C B  REGISTER NDTR1: DMA channel x number of data register
+0x4002000C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216-1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC=0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC=1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020010 B  REGISTER PAR1: DMA channel x peripheral address register
+0x40020010 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0]=01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE=10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR=1 and the memory source address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR=1 and the peripheral source address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020014 B  REGISTER MAR1: DMA channel x memory address register
+0x40020014 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0]=01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE=10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR=1 and the memory destination address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR=1 and the peripheral destination address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
 0x4002001C B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
-0x4002001C B  REGISTER CR2 (rw): DMA channel x configuration register
-0x4002001C C   FIELD 00w01 EN: Channel enable
-0x4002001C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x4002001C C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x4002001C C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x4002001C C   FIELD 04w01 DIR: Data transfer direction
-0x4002001C C   FIELD 05w01 CIRC: Circular mode
-0x4002001C C   FIELD 06w01 PINC: Peripheral increment mode
-0x4002001C C   FIELD 07w01 MINC: Memory increment mode
-0x4002001C C   FIELD 08w02 PSIZE: Peripheral size
-0x4002001C C   FIELD 10w02 MSIZE: Memory size
-0x4002001C C   FIELD 12w02 PL: Channel priority level
-0x4002001C C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020020 B  REGISTER NDTR2 (rw): DMA channel x number of data register
-0x40020020 C   FIELD 00w16 NDT: Number of data to transfer
-0x40020024 B  REGISTER PAR2 (rw): DMA channel x peripheral address register
-0x40020024 C   FIELD 00w32 PA: Peripheral address
-0x40020028 B  REGISTER MAR2 (rw): DMA channel x memory address register
-0x40020028 C   FIELD 00w32 MA: Memory address
+0x4002001C B  REGISTER CR2: DMA channel 1 configuration register
+0x4002001C C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
+0x4002001C C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002001C C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020020 B  REGISTER NDTR2: DMA channel x number of data register
+0x40020020 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216-1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC=0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC=1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020024 B  REGISTER PAR2: DMA channel x peripheral address register
+0x40020024 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0]=01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE=10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR=1 and the memory source address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR=1 and the peripheral source address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020028 B  REGISTER MAR2: DMA channel x memory address register
+0x40020028 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0]=01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE=10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR=1 and the memory destination address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR=1 and the peripheral destination address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
 0x40020030 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
-0x40020030 B  REGISTER CR3 (rw): DMA channel x configuration register
-0x40020030 C   FIELD 00w01 EN: Channel enable
-0x40020030 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020030 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020030 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020030 C   FIELD 04w01 DIR: Data transfer direction
-0x40020030 C   FIELD 05w01 CIRC: Circular mode
-0x40020030 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020030 C   FIELD 07w01 MINC: Memory increment mode
-0x40020030 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020030 C   FIELD 10w02 MSIZE: Memory size
-0x40020030 C   FIELD 12w02 PL: Channel priority level
-0x40020030 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020034 B  REGISTER NDTR3 (rw): DMA channel x number of data register
-0x40020034 C   FIELD 00w16 NDT: Number of data to transfer
-0x40020038 B  REGISTER PAR3 (rw): DMA channel x peripheral address register
-0x40020038 C   FIELD 00w32 PA: Peripheral address
-0x4002003C B  REGISTER MAR3 (rw): DMA channel x memory address register
-0x4002003C C   FIELD 00w32 MA: Memory address
+0x40020030 B  REGISTER CR3: DMA channel 1 configuration register
+0x40020030 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
+0x40020030 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020030 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020034 B  REGISTER NDTR3: DMA channel x number of data register
+0x40020034 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216-1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC=0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC=1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020038 B  REGISTER PAR3: DMA channel x peripheral address register
+0x40020038 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0]=01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE=10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR=1 and the memory source address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR=1 and the peripheral source address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x4002003C B  REGISTER MAR3: DMA channel x memory address register
+0x4002003C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0]=01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE=10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR=1 and the memory destination address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR=1 and the peripheral destination address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
 0x40020044 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
-0x40020044 B  REGISTER CR4 (rw): DMA channel x configuration register
-0x40020044 C   FIELD 00w01 EN: Channel enable
-0x40020044 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020044 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020044 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020044 C   FIELD 04w01 DIR: Data transfer direction
-0x40020044 C   FIELD 05w01 CIRC: Circular mode
-0x40020044 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020044 C   FIELD 07w01 MINC: Memory increment mode
-0x40020044 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020044 C   FIELD 10w02 MSIZE: Memory size
-0x40020044 C   FIELD 12w02 PL: Channel priority level
-0x40020044 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x40020048 B  REGISTER NDTR4 (rw): DMA channel x number of data register
-0x40020048 C   FIELD 00w16 NDT: Number of data to transfer
-0x4002004C B  REGISTER PAR4 (rw): DMA channel x peripheral address register
-0x4002004C C   FIELD 00w32 PA: Peripheral address
-0x40020050 B  REGISTER MAR4 (rw): DMA channel x memory address register
-0x40020050 C   FIELD 00w32 MA: Memory address
+0x40020044 B  REGISTER CR4: DMA channel 1 configuration register
+0x40020044 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
+0x40020044 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020044 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020048 B  REGISTER NDTR4: DMA channel x number of data register
+0x40020048 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216-1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC=0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC=1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002004C B  REGISTER PAR4: DMA channel x peripheral address register
+0x4002004C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0]=01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE=10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR=1 and the memory source address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR=1 and the peripheral source address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020050 B  REGISTER MAR4: DMA channel x memory address register
+0x40020050 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0]=01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE=10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR=1 and the memory destination address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR=1 and the peripheral destination address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
 0x40020058 B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
-0x40020058 B  REGISTER CR5 (rw): DMA channel x configuration register
-0x40020058 C   FIELD 00w01 EN: Channel enable
-0x40020058 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
-0x40020058 C   FIELD 02w01 HTIE: Half transfer interrupt enable
-0x40020058 C   FIELD 03w01 TEIE: Transfer error interrupt enable
-0x40020058 C   FIELD 04w01 DIR: Data transfer direction
-0x40020058 C   FIELD 05w01 CIRC: Circular mode
-0x40020058 C   FIELD 06w01 PINC: Peripheral increment mode
-0x40020058 C   FIELD 07w01 MINC: Memory increment mode
-0x40020058 C   FIELD 08w02 PSIZE: Peripheral size
-0x40020058 C   FIELD 10w02 MSIZE: Memory size
-0x40020058 C   FIELD 12w02 PL: Channel priority level
-0x40020058 C   FIELD 14w01 MEM2MEM: Memory to memory mode
-0x4002005C B  REGISTER NDTR5 (rw): DMA channel x number of data register
-0x4002005C C   FIELD 00w16 NDT: Number of data to transfer
-0x40020060 B  REGISTER PAR5 (rw): DMA channel x peripheral address register
-0x40020060 C   FIELD 00w32 PA: Peripheral address
-0x40020064 B  REGISTER MAR5 (rw): DMA channel x memory address register
-0x40020064 C   FIELD 00w32 MA: Memory address
+0x40020058 B  REGISTER CR5: DMA channel 1 configuration register
+0x40020058 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
+0x40020058 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the DMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the DMA_CMARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR=1 and the memory source if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR=1 and the peripheral source if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR=1 and the memory destination if DIR=0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR=1 and the peripheral destination if DIR=0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020058 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x4002005C B  REGISTER NDTR5: DMA channel x number of data register
+0x4002005C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216-1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC=0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC=1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN=1).
+0x40020060 B  REGISTER PAR5: DMA channel x peripheral address register
+0x40020060 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0]=01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE=10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR=1 and the memory source address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR=1 and the peripheral source address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
+0x40020064 B  REGISTER MAR5: DMA channel x memory address register
+0x40020064 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0]=01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE=10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR=1 and the memory destination address if DIR=0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR=1 and the peripheral destination address if DIR=0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN=1).
 0x40020800 A PERIPHERAL DMAMUX
 0x40020800 B  REGISTER CCR0 (rw): DMA Multiplexer Channel 0 Control register
 0x40020800 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
@@ -2754,9 +2810,9 @@
 0x40022000 C   FIELD 16w01 EMPTY: Flash User area empty
 0x40022000 C   FIELD 18w01 DBG_SWEN: Debug access software enable
 0x40022008 B  REGISTER KEYR (wo): Flash key register
-0x40022008 C   FIELD 00w32 KEYR: KEYR
+0x40022008 C   FIELD 00w32 KEY: KEYR
 0x4002200C B  REGISTER OPTKEYR (wo): Option byte key register
-0x4002200C C   FIELD 00w32 OPTKEYR: Option byte key
+0x4002200C C   FIELD 00w32 OPTKEY: Option byte key
 0x40022010 B  REGISTER SR (rw): Status register
 0x40022010 C   FIELD 00w01 EOP: End of operation
 0x40022010 C   FIELD 01w01 OPERR: Operation error
@@ -2765,7 +2821,7 @@
 0x40022010 C   FIELD 05w01 PGAERR: Programming alignment error
 0x40022010 C   FIELD 06w01 SIZERR: Size error
 0x40022010 C   FIELD 07w01 PGSERR: Programming sequence error
-0x40022010 C   FIELD 08w01 MISERR: Fast programming data miss error
+0x40022010 C   FIELD 08w01 MISSERR: Fast programming data miss error
 0x40022010 C   FIELD 09w01 FASTERR: Fast programming error
 0x40022010 C   FIELD 14w01 RDERR: PCROP read error
 0x40022010 C   FIELD 15w01 OPTVERR: Option and Engineering bits loading validity error
@@ -2787,11 +2843,17 @@
 0x40022014 C   FIELD 30w01 OPTLOCK: Options Lock
 0x40022014 C   FIELD 31w01 LOCK: FLASH_CR Lock
 0x40022018 B  REGISTER ECCR: Flash ECC register
-0x40022018 C   FIELD 00w14 ADDR_ECC (ro): ECC fail address
+0x40022018 C   FIELD 00w15 ADDR_ECC (ro): ECC fail address
 0x40022018 C   FIELD 20w01 SYSF_ECC (ro): ECC fail for Corrected ECC Error or Double ECC Error in info block
 0x40022018 C   FIELD 24w01 ECCIE (rw): ECC correction interrupt enable
 0x40022018 C   FIELD 30w01 ECCC (rw): ECC correction
 0x40022018 C   FIELD 31w01 ECCD (rw): ECC detection
+0x4002201C B  REGISTER ECCR2: Flash ECC register 2
+0x4002201C C   FIELD 00w15 ADDR_ECC (ro): ECC fail address
+0x4002201C C   FIELD 20w01 SYSF_ECC (ro): ECC fail for Corrected ECC Error or Double ECC Error in info block
+0x4002201C C   FIELD 24w01 ECCIE (rw): ECC correction interrupt enable
+0x4002201C C   FIELD 30w01 ECCC (rw): ECC correction
+0x4002201C C   FIELD 31w01 ECCD (rw): ECC detection
 0x40022020 B  REGISTER OPTR (rw): Flash option register
 0x40022020 C   FIELD 00w08 RDP: Read protection level
 0x40022020 C   FIELD 08w01 BOREN: BOR reset Level
@@ -2800,7 +2862,7 @@
 0x40022020 C   FIELD 13w01 nRST_STOP: nRST_STOP
 0x40022020 C   FIELD 14w01 nRST_STDBY: nRST_STDBY
 0x40022020 C   FIELD 15w01 nRSTS_HDW: nRSTS_HDW
-0x40022020 C   FIELD 16w01 IDWG_SW: Independent watchdog selection
+0x40022020 C   FIELD 16w01 IWDG_SW: Independent watchdog selection
 0x40022020 C   FIELD 17w01 IWDG_STOP: Independent watchdog counter freeze in Stop mode
 0x40022020 C   FIELD 18w01 IWDG_STDBY: Independent watchdog counter freeze in Standby mode
 0x40022020 C   FIELD 19w01 WWDG_SW: Window watchdog selection
@@ -2810,9 +2872,9 @@
 0x40022020 C   FIELD 26w01 nBOOT0: nBOOT0 option bit
 0x40022020 C   FIELD 27w02 NRST_MODE: NRST_MODE
 0x40022020 C   FIELD 29w01 IRHEN: Internal reset holder enable bit
-0x40022024 B  REGISTER PCROP1ASR (rw): Flash PCROP zone A Start address register
+0x40022024 B  REGISTER PCROP1ASR (ro): Flash PCROP zone A Start address register
 0x40022024 C   FIELD 00w08 PCROP1A_STRT: PCROP1A area start offset
-0x40022028 B  REGISTER PCROP1AER (rw): Flash PCROP zone A End address register
+0x40022028 B  REGISTER PCROP1AER (ro): Flash PCROP zone A End address register
 0x40022028 C   FIELD 00w08 PCROP1A_END: PCROP1A area end offset
 0x40022028 C   FIELD 31w01 PCROP_RDP: PCROP area preserved when RDP level decreased
 0x4002202C B  REGISTER WRP1AR (rw): Flash WRP area A address register
@@ -2821,11 +2883,11 @@
 0x40022030 B  REGISTER WRP1BR (rw): Flash WRP area B address register
 0x40022030 C   FIELD 00w06 WRP1B_STRT: WRP area B start offset
 0x40022030 C   FIELD 16w06 WRP1B_END: WRP area B end offset
-0x40022034 B  REGISTER PCROP1BSR (rw): Flash PCROP zone B Start address register
+0x40022034 B  REGISTER PCROP1BSR (ro): Flash PCROP zone B Start address register
 0x40022034 C   FIELD 00w08 PCROP1B_STRT: PCROP1B area start offset
-0x40022038 B  REGISTER PCROP1BER (rw): Flash PCROP zone B End address register
+0x40022038 B  REGISTER PCROP1BER (ro): Flash PCROP zone B End address register
 0x40022038 C   FIELD 00w08 PCROP1B_END: PCROP1B area end offset
-0x40022080 B  REGISTER SECR (rw): Flash Security register
+0x40022080 B  REGISTER SECR (ro): Flash Security register
 0x40022080 C   FIELD 00w07 SEC_SIZE: Securable memory area size
 0x40022080 C   FIELD 16w01 BOOT_LOCK: used to force boot from user area
 0x40023000 A PERIPHERAL CRC
@@ -3787,187 +3849,17 @@
 0x50001428 C   FIELD 13w01 BR13: Port x reset pin 13
 0x50001428 C   FIELD 14w01 BR14: Port x reset pin 14
 0x50001428 C   FIELD 15w01 BR15: Port x reset pin 15
-0xE000E008 A PERIPHERAL SCB_ACTRL
-0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
-0xE000E008 C   FIELD 00w01 DISMCYCINT: DISMCYCINT
-0xE000E008 C   FIELD 01w01 DISDEFWBUF: DISDEFWBUF
-0xE000E008 C   FIELD 02w01 DISFOLD: DISFOLD
-0xE000E008 C   FIELD 08w01 DISFPCA: DISFPCA
-0xE000E008 C   FIELD 09w01 DISOOFP: DISOOFP
-0xE000E010 A PERIPHERAL STK
-0xE000E010 B  REGISTER CSR (rw): SysTick control and status register
-0xE000E010 C   FIELD 00w01 ENABLE: Counter enable
-0xE000E010 C   FIELD 01w01 TICKINT: SysTick exception request enable
-0xE000E010 C   FIELD 02w01 CLKSOURCE: Clock source selection
-0xE000E010 C   FIELD 16w01 COUNTFLAG: COUNTFLAG
-0xE000E014 B  REGISTER RVR (rw): SysTick reload value register
-0xE000E014 C   FIELD 00w24 RELOAD: RELOAD value
-0xE000E018 B  REGISTER CVR (rw): SysTick current value register
-0xE000E018 C   FIELD 00w24 CURRENT: Current counter value
-0xE000E01C B  REGISTER CALIB (rw): SysTick calibration value register
-0xE000E01C C   FIELD 00w24 TENMS: Calibration value
-0xE000E01C C   FIELD 30w01 SKEW: SKEW flag: Indicates whether the TENMS value is exact
-0xE000E01C C   FIELD 31w01 NOREF: NOREF flag. Reads as zero
-0xE000E100 A PERIPHERAL NVIC
-0xE000E100 B  REGISTER ISER (rw): Interrupt Set Enable Register
-0xE000E100 C   FIELD 00w32 SETENA: SETENA
-0xE000E180 B  REGISTER ICER (rw): Interrupt Clear Enable Register
-0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E200 B  REGISTER ISPR (rw): Interrupt Set-Pending Register
-0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E280 B  REGISTER ICPR (rw): Interrupt Clear-Pending Register
-0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register 0
-0xE000E400 C   FIELD 00w08 PRI_0: priority for interrupt 0
-0xE000E400 C   FIELD 08w08 PRI_1: priority for interrupt 1
-0xE000E400 C   FIELD 16w08 PRI_2: priority for interrupt 2
-0xE000E400 C   FIELD 24w08 PRI_3: priority for interrupt 3
-0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register 1
-0xE000E404 C   FIELD 00w08 PRI_4: priority for interrupt n
-0xE000E404 C   FIELD 08w08 PRI_5: priority for interrupt n
-0xE000E404 C   FIELD 16w08 PRI_6: priority for interrupt n
-0xE000E404 C   FIELD 24w08 PRI_7: priority for interrupt n
-0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register 2
-0xE000E408 C   FIELD 00w08 PRI_8: priority for interrupt n
-0xE000E408 C   FIELD 08w08 PRI_9: priority for interrupt n
-0xE000E408 C   FIELD 16w08 PRI_10: priority for interrupt n
-0xE000E408 C   FIELD 24w08 PRI_11: priority for interrupt n
-0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register 3
-0xE000E40C C   FIELD 00w08 PRI_12: priority for interrupt n
-0xE000E40C C   FIELD 08w08 PRI_13: priority for interrupt n
-0xE000E40C C   FIELD 16w08 PRI_14: priority for interrupt n
-0xE000E40C C   FIELD 24w08 PRI_15: priority for interrupt n
-0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register 4
-0xE000E410 C   FIELD 00w08 PRI_16: priority for interrupt n
-0xE000E410 C   FIELD 08w08 PRI_17: priority for interrupt n
-0xE000E410 C   FIELD 16w08 PRI_18: priority for interrupt n
-0xE000E410 C   FIELD 24w08 PRI_19: priority for interrupt n
-0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register 5
-0xE000E414 C   FIELD 00w08 PRI_20: priority for interrupt n
-0xE000E414 C   FIELD 08w08 PRI_21: priority for interrupt n
-0xE000E414 C   FIELD 16w08 PRI_22: priority for interrupt n
-0xE000E414 C   FIELD 24w08 PRI_23: priority for interrupt n
-0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register 6
-0xE000E418 C   FIELD 00w08 PRI_24: priority for interrupt n
-0xE000E418 C   FIELD 08w08 PRI_25: priority for interrupt n
-0xE000E418 C   FIELD 16w08 PRI_26: priority for interrupt n
-0xE000E418 C   FIELD 24w08 PRI_27: priority for interrupt n
-0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register 7
-0xE000E41C C   FIELD 00w08 PRI_28: priority for interrupt n
-0xE000E41C C   FIELD 08w08 PRI_29: priority for interrupt n
-0xE000E41C C   FIELD 16w08 PRI_30: priority for interrupt n
-0xE000E41C C   FIELD 24w08 PRI_31: priority for interrupt n
-0xE000E420 B  REGISTER IPR8 (rw): Interrupt Priority Register 8
-0xE000ED00 A PERIPHERAL SCB
-0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
-0xE000ED00 C   FIELD 00w04 Revision: Revision number
-0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000ED00 C   FIELD 16w04 Architecture: Reads as 0xF
-0xE000ED00 C   FIELD 20w04 Variant: Variant number
-0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
-0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
-0xE000ED08 C   FIELD 07w25 TBLOFF: Vector table base offset field
-0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000ED10 B  REGISTER SCR (rw): System control register
-0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
-0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED88 A PERIPHERAL FPU_CPACR
-0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
-0xE000ED88 C   FIELD 20w04 CP: CP
-0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER TYPER (ro): MPU type register
-0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
-0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
-0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER CTRL (ro): MPU control register
-0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
-0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
-0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER RNR (rw): MPU region number register
-0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
-0xE000ED9C C   FIELD 00w04 REGION: MPU region field
-0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
-0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
-0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
-0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
-0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
-0xE000EDA0 C   FIELD 16w01 B: memory attribute
-0xE000EDA0 C   FIELD 17w01 C: memory attribute
-0xE000EDA0 C   FIELD 18w01 S: Shareable memory attribute
-0xE000EDA0 C   FIELD 19w03 TEX: memory attribute
-0xE000EDA0 C   FIELD 24w03 AP: Access permission
-0xE000EDA0 C   FIELD 28w01 XN: Instruction access disable bit
-0xE000EF00 A PERIPHERAL NVIC_STIR
-0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
-0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
-0xE000EF34 A PERIPHERAL FPU
-0xE000EF34 B  REGISTER FPCCR (rw): Floating-point context control register
-0xE000EF34 C   FIELD 00w01 LSPACT: LSPACT
-0xE000EF34 C   FIELD 01w01 USER: USER
-0xE000EF34 C   FIELD 03w01 THREAD: THREAD
-0xE000EF34 C   FIELD 04w01 HFRDY: HFRDY
-0xE000EF34 C   FIELD 05w01 MMRDY: MMRDY
-0xE000EF34 C   FIELD 06w01 BFRDY: BFRDY
-0xE000EF34 C   FIELD 08w01 MONRDY: MONRDY
-0xE000EF34 C   FIELD 30w01 LSPEN: LSPEN
-0xE000EF34 C   FIELD 31w01 ASPEN: ASPEN
-0xE000EF38 B  REGISTER FPCAR (rw): Floating-point context address register
-0xE000EF38 C   FIELD 03w29 ADDRESS: Location of unpopulated floating-point
-0xE000EF3C B  REGISTER FPSCR (rw): Floating-point status control register
-0xE000EF3C C   FIELD 00w01 IOC: Invalid operation cumulative exception bit
-0xE000EF3C C   FIELD 01w01 DZC: Division by zero cumulative exception bit.
-0xE000EF3C C   FIELD 02w01 OFC: Overflow cumulative exception bit
-0xE000EF3C C   FIELD 03w01 UFC: Underflow cumulative exception bit
-0xE000EF3C C   FIELD 04w01 IXC: Inexact cumulative exception bit
-0xE000EF3C C   FIELD 07w01 IDC: Input denormal cumulative exception bit.
-0xE000EF3C C   FIELD 22w02 RMode: Rounding Mode control field
-0xE000EF3C C   FIELD 24w01 FZ: Flush-to-zero mode control bit:
-0xE000EF3C C   FIELD 25w01 DN: Default NaN mode control bit
-0xE000EF3C C   FIELD 26w01 AHP: Alternative half-precision control bit
-0xE000EF3C C   FIELD 28w01 V: Overflow condition code flag
-0xE000EF3C C   FIELD 29w01 C: Carry condition code flag
-0xE000EF3C C   FIELD 30w01 Z: Zero condition code flag
-0xE000EF3C C   FIELD 31w01 N: Negative condition code flag
 INTERRUPT 000: WWDG (WWDG): Window watchdog interrupt
-INTERRUPT 001: PVD (EXTI): Power voltage detector interrupt
+INTERRUPT 001: PVD (PWR): Power voltage detector interrupt
 INTERRUPT 002: RTC_TAMP (RTC): RTC and TAMP interrupts
 INTERRUPT 003: FLASH (FLASH): Flash global interrupt
 INTERRUPT 004: RCC (RCC): RCC global interrupt
 INTERRUPT 005: EXTI0_1 (EXTI): EXTI line 0 & 1 interrupt
 INTERRUPT 006: EXTI2_3 (EXTI): EXTI line 2 & 3 interrupt
 INTERRUPT 007: EXTI4_15 (EXTI): EXTI line 4 to 15 interrupt
-INTERRUPT 009: DMA_Channel1 (DMA): DMA channel 1 interrupt
-INTERRUPT 010: DMA_Channel2_3 (DMA): DMA channel 2 & 3 interrupts
-INTERRUPT 011: DMA_Channel4_5_6_7 (DMAMUX): DMA channel 4, 5, 6 & 7 and DMAMUX
+INTERRUPT 009: DMA1_Channel1 (DMA1): DMA channel 1 interrupt
+INTERRUPT 010: DMA1_Channel2_3 (DMA1): DMA channel 2 and 3 interrupts
+INTERRUPT 011: DMA1_Channel4_5_DMAMUX (DMA1): interrupts for DMA1 channels 4-5 and DMAMUX
 INTERRUPT 012: ADC_COMP (ADC): ADC and COMP interrupts
 INTERRUPT 013: TIM1_BRK_UP_TRG_COM (TIM1): TIM1 break, update, trigger
 INTERRUPT 014: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
