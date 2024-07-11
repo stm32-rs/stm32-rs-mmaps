@@ -4031,7 +4031,7 @@
 0x40030414 B  REGISTER MMONR: ICACHE miss monitor register
 0x40030414 C   FIELD 00w16 MISSMON (ro): cache miss monitor counter
 0x40032400 A PERIPHERAL GTZC1
-0x40032420 B  REGISTER GTZC1_TZSC_PRIVCFGR1: GTZC1 TZSC privilege configuration register 1
+0x40032420 B  REGISTER TZSC_PRIVCFGR1: GTZC1 TZSC privilege configuration register 1
 0x40032420 C   FIELD 00w01 TIM2PRIV (rw): privileged access mode for TIM2
 0x40032420 C   FIELD 01w01 TIM3PRIV (rw): privileged access mode for TIM3
 0x40032420 C   FIELD 04w01 TIM6PRIV (rw): privileged access mode for TIM6
@@ -4049,7 +4049,7 @@
 0x40032420 C   FIELD 25w01 DAC1PRIV (rw): privileged access mode for DAC1
 0x40032420 C   FIELD 30w01 DTSPRIV (rw): privileged access mode for DTS
 0x40032420 C   FIELD 31w01 LPTIM2PRIV (rw): privileged access mode for LPTIM2
-0x40032424 B  REGISTER GTZC1_TZSC_PRIVCFGR2: GTZC1 TZSC privilege configuration register 2
+0x40032424 B  REGISTER TZSC_PRIVCFGR2: GTZC1 TZSC privilege configuration register 2
 0x40032424 C   FIELD 00w01 FDCAN1PRIV (rw): privileged access mode for FDCAN1
 0x40032424 C   FIELD 03w01 OPAMPPRIV (rw): privileged access mode for OPAMP
 0x40032424 C   FIELD 04w01 COMPPRIV (rw): privileged access mode for COMP
@@ -4059,7 +4059,7 @@
 0x40032424 C   FIELD 19w01 USBFSPRIV (rw): privileged access mode for USBSF
 0x40032424 C   FIELD 25w01 LPUART1PRIV (rw): privileged access mode for LPUART
 0x40032424 C   FIELD 28w01 LPTIM1PRIV (rw): privileged access mode for LPTIM1
-0x40032428 B  REGISTER GTZC1_TZSC_PRIVCFGR3: GTZC1 TZSC privilege configuration register 3
+0x40032428 B  REGISTER TZSC_PRIVCFGR3: GTZC1 TZSC privilege configuration register 3
 0x40032428 C   FIELD 02w01 I3C2PRIV (rw): privileged access mode for I3C2
 0x40032428 C   FIELD 08w01 CRCPRIV (rw): privileged access mode for CRC
 0x40032428 C   FIELD 12w01 ICACHEPRIV (rw): privileged access mode for ICACHE
@@ -4067,21 +4067,21 @@
 0x40032428 C   FIELD 17w01 HASHPRIV (rw): privileged access mode for HASH
 0x40032428 C   FIELD 18w01 RNGPRIV (rw): privileged access mode for RNG
 0x40032428 C   FIELD 26w01 RAMCFGPRIV (rw): privileged access mode for RAMSCFG
-0x40032470 B  REGISTER GTZC1_TZSC_MPCWM4ACFGR: GTZC1 TZSC BKPSRAM sub-region A watermark configuration register
+0x40032470 B  REGISTER TZSC_MPCWM4ACFGR: GTZC1 TZSC BKPSRAM sub-region A watermark configuration register
 0x40032470 C   FIELD 00w01 SREN (rw): Sub-region z enable
 0x40032470 C   FIELD 01w01 SRLOCK (rw): Sub-region z lock This bit, once set, can be cleared only by a system reset.
 0x40032470 C   FIELD 09w01 PRIV (rw): Privileged sub-region z This bit is taken into account only if SREN is set.
-0x40032474 B  REGISTER GTZC1_TZSC_MPCWM4AR: GTZC1 TZSC BKPSRAM sub-region A watermark register
+0x40032474 B  REGISTER TZSC_MPCWM4AR: GTZC1 TZSC BKPSRAM sub-region A watermark register
 0x40032474 C   FIELD 00w11 SUBA_START (rw): Start of sub-region A This field defines the address offset of the sub-region A, to be multiplied by the granularity defined in Table 16.
 0x40032474 C   FIELD 16w12 SUBA_LENGTH (rw): Length of sub-region A This field defines the length of the sub-region A, to be multiplied by the granularity defined in Table 16. When SUBA_START + SUBA_LENGTH is higher than the maximum size allowed for the memory, a saturation of SUBA_LENGTH is applied automatically. If SUBA_LENGTH = 0, the sub-region A is disabled (SREN bit in GTZC1_TZSC_MPCMWACFGR is cleared).
-0x40032478 B  REGISTER GTZC1_TZSC_MPCWM4BCFGR: GTZC1 TZSC BKPSRAM sub-region B watermark configuration register
+0x40032478 B  REGISTER TZSC_MPCWM4BCFGR: GTZC1 TZSC BKPSRAM sub-region B watermark configuration register
 0x40032478 C   FIELD 00w01 SREN (rw): Sub-region z enable
 0x40032478 C   FIELD 01w01 SRLOCK (rw): Sub-region z lock This bit, once set, can be cleared only by a system reset.
 0x40032478 C   FIELD 09w01 PRIV (rw): Privileged sub-region z This bit is taken into account only if SREN is set.
-0x4003247C B  REGISTER GTZC1_TZSC_MPCWM4BR: GTZC1 TZSC BKPSRAM sub-region B watermark register
+0x4003247C B  REGISTER TZSC_MPCWM4BR: GTZC1 TZSC BKPSRAM sub-region B watermark register
 0x4003247C C   FIELD 00w11 SUBB_START (rw): Start of sub-region B This field defines the address offset of the sub-region B, to be multiplied by the granularity defined in Table 16.
 0x4003247C C   FIELD 16w12 SUBB_LENGTH (rw): Length of sub-region B This field defines the length of the sub-region B, to be multiplied by the granularity defined in Table 16. When SUBB_START + SUBB_LENGTH is higher than the maximum size allowed for the memory, a saturation of SUBB_LENGTH is applied automatically. If SUBB_LENGTH = 0, the sub-region B is disabled (SREN bit in GTZC1_TZSC_MPCMWBCFGR is cleared).
-0x40032600 B  REGISTER GTZC1_MPCBB1_PRIVCFGR0: GTZC1 SRAM1 MPCBB privileged configuration for super-block 0 register
+0x40032600 B  REGISTER MPCBB1_PRIVCFGR0: SRAM1 MPCBB privileged configuration for super-block 0 register
 0x40032600 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032600 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032600 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4114,7 +4114,7 @@
 0x40032600 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032600 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032600 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032604 B  REGISTER GTZC1_MPCBB1_PRIVCFGR1: GTZC1 SRAM1 MPCBB privileged configuration for super-block 1 register
+0x40032604 B  REGISTER MPCBB1_PRIVCFGR1: SRAM1 MPCBB privileged configuration for super-block 1 register
 0x40032604 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032604 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032604 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4147,7 +4147,7 @@
 0x40032604 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032604 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032604 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032608 B  REGISTER GTZC1_MPCBB1_PRIVCFGR2: GTZC1 SRAM1 MPCBB privileged configuration for super-block 2 register
+0x40032608 B  REGISTER MPCBB1_PRIVCFGR2: SRAM1 MPCBB privileged configuration for super-block 2 register
 0x40032608 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032608 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032608 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4180,7 +4180,7 @@
 0x40032608 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032608 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032608 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003260C B  REGISTER GTZC1_MPCBB1_PRIVCFGR3: GTZC1 SRAM1 MPCBB privileged configuration for super-block 3 register
+0x4003260C B  REGISTER MPCBB1_PRIVCFGR3: SRAM1 MPCBB privileged configuration for super-block 3 register
 0x4003260C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003260C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003260C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4213,7 +4213,7 @@
 0x4003260C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003260C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003260C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032610 B  REGISTER GTZC1_MPCBB1_PRIVCFGR4: GTZC1 SRAM1 MPCBB privileged configuration for super-block 4 register
+0x40032610 B  REGISTER MPCBB1_PRIVCFGR4: SRAM1 MPCBB privileged configuration for super-block 4 register
 0x40032610 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032610 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032610 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4246,7 +4246,7 @@
 0x40032610 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032610 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032610 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032614 B  REGISTER GTZC1_MPCBB1_PRIVCFGR5: GTZC1 SRAM1 MPCBB privileged configuration for super-block 5 register
+0x40032614 B  REGISTER MPCBB1_PRIVCFGR5: SRAM1 MPCBB privileged configuration for super-block 5 register
 0x40032614 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032614 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032614 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4279,7 +4279,7 @@
 0x40032614 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032614 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032614 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032618 B  REGISTER GTZC1_MPCBB1_PRIVCFGR6: GTZC1 SRAM1 MPCBB privileged configuration for super-block 6 register
+0x40032618 B  REGISTER MPCBB1_PRIVCFGR6: SRAM1 MPCBB privileged configuration for super-block 6 register
 0x40032618 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032618 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032618 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4312,7 +4312,7 @@
 0x40032618 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032618 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032618 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003261C B  REGISTER GTZC1_MPCBB1_PRIVCFGR7: GTZC1 SRAM1 MPCBB privileged configuration for super-block 7 register
+0x4003261C B  REGISTER MPCBB1_PRIVCFGR7: SRAM1 MPCBB privileged configuration for super-block 7 register
 0x4003261C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003261C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003261C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4345,7 +4345,7 @@
 0x4003261C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003261C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003261C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032620 B  REGISTER GTZC1_MPCBB1_PRIVCFGR8: GTZC1 SRAM1 MPCBB privileged configuration for super-block 8 register
+0x40032620 B  REGISTER MPCBB1_PRIVCFGR8: SRAM1 MPCBB privileged configuration for super-block 8 register
 0x40032620 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032620 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032620 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4378,7 +4378,7 @@
 0x40032620 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032620 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032620 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032624 B  REGISTER GTZC1_MPCBB1_PRIVCFGR9: GTZC1 SRAM1 MPCBB privileged configuration for super-block 9 register
+0x40032624 B  REGISTER MPCBB1_PRIVCFGR9: SRAM1 MPCBB privileged configuration for super-block 9 register
 0x40032624 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032624 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032624 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4411,7 +4411,7 @@
 0x40032624 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032624 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032624 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032628 B  REGISTER GTZC1_MPCBB1_PRIVCFGR10: GTZC1 SRAM1 MPCBB privileged configuration for super-block 10 register
+0x40032628 B  REGISTER MPCBB1_PRIVCFGR10: GTZC1 SRAM1 MPCBB privileged configuration for super-block 10 register
 0x40032628 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032628 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032628 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4444,7 +4444,7 @@
 0x40032628 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032628 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032628 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003262C B  REGISTER GTZC1_MPCBB1_PRIVCFGR11: GTZC1 SRAM1 MPCBB privileged configuration for super-block 11 register
+0x4003262C B  REGISTER MPCBB1_PRIVCFGR11: GTZC1 SRAM1 MPCBB privileged configuration for super-block 11 register
 0x4003262C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003262C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003262C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4477,7 +4477,7 @@
 0x4003262C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003262C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003262C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032630 B  REGISTER GTZC1_MPCBB1_PRIVCFGR12: GTZC1 SRAM1 MPCBB privileged configuration for super-block 12 register
+0x40032630 B  REGISTER MPCBB1_PRIVCFGR12: GTZC1 SRAM1 MPCBB privileged configuration for super-block 12 register
 0x40032630 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032630 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032630 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4510,7 +4510,7 @@
 0x40032630 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032630 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032630 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032634 B  REGISTER GTZC1_MPCBB1_PRIVCFGR13: GTZC1 SRAM1 MPCBB privileged configuration for super-block 13 register
+0x40032634 B  REGISTER MPCBB1_PRIVCFGR13: GTZC1 SRAM1 MPCBB privileged configuration for super-block 13 register
 0x40032634 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032634 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032634 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4543,7 +4543,7 @@
 0x40032634 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032634 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032634 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032638 B  REGISTER GTZC1_MPCBB1_PRIVCFGR14: GTZC1 SRAM1 MPCBB privileged configuration for super-block 14 register
+0x40032638 B  REGISTER MPCBB1_PRIVCFGR14: GTZC1 SRAM1 MPCBB privileged configuration for super-block 14 register
 0x40032638 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032638 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032638 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4576,7 +4576,7 @@
 0x40032638 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032638 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032638 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003263C B  REGISTER GTZC1_MPCBB1_PRIVCFGR15: GTZC1 SRAM1 MPCBB privileged configuration for super-block 15 register
+0x4003263C B  REGISTER MPCBB1_PRIVCFGR15: GTZC1 SRAM1 MPCBB privileged configuration for super-block 15 register
 0x4003263C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003263C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003263C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4609,7 +4609,7 @@
 0x4003263C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003263C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003263C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032640 B  REGISTER GTZC1_MPCBB1_PRIVCFGR16: GTZC1 SRAM1 MPCBB privileged configuration for super-block 16 register
+0x40032640 B  REGISTER MPCBB1_PRIVCFGR16: GTZC1 SRAM1 MPCBB privileged configuration for super-block 16 register
 0x40032640 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032640 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032640 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4642,7 +4642,7 @@
 0x40032640 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032640 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032640 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032644 B  REGISTER GTZC1_MPCBB1_PRIVCFGR17: GTZC1 SRAM1 MPCBB privileged configuration for super-block 17 register
+0x40032644 B  REGISTER MPCBB1_PRIVCFGR17: GTZC1 SRAM1 MPCBB privileged configuration for super-block 17 register
 0x40032644 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032644 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032644 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4675,7 +4675,7 @@
 0x40032644 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032644 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032644 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032648 B  REGISTER GTZC1_MPCBB1_PRIVCFGR18: GTZC1 SRAM1 MPCBB privileged configuration for super-block 18 register
+0x40032648 B  REGISTER MPCBB1_PRIVCFGR18: GTZC1 SRAM1 MPCBB privileged configuration for super-block 18 register
 0x40032648 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032648 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032648 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4708,7 +4708,7 @@
 0x40032648 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032648 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032648 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003264C B  REGISTER GTZC1_MPCBB1_PRIVCFGR19: GTZC1 SRAM1 MPCBB privileged configuration for super-block 19 register
+0x4003264C B  REGISTER MPCBB1_PRIVCFGR19: GTZC1 SRAM1 MPCBB privileged configuration for super-block 19 register
 0x4003264C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003264C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003264C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4741,7 +4741,7 @@
 0x4003264C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003264C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003264C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032650 B  REGISTER GTZC1_MPCBB1_PRIVCFGR20: GTZC1 SRAM1 MPCBB privileged configuration for super-block 20 register
+0x40032650 B  REGISTER MPCBB1_PRIVCFGR20: GTZC1 SRAM1 MPCBB privileged configuration for super-block 20 register
 0x40032650 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032650 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032650 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4774,7 +4774,7 @@
 0x40032650 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032650 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032650 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032654 B  REGISTER GTZC1_MPCBB1_PRIVCFGR21: GTZC1 SRAM1 MPCBB privileged configuration for super-block 21 register
+0x40032654 B  REGISTER MPCBB1_PRIVCFGR21: GTZC1 SRAM1 MPCBB privileged configuration for super-block 21 register
 0x40032654 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032654 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032654 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4807,7 +4807,7 @@
 0x40032654 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032654 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032654 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032658 B  REGISTER GTZC1_MPCBB1_PRIVCFGR22: GTZC1 SRAM1 MPCBB privileged configuration for super-block 22 register
+0x40032658 B  REGISTER MPCBB1_PRIVCFGR22: GTZC1 SRAM1 MPCBB privileged configuration for super-block 22 register
 0x40032658 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032658 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032658 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4840,7 +4840,7 @@
 0x40032658 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032658 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032658 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003265C B  REGISTER GTZC1_MPCBB1_PRIVCFGR23: GTZC1 SRAM1 MPCBB privileged configuration for super-block 23 register
+0x4003265C B  REGISTER MPCBB1_PRIVCFGR23: GTZC1 SRAM1 MPCBB privileged configuration for super-block 23 register
 0x4003265C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003265C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003265C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4873,7 +4873,7 @@
 0x4003265C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003265C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003265C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032660 B  REGISTER GTZC1_MPCBB1_PRIVCFGR24: GTZC1 SRAM1 MPCBB privileged configuration for super-block 24 register
+0x40032660 B  REGISTER MPCBB1_PRIVCFGR24: GTZC1 SRAM1 MPCBB privileged configuration for super-block 24 register
 0x40032660 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032660 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032660 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4906,7 +4906,7 @@
 0x40032660 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032660 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032660 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032664 B  REGISTER GTZC1_MPCBB1_PRIVCFGR25: GTZC1 SRAM1 MPCBB privileged configuration for super-block 25 register
+0x40032664 B  REGISTER MPCBB1_PRIVCFGR25: GTZC1 SRAM1 MPCBB privileged configuration for super-block 25 register
 0x40032664 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032664 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032664 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4939,7 +4939,7 @@
 0x40032664 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032664 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032664 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032668 B  REGISTER GTZC1_MPCBB1_PRIVCFGR26: GTZC1 SRAM1 MPCBB privileged configuration for super-block 26 register
+0x40032668 B  REGISTER MPCBB1_PRIVCFGR26: GTZC1 SRAM1 MPCBB privileged configuration for super-block 26 register
 0x40032668 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032668 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032668 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -4972,7 +4972,7 @@
 0x40032668 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032668 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032668 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003266C B  REGISTER GTZC1_MPCBB1_PRIVCFGR27: GTZC1 SRAM1 MPCBB privileged configuration for super-block 27 register
+0x4003266C B  REGISTER MPCBB1_PRIVCFGR27: GTZC1 SRAM1 MPCBB privileged configuration for super-block 27 register
 0x4003266C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003266C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003266C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5005,7 +5005,7 @@
 0x4003266C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003266C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003266C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032670 B  REGISTER GTZC1_MPCBB1_PRIVCFGR28: GTZC1 SRAM1 MPCBB privileged configuration for super-block 28 register
+0x40032670 B  REGISTER MPCBB1_PRIVCFGR28: GTZC1 SRAM1 MPCBB privileged configuration for super-block 28 register
 0x40032670 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032670 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032670 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5038,7 +5038,7 @@
 0x40032670 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032670 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032670 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032674 B  REGISTER GTZC1_MPCBB1_PRIVCFGR29: GTZC1 SRAM1 MPCBB privileged configuration for super-block 29 register
+0x40032674 B  REGISTER MPCBB1_PRIVCFGR29: GTZC1 SRAM1 MPCBB privileged configuration for super-block 29 register
 0x40032674 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032674 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032674 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5071,7 +5071,7 @@
 0x40032674 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032674 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032674 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032678 B  REGISTER GTZC1_MPCBB1_PRIVCFGR30: GTZC1 SRAM1 MPCBB privileged configuration for super-block 30 register
+0x40032678 B  REGISTER MPCBB1_PRIVCFGR30: GTZC1 SRAM1 MPCBB privileged configuration for super-block 30 register
 0x40032678 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032678 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032678 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5104,7 +5104,7 @@
 0x40032678 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032678 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032678 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x4003267C B  REGISTER GTZC1_MPCBB1_PRIVCFGR31: GTZC1 SRAM1 MPCBB privileged configuration for super-block 31 register
+0x4003267C B  REGISTER MPCBB1_PRIVCFGR31: GTZC1 SRAM1 MPCBB privileged configuration for super-block 31 register
 0x4003267C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003267C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003267C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5137,7 +5137,7 @@
 0x4003267C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003267C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x4003267C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A00 B  REGISTER GTZC1_MPCBB2_PRIVCFGR0: GTZC1 SRAM2 MPCBB privileged configuration for super-block 0 register
+0x40032A00 B  REGISTER MPCBB2_PRIVCFGR0: SRAM2 MPCBB privileged configuration for super-block 0 register
 0x40032A00 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A00 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A00 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5170,7 +5170,7 @@
 0x40032A00 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A00 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A00 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A04 B  REGISTER GTZC1_MPCBB2_PRIVCFGR1: GTZC1 SRAM2 MPCBB privileged configuration for super-block 1 register
+0x40032A04 B  REGISTER MPCBB2_PRIVCFGR1: SRAM2 MPCBB privileged configuration for super-block 1 register
 0x40032A04 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A04 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A04 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5203,7 +5203,7 @@
 0x40032A04 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A04 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A04 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A08 B  REGISTER GTZC1_MPCBB2_PRIVCFGR2: GTZC1 SRAM2 MPCBB privileged configuration for super-block 2 register
+0x40032A08 B  REGISTER MPCBB2_PRIVCFGR2: SRAM2 MPCBB privileged configuration for super-block 2 register
 0x40032A08 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A08 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A08 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5236,7 +5236,7 @@
 0x40032A08 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A08 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A08 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A0C B  REGISTER GTZC1_MPCBB2_PRIVCFGR3: GTZC1 SRAM2 MPCBB privileged configuration for super-block 3 register
+0x40032A0C B  REGISTER MPCBB2_PRIVCFGR3: SRAM2 MPCBB privileged configuration for super-block 3 register
 0x40032A0C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A0C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A0C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5269,7 +5269,7 @@
 0x40032A0C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A0C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A0C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A10 B  REGISTER GTZC1_MPCBB2_PRIVCFGR4: GTZC1 SRAM2 MPCBB privileged configuration for super-block 4 register
+0x40032A10 B  REGISTER MPCBB2_PRIVCFGR4: SRAM2 MPCBB privileged configuration for super-block 4 register
 0x40032A10 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A10 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A10 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5302,7 +5302,7 @@
 0x40032A10 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A10 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A10 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A14 B  REGISTER GTZC1_MPCBB2_PRIVCFGR5: GTZC1 SRAM2 MPCBB privileged configuration for super-block 5 register
+0x40032A14 B  REGISTER MPCBB2_PRIVCFGR5: SRAM2 MPCBB privileged configuration for super-block 5 register
 0x40032A14 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A14 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A14 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5335,7 +5335,7 @@
 0x40032A14 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A14 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A14 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A18 B  REGISTER GTZC1_MPCBB2_PRIVCFGR6: GTZC1 SRAM2 MPCBB privileged configuration for super-block 6 register
+0x40032A18 B  REGISTER MPCBB2_PRIVCFGR6: SRAM2 MPCBB privileged configuration for super-block 6 register
 0x40032A18 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A18 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A18 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5368,7 +5368,7 @@
 0x40032A18 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A18 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A18 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A1C B  REGISTER GTZC1_MPCBB2_PRIVCFGR7: GTZC1 SRAM2 MPCBB privileged configuration for super-block 7 register
+0x40032A1C B  REGISTER MPCBB2_PRIVCFGR7: SRAM2 MPCBB privileged configuration for super-block 7 register
 0x40032A1C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A1C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A1C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5401,7 +5401,7 @@
 0x40032A1C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A1C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A1C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A20 B  REGISTER GTZC1_MPCBB2_PRIVCFGR8: GTZC1 SRAM2 MPCBB privileged configuration for super-block 8 register
+0x40032A20 B  REGISTER MPCBB2_PRIVCFGR8: SRAM2 MPCBB privileged configuration for super-block 8 register
 0x40032A20 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A20 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A20 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5434,7 +5434,7 @@
 0x40032A20 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A20 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A20 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A24 B  REGISTER GTZC1_MPCBB2_PRIVCFGR9: GTZC1 SRAM2 MPCBB privileged configuration for super-block 9 register
+0x40032A24 B  REGISTER MPCBB2_PRIVCFGR9: SRAM2 MPCBB privileged configuration for super-block 9 register
 0x40032A24 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A24 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A24 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5467,7 +5467,7 @@
 0x40032A24 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A24 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A24 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A28 B  REGISTER GTZC1_MPCBB2_PRIVCFGR10: GTZC1 SRAM2 MPCBB privileged configuration for super-block 10 register
+0x40032A28 B  REGISTER MPCBB2_PRIVCFGR10: GTZC1 SRAM2 MPCBB privileged configuration for super-block 10 register
 0x40032A28 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A28 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A28 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5500,7 +5500,7 @@
 0x40032A28 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A28 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A28 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A2C B  REGISTER GTZC1_MPCBB2_PRIVCFGR11: GTZC1 SRAM2 MPCBB privileged configuration for super-block 11 register
+0x40032A2C B  REGISTER MPCBB2_PRIVCFGR11: GTZC1 SRAM2 MPCBB privileged configuration for super-block 11 register
 0x40032A2C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A2C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A2C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5533,7 +5533,7 @@
 0x40032A2C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A2C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A2C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A30 B  REGISTER GTZC1_MPCBB2_PRIVCFGR12: GTZC1 SRAM2 MPCBB privileged configuration for super-block 12 register
+0x40032A30 B  REGISTER MPCBB2_PRIVCFGR12: GTZC1 SRAM2 MPCBB privileged configuration for super-block 12 register
 0x40032A30 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A30 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A30 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5566,7 +5566,7 @@
 0x40032A30 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A30 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A30 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A34 B  REGISTER GTZC1_MPCBB2_PRIVCFGR13: GTZC1 SRAM2 MPCBB privileged configuration for super-block 13 register
+0x40032A34 B  REGISTER MPCBB2_PRIVCFGR13: GTZC1 SRAM2 MPCBB privileged configuration for super-block 13 register
 0x40032A34 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A34 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A34 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5599,7 +5599,7 @@
 0x40032A34 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A34 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A34 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A38 B  REGISTER GTZC1_MPCBB2_PRIVCFGR14: GTZC1 SRAM2 MPCBB privileged configuration for super-block 14 register
+0x40032A38 B  REGISTER MPCBB2_PRIVCFGR14: GTZC1 SRAM2 MPCBB privileged configuration for super-block 14 register
 0x40032A38 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A38 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A38 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5632,7 +5632,7 @@
 0x40032A38 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A38 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A38 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A3C B  REGISTER GTZC1_MPCBB2_PRIVCFGR15: GTZC1 SRAM2 MPCBB privileged configuration for super-block 15 register
+0x40032A3C B  REGISTER MPCBB2_PRIVCFGR15: GTZC1 SRAM2 MPCBB privileged configuration for super-block 15 register
 0x40032A3C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A3C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A3C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5665,7 +5665,7 @@
 0x40032A3C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A3C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A3C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A40 B  REGISTER GTZC1_MPCBB2_PRIVCFGR16: GTZC1 SRAM2 MPCBB privileged configuration for super-block 16 register
+0x40032A40 B  REGISTER MPCBB2_PRIVCFGR16: GTZC1 SRAM2 MPCBB privileged configuration for super-block 16 register
 0x40032A40 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A40 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A40 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5698,7 +5698,7 @@
 0x40032A40 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A40 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A40 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A44 B  REGISTER GTZC1_MPCBB2_PRIVCFGR17: GTZC1 SRAM2 MPCBB privileged configuration for super-block 17 register
+0x40032A44 B  REGISTER MPCBB2_PRIVCFGR17: GTZC1 SRAM2 MPCBB privileged configuration for super-block 17 register
 0x40032A44 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A44 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A44 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5731,7 +5731,7 @@
 0x40032A44 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A44 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A44 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A48 B  REGISTER GTZC1_MPCBB2_PRIVCFGR18: GTZC1 SRAM2 MPCBB privileged configuration for super-block 18 register
+0x40032A48 B  REGISTER MPCBB2_PRIVCFGR18: GTZC1 SRAM2 MPCBB privileged configuration for super-block 18 register
 0x40032A48 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A48 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A48 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5764,7 +5764,7 @@
 0x40032A48 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A48 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A48 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A4C B  REGISTER GTZC1_MPCBB2_PRIVCFGR19: GTZC1 SRAM2 MPCBB privileged configuration for super-block 19 register
+0x40032A4C B  REGISTER MPCBB2_PRIVCFGR19: GTZC1 SRAM2 MPCBB privileged configuration for super-block 19 register
 0x40032A4C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A4C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A4C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5797,7 +5797,7 @@
 0x40032A4C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A4C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A4C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A50 B  REGISTER GTZC1_MPCBB2_PRIVCFGR20: GTZC1 SRAM2 MPCBB privileged configuration for super-block 20 register
+0x40032A50 B  REGISTER MPCBB2_PRIVCFGR20: GTZC1 SRAM2 MPCBB privileged configuration for super-block 20 register
 0x40032A50 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A50 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A50 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5830,7 +5830,7 @@
 0x40032A50 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A50 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A50 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A54 B  REGISTER GTZC1_MPCBB2_PRIVCFGR21: GTZC1 SRAM2 MPCBB privileged configuration for super-block 21 register
+0x40032A54 B  REGISTER MPCBB2_PRIVCFGR21: GTZC1 SRAM2 MPCBB privileged configuration for super-block 21 register
 0x40032A54 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A54 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A54 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5863,7 +5863,7 @@
 0x40032A54 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A54 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A54 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A58 B  REGISTER GTZC1_MPCBB2_PRIVCFGR22: GTZC1 SRAM2 MPCBB privileged configuration for super-block 22 register
+0x40032A58 B  REGISTER MPCBB2_PRIVCFGR22: GTZC1 SRAM2 MPCBB privileged configuration for super-block 22 register
 0x40032A58 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A58 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A58 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5896,7 +5896,7 @@
 0x40032A58 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A58 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A58 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A5C B  REGISTER GTZC1_MPCBB2_PRIVCFGR23: GTZC1 SRAM2 MPCBB privileged configuration for super-block 23 register
+0x40032A5C B  REGISTER MPCBB2_PRIVCFGR23: GTZC1 SRAM2 MPCBB privileged configuration for super-block 23 register
 0x40032A5C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A5C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A5C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5929,7 +5929,7 @@
 0x40032A5C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A5C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A5C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A60 B  REGISTER GTZC1_MPCBB2_PRIVCFGR24: GTZC1 SRAM2 MPCBB privileged configuration for super-block 24 register
+0x40032A60 B  REGISTER MPCBB2_PRIVCFGR24: GTZC1 SRAM2 MPCBB privileged configuration for super-block 24 register
 0x40032A60 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A60 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A60 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5962,7 +5962,7 @@
 0x40032A60 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A60 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A60 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A64 B  REGISTER GTZC1_MPCBB2_PRIVCFGR25: GTZC1 SRAM2 MPCBB privileged configuration for super-block 25 register
+0x40032A64 B  REGISTER MPCBB2_PRIVCFGR25: GTZC1 SRAM2 MPCBB privileged configuration for super-block 25 register
 0x40032A64 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A64 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A64 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -5995,7 +5995,7 @@
 0x40032A64 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A64 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A64 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A68 B  REGISTER GTZC1_MPCBB2_PRIVCFGR26: GTZC1 SRAM2 MPCBB privileged configuration for super-block 26 register
+0x40032A68 B  REGISTER MPCBB2_PRIVCFGR26: GTZC1 SRAM2 MPCBB privileged configuration for super-block 26 register
 0x40032A68 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A68 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A68 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -6028,7 +6028,7 @@
 0x40032A68 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A68 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A68 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A6C B  REGISTER GTZC1_MPCBB2_PRIVCFGR27: GTZC1 SRAM2 MPCBB privileged configuration for super-block 27 register
+0x40032A6C B  REGISTER MPCBB2_PRIVCFGR27: GTZC1 SRAM2 MPCBB privileged configuration for super-block 27 register
 0x40032A6C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A6C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A6C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -6061,7 +6061,7 @@
 0x40032A6C C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A6C C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A6C C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A70 B  REGISTER GTZC1_MPCBB2_PRIVCFGR28: GTZC1 SRAM2 MPCBB privileged configuration for super-block 28 register
+0x40032A70 B  REGISTER MPCBB2_PRIVCFGR28: GTZC1 SRAM2 MPCBB privileged configuration for super-block 28 register
 0x40032A70 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A70 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A70 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -6094,7 +6094,7 @@
 0x40032A70 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A70 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A70 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A74 B  REGISTER GTZC1_MPCBB2_PRIVCFGR29: GTZC1 SRAM2 MPCBB privileged configuration for super-block 29 register
+0x40032A74 B  REGISTER MPCBB2_PRIVCFGR29: GTZC1 SRAM2 MPCBB privileged configuration for super-block 29 register
 0x40032A74 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A74 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A74 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -6127,7 +6127,7 @@
 0x40032A74 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A74 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A74 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A78 B  REGISTER GTZC1_MPCBB2_PRIVCFGR30: GTZC1 SRAM2 MPCBB privileged configuration for super-block 30 register
+0x40032A78 B  REGISTER MPCBB2_PRIVCFGR30: GTZC1 SRAM2 MPCBB privileged configuration for super-block 30 register
 0x40032A78 C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A78 C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A78 C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
@@ -6160,7 +6160,7 @@
 0x40032A78 C   FIELD 29w01 PRIV29 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A78 C   FIELD 30w01 PRIV30 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A78 C   FIELD 31w01 PRIV31 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
-0x40032A7C B  REGISTER GTZC1_MPCBB2_PRIVCFGR31: GTZC1 SRAM2 MPCBB privileged configuration for super-block 31 register
+0x40032A7C B  REGISTER MPCBB2_PRIVCFGR31: GTZC1 SRAM2 MPCBB privileged configuration for super-block 31 register
 0x40032A7C C   FIELD 00w01 PRIV0 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A7C C   FIELD 01w01 PRIV1 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
 0x40032A7C C   FIELD 02w01 PRIV2 (rw): Privileged configuration for block y, belonging to super-block x (y = 31 to 0).
