@@ -2943,7 +2943,15 @@
 0x4000A000 C   FIELD 06w05 IFRGAP (rw): Division ratio for producing inter-frame gap timer clock The bitfield determines the division ratio (the bitfield value minus one) of a ucpd_clk divider producing inter-frame gap timer clock (tInterFrameGap). The division ratio 15 is to apply for Tx clock at the USB PD 2.0 specification nominal value. The division ratios below 15 are to apply for Tx clock below nominal, and the division ratios above 15 for Tx clock above nominal.
 0x4000A000 C   FIELD 11w05 TRANSWIN (rw): Transition window duration The bitfield determines the division ratio (the bitfield value minus one) of a hbit_clk divider producing tTransitionWindow interval. Set a value that produces an interval of 12 to 20 us, taking into account the ucpd_clk frequency and the HBITCLKDIV[5:0] bitfield setting.
 0x4000A000 C   FIELD 17w03 PSC_USBPDCLK (rw): Pre-scaler division ratio for generating ucpd_clk The bitfield determines the division ratio of a kernel clock pre-scaler producing UCPD peripheral clock (ucpd_clk). It is recommended to use the pre-scaler so as to set the ucpd_clk frequency in the range from 6 to 9 MHz.
-0x4000A000 C   FIELD 20w09 RXORDSETEN (rw): Receiver ordered set enable The bitfield determines the types of ordered sets that the receiver must detect. When set/cleared, each bit enables/disables a specific function: 0bxxxxxxxx1: SOP detect enabled 0bxxxxxxx1x: SOP' detect enabled 0bxxxxxx1xx: SOP'' detect enabled 0bxxxxx1xxx: Hard Reset detect enabled 0bxxxx1xxxx: Cable Detect reset enabled 0bxxx1xxxxx: SOP'_Debug enabled 0bxx1xxxxxx: SOP''_Debug enabled 0bx1xxxxxxx: SOP extension#1 enabled 0b1xxxxxxxx: SOP extension#2 enabled
+0x4000A000 C   FIELD 20w01 RXORDSETEN0: SOP detection
+0x4000A000 C   FIELD 21w01 RXORDSETEN1: SOP' detection
+0x4000A000 C   FIELD 22w01 RXORDSETEN2: SOP'' detection
+0x4000A000 C   FIELD 23w01 RXORDSETEN3: Hard Reset detection
+0x4000A000 C   FIELD 24w01 RXORDSETEN4: Cable Detect reset
+0x4000A000 C   FIELD 25w01 RXORDSETEN5: SOP'_Debug
+0x4000A000 C   FIELD 26w01 RXORDSETEN6: SOP'' Debug
+0x4000A000 C   FIELD 27w01 RXORDSETEN7: SOP extension #1
+0x4000A000 C   FIELD 28w01 RXORDSETEN8: SOP extension #2
 0x4000A000 C   FIELD 29w01 TXDMAEN (rw): Transmission DMA mode enable When set, the bit enables DMA mode for transmission.
 0x4000A000 C   FIELD 30w01 RXDMAEN (rw): Reception DMA mode enable When set, the bit enables DMA mode for reception.
 0x4000A000 C   FIELD 31w01 UCPDEN (rw): UCPD peripheral enable General enable of the UCPD peripheral. Upon disabling, the peripheral instantly quits any ongoing activity and all control bits and bitfields default to their reset values. They must be set to their desired values each time the peripheral transits from disabled to enabled state.
@@ -3050,7 +3058,15 @@
 0x4000A400 C   FIELD 06w05 IFRGAP (rw): Division ratio for producing inter-frame gap timer clock The bitfield determines the division ratio (the bitfield value minus one) of a ucpd_clk divider producing inter-frame gap timer clock (tInterFrameGap). The division ratio 15 is to apply for Tx clock at the USB PD 2.0 specification nominal value. The division ratios below 15 are to apply for Tx clock below nominal, and the division ratios above 15 for Tx clock above nominal.
 0x4000A400 C   FIELD 11w05 TRANSWIN (rw): Transition window duration The bitfield determines the division ratio (the bitfield value minus one) of a hbit_clk divider producing tTransitionWindow interval. Set a value that produces an interval of 12 to 20 us, taking into account the ucpd_clk frequency and the HBITCLKDIV[5:0] bitfield setting.
 0x4000A400 C   FIELD 17w03 PSC_USBPDCLK (rw): Pre-scaler division ratio for generating ucpd_clk The bitfield determines the division ratio of a kernel clock pre-scaler producing UCPD peripheral clock (ucpd_clk). It is recommended to use the pre-scaler so as to set the ucpd_clk frequency in the range from 6 to 9 MHz.
-0x4000A400 C   FIELD 20w09 RXORDSETEN (rw): Receiver ordered set enable The bitfield determines the types of ordered sets that the receiver must detect. When set/cleared, each bit enables/disables a specific function: 0bxxxxxxxx1: SOP detect enabled 0bxxxxxxx1x: SOP' detect enabled 0bxxxxxx1xx: SOP'' detect enabled 0bxxxxx1xxx: Hard Reset detect enabled 0bxxxx1xxxx: Cable Detect reset enabled 0bxxx1xxxxx: SOP'_Debug enabled 0bxx1xxxxxx: SOP''_Debug enabled 0bx1xxxxxxx: SOP extension#1 enabled 0b1xxxxxxxx: SOP extension#2 enabled
+0x4000A400 C   FIELD 20w01 RXORDSETEN0: SOP detection
+0x4000A400 C   FIELD 21w01 RXORDSETEN1: SOP' detection
+0x4000A400 C   FIELD 22w01 RXORDSETEN2: SOP'' detection
+0x4000A400 C   FIELD 23w01 RXORDSETEN3: Hard Reset detection
+0x4000A400 C   FIELD 24w01 RXORDSETEN4: Cable Detect reset
+0x4000A400 C   FIELD 25w01 RXORDSETEN5: SOP'_Debug
+0x4000A400 C   FIELD 26w01 RXORDSETEN6: SOP'' Debug
+0x4000A400 C   FIELD 27w01 RXORDSETEN7: SOP extension #1
+0x4000A400 C   FIELD 28w01 RXORDSETEN8: SOP extension #2
 0x4000A400 C   FIELD 29w01 TXDMAEN (rw): Transmission DMA mode enable When set, the bit enables DMA mode for transmission.
 0x4000A400 C   FIELD 30w01 RXDMAEN (rw): Reception DMA mode enable When set, the bit enables DMA mode for reception.
 0x4000A400 C   FIELD 31w01 UCPDEN (rw): UCPD peripheral enable General enable of the UCPD peripheral. Upon disabling, the peripheral instantly quits any ongoing activity and all control bits and bitfields default to their reset values. They must be set to their desired values each time the peripheral transits from disabled to enabled state.
