@@ -2128,6 +2128,16 @@
 0x40005C4C C   FIELD 07w01 EF: EF
 0x40005C50 B  REGISTER BTABLE (rw): Buffer table address
 0x40005C50 C   FIELD 03w13 BTABLE: BTABLE
+0x40005C58 B  REGISTER BCDR (rw): Battery Charging Detector
+0x40005C58 C   FIELD 00w01 BCDEN: Battery charging detector mode enable
+0x40005C58 C   FIELD 01w01 DCDEN: Data contact detection mode enable
+0x40005C58 C   FIELD 02w01 PDEN: Primary detection mode enable
+0x40005C58 C   FIELD 03w01 SDEN: Secondary detection mode enable
+0x40005C58 C   FIELD 04w01 DCDET: Data contact detection status
+0x40005C58 C   FIELD 05w01 PDET: Primary detection status
+0x40005C58 C   FIELD 06w01 SDET: Secondary detection status
+0x40005C58 C   FIELD 07w01 PS2DET: DM pull-up detection status
+0x40005C58 C   FIELD 15w01 DPPU: DP pull-up control
 0x40006400 A PERIPHERAL FDCAN1
 0x40006400 B  REGISTER CREL (ro): FDCAN Core Release Register
 0x40006400 C   FIELD 00w08 DAY: DAY
@@ -3063,16 +3073,24 @@
 0x4000802C B  REGISTER PRESC (rw): Prescaler register
 0x4000802C C   FIELD 00w04 PRESCALER: PRESCALER
 0x4000A000 A PERIPHERAL UCPD1
-0x4000A000 B  REGISTER CFG1 (rw): UCPD configuration register 1
+0x4000A000 B  REGISTER CFGR1 (rw): UCPD configuration register 1
 0x4000A000 C   FIELD 00w06 HBITCLKDIV: HBITCLKDIV
 0x4000A000 C   FIELD 06w05 IFRGAP: IFRGAP
 0x4000A000 C   FIELD 11w05 TRANSWIN: TRANSWIN
 0x4000A000 C   FIELD 17w03 PSC_USBPDCLK: PSC_USBPDCLK
-0x4000A000 C   FIELD 20w09 RXORDSETEN: RXORDSETEN
+0x4000A000 C   FIELD 20w01 RXORDSETEN0: SOP detection
+0x4000A000 C   FIELD 21w01 RXORDSETEN1: SOP' detection
+0x4000A000 C   FIELD 22w01 RXORDSETEN2: SOP'' detection
+0x4000A000 C   FIELD 23w01 RXORDSETEN3: Hard Reset detection
+0x4000A000 C   FIELD 24w01 RXORDSETEN4: Cable Detect reset
+0x4000A000 C   FIELD 25w01 RXORDSETEN5: SOP'_Debug
+0x4000A000 C   FIELD 26w01 RXORDSETEN6: SOP'' Debug
+0x4000A000 C   FIELD 27w01 RXORDSETEN7: SOP extension #1
+0x4000A000 C   FIELD 28w01 RXORDSETEN8: SOP extension #2
 0x4000A000 C   FIELD 29w01 TXDMAEN: TXDMAEN
 0x4000A000 C   FIELD 30w01 RXDMAEN: RXDMAEN
 0x4000A000 C   FIELD 31w01 UCPDEN: UCPDEN
-0x4000A004 B  REGISTER CFG2 (rw): UCPD configuration register 2
+0x4000A004 B  REGISTER CFGR2 (rw): UCPD configuration register 2
 0x4000A004 C   FIELD 00w01 RXFILTDIS: RXFILTDIS
 0x4000A004 C   FIELD 01w01 RXFILT2N3: RXFILT2N3
 0x4000A004 C   FIELD 02w01 FORCECLK: FORCECLK
@@ -3141,23 +3159,23 @@
 0x4000A018 C   FIELD 14w01 TYPECEVT1CF: TYPECEVT1CF
 0x4000A018 C   FIELD 15w01 TYPECEVT2CF: TYPECEVT2CF
 0x4000A018 C   FIELD 20w01 FRSEVTCF: FRSEVTCF
-0x4000A01C B  REGISTER TX_ORDSET (rw): UCPD Tx Ordered Set Type Register
+0x4000A01C B  REGISTER TX_ORDSETR (rw): UCPD Tx Ordered Set Type Register
 0x4000A01C C   FIELD 00w20 TXORDSET: TXORDSET
-0x4000A020 B  REGISTER TX_PAYSZ (rw): UCPD Tx Paysize Register
+0x4000A020 B  REGISTER TX_PAYSZR (rw): UCPD Tx Paysize Register
 0x4000A020 C   FIELD 00w10 TXPAYSZ: TXPAYSZ
 0x4000A024 B  REGISTER TXDR (rw): UCPD Tx Data Register
 0x4000A024 C   FIELD 00w08 TXDATA: TXDATA
-0x4000A028 B  REGISTER RX_ORDSET (ro): UCPD Rx Ordered Set Register
+0x4000A028 B  REGISTER RX_ORDSETR (ro): UCPD Rx Ordered Set Register
 0x4000A028 C   FIELD 00w03 RXORDSET: RXORDSET
 0x4000A028 C   FIELD 03w01 RXSOP3OF4: RXSOP3OF4
 0x4000A028 C   FIELD 04w03 RXSOPKINVALID: RXSOPKINVALID
-0x4000A02C B  REGISTER RX_PAYSZ (ro): UCPD Rx Paysize Register
+0x4000A02C B  REGISTER RX_PAYSZR (ro): UCPD Rx Paysize Register
 0x4000A02C C   FIELD 00w10 RXPAYSZ: RXPAYSZ
 0x4000A030 B  REGISTER RXDR (ro): UCPD Rx Data Register
 0x4000A030 C   FIELD 00w08 RXDATA: RXDATA
-0x4000A034 B  REGISTER RX_ORDEXT1 (rw): UCPD Rx Ordered Set Extension Register 1
+0x4000A034 B  REGISTER RX_ORDEXTR1 (rw): UCPD Rx Ordered Set Extension Register 1
 0x4000A034 C   FIELD 00w20 RXSOPX1: RXSOPX1
-0x4000A038 B  REGISTER RX_ORDEXT2 (rw): UCPD Rx Ordered Set Extension Register 2
+0x4000A038 B  REGISTER RX_ORDEXTR2 (rw): UCPD Rx Ordered Set Extension Register 2
 0x4000A038 C   FIELD 00w20 RXSOPX2: RXSOPX2
 0x4000A400 A PERIPHERAL FDCAN
 0x4000A400 B  REGISTER CREL (ro): FDCAN Core Release Register
@@ -4884,6 +4902,265 @@
 0x40014BDC C   FIELD 08w05 DBL: DMA burst length
 0x40014BE0 B  REGISTER DMAR (rw): DMA address for full transfer
 0x40014BE0 C   FIELD 00w32 DMAB: DMA register for burst accesses
+0x40015000 A PERIPHERAL TIM20
+0x40015000 B  REGISTER CR1 (rw): control register 1
+0x40015000 C   FIELD 00w01 CEN: Counter enable
+0x40015000 C   FIELD 01w01 UDIS: Update disable
+0x40015000 C   FIELD 02w01 URS: Update request source
+0x40015000 C   FIELD 03w01 OPM: One-pulse mode
+0x40015000 C   FIELD 04w01 DIR: Direction
+0x40015000 C   FIELD 05w02 CMS: Center-aligned mode selection
+0x40015000 C   FIELD 07w01 ARPE: Auto-reload preload enable
+0x40015000 C   FIELD 08w02 CKD: Clock division
+0x40015000 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
+0x40015000 C   FIELD 12w01 DITHEN: Dithering Enable
+0x40015004 B  REGISTER CR2 (rw): control register 2
+0x40015004 C   FIELD 00w01 CCPC: Capture/compare preloaded control
+0x40015004 C   FIELD 02w01 CCUS: Capture/compare control update selection
+0x40015004 C   FIELD 03w01 CCDS: Capture/compare DMA selection
+0x40015004 C   FIELD 04w03 MMS: Master mode selection
+0x40015004 C   FIELD 07w01 TI1S: TI1 selection
+0x40015004 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x40015004 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
+0x40015004 C   FIELD 10w01 OIS2: Output Idle state (OC2 output)
+0x40015004 C   FIELD 11w01 OIS2N: Output Idle state (OC2N output)
+0x40015004 C   FIELD 12w01 OIS3: Output Idle state (OC3 output)
+0x40015004 C   FIELD 13w01 OIS3N: Output Idle state (OC3N output)
+0x40015004 C   FIELD 14w01 OIS4: Output Idle state (OC4 output)
+0x40015004 C   FIELD 15w01 OIS4N: Output Idle state (OC4N output)
+0x40015004 C   FIELD 16w01 OIS5: Output Idle state (OC5 output)
+0x40015004 C   FIELD 18w01 OIS6: Output Idle state (OC6 output)
+0x40015004 C   FIELD 20w04 MMS2: Master mode selection 2
+0x40015004 C   FIELD 25w01 MMS_3: Master mode selection - bit 3
+0x40015008 B  REGISTER SMCR (rw): slave mode control register
+0x40015008 C   FIELD 00w03 SMS: Slave mode selection
+0x40015008 C   FIELD 03w01 OCCS: OCREF clear selection
+0x40015008 C   FIELD 04w03 TS: Trigger selection
+0x40015008 C   FIELD 07w01 MSM: Master/Slave mode
+0x40015008 C   FIELD 08w04 ETF: External trigger filter
+0x40015008 C   FIELD 12w02 ETPS: External trigger prescaler
+0x40015008 C   FIELD 14w01 ECE: External clock enable
+0x40015008 C   FIELD 15w01 ETP: External trigger polarity
+0x40015008 C   FIELD 16w01 SMS_3: Slave mode selection - bit 3
+0x40015008 C   FIELD 20w02 TS_4_3: Trigger selection - bit 4:3
+0x40015008 C   FIELD 24w01 SMSPE: SMS Preload Enable
+0x40015008 C   FIELD 25w01 SMSPS: SMS Preload Source
+0x4001500C B  REGISTER DIER (rw): DMA/Interrupt enable register
+0x4001500C C   FIELD 00w01 UIE: Update interrupt enable
+0x4001500C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
+0x4001500C C   FIELD 02w01 CC2IE: Capture/Compare 2 interrupt enable
+0x4001500C C   FIELD 03w01 CC3IE: Capture/Compare 3 interrupt enable
+0x4001500C C   FIELD 04w01 CC4IE: Capture/Compare 4 interrupt enable
+0x4001500C C   FIELD 05w01 COMIE: COM interrupt enable
+0x4001500C C   FIELD 06w01 TIE: Trigger interrupt enable
+0x4001500C C   FIELD 07w01 BIE: Break interrupt enable
+0x4001500C C   FIELD 08w01 UDE: Update DMA request enable
+0x4001500C C   FIELD 09w01 CC1DE: Capture/Compare 1 DMA request enable
+0x4001500C C   FIELD 10w01 CC2DE: Capture/Compare 2 DMA request enable
+0x4001500C C   FIELD 11w01 CC3DE: Capture/Compare 3 DMA request enable
+0x4001500C C   FIELD 12w01 CC4DE: Capture/Compare 4 DMA request enable
+0x4001500C C   FIELD 13w01 COMDE: COM DMA request enable
+0x4001500C C   FIELD 14w01 TDE: Trigger DMA request enable
+0x4001500C C   FIELD 20w01 IDXIE: Index interrupt enable
+0x4001500C C   FIELD 21w01 DIRIE: Direction Change interrupt enable
+0x4001500C C   FIELD 22w01 IERRIE: Index Error interrupt enable
+0x4001500C C   FIELD 23w01 TERRIE: Transition Error interrupt enable
+0x40015010 B  REGISTER SR (rw): status register
+0x40015010 C   FIELD 00w01 UIF: Update interrupt flag
+0x40015010 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
+0x40015010 C   FIELD 02w01 CC2IF: Capture/compare 2 interrupt flag
+0x40015010 C   FIELD 03w01 CC3IF: Capture/compare 3 interrupt flag
+0x40015010 C   FIELD 04w01 CC4IF: Capture/compare 4 interrupt flag
+0x40015010 C   FIELD 05w01 COMIF: COM interrupt flag
+0x40015010 C   FIELD 06w01 TIF: Trigger interrupt flag
+0x40015010 C   FIELD 07w01 BIF: Break interrupt flag
+0x40015010 C   FIELD 08w01 B2IF: Break 2 interrupt flag
+0x40015010 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
+0x40015010 C   FIELD 10w01 CC2OF: Capture/Compare 2 overcapture flag
+0x40015010 C   FIELD 11w01 CC3OF: Capture/Compare 3 overcapture flag
+0x40015010 C   FIELD 12w01 CC4OF: Capture/Compare 4 overcapture flag
+0x40015010 C   FIELD 13w01 SBIF: System Break interrupt flag
+0x40015010 C   FIELD 16w01 CC5IF: Compare 5 interrupt flag
+0x40015010 C   FIELD 17w01 CC6IF: Compare 6 interrupt flag
+0x40015010 C   FIELD 20w01 IDXF: Index interrupt flag
+0x40015010 C   FIELD 21w01 DIRF: Direction Change interrupt flag
+0x40015010 C   FIELD 22w01 IERRF: Index Error interrupt flag
+0x40015010 C   FIELD 23w01 TERRF: Transition Error interrupt flag
+0x40015014 B  REGISTER EGR (wo): event generation register
+0x40015014 C   FIELD 00w01 UG: Update generation
+0x40015014 C   FIELD 01w01 CC1G: Capture/compare 1 generation
+0x40015014 C   FIELD 02w01 CC2G: Capture/compare 2 generation
+0x40015014 C   FIELD 03w01 CC3G: Capture/compare 3 generation
+0x40015014 C   FIELD 04w01 CC4G: Capture/compare 4 generation
+0x40015014 C   FIELD 05w01 COMG: Capture/Compare control update generation
+0x40015014 C   FIELD 06w01 TG: Trigger generation
+0x40015014 C   FIELD 07w01 BG: Break generation
+0x40015014 C   FIELD 08w01 B2G: Break 2 generation
+0x40015018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
+0x40015018 B  REGISTER CCMR1_Output (rw): capture/compare mode register 1 (output mode)
+0x40015018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40015018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
+0x40015018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
+0x40015018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
+0x40015018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40015018 C   FIELD 04w03 OC1M: Output compare 1 mode
+0x40015018 C   FIELD 04w04 IC1F: Input capture 1 filter
+0x40015018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
+0x40015018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40015018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
+0x40015018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
+0x40015018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
+0x40015018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40015018 C   FIELD 12w03 OC2M: Output compare 2 mode
+0x40015018 C   FIELD 12w04 IC2F: Input capture 2 filter
+0x40015018 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
+0x40015018 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
+0x40015018 C   FIELD 24w01 OC2M_3: Output compare 2 mode, bit 3
+0x4001501C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
+0x4001501C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
+0x4001501C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
+0x4001501C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
+0x4001501C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
+0x4001501C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
+0x4001501C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
+0x4001501C C   FIELD 04w03 OC3M: Output compare 3 mode
+0x4001501C C   FIELD 04w04 IC3F: Input capture 3 filter
+0x4001501C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
+0x4001501C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4001501C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
+0x4001501C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
+0x4001501C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
+0x4001501C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
+0x4001501C C   FIELD 12w03 OC4M: Output compare 4 mode
+0x4001501C C   FIELD 12w04 IC4F: Input capture 4 filter
+0x4001501C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
+0x4001501C C   FIELD 16w01 OC3M_3: Output compare 3 mode, bit 3
+0x4001501C C   FIELD 24w01 OC4M_3: Output compare 4 mode, bit 3
+0x40015020 B  REGISTER CCER (rw): capture/compare enable register
+0x40015020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
+0x40015020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
+0x40015020 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
+0x40015020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40015020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
+0x40015020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
+0x40015020 C   FIELD 06w01 CC2NE: Capture/Compare 2 complementary output enable
+0x40015020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x40015020 C   FIELD 08w01 CC3E: Capture/Compare 3 output enable
+0x40015020 C   FIELD 09w01 CC3P: Capture/Compare 3 output Polarity
+0x40015020 C   FIELD 10w01 CC3NE: Capture/Compare 3 complementary output enable
+0x40015020 C   FIELD 11w01 CC3NP: Capture/Compare 3 output Polarity
+0x40015020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
+0x40015020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
+0x40015020 C   FIELD 14w01 CC4NE: Capture/Compare 4 complementary output enable
+0x40015020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
+0x40015020 C   FIELD 16w01 CC5E: Capture/Compare 5 output enable
+0x40015020 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
+0x40015020 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
+0x40015020 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x40015024 B  REGISTER CNT: counter
+0x40015024 C   FIELD 00w16 CNT (rw): counter value
+0x40015024 C   FIELD 31w01 UIFCPY (ro): UIFCPY
+0x40015028 B  REGISTER PSC (rw): prescaler
+0x40015028 C   FIELD 00w16 PSC: Prescaler value
+0x4001502C B  REGISTER ARR (rw): auto-reload register
+0x4001502C C   FIELD 00w20 ARR: Auto-reload value
+0x40015030 B  REGISTER RCR (rw): repetition counter register
+0x40015030 C   FIELD 00w16 REP: Repetition counter value
+0x40015034 B  REGISTER CCR1 (rw): capture/compare register
+0x40015034 C   FIELD 00w20 CCR: Capture/Compare value
+0x40015038 B  REGISTER CCR2 (rw): capture/compare register
+0x40015038 C   FIELD 00w20 CCR: Capture/Compare value
+0x4001503C B  REGISTER CCR3 (rw): capture/compare register
+0x4001503C C   FIELD 00w20 CCR: Capture/Compare value
+0x40015040 B  REGISTER CCR4 (rw): capture/compare register
+0x40015040 C   FIELD 00w20 CCR: Capture/Compare value
+0x40015044 B  REGISTER BDTR (rw): break and dead-time register
+0x40015044 C   FIELD 00w08 DTG: Dead-time generator setup
+0x40015044 C   FIELD 08w02 LOCK: Lock configuration
+0x40015044 C   FIELD 10w01 OSSI: Off-state selection for Idle mode
+0x40015044 C   FIELD 11w01 OSSR: Off-state selection for Run mode
+0x40015044 C   FIELD 12w01 BKE: Break enable
+0x40015044 C   FIELD 13w01 BKP: Break polarity
+0x40015044 C   FIELD 14w01 AOE: Automatic output enable
+0x40015044 C   FIELD 15w01 MOE: Main output enable
+0x40015044 C   FIELD 16w04 BKF: Break filter
+0x40015044 C   FIELD 20w04 BK2F: Break 2 filter
+0x40015044 C   FIELD 24w01 BK2E: Break 2 Enable
+0x40015044 C   FIELD 25w01 BK2P: Break 2 polarity
+0x40015044 C   FIELD 26w01 BKDSRM: BKDSRM
+0x40015044 C   FIELD 27w01 BK2DSRM: BK2DSRM
+0x40015044 C   FIELD 28w01 BKBID: BKBID
+0x40015044 C   FIELD 29w01 BK2ID: BK2ID
+0x40015048 B  REGISTER CCR5 (rw): capture/compare register
+0x40015048 C   FIELD 00w20 CCR: Capture/Compare value
+0x40015048 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
+0x40015048 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
+0x40015048 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
+0x4001504C B  REGISTER CCR6 (rw): capture/compare register
+0x4001504C C   FIELD 00w20 CCR: Capture/Compare value
+0x40015050 B  REGISTER CCMR3_Output (rw): capture/compare mode register 2 (output mode)
+0x40015050 C   FIELD 02w01 OC5FE: Output compare 5 fast enable
+0x40015050 C   FIELD 03w01 OC5PE: Output compare 5 preload enable
+0x40015050 C   FIELD 04w03 OC5M: Output compare 5 mode
+0x40015050 C   FIELD 07w01 OC5CE: Output compare 5 clear enable
+0x40015050 C   FIELD 10w01 OC6FE: Output compare 6 fast enable
+0x40015050 C   FIELD 11w01 OC6PE: Output compare 6 preload enable
+0x40015050 C   FIELD 12w03 OC6M: Output compare 6 mode
+0x40015050 C   FIELD 15w01 OC6CE: Output compare 6 clear enable
+0x40015050 C   FIELD 16w01 OC5M_3: Output compare 5 mode, bit 3
+0x40015050 C   FIELD 24w01 OC6M_3: Output compare 6 mode, bit 3
+0x40015054 B  REGISTER DTR2 (rw): timer Deadtime Register 2
+0x40015054 C   FIELD 00w08 DTGF: Dead-time falling edge generator setup
+0x40015054 C   FIELD 16w01 DTAE: Deadtime Asymmetric Enable
+0x40015054 C   FIELD 17w01 DTPE: Deadtime Preload Enable
+0x40015058 B  REGISTER ECR (rw): DMA control register
+0x40015058 C   FIELD 00w01 IE: Index Enable
+0x40015058 C   FIELD 01w02 IDIR: Index Direction
+0x40015058 C   FIELD 03w02 IBLK: Index Blanking
+0x40015058 C   FIELD 05w01 FIDX: First Index
+0x40015058 C   FIELD 06w02 IPOS: Index Positioning
+0x40015058 C   FIELD 16w08 PW: Pulse width
+0x40015058 C   FIELD 24w03 PWPRSC: Pulse Width prescaler
+0x4001505C B  REGISTER TISEL (rw): TIM timer input selection register
+0x4001505C C   FIELD 00w04 TI1SEL: TI1[0] to TI1[15] input selection
+0x4001505C C   FIELD 08w04 TI2SEL: TI2[0] to TI2[15] input selection
+0x4001505C C   FIELD 16w04 TI3SEL: TI3[0] to TI3[15] input selection
+0x4001505C C   FIELD 24w04 TI4SEL: TI4[0] to TI4[15] input selection
+0x40015060 B  REGISTER AF1 (rw): TIM alternate function option register 1
+0x40015060 C   FIELD 00w01 BKINE: BRK BKIN input enable
+0x40015060 C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
+0x40015060 C   FIELD 02w01 BKCMP2E: BRK COMP2 enable
+0x40015060 C   FIELD 03w01 BKCMP3E: BRK COMP3 enable
+0x40015060 C   FIELD 04w01 BKCMP4E: BRK COMP4 enable
+0x40015060 C   FIELD 05w01 BKCMP5E: BRK COMP5 enable
+0x40015060 C   FIELD 06w01 BKCMP6E: BRK COMP6 enable
+0x40015060 C   FIELD 07w01 BKCMP7E: BRK COMP7 enable
+0x40015060 C   FIELD 09w01 BKINP: BRK BKIN input polarity
+0x40015060 C   FIELD 10w01 BKCMP1P: BRK COMP1 input polarity
+0x40015060 C   FIELD 11w01 BKCMP2P: BRK COMP2 input polarity
+0x40015060 C   FIELD 12w01 BKCMP3P: BRK COMP3 input polarity
+0x40015060 C   FIELD 13w01 BKCMP4P: BRK COMP4 input polarity
+0x40015060 C   FIELD 14w04 ETRSEL: ETR source selection
+0x40015064 B  REGISTER AF2 (rw): TIM alternate function option register 2
+0x40015064 C   FIELD 00w01 BKINE: BRK BKIN input enable
+0x40015064 C   FIELD 01w01 BK2CMP1E: BRK2 COMP1 enable
+0x40015064 C   FIELD 02w01 BK2CMP2E: BRK2 COMP2 enable
+0x40015064 C   FIELD 03w01 BK2CMP3E: BRK2 COMP3 enable
+0x40015064 C   FIELD 04w01 BK2CMP4E: BRK2 COMP4 enable
+0x40015064 C   FIELD 05w01 BK2CMP5E: BRK2 COMP5 enable
+0x40015064 C   FIELD 06w01 BK2CMP6E: BRK2 COMP6 enable
+0x40015064 C   FIELD 07w01 BK2CMP7E: BRK2 COMP7 enable
+0x40015064 C   FIELD 09w01 BK2INP: BRK2 BKIN input polarity
+0x40015064 C   FIELD 10w01 BK2CMP1P: BRK2 COMP1 input polarity
+0x40015064 C   FIELD 11w01 BK2CMP2P: BRK2 COMP2 input polarity
+0x40015064 C   FIELD 12w01 BK2CMP3P: BRK2 COMP3 input polarity
+0x40015064 C   FIELD 13w01 BK2CMP4P: BRK2 COMP4 input polarity
+0x40015064 C   FIELD 16w03 OCRSEL: OCREF_CLR source selection
+0x400153DC B  REGISTER DCR (rw): control register
+0x400153DC C   FIELD 00w05 DBA: DMA base address
+0x400153DC C   FIELD 08w05 DBL: DMA burst length
+0x400153E0 B  REGISTER DMAR (rw): DMA address for full transfer
+0x400153E0 C   FIELD 00w32 DMAB: DMA register for burst accesses
 0x40015400 A PERIPHERAL SAI
 0x40015404 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015404 B  REGISTER CR1A (rw): AConfiguration register 1
