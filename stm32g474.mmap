@@ -6026,16 +6026,16 @@
 0x4001682C B  REGISTER MCMP4R (rw): Master Timer Compare 4 Register
 0x4001682C C   FIELD 00w16 MCMP4: Master Timer Compare 4 value
 0x40016880 A PERIPHERAL HRTIM_TIMA
-0x40016880 B  REGISTER TIMACR (rw): Timerx Control Register
-0x40016880 C   FIELD 00w03 CKPSCx: HRTIM Timer x Clock prescaler
+0x40016880 B  REGISTER TIMCR (rw): Timerx Control Register
+0x40016880 C   FIELD 00w03 CKPSC: HRTIM Timer x Clock prescaler
 0x40016880 C   FIELD 03w01 CONT: Continuous mode
 0x40016880 C   FIELD 04w01 RETRIG: Re-triggerable mode
 0x40016880 C   FIELD 05w01 HALF: Half mode enable
 0x40016880 C   FIELD 06w01 PSHPLL: Push-Pull mode enable
 0x40016880 C   FIELD 07w02 INTLVD: Interleaved mode
 0x40016880 C   FIELD 09w01 RSYNCU: Re-Synchronized Update
-0x40016880 C   FIELD 10w01 SYNCRSTx: Synchronization Resets Timer x
-0x40016880 C   FIELD 11w01 SYNCSTRTx: Synchronization Starts Timer x
+0x40016880 C   FIELD 10w01 SYNCRST: Synchronization Resets Timer x
+0x40016880 C   FIELD 11w01 SYNCSTRT: Synchronization Starts Timer x
 0x40016880 C   FIELD 12w02 DELCMP2: Delayed CMP2 mode
 0x40016880 C   FIELD 14w02 DELCMP4: Delayed CMP4 mode
 0x40016880 C   FIELD 16w01 TFU: TFU
@@ -6049,7 +6049,7 @@
 0x40016880 C   FIELD 25w02 DACSYNC: AC Synchronization
 0x40016880 C   FIELD 27w01 PREEN: Preload enable
 0x40016880 C   FIELD 28w04 UPDGAT: Update Gating
-0x40016884 B  REGISTER TIMAISR (ro): Timerx Interrupt Status Register
+0x40016884 B  REGISTER TIMISR (ro): Timerx Interrupt Status Register
 0x40016884 C   FIELD 00w01 CMP1: Compare 1 Interrupt Flag
 0x40016884 C   FIELD 01w01 CMP2: Compare 2 Interrupt Flag
 0x40016884 C   FIELD 02w01 CMP3: Compare 3 Interrupt Flag
@@ -6058,10 +6058,10 @@
 0x40016884 C   FIELD 06w01 UPD: Update Interrupt Flag
 0x40016884 C   FIELD 07w01 CPT1: Capture1 Interrupt Flag
 0x40016884 C   FIELD 08w01 CPT2: Capture2 Interrupt Flag
-0x40016884 C   FIELD 09w01 SETx1: Output 1 Set Interrupt Flag
-0x40016884 C   FIELD 10w01 RSTx1: Output 1 Reset Interrupt Flag
-0x40016884 C   FIELD 11w01 SETx2: Output 2 Set Interrupt Flag
-0x40016884 C   FIELD 12w01 RSTx2: Output 2 Reset Interrupt Flag
+0x40016884 C   FIELD 09w01 SET1: Output 1 Set Interrupt Flag
+0x40016884 C   FIELD 10w01 RST1: Output 1 Reset Interrupt Flag
+0x40016884 C   FIELD 11w01 SET2: Output 2 Set Interrupt Flag
+0x40016884 C   FIELD 12w01 RST2: Output 2 Reset Interrupt Flag
 0x40016884 C   FIELD 13w01 RST: Reset Interrupt Flag
 0x40016884 C   FIELD 14w01 DLYPRT: Delayed Protection Flag
 0x40016884 C   FIELD 16w01 CPPSTAT: Current Push Pull Status
@@ -6070,7 +6070,7 @@
 0x40016884 C   FIELD 19w01 O2STAT: Output 2 State
 0x40016884 C   FIELD 20w01 O1CPY: Output 1 Copy
 0x40016884 C   FIELD 21w01 O2CPY: Output 2 Copy
-0x40016888 B  REGISTER TIMAICR (wo): Timerx Interrupt Clear Register
+0x40016888 B  REGISTER TIMICR (wo): Timerx Interrupt Clear Register
 0x40016888 C   FIELD 00w01 CMP1C: Compare 1 Interrupt flag Clear
 0x40016888 C   FIELD 01w01 CMP2C: Compare 2 Interrupt flag Clear
 0x40016888 C   FIELD 02w01 CMP3C: Compare 3 Interrupt flag Clear
@@ -6085,7 +6085,7 @@
 0x40016888 C   FIELD 12w01 RSTx2C: Output 2 Reset flag Clear
 0x40016888 C   FIELD 13w01 RSTC: Reset Interrupt flag Clear
 0x40016888 C   FIELD 14w01 DLYPRTC: Delayed Protection Flag Clear
-0x4001688C B  REGISTER TIMADIER (rw): TIMxDIER
+0x4001688C B  REGISTER TIMDIER (rw): TIMxDIER
 0x4001688C C   FIELD 00w01 CMP1IE: CMP1IE
 0x4001688C C   FIELD 01w01 CMP2IE: CMP2IE
 0x4001688C C   FIELD 02w01 CMP3IE: CMP3IE
@@ -6094,10 +6094,10 @@
 0x4001688C C   FIELD 06w01 UPDIE: UPDIE
 0x4001688C C   FIELD 07w01 CPT1IE: CPT1IE
 0x4001688C C   FIELD 08w01 CPT2IE: CPT2IE
-0x4001688C C   FIELD 09w01 SETx1IE: SET1xIE
-0x4001688C C   FIELD 10w01 RSTx1IE: RSTx1IE
+0x4001688C C   FIELD 09w01 SET1IE: SET1xIE
+0x4001688C C   FIELD 10w01 RST1IE: RSTx1IE
 0x4001688C C   FIELD 11w01 SETx2IE: SETx2IE
-0x4001688C C   FIELD 12w01 RSTx2IE: RSTx2IE
+0x4001688C C   FIELD 12w01 RST2IE: RSTx2IE
 0x4001688C C   FIELD 13w01 RSTIE: RSTIE
 0x4001688C C   FIELD 14w01 DLYPRTIE: DLYPRTIE
 0x4001688C C   FIELD 16w01 CMP1DE: CMP1DE
@@ -6108,46 +6108,46 @@
 0x4001688C C   FIELD 22w01 UPDDE: UPDDE
 0x4001688C C   FIELD 23w01 CPT1DE: CPT1DE
 0x4001688C C   FIELD 24w01 CPT2DE: CPT2DE
-0x4001688C C   FIELD 25w01 SETx1DE: SET1xDE
-0x4001688C C   FIELD 26w01 RSTx1DE: RSTx1DE
-0x4001688C C   FIELD 27w01 SETx2DE: SETx2DE
-0x4001688C C   FIELD 28w01 RSTx2DE: RSTx2DE
+0x4001688C C   FIELD 25w01 SET1DE: SET1xDE
+0x4001688C C   FIELD 26w01 RST1DE: RSTx1DE
+0x4001688C C   FIELD 27w01 SET2DE: SETx2DE
+0x4001688C C   FIELD 28w01 RST2DE: RSTx2DE
 0x4001688C C   FIELD 29w01 RSTDE: RSTDE
 0x4001688C C   FIELD 30w01 DLYPRTDE: DLYPRTDE
-0x40016890 B  REGISTER CNTAR (rw): Timerx Counter Register
-0x40016890 C   FIELD 00w16 CNTx: Timerx Counter value
-0x40016894 B  REGISTER PERAR (rw): Timerx Period Register
-0x40016894 C   FIELD 00w16 PERx: Timerx Period value
-0x40016898 B  REGISTER REPAR (rw): Timerx Repetition Register
-0x40016898 C   FIELD 00w08 REPx: Timerx Repetition counter value
-0x4001689C B  REGISTER CMP1AR (rw): Timerx Compare 1 Register
-0x4001689C C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x400168A0 B  REGISTER CMP1CAR (rw): Timerx Compare 1 Compound Register
-0x400168A0 C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x400168A0 C   FIELD 16w08 REPx: Timerx Repetition value (aliased from HRTIM_REPx register)
-0x400168A4 B  REGISTER CMP2AR (rw): Timerx Compare 2 Register
-0x400168A4 C   FIELD 00w16 CMP2x: Timerx Compare 2 value
-0x400168A8 B  REGISTER CMP3AR (rw): Timerx Compare 3 Register
-0x400168A8 C   FIELD 00w16 CMP3x: Timerx Compare 3 value
-0x400168AC B  REGISTER CMP4AR (rw): Timerx Compare 4 Register
-0x400168AC C   FIELD 00w16 CMP4x: Timerx Compare 4 value
-0x400168B0 B  REGISTER CPT1AR (ro): Timerx Capture 1 Register
-0x400168B0 C   FIELD 00w16 CPT1x: Timerx Capture 1 value
+0x40016890 B  REGISTER CNTR (rw): Timerx Counter Register
+0x40016890 C   FIELD 00w16 CNT: Timerx Counter value
+0x40016894 B  REGISTER PERR (rw): Timerx Period Register
+0x40016894 C   FIELD 00w16 PER: Timerx Period value
+0x40016898 B  REGISTER REPR (rw): Timerx Repetition Register
+0x40016898 C   FIELD 00w08 REP: Timerx Repetition counter value
+0x4001689C B  REGISTER CMP1R (rw): Timerx Compare 1 Register
+0x4001689C C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x400168A0 B  REGISTER CMP1CR (rw): Timerx Compare 1 Compound Register
+0x400168A0 C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x400168A0 C   FIELD 16w08 REP: Timerx Repetition value (aliased from HRTIM_REPx register)
+0x400168A4 B  REGISTER CMP2R (rw): Timerx Compare 2 Register
+0x400168A4 C   FIELD 00w16 CMP2: Timerx Compare 2 value
+0x400168A8 B  REGISTER CMP3R (rw): Timerx Compare 3 Register
+0x400168A8 C   FIELD 00w16 CMP3: Timerx Compare 3 value
+0x400168AC B  REGISTER CMP4R (rw): Timerx Compare 4 Register
+0x400168AC C   FIELD 00w16 CMP4: Timerx Compare 4 value
+0x400168B0 B  REGISTER CPT1R (ro): Timerx Capture 1 Register
+0x400168B0 C   FIELD 00w16 CPT1: Timerx Capture 1 value
 0x400168B0 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x400168B4 B  REGISTER CPT2AR (ro): Timerx Capture 2 Register
-0x400168B4 C   FIELD 00w16 CPT2x: Timerx Capture 2 value
+0x400168B4 B  REGISTER CPT2R (ro): Timerx Capture 2 Register
+0x400168B4 C   FIELD 00w16 CPT2: Timerx Capture 2 value
 0x400168B4 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x400168B8 B  REGISTER DTAR (rw): Timerx Deadtime Register
-0x400168B8 C   FIELD 00w09 DTRx: Deadtime Rising value
-0x400168B8 C   FIELD 09w01 SDTRx: Sign Deadtime Rising value
+0x400168B8 B  REGISTER DTR (rw): Timerx Deadtime Register
+0x400168B8 C   FIELD 00w09 DTR: Deadtime Rising value
+0x400168B8 C   FIELD 09w01 SDTR: Sign Deadtime Rising value
 0x400168B8 C   FIELD 10w03 DTPRSC: Deadtime Prescaler
-0x400168B8 C   FIELD 14w01 DTRSLKx: Deadtime Rising Sign Lock
-0x400168B8 C   FIELD 15w01 DTRLKx: Deadtime Rising Lock
-0x400168B8 C   FIELD 16w09 DTFx: Deadtime Falling value
-0x400168B8 C   FIELD 25w01 SDTFx: Sign Deadtime Falling value
-0x400168B8 C   FIELD 30w01 DTFSLKx: Deadtime Falling Sign Lock
-0x400168B8 C   FIELD 31w01 DTFLKx: Deadtime Falling Lock
-0x400168BC B  REGISTER SETA1R (rw): Timerx Output1 Set Register
+0x400168B8 C   FIELD 14w01 DTRSLK: Deadtime Rising Sign Lock
+0x400168B8 C   FIELD 15w01 DTRLK: Deadtime Rising Lock
+0x400168B8 C   FIELD 16w09 DTF: Deadtime Falling value
+0x400168B8 C   FIELD 25w01 SDTF: Sign Deadtime Falling value
+0x400168B8 C   FIELD 30w01 DTFSLK: Deadtime Falling Sign Lock
+0x400168B8 C   FIELD 31w01 DTFLK: Deadtime Falling Lock
+0x400168BC B  REGISTER SET1R (rw): Timerx Output1 Set Register
 0x400168BC C   FIELD 00w01 SST: Software Set trigger
 0x400168BC C   FIELD 01w01 RESYNC: Timer A resynchronizaton
 0x400168BC C   FIELD 02w01 PER: Timer A Period
@@ -6180,7 +6180,7 @@
 0x400168BC C   FIELD 29w01 EXTEVNT9: External Event 9
 0x400168BC C   FIELD 30w01 EXTEVNT10: External Event 10
 0x400168BC C   FIELD 31w01 UPDATE: Registers update (transfer preload to active)
-0x400168C0 B  REGISTER RSTA1R (rw): Timerx Output1 Reset Register
+0x400168C0 B  REGISTER RST1R (rw): Timerx Output1 Reset Register
 0x400168C0 C   FIELD 00w01 SRT: SRT
 0x400168C0 C   FIELD 01w01 RESYNC: RESYNC
 0x400168C0 C   FIELD 02w01 PER: PER
@@ -6213,7 +6213,7 @@
 0x400168C0 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x400168C0 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x400168C0 C   FIELD 31w01 UPDATE: UPDATE
-0x400168C4 B  REGISTER SETA2R (rw): Timerx Output2 Set Register
+0x400168C4 B  REGISTER SET2R (rw): Timerx Output2 Set Register
 0x400168C4 C   FIELD 00w01 SST: SST
 0x400168C4 C   FIELD 01w01 RESYNC: RESYNC
 0x400168C4 C   FIELD 02w01 PER: PER
@@ -6246,7 +6246,7 @@
 0x400168C4 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x400168C4 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x400168C4 C   FIELD 31w01 UPDATE: UPDATE
-0x400168C8 B  REGISTER RSTA2R (rw): Timerx Output2 Reset Register
+0x400168C8 B  REGISTER RST2R (rw): Timerx Output2 Reset Register
 0x400168C8 C   FIELD 00w01 SRT: SRT
 0x400168C8 C   FIELD 01w01 RESYNC: RESYNC
 0x400168C8 C   FIELD 02w01 PER: PER
@@ -6279,7 +6279,7 @@
 0x400168C8 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x400168C8 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x400168C8 C   FIELD 31w01 UPDATE: UPDATE
-0x400168CC B  REGISTER EEFAR1 (rw): Timerx External Event Filtering Register 1
+0x400168CC B  REGISTER EEFR1 (rw): Timerx External Event Filtering Register 1
 0x400168CC C   FIELD 00w01 EE1LTCH: External Event 1 latch
 0x400168CC C   FIELD 01w04 EE1FLTR: External Event 1 filter
 0x400168CC C   FIELD 06w01 EE2LTCH: External Event 2 latch
@@ -6290,7 +6290,7 @@
 0x400168CC C   FIELD 19w04 EE4FLTR: External Event 4 filter
 0x400168CC C   FIELD 24w01 EE5LTCH: External Event 5 latch
 0x400168CC C   FIELD 25w04 EE5FLTR: External Event 5 filter
-0x400168D0 B  REGISTER EEFAR2 (rw): Timerx External Event Filtering Register 2
+0x400168D0 B  REGISTER EEFR2 (rw): Timerx External Event Filtering Register 2
 0x400168D0 C   FIELD 00w01 EE6LTCH: External Event 6 latch
 0x400168D0 C   FIELD 01w04 EE6FLTR: External Event 6 filter
 0x400168D0 C   FIELD 06w01 EE7LTCH: External Event 7 latch
@@ -6301,7 +6301,7 @@
 0x400168D0 C   FIELD 19w04 EE9FLTR: External Event 9 filter
 0x400168D0 C   FIELD 24w01 EE10LTCH: External Event 10 latch
 0x400168D0 C   FIELD 25w04 EE10FLTR: External Event 10 filter
-0x400168D4 B  REGISTER RSTAR (rw): TimerA Reset Register
+0x400168D4 B  REGISTER RSTR (rw): TimerA Reset Register
 0x400168D4 C   FIELD 00w01 TIMFCMP1: Timer A Update reset
 0x400168D4 C   FIELD 01w01 UPDT: Timer A Update reset
 0x400168D4 C   FIELD 02w01 CMP2: Timer A compare 2 reset
@@ -6334,11 +6334,11 @@
 0x400168D4 C   FIELD 29w01 TIMECMP2: Timer E Compare 2
 0x400168D4 C   FIELD 30w01 TIMECMP4: Timer E Compare 4
 0x400168D4 C   FIELD 31w01 TIMFCPM2: Timer F Compare 2
-0x400168D8 B  REGISTER CHPAR (rw): Timerx Chopper Register
+0x400168D8 B  REGISTER CHPR (rw): Timerx Chopper Register
 0x400168D8 C   FIELD 00w04 CARFRQ: Timerx carrier frequency value
 0x400168D8 C   FIELD 04w03 CARDTY: Timerx chopper duty cycle value
 0x400168D8 C   FIELD 07w04 STRTPW: STRTPW
-0x400168DC B  REGISTER CPT1ACR (rw): Timerx Capture 2 Control Register
+0x400168DC B  REGISTER CPT1CR (rw): Timerx Capture 2 Control Register
 0x400168DC C   FIELD 00w01 SWCPT: Software Capture
 0x400168DC C   FIELD 01w01 UPDCPT: Update Capture
 0x400168DC C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -6371,7 +6371,7 @@
 0x400168DC C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x400168DC C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x400168DC C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x400168E0 B  REGISTER CPT2ACR (rw): CPT2xCR
+0x400168E0 B  REGISTER CPT2CR (rw): CPT2xCR
 0x400168E0 C   FIELD 00w01 SWCPT: Software Capture
 0x400168E0 C   FIELD 01w01 UPDCPT: Update Capture
 0x400168E0 C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -6404,7 +6404,7 @@
 0x400168E0 C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x400168E0 C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x400168E0 C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x400168E4 B  REGISTER OUTAR (rw): Timerx Output Register
+0x400168E4 B  REGISTER OUTR (rw): Timerx Output Register
 0x400168E4 C   FIELD 01w01 POL1: Output 1 polarity
 0x400168E4 C   FIELD 02w01 IDLEM1: Output 1 Idle mode
 0x400168E4 C   FIELD 03w01 IDLES1: Output 1 Idle State
@@ -6421,7 +6421,7 @@
 0x400168E4 C   FIELD 20w02 FAULT2: Output 2 Fault state
 0x400168E4 C   FIELD 22w01 CHP2: Output 2 Chopper enable
 0x400168E4 C   FIELD 23w01 DIDL2: Output 2 Deadtime upon burst mode Idle entry
-0x400168E8 B  REGISTER FLTAR (rw): Timerx Fault Register
+0x400168E8 B  REGISTER FLTR (rw): Timerx Fault Register
 0x400168E8 C   FIELD 00w01 FLT1EN: Fault 1 enable
 0x400168E8 C   FIELD 01w01 FLT2EN: Fault 2 enable
 0x400168E8 C   FIELD 02w01 FLT3EN: Fault 3 enable
@@ -6429,7 +6429,7 @@
 0x400168E8 C   FIELD 04w01 FLT5EN: Fault 5 enable
 0x400168E8 C   FIELD 05w01 FLT6EN: Fault 6 enable
 0x400168E8 C   FIELD 31w01 FLTLCK: Fault sources Lock
-0x400168EC B  REGISTER TIMACR2 (rw): HRTIM Timerx Control Register 2
+0x400168EC B  REGISTER TIMCR2 (rw): HRTIM Timerx Control Register 2
 0x400168EC C   FIELD 00w01 DCDE: Dual Channel DAC trigger enable
 0x400168EC C   FIELD 01w01 DCDS: Dual Channel DAC Step trigger
 0x400168EC C   FIELD 02w01 DCDR: Dual Channel DAC Reset trigger
@@ -6442,23 +6442,23 @@
 0x400168EC C   FIELD 16w01 GTCMP1: Greater than Compare 1 PWM mode
 0x400168EC C   FIELD 17w01 GTCMP3: Greater than Compare 3 PWM mode
 0x400168EC C   FIELD 20w01 TRGHLF: Triggered-half mode
-0x400168F0 B  REGISTER AEEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
+0x400168F0 B  REGISTER EEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
 0x400168F0 C   FIELD 00w01 EEVACE: External Event A Counter Enable
 0x400168F0 C   FIELD 01w01 EEVACRES: External Event A Counter Reset
 0x400168F0 C   FIELD 02w01 EEVARSTM: External Event A Reset Mode
 0x400168F0 C   FIELD 04w04 EEVASEL: External Event A Selection
 0x400168F0 C   FIELD 08w06 EEVACNT: External Event A counter
 0x40016900 A PERIPHERAL HRTIM_TIMB
-0x40016900 B  REGISTER TIMBCR (rw): Timerx Control Register
-0x40016900 C   FIELD 00w03 CKPSCx: HRTIM Timer x Clock prescaler
+0x40016900 B  REGISTER TIMCR (rw): Timerx Control Register
+0x40016900 C   FIELD 00w03 CKPSC: HRTIM Timer x Clock prescaler
 0x40016900 C   FIELD 03w01 CONT: Continuous mode
 0x40016900 C   FIELD 04w01 RETRIG: Re-triggerable mode
 0x40016900 C   FIELD 05w01 HALF: Half mode enable
 0x40016900 C   FIELD 06w01 PSHPLL: Push-Pull mode enable
 0x40016900 C   FIELD 07w02 INTLVD: Interleaved mode
 0x40016900 C   FIELD 09w01 RSYNCU: Re-Synchronized Update
-0x40016900 C   FIELD 10w01 SYNCRSTx: Synchronization Resets Timer x
-0x40016900 C   FIELD 11w01 SYNCSTRTx: Synchronization Starts Timer x
+0x40016900 C   FIELD 10w01 SYNCRST: Synchronization Resets Timer x
+0x40016900 C   FIELD 11w01 SYNCSTRT: Synchronization Starts Timer x
 0x40016900 C   FIELD 12w02 DELCMP2: Delayed CMP2 mode
 0x40016900 C   FIELD 14w02 DELCMP4: Delayed CMP4 mode
 0x40016900 C   FIELD 16w01 TFU: TFU
@@ -6472,7 +6472,7 @@
 0x40016900 C   FIELD 25w02 DACSYNC: AC Synchronization
 0x40016900 C   FIELD 27w01 PREEN: Preload enable
 0x40016900 C   FIELD 28w04 UPDGAT: Update Gating
-0x40016904 B  REGISTER TIMBISR (ro): Timerx Interrupt Status Register
+0x40016904 B  REGISTER TIMISR (ro): Timerx Interrupt Status Register
 0x40016904 C   FIELD 00w01 CMP1: Compare 1 Interrupt Flag
 0x40016904 C   FIELD 01w01 CMP2: Compare 2 Interrupt Flag
 0x40016904 C   FIELD 02w01 CMP3: Compare 3 Interrupt Flag
@@ -6481,10 +6481,10 @@
 0x40016904 C   FIELD 06w01 UPD: Update Interrupt Flag
 0x40016904 C   FIELD 07w01 CPT1: Capture1 Interrupt Flag
 0x40016904 C   FIELD 08w01 CPT2: Capture2 Interrupt Flag
-0x40016904 C   FIELD 09w01 SETx1: Output 1 Set Interrupt Flag
-0x40016904 C   FIELD 10w01 RSTx1: Output 1 Reset Interrupt Flag
-0x40016904 C   FIELD 11w01 SETx2: Output 2 Set Interrupt Flag
-0x40016904 C   FIELD 12w01 RSTx2: Output 2 Reset Interrupt Flag
+0x40016904 C   FIELD 09w01 SET1: Output 1 Set Interrupt Flag
+0x40016904 C   FIELD 10w01 RST1: Output 1 Reset Interrupt Flag
+0x40016904 C   FIELD 11w01 SET2: Output 2 Set Interrupt Flag
+0x40016904 C   FIELD 12w01 RST2: Output 2 Reset Interrupt Flag
 0x40016904 C   FIELD 13w01 RST: Reset Interrupt Flag
 0x40016904 C   FIELD 14w01 DLYPRT: Delayed Protection Flag
 0x40016904 C   FIELD 16w01 CPPSTAT: Current Push Pull Status
@@ -6493,7 +6493,7 @@
 0x40016904 C   FIELD 19w01 O2STAT: Output 2 State
 0x40016904 C   FIELD 20w01 O1CPY: Output 1 Copy
 0x40016904 C   FIELD 21w01 O2CPY: Output 2 Copy
-0x40016908 B  REGISTER TIMBICR (wo): Timerx Interrupt Clear Register
+0x40016908 B  REGISTER TIMICR (wo): Timerx Interrupt Clear Register
 0x40016908 C   FIELD 00w01 CMP1C: Compare 1 Interrupt flag Clear
 0x40016908 C   FIELD 01w01 CMP2C: Compare 2 Interrupt flag Clear
 0x40016908 C   FIELD 02w01 CMP3C: Compare 3 Interrupt flag Clear
@@ -6508,7 +6508,7 @@
 0x40016908 C   FIELD 12w01 RSTx2C: Output 2 Reset flag Clear
 0x40016908 C   FIELD 13w01 RSTC: Reset Interrupt flag Clear
 0x40016908 C   FIELD 14w01 DLYPRTC: Delayed Protection Flag Clear
-0x4001690C B  REGISTER TIMBDIER (rw): TIMxDIER
+0x4001690C B  REGISTER TIMDIER (rw): TIMxDIER
 0x4001690C C   FIELD 00w01 CMP1IE: CMP1IE
 0x4001690C C   FIELD 01w01 CMP2IE: CMP2IE
 0x4001690C C   FIELD 02w01 CMP3IE: CMP3IE
@@ -6517,10 +6517,10 @@
 0x4001690C C   FIELD 06w01 UPDIE: UPDIE
 0x4001690C C   FIELD 07w01 CPT1IE: CPT1IE
 0x4001690C C   FIELD 08w01 CPT2IE: CPT2IE
-0x4001690C C   FIELD 09w01 SETx1IE: SET1xIE
-0x4001690C C   FIELD 10w01 RSTx1IE: RSTx1IE
+0x4001690C C   FIELD 09w01 SET1IE: SET1xIE
+0x4001690C C   FIELD 10w01 RST1IE: RSTx1IE
 0x4001690C C   FIELD 11w01 SETx2IE: SETx2IE
-0x4001690C C   FIELD 12w01 RSTx2IE: RSTx2IE
+0x4001690C C   FIELD 12w01 RST2IE: RSTx2IE
 0x4001690C C   FIELD 13w01 RSTIE: RSTIE
 0x4001690C C   FIELD 14w01 DLYPRTIE: DLYPRTIE
 0x4001690C C   FIELD 16w01 CMP1DE: CMP1DE
@@ -6531,46 +6531,46 @@
 0x4001690C C   FIELD 22w01 UPDDE: UPDDE
 0x4001690C C   FIELD 23w01 CPT1DE: CPT1DE
 0x4001690C C   FIELD 24w01 CPT2DE: CPT2DE
-0x4001690C C   FIELD 25w01 SETx1DE: SET1xDE
-0x4001690C C   FIELD 26w01 RSTx1DE: RSTx1DE
-0x4001690C C   FIELD 27w01 SETx2DE: SETx2DE
-0x4001690C C   FIELD 28w01 RSTx2DE: RSTx2DE
+0x4001690C C   FIELD 25w01 SET1DE: SET1xDE
+0x4001690C C   FIELD 26w01 RST1DE: RSTx1DE
+0x4001690C C   FIELD 27w01 SET2DE: SETx2DE
+0x4001690C C   FIELD 28w01 RST2DE: RSTx2DE
 0x4001690C C   FIELD 29w01 RSTDE: RSTDE
 0x4001690C C   FIELD 30w01 DLYPRTDE: DLYPRTDE
 0x40016910 B  REGISTER CNTR (rw): Timerx Counter Register
-0x40016910 C   FIELD 00w16 CNTx: Timerx Counter value
-0x40016914 B  REGISTER PERBR (rw): Timerx Period Register
-0x40016914 C   FIELD 00w16 PERx: Timerx Period value
-0x40016918 B  REGISTER REPBR (rw): Timerx Repetition Register
-0x40016918 C   FIELD 00w08 REPx: Timerx Repetition counter value
-0x4001691C B  REGISTER CMP1BR (rw): Timerx Compare 1 Register
-0x4001691C C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016920 B  REGISTER CMP1CBR (rw): Timerx Compare 1 Compound Register
-0x40016920 C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016920 C   FIELD 16w08 REPx: Timerx Repetition value (aliased from HRTIM_REPx register)
-0x40016924 B  REGISTER CMP2BR (rw): Timerx Compare 2 Register
-0x40016924 C   FIELD 00w16 CMP2x: Timerx Compare 2 value
-0x40016928 B  REGISTER CMP3BR (rw): Timerx Compare 3 Register
-0x40016928 C   FIELD 00w16 CMP3x: Timerx Compare 3 value
-0x4001692C B  REGISTER CMP4BR (rw): Timerx Compare 4 Register
-0x4001692C C   FIELD 00w16 CMP4x: Timerx Compare 4 value
-0x40016930 B  REGISTER CPT1BR (ro): Timerx Capture 1 Register
-0x40016930 C   FIELD 00w16 CPT1x: Timerx Capture 1 value
+0x40016910 C   FIELD 00w16 CNT: Timerx Counter value
+0x40016914 B  REGISTER PERR (rw): Timerx Period Register
+0x40016914 C   FIELD 00w16 PER: Timerx Period value
+0x40016918 B  REGISTER REPR (rw): Timerx Repetition Register
+0x40016918 C   FIELD 00w08 REP: Timerx Repetition counter value
+0x4001691C B  REGISTER CMP1R (rw): Timerx Compare 1 Register
+0x4001691C C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016920 B  REGISTER CMP1CR (rw): Timerx Compare 1 Compound Register
+0x40016920 C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016920 C   FIELD 16w08 REP: Timerx Repetition value (aliased from HRTIM_REPx register)
+0x40016924 B  REGISTER CMP2R (rw): Timerx Compare 2 Register
+0x40016924 C   FIELD 00w16 CMP2: Timerx Compare 2 value
+0x40016928 B  REGISTER CMP3R (rw): Timerx Compare 3 Register
+0x40016928 C   FIELD 00w16 CMP3: Timerx Compare 3 value
+0x4001692C B  REGISTER CMP4R (rw): Timerx Compare 4 Register
+0x4001692C C   FIELD 00w16 CMP4: Timerx Compare 4 value
+0x40016930 B  REGISTER CPT1R (ro): Timerx Capture 1 Register
+0x40016930 C   FIELD 00w16 CPT1: Timerx Capture 1 value
 0x40016930 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016934 B  REGISTER CPT2BR (ro): Timerx Capture 2 Register
-0x40016934 C   FIELD 00w16 CPT2x: Timerx Capture 2 value
+0x40016934 B  REGISTER CPT2R (ro): Timerx Capture 2 Register
+0x40016934 C   FIELD 00w16 CPT2: Timerx Capture 2 value
 0x40016934 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016938 B  REGISTER DTBR (rw): Timerx Deadtime Register
-0x40016938 C   FIELD 00w09 DTRx: Deadtime Rising value
-0x40016938 C   FIELD 09w01 SDTRx: Sign Deadtime Rising value
+0x40016938 B  REGISTER DTR (rw): Timerx Deadtime Register
+0x40016938 C   FIELD 00w09 DTR: Deadtime Rising value
+0x40016938 C   FIELD 09w01 SDTR: Sign Deadtime Rising value
 0x40016938 C   FIELD 10w03 DTPRSC: Deadtime Prescaler
-0x40016938 C   FIELD 14w01 DTRSLKx: Deadtime Rising Sign Lock
-0x40016938 C   FIELD 15w01 DTRLKx: Deadtime Rising Lock
-0x40016938 C   FIELD 16w09 DTFx: Deadtime Falling value
-0x40016938 C   FIELD 25w01 SDTFx: Sign Deadtime Falling value
-0x40016938 C   FIELD 30w01 DTFSLKx: Deadtime Falling Sign Lock
-0x40016938 C   FIELD 31w01 DTFLKx: Deadtime Falling Lock
-0x4001693C B  REGISTER SETB1R (rw): Timerx Output1 Set Register
+0x40016938 C   FIELD 14w01 DTRSLK: Deadtime Rising Sign Lock
+0x40016938 C   FIELD 15w01 DTRLK: Deadtime Rising Lock
+0x40016938 C   FIELD 16w09 DTF: Deadtime Falling value
+0x40016938 C   FIELD 25w01 SDTF: Sign Deadtime Falling value
+0x40016938 C   FIELD 30w01 DTFSLK: Deadtime Falling Sign Lock
+0x40016938 C   FIELD 31w01 DTFLK: Deadtime Falling Lock
+0x4001693C B  REGISTER SET1R (rw): Timerx Output1 Set Register
 0x4001693C C   FIELD 00w01 SST: Software Set trigger
 0x4001693C C   FIELD 01w01 RESYNC: Timer A resynchronizaton
 0x4001693C C   FIELD 02w01 PER: Timer A Period
@@ -6603,7 +6603,7 @@
 0x4001693C C   FIELD 29w01 EXTEVNT9: External Event 9
 0x4001693C C   FIELD 30w01 EXTEVNT10: External Event 10
 0x4001693C C   FIELD 31w01 UPDATE: Registers update (transfer preload to active)
-0x40016940 B  REGISTER RSTB1R (rw): Timerx Output1 Reset Register
+0x40016940 B  REGISTER RST1R (rw): Timerx Output1 Reset Register
 0x40016940 C   FIELD 00w01 SRT: SRT
 0x40016940 C   FIELD 01w01 RESYNC: RESYNC
 0x40016940 C   FIELD 02w01 PER: PER
@@ -6636,7 +6636,7 @@
 0x40016940 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016940 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016940 C   FIELD 31w01 UPDATE: UPDATE
-0x40016944 B  REGISTER SETB2R (rw): Timerx Output2 Set Register
+0x40016944 B  REGISTER SET2R (rw): Timerx Output2 Set Register
 0x40016944 C   FIELD 00w01 SST: SST
 0x40016944 C   FIELD 01w01 RESYNC: RESYNC
 0x40016944 C   FIELD 02w01 PER: PER
@@ -6669,7 +6669,7 @@
 0x40016944 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016944 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016944 C   FIELD 31w01 UPDATE: UPDATE
-0x40016948 B  REGISTER RSTB2R (rw): Timerx Output2 Reset Register
+0x40016948 B  REGISTER RST2R (rw): Timerx Output2 Reset Register
 0x40016948 C   FIELD 00w01 SRT: SRT
 0x40016948 C   FIELD 01w01 RESYNC: RESYNC
 0x40016948 C   FIELD 02w01 PER: PER
@@ -6702,7 +6702,7 @@
 0x40016948 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016948 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016948 C   FIELD 31w01 UPDATE: UPDATE
-0x4001694C B  REGISTER EEFBR1 (rw): Timerx External Event Filtering Register 1
+0x4001694C B  REGISTER EEFR1 (rw): Timerx External Event Filtering Register 1
 0x4001694C C   FIELD 00w01 EE1LTCH: External Event 1 latch
 0x4001694C C   FIELD 01w04 EE1FLTR: External Event 1 filter
 0x4001694C C   FIELD 06w01 EE2LTCH: External Event 2 latch
@@ -6713,7 +6713,7 @@
 0x4001694C C   FIELD 19w04 EE4FLTR: External Event 4 filter
 0x4001694C C   FIELD 24w01 EE5LTCH: External Event 5 latch
 0x4001694C C   FIELD 25w04 EE5FLTR: External Event 5 filter
-0x40016950 B  REGISTER EEFBR2 (rw): Timerx External Event Filtering Register 2
+0x40016950 B  REGISTER EEFR2 (rw): Timerx External Event Filtering Register 2
 0x40016950 C   FIELD 00w01 EE6LTCH: External Event 6 latch
 0x40016950 C   FIELD 01w04 EE6FLTR: External Event 6 filter
 0x40016950 C   FIELD 06w01 EE7LTCH: External Event 7 latch
@@ -6724,7 +6724,7 @@
 0x40016950 C   FIELD 19w04 EE9FLTR: External Event 9 filter
 0x40016950 C   FIELD 24w01 EE10LTCH: External Event 10 latch
 0x40016950 C   FIELD 25w04 EE10FLTR: External Event 10 filter
-0x40016954 B  REGISTER RSTBR (rw): TimerA Reset Register
+0x40016954 B  REGISTER RSTR (rw): TimerA Reset Register
 0x40016954 C   FIELD 00w01 TIMFCMP1: Timer A Update reset
 0x40016954 C   FIELD 01w01 UPDT: Timer A Update reset
 0x40016954 C   FIELD 02w01 CMP2: Timer A compare 2 reset
@@ -6757,11 +6757,11 @@
 0x40016954 C   FIELD 29w01 TIMECMP2: Timer E Compare 2
 0x40016954 C   FIELD 30w01 TIMECMP4: Timer E Compare 4
 0x40016954 C   FIELD 31w01 TIMFCPM2: Timer F Compare 2
-0x40016958 B  REGISTER CHPBR (rw): Timerx Chopper Register
+0x40016958 B  REGISTER CHPR (rw): Timerx Chopper Register
 0x40016958 C   FIELD 00w04 CARFRQ: Timerx carrier frequency value
 0x40016958 C   FIELD 04w03 CARDTY: Timerx chopper duty cycle value
 0x40016958 C   FIELD 07w04 STRTPW: STRTPW
-0x4001695C B  REGISTER CPT1BCR (rw): Timerx Capture 2 Control Register
+0x4001695C B  REGISTER CPT1CR (rw): Timerx Capture 2 Control Register
 0x4001695C C   FIELD 00w01 SWCPT: Software Capture
 0x4001695C C   FIELD 01w01 UPDCPT: Update Capture
 0x4001695C C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -6794,7 +6794,7 @@
 0x4001695C C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x4001695C C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x4001695C C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x40016960 B  REGISTER CPT2BCR (rw): CPT2xCR
+0x40016960 B  REGISTER CPT2CR (rw): CPT2xCR
 0x40016960 C   FIELD 00w01 SWCPT: Software Capture
 0x40016960 C   FIELD 01w01 UPDCPT: Update Capture
 0x40016960 C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -6827,7 +6827,7 @@
 0x40016960 C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x40016960 C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x40016960 C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x40016964 B  REGISTER OUTBR (rw): Timerx Output Register
+0x40016964 B  REGISTER OUTR (rw): Timerx Output Register
 0x40016964 C   FIELD 01w01 POL1: Output 1 polarity
 0x40016964 C   FIELD 02w01 IDLEM1: Output 1 Idle mode
 0x40016964 C   FIELD 03w01 IDLES1: Output 1 Idle State
@@ -6844,7 +6844,7 @@
 0x40016964 C   FIELD 20w02 FAULT2: Output 2 Fault state
 0x40016964 C   FIELD 22w01 CHP2: Output 2 Chopper enable
 0x40016964 C   FIELD 23w01 DIDL2: Output 2 Deadtime upon burst mode Idle entry
-0x40016968 B  REGISTER FLTBR (rw): Timerx Fault Register
+0x40016968 B  REGISTER FLTR (rw): Timerx Fault Register
 0x40016968 C   FIELD 00w01 FLT1EN: Fault 1 enable
 0x40016968 C   FIELD 01w01 FLT2EN: Fault 2 enable
 0x40016968 C   FIELD 02w01 FLT3EN: Fault 3 enable
@@ -6852,7 +6852,7 @@
 0x40016968 C   FIELD 04w01 FLT5EN: Fault 5 enable
 0x40016968 C   FIELD 05w01 FLT6EN: Fault 6 enable
 0x40016968 C   FIELD 31w01 FLTLCK: Fault sources Lock
-0x4001696C B  REGISTER TIMBCR2 (rw): HRTIM Timerx Control Register 2
+0x4001696C B  REGISTER TIMCR2 (rw): HRTIM Timerx Control Register 2
 0x4001696C C   FIELD 00w01 DCDE: Dual Channel DAC trigger enable
 0x4001696C C   FIELD 01w01 DCDS: Dual Channel DAC Step trigger
 0x4001696C C   FIELD 02w01 DCDR: Dual Channel DAC Reset trigger
@@ -6865,23 +6865,23 @@
 0x4001696C C   FIELD 16w01 GTCMP1: Greater than Compare 1 PWM mode
 0x4001696C C   FIELD 17w01 GTCMP3: Greater than Compare 3 PWM mode
 0x4001696C C   FIELD 20w01 TRGHLF: Triggered-half mode
-0x40016970 B  REGISTER BEEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
+0x40016970 B  REGISTER EEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
 0x40016970 C   FIELD 00w01 EEVACE: External Event A Counter Enable
 0x40016970 C   FIELD 01w01 EEVACRES: External Event A Counter Reset
 0x40016970 C   FIELD 02w01 EEVARSTM: External Event A Reset Mode
 0x40016970 C   FIELD 04w04 EEVASEL: External Event A Selection
 0x40016970 C   FIELD 08w06 EEVACNT: External Event A counter
 0x40016980 A PERIPHERAL HRTIM_TIMC
-0x40016980 B  REGISTER TIMCCR (rw): Timerx Control Register
-0x40016980 C   FIELD 00w03 CKPSCx: HRTIM Timer x Clock prescaler
+0x40016980 B  REGISTER TIMCR (rw): Timerx Control Register
+0x40016980 C   FIELD 00w03 CKPSC: HRTIM Timer x Clock prescaler
 0x40016980 C   FIELD 03w01 CONT: Continuous mode
 0x40016980 C   FIELD 04w01 RETRIG: Re-triggerable mode
 0x40016980 C   FIELD 05w01 HALF: Half mode enable
 0x40016980 C   FIELD 06w01 PSHPLL: Push-Pull mode enable
 0x40016980 C   FIELD 07w02 INTLVD: Interleaved mode
 0x40016980 C   FIELD 09w01 RSYNCU: Re-Synchronized Update
-0x40016980 C   FIELD 10w01 SYNCRSTx: Synchronization Resets Timer x
-0x40016980 C   FIELD 11w01 SYNCSTRTx: Synchronization Starts Timer x
+0x40016980 C   FIELD 10w01 SYNCRST: Synchronization Resets Timer x
+0x40016980 C   FIELD 11w01 SYNCSTRT: Synchronization Starts Timer x
 0x40016980 C   FIELD 12w02 DELCMP2: Delayed CMP2 mode
 0x40016980 C   FIELD 14w02 DELCMP4: Delayed CMP4 mode
 0x40016980 C   FIELD 16w01 TFU: TFU
@@ -6895,7 +6895,7 @@
 0x40016980 C   FIELD 25w02 DACSYNC: AC Synchronization
 0x40016980 C   FIELD 27w01 PREEN: Preload enable
 0x40016980 C   FIELD 28w04 UPDGAT: Update Gating
-0x40016984 B  REGISTER TIMCISR (ro): Timerx Interrupt Status Register
+0x40016984 B  REGISTER TIMISR (ro): Timerx Interrupt Status Register
 0x40016984 C   FIELD 00w01 CMP1: Compare 1 Interrupt Flag
 0x40016984 C   FIELD 01w01 CMP2: Compare 2 Interrupt Flag
 0x40016984 C   FIELD 02w01 CMP3: Compare 3 Interrupt Flag
@@ -6904,10 +6904,10 @@
 0x40016984 C   FIELD 06w01 UPD: Update Interrupt Flag
 0x40016984 C   FIELD 07w01 CPT1: Capture1 Interrupt Flag
 0x40016984 C   FIELD 08w01 CPT2: Capture2 Interrupt Flag
-0x40016984 C   FIELD 09w01 SETx1: Output 1 Set Interrupt Flag
-0x40016984 C   FIELD 10w01 RSTx1: Output 1 Reset Interrupt Flag
-0x40016984 C   FIELD 11w01 SETx2: Output 2 Set Interrupt Flag
-0x40016984 C   FIELD 12w01 RSTx2: Output 2 Reset Interrupt Flag
+0x40016984 C   FIELD 09w01 SET1: Output 1 Set Interrupt Flag
+0x40016984 C   FIELD 10w01 RST1: Output 1 Reset Interrupt Flag
+0x40016984 C   FIELD 11w01 SET2: Output 2 Set Interrupt Flag
+0x40016984 C   FIELD 12w01 RST2: Output 2 Reset Interrupt Flag
 0x40016984 C   FIELD 13w01 RST: Reset Interrupt Flag
 0x40016984 C   FIELD 14w01 DLYPRT: Delayed Protection Flag
 0x40016984 C   FIELD 16w01 CPPSTAT: Current Push Pull Status
@@ -6916,7 +6916,7 @@
 0x40016984 C   FIELD 19w01 O2STAT: Output 2 State
 0x40016984 C   FIELD 20w01 O1CPY: Output 1 Copy
 0x40016984 C   FIELD 21w01 O2CPY: Output 2 Copy
-0x40016988 B  REGISTER TIMCICR (wo): Timerx Interrupt Clear Register
+0x40016988 B  REGISTER TIMICR (wo): Timerx Interrupt Clear Register
 0x40016988 C   FIELD 00w01 CMP1C: Compare 1 Interrupt flag Clear
 0x40016988 C   FIELD 01w01 CMP2C: Compare 2 Interrupt flag Clear
 0x40016988 C   FIELD 02w01 CMP3C: Compare 3 Interrupt flag Clear
@@ -6931,7 +6931,7 @@
 0x40016988 C   FIELD 12w01 RSTx2C: Output 2 Reset flag Clear
 0x40016988 C   FIELD 13w01 RSTC: Reset Interrupt flag Clear
 0x40016988 C   FIELD 14w01 DLYPRTC: Delayed Protection Flag Clear
-0x4001698C B  REGISTER TIMCDIER (rw): TIMxDIER
+0x4001698C B  REGISTER TIMDIER (rw): TIMxDIER
 0x4001698C C   FIELD 00w01 CMP1IE: CMP1IE
 0x4001698C C   FIELD 01w01 CMP2IE: CMP2IE
 0x4001698C C   FIELD 02w01 CMP3IE: CMP3IE
@@ -6940,10 +6940,10 @@
 0x4001698C C   FIELD 06w01 UPDIE: UPDIE
 0x4001698C C   FIELD 07w01 CPT1IE: CPT1IE
 0x4001698C C   FIELD 08w01 CPT2IE: CPT2IE
-0x4001698C C   FIELD 09w01 SETx1IE: SET1xIE
-0x4001698C C   FIELD 10w01 RSTx1IE: RSTx1IE
+0x4001698C C   FIELD 09w01 SET1IE: SET1xIE
+0x4001698C C   FIELD 10w01 RST1IE: RSTx1IE
 0x4001698C C   FIELD 11w01 SETx2IE: SETx2IE
-0x4001698C C   FIELD 12w01 RSTx2IE: RSTx2IE
+0x4001698C C   FIELD 12w01 RST2IE: RSTx2IE
 0x4001698C C   FIELD 13w01 RSTIE: RSTIE
 0x4001698C C   FIELD 14w01 DLYPRTIE: DLYPRTIE
 0x4001698C C   FIELD 16w01 CMP1DE: CMP1DE
@@ -6954,46 +6954,46 @@
 0x4001698C C   FIELD 22w01 UPDDE: UPDDE
 0x4001698C C   FIELD 23w01 CPT1DE: CPT1DE
 0x4001698C C   FIELD 24w01 CPT2DE: CPT2DE
-0x4001698C C   FIELD 25w01 SETx1DE: SET1xDE
-0x4001698C C   FIELD 26w01 RSTx1DE: RSTx1DE
-0x4001698C C   FIELD 27w01 SETx2DE: SETx2DE
-0x4001698C C   FIELD 28w01 RSTx2DE: RSTx2DE
+0x4001698C C   FIELD 25w01 SET1DE: SET1xDE
+0x4001698C C   FIELD 26w01 RST1DE: RSTx1DE
+0x4001698C C   FIELD 27w01 SET2DE: SETx2DE
+0x4001698C C   FIELD 28w01 RST2DE: RSTx2DE
 0x4001698C C   FIELD 29w01 RSTDE: RSTDE
 0x4001698C C   FIELD 30w01 DLYPRTDE: DLYPRTDE
-0x40016990 B  REGISTER CNTCR (rw): Timerx Counter Register
-0x40016990 C   FIELD 00w16 CNTx: Timerx Counter value
-0x40016994 B  REGISTER PERCR (rw): Timerx Period Register
-0x40016994 C   FIELD 00w16 PERx: Timerx Period value
-0x40016998 B  REGISTER REPCR (rw): Timerx Repetition Register
-0x40016998 C   FIELD 00w08 REPx: Timerx Repetition counter value
-0x4001699C B  REGISTER CMP1CR (rw): Timerx Compare 1 Register
-0x4001699C C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x400169A0 B  REGISTER CMP1CCR (rw): Timerx Compare 1 Compound Register
-0x400169A0 C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x400169A0 C   FIELD 16w08 REPx: Timerx Repetition value (aliased from HRTIM_REPx register)
-0x400169A4 B  REGISTER CMP2CR (rw): Timerx Compare 2 Register
-0x400169A4 C   FIELD 00w16 CMP2x: Timerx Compare 2 value
-0x400169A8 B  REGISTER CMP3CR (rw): Timerx Compare 3 Register
-0x400169A8 C   FIELD 00w16 CMP3x: Timerx Compare 3 value
-0x400169AC B  REGISTER CMP4CR (rw): Timerx Compare 4 Register
-0x400169AC C   FIELD 00w16 CMP4x: Timerx Compare 4 value
-0x400169B0 B  REGISTER CPT1CR (ro): Timerx Capture 1 Register
-0x400169B0 C   FIELD 00w16 CPT1x: Timerx Capture 1 value
+0x40016990 B  REGISTER CNTR (rw): Timerx Counter Register
+0x40016990 C   FIELD 00w16 CNT: Timerx Counter value
+0x40016994 B  REGISTER PERR (rw): Timerx Period Register
+0x40016994 C   FIELD 00w16 PER: Timerx Period value
+0x40016998 B  REGISTER REPR (rw): Timerx Repetition Register
+0x40016998 C   FIELD 00w08 REP: Timerx Repetition counter value
+0x4001699C B  REGISTER CMP1R (rw): Timerx Compare 1 Register
+0x4001699C C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x400169A0 B  REGISTER CMP1CR (rw): Timerx Compare 1 Compound Register
+0x400169A0 C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x400169A0 C   FIELD 16w08 REP: Timerx Repetition value (aliased from HRTIM_REPx register)
+0x400169A4 B  REGISTER CMP2R (rw): Timerx Compare 2 Register
+0x400169A4 C   FIELD 00w16 CMP2: Timerx Compare 2 value
+0x400169A8 B  REGISTER CMP3R (rw): Timerx Compare 3 Register
+0x400169A8 C   FIELD 00w16 CMP3: Timerx Compare 3 value
+0x400169AC B  REGISTER CMP4R (rw): Timerx Compare 4 Register
+0x400169AC C   FIELD 00w16 CMP4: Timerx Compare 4 value
+0x400169B0 B  REGISTER CPT1R (ro): Timerx Capture 1 Register
+0x400169B0 C   FIELD 00w16 CPT1: Timerx Capture 1 value
 0x400169B0 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x400169B4 B  REGISTER CPT2CR (ro): Timerx Capture 2 Register
-0x400169B4 C   FIELD 00w16 CPT2x: Timerx Capture 2 value
+0x400169B4 B  REGISTER CPT2R (ro): Timerx Capture 2 Register
+0x400169B4 C   FIELD 00w16 CPT2: Timerx Capture 2 value
 0x400169B4 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x400169B8 B  REGISTER DTCR (rw): Timerx Deadtime Register
-0x400169B8 C   FIELD 00w09 DTRx: Deadtime Rising value
-0x400169B8 C   FIELD 09w01 SDTRx: Sign Deadtime Rising value
+0x400169B8 B  REGISTER DTR (rw): Timerx Deadtime Register
+0x400169B8 C   FIELD 00w09 DTR: Deadtime Rising value
+0x400169B8 C   FIELD 09w01 SDTR: Sign Deadtime Rising value
 0x400169B8 C   FIELD 10w03 DTPRSC: Deadtime Prescaler
-0x400169B8 C   FIELD 14w01 DTRSLKx: Deadtime Rising Sign Lock
-0x400169B8 C   FIELD 15w01 DTRLKx: Deadtime Rising Lock
-0x400169B8 C   FIELD 16w09 DTFx: Deadtime Falling value
-0x400169B8 C   FIELD 25w01 SDTFx: Sign Deadtime Falling value
-0x400169B8 C   FIELD 30w01 DTFSLKx: Deadtime Falling Sign Lock
-0x400169B8 C   FIELD 31w01 DTFLKx: Deadtime Falling Lock
-0x400169BC B  REGISTER SETC1R (rw): Timerx Output1 Set Register
+0x400169B8 C   FIELD 14w01 DTRSLK: Deadtime Rising Sign Lock
+0x400169B8 C   FIELD 15w01 DTRLK: Deadtime Rising Lock
+0x400169B8 C   FIELD 16w09 DTF: Deadtime Falling value
+0x400169B8 C   FIELD 25w01 SDTF: Sign Deadtime Falling value
+0x400169B8 C   FIELD 30w01 DTFSLK: Deadtime Falling Sign Lock
+0x400169B8 C   FIELD 31w01 DTFLK: Deadtime Falling Lock
+0x400169BC B  REGISTER SET1R (rw): Timerx Output1 Set Register
 0x400169BC C   FIELD 00w01 SST: Software Set trigger
 0x400169BC C   FIELD 01w01 RESYNC: Timer A resynchronizaton
 0x400169BC C   FIELD 02w01 PER: Timer A Period
@@ -7026,7 +7026,7 @@
 0x400169BC C   FIELD 29w01 EXTEVNT9: External Event 9
 0x400169BC C   FIELD 30w01 EXTEVNT10: External Event 10
 0x400169BC C   FIELD 31w01 UPDATE: Registers update (transfer preload to active)
-0x400169C0 B  REGISTER RSTC1R (rw): Timerx Output1 Reset Register
+0x400169C0 B  REGISTER RST1R (rw): Timerx Output1 Reset Register
 0x400169C0 C   FIELD 00w01 SRT: SRT
 0x400169C0 C   FIELD 01w01 RESYNC: RESYNC
 0x400169C0 C   FIELD 02w01 PER: PER
@@ -7059,7 +7059,7 @@
 0x400169C0 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x400169C0 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x400169C0 C   FIELD 31w01 UPDATE: UPDATE
-0x400169C4 B  REGISTER SETC2R (rw): Timerx Output2 Set Register
+0x400169C4 B  REGISTER SET2R (rw): Timerx Output2 Set Register
 0x400169C4 C   FIELD 00w01 SST: SST
 0x400169C4 C   FIELD 01w01 RESYNC: RESYNC
 0x400169C4 C   FIELD 02w01 PER: PER
@@ -7092,7 +7092,7 @@
 0x400169C4 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x400169C4 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x400169C4 C   FIELD 31w01 UPDATE: UPDATE
-0x400169C8 B  REGISTER RSTC2R (rw): Timerx Output2 Reset Register
+0x400169C8 B  REGISTER RST2R (rw): Timerx Output2 Reset Register
 0x400169C8 C   FIELD 00w01 SRT: SRT
 0x400169C8 C   FIELD 01w01 RESYNC: RESYNC
 0x400169C8 C   FIELD 02w01 PER: PER
@@ -7125,7 +7125,7 @@
 0x400169C8 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x400169C8 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x400169C8 C   FIELD 31w01 UPDATE: UPDATE
-0x400169CC B  REGISTER EEFCR1 (rw): Timerx External Event Filtering Register 1
+0x400169CC B  REGISTER EEFR1 (rw): Timerx External Event Filtering Register 1
 0x400169CC C   FIELD 00w01 EE1LTCH: External Event 1 latch
 0x400169CC C   FIELD 01w04 EE1FLTR: External Event 1 filter
 0x400169CC C   FIELD 06w01 EE2LTCH: External Event 2 latch
@@ -7136,7 +7136,7 @@
 0x400169CC C   FIELD 19w04 EE4FLTR: External Event 4 filter
 0x400169CC C   FIELD 24w01 EE5LTCH: External Event 5 latch
 0x400169CC C   FIELD 25w04 EE5FLTR: External Event 5 filter
-0x400169D0 B  REGISTER EEFCR2 (rw): Timerx External Event Filtering Register 2
+0x400169D0 B  REGISTER EEFR2 (rw): Timerx External Event Filtering Register 2
 0x400169D0 C   FIELD 00w01 EE6LTCH: External Event 6 latch
 0x400169D0 C   FIELD 01w04 EE6FLTR: External Event 6 filter
 0x400169D0 C   FIELD 06w01 EE7LTCH: External Event 7 latch
@@ -7147,7 +7147,7 @@
 0x400169D0 C   FIELD 19w04 EE9FLTR: External Event 9 filter
 0x400169D0 C   FIELD 24w01 EE10LTCH: External Event 10 latch
 0x400169D0 C   FIELD 25w04 EE10FLTR: External Event 10 filter
-0x400169D4 B  REGISTER RSTCR (rw): TimerA Reset Register
+0x400169D4 B  REGISTER RSTR (rw): TimerA Reset Register
 0x400169D4 C   FIELD 00w01 TIMFCMP1: Timer A Update reset
 0x400169D4 C   FIELD 01w01 UPDT: Timer A Update reset
 0x400169D4 C   FIELD 02w01 CMP2: Timer A compare 2 reset
@@ -7180,11 +7180,11 @@
 0x400169D4 C   FIELD 29w01 TIMECMP2: Timer E Compare 2
 0x400169D4 C   FIELD 30w01 TIMECMP4: Timer E Compare 4
 0x400169D4 C   FIELD 31w01 TIMFCPM2: Timer F Compare 2
-0x400169D8 B  REGISTER CHPCR (rw): Timerx Chopper Register
+0x400169D8 B  REGISTER CHPR (rw): Timerx Chopper Register
 0x400169D8 C   FIELD 00w04 CARFRQ: Timerx carrier frequency value
 0x400169D8 C   FIELD 04w03 CARDTY: Timerx chopper duty cycle value
 0x400169D8 C   FIELD 07w04 STRTPW: STRTPW
-0x400169DC B  REGISTER CPT1CCR (rw): Timerx Capture 2 Control Register
+0x400169DC B  REGISTER CPT1CR (rw): Timerx Capture 2 Control Register
 0x400169DC C   FIELD 00w01 SWCPT: Software Capture
 0x400169DC C   FIELD 01w01 UPDCPT: Update Capture
 0x400169DC C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -7217,7 +7217,7 @@
 0x400169DC C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x400169DC C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x400169DC C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x400169E0 B  REGISTER CPT2CCR (rw): CPT2xCR
+0x400169E0 B  REGISTER CPT2CR (rw): CPT2xCR
 0x400169E0 C   FIELD 00w01 SWCPT: Software Capture
 0x400169E0 C   FIELD 01w01 UPDCPT: Update Capture
 0x400169E0 C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -7250,7 +7250,7 @@
 0x400169E0 C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x400169E0 C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x400169E0 C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x400169E4 B  REGISTER OUTCR (rw): Timerx Output Register
+0x400169E4 B  REGISTER OUTR (rw): Timerx Output Register
 0x400169E4 C   FIELD 01w01 POL1: Output 1 polarity
 0x400169E4 C   FIELD 02w01 IDLEM1: Output 1 Idle mode
 0x400169E4 C   FIELD 03w01 IDLES1: Output 1 Idle State
@@ -7267,7 +7267,7 @@
 0x400169E4 C   FIELD 20w02 FAULT2: Output 2 Fault state
 0x400169E4 C   FIELD 22w01 CHP2: Output 2 Chopper enable
 0x400169E4 C   FIELD 23w01 DIDL2: Output 2 Deadtime upon burst mode Idle entry
-0x400169E8 B  REGISTER FLTCR (rw): Timerx Fault Register
+0x400169E8 B  REGISTER FLTR (rw): Timerx Fault Register
 0x400169E8 C   FIELD 00w01 FLT1EN: Fault 1 enable
 0x400169E8 C   FIELD 01w01 FLT2EN: Fault 2 enable
 0x400169E8 C   FIELD 02w01 FLT3EN: Fault 3 enable
@@ -7275,7 +7275,7 @@
 0x400169E8 C   FIELD 04w01 FLT5EN: Fault 5 enable
 0x400169E8 C   FIELD 05w01 FLT6EN: Fault 6 enable
 0x400169E8 C   FIELD 31w01 FLTLCK: Fault sources Lock
-0x400169EC B  REGISTER TIMCCR2 (rw): HRTIM Timerx Control Register 2
+0x400169EC B  REGISTER TIMCR2 (rw): HRTIM Timerx Control Register 2
 0x400169EC C   FIELD 00w01 DCDE: Dual Channel DAC trigger enable
 0x400169EC C   FIELD 01w01 DCDS: Dual Channel DAC Step trigger
 0x400169EC C   FIELD 02w01 DCDR: Dual Channel DAC Reset trigger
@@ -7288,23 +7288,23 @@
 0x400169EC C   FIELD 16w01 GTCMP1: Greater than Compare 1 PWM mode
 0x400169EC C   FIELD 17w01 GTCMP3: Greater than Compare 3 PWM mode
 0x400169EC C   FIELD 20w01 TRGHLF: Triggered-half mode
-0x400169F0 B  REGISTER CEEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
+0x400169F0 B  REGISTER EEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
 0x400169F0 C   FIELD 00w01 EEVACE: External Event A Counter Enable
 0x400169F0 C   FIELD 01w01 EEVACRES: External Event A Counter Reset
 0x400169F0 C   FIELD 02w01 EEVARSTM: External Event A Reset Mode
 0x400169F0 C   FIELD 04w04 EEVASEL: External Event A Selection
 0x400169F0 C   FIELD 08w06 EEVACNT: External Event A counter
 0x40016A00 A PERIPHERAL HRTIM_TIMD
-0x40016A00 B  REGISTER TIMDCR (rw): Timerx Control Register
-0x40016A00 C   FIELD 00w03 CKPSCx: HRTIM Timer x Clock prescaler
+0x40016A00 B  REGISTER TIMCR (rw): Timerx Control Register
+0x40016A00 C   FIELD 00w03 CKPSC: HRTIM Timer x Clock prescaler
 0x40016A00 C   FIELD 03w01 CONT: Continuous mode
 0x40016A00 C   FIELD 04w01 RETRIG: Re-triggerable mode
 0x40016A00 C   FIELD 05w01 HALF: Half mode enable
 0x40016A00 C   FIELD 06w01 PSHPLL: Push-Pull mode enable
 0x40016A00 C   FIELD 07w02 INTLVD: Interleaved mode
 0x40016A00 C   FIELD 09w01 RSYNCU: Re-Synchronized Update
-0x40016A00 C   FIELD 10w01 SYNCRSTx: Synchronization Resets Timer x
-0x40016A00 C   FIELD 11w01 SYNCSTRTx: Synchronization Starts Timer x
+0x40016A00 C   FIELD 10w01 SYNCRST: Synchronization Resets Timer x
+0x40016A00 C   FIELD 11w01 SYNCSTRT: Synchronization Starts Timer x
 0x40016A00 C   FIELD 12w02 DELCMP2: Delayed CMP2 mode
 0x40016A00 C   FIELD 14w02 DELCMP4: Delayed CMP4 mode
 0x40016A00 C   FIELD 16w01 TFU: TFU
@@ -7318,7 +7318,7 @@
 0x40016A00 C   FIELD 25w02 DACSYNC: AC Synchronization
 0x40016A00 C   FIELD 27w01 PREEN: Preload enable
 0x40016A00 C   FIELD 28w04 UPDGAT: Update Gating
-0x40016A04 B  REGISTER TIMDISR (ro): Timerx Interrupt Status Register
+0x40016A04 B  REGISTER TIMISR (ro): Timerx Interrupt Status Register
 0x40016A04 C   FIELD 00w01 CMP1: Compare 1 Interrupt Flag
 0x40016A04 C   FIELD 01w01 CMP2: Compare 2 Interrupt Flag
 0x40016A04 C   FIELD 02w01 CMP3: Compare 3 Interrupt Flag
@@ -7327,10 +7327,10 @@
 0x40016A04 C   FIELD 06w01 UPD: Update Interrupt Flag
 0x40016A04 C   FIELD 07w01 CPT1: Capture1 Interrupt Flag
 0x40016A04 C   FIELD 08w01 CPT2: Capture2 Interrupt Flag
-0x40016A04 C   FIELD 09w01 SETx1: Output 1 Set Interrupt Flag
-0x40016A04 C   FIELD 10w01 RSTx1: Output 1 Reset Interrupt Flag
-0x40016A04 C   FIELD 11w01 SETx2: Output 2 Set Interrupt Flag
-0x40016A04 C   FIELD 12w01 RSTx2: Output 2 Reset Interrupt Flag
+0x40016A04 C   FIELD 09w01 SET1: Output 1 Set Interrupt Flag
+0x40016A04 C   FIELD 10w01 RST1: Output 1 Reset Interrupt Flag
+0x40016A04 C   FIELD 11w01 SET2: Output 2 Set Interrupt Flag
+0x40016A04 C   FIELD 12w01 RST2: Output 2 Reset Interrupt Flag
 0x40016A04 C   FIELD 13w01 RST: Reset Interrupt Flag
 0x40016A04 C   FIELD 14w01 DLYPRT: Delayed Protection Flag
 0x40016A04 C   FIELD 16w01 CPPSTAT: Current Push Pull Status
@@ -7339,7 +7339,7 @@
 0x40016A04 C   FIELD 19w01 O2STAT: Output 2 State
 0x40016A04 C   FIELD 20w01 O1CPY: Output 1 Copy
 0x40016A04 C   FIELD 21w01 O2CPY: Output 2 Copy
-0x40016A08 B  REGISTER TIMDICR (wo): Timerx Interrupt Clear Register
+0x40016A08 B  REGISTER TIMICR (wo): Timerx Interrupt Clear Register
 0x40016A08 C   FIELD 00w01 CMP1C: Compare 1 Interrupt flag Clear
 0x40016A08 C   FIELD 01w01 CMP2C: Compare 2 Interrupt flag Clear
 0x40016A08 C   FIELD 02w01 CMP3C: Compare 3 Interrupt flag Clear
@@ -7354,7 +7354,7 @@
 0x40016A08 C   FIELD 12w01 RSTx2C: Output 2 Reset flag Clear
 0x40016A08 C   FIELD 13w01 RSTC: Reset Interrupt flag Clear
 0x40016A08 C   FIELD 14w01 DLYPRTC: Delayed Protection Flag Clear
-0x40016A0C B  REGISTER TIMDDIER (rw): TIMxDIER
+0x40016A0C B  REGISTER TIMDIER (rw): TIMxDIER
 0x40016A0C C   FIELD 00w01 CMP1IE: CMP1IE
 0x40016A0C C   FIELD 01w01 CMP2IE: CMP2IE
 0x40016A0C C   FIELD 02w01 CMP3IE: CMP3IE
@@ -7363,10 +7363,10 @@
 0x40016A0C C   FIELD 06w01 UPDIE: UPDIE
 0x40016A0C C   FIELD 07w01 CPT1IE: CPT1IE
 0x40016A0C C   FIELD 08w01 CPT2IE: CPT2IE
-0x40016A0C C   FIELD 09w01 SETx1IE: SET1xIE
-0x40016A0C C   FIELD 10w01 RSTx1IE: RSTx1IE
+0x40016A0C C   FIELD 09w01 SET1IE: SET1xIE
+0x40016A0C C   FIELD 10w01 RST1IE: RSTx1IE
 0x40016A0C C   FIELD 11w01 SETx2IE: SETx2IE
-0x40016A0C C   FIELD 12w01 RSTx2IE: RSTx2IE
+0x40016A0C C   FIELD 12w01 RST2IE: RSTx2IE
 0x40016A0C C   FIELD 13w01 RSTIE: RSTIE
 0x40016A0C C   FIELD 14w01 DLYPRTIE: DLYPRTIE
 0x40016A0C C   FIELD 16w01 CMP1DE: CMP1DE
@@ -7377,46 +7377,46 @@
 0x40016A0C C   FIELD 22w01 UPDDE: UPDDE
 0x40016A0C C   FIELD 23w01 CPT1DE: CPT1DE
 0x40016A0C C   FIELD 24w01 CPT2DE: CPT2DE
-0x40016A0C C   FIELD 25w01 SETx1DE: SET1xDE
-0x40016A0C C   FIELD 26w01 RSTx1DE: RSTx1DE
-0x40016A0C C   FIELD 27w01 SETx2DE: SETx2DE
-0x40016A0C C   FIELD 28w01 RSTx2DE: RSTx2DE
+0x40016A0C C   FIELD 25w01 SET1DE: SET1xDE
+0x40016A0C C   FIELD 26w01 RST1DE: RSTx1DE
+0x40016A0C C   FIELD 27w01 SET2DE: SETx2DE
+0x40016A0C C   FIELD 28w01 RST2DE: RSTx2DE
 0x40016A0C C   FIELD 29w01 RSTDE: RSTDE
 0x40016A0C C   FIELD 30w01 DLYPRTDE: DLYPRTDE
-0x40016A10 B  REGISTER CNTDR (rw): Timerx Counter Register
-0x40016A10 C   FIELD 00w16 CNTx: Timerx Counter value
-0x40016A14 B  REGISTER PERDR (rw): Timerx Period Register
-0x40016A14 C   FIELD 00w16 PERx: Timerx Period value
-0x40016A18 B  REGISTER REPDR (rw): Timerx Repetition Register
-0x40016A18 C   FIELD 00w08 REPx: Timerx Repetition counter value
-0x40016A1C B  REGISTER CMP1DR (rw): Timerx Compare 1 Register
-0x40016A1C C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016A20 B  REGISTER CMP1CDR (rw): Timerx Compare 1 Compound Register
-0x40016A20 C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016A20 C   FIELD 16w08 REPx: Timerx Repetition value (aliased from HRTIM_REPx register)
-0x40016A24 B  REGISTER CMP2DR (rw): Timerx Compare 2 Register
-0x40016A24 C   FIELD 00w16 CMP2x: Timerx Compare 2 value
-0x40016A28 B  REGISTER CMP3DR (rw): Timerx Compare 3 Register
-0x40016A28 C   FIELD 00w16 CMP3x: Timerx Compare 3 value
-0x40016A2C B  REGISTER CMP4DR (rw): Timerx Compare 4 Register
-0x40016A2C C   FIELD 00w16 CMP4x: Timerx Compare 4 value
-0x40016A30 B  REGISTER CPT1DR (ro): Timerx Capture 1 Register
-0x40016A30 C   FIELD 00w16 CPT1x: Timerx Capture 1 value
+0x40016A10 B  REGISTER CNTR (rw): Timerx Counter Register
+0x40016A10 C   FIELD 00w16 CNT: Timerx Counter value
+0x40016A14 B  REGISTER PERR (rw): Timerx Period Register
+0x40016A14 C   FIELD 00w16 PER: Timerx Period value
+0x40016A18 B  REGISTER REPR (rw): Timerx Repetition Register
+0x40016A18 C   FIELD 00w08 REP: Timerx Repetition counter value
+0x40016A1C B  REGISTER CMP1R (rw): Timerx Compare 1 Register
+0x40016A1C C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016A20 B  REGISTER CMP1CR (rw): Timerx Compare 1 Compound Register
+0x40016A20 C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016A20 C   FIELD 16w08 REP: Timerx Repetition value (aliased from HRTIM_REPx register)
+0x40016A24 B  REGISTER CMP2R (rw): Timerx Compare 2 Register
+0x40016A24 C   FIELD 00w16 CMP2: Timerx Compare 2 value
+0x40016A28 B  REGISTER CMP3R (rw): Timerx Compare 3 Register
+0x40016A28 C   FIELD 00w16 CMP3: Timerx Compare 3 value
+0x40016A2C B  REGISTER CMP4R (rw): Timerx Compare 4 Register
+0x40016A2C C   FIELD 00w16 CMP4: Timerx Compare 4 value
+0x40016A30 B  REGISTER CPT1R (ro): Timerx Capture 1 Register
+0x40016A30 C   FIELD 00w16 CPT1: Timerx Capture 1 value
 0x40016A30 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016A34 B  REGISTER CPT2DR (ro): Timerx Capture 2 Register
-0x40016A34 C   FIELD 00w16 CPT2x: Timerx Capture 2 value
+0x40016A34 B  REGISTER CPT2R (ro): Timerx Capture 2 Register
+0x40016A34 C   FIELD 00w16 CPT2: Timerx Capture 2 value
 0x40016A34 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016A38 B  REGISTER DTDR (rw): Timerx Deadtime Register
-0x40016A38 C   FIELD 00w09 DTRx: Deadtime Rising value
-0x40016A38 C   FIELD 09w01 SDTRx: Sign Deadtime Rising value
+0x40016A38 B  REGISTER DTR (rw): Timerx Deadtime Register
+0x40016A38 C   FIELD 00w09 DTR: Deadtime Rising value
+0x40016A38 C   FIELD 09w01 SDTR: Sign Deadtime Rising value
 0x40016A38 C   FIELD 10w03 DTPRSC: Deadtime Prescaler
-0x40016A38 C   FIELD 14w01 DTRSLKx: Deadtime Rising Sign Lock
-0x40016A38 C   FIELD 15w01 DTRLKx: Deadtime Rising Lock
-0x40016A38 C   FIELD 16w09 DTFx: Deadtime Falling value
-0x40016A38 C   FIELD 25w01 SDTFx: Sign Deadtime Falling value
-0x40016A38 C   FIELD 30w01 DTFSLKx: Deadtime Falling Sign Lock
-0x40016A38 C   FIELD 31w01 DTFLKx: Deadtime Falling Lock
-0x40016A3C B  REGISTER SETD1R (rw): Timerx Output1 Set Register
+0x40016A38 C   FIELD 14w01 DTRSLK: Deadtime Rising Sign Lock
+0x40016A38 C   FIELD 15w01 DTRLK: Deadtime Rising Lock
+0x40016A38 C   FIELD 16w09 DTF: Deadtime Falling value
+0x40016A38 C   FIELD 25w01 SDTF: Sign Deadtime Falling value
+0x40016A38 C   FIELD 30w01 DTFSLK: Deadtime Falling Sign Lock
+0x40016A38 C   FIELD 31w01 DTFLK: Deadtime Falling Lock
+0x40016A3C B  REGISTER SET1R (rw): Timerx Output1 Set Register
 0x40016A3C C   FIELD 00w01 SST: Software Set trigger
 0x40016A3C C   FIELD 01w01 RESYNC: Timer A resynchronizaton
 0x40016A3C C   FIELD 02w01 PER: Timer A Period
@@ -7449,7 +7449,7 @@
 0x40016A3C C   FIELD 29w01 EXTEVNT9: External Event 9
 0x40016A3C C   FIELD 30w01 EXTEVNT10: External Event 10
 0x40016A3C C   FIELD 31w01 UPDATE: Registers update (transfer preload to active)
-0x40016A40 B  REGISTER RSTD1R (rw): Timerx Output1 Reset Register
+0x40016A40 B  REGISTER RST1R (rw): Timerx Output1 Reset Register
 0x40016A40 C   FIELD 00w01 SRT: SRT
 0x40016A40 C   FIELD 01w01 RESYNC: RESYNC
 0x40016A40 C   FIELD 02w01 PER: PER
@@ -7482,7 +7482,7 @@
 0x40016A40 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016A40 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016A40 C   FIELD 31w01 UPDATE: UPDATE
-0x40016A44 B  REGISTER SETD2R (rw): Timerx Output2 Set Register
+0x40016A44 B  REGISTER SET2R (rw): Timerx Output2 Set Register
 0x40016A44 C   FIELD 00w01 SST: SST
 0x40016A44 C   FIELD 01w01 RESYNC: RESYNC
 0x40016A44 C   FIELD 02w01 PER: PER
@@ -7515,7 +7515,7 @@
 0x40016A44 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016A44 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016A44 C   FIELD 31w01 UPDATE: UPDATE
-0x40016A48 B  REGISTER RSTD2R (rw): Timerx Output2 Reset Register
+0x40016A48 B  REGISTER RST2R (rw): Timerx Output2 Reset Register
 0x40016A48 C   FIELD 00w01 SRT: SRT
 0x40016A48 C   FIELD 01w01 RESYNC: RESYNC
 0x40016A48 C   FIELD 02w01 PER: PER
@@ -7548,7 +7548,7 @@
 0x40016A48 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016A48 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016A48 C   FIELD 31w01 UPDATE: UPDATE
-0x40016A4C B  REGISTER EEFDR1 (rw): Timerx External Event Filtering Register 1
+0x40016A4C B  REGISTER EEFR1 (rw): Timerx External Event Filtering Register 1
 0x40016A4C C   FIELD 00w01 EE1LTCH: External Event 1 latch
 0x40016A4C C   FIELD 01w04 EE1FLTR: External Event 1 filter
 0x40016A4C C   FIELD 06w01 EE2LTCH: External Event 2 latch
@@ -7559,7 +7559,7 @@
 0x40016A4C C   FIELD 19w04 EE4FLTR: External Event 4 filter
 0x40016A4C C   FIELD 24w01 EE5LTCH: External Event 5 latch
 0x40016A4C C   FIELD 25w04 EE5FLTR: External Event 5 filter
-0x40016A50 B  REGISTER EEFDR2 (rw): Timerx External Event Filtering Register 2
+0x40016A50 B  REGISTER EEFR2 (rw): Timerx External Event Filtering Register 2
 0x40016A50 C   FIELD 00w01 EE6LTCH: External Event 6 latch
 0x40016A50 C   FIELD 01w04 EE6FLTR: External Event 6 filter
 0x40016A50 C   FIELD 06w01 EE7LTCH: External Event 7 latch
@@ -7570,7 +7570,7 @@
 0x40016A50 C   FIELD 19w04 EE9FLTR: External Event 9 filter
 0x40016A50 C   FIELD 24w01 EE10LTCH: External Event 10 latch
 0x40016A50 C   FIELD 25w04 EE10FLTR: External Event 10 filter
-0x40016A54 B  REGISTER RSTDR (rw): TimerA Reset Register
+0x40016A54 B  REGISTER RSTR (rw): TimerA Reset Register
 0x40016A54 C   FIELD 00w01 TIMFCMP1: Timer A Update reset
 0x40016A54 C   FIELD 01w01 UPDT: Timer A Update reset
 0x40016A54 C   FIELD 02w01 CMP2: Timer A compare 2 reset
@@ -7603,11 +7603,11 @@
 0x40016A54 C   FIELD 29w01 TIMECMP2: Timer E Compare 2
 0x40016A54 C   FIELD 30w01 TIMECMP4: Timer E Compare 4
 0x40016A54 C   FIELD 31w01 TIMFCPM2: Timer F Compare 2
-0x40016A58 B  REGISTER CHPDR (rw): Timerx Chopper Register
+0x40016A58 B  REGISTER CHPR (rw): Timerx Chopper Register
 0x40016A58 C   FIELD 00w04 CARFRQ: Timerx carrier frequency value
 0x40016A58 C   FIELD 04w03 CARDTY: Timerx chopper duty cycle value
 0x40016A58 C   FIELD 07w04 STRTPW: STRTPW
-0x40016A5C B  REGISTER CPT1DCR (rw): Timerx Capture 2 Control Register
+0x40016A5C B  REGISTER CPT1CR (rw): Timerx Capture 2 Control Register
 0x40016A5C C   FIELD 00w01 SWCPT: Software Capture
 0x40016A5C C   FIELD 01w01 UPDCPT: Update Capture
 0x40016A5C C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -7640,7 +7640,7 @@
 0x40016A5C C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x40016A5C C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x40016A5C C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x40016A60 B  REGISTER CPT2DCR (rw): CPT2xCR
+0x40016A60 B  REGISTER CPT2CR (rw): CPT2xCR
 0x40016A60 C   FIELD 00w01 SWCPT: Software Capture
 0x40016A60 C   FIELD 01w01 UPDCPT: Update Capture
 0x40016A60 C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -7673,7 +7673,7 @@
 0x40016A60 C   FIELD 29w01 TE1RST: Timer E output 1 Reset
 0x40016A60 C   FIELD 30w01 TECMP1: Timer E Compare 1
 0x40016A60 C   FIELD 31w01 TECMP2: Timer E Compare 2
-0x40016A64 B  REGISTER OUTDR (rw): Timerx Output Register
+0x40016A64 B  REGISTER OUTR (rw): Timerx Output Register
 0x40016A64 C   FIELD 01w01 POL1: Output 1 polarity
 0x40016A64 C   FIELD 02w01 IDLEM1: Output 1 Idle mode
 0x40016A64 C   FIELD 03w01 IDLES1: Output 1 Idle State
@@ -7690,7 +7690,7 @@
 0x40016A64 C   FIELD 20w02 FAULT2: Output 2 Fault state
 0x40016A64 C   FIELD 22w01 CHP2: Output 2 Chopper enable
 0x40016A64 C   FIELD 23w01 DIDL2: Output 2 Deadtime upon burst mode Idle entry
-0x40016A68 B  REGISTER FLTDR (rw): Timerx Fault Register
+0x40016A68 B  REGISTER FLTR (rw): Timerx Fault Register
 0x40016A68 C   FIELD 00w01 FLT1EN: Fault 1 enable
 0x40016A68 C   FIELD 01w01 FLT2EN: Fault 2 enable
 0x40016A68 C   FIELD 02w01 FLT3EN: Fault 3 enable
@@ -7698,7 +7698,7 @@
 0x40016A68 C   FIELD 04w01 FLT5EN: Fault 5 enable
 0x40016A68 C   FIELD 05w01 FLT6EN: Fault 6 enable
 0x40016A68 C   FIELD 31w01 FLTLCK: Fault sources Lock
-0x40016A6C B  REGISTER TIMDCR2 (rw): HRTIM Timerx Control Register 2
+0x40016A6C B  REGISTER TIMCR2 (rw): HRTIM Timerx Control Register 2
 0x40016A6C C   FIELD 00w01 DCDE: Dual Channel DAC trigger enable
 0x40016A6C C   FIELD 01w01 DCDS: Dual Channel DAC Step trigger
 0x40016A6C C   FIELD 02w01 DCDR: Dual Channel DAC Reset trigger
@@ -7711,23 +7711,23 @@
 0x40016A6C C   FIELD 16w01 GTCMP1: Greater than Compare 1 PWM mode
 0x40016A6C C   FIELD 17w01 GTCMP3: Greater than Compare 3 PWM mode
 0x40016A6C C   FIELD 20w01 TRGHLF: Triggered-half mode
-0x40016A70 B  REGISTER DEEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
+0x40016A70 B  REGISTER EEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
 0x40016A70 C   FIELD 00w01 EEVACE: External Event A Counter Enable
 0x40016A70 C   FIELD 01w01 EEVACRES: External Event A Counter Reset
 0x40016A70 C   FIELD 02w01 EEVARSTM: External Event A Reset Mode
 0x40016A70 C   FIELD 04w04 EEVASEL: External Event A Selection
 0x40016A70 C   FIELD 08w06 EEVACNT: External Event A counter
 0x40016A80 A PERIPHERAL HRTIM_TIME
-0x40016A80 B  REGISTER TIMECR (rw): Timerx Control Register
-0x40016A80 C   FIELD 00w03 CKPSCx: HRTIM Timer x Clock prescaler
+0x40016A80 B  REGISTER TIMCR (rw): Timerx Control Register
+0x40016A80 C   FIELD 00w03 CKPSC: HRTIM Timer x Clock prescaler
 0x40016A80 C   FIELD 03w01 CONT: Continuous mode
 0x40016A80 C   FIELD 04w01 RETRIG: Re-triggerable mode
 0x40016A80 C   FIELD 05w01 HALF: Half mode enable
 0x40016A80 C   FIELD 06w01 PSHPLL: Push-Pull mode enable
 0x40016A80 C   FIELD 07w02 INTLVD: Interleaved mode
 0x40016A80 C   FIELD 09w01 RSYNCU: Re-Synchronized Update
-0x40016A80 C   FIELD 10w01 SYNCRSTx: Synchronization Resets Timer x
-0x40016A80 C   FIELD 11w01 SYNCSTRTx: Synchronization Starts Timer x
+0x40016A80 C   FIELD 10w01 SYNCRST: Synchronization Resets Timer x
+0x40016A80 C   FIELD 11w01 SYNCSTRT: Synchronization Starts Timer x
 0x40016A80 C   FIELD 12w02 DELCMP2: Delayed CMP2 mode
 0x40016A80 C   FIELD 14w02 DELCMP4: Delayed CMP4 mode
 0x40016A80 C   FIELD 16w01 TFU: TFU
@@ -7741,7 +7741,7 @@
 0x40016A80 C   FIELD 25w02 DACSYNC: AC Synchronization
 0x40016A80 C   FIELD 27w01 PREEN: Preload enable
 0x40016A80 C   FIELD 28w04 UPDGAT: Update Gating
-0x40016A84 B  REGISTER TIMEISR (ro): Timerx Interrupt Status Register
+0x40016A84 B  REGISTER TIMISR (ro): Timerx Interrupt Status Register
 0x40016A84 C   FIELD 00w01 CMP1: Compare 1 Interrupt Flag
 0x40016A84 C   FIELD 01w01 CMP2: Compare 2 Interrupt Flag
 0x40016A84 C   FIELD 02w01 CMP3: Compare 3 Interrupt Flag
@@ -7750,10 +7750,10 @@
 0x40016A84 C   FIELD 06w01 UPD: Update Interrupt Flag
 0x40016A84 C   FIELD 07w01 CPT1: Capture1 Interrupt Flag
 0x40016A84 C   FIELD 08w01 CPT2: Capture2 Interrupt Flag
-0x40016A84 C   FIELD 09w01 SETx1: Output 1 Set Interrupt Flag
-0x40016A84 C   FIELD 10w01 RSTx1: Output 1 Reset Interrupt Flag
-0x40016A84 C   FIELD 11w01 SETx2: Output 2 Set Interrupt Flag
-0x40016A84 C   FIELD 12w01 RSTx2: Output 2 Reset Interrupt Flag
+0x40016A84 C   FIELD 09w01 SET1: Output 1 Set Interrupt Flag
+0x40016A84 C   FIELD 10w01 RST1: Output 1 Reset Interrupt Flag
+0x40016A84 C   FIELD 11w01 SET2: Output 2 Set Interrupt Flag
+0x40016A84 C   FIELD 12w01 RST2: Output 2 Reset Interrupt Flag
 0x40016A84 C   FIELD 13w01 RST: Reset Interrupt Flag
 0x40016A84 C   FIELD 14w01 DLYPRT: Delayed Protection Flag
 0x40016A84 C   FIELD 16w01 CPPSTAT: Current Push Pull Status
@@ -7762,7 +7762,7 @@
 0x40016A84 C   FIELD 19w01 O2STAT: Output 2 State
 0x40016A84 C   FIELD 20w01 O1CPY: Output 1 Copy
 0x40016A84 C   FIELD 21w01 O2CPY: Output 2 Copy
-0x40016A88 B  REGISTER TIMEICR (wo): Timerx Interrupt Clear Register
+0x40016A88 B  REGISTER TIMICR (wo): Timerx Interrupt Clear Register
 0x40016A88 C   FIELD 00w01 CMP1C: Compare 1 Interrupt flag Clear
 0x40016A88 C   FIELD 01w01 CMP2C: Compare 2 Interrupt flag Clear
 0x40016A88 C   FIELD 02w01 CMP3C: Compare 3 Interrupt flag Clear
@@ -7777,7 +7777,7 @@
 0x40016A88 C   FIELD 12w01 RSTx2C: Output 2 Reset flag Clear
 0x40016A88 C   FIELD 13w01 RSTC: Reset Interrupt flag Clear
 0x40016A88 C   FIELD 14w01 DLYPRTC: Delayed Protection Flag Clear
-0x40016A8C B  REGISTER TIMEDIER (rw): TIMxDIER
+0x40016A8C B  REGISTER TIMDIER (rw): TIMxDIER
 0x40016A8C C   FIELD 00w01 CMP1IE: CMP1IE
 0x40016A8C C   FIELD 01w01 CMP2IE: CMP2IE
 0x40016A8C C   FIELD 02w01 CMP3IE: CMP3IE
@@ -7786,10 +7786,10 @@
 0x40016A8C C   FIELD 06w01 UPDIE: UPDIE
 0x40016A8C C   FIELD 07w01 CPT1IE: CPT1IE
 0x40016A8C C   FIELD 08w01 CPT2IE: CPT2IE
-0x40016A8C C   FIELD 09w01 SETx1IE: SET1xIE
-0x40016A8C C   FIELD 10w01 RSTx1IE: RSTx1IE
+0x40016A8C C   FIELD 09w01 SET1IE: SET1xIE
+0x40016A8C C   FIELD 10w01 RST1IE: RSTx1IE
 0x40016A8C C   FIELD 11w01 SETx2IE: SETx2IE
-0x40016A8C C   FIELD 12w01 RSTx2IE: RSTx2IE
+0x40016A8C C   FIELD 12w01 RST2IE: RSTx2IE
 0x40016A8C C   FIELD 13w01 RSTIE: RSTIE
 0x40016A8C C   FIELD 14w01 DLYPRTIE: DLYPRTIE
 0x40016A8C C   FIELD 16w01 CMP1DE: CMP1DE
@@ -7800,46 +7800,46 @@
 0x40016A8C C   FIELD 22w01 UPDDE: UPDDE
 0x40016A8C C   FIELD 23w01 CPT1DE: CPT1DE
 0x40016A8C C   FIELD 24w01 CPT2DE: CPT2DE
-0x40016A8C C   FIELD 25w01 SETx1DE: SET1xDE
-0x40016A8C C   FIELD 26w01 RSTx1DE: RSTx1DE
-0x40016A8C C   FIELD 27w01 SETx2DE: SETx2DE
-0x40016A8C C   FIELD 28w01 RSTx2DE: RSTx2DE
+0x40016A8C C   FIELD 25w01 SET1DE: SET1xDE
+0x40016A8C C   FIELD 26w01 RST1DE: RSTx1DE
+0x40016A8C C   FIELD 27w01 SET2DE: SETx2DE
+0x40016A8C C   FIELD 28w01 RST2DE: RSTx2DE
 0x40016A8C C   FIELD 29w01 RSTDE: RSTDE
 0x40016A8C C   FIELD 30w01 DLYPRTDE: DLYPRTDE
-0x40016A90 B  REGISTER CNTER (rw): Timerx Counter Register
-0x40016A90 C   FIELD 00w16 CNTx: Timerx Counter value
-0x40016A94 B  REGISTER PERER (rw): Timerx Period Register
-0x40016A94 C   FIELD 00w16 PERx: Timerx Period value
-0x40016A98 B  REGISTER REPER (rw): Timerx Repetition Register
-0x40016A98 C   FIELD 00w08 REPx: Timerx Repetition counter value
-0x40016A9C B  REGISTER CMP1ER (rw): Timerx Compare 1 Register
-0x40016A9C C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016AA0 B  REGISTER CMP1CER (rw): Timerx Compare 1 Compound Register
-0x40016AA0 C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016AA0 C   FIELD 16w08 REPx: Timerx Repetition value (aliased from HRTIM_REPx register)
-0x40016AA4 B  REGISTER CMP2ER (rw): Timerx Compare 2 Register
-0x40016AA4 C   FIELD 00w16 CMP2x: Timerx Compare 2 value
-0x40016AA8 B  REGISTER CMP3ER (rw): Timerx Compare 3 Register
-0x40016AA8 C   FIELD 00w16 CMP3x: Timerx Compare 3 value
-0x40016AAC B  REGISTER CMP4ER (rw): Timerx Compare 4 Register
-0x40016AAC C   FIELD 00w16 CMP4x: Timerx Compare 4 value
-0x40016AB0 B  REGISTER CPT1ER (ro): Timerx Capture 1 Register
-0x40016AB0 C   FIELD 00w16 CPT1x: Timerx Capture 1 value
+0x40016A90 B  REGISTER CNTR (rw): Timerx Counter Register
+0x40016A90 C   FIELD 00w16 CNT: Timerx Counter value
+0x40016A94 B  REGISTER PERR (rw): Timerx Period Register
+0x40016A94 C   FIELD 00w16 PER: Timerx Period value
+0x40016A98 B  REGISTER REPR (rw): Timerx Repetition Register
+0x40016A98 C   FIELD 00w08 REP: Timerx Repetition counter value
+0x40016A9C B  REGISTER CMP1R (rw): Timerx Compare 1 Register
+0x40016A9C C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016AA0 B  REGISTER CMP1CR (rw): Timerx Compare 1 Compound Register
+0x40016AA0 C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016AA0 C   FIELD 16w08 REP: Timerx Repetition value (aliased from HRTIM_REPx register)
+0x40016AA4 B  REGISTER CMP2R (rw): Timerx Compare 2 Register
+0x40016AA4 C   FIELD 00w16 CMP2: Timerx Compare 2 value
+0x40016AA8 B  REGISTER CMP3R (rw): Timerx Compare 3 Register
+0x40016AA8 C   FIELD 00w16 CMP3: Timerx Compare 3 value
+0x40016AAC B  REGISTER CMP4R (rw): Timerx Compare 4 Register
+0x40016AAC C   FIELD 00w16 CMP4: Timerx Compare 4 value
+0x40016AB0 B  REGISTER CPT1R (ro): Timerx Capture 1 Register
+0x40016AB0 C   FIELD 00w16 CPT1: Timerx Capture 1 value
 0x40016AB0 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016AB4 B  REGISTER CPT2ER (ro): Timerx Capture 2 Register
-0x40016AB4 C   FIELD 00w16 CPT2x: Timerx Capture 2 value
+0x40016AB4 B  REGISTER CPT2R (ro): Timerx Capture 2 Register
+0x40016AB4 C   FIELD 00w16 CPT2: Timerx Capture 2 value
 0x40016AB4 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016AB8 B  REGISTER DTER (rw): Timerx Deadtime Register
-0x40016AB8 C   FIELD 00w09 DTRx: Deadtime Rising value
-0x40016AB8 C   FIELD 09w01 SDTRx: Sign Deadtime Rising value
+0x40016AB8 B  REGISTER DTR (rw): Timerx Deadtime Register
+0x40016AB8 C   FIELD 00w09 DTR: Deadtime Rising value
+0x40016AB8 C   FIELD 09w01 SDTR: Sign Deadtime Rising value
 0x40016AB8 C   FIELD 10w03 DTPRSC: Deadtime Prescaler
-0x40016AB8 C   FIELD 14w01 DTRSLKx: Deadtime Rising Sign Lock
-0x40016AB8 C   FIELD 15w01 DTRLKx: Deadtime Rising Lock
-0x40016AB8 C   FIELD 16w09 DTFx: Deadtime Falling value
-0x40016AB8 C   FIELD 25w01 SDTFx: Sign Deadtime Falling value
-0x40016AB8 C   FIELD 30w01 DTFSLKx: Deadtime Falling Sign Lock
-0x40016AB8 C   FIELD 31w01 DTFLKx: Deadtime Falling Lock
-0x40016ABC B  REGISTER SETE1R (rw): Timerx Output1 Set Register
+0x40016AB8 C   FIELD 14w01 DTRSLK: Deadtime Rising Sign Lock
+0x40016AB8 C   FIELD 15w01 DTRLK: Deadtime Rising Lock
+0x40016AB8 C   FIELD 16w09 DTF: Deadtime Falling value
+0x40016AB8 C   FIELD 25w01 SDTF: Sign Deadtime Falling value
+0x40016AB8 C   FIELD 30w01 DTFSLK: Deadtime Falling Sign Lock
+0x40016AB8 C   FIELD 31w01 DTFLK: Deadtime Falling Lock
+0x40016ABC B  REGISTER SET1R (rw): Timerx Output1 Set Register
 0x40016ABC C   FIELD 00w01 SST: Software Set trigger
 0x40016ABC C   FIELD 01w01 RESYNC: Timer A resynchronizaton
 0x40016ABC C   FIELD 02w01 PER: Timer A Period
@@ -7872,7 +7872,7 @@
 0x40016ABC C   FIELD 29w01 EXTEVNT9: External Event 9
 0x40016ABC C   FIELD 30w01 EXTEVNT10: External Event 10
 0x40016ABC C   FIELD 31w01 UPDATE: Registers update (transfer preload to active)
-0x40016AC0 B  REGISTER RSTE1R (rw): Timerx Output1 Reset Register
+0x40016AC0 B  REGISTER RST1R (rw): Timerx Output1 Reset Register
 0x40016AC0 C   FIELD 00w01 SRT: SRT
 0x40016AC0 C   FIELD 01w01 RESYNC: RESYNC
 0x40016AC0 C   FIELD 02w01 PER: PER
@@ -7905,7 +7905,7 @@
 0x40016AC0 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016AC0 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016AC0 C   FIELD 31w01 UPDATE: UPDATE
-0x40016AC4 B  REGISTER SETE2R (rw): Timerx Output2 Set Register
+0x40016AC4 B  REGISTER SET2R (rw): Timerx Output2 Set Register
 0x40016AC4 C   FIELD 00w01 SST: SST
 0x40016AC4 C   FIELD 01w01 RESYNC: RESYNC
 0x40016AC4 C   FIELD 02w01 PER: PER
@@ -7938,7 +7938,7 @@
 0x40016AC4 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016AC4 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016AC4 C   FIELD 31w01 UPDATE: UPDATE
-0x40016AC8 B  REGISTER RSTE2R (rw): Timerx Output2 Reset Register
+0x40016AC8 B  REGISTER RST2R (rw): Timerx Output2 Reset Register
 0x40016AC8 C   FIELD 00w01 SRT: SRT
 0x40016AC8 C   FIELD 01w01 RESYNC: RESYNC
 0x40016AC8 C   FIELD 02w01 PER: PER
@@ -7971,7 +7971,7 @@
 0x40016AC8 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016AC8 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016AC8 C   FIELD 31w01 UPDATE: UPDATE
-0x40016ACC B  REGISTER EEFER1 (rw): Timerx External Event Filtering Register 1
+0x40016ACC B  REGISTER EEFR1 (rw): Timerx External Event Filtering Register 1
 0x40016ACC C   FIELD 00w01 EE1LTCH: External Event 1 latch
 0x40016ACC C   FIELD 01w04 EE1FLTR: External Event 1 filter
 0x40016ACC C   FIELD 06w01 EE2LTCH: External Event 2 latch
@@ -7982,7 +7982,7 @@
 0x40016ACC C   FIELD 19w04 EE4FLTR: External Event 4 filter
 0x40016ACC C   FIELD 24w01 EE5LTCH: External Event 5 latch
 0x40016ACC C   FIELD 25w04 EE5FLTR: External Event 5 filter
-0x40016AD0 B  REGISTER EEFER2 (rw): Timerx External Event Filtering Register 2
+0x40016AD0 B  REGISTER EEFR2 (rw): Timerx External Event Filtering Register 2
 0x40016AD0 C   FIELD 00w01 EE6LTCH: External Event 6 latch
 0x40016AD0 C   FIELD 01w04 EE6FLTR: External Event 6 filter
 0x40016AD0 C   FIELD 06w01 EE7LTCH: External Event 7 latch
@@ -7993,7 +7993,7 @@
 0x40016AD0 C   FIELD 19w04 EE9FLTR: External Event 9 filter
 0x40016AD0 C   FIELD 24w01 EE10LTCH: External Event 10 latch
 0x40016AD0 C   FIELD 25w04 EE10FLTR: External Event 10 filter
-0x40016AD4 B  REGISTER RSTER (rw): TimerA Reset Register
+0x40016AD4 B  REGISTER RSTR (rw): TimerA Reset Register
 0x40016AD4 C   FIELD 00w01 TIMFCMP1: Timer A Update reset
 0x40016AD4 C   FIELD 01w01 UPDT: Timer A Update reset
 0x40016AD4 C   FIELD 02w01 CMP2: Timer A compare 2 reset
@@ -8026,11 +8026,11 @@
 0x40016AD4 C   FIELD 29w01 TIMDCMP2: Timer D Compare 2
 0x40016AD4 C   FIELD 30w01 TIMDCMP4: Timer D Compare 4
 0x40016AD4 C   FIELD 31w01 TIMFCPM2: Timer F Compare 2
-0x40016AD8 B  REGISTER CHPER (rw): Timerx Chopper Register
+0x40016AD8 B  REGISTER CHPR (rw): Timerx Chopper Register
 0x40016AD8 C   FIELD 00w04 CARFRQ: Timerx carrier frequency value
 0x40016AD8 C   FIELD 04w03 CARDTY: Timerx chopper duty cycle value
 0x40016AD8 C   FIELD 07w04 STRTPW: STRTPW
-0x40016ADC B  REGISTER CPT1ECR (rw): Timerx Capture 2 Control Register
+0x40016ADC B  REGISTER CPT1CR (rw): Timerx Capture 2 Control Register
 0x40016ADC C   FIELD 00w01 SWCPT: Software Capture
 0x40016ADC C   FIELD 01w01 UPDCPT: Update Capture
 0x40016ADC C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -8063,7 +8063,7 @@
 0x40016ADC C   FIELD 29w01 TF1RST: TF1RST
 0x40016ADC C   FIELD 30w01 TFCMP1: TFCMP1
 0x40016ADC C   FIELD 31w01 TFCMP2: TFCMP2
-0x40016AE0 B  REGISTER CPT2ECR (rw): CPT2xCR
+0x40016AE0 B  REGISTER CPT2CR (rw): CPT2xCR
 0x40016AE0 C   FIELD 00w01 SWCPT: Software Capture
 0x40016AE0 C   FIELD 01w01 UPDCPT: Update Capture
 0x40016AE0 C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -8096,7 +8096,7 @@
 0x40016AE0 C   FIELD 29w01 TF1RST: TF1RST
 0x40016AE0 C   FIELD 30w01 TFCMP1: TFCMP1
 0x40016AE0 C   FIELD 31w01 TFCMP2: TFCMP2
-0x40016AE4 B  REGISTER OUTER (rw): Timerx Output Register
+0x40016AE4 B  REGISTER OUTR (rw): Timerx Output Register
 0x40016AE4 C   FIELD 01w01 POL1: Output 1 polarity
 0x40016AE4 C   FIELD 02w01 IDLEM1: Output 1 Idle mode
 0x40016AE4 C   FIELD 03w01 IDLES1: Output 1 Idle State
@@ -8113,7 +8113,7 @@
 0x40016AE4 C   FIELD 20w02 FAULT2: Output 2 Fault state
 0x40016AE4 C   FIELD 22w01 CHP2: Output 2 Chopper enable
 0x40016AE4 C   FIELD 23w01 DIDL2: Output 2 Deadtime upon burst mode Idle entry
-0x40016AE8 B  REGISTER FLTER (rw): Timerx Fault Register
+0x40016AE8 B  REGISTER FLTR (rw): Timerx Fault Register
 0x40016AE8 C   FIELD 00w01 FLT1EN: Fault 1 enable
 0x40016AE8 C   FIELD 01w01 FLT2EN: Fault 2 enable
 0x40016AE8 C   FIELD 02w01 FLT3EN: Fault 3 enable
@@ -8121,7 +8121,7 @@
 0x40016AE8 C   FIELD 04w01 FLT5EN: Fault 5 enable
 0x40016AE8 C   FIELD 05w01 FLT6EN: Fault 6 enable
 0x40016AE8 C   FIELD 31w01 FLTLCK: Fault sources Lock
-0x40016AEC B  REGISTER TIMECR2 (rw): HRTIM Timerx Control Register 2
+0x40016AEC B  REGISTER TIMCR2 (rw): HRTIM Timerx Control Register 2
 0x40016AEC C   FIELD 00w01 DCDE: Dual Channel DAC trigger enable
 0x40016AEC C   FIELD 01w01 DCDS: Dual Channel DAC Step trigger
 0x40016AEC C   FIELD 02w01 DCDR: Dual Channel DAC Reset trigger
@@ -8134,23 +8134,23 @@
 0x40016AEC C   FIELD 16w01 GTCMP1: Greater than Compare 1 PWM mode
 0x40016AEC C   FIELD 17w01 GTCMP3: Greater than Compare 3 PWM mode
 0x40016AEC C   FIELD 20w01 TRGHLF: Triggered-half mode
-0x40016AF0 B  REGISTER EEEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
+0x40016AF0 B  REGISTER EEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
 0x40016AF0 C   FIELD 00w01 EEVACE: External Event A Counter Enable
 0x40016AF0 C   FIELD 01w01 EEVACRES: External Event A Counter Reset
 0x40016AF0 C   FIELD 02w01 EEVARSTM: External Event A Reset Mode
 0x40016AF0 C   FIELD 04w04 EEVASEL: External Event A Selection
 0x40016AF0 C   FIELD 08w06 EEVACNT: External Event A counter
 0x40016B00 A PERIPHERAL HRTIM_TIMF
-0x40016B00 B  REGISTER TIMFCR (rw): Timerx Control Register
-0x40016B00 C   FIELD 00w03 CKPSCx: HRTIM Timer x Clock prescaler
+0x40016B00 B  REGISTER TIMCR (rw): Timerx Control Register
+0x40016B00 C   FIELD 00w03 CKPSC: HRTIM Timer x Clock prescaler
 0x40016B00 C   FIELD 03w01 CONT: Continuous mode
 0x40016B00 C   FIELD 04w01 RETRIG: Re-triggerable mode
 0x40016B00 C   FIELD 05w01 HALF: Half mode enable
 0x40016B00 C   FIELD 06w01 PSHPLL: Push-Pull mode enable
 0x40016B00 C   FIELD 07w02 INTLVD: Interleaved mode
 0x40016B00 C   FIELD 09w01 RSYNCU: Re-Synchronized Update
-0x40016B00 C   FIELD 10w01 SYNCRSTx: Synchronization Resets Timer x
-0x40016B00 C   FIELD 11w01 SYNCSTRTx: Synchronization Starts Timer x
+0x40016B00 C   FIELD 10w01 SYNCRST: Synchronization Resets Timer x
+0x40016B00 C   FIELD 11w01 SYNCSTRT: Synchronization Starts Timer x
 0x40016B00 C   FIELD 12w02 DELCMP2: Delayed CMP2 mode
 0x40016B00 C   FIELD 14w02 DELCMP4: Delayed CMP4 mode
 0x40016B00 C   FIELD 17w01 TxREPU: Timer x Repetition update
@@ -8163,7 +8163,7 @@
 0x40016B00 C   FIELD 25w02 DACSYNC: AC Synchronization
 0x40016B00 C   FIELD 27w01 PREEN: Preload enable
 0x40016B00 C   FIELD 28w04 UPDGAT: Update Gating
-0x40016B04 B  REGISTER TIMFISR (ro): Timerx Interrupt Status Register
+0x40016B04 B  REGISTER TIMISR (ro): Timerx Interrupt Status Register
 0x40016B04 C   FIELD 00w01 CMP1: Compare 1 Interrupt Flag
 0x40016B04 C   FIELD 01w01 CMP2: Compare 2 Interrupt Flag
 0x40016B04 C   FIELD 02w01 CMP3: Compare 3 Interrupt Flag
@@ -8172,10 +8172,10 @@
 0x40016B04 C   FIELD 06w01 UPD: Update Interrupt Flag
 0x40016B04 C   FIELD 07w01 CPT1: Capture1 Interrupt Flag
 0x40016B04 C   FIELD 08w01 CPT2: Capture2 Interrupt Flag
-0x40016B04 C   FIELD 09w01 SETx1: Output 1 Set Interrupt Flag
-0x40016B04 C   FIELD 10w01 RSTx1: Output 1 Reset Interrupt Flag
-0x40016B04 C   FIELD 11w01 SETx2: Output 2 Set Interrupt Flag
-0x40016B04 C   FIELD 12w01 RSTx2: Output 2 Reset Interrupt Flag
+0x40016B04 C   FIELD 09w01 SET1: Output 1 Set Interrupt Flag
+0x40016B04 C   FIELD 10w01 RST1: Output 1 Reset Interrupt Flag
+0x40016B04 C   FIELD 11w01 SET2: Output 2 Set Interrupt Flag
+0x40016B04 C   FIELD 12w01 RST2: Output 2 Reset Interrupt Flag
 0x40016B04 C   FIELD 13w01 RST: Reset Interrupt Flag
 0x40016B04 C   FIELD 14w01 DLYPRT: Delayed Protection Flag
 0x40016B04 C   FIELD 16w01 CPPSTAT: Current Push Pull Status
@@ -8184,7 +8184,7 @@
 0x40016B04 C   FIELD 19w01 O2STAT: Output 2 State
 0x40016B04 C   FIELD 20w01 O1CPY: Output 1 Copy
 0x40016B04 C   FIELD 21w01 O2CPY: Output 2 Copy
-0x40016B08 B  REGISTER TIMFICR (wo): Timerx Interrupt Clear Register
+0x40016B08 B  REGISTER TIMICR (wo): Timerx Interrupt Clear Register
 0x40016B08 C   FIELD 00w01 CMP1C: Compare 1 Interrupt flag Clear
 0x40016B08 C   FIELD 01w01 CMP2C: Compare 2 Interrupt flag Clear
 0x40016B08 C   FIELD 02w01 CMP3C: Compare 3 Interrupt flag Clear
@@ -8199,7 +8199,7 @@
 0x40016B08 C   FIELD 12w01 RSTx2C: Output 2 Reset flag Clear
 0x40016B08 C   FIELD 13w01 RSTC: Reset Interrupt flag Clear
 0x40016B08 C   FIELD 14w01 DLYPRTC: Delayed Protection Flag Clear
-0x40016B0C B  REGISTER TIMFDIER (rw): TIMxDIER
+0x40016B0C B  REGISTER TIMDIER (rw): TIMxDIER
 0x40016B0C C   FIELD 00w01 CMP1IE: CMP1IE
 0x40016B0C C   FIELD 01w01 CMP2IE: CMP2IE
 0x40016B0C C   FIELD 02w01 CMP3IE: CMP3IE
@@ -8208,10 +8208,10 @@
 0x40016B0C C   FIELD 06w01 UPDIE: UPDIE
 0x40016B0C C   FIELD 07w01 CPT1IE: CPT1IE
 0x40016B0C C   FIELD 08w01 CPT2IE: CPT2IE
-0x40016B0C C   FIELD 09w01 SETx1IE: SET1xIE
-0x40016B0C C   FIELD 10w01 RSTx1IE: RSTx1IE
+0x40016B0C C   FIELD 09w01 SET1IE: SET1xIE
+0x40016B0C C   FIELD 10w01 RST1IE: RSTx1IE
 0x40016B0C C   FIELD 11w01 SETx2IE: SETx2IE
-0x40016B0C C   FIELD 12w01 RSTx2IE: RSTx2IE
+0x40016B0C C   FIELD 12w01 RST2IE: RSTx2IE
 0x40016B0C C   FIELD 13w01 RSTIE: RSTIE
 0x40016B0C C   FIELD 14w01 DLYPRTIE: DLYPRTIE
 0x40016B0C C   FIELD 16w01 CMP1DE: CMP1DE
@@ -8222,46 +8222,46 @@
 0x40016B0C C   FIELD 22w01 UPDDE: UPDDE
 0x40016B0C C   FIELD 23w01 CPT1DE: CPT1DE
 0x40016B0C C   FIELD 24w01 CPT2DE: CPT2DE
-0x40016B0C C   FIELD 25w01 SETx1DE: SET1xDE
-0x40016B0C C   FIELD 26w01 RSTx1DE: RSTx1DE
-0x40016B0C C   FIELD 27w01 SETx2DE: SETx2DE
-0x40016B0C C   FIELD 28w01 RSTx2DE: RSTx2DE
+0x40016B0C C   FIELD 25w01 SET1DE: SET1xDE
+0x40016B0C C   FIELD 26w01 RST1DE: RSTx1DE
+0x40016B0C C   FIELD 27w01 SET2DE: SETx2DE
+0x40016B0C C   FIELD 28w01 RST2DE: RSTx2DE
 0x40016B0C C   FIELD 29w01 RSTDE: RSTDE
 0x40016B0C C   FIELD 30w01 DLYPRTDE: DLYPRTDE
-0x40016B10 B  REGISTER CNTFR (rw): Timerx Counter Register
-0x40016B10 C   FIELD 00w16 CNTx: Timerx Counter value
-0x40016B14 B  REGISTER PERFR (rw): Timerx Period Register
-0x40016B14 C   FIELD 00w16 PERx: Timerx Period value
-0x40016B18 B  REGISTER REPFR (rw): Timerx Repetition Register
-0x40016B18 C   FIELD 00w08 REPx: Timerx Repetition counter value
-0x40016B1C B  REGISTER CMP1FR (rw): Timerx Compare 1 Register
-0x40016B1C C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016B20 B  REGISTER CMP1CFR (rw): Timerx Compare 1 Compound Register
-0x40016B20 C   FIELD 00w16 CMP1x: Timerx Compare 1 value
-0x40016B20 C   FIELD 16w08 REPx: Timerx Repetition value (aliased from HRTIM_REPx register)
-0x40016B24 B  REGISTER CMP2FR (rw): Timerx Compare 2 Register
-0x40016B24 C   FIELD 00w16 CMP2x: Timerx Compare 2 value
-0x40016B28 B  REGISTER CMP3FR (rw): Timerx Compare 3 Register
-0x40016B28 C   FIELD 00w16 CMP3x: Timerx Compare 3 value
-0x40016B2C B  REGISTER CMP4FR (rw): Timerx Compare 4 Register
-0x40016B2C C   FIELD 00w16 CMP4x: Timerx Compare 4 value
-0x40016B30 B  REGISTER CPT1FR (ro): Timerx Capture 1 Register
-0x40016B30 C   FIELD 00w16 CPT1x: Timerx Capture 1 value
+0x40016B10 B  REGISTER CNTR (rw): Timerx Counter Register
+0x40016B10 C   FIELD 00w16 CNT: Timerx Counter value
+0x40016B14 B  REGISTER PERR (rw): Timerx Period Register
+0x40016B14 C   FIELD 00w16 PER: Timerx Period value
+0x40016B18 B  REGISTER REPR (rw): Timerx Repetition Register
+0x40016B18 C   FIELD 00w08 REP: Timerx Repetition counter value
+0x40016B1C B  REGISTER CMP1R (rw): Timerx Compare 1 Register
+0x40016B1C C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016B20 B  REGISTER CMP1CR (rw): Timerx Compare 1 Compound Register
+0x40016B20 C   FIELD 00w16 CMP1: Timerx Compare 1 value
+0x40016B20 C   FIELD 16w08 REP: Timerx Repetition value (aliased from HRTIM_REPx register)
+0x40016B24 B  REGISTER CMP2R (rw): Timerx Compare 2 Register
+0x40016B24 C   FIELD 00w16 CMP2: Timerx Compare 2 value
+0x40016B28 B  REGISTER CMP3R (rw): Timerx Compare 3 Register
+0x40016B28 C   FIELD 00w16 CMP3: Timerx Compare 3 value
+0x40016B2C B  REGISTER CMP4R (rw): Timerx Compare 4 Register
+0x40016B2C C   FIELD 00w16 CMP4: Timerx Compare 4 value
+0x40016B30 B  REGISTER CPT1R (ro): Timerx Capture 1 Register
+0x40016B30 C   FIELD 00w16 CPT1: Timerx Capture 1 value
 0x40016B30 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016B34 B  REGISTER CPT2FR (ro): Timerx Capture 2 Register
-0x40016B34 C   FIELD 00w16 CPT2x: Timerx Capture 2 value
+0x40016B34 B  REGISTER CPT2R (ro): Timerx Capture 2 Register
+0x40016B34 C   FIELD 00w16 CPT2: Timerx Capture 2 value
 0x40016B34 C   FIELD 16w01 DIR: Timerx Capture 1 Direction status
-0x40016B38 B  REGISTER DTFR (rw): Timerx Deadtime Register
-0x40016B38 C   FIELD 00w09 DTRx: Deadtime Rising value
-0x40016B38 C   FIELD 09w01 SDTRx: Sign Deadtime Rising value
+0x40016B38 B  REGISTER DTR (rw): Timerx Deadtime Register
+0x40016B38 C   FIELD 00w09 DTR: Deadtime Rising value
+0x40016B38 C   FIELD 09w01 SDTR: Sign Deadtime Rising value
 0x40016B38 C   FIELD 10w03 DTPRSC: Deadtime Prescaler
-0x40016B38 C   FIELD 14w01 DTRSLKx: Deadtime Rising Sign Lock
-0x40016B38 C   FIELD 15w01 DTRLKx: Deadtime Rising Lock
-0x40016B38 C   FIELD 16w09 DTFx: Deadtime Falling value
-0x40016B38 C   FIELD 25w01 SDTFx: Sign Deadtime Falling value
-0x40016B38 C   FIELD 30w01 DTFSLKx: Deadtime Falling Sign Lock
-0x40016B38 C   FIELD 31w01 DTFLKx: Deadtime Falling Lock
-0x40016B3C B  REGISTER SETF1R (rw): Timerx Output1 Set Register
+0x40016B38 C   FIELD 14w01 DTRSLK: Deadtime Rising Sign Lock
+0x40016B38 C   FIELD 15w01 DTRLK: Deadtime Rising Lock
+0x40016B38 C   FIELD 16w09 DTF: Deadtime Falling value
+0x40016B38 C   FIELD 25w01 SDTF: Sign Deadtime Falling value
+0x40016B38 C   FIELD 30w01 DTFSLK: Deadtime Falling Sign Lock
+0x40016B38 C   FIELD 31w01 DTFLK: Deadtime Falling Lock
+0x40016B3C B  REGISTER SET1R (rw): Timerx Output1 Set Register
 0x40016B3C C   FIELD 00w01 SST: Software Set trigger
 0x40016B3C C   FIELD 01w01 RESYNC: Timer A resynchronizaton
 0x40016B3C C   FIELD 02w01 PER: Timer A Period
@@ -8294,7 +8294,7 @@
 0x40016B3C C   FIELD 29w01 EXTEVNT9: External Event 9
 0x40016B3C C   FIELD 30w01 EXTEVNT10: External Event 10
 0x40016B3C C   FIELD 31w01 UPDATE: Registers update (transfer preload to active)
-0x40016B40 B  REGISTER RSTF1R (rw): Timerx Output1 Reset Register
+0x40016B40 B  REGISTER RST1R (rw): Timerx Output1 Reset Register
 0x40016B40 C   FIELD 00w01 SRT: SRT
 0x40016B40 C   FIELD 01w01 RESYNC: RESYNC
 0x40016B40 C   FIELD 02w01 PER: PER
@@ -8327,7 +8327,7 @@
 0x40016B40 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016B40 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016B40 C   FIELD 31w01 UPDATE: UPDATE
-0x40016B44 B  REGISTER SETF2R (rw): Timerx Output2 Set Register
+0x40016B44 B  REGISTER SET2R (rw): Timerx Output2 Set Register
 0x40016B44 C   FIELD 00w01 SST: SST
 0x40016B44 C   FIELD 01w01 RESYNC: RESYNC
 0x40016B44 C   FIELD 02w01 PER: PER
@@ -8360,7 +8360,7 @@
 0x40016B44 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016B44 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016B44 C   FIELD 31w01 UPDATE: UPDATE
-0x40016B48 B  REGISTER RSTF2R (rw): Timerx Output2 Reset Register
+0x40016B48 B  REGISTER RST2R (rw): Timerx Output2 Reset Register
 0x40016B48 C   FIELD 00w01 SRT: SRT
 0x40016B48 C   FIELD 01w01 RESYNC: RESYNC
 0x40016B48 C   FIELD 02w01 PER: PER
@@ -8393,7 +8393,7 @@
 0x40016B48 C   FIELD 29w01 EXTEVNT9: EXTEVNT9
 0x40016B48 C   FIELD 30w01 EXTEVNT10: EXTEVNT10
 0x40016B48 C   FIELD 31w01 UPDATE: UPDATE
-0x40016B4C B  REGISTER EEFFR1 (rw): Timerx External Event Filtering Register 1
+0x40016B4C B  REGISTER EEFR1 (rw): Timerx External Event Filtering Register 1
 0x40016B4C C   FIELD 00w01 EE1LTCH: External Event 1 latch
 0x40016B4C C   FIELD 01w04 EE1FLTR: External Event 1 filter
 0x40016B4C C   FIELD 06w01 EE2LTCH: External Event 2 latch
@@ -8404,7 +8404,7 @@
 0x40016B4C C   FIELD 19w04 EE4FLTR: External Event 4 filter
 0x40016B4C C   FIELD 24w01 EE5LTCH: External Event 5 latch
 0x40016B4C C   FIELD 25w04 EE5FLTR: External Event 5 filter
-0x40016B50 B  REGISTER EEFFR2 (rw): Timerx External Event Filtering Register 2
+0x40016B50 B  REGISTER EEFR2 (rw): Timerx External Event Filtering Register 2
 0x40016B50 C   FIELD 00w01 EE6LTCH: External Event 6 latch
 0x40016B50 C   FIELD 01w04 EE6FLTR: External Event 6 filter
 0x40016B50 C   FIELD 06w01 EE7LTCH: External Event 7 latch
@@ -8415,7 +8415,7 @@
 0x40016B50 C   FIELD 19w04 EE9FLTR: External Event 9 filter
 0x40016B50 C   FIELD 24w01 EE10LTCH: External Event 10 latch
 0x40016B50 C   FIELD 25w04 EE10FLTR: External Event 10 filter
-0x40016B54 B  REGISTER RSTFR (rw): TimerA Reset Register
+0x40016B54 B  REGISTER RSTR (rw): TimerA Reset Register
 0x40016B54 C   FIELD 00w01 TIMFCMP1: Timer A Update reset
 0x40016B54 C   FIELD 01w01 UPDT: Timer A Update reset
 0x40016B54 C   FIELD 02w01 CMP2: Timer A compare 2 reset
@@ -8448,11 +8448,11 @@
 0x40016B54 C   FIELD 29w01 TIMDCMP2: Timer D Compare 2
 0x40016B54 C   FIELD 30w01 TIMDCMP4: Timer D Compare 4
 0x40016B54 C   FIELD 31w01 TIMFCPM2: Timer F Compare 2
-0x40016B58 B  REGISTER CHPFR (rw): Timerx Chopper Register
+0x40016B58 B  REGISTER CHPR (rw): Timerx Chopper Register
 0x40016B58 C   FIELD 00w04 CARFRQ: Timerx carrier frequency value
 0x40016B58 C   FIELD 04w03 CARDTY: Timerx chopper duty cycle value
 0x40016B58 C   FIELD 07w04 STRTPW: STRTPW
-0x40016B5C B  REGISTER CPT1FCR (rw): Timerx Capture 2 Control Register
+0x40016B5C B  REGISTER CPT1CR (rw): Timerx Capture 2 Control Register
 0x40016B5C C   FIELD 00w01 SWCPT: Software Capture
 0x40016B5C C   FIELD 01w01 UPDCPT: Update Capture
 0x40016B5C C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -8485,7 +8485,7 @@
 0x40016B5C C   FIELD 29w01 TE1RST: TE1RST
 0x40016B5C C   FIELD 30w01 TECMP1: TECMP1
 0x40016B5C C   FIELD 31w01 TECMP2: TECMP2
-0x40016B60 B  REGISTER CPT2FCR (rw): CPT2xCR
+0x40016B60 B  REGISTER CPT2CR (rw): CPT2xCR
 0x40016B60 C   FIELD 00w01 SWCPT: Software Capture
 0x40016B60 C   FIELD 01w01 UPDCPT: Update Capture
 0x40016B60 C   FIELD 02w01 EXEV1CPT: External Event 1 Capture
@@ -8518,7 +8518,7 @@
 0x40016B60 C   FIELD 29w01 TE1RST: TE1RST
 0x40016B60 C   FIELD 30w01 TECMP1: TECMP1
 0x40016B60 C   FIELD 31w01 TECMP2: TECMP2
-0x40016B64 B  REGISTER OUTFR (rw): Timerx Output Register
+0x40016B64 B  REGISTER OUTR (rw): Timerx Output Register
 0x40016B64 C   FIELD 01w01 POL1: Output 1 polarity
 0x40016B64 C   FIELD 02w01 IDLEM1: Output 1 Idle mode
 0x40016B64 C   FIELD 03w01 IDLES1: Output 1 Idle State
@@ -8535,7 +8535,7 @@
 0x40016B64 C   FIELD 20w02 FAULT2: Output 2 Fault state
 0x40016B64 C   FIELD 22w01 CHP2: Output 2 Chopper enable
 0x40016B64 C   FIELD 23w01 DIDL2: Output 2 Deadtime upon burst mode Idle entry
-0x40016B68 B  REGISTER FLTFR (rw): Timerx Fault Register
+0x40016B68 B  REGISTER FLTR (rw): Timerx Fault Register
 0x40016B68 C   FIELD 00w01 FLT1EN: Fault 1 enable
 0x40016B68 C   FIELD 01w01 FLT2EN: Fault 2 enable
 0x40016B68 C   FIELD 02w01 FLT3EN: Fault 3 enable
@@ -8543,7 +8543,7 @@
 0x40016B68 C   FIELD 04w01 FLT5EN: Fault 5 enable
 0x40016B68 C   FIELD 05w01 FLT6EN: Fault 6 enable
 0x40016B68 C   FIELD 31w01 FLTLCK: Fault sources Lock
-0x40016B6C B  REGISTER TIMFCR2 (rw): HRTIM Timerx Control Register 2
+0x40016B6C B  REGISTER TIMCR2 (rw): HRTIM Timerx Control Register 2
 0x40016B6C C   FIELD 00w01 DCDE: Dual Channel DAC trigger enable
 0x40016B6C C   FIELD 01w01 DCDS: Dual Channel DAC Step trigger
 0x40016B6C C   FIELD 02w01 DCDR: Dual Channel DAC Reset trigger
@@ -8556,7 +8556,7 @@
 0x40016B6C C   FIELD 16w01 GTCMP1: Greater than Compare 1 PWM mode
 0x40016B6C C   FIELD 17w01 GTCMP3: Greater than Compare 3 PWM mode
 0x40016B6C C   FIELD 20w01 TRGHLF: Triggered-half mode
-0x40016B70 B  REGISTER FEEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
+0x40016B70 B  REGISTER EEFR3 (rw): HRTIM Timerx External Event Filtering Register 3
 0x40016B70 C   FIELD 00w01 EEVACE: External Event A Counter Enable
 0x40016B70 C   FIELD 01w01 EEVACRES: External Event A Counter Reset
 0x40016B70 C   FIELD 02w01 EEVARSTM: External Event A Reset Mode
