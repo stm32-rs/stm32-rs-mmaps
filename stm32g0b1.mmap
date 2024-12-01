@@ -340,7 +340,7 @@
 0x40000818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40000818 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40000818 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
+0x40000818 C   FIELD 04w03 OC1M1 (rw): Output compare 1 mode These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits. Note: In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. Note: The OC1M[3] bit is not contiguous, located in bit 16.
 0x40000818 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40000818 C   FIELD 07w01 OC1CE (rw): Output compare 1 clear enable
 0x40000818 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
@@ -348,7 +348,7 @@
 0x40000818 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000818 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
 0x40000818 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40000818 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
+0x40000818 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000818 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000818 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
 0x40000818 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
@@ -388,21 +388,21 @@
 0x40000820 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
 0x40000824 B  REGISTER CNT_ALTERNATE5 (rw): counter
+0x40000824 C   FIELD 00w16 CNT: Counter value
 0x40000824 C   FIELD 00w31 CNT (rw): Most significant part counter value (TIM2) nullLeast significant part of counter value
-0x40000824 C   FIELD 00w32 CNT: Counter value
 0x40000824 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
-0x4000082C C   FIELD 00w32 ARR: High auto-reload value (TIM2) nullLow Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
+0x4000082C C   FIELD 00w32 ARR (rw): High auto-reload value (TIM2) nullLow Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register
-0x40000834 C   FIELD 00w32 CCR: Capture/Compare value
+0x40000834 C   FIELD 00w32 CCR (rw): Capture/Compare 1 value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register
-0x40000838 C   FIELD 00w32 CCR: Capture/Compare value
+0x40000838 C   FIELD 00w32 CCR (rw): Capture/Compare 1 value
 0x4000083C B  REGISTER CCR3 (rw): capture/compare register
-0x4000083C C   FIELD 00w32 CCR: Capture/Compare value
+0x4000083C C   FIELD 00w32 CCR (rw): Capture/Compare 1 value
 0x40000840 B  REGISTER CCR4 (rw): capture/compare register
-0x40000840 C   FIELD 00w32 CCR: Capture/Compare value
+0x40000840 C   FIELD 00w32 CCR (rw): Capture/Compare 1 value
 0x40000848 B  REGISTER DCR (rw): DMA control register
 0x40000848 C   FIELD 00w05 DBA (rw): DMA base address This 5-bit vector defines the base-address for DMA transfers (when read/write access are done through the TIMx_DMAR address). DBA is defined as an offset starting from the address of the TIMx_CR1 register. Example: ... Example: Let us consider the following transfer: DBL = 7 transfers & DBA = TIMx_CR1. In this case the transfer is done to/from 7 registers starting from the TIMx_CR1 address.
 0x40000848 C   FIELD 08w05 DBL (rw): DMA burst length This 5-bit vector defines the number of DMA transfers (the timer recognizes a burst transfer when a read or a write access is done to the TIMx_DMAR address). ...
