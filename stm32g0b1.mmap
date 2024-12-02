@@ -201,7 +201,7 @@
 0x40000418 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40000418 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40000418 C   FIELD 04w03 OC1M1 (rw): Output compare 1 mode These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits. Note: In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. Note: The OC1M[3] bit is not contiguous, located in bit 16.
+0x40000418 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
 0x40000418 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40000418 C   FIELD 07w01 OC1CE (rw): Output compare 1 clear enable
 0x40000418 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
@@ -209,7 +209,7 @@
 0x40000418 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000418 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
 0x40000418 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40000418 C   FIELD 12w03 OC2M: Output compare 2 mode
+0x40000418 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40000418 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000418 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
 0x40000418 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
@@ -255,7 +255,7 @@
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
-0x4000042C C   FIELD 00w32 ARR (rw): High auto-reload value (TIM2) nullLow Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
+0x4000042C C   FIELD 00w16 ARR (rw): High auto-reload value (TIM2) nullLow Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
 0x40000434 C   FIELD 00w32 CCR (rw): Capture/Compare 1 value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
@@ -340,7 +340,7 @@
 0x40000818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40000818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
 0x40000818 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40000818 C   FIELD 04w03 OC1M1 (rw): Output compare 1 mode These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits. Note: In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. Note: The OC1M[3] bit is not contiguous, located in bit 16.
+0x40000818 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
 0x40000818 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40000818 C   FIELD 07w01 OC1CE (rw): Output compare 1 clear enable
 0x40000818 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
@@ -348,7 +348,7 @@
 0x40000818 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40000818 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
 0x40000818 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40000818 C   FIELD 12w03 OC2M: Output compare 2 mode
+0x40000818 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40000818 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000818 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
 0x40000818 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
@@ -394,7 +394,7 @@
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
-0x4000082C C   FIELD 00w32 ARR (rw): High auto-reload value (TIM2) nullLow Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
+0x4000082C C   FIELD 00w16 ARR (rw): High auto-reload value (TIM2) nullLow Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register
 0x40000834 C   FIELD 00w32 CCR (rw): Capture/Compare 1 value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register
@@ -3668,7 +3668,7 @@
 0x40012C18 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40012C18 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
 0x40012C18 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
-0x40012C18 C   FIELD 16w01 OC1M2 (rw): Output Compare 1 mode These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits. Note: These bits can not be modified as long as LOCK level 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (the channel is configured in output). Note: In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. Note: On channels having a complementary output, this bit field is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the OC1M active bits take the new value from the preloaded bits only when a COM event is generated. Note: The OC1M[3] bit is not contiguous, located in bit 16.
+0x40012C18 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
 0x40012C18 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x40012C1C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (output mode)
 0x40012C1C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
@@ -4187,7 +4187,7 @@
 0x40014018 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
 0x40014018 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
 0x40014018 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40014018 C   FIELD 04w03 OC1M1 (rw): Output Compare 1 mode These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits. Note: These bits can not be modified as long as LOCK level 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (the channel is configured in output). In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. On channels that have a complementary output, this bit field is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the OC1M active bits take the new value from the preloaded bits only when a COM event is generated. The OC1M[3] bit is not contiguous, located in bit 16.
+0x40014018 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
 0x40014018 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
 0x40014018 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
 0x40014018 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
@@ -4196,7 +4196,7 @@
 0x40014018 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
 0x40014018 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40014018 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
-0x40014018 C   FIELD 16w01 OC1M2 (rw): Output Compare 1 mode These bits define the behavior of the output reference signal OC1REF from which OC1 and OC1N are derived. OC1REF is active high whereas OC1 and OC1N active level depends on CC1P and CC1NP bits. Note: These bits can not be modified as long as LOCK level 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (the channel is configured in output). In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. On channels that have a complementary output, this bit field is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the OC1M active bits take the new value from the preloaded bits only when a COM event is generated. The OC1M[3] bit is not contiguous, located in bit 16.
+0x40014018 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
 0x40014018 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x40014020 B  REGISTER CCER (rw): capture/compare enable register
 0x40014020 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
