@@ -3172,7 +3172,7 @@
 0x40013420 C   FIELD 08w01 ODD: Odd factor for the prescaler
 0x40013420 C   FIELD 09w01 MCKOE: Master clock output enable
 0x40013800 A PERIPHERAL SYSCFG
-0x40013800 B  REGISTER MEMRM (rw): memory remap register
+0x40013800 B  REGISTER MEMRMP (rw): memory remap register
 0x40013800 C   FIELD 00w02 MEM_MODE: MEM_MODE
 0x40013804 B  REGISTER PMC (rw): peripheral mode configuration register
 0x40013804 C   FIELD 16w01 ADC1DC2: ADC1DC2
@@ -3196,12 +3196,15 @@
 0x40013814 C   FIELD 04w04 EXTI13: EXTI x configuration (x = 12 to 15)
 0x40013814 C   FIELD 08w04 EXTI14: EXTI x configuration (x = 12 to 15)
 0x40013814 C   FIELD 12w04 EXTI15: EXTI x configuration (x = 12 to 15)
+0x4001381C B  REGISTER CFGR2 (rw): ADC Common status register
+0x4001381C C   FIELD 00w01 CLL: core lockup lock
+0x4001381C C   FIELD 02w01 PVDL: PVD lock
 0x40013820 B  REGISTER CMPCR (ro): Compensation cell control register
-0x40013820 C   FIELD 00w01 CMP_PD: Compensation cell power-down
-0x40013820 C   FIELD 08w01 READY: READY
-0x4001382C B  REGISTER CFGR (rw): Configuration register
-0x4001382C C   FIELD 00w01 FMPI2C1_SCL: Forces FM+ drive capability on I2CFMP1_SCL pin
-0x4001382C C   FIELD 01w01 FMPI2C1_SDA: Forces FM+ drive capability on I2CFMP1_SCL pin
+0x40013820 C   FIELD 00w01 CMP_PD (rw): Compensation cell power-down
+0x40013820 C   FIELD 08w01 READY (ro): READY
+0x4001382C B  REGISTER CFGR (rw): I2C_BUFOUT
+0x4001382C C   FIELD 00w01 I2CFMP1_SCL: I2C4SCL
+0x4001382C C   FIELD 01w01 I2CFMP1_SDA: I2C4SDA
 0x40013C00 A PERIPHERAL EXTI
 0x40013C00 B  REGISTER IMR (rw): Interrupt mask register (EXTI_IMR)
 0x40013C00 C   FIELD 00w01 MR0: Interrupt Mask on line 0
