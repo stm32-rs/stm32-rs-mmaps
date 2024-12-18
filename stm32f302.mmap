@@ -688,12 +688,10 @@
 0x40003408 C   FIELD 05w01 MODF (ro): Mode fault
 0x40003408 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40003408 C   FIELD 07w01 BSY (ro): Busy flag
-0x40003408 C   FIELD 08w01 FRE (ro): TI frame format error
+0x40003408 C   FIELD 08w01 TIFRFE (ro): TI frame format error
 0x40003408 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40003408 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4000340C B  REGISTER DR (rw): data register
-0x4000340C B  REGISTER DR8 (rw): Direct 8-bit access to data register
-0x4000340C C   FIELD 00w08 DR: Data register
 0x4000340C C   FIELD 00w16 DR: Data register
 0x40003410 B  REGISTER CRCPR (rw): CRC polynomial register
 0x40003410 C   FIELD 00w16 CRCPOLY: CRC polynomial register
@@ -880,12 +878,10 @@
 0x40004008 C   FIELD 05w01 MODF (ro): Mode fault
 0x40004008 C   FIELD 06w01 OVR (ro): Overrun flag
 0x40004008 C   FIELD 07w01 BSY (ro): Busy flag
-0x40004008 C   FIELD 08w01 FRE (ro): TI frame format error
+0x40004008 C   FIELD 08w01 TIFRFE (ro): TI frame format error
 0x40004008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
 0x40004008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level
 0x4000400C B  REGISTER DR (rw): data register
-0x4000400C B  REGISTER DR8 (rw): Direct 8-bit access to data register
-0x4000400C C   FIELD 00w08 DR: Data register
 0x4000400C C   FIELD 00w16 DR: Data register
 0x40004010 B  REGISTER CRCPR (rw): CRC polynomial register
 0x40004010 C   FIELD 00w16 CRCPOLY: CRC polynomial register
@@ -6661,312 +6657,6 @@
 0xA000011C C   FIELD 20w04 CLKDIV: CLKDIV
 0xA000011C C   FIELD 24w04 DATLAT: DATLAT
 0xA000011C C   FIELD 28w02 ACCMOD: ACCMOD
-0xE000E008 A PERIPHERAL SCB_ACTRL
-0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
-0xE000E008 C   FIELD 00w01 DISMCYCINT: DISMCYCINT
-0xE000E008 C   FIELD 01w01 DISDEFWBUF: DISDEFWBUF
-0xE000E008 C   FIELD 02w01 DISFOLD: DISFOLD
-0xE000E008 C   FIELD 08w01 DISFPCA: DISFPCA
-0xE000E008 C   FIELD 09w01 DISOOFP: DISOOFP
-0xE000E010 A PERIPHERAL STK
-0xE000E010 B  REGISTER CTRL (rw): SysTick control and status register
-0xE000E010 C   FIELD 00w01 ENABLE: Counter enable
-0xE000E010 C   FIELD 01w01 TICKINT: SysTick exception request enable
-0xE000E010 C   FIELD 02w01 CLKSOURCE: Clock source selection
-0xE000E010 C   FIELD 16w01 COUNTFLAG: COUNTFLAG
-0xE000E014 B  REGISTER LOAD (rw): SysTick reload value register
-0xE000E014 C   FIELD 00w24 RELOAD: RELOAD value
-0xE000E018 B  REGISTER VAL (rw): SysTick current value register
-0xE000E018 C   FIELD 00w24 CURRENT: Current counter value
-0xE000E01C B  REGISTER CALIB (rw): SysTick calibration value register
-0xE000E01C C   FIELD 00w24 TENMS: Calibration value
-0xE000E01C C   FIELD 30w01 SKEW: SKEW flag: Indicates whether the TENMS value is exact
-0xE000E01C C   FIELD 31w01 NOREF: NOREF flag. Reads as zero
-0xE000E100 A PERIPHERAL NVIC
-0xE000E100 B  REGISTER ISER0 (rw): Interrupt Set-Enable Register
-0xE000E100 C   FIELD 00w32 SETENA: SETENA
-0xE000E104 B  REGISTER ISER1 (rw): Interrupt Set-Enable Register
-0xE000E104 C   FIELD 00w32 SETENA: SETENA
-0xE000E108 B  REGISTER ISER2 (rw): Interrupt Set-Enable Register
-0xE000E108 C   FIELD 00w32 SETENA: SETENA
-0xE000E180 B  REGISTER ICER0 (rw): Interrupt Clear-Enable Register
-0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E184 B  REGISTER ICER1 (rw): Interrupt Clear-Enable Register
-0xE000E184 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E188 B  REGISTER ICER2 (rw): Interrupt Clear-Enable Register
-0xE000E188 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E200 B  REGISTER ISPR0 (rw): Interrupt Set-Pending Register
-0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E204 B  REGISTER ISPR1 (rw): Interrupt Set-Pending Register
-0xE000E204 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E208 B  REGISTER ISPR2 (rw): Interrupt Set-Pending Register
-0xE000E208 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E280 B  REGISTER ICPR0 (rw): Interrupt Clear-Pending Register
-0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E284 B  REGISTER ICPR1 (rw): Interrupt Clear-Pending Register
-0xE000E284 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E288 B  REGISTER ICPR2 (rw): Interrupt Clear-Pending Register
-0xE000E288 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E300 B  REGISTER IABR0 (ro): Interrupt Active Bit Register
-0xE000E300 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E304 B  REGISTER IABR1 (ro): Interrupt Active Bit Register
-0xE000E304 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E308 B  REGISTER IABR2 (ro): Interrupt Active Bit Register
-0xE000E308 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register
-0xE000E400 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E400 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E400 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E400 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register
-0xE000E404 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E404 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E404 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E404 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register
-0xE000E408 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E408 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E408 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E408 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register
-0xE000E40C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E40C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E40C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E40C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register
-0xE000E410 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E410 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E410 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E410 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register
-0xE000E414 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E414 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E414 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E414 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register
-0xE000E418 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E418 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E418 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E418 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register
-0xE000E41C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E41C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E41C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E41C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E420 B  REGISTER IPR8 (rw): Interrupt Priority Register
-0xE000E420 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E420 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E420 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E420 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E424 B  REGISTER IPR9 (rw): Interrupt Priority Register
-0xE000E424 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E424 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E424 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E424 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E428 B  REGISTER IPR10 (rw): Interrupt Priority Register
-0xE000E428 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E428 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E428 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E428 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E42C B  REGISTER IPR11 (rw): Interrupt Priority Register
-0xE000E42C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E42C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E42C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E42C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E430 B  REGISTER IPR12 (rw): Interrupt Priority Register
-0xE000E430 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E430 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E430 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E430 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E434 B  REGISTER IPR13 (rw): Interrupt Priority Register
-0xE000E434 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E434 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E434 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E434 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E438 B  REGISTER IPR14 (rw): Interrupt Priority Register
-0xE000E438 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E438 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E438 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E438 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E43C B  REGISTER IPR15 (rw): Interrupt Priority Register
-0xE000E43C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E43C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E43C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E43C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E440 B  REGISTER IPR16 (rw): Interrupt Priority Register
-0xE000E440 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E440 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E440 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E440 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E444 B  REGISTER IPR17 (rw): Interrupt Priority Register
-0xE000E444 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E444 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E444 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E444 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E448 B  REGISTER IPR18 (rw): Interrupt Priority Register
-0xE000E448 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E448 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E448 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E448 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E44C B  REGISTER IPR19 (rw): Interrupt Priority Register
-0xE000E44C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E44C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E44C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E44C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E450 B  REGISTER IPR20 (rw): Interrupt Priority Register
-0xE000E450 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E450 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E450 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E450 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000ED00 A PERIPHERAL SCB
-0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
-0xE000ED00 C   FIELD 00w04 Revision: Revision number
-0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000ED00 C   FIELD 16w04 Constant: Reads as 0xF
-0xE000ED00 C   FIELD 20w04 Variant: Variant number
-0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
-0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
-0xE000ED08 C   FIELD 09w21 TBLOFF: Vector table base offset field
-0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000ED0C C   FIELD 00w01 VECTRESET: VECTRESET
-0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000ED0C C   FIELD 08w03 PRIGROUP: PRIGROUP
-0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000ED10 B  REGISTER SCR (rw): System control register
-0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
-0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000ED18 B  REGISTER SHPR1 (rw): System handler priority registers
-0xE000ED18 C   FIELD 00w08 PRI_4: Priority of system handler 4
-0xE000ED18 C   FIELD 08w08 PRI_5: Priority of system handler 5
-0xE000ED18 C   FIELD 16w08 PRI_6: Priority of system handler 6
-0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED24 B  REGISTER SHCRS (rw): System handler control and state register
-0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
-0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
-0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
-0xE000ED24 C   FIELD 07w01 SVCALLACT: SVC call active bit
-0xE000ED24 C   FIELD 08w01 MONITORACT: Debug monitor active bit
-0xE000ED24 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
-0xE000ED24 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
-0xE000ED24 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
-0xE000ED24 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
-0xE000ED24 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
-0xE000ED24 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
-0xE000ED24 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
-0xE000ED24 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
-0xE000ED24 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
-0xE000ED28 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
-0xE000ED28 C   FIELD 01w01 IACCVIOL: Instruction access violation flag
-0xE000ED28 C   FIELD 03w01 MUNSTKERR: Memory manager fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 04w01 MSTKERR: Memory manager fault on stacking for exception entry.
-0xE000ED28 C   FIELD 05w01 MLSPERR: MLSPERR
-0xE000ED28 C   FIELD 07w01 MMARVALID: Memory Management Fault Address Register (MMAR) valid flag
-0xE000ED28 C   FIELD 08w01 IBUSERR: Instruction bus error
-0xE000ED28 C   FIELD 09w01 PRECISERR: Precise data bus error
-0xE000ED28 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
-0xE000ED28 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
-0xE000ED28 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
-0xE000ED28 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
-0xE000ED28 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
-0xE000ED28 C   FIELD 17w01 INVSTATE: Invalid state usage fault
-0xE000ED28 C   FIELD 18w01 INVPC: Invalid PC load usage fault
-0xE000ED28 C   FIELD 19w01 NOCP: No coprocessor usage fault.
-0xE000ED28 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
-0xE000ED28 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
-0xE000ED2C B  REGISTER HFSR (rw): Hard fault status register
-0xE000ED2C C   FIELD 01w01 VECTTBL: Vector table hard fault
-0xE000ED2C C   FIELD 30w01 FORCED: Forced hard fault
-0xE000ED2C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
-0xE000ED34 B  REGISTER MMFAR (rw): Memory management fault address register
-0xE000ED34 C   FIELD 00w32 MMFAR: Memory management fault address
-0xE000ED38 B  REGISTER BFAR (rw): Bus fault address register
-0xE000ED38 C   FIELD 00w32 BFAR: Bus fault address
-0xE000ED3C B  REGISTER AFSR (rw): Auxiliary fault status register
-0xE000ED3C C   FIELD 00w32 IMPDEF: Implementation defined
-0xE000ED88 A PERIPHERAL FPU_CPACR
-0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
-0xE000ED88 C   FIELD 20w04 CP: CP
-0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER TYPER (ro): MPU type register
-0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
-0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
-0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER CTRL (ro): MPU control register
-0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
-0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
-0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER RNR (rw): MPU region number register
-0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
-0xE000ED9C C   FIELD 00w04 REGION: MPU region field
-0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
-0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
-0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
-0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
-0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
-0xE000EDA0 C   FIELD 16w01 B: memory attribute
-0xE000EDA0 C   FIELD 17w01 C: memory attribute
-0xE000EDA0 C   FIELD 18w01 S: Shareable memory attribute
-0xE000EDA0 C   FIELD 19w03 TEX: memory attribute
-0xE000EDA0 C   FIELD 24w03 AP: Access permission
-0xE000EDA0 C   FIELD 28w01 XN: Instruction access disable bit
-0xE000EF00 A PERIPHERAL NVIC_STIR
-0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
-0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
-0xE000EF34 A PERIPHERAL FPU
-0xE000EF34 B  REGISTER FPCCR (rw): Floating-point context control register
-0xE000EF34 C   FIELD 00w01 LSPACT: LSPACT
-0xE000EF34 C   FIELD 01w01 USER: USER
-0xE000EF34 C   FIELD 03w01 THREAD: THREAD
-0xE000EF34 C   FIELD 04w01 HFRDY: HFRDY
-0xE000EF34 C   FIELD 05w01 MMRDY: MMRDY
-0xE000EF34 C   FIELD 06w01 BFRDY: BFRDY
-0xE000EF34 C   FIELD 08w01 MONRDY: MONRDY
-0xE000EF34 C   FIELD 30w01 LSPEN: LSPEN
-0xE000EF34 C   FIELD 31w01 ASPEN: ASPEN
-0xE000EF38 B  REGISTER FPCAR (rw): Floating-point context address register
-0xE000EF38 C   FIELD 03w29 ADDRESS: Location of unpopulated floating-point
-0xE000EF3C B  REGISTER FPSCR (rw): Floating-point status control register
-0xE000EF3C C   FIELD 00w01 IOC: Invalid operation cumulative exception bit
-0xE000EF3C C   FIELD 01w01 DZC: Division by zero cumulative exception bit.
-0xE000EF3C C   FIELD 02w01 OFC: Overflow cumulative exception bit
-0xE000EF3C C   FIELD 03w01 UFC: Underflow cumulative exception bit
-0xE000EF3C C   FIELD 04w01 IXC: Inexact cumulative exception bit
-0xE000EF3C C   FIELD 07w01 IDC: Input denormal cumulative exception bit.
-0xE000EF3C C   FIELD 22w02 RMode: Rounding Mode control field
-0xE000EF3C C   FIELD 24w01 FZ: Flush-to-zero mode control bit:
-0xE000EF3C C   FIELD 25w01 DN: Default NaN mode control bit
-0xE000EF3C C   FIELD 26w01 AHP: Alternative half-precision control bit
-0xE000EF3C C   FIELD 28w01 V: Overflow condition code flag
-0xE000EF3C C   FIELD 29w01 C: Carry condition code flag
-0xE000EF3C C   FIELD 30w01 Z: Zero condition code flag
-0xE000EF3C C   FIELD 31w01 N: Negative condition code flag
 0xE0042000 A PERIPHERAL DBGMCU
 0xE0042000 B  REGISTER IDCODE (ro): MCU Device ID Code Register
 0xE0042000 C   FIELD 00w12 DEV_ID: Device Identifier
@@ -7007,7 +6697,6 @@ INTERRUPT 004: FLASH (FLASH): Flash global interrupt
 INTERRUPT 005: RCC (RCC): RCC global interrupt
 INTERRUPT 006: EXTI0 (EXTI): EXTI Line0 interrupt
 INTERRUPT 007: EXTI1 (EXTI): EXTI Line3 interrupt
-INTERRUPT 008: EXTI2_TSC (EXTI): EXTI Line2 and Touch sensing interrupts
 INTERRUPT 008: EXTI2_TSC (TSC): EXTI Line2 and Touch sensing interrupts
 INTERRUPT 009: EXTI3 (EXTI): EXTI Line3 interrupt
 INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
@@ -7018,7 +6707,6 @@ INTERRUPT 014: DMA1_CH4 (DMA1): DMA1 channel 4 interrupt
 INTERRUPT 015: DMA1_CH5 (DMA1): DMA1 channel 5 interrupt
 INTERRUPT 016: DMA1_CH6 (DMA1): DMA1 channel 6 interrupt
 INTERRUPT 017: DMA1_CH7 (DMA1): DMA1 channel 7interrupt
-INTERRUPT 018: ADC1_2 (ADC1): ADC1 and ADC2 global interrupt
 INTERRUPT 018: ADC1_2 (ADC2): ADC1 and ADC2 global interrupt
 INTERRUPT 019: USB_HP_CAN_TX (CAN): USB High Priority/CAN_TX interrupts
 INTERRUPT 020: USB_LP_CAN_RX0 (CAN): USB Low Priority/CAN_RX0 interrupts
@@ -7028,26 +6716,19 @@ INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line5 to Line9 interrupts
 INTERRUPT 024: TIM1_BRK_TIM15 (TIM15): TIM1 Break/TIM15 global interruts
 INTERRUPT 025: TIM1_UP_TIM16 (TIM16): TIM1 Update/TIM16 global interrupts
 INTERRUPT 026: TIM1_TRG_COM_TIM17 (TIM17): TIM1 trigger and commutation/TIM17 interrupts
-INTERRUPT 027: TIM1_CC (TIM1): TIM1 capture compare interrupt
 INTERRUPT 027: TIM1_CC (TIM20): TIM1 capture compare interrupt
 INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
 INTERRUPT 030: TIM4 (TIM4): TIM4 global interrupt
 INTERRUPT 031: I2C1_EV_EXTI23 (EXTI): I2C1 event interrupt and EXTI Line23 interrupt
-INTERRUPT 031: I2C1_EV_EXTI23 (I2C1): I2C1 event interrupt and EXTI Line23 interrupt
 INTERRUPT 032: I2C1_ER (I2C1): I2C1 error interrupt
-INTERRUPT 033: I2C2_EV_EXTI24 (I2C2): I2C2 event interrupt & EXTI Line24 interrupt
 INTERRUPT 033: I2C2_EV_EXTI24 (I2C3): I2C2 event interrupt & EXTI Line24 interrupt
 INTERRUPT 034: I2C2_ER (I2C2): I2C2 error interrupt
-INTERRUPT 034: I2C2_ER (I2C3): I2C2 error interrupt
 INTERRUPT 035: SPI1 (SPI1): SPI1 global interrupt
 INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
-INTERRUPT 037: USART1_EXTI25 (EXTI): USART1 global interrupt and EXTI Line 25 interrupt
 INTERRUPT 037: USART1_EXTI25 (USART1): USART1 global interrupt and EXTI Line 25 interrupt
 INTERRUPT 038: USART2_EXTI26 (EXTI): USART2 global interrupt and EXTI Line 26 interrupt
-INTERRUPT 038: USART2_EXTI26 (USART2): USART2 global interrupt and EXTI Line 26 interrupt
 INTERRUPT 039: USART3_EXTI28 (EXTI): USART3 global interrupt and EXTI Line 28 interrupt
-INTERRUPT 039: USART3_EXTI28 (USART3): USART3 global interrupt and EXTI Line 28 interrupt
 INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line15 to Line10 interrupts
 INTERRUPT 041: RTCAlarm (RTC): RTC alarm interrupt
 INTERRUPT 042: USB_WKUP (USB): USB wakeup from Suspend
@@ -7057,13 +6738,9 @@ INTERRUPT 045: TIM8_TRG_COM (TIM8): TIM8 Trigger and commutation interrupts
 INTERRUPT 046: TIM8_CC (TIM8): TIM8 capture compare interrupt
 INTERRUPT 048: FMC (FMC): FSMC global interrupt
 INTERRUPT 051: SPI3 (SPI3): SPI3 global interrupt
-INTERRUPT 051: SPI3 (SPI4): SPI3 global interrupt
 INTERRUPT 052: UART4_EXTI34 (EXTI): UART4 global and EXTI Line 34 interrupts
-INTERRUPT 052: UART4_EXTI34 (UART4): UART4 global and EXTI Line 34 interrupts
 INTERRUPT 053: UART5_EXTI35 (EXTI): UART5 global and EXTI Line 35 interrupts
-INTERRUPT 053: UART5_EXTI35 (UART5): UART5 global and EXTI Line 35 interrupts
 INTERRUPT 054: TIM6_DACUNDER (DAC1): TIM6 global and DAC12 underrun interrupts
-INTERRUPT 054: TIM6_DACUNDER (TIM6): TIM6 global and DAC12 underrun interrupts
 INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 056: DMA2_CH1 (DMA2): DMA2 channel1 global interrupt
 INTERRUPT 057: DMA2_CH2 (DMA2): DMA2 channel2 global interrupt
@@ -7075,4 +6752,4 @@ INTERRUPT 065: COMP4_5_6 (COMP): COMP4_5_6 interrupt combined with EXTI lines 30
 INTERRUPT 074: USB_HP (USB): USB High priority interrupt
 INTERRUPT 075: USB_LP (USB): USB Low priority interrupt
 INTERRUPT 076: USB_WKUP_EXTI (EXTI): USB wakeup from Suspend and EXTI Line 18
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
+INTERRUPT 081: FPU (EXTI): Floating point unit interrupt
