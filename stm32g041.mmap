@@ -2840,8 +2840,10 @@
 0x40022014 B  REGISTER CR (rw): Flash control register
 0x40022014 C   FIELD 00w01 PG: Programming
 0x40022014 C   FIELD 01w01 PER: Page erase
-0x40022014 C   FIELD 02w01 MER: Mass erase
-0x40022014 C   FIELD 03w06 PNB: Page number
+0x40022014 C   FIELD 02w01 MER1: Mass erase
+0x40022014 C   FIELD 03w10 PNB: Page number
+0x40022014 C   FIELD 13w01 BKER: Bank selection for erase operation
+0x40022014 C   FIELD 15w01 MER2: Mass erase, Bank 2
 0x40022014 C   FIELD 16w01 STRT: Start
 0x40022014 C   FIELD 17w01 OPTSTRT: Options modification start
 0x40022014 C   FIELD 18w01 FSTPG: Fast programming
@@ -2850,6 +2852,7 @@
 0x40022014 C   FIELD 26w01 RDERRIE: PCROP read error interrupt enable
 0x40022014 C   FIELD 27w01 OBL_LAUNCH: Force the option byte loading
 0x40022014 C   FIELD 28w01 SEC_PROT: Securable memory area protection enable
+0x40022014 C   FIELD 29w01 SEC_PROT2: Securable memory area protection enable, Bank 2
 0x40022014 C   FIELD 30w01 OPTLOCK: Options Lock
 0x40022014 C   FIELD 31w01 LOCK: FLASH_CR Lock
 0x40022018 B  REGISTER ECCR: Flash ECC register
