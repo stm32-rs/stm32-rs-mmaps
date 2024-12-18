@@ -1189,6 +1189,9 @@
 0x40004C14 C   FIELD 03w01 HDSEL: Half-duplex selection
 0x40004C14 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40004C14 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40004C14 C   FIELD 08w01 RTSE: RTS enable
+0x40004C14 C   FIELD 09w01 CTSE: CTS enable
+0x40004C14 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40004C14 C   FIELD 11w01 ONEBIT: One sample bit method enable
 0x40004C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
 0x40004C18 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
@@ -1237,6 +1240,9 @@
 0x40005014 C   FIELD 03w01 HDSEL: Half-duplex selection
 0x40005014 C   FIELD 06w01 DMAR: DMA enable receiver
 0x40005014 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40005014 C   FIELD 08w01 RTSE: RTS enable
+0x40005014 C   FIELD 09w01 CTSE: CTS enable
+0x40005014 C   FIELD 10w01 CTSIE: CTS interrupt enable
 0x40005014 C   FIELD 11w01 ONEBIT: One sample bit method enable
 0x40005018 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
 0x40005018 C   FIELD 00w08 PSC: IrDA Low-Power pulse width peripheral clock prescaler
@@ -1437,24 +1443,23 @@
 0x40006000 C   FIELD 00w01 PE: Peripheral enable
 0x40006000 C   FIELD 01w01 TXIE: TX Interrupt enable
 0x40006000 C   FIELD 02w01 RXIE: RX Interrupt enable
-0x40006000 C   FIELD 03w01 ADDRIE: Address match interrupt enable (slave only)
-0x40006000 C   FIELD 04w01 NACKIE: Not acknowledge received interrupt enable
+0x40006000 C   FIELD 03w01 ADDRIE: Address match Interrupt enable (slave only)
+0x40006000 C   FIELD 04w01 NACKIE: Not acknowledge received Interrupt enable
 0x40006000 C   FIELD 05w01 STOPIE: STOP detection Interrupt enable
 0x40006000 C   FIELD 06w01 TCIE: Transfer Complete interrupt enable
-0x40006000 C   FIELD 07w01 ERRIE: Error interrupt enable
+0x40006000 C   FIELD 07w01 ERRIE: Error interrupts enable
 0x40006000 C   FIELD 08w04 DNF: Digital noise filter
 0x40006000 C   FIELD 12w01 ANFOFF: Analog noise filter OFF
 0x40006000 C   FIELD 14w01 TXDMAEN: DMA transmission requests enable
 0x40006000 C   FIELD 15w01 RXDMAEN: DMA reception requests enable
 0x40006000 C   FIELD 16w01 SBC: Slave byte control
 0x40006000 C   FIELD 17w01 NOSTRETCH: Clock stretching disable
-0x40006000 C   FIELD 18w01 WUPEN: Wakeup from STOP enable
 0x40006000 C   FIELD 19w01 GCEN: General call enable
 0x40006000 C   FIELD 20w01 SMBHEN: SMBus Host address enable
 0x40006000 C   FIELD 21w01 SMBDEN: SMBus Device Default address enable
 0x40006000 C   FIELD 22w01 ALERTEN: SMBus alert enable
 0x40006000 C   FIELD 23w01 PECEN: PEC enable
-0x40006004 B  REGISTER CR2 (rw): Control register 2
+0x40006004 B  REGISTER CR2 (rw): Control register 1
 0x40006004 C   FIELD 00w10 SADD: Slave address bit (master mode)
 0x40006004 C   FIELD 10w01 RD_WRN: Transfer direction (master mode)
 0x40006004 C   FIELD 11w01 ADD10: 10-bit addressing mode (master mode)
@@ -1466,11 +1471,11 @@
 0x40006004 C   FIELD 24w01 RELOAD: NBYTES reload mode
 0x40006004 C   FIELD 25w01 AUTOEND: Automatic end mode (master mode)
 0x40006004 C   FIELD 26w01 PECBYTE: Packet error checking byte
-0x40006008 B  REGISTER OAR1 (rw): Own address register 1
+0x40006008 B  REGISTER OAR1 (rw): Own address 1 register
 0x40006008 C   FIELD 00w10 OA1: Interface address
 0x40006008 C   FIELD 10w01 OA1MODE: Own Address 1 10-bit mode
 0x40006008 C   FIELD 15w01 OA1EN: Own Address 1 enable
-0x4000600C B  REGISTER OAR2 (rw): Own address register 2
+0x4000600C B  REGISTER OAR2 (rw): Own address 2 register
 0x4000600C C   FIELD 01w07 OA2: Interface address
 0x4000600C C   FIELD 08w03 OA2MSK: Own Address 2 masks
 0x4000600C C   FIELD 15w01 OA2EN: Own Address 2 enable
@@ -1481,17 +1486,17 @@
 0x40006010 C   FIELD 20w04 SCLDEL: Data setup time
 0x40006010 C   FIELD 28w04 PRESC: Timing prescaler
 0x40006014 B  REGISTER TIMEOUTR (rw): Timeout register
-0x40006014 C   FIELD 00w12 TIMEOUTA: Bus timeout A
+0x40006014 C   FIELD 00w12 TIMEOUTA: Bus Timeout A
 0x40006014 C   FIELD 12w01 TIDLE: Idle clock timeout detection
 0x40006014 C   FIELD 15w01 TIMOUTEN: Clock timeout enable
 0x40006014 C   FIELD 16w12 TIMEOUTB: Bus timeout B
 0x40006014 C   FIELD 31w01 TEXTEN: Extended clock timeout enable
-0x40006018 B  REGISTER ISR: Interrupt and Status register
+0x40006018 B  REGISTER ISR: Interrupt and status register
 0x40006018 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters)
 0x40006018 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters)
 0x40006018 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers)
 0x40006018 C   FIELD 03w01 ADDR (ro): Address matched (slave mode)
-0x40006018 C   FIELD 04w01 NACKF (ro): Not acknowledge received flag
+0x40006018 C   FIELD 04w01 NACKF (ro): Not Acknowledge received flag
 0x40006018 C   FIELD 05w01 STOPF (ro): Stop detection flag
 0x40006018 C   FIELD 06w01 TC (ro): Transfer Complete (master mode)
 0x40006018 C   FIELD 07w01 TCR (ro): Transfer Complete Reload
@@ -1499,17 +1504,17 @@
 0x40006018 C   FIELD 09w01 ARLO (ro): Arbitration lost
 0x40006018 C   FIELD 10w01 OVR (ro): Overrun/Underrun (slave mode)
 0x40006018 C   FIELD 11w01 PECERR (ro): PEC Error in reception
-0x40006018 C   FIELD 12w01 TIMEOUT (ro): Timeout or t_low detection flag
+0x40006018 C   FIELD 12w01 TIMEOUT (ro): Timeout or tLOW detection flag
 0x40006018 C   FIELD 13w01 ALERT (ro): SMBus alert
 0x40006018 C   FIELD 15w01 BUSY (ro): Bus busy
 0x40006018 C   FIELD 16w01 DIR (ro): Transfer direction (Slave mode)
 0x40006018 C   FIELD 17w07 ADDCODE (ro): Address match code (Slave mode)
 0x4000601C B  REGISTER ICR (wo): Interrupt clear register
-0x4000601C C   FIELD 03w01 ADDRCF: Address Matched flag clear
+0x4000601C C   FIELD 03w01 ADDRCF: Address matched flag clear
 0x4000601C C   FIELD 04w01 NACKCF: Not Acknowledge flag clear
 0x4000601C C   FIELD 05w01 STOPCF: Stop detection flag clear
 0x4000601C C   FIELD 08w01 BERRCF: Bus error flag clear
-0x4000601C C   FIELD 09w01 ARLOCF: Arbitration lost flag clear
+0x4000601C C   FIELD 09w01 ARLOCF: Arbitration Lost flag clear
 0x4000601C C   FIELD 10w01 OVRCF: Overrun/Underrun flag clear
 0x4000601C C   FIELD 11w01 PECCF: PEC Error flag clear
 0x4000601C C   FIELD 12w01 TIMOUTCF: Timeout detection flag clear
@@ -3304,27 +3309,30 @@
 0x40012308 C   FIELD 00w16 DATA1: 1st data item of a pair of regular conversions
 0x40012308 C   FIELD 16w16 DATA2: 2nd data item of a pair of regular conversions
 0x40012C00 A PERIPHERAL SDIO
-0x40012C00 B  REGISTER POWER (rw): SDIO power control register
-0x40012C00 C   FIELD 00w02 PWRCTRL: Power supply control bits. These bits are used to define the current functional state of the card clock
-0x40012C04 B  REGISTER CLKCR (rw): CLKCR register controls the SDIO_CK output clock.
-0x40012C04 C   FIELD 00w08 CLKDIV: Clock divide factor. This field defines the divide factor between the input clock (SDIOCLK) and the output clock (SDIO_CK): SDIO_CK frequency = SDIOCLK / [CLKDIV + 2]. While the SD/SDIO card or MultiMediaCard is in identification mode, the SDIO_CK frequency must be less than 400 kHz. The clock frequency can be changed to the maximum card bus frequency when relative card addresses are assigned to all cards
-0x40012C04 C   FIELD 08w01 CLKEN (rw): Clock enable bit
-0x40012C04 C   FIELD 09w01 PWRSAV: Power saving configuration bit. For power saving, the SDIO_CK clock output can be disabled when the bus is idle by setting PWRSAV
-0x40012C04 C   FIELD 10w01 BYPASS (rw): Clock divider bypass enable bit
-0x40012C04 C   FIELD 11w02 WIDBUS: Wide bus mode enable bit This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
-0x40012C04 C   FIELD 13w01 NEGEDGE: SDIO_CK dephasing selection bit. When BYPASS is active, the data and the command change on SDIOCLK falling edge whatever NEGEDGE value
-0x40012C04 C   FIELD 14w01 HWFC_EN: HW Flow Control enable. When HW Flow Control is enabled, the meaning of the TXFIFOE and RXFIFOF interrupt signals, see SDIO Status register definition in Section 29.8.11
-0x40012C08 B  REGISTER ARG (rw): The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
-0x40012C08 C   FIELD 00w32 CMDARG: Command argument. These bits can only be written by firmware when CPSM is disabled (CPSMEN = 0). Command argument sent to a card as part of a command message. If a command contains an argument, it must be loaded into this register before writing a command to the command register.
-0x40012C0C B  REGISTER CMD (rw): The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
-0x40012C0C C   FIELD 00w06 CMDINDEX: Command index. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). The command index is sent to the card as part of a command message.
-0x40012C0C C   FIELD 06w02 WAITRESP: Wait for response bits. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). They are used to configure whether the CPSM is to wait for a response, and if yes, which kind of response.
-0x40012C0C C   FIELD 08w01 WAITINT: CPSM waits for interrupt request. If this bit is set, the CPSM disables command timeout and waits for an card interrupt request (Response). If this bit is cleared in the CPSM Wait state, will cause the abort of the interrupt mode.
-0x40012C0C C   FIELD 09w01 WAITPEND: PSM Waits for ends of data transfer (CmdPend internal signal). If this bit is set, the CPSM waits for the end of data transfer before it starts sending a command. This feature is available only with Stream data transfer mode SDIO_DCTRL[2] = 1.
-0x40012C0C C   FIELD 10w01 CPSMEN: Command path state machine (CPSM) Enable bit This bit is written 1 by firmware, and cleared by hardware when the CPSM enters the Idle state. If this bit is set, the CPSM is enabled. When DTEN = 1, no command will be transfered nor boot procedure will be started. CPSMEN is cleared to 0.
-0x40012C0C C   FIELD 11w01 SDIOSuspend: SD I/O suspend command. If this bit is set, the command to be sent is a suspend command (to be used only with SDIO card)
-0x40012C10 B  REGISTER RESPCMD (ro): The SDMMC_RESPCMDR register contains the command index field of the last command response received. If the command response transmission does not contain the command index field (long or OCR response), the RESPCMD field is unknown, although it must contain 111111b (the value of the reserved field from the response).
-0x40012C10 C   FIELD 00w06 RESPCMD: Response command index Read-only bit field. Contains the command index of the last command response received.
+0x40012C00 B  REGISTER POWER (rw): power control register
+0x40012C00 C   FIELD 00w02 PWRCTRL: PWRCTRL
+0x40012C04 B  REGISTER CLKCR (rw): SDI clock control register
+0x40012C04 C   FIELD 00w08 CLKDIV: Clock divide factor
+0x40012C04 C   FIELD 08w01 CLKEN: Clock enable bit
+0x40012C04 C   FIELD 09w01 PWRSAV: Power saving configuration bit
+0x40012C04 C   FIELD 10w01 BYPASS: Clock divider bypass enable bit
+0x40012C04 C   FIELD 11w02 WIDBUS: Wide bus mode enable bit
+0x40012C04 C   FIELD 13w01 NEGEDGE: SDIO_CK dephasing selection bit
+0x40012C04 C   FIELD 14w01 HWFC_EN: HW Flow Control enable
+0x40012C08 B  REGISTER ARG (rw): argument register
+0x40012C08 C   FIELD 00w32 CMDARG: Command argument
+0x40012C0C B  REGISTER CMD (rw): command register
+0x40012C0C C   FIELD 00w06 CMDINDEX: Command index
+0x40012C0C C   FIELD 06w02 WAITRESP: Wait for response bits
+0x40012C0C C   FIELD 08w01 WAITINT: CPSM waits for interrupt request
+0x40012C0C C   FIELD 09w01 WAITPEND: CPSM Waits for ends of data transfer (CmdPend internal signal).
+0x40012C0C C   FIELD 10w01 CPSMEN: Command path state machine (CPSM) Enable bit
+0x40012C0C C   FIELD 11w01 SDIOSuspend: SD I/O suspend command
+0x40012C0C C   FIELD 12w01 ENCMDcompl: Enable CMD completion
+0x40012C0C C   FIELD 13w01 nIEN: not Interrupt Enable
+0x40012C0C C   FIELD 14w01 CE_ATACMD: CE-ATA command
+0x40012C10 B  REGISTER RESPCMD (ro): command response register
+0x40012C10 C   FIELD 00w06 RESPCMD: Response command index
 0x40012C14 B  REGISTER RESP1 (ro): SDIO response 1 register
 0x40012C14 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
 0x40012C18 B  REGISTER RESP2 (ro): SDIO response 2 register
@@ -3333,85 +3341,90 @@
 0x40012C1C C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
 0x40012C20 B  REGISTER RESP4 (ro): SDIO response 4 register
 0x40012C20 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
-0x40012C24 B  REGISTER DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
-0x40012C24 C   FIELD 00w32 DATATIME: Data and R1b busy timeout period This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). Data and R1b busy timeout period expressed in card bus clock periods.
-0x40012C28 B  REGISTER DLEN (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
-0x40012C28 C   FIELD 00w25 DATALENGTH: Data length value This register can only be written by firmware when DPSM is inactive (DPSMACT = 0). Number of data bytes to be transferred. When DDR = 1 DATALENGTH is truncated to a multiple of 2. (The last odd byte is not transfered) When DATALENGTH = 0 no data will be transfered, when requested by a CPSMEN and CMDTRANS = 1 also no command will be transfered. DTEN and CPSMEN are cleared to 0.
-0x40012C2C B  REGISTER DCTRL (rw): The SDMMC_DCTRL register control the data path state machine (DPSM).
-0x40012C2C C   FIELD 00w01 DTEN: Data transfer enable bit This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). This bit is cleared by Hardware when data transfer completes. This bit shall only be used to transfer data when no associated data transfer command is used, i.e. shall not be used with SD or eMMC cards.
-0x40012C2C C   FIELD 01w01 DTDIR: Data transfer direction selection This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
-0x40012C2C C   FIELD 02w01 DTMODE: Data transfer mode selection. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
-0x40012C2C C   FIELD 03w01 DMAEN (rw): DMA enable
-0x40012C2C C   FIELD 04w04 DBLOCKSIZE: Data block size. Define the data block length when the block data transfer mode is selected, block length = 2^(DBLOCKSIZE) bytes
-0x40012C2C C   FIELD 08w01 RWSTART: Read wait start. If this bit is set, read wait operation starts.
-0x40012C2C C   FIELD 09w01 RWSTOP: Read wait stop This bit is written by firmware and auto cleared by hardware when the DPSM moves from the READ_WAIT state to the WAIT_R or IDLE state.
-0x40012C2C C   FIELD 10w01 RWMOD: Read wait mode. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
-0x40012C2C C   FIELD 11w01 SDIOEN: SD I/O interrupt enable functions This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). If this bit is set, the DPSM enables the SD I/O card specific interrupt operation.
-0x40012C30 B  REGISTER DCOUNT (ro): The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
-0x40012C30 C   FIELD 00w25 DATACOUNT: Data count value When read, the number of remaining data bytes to be transferred is returned. Write has no effect.
-0x40012C34 B  REGISTER STA (ro): The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits [29,21,11:0]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits [20:12]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
-0x40012C34 C   FIELD 00w01 CCRCFAIL: Command response received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 01w01 DCRCFAIL: Data block sent/received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 02w01 CTIMEOUT: Command response timeout. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR. The Command Timeout period has a fixed value of 64 SDMMC_CK clock periods.
-0x40012C34 C   FIELD 03w01 DTIMEOUT: Data timeout. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 04w01 TXUNDERR: Transmit FIFO underrun error or IDMA read transfer error. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 05w01 RXOVERR: Received FIFO overrun error or IDMA write transfer error. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 06w01 CMDREND: Command response received (CRC check passed, or no CRC). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 07w01 CMDSENT: Command sent (no response required). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 08w01 DATAEND: Data transfer ended correctly. (data counter, DATACOUNT is zero and no errors occur). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 10w01 DBCKEND: Data block sent/received. (CRC check passed) and DPSM moves to the READWAIT state. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 11w01 CMDACT: Data transfer aborted by CMD12. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 12w01 TXACT: Data path state machine active, i.e. not in Idle state. This is a hardware status flag only, does not generate an interrupt.
-0x40012C34 C   FIELD 13w01 RXACT: Command path state machine active, i.e. not in Idle state. This is a hardware status flag only, does not generate an interrupt.
-0x40012C34 C   FIELD 14w01 TXFIFOHE: Transmit FIFO half empty At least half the number of words can be written into the FIFO. This bit is cleared when the FIFO becomes half+1 full.
-0x40012C34 C   FIELD 15w01 RXFIFOHF: Receive FIFO half full There are at least half the number of words in the FIFO. This bit is cleared when the FIFO becomes half+1 empty.
-0x40012C34 C   FIELD 16w01 TXFIFOF: Transmit FIFO full This is a hardware status flag only, does not generate an interrupt. This bit is cleared when one FIFO location becomes empty.
-0x40012C34 C   FIELD 17w01 RXFIFOF: Receive FIFO full This bit is cleared when one FIFO location becomes empty.
-0x40012C34 C   FIELD 18w01 TXFIFOE: Transmit FIFO empty This bit is cleared when one FIFO location becomes full.
-0x40012C34 C   FIELD 19w01 RXFIFOE: Receive FIFO empty This is a hardware status flag only, does not generate an interrupt. This bit is cleared when one FIFO location becomes full.
-0x40012C34 C   FIELD 20w01 TXDAVL: Inverted value of SDMMC_D0 line (Busy), sampled at the end of a CMD response and a second time 2 SDMMC_CK cycles after the CMD response. This bit is reset to not busy when the SDMMCD0 line changes from busy to not busy. This bit does not signal busy due to data transfer. This is a hardware status flag only, it does not generate an interrupt.
-0x40012C34 C   FIELD 21w01 RXDAVL: end of SDMMC_D0 Busy following a CMD response detected. This indicates only end of busy following a CMD response. This bit does not signal busy due to data transfer. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C34 C   FIELD 22w01 SDIOIT: SDIO interrupt received. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x40012C38 B  REGISTER ICR (rw): The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
-0x40012C38 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit Set by software to clear the CCRCFAIL flag.
-0x40012C38 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit Set by software to clear the DCRCFAIL flag.
-0x40012C38 C   FIELD 02w01 CTIMEOUTC: CTIMEOUT flag clear bit Set by software to clear the CTIMEOUT flag.
-0x40012C38 C   FIELD 03w01 DTIMEOUTC: DTIMEOUT flag clear bit Set by software to clear the DTIMEOUT flag.
-0x40012C38 C   FIELD 04w01 TXUNDERRC: TXUNDERR flag clear bit Set by software to clear TXUNDERR flag.
-0x40012C38 C   FIELD 05w01 RXOVERRC: RXOVERR flag clear bit Set by software to clear the RXOVERR flag.
-0x40012C38 C   FIELD 06w01 CMDRENDC: CMDREND flag clear bit Set by software to clear the CMDREND flag.
-0x40012C38 C   FIELD 07w01 CMDSENTC: CMDSENT flag clear bit Set by software to clear the CMDSENT flag.
-0x40012C38 C   FIELD 08w01 DATAENDC: DATAEND flag clear bit Set by software to clear the DATAEND flag.
-0x40012C38 C   FIELD 10w01 DBCKENDC: DBCKEND flag clear bit Set by software to clear the DBCKEND flag.
-0x40012C38 C   FIELD 22w01 SDIOITC: SDIOIT flag clear bit Set by software to clear the SDIOIT flag.
-0x40012C38 C   FIELD 27w01 IDMATEC: IDMA transfer error clear bit Set by software to clear the IDMATE flag.
-0x40012C3C B  REGISTER MASK (rw): The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
-0x40012C3C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by command CRC failure.
-0x40012C3C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by data CRC failure.
-0x40012C3C C   FIELD 02w01 CTIMEOUTIE: Command timeout interrupt enable Set and cleared by software to enable/disable interrupt caused by command timeout.
-0x40012C3C C   FIELD 03w01 DTIMEOUTIE: Data timeout interrupt enable Set and cleared by software to enable/disable interrupt caused by data timeout.
-0x40012C3C C   FIELD 04w01 TXUNDERRIE: Tx FIFO underrun error interrupt enable Set and cleared by software to enable/disable interrupt caused by Tx FIFO underrun error.
-0x40012C3C C   FIELD 05w01 RXOVERRIE: Rx FIFO overrun error interrupt enable Set and cleared by software to enable/disable interrupt caused by Rx FIFO overrun error.
-0x40012C3C C   FIELD 06w01 CMDRENDIE: Command response received interrupt enable Set and cleared by software to enable/disable interrupt caused by receiving command response.
-0x40012C3C C   FIELD 07w01 CMDSENTIE: Command sent interrupt enable Set and cleared by software to enable/disable interrupt caused by sending command.
-0x40012C3C C   FIELD 08w01 DATAENDIE: Data end interrupt enable Set and cleared by software to enable/disable interrupt caused by data end.
-0x40012C3C C   FIELD 10w01 DBCKENDIE: Data block end interrupt enable Set and cleared by software to enable/disable interrupt caused by data block end.
-0x40012C3C C   FIELD 11w01 CMDACTIE: Data transfer aborted interrupt enable Set and cleared by software to enable/disable interrupt caused by a data transfer being aborted.
-0x40012C3C C   FIELD 12w01 TXACTIE (rw): Data transmit acting interrupt enable. Set and cleared by software to enable/disable interrupt caused by data being transferred (data transmit acting)
-0x40012C3C C   FIELD 13w01 RXACTIE (rw): Data receive acting interrupt enable. Set and cleared by software to enable/disable interrupt caused by data being received (data receive acting)
-0x40012C3C C   FIELD 14w01 TXFIFOHEIE: Tx FIFO half empty interrupt enable Set and cleared by software to enable/disable interrupt caused by Tx FIFO half empty.
-0x40012C3C C   FIELD 15w01 RXFIFOHFIE: Rx FIFO half full interrupt enable Set and cleared by software to enable/disable interrupt caused by Rx FIFO half full.
-0x40012C3C C   FIELD 16w01 TXFIFOFIE (rw): Tx FIFO full interrupt enable. Set and cleared by software to enable/disable interrupt caused by Tx FIFO full
-0x40012C3C C   FIELD 17w01 RXFIFOFIE: Rx FIFO full interrupt enable Set and cleared by software to enable/disable interrupt caused by Rx FIFO full.
-0x40012C3C C   FIELD 18w01 TXFIFOEIE: Tx FIFO empty interrupt enable Set and cleared by software to enable/disable interrupt caused by Tx FIFO empty.
-0x40012C3C C   FIELD 19w01 RXFIFOEIE (rw): Rx FIFO empty interrupt enable. Set and cleared by software to enable/disable interrupt caused by Rx FIFO empty
-0x40012C3C C   FIELD 20w01 TXDAVLIE (rw): Data available in Tx FIFO interrupt enable. Set and cleared by software to enable/disable the interrupt generated by the presence of data available in Tx FIFO
-0x40012C3C C   FIELD 21w01 RXDAVLIE: BUSYD0END interrupt enable Set and cleared by software to enable/disable the interrupt generated when SDMMC_D0 signal changes from busy to NOT busy following a CMD response.
-0x40012C3C C   FIELD 22w01 SDIOITIE: SDIO mode interrupt received interrupt enable Set and cleared by software to enable/disable the interrupt generated when receiving the SDIO mode interrupt.
-0x40012C48 B  REGISTER FIFOCNT (ro): The SDIO_FIFOCNT register contains the remaining number of words to be written to or read from the FIFO. The FIFO counter loads the value from the data length register (see SDIO_DLEN) when the data transfer enable bit, DTEN, is set in the data control register (SDIO_DCTRL register) and the DPSM is at the Idle state. If the data length is not word-aligned (multiple of 4), the remaining 1 to 3 bytes are regarded as a word.
-0x40012C48 C   FIELD 00w24 FIFOCOUNT (ro): Remaining number of words to be written to or read from the FIFO
-0x40012C80 B  REGISTER FIFO (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
-0x40012C80 C   FIELD 00w32 FIFOData: Receive and transmit FIFO data This register can only be read or written by firmware when the DPSM is active (DPSMACT=1). The FIFO data occupies 16 entries of 32-bit words.
+0x40012C24 B  REGISTER DTIMER (rw): data timer register
+0x40012C24 C   FIELD 00w32 DATATIME: Data timeout period
+0x40012C28 B  REGISTER DLEN (rw): data length register
+0x40012C28 C   FIELD 00w25 DATALENGTH: Data length value
+0x40012C2C B  REGISTER DCTRL (rw): data control register
+0x40012C2C C   FIELD 00w01 DTEN: DTEN
+0x40012C2C C   FIELD 01w01 DTDIR: Data transfer direction selection
+0x40012C2C C   FIELD 02w01 DTMODE: Data transfer mode selection 1: Stream or SDIO multibyte data transfer.
+0x40012C2C C   FIELD 03w01 DMAEN: DMA enable bit
+0x40012C2C C   FIELD 04w04 DBLOCKSIZE: Data block size
+0x40012C2C C   FIELD 08w01 RWSTART: Read wait start
+0x40012C2C C   FIELD 09w01 RWSTOP: Read wait stop
+0x40012C2C C   FIELD 10w01 RWMOD: Read wait mode
+0x40012C2C C   FIELD 11w01 SDIOEN: SD I/O enable functions
+0x40012C30 B  REGISTER DCOUNT (ro): data counter register
+0x40012C30 C   FIELD 00w25 DATACOUNT: Data count value
+0x40012C34 B  REGISTER STA (ro): status register
+0x40012C34 C   FIELD 00w01 CCRCFAIL: Command response received (CRC check failed)
+0x40012C34 C   FIELD 01w01 DCRCFAIL: Data block sent/received (CRC check failed)
+0x40012C34 C   FIELD 02w01 CTIMEOUT: Command response timeout
+0x40012C34 C   FIELD 03w01 DTIMEOUT: Data timeout
+0x40012C34 C   FIELD 04w01 TXUNDERR: Transmit FIFO underrun error
+0x40012C34 C   FIELD 05w01 RXOVERR: Received FIFO overrun error
+0x40012C34 C   FIELD 06w01 CMDREND: Command response received (CRC check passed)
+0x40012C34 C   FIELD 07w01 CMDSENT: Command sent (no response required)
+0x40012C34 C   FIELD 08w01 DATAEND: Data end (data counter, SDIDCOUNT, is zero)
+0x40012C34 C   FIELD 09w01 STBITERR: Start bit not detected on all data signals in wide bus mode
+0x40012C34 C   FIELD 10w01 DBCKEND: Data block sent/received (CRC check passed)
+0x40012C34 C   FIELD 11w01 CMDACT: Command transfer in progress
+0x40012C34 C   FIELD 12w01 TXACT: Data transmit in progress
+0x40012C34 C   FIELD 13w01 RXACT: Data receive in progress
+0x40012C34 C   FIELD 14w01 TXFIFOHE: Transmit FIFO half empty: at least 8 words can be written into the FIFO
+0x40012C34 C   FIELD 15w01 RXFIFOHF: Receive FIFO half full: there are at least 8 words in the FIFO
+0x40012C34 C   FIELD 16w01 TXFIFOF: Transmit FIFO full
+0x40012C34 C   FIELD 17w01 RXFIFOF: Receive FIFO full
+0x40012C34 C   FIELD 18w01 TXFIFOE: Transmit FIFO empty
+0x40012C34 C   FIELD 19w01 RXFIFOE: Receive FIFO empty
+0x40012C34 C   FIELD 20w01 TXDAVL: Data available in transmit FIFO
+0x40012C34 C   FIELD 21w01 RXDAVL: Data available in receive FIFO
+0x40012C34 C   FIELD 22w01 SDIOIT: SDIO interrupt received
+0x40012C34 C   FIELD 23w01 CEATAEND: CE-ATA command completion signal received for CMD61
+0x40012C38 B  REGISTER ICR (rw): interrupt clear register
+0x40012C38 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit
+0x40012C38 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit
+0x40012C38 C   FIELD 02w01 CTIMEOUTC: CTIMEOUT flag clear bit
+0x40012C38 C   FIELD 03w01 DTIMEOUTC: DTIMEOUT flag clear bit
+0x40012C38 C   FIELD 04w01 TXUNDERRC: TXUNDERR flag clear bit
+0x40012C38 C   FIELD 05w01 RXOVERRC: RXOVERR flag clear bit
+0x40012C38 C   FIELD 06w01 CMDRENDC: CMDREND flag clear bit
+0x40012C38 C   FIELD 07w01 CMDSENTC: CMDSENT flag clear bit
+0x40012C38 C   FIELD 08w01 DATAENDC: DATAEND flag clear bit
+0x40012C38 C   FIELD 09w01 STBITERRC: STBITERR flag clear bit
+0x40012C38 C   FIELD 10w01 DBCKENDC: DBCKEND flag clear bit
+0x40012C38 C   FIELD 22w01 SDIOITC: SDIOIT flag clear bit
+0x40012C38 C   FIELD 23w01 CEATAENDC: CEATAEND flag clear bit
+0x40012C3C B  REGISTER MASK (rw): mask register
+0x40012C3C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable
+0x40012C3C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable
+0x40012C3C C   FIELD 02w01 CTIMEOUTIE: Command timeout interrupt enable
+0x40012C3C C   FIELD 03w01 DTIMEOUTIE: Data timeout interrupt enable
+0x40012C3C C   FIELD 04w01 TXUNDERRIE: Tx FIFO underrun error interrupt enable
+0x40012C3C C   FIELD 05w01 RXOVERRIE: Rx FIFO overrun error interrupt enable
+0x40012C3C C   FIELD 06w01 CMDRENDIE: Command response received interrupt enable
+0x40012C3C C   FIELD 07w01 CMDSENTIE: Command sent interrupt enable
+0x40012C3C C   FIELD 08w01 DATAENDIE: Data end interrupt enable
+0x40012C3C C   FIELD 09w01 STBITERRIE: Start bit error interrupt enable
+0x40012C3C C   FIELD 10w01 DBCKENDIE: Data block end interrupt enable
+0x40012C3C C   FIELD 11w01 CMDACTIE: Command acting interrupt enable
+0x40012C3C C   FIELD 12w01 TXACTIE: Data transmit acting interrupt enable
+0x40012C3C C   FIELD 13w01 RXACTIE: Data receive acting interrupt enable
+0x40012C3C C   FIELD 14w01 TXFIFOHEIE: Tx FIFO half empty interrupt enable
+0x40012C3C C   FIELD 15w01 RXFIFOHFIE: Rx FIFO half full interrupt enable
+0x40012C3C C   FIELD 16w01 TXFIFOFIE: Tx FIFO full interrupt enable
+0x40012C3C C   FIELD 17w01 RXFIFOFIE: Rx FIFO full interrupt enable
+0x40012C3C C   FIELD 18w01 TXFIFOEIE: Tx FIFO empty interrupt enable
+0x40012C3C C   FIELD 19w01 RXFIFOEIE: Rx FIFO empty interrupt enable
+0x40012C3C C   FIELD 20w01 TXDAVLIE: Data available in Tx FIFO interrupt enable
+0x40012C3C C   FIELD 21w01 RXDAVLIE: Data available in Rx FIFO interrupt enable
+0x40012C3C C   FIELD 22w01 SDIOITIE: SDIO mode interrupt received interrupt enable
+0x40012C3C C   FIELD 23w01 CEATAENDIE: CE-ATA command completion signal received interrupt enable
+0x40012C48 B  REGISTER FIFOCNT (ro): FIFO counter register
+0x40012C48 C   FIELD 00w24 FIFOCOUNT: Remaining number of words to be written to or read from the FIFO.
+0x40012C80 B  REGISTER FIFO (rw): data FIFO register
+0x40012C80 C   FIELD 00w32 FIFOData: Receive and transmit FIFO data
 0x40013000 A PERIPHERAL SPI1
 0x40013000 B  REGISTER CR1 (rw): control register 1
 0x40013000 C   FIELD 00w01 CPHA: Clock phase
@@ -9616,312 +9629,6 @@
 0xA000102C C   FIELD 00w16 INTERVAL: Polling interval
 0xA0001030 B  REGISTER LPTR (rw): low-power timeout register
 0xA0001030 C   FIELD 00w16 TIMEOUT: Timeout period
-0xE000E008 A PERIPHERAL SCB_ACTRL
-0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
-0xE000E008 C   FIELD 00w01 DISMCYCINT: DISMCYCINT
-0xE000E008 C   FIELD 01w01 DISDEFWBUF: DISDEFWBUF
-0xE000E008 C   FIELD 02w01 DISFOLD: DISFOLD
-0xE000E008 C   FIELD 08w01 DISFPCA: DISFPCA
-0xE000E008 C   FIELD 09w01 DISOOFP: DISOOFP
-0xE000E010 A PERIPHERAL STK
-0xE000E010 B  REGISTER CTRL (rw): SysTick control and status register
-0xE000E010 C   FIELD 00w01 ENABLE: Counter enable
-0xE000E010 C   FIELD 01w01 TICKINT: SysTick exception request enable
-0xE000E010 C   FIELD 02w01 CLKSOURCE: Clock source selection
-0xE000E010 C   FIELD 16w01 COUNTFLAG: COUNTFLAG
-0xE000E014 B  REGISTER LOAD (rw): SysTick reload value register
-0xE000E014 C   FIELD 00w24 RELOAD: RELOAD value
-0xE000E018 B  REGISTER VAL (rw): SysTick current value register
-0xE000E018 C   FIELD 00w24 CURRENT: Current counter value
-0xE000E01C B  REGISTER CALIB (rw): SysTick calibration value register
-0xE000E01C C   FIELD 00w24 TENMS: Calibration value
-0xE000E01C C   FIELD 30w01 SKEW: SKEW flag: Indicates whether the TENMS value is exact
-0xE000E01C C   FIELD 31w01 NOREF: NOREF flag. Reads as zero
-0xE000E100 A PERIPHERAL NVIC
-0xE000E100 B  REGISTER ISER0 (rw): Interrupt Set-Enable Register
-0xE000E100 C   FIELD 00w32 SETENA: SETENA
-0xE000E104 B  REGISTER ISER1 (rw): Interrupt Set-Enable Register
-0xE000E104 C   FIELD 00w32 SETENA: SETENA
-0xE000E108 B  REGISTER ISER2 (rw): Interrupt Set-Enable Register
-0xE000E108 C   FIELD 00w32 SETENA: SETENA
-0xE000E180 B  REGISTER ICER0 (rw): Interrupt Clear-Enable Register
-0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E184 B  REGISTER ICER1 (rw): Interrupt Clear-Enable Register
-0xE000E184 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E188 B  REGISTER ICER2 (rw): Interrupt Clear-Enable Register
-0xE000E188 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E200 B  REGISTER ISPR0 (rw): Interrupt Set-Pending Register
-0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E204 B  REGISTER ISPR1 (rw): Interrupt Set-Pending Register
-0xE000E204 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E208 B  REGISTER ISPR2 (rw): Interrupt Set-Pending Register
-0xE000E208 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E280 B  REGISTER ICPR0 (rw): Interrupt Clear-Pending Register
-0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E284 B  REGISTER ICPR1 (rw): Interrupt Clear-Pending Register
-0xE000E284 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E288 B  REGISTER ICPR2 (rw): Interrupt Clear-Pending Register
-0xE000E288 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E300 B  REGISTER IABR0 (ro): Interrupt Active Bit Register
-0xE000E300 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E304 B  REGISTER IABR1 (ro): Interrupt Active Bit Register
-0xE000E304 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E308 B  REGISTER IABR2 (ro): Interrupt Active Bit Register
-0xE000E308 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register
-0xE000E400 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E400 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E400 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E400 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register
-0xE000E404 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E404 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E404 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E404 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register
-0xE000E408 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E408 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E408 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E408 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register
-0xE000E40C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E40C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E40C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E40C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register
-0xE000E410 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E410 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E410 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E410 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register
-0xE000E414 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E414 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E414 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E414 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register
-0xE000E418 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E418 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E418 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E418 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register
-0xE000E41C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E41C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E41C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E41C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E420 B  REGISTER IPR8 (rw): Interrupt Priority Register
-0xE000E420 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E420 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E420 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E420 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E424 B  REGISTER IPR9 (rw): Interrupt Priority Register
-0xE000E424 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E424 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E424 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E424 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E428 B  REGISTER IPR10 (rw): Interrupt Priority Register
-0xE000E428 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E428 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E428 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E428 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E42C B  REGISTER IPR11 (rw): Interrupt Priority Register
-0xE000E42C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E42C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E42C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E42C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E430 B  REGISTER IPR12 (rw): Interrupt Priority Register
-0xE000E430 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E430 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E430 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E430 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E434 B  REGISTER IPR13 (rw): Interrupt Priority Register
-0xE000E434 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E434 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E434 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E434 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E438 B  REGISTER IPR14 (rw): Interrupt Priority Register
-0xE000E438 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E438 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E438 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E438 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E43C B  REGISTER IPR15 (rw): Interrupt Priority Register
-0xE000E43C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E43C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E43C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E43C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E440 B  REGISTER IPR16 (rw): Interrupt Priority Register
-0xE000E440 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E440 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E440 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E440 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E444 B  REGISTER IPR17 (rw): Interrupt Priority Register
-0xE000E444 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E444 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E444 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E444 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E448 B  REGISTER IPR18 (rw): Interrupt Priority Register
-0xE000E448 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E448 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E448 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E448 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E44C B  REGISTER IPR19 (rw): Interrupt Priority Register
-0xE000E44C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E44C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E44C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E44C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E450 B  REGISTER IPR20 (rw): Interrupt Priority Register
-0xE000E450 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E450 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E450 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E450 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000ED00 A PERIPHERAL SCB
-0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
-0xE000ED00 C   FIELD 00w04 Revision: Revision number
-0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000ED00 C   FIELD 16w04 Constant: Reads as 0xF
-0xE000ED00 C   FIELD 20w04 Variant: Variant number
-0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
-0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
-0xE000ED08 C   FIELD 09w21 TBLOFF: Vector table base offset field
-0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000ED0C C   FIELD 00w01 VECTRESET: VECTRESET
-0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000ED0C C   FIELD 08w03 PRIGROUP: PRIGROUP
-0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000ED10 B  REGISTER SCR (rw): System control register
-0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
-0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000ED18 B  REGISTER SHPR1 (rw): System handler priority registers
-0xE000ED18 C   FIELD 00w08 PRI_4: Priority of system handler 4
-0xE000ED18 C   FIELD 08w08 PRI_5: Priority of system handler 5
-0xE000ED18 C   FIELD 16w08 PRI_6: Priority of system handler 6
-0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED24 B  REGISTER SHCRS (rw): System handler control and state register
-0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
-0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
-0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
-0xE000ED24 C   FIELD 07w01 SVCALLACT: SVC call active bit
-0xE000ED24 C   FIELD 08w01 MONITORACT: Debug monitor active bit
-0xE000ED24 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
-0xE000ED24 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
-0xE000ED24 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
-0xE000ED24 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
-0xE000ED24 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
-0xE000ED24 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
-0xE000ED24 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
-0xE000ED24 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
-0xE000ED24 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
-0xE000ED28 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
-0xE000ED28 C   FIELD 01w01 IACCVIOL: Instruction access violation flag
-0xE000ED28 C   FIELD 03w01 MUNSTKERR: Memory manager fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 04w01 MSTKERR: Memory manager fault on stacking for exception entry.
-0xE000ED28 C   FIELD 05w01 MLSPERR: MLSPERR
-0xE000ED28 C   FIELD 07w01 MMARVALID: Memory Management Fault Address Register (MMAR) valid flag
-0xE000ED28 C   FIELD 08w01 IBUSERR: Instruction bus error
-0xE000ED28 C   FIELD 09w01 PRECISERR: Precise data bus error
-0xE000ED28 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
-0xE000ED28 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
-0xE000ED28 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
-0xE000ED28 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
-0xE000ED28 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
-0xE000ED28 C   FIELD 17w01 INVSTATE: Invalid state usage fault
-0xE000ED28 C   FIELD 18w01 INVPC: Invalid PC load usage fault
-0xE000ED28 C   FIELD 19w01 NOCP: No coprocessor usage fault.
-0xE000ED28 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
-0xE000ED28 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
-0xE000ED2C B  REGISTER HFSR (rw): Hard fault status register
-0xE000ED2C C   FIELD 01w01 VECTTBL: Vector table hard fault
-0xE000ED2C C   FIELD 30w01 FORCED: Forced hard fault
-0xE000ED2C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
-0xE000ED34 B  REGISTER MMFAR (rw): Memory management fault address register
-0xE000ED34 C   FIELD 00w32 MMFAR: Memory management fault address
-0xE000ED38 B  REGISTER BFAR (rw): Bus fault address register
-0xE000ED38 C   FIELD 00w32 BFAR: Bus fault address
-0xE000ED3C B  REGISTER AFSR (rw): Auxiliary fault status register
-0xE000ED3C C   FIELD 00w32 IMPDEF: Implementation defined
-0xE000ED88 A PERIPHERAL FPU_CPACR
-0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
-0xE000ED88 C   FIELD 20w04 CP: CP
-0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER TYPER (ro): MPU type register
-0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
-0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
-0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER CTRL (ro): MPU control register
-0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
-0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
-0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER RNR (rw): MPU region number register
-0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
-0xE000ED9C C   FIELD 00w04 REGION: MPU region field
-0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
-0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
-0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
-0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
-0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
-0xE000EDA0 C   FIELD 16w01 B: memory attribute
-0xE000EDA0 C   FIELD 17w01 C: memory attribute
-0xE000EDA0 C   FIELD 18w01 S: Shareable memory attribute
-0xE000EDA0 C   FIELD 19w03 TEX: memory attribute
-0xE000EDA0 C   FIELD 24w03 AP: Access permission
-0xE000EDA0 C   FIELD 28w01 XN: Instruction access disable bit
-0xE000EF00 A PERIPHERAL NVIC_STIR
-0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
-0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
-0xE000EF34 A PERIPHERAL FPU
-0xE000EF34 B  REGISTER FPCCR (rw): Floating-point context control register
-0xE000EF34 C   FIELD 00w01 LSPACT: LSPACT
-0xE000EF34 C   FIELD 01w01 USER: USER
-0xE000EF34 C   FIELD 03w01 THREAD: THREAD
-0xE000EF34 C   FIELD 04w01 HFRDY: HFRDY
-0xE000EF34 C   FIELD 05w01 MMRDY: MMRDY
-0xE000EF34 C   FIELD 06w01 BFRDY: BFRDY
-0xE000EF34 C   FIELD 08w01 MONRDY: MONRDY
-0xE000EF34 C   FIELD 30w01 LSPEN: LSPEN
-0xE000EF34 C   FIELD 31w01 ASPEN: ASPEN
-0xE000EF38 B  REGISTER FPCAR (rw): Floating-point context address register
-0xE000EF38 C   FIELD 03w29 ADDRESS: Location of unpopulated floating-point
-0xE000EF3C B  REGISTER FPSCR (rw): Floating-point status control register
-0xE000EF3C C   FIELD 00w01 IOC: Invalid operation cumulative exception bit
-0xE000EF3C C   FIELD 01w01 DZC: Division by zero cumulative exception bit.
-0xE000EF3C C   FIELD 02w01 OFC: Overflow cumulative exception bit
-0xE000EF3C C   FIELD 03w01 UFC: Underflow cumulative exception bit
-0xE000EF3C C   FIELD 04w01 IXC: Inexact cumulative exception bit
-0xE000EF3C C   FIELD 07w01 IDC: Input denormal cumulative exception bit.
-0xE000EF3C C   FIELD 22w02 RMode: Rounding Mode control field
-0xE000EF3C C   FIELD 24w01 FZ: Flush-to-zero mode control bit:
-0xE000EF3C C   FIELD 25w01 DN: Default NaN mode control bit
-0xE000EF3C C   FIELD 26w01 AHP: Alternative half-precision control bit
-0xE000EF3C C   FIELD 28w01 V: Overflow condition code flag
-0xE000EF3C C   FIELD 29w01 C: Carry condition code flag
-0xE000EF3C C   FIELD 30w01 Z: Zero condition code flag
-0xE000EF3C C   FIELD 31w01 N: Negative condition code flag
 0xE0042000 A PERIPHERAL DBGMCU
 0xE0042000 B  REGISTER IDCODE (ro): IDCODE
 0xE0042000 C   FIELD 00w12 DEV_ID: DEV_ID
@@ -9957,165 +9664,89 @@
 0xE004200C C   FIELD 16w01 DBG_TIM9_STOP: TIM9 counter stopped when core is halted
 0xE004200C C   FIELD 17w01 DBG_TIM10_STOP: TIM10 counter stopped when core is halted
 0xE004200C C   FIELD 18w01 DBG_TIM11_STOP: TIM11 counter stopped when core is halted
-INTERRUPT 000: WWDG (UART4): Window Watchdog interrupt
-INTERRUPT 000: WWDG (UART4): Window Watchdog interrupt
-INTERRUPT 002: TAMP_STAMP (PWR): Tamper and TimeStamp interrupts through the EXTI line
-INTERRUPT 002: TAMP_STAMP (PWR): Tamper and TimeStamp interrupts through the EXTI line
-INTERRUPT 003: RTC_WKUP (UART5): RTC Wakeup interrupt through the EXTI line
-INTERRUPT 003: RTC_WKUP (UART5): RTC Wakeup interrupt through the EXTI line
-INTERRUPT 004: FLASH (SAI2): Flash global interrupt
-INTERRUPT 004: FLASH (SAI2): Flash global interrupt
+INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
+INTERRUPT 001: PVD (EXTI): PVD through EXTI line detection interrupt
+INTERRUPT 002: TAMP_STAMP (EXTI): Tamper and TimeStamp interrupts through the EXTI line
+INTERRUPT 003: RTC_WKUP (RTC): RTC Wakeup interrupt through the EXTI line
+INTERRUPT 004: FLASH (FLASH): Flash global interrupt
 INTERRUPT 005: RCC (RCC): RCC global interrupt
-INTERRUPT 005: RCC (RCC): RCC global interrupt
-INTERRUPT 006: EXTI0 (PWR): EXTI Line0 interrupt
-INTERRUPT 006: EXTI0 (PWR): EXTI Line0 interrupt
-INTERRUPT 007: EXTI1 (PWR): EXTI Line1 interrupt
-INTERRUPT 007: EXTI1 (PWR): EXTI Line1 interrupt
-INTERRUPT 008: EXTI2 (PWR): EXTI Line2 interrupt
-INTERRUPT 008: EXTI2 (PWR): EXTI Line2 interrupt
-INTERRUPT 009: EXTI3 (PWR): EXTI Line3 interrupt
-INTERRUPT 009: EXTI3 (PWR): EXTI Line3 interrupt
-INTERRUPT 010: EXTI4 (PWR): EXTI Line4 interrupt
-INTERRUPT 010: EXTI4 (PWR): EXTI Line4 interrupt
-INTERRUPT 011: DMA1_Stream0 (DMA1): DMA1 Stream0 global interrupt
+INTERRUPT 006: EXTI0 (EXTI): EXTI Line0 interrupt
+INTERRUPT 007: EXTI1 (EXTI): EXTI Line1 interrupt
+INTERRUPT 008: EXTI2 (EXTI): EXTI Line2 interrupt
+INTERRUPT 009: EXTI3 (EXTI): EXTI Line3 interrupt
+INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
 INTERRUPT 011: DMA1_Stream0 (DMA1): DMA1 Stream0 global interrupt
 INTERRUPT 012: DMA1_Stream1 (DMA1): DMA1 Stream1 global interrupt
-INTERRUPT 012: DMA1_Stream1 (DMA1): DMA1 Stream1 global interrupt
-INTERRUPT 013: DMA1_Stream2 (DMA1): DMA1 Stream2 global interrupt
 INTERRUPT 013: DMA1_Stream2 (DMA1): DMA1 Stream2 global interrupt
 INTERRUPT 014: DMA1_Stream3 (DMA1): DMA1 Stream3 global interrupt
-INTERRUPT 014: DMA1_Stream3 (DMA1): DMA1 Stream3 global interrupt
-INTERRUPT 015: DMA1_Stream4 (DMA1): DMA1 Stream4 global interrupt
 INTERRUPT 015: DMA1_Stream4 (DMA1): DMA1 Stream4 global interrupt
 INTERRUPT 016: DMA1_Stream5 (DMA1): DMA1 Stream5 global interrupt
-INTERRUPT 016: DMA1_Stream5 (DMA1): DMA1 Stream5 global interrupt
 INTERRUPT 017: DMA1_Stream6 (DMA1): DMA1 Stream6 global interrupt
-INTERRUPT 017: DMA1_Stream6 (DMA1): DMA1 Stream6 global interrupt
-INTERRUPT 018: ADC (ADC1): ADC1 global interrupt
-INTERRUPT 018: ADC (ADC1): ADC1 global interrupt
-INTERRUPT 018: ADC (ADC2): ADC2 global interrupts
-INTERRUPT 018: ADC (ADC2): ADC2 global interrupts
-INTERRUPT 018: ADC (ADC3): ADC3 global interrupts
-INTERRUPT 018: ADC (ADC3): ADC3 global interrupts
-INTERRUPT 019: CAN1_TX (OTG_HS_HOST): CAN1 TX interrupts
-INTERRUPT 019: CAN1_TX (OTG_HS_HOST): CAN1 TX interrupts
-INTERRUPT 020: CAN1_RX0 (OTG_HS_HOST): CAN1 RX0 interrupts
-INTERRUPT 020: CAN1_RX0 (OTG_HS_HOST): CAN1 RX0 interrupts
-INTERRUPT 021: CAN1_RX1 (OTG_HS_HOST): CAN1 RX1 interrupts
-INTERRUPT 021: CAN1_RX1 (OTG_HS_HOST): CAN1 RX1 interrupts
-INTERRUPT 022: CAN1_SCE (OTG_HS_HOST): CAN1 SCE interrupt
-INTERRUPT 022: CAN1_SCE (OTG_HS_HOST): CAN1 SCE interrupt
-INTERRUPT 023: EXTI9_5 (PWR): EXTI Line[9:5] interrupts
-INTERRUPT 023: EXTI9_5 (PWR): EXTI Line[9:5] interrupts
-INTERRUPT 024: TIM1_BRK_TIM9 (TIM10): TIM1 Break interrupt and TIM9 global interrupt
-INTERRUPT 024: TIM1_BRK_TIM9 (TIM10): TIM1 Break interrupt and TIM9 global interrupt
-INTERRUPT 025: TIM1_UP_TIM10 (TIM14): TIM1 Update interrupt and TIM10 global interrupt
-INTERRUPT 025: TIM1_UP_TIM10 (TIM14): TIM1 Update interrupt and TIM10 global interrupt
-INTERRUPT 026: TIM1_TRG_COM_TIM11 (TIM7): TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
-INTERRUPT 026: TIM1_TRG_COM_TIM11 (TIM7): TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
-INTERRUPT 027: TIM1_CC (TIM2): TIM1 Capture Compare interrupt
-INTERRUPT 027: TIM1_CC (TIM2): TIM1 Capture Compare interrupt
-INTERRUPT 028: TIM2 (TIM4): TIM2 global interrupt
-INTERRUPT 028: TIM2 (TIM4): TIM2 global interrupt
-INTERRUPT 029: TIM3 (TIM5): TIM3 global interrupt
-INTERRUPT 029: TIM3 (TIM5): TIM3 global interrupt
-INTERRUPT 030: TIM4 (TIM9): TIM4 global interrupt
-INTERRUPT 030: TIM4 (TIM9): TIM4 global interrupt
-INTERRUPT 031: I2C1_EV (WWDG): I2C1 event interrupt
-INTERRUPT 031: I2C1_EV (WWDG): I2C1 event interrupt
-INTERRUPT 032: I2C1_ER (WWDG): I2C1 error interrupt
-INTERRUPT 032: I2C1_ER (WWDG): I2C1 error interrupt
-INTERRUPT 033: I2C2_EV (IWDG): I2C2 event interrupt
-INTERRUPT 033: I2C2_EV (IWDG): I2C2 event interrupt
-INTERRUPT 034: I2C2_ER (IWDG): I2C2 error interrupt
-INTERRUPT 034: I2C2_ER (IWDG): I2C2 error interrupt
-INTERRUPT 035: SPI1 (SPI1): SPI1 global interrupt
+INTERRUPT 018: ADC (ADC_Common): ADC1 global interrupt
+INTERRUPT 019: CAN1_TX (CAN1): CAN1 TX interrupts
+INTERRUPT 020: CAN1_RX0 (CAN1): CAN1 RX0 interrupts
+INTERRUPT 021: CAN1_RX1 (CAN1): CAN1 RX1 interrupts
+INTERRUPT 022: CAN1_SCE (CAN1): CAN1 SCE interrupt
+INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line[9:5] interrupts
+INTERRUPT 024: TIM1_BRK_TIM9 (TIM1): TIM1 Break interrupt and TIM9 global interrupt
+INTERRUPT 025: TIM1_UP_TIM10 (TIM1): TIM1 Update interrupt and TIM10 global interrupt
+INTERRUPT 026: TIM1_TRG_COM_TIM11 (TIM1): TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
+INTERRUPT 027: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
+INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
+INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
+INTERRUPT 030: TIM4 (TIM4): TIM4 global interrupt
+INTERRUPT 031: I2C1_EV (I2C1): I2C1 event interrupt
+INTERRUPT 032: I2C1_ER (I2C1): I2C1 error interrupt
+INTERRUPT 033: I2C2_EV (I2C2): I2C2 event interrupt
+INTERRUPT 034: I2C2_ER (I2C2): I2C2 error interrupt
 INTERRUPT 035: SPI1 (SPI1): SPI1 global interrupt
 INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
-INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
-INTERRUPT 037: USART1 (USART1): USART1 global interrupt
 INTERRUPT 037: USART1 (USART1): USART1 global interrupt
 INTERRUPT 038: USART2 (USART2): USART2 global interrupt
-INTERRUPT 038: USART2 (USART2): USART2 global interrupt
 INTERRUPT 039: USART3 (USART3): USART3 global interrupt
-INTERRUPT 039: USART3 (USART3): USART3 global interrupt
-INTERRUPT 040: EXTI15_10 (PWR): EXTI Line[15:10] interrupts
-INTERRUPT 040: EXTI15_10 (PWR): EXTI Line[15:10] interrupts
-INTERRUPT 041: RTC_Alarm (UART5): RTC Alarms (A and B) through EXTI line interrupt
-INTERRUPT 041: RTC_Alarm (UART5): RTC Alarms (A and B) through EXTI line interrupt
-INTERRUPT 042: OTG_FS_WKUP (NVIC): USB On-The-Go FS Wakeup through EXTI line interrupt
-INTERRUPT 042: OTG_FS_WKUP (NVIC): USB On-The-Go FS Wakeup through EXTI line interrupt
-INTERRUPT 043: TIM8_BRK_TIM12 (TIM13): TIM8 Break interrupt and TIM12 global interrupt
-INTERRUPT 043: TIM8_BRK_TIM12 (TIM13): TIM8 Break interrupt and TIM12 global interrupt
-INTERRUPT 044: TIM8_UP_TIM13 (TIM3): TIM8 Update interrupt and TIM13 global interrupt
-INTERRUPT 044: TIM8_UP_TIM13 (TIM3): TIM8 Update interrupt and TIM13 global interrupt
-INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM3): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
-INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM3): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
-INTERRUPT 046: TIM8_CC (TIM3): TIM8 Capture Compare interrupt
-INTERRUPT 046: TIM8_CC (TIM3): TIM8 Capture Compare interrupt
+INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line[15:10] interrupts
+INTERRUPT 041: RTC_Alarm (RTC): RTC Alarms (A and B) through EXTI line interrupt
+INTERRUPT 042: OTG_FS_WKUP (OTG_FS_GLOBAL): USB On-The-Go FS Wakeup through EXTI line interrupt
+INTERRUPT 043: TIM8_BRK_TIM12 (TIM8): TIM8 Break interrupt and TIM12 global interrupt
+INTERRUPT 044: TIM8_UP_TIM13 (TIM8): TIM8 Update interrupt and TIM13 global interrupt
+INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM8): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
+INTERRUPT 046: TIM8_CC (TIM8): TIM8 Capture Compare interrupt
 INTERRUPT 047: DMA1_Stream7 (DMA1): DMA1 Stream7 global interrupt
-INTERRUPT 047: DMA1_Stream7 (DMA1): DMA1 Stream7 global interrupt
-INTERRUPT 048: FMC (FMC): FMC global interrupt
 INTERRUPT 048: FMC (FMC): FMC global interrupt
 INTERRUPT 049: SDIO (SDIO): SDIO global interrupt
-INTERRUPT 050: TIM5 (TIM12): TIM5 global interrupt
-INTERRUPT 050: TIM5 (TIM12): TIM5 global interrupt
+INTERRUPT 050: TIM5 (TIM5): TIM5 global interrupt
 INTERRUPT 051: SPI3 (SPI3): SPI3 global interrupt
-INTERRUPT 051: SPI3 (SPI3): SPI3 global interrupt
-INTERRUPT 052: UART4 (ADC_Common): UART4 global interrupt
-INTERRUPT 052: UART4 (ADC_Common): UART4 global interrupt
-INTERRUPT 053: UART5 (TIM1): UART5 global interrupt
-INTERRUPT 053: UART5 (TIM1): UART5 global interrupt
-INTERRUPT 054: TIM6_DAC (CRC): TIM6 global interrupt, DAC1 and DAC2 underrun error interrupt
-INTERRUPT 054: TIM6_DAC (CRC): TIM6 global interrupt, DAC1 and DAC2 underrun error interrupt
-INTERRUPT 055: TIM7 (OTG_FS_GLOBAL): TIM7 global interrupt
-INTERRUPT 055: TIM7 (OTG_FS_GLOBAL): TIM7 global interrupt
-INTERRUPT 056: DMA2_Stream0 (DMA2): DMA2 Stream0 global interrupt
+INTERRUPT 052: UART4 (UART4): UART4 global interrupt
+INTERRUPT 053: UART5 (UART5): UART5 global interrupt
+INTERRUPT 054: TIM6_DAC (TIM6): TIM6 global interrupt, DAC1 and DAC2 underrun error interrupt
+INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 056: DMA2_Stream0 (DMA2): DMA2 Stream0 global interrupt
 INTERRUPT 057: DMA2_Stream1 (DMA2): DMA2 Stream1 global interrupt
-INTERRUPT 057: DMA2_Stream1 (DMA2): DMA2 Stream1 global interrupt
-INTERRUPT 058: DMA2_Stream2 (DMA2): DMA2 Stream2 global interrupt
 INTERRUPT 058: DMA2_Stream2 (DMA2): DMA2 Stream2 global interrupt
 INTERRUPT 059: DMA2_Stream3 (DMA2): DMA2 Stream3 global interrupt
-INTERRUPT 059: DMA2_Stream3 (DMA2): DMA2 Stream3 global interrupt
 INTERRUPT 060: DMA2_Stream4 (DMA2): DMA2 Stream4 global interrupt
-INTERRUPT 060: DMA2_Stream4 (DMA2): DMA2 Stream4 global interrupt
-INTERRUPT 061: ETH (OTG_FS_HOST): Ethernet global interrupt
-INTERRUPT 061: ETH (OTG_FS_HOST): Ethernet global interrupt
-INTERRUPT 062: ETH_WKUP (OTG_FS_HOST): Ethernet Wakeup through EXTI line interrupt
-INTERRUPT 062: ETH_WKUP (OTG_FS_HOST): Ethernet Wakeup through EXTI line interrupt
-INTERRUPT 063: CAN2_TX (OTG_HS_DEVICE): CAN2 TX interrupts
-INTERRUPT 063: CAN2_TX (OTG_HS_DEVICE): CAN2 TX interrupts
-INTERRUPT 064: CAN2_RX0 (OTG_HS_DEVICE): CAN2 RX0 interrupts
-INTERRUPT 064: CAN2_RX0 (OTG_HS_DEVICE): CAN2 RX0 interrupts
-INTERRUPT 065: CAN2_RX1 (OTG_HS_DEVICE): CAN2 RX1 interrupts
-INTERRUPT 065: CAN2_RX1 (OTG_HS_DEVICE): CAN2 RX1 interrupts
-INTERRUPT 066: CAN2_SCE (OTG_HS_DEVICE): CAN2 SCE interrupt
-INTERRUPT 066: CAN2_SCE (OTG_HS_DEVICE): CAN2 SCE interrupt
-INTERRUPT 067: OTG_FS (NVIC): USB On The Go FS global interrupt
-INTERRUPT 067: OTG_FS (NVIC): USB On The Go FS global interrupt
-INTERRUPT 068: DMA2_Stream5 (DMA2): DMA2 Stream5 global interrupt
+INTERRUPT 063: CAN2_TX (CAN2): CAN2 TX interrupts
+INTERRUPT 064: CAN2_RX0 (CAN2): CAN2 RX0 interrupts
+INTERRUPT 065: CAN2_RX1 (CAN2): CAN2 RX1 interrupts
+INTERRUPT 066: CAN2_SCE (CAN2): CAN2 SCE interrupt
+INTERRUPT 067: OTG_FS (OTG_FS_GLOBAL): USB On The Go FS global interrupt
 INTERRUPT 068: DMA2_Stream5 (DMA2): DMA2 Stream5 global interrupt
 INTERRUPT 069: DMA2_Stream6 (DMA2): DMA2 Stream6 global interrupt
-INTERRUPT 069: DMA2_Stream6 (DMA2): DMA2 Stream6 global interrupt
-INTERRUPT 070: DMA2_Stream7 (DMA2): DMA2 Stream7 global interrupt
 INTERRUPT 070: DMA2_Stream7 (DMA2): DMA2 Stream7 global interrupt
 INTERRUPT 071: USART6 (USART6): USART6 global interrupt
-INTERRUPT 071: USART6 (USART6): USART6 global interrupt
-INTERRUPT 072: I2C3_EV (I2C1): I2C3 event interrupt
-INTERRUPT 072: I2C3_EV (I2C1): I2C3 event interrupt
-INTERRUPT 073: I2C3_ER (I2C1): I2C3 error interrupt
-INTERRUPT 073: I2C3_ER (I2C1): I2C3 error interrupt
+INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
+INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
+INTERRUPT 074: OTG_HS_EP1_OUT (OTG_HS_GLOBAL): USB On The Go HS End Point 1 Out
+INTERRUPT 075: OTG_HS_EP1_IN (OTG_HS_GLOBAL): USB On The Go HS End Point 1 In
+INTERRUPT 076: OTG_HS_WKUP (OTG_HS_PWRCLK): USB On The Go HS Wakeup
+INTERRUPT 077: OTG_HS (OTG_HS_GLOBAL): USB On The Go HS global interrupt
 INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
-INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
-INTERRUPT 082: UART7 (DAC): UART 7 global interrupt
-INTERRUPT 082: UART7 (DAC): UART 7 global interrupt
-INTERRUPT 083: UART8 (I2C3): UART 8 global interrupt
-INTERRUPT 083: UART8 (I2C3): UART 8 global interrupt
+INTERRUPT 081: FPU (EXTI): Floating point unit interrupt
 INTERRUPT 084: SPI4 (SPI4): SPI 4 global interrupt
-INTERRUPT 084: SPI4 (SPI4): SPI 4 global interrupt
-INTERRUPT 088: LCD_TFT (QUADSPI): LTDC global interrupt
-INTERRUPT 088: LCD_TFT (QUADSPI): LTDC global interrupt
-INTERRUPT 089: LCD_TFT_1 (QUADSPI): LTDC global error interrupt
-INTERRUPT 089: LCD_TFT_1 (QUADSPI): LTDC global error interrupt
+INTERRUPT 087: SAI1 (SAI1): SAI1 global interrupt
+INTERRUPT 091: SAI2 (SAI2): SAI2 global interrupt
+INTERRUPT 092: QuadSPI (QUADSPI): QuadSPI global interrupt
+INTERRUPT 093: HDMI_CEC (HDMI_CEC): HDMI-CEC global interrupt
+INTERRUPT 094: SPDIF_Rx (SPDIFRX): SPDIF-Rx global interrupt
+INTERRUPT 095: FMPI2C1 (I2C1): FMPI2C1 event interrupt
+INTERRUPT 096: FMPI2C1_error (I2C1): FMPI2C1 error interrupt
