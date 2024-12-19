@@ -3965,7 +3965,7 @@
 0x5004000C C   FIELD 23w01 AWD1EN: ADC analog watchdog 1 enable on scope ADC group regular
 0x5004000C C   FIELD 24w01 JAWD1EN: ADC analog watchdog 1 enable on scope ADC group injected
 0x5004000C C   FIELD 25w01 JAUTO: ADC group injected automatic trigger mode
-0x5004000C C   FIELD 26w05 AWDCH1CH: ADC analog watchdog 1 monitored channel selection
+0x5004000C C   FIELD 26w05 AWD1CH: ADC analog watchdog 1 monitored channel selection
 0x5004000C C   FIELD 31w01 JQDIS: ADC group injected contexts queue disable
 0x50040010 B  REGISTER CFGR2 (rw): ADC configuration register 2
 0x50040010 C   FIELD 00w01 ROVSE: ADC oversampler enable on scope ADC group regular
@@ -4026,8 +4026,7 @@
 0x5004003C C   FIELD 00w05 SQ15: ADC group regular sequencer rank 15
 0x5004003C C   FIELD 06w05 SQ16: ADC group regular sequencer rank 16
 0x50040040 B  REGISTER DR: ADC group regular conversion data register
-0x50040040 C   FIELD 00w06 RDATA_0_6 (rw): Regular Data converted 0_6
-0x50040040 C   FIELD 07w09 RDATA_7_15 (ro): 15
+0x50040040 C   FIELD 00w16 RDATA: Regular Data converted 0_6
 0x5004004C B  REGISTER JSQR (rw): ADC group injected sequencer register
 0x5004004C C   FIELD 00w02 JL: ADC group injected sequencer scan length
 0x5004004C C   FIELD 02w04 JEXTSEL: ADC group injected external trigger source
@@ -4053,21 +4052,73 @@
 0x5004006C C   FIELD 26w05 OFFSET4_CH: ADC offset number 4 channel selection
 0x5004006C C   FIELD 31w01 OFFSET4_EN: ADC offset number 4 enable
 0x50040080 B  REGISTER JDR1 (ro): ADC group injected sequencer rank 1 register
-0x50040080 C   FIELD 00w16 JDATA1: ADC group injected sequencer rank 1 conversion data
+0x50040080 C   FIELD 00w16 JDATA: ADC group injected sequencer rank 1 conversion data
 0x50040084 B  REGISTER JDR2 (ro): ADC group injected sequencer rank 2 register
-0x50040084 C   FIELD 00w16 JDATA2: ADC group injected sequencer rank 2 conversion data
+0x50040084 C   FIELD 00w16 JDATA: ADC group injected sequencer rank 2 conversion data
 0x50040088 B  REGISTER JDR3 (ro): ADC group injected sequencer rank 3 register
-0x50040088 C   FIELD 00w16 JDATA3: ADC group injected sequencer rank 3 conversion data
+0x50040088 C   FIELD 00w16 JDATA: ADC group injected sequencer rank 3 conversion data
 0x5004008C B  REGISTER JDR4 (ro): ADC group injected sequencer rank 4 register
-0x5004008C C   FIELD 00w16 JDATA4: ADC group injected sequencer rank 4 conversion data
+0x5004008C C   FIELD 00w16 JDATA: ADC group injected sequencer rank 4 conversion data
 0x500400A0 B  REGISTER AWD2CR (rw): ADC analog watchdog 2 configuration register
-0x500400A0 C   FIELD 00w19 AWD2CH: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 00w01 AWD2CH0: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 01w01 AWD2CH1: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 02w01 AWD2CH2: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 03w01 AWD2CH3: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 04w01 AWD2CH4: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 05w01 AWD2CH5: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 06w01 AWD2CH6: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 07w01 AWD2CH7: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 08w01 AWD2CH8: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 09w01 AWD2CH9: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 10w01 AWD2CH10: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 11w01 AWD2CH11: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 12w01 AWD2CH12: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 13w01 AWD2CH13: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 14w01 AWD2CH14: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 15w01 AWD2CH15: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 16w01 AWD2CH16: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 17w01 AWD2CH17: ADC analog watchdog 2 monitored channel selection
+0x500400A0 C   FIELD 18w01 AWD2CH18: ADC analog watchdog 2 monitored channel selection
 0x500400A4 B  REGISTER AWD3CR (rw): ADC analog watchdog 3 configuration register
-0x500400A4 C   FIELD 00w19 AWD3CH: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 00w01 AWD3CH0: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 01w01 AWD3CH1: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 02w01 AWD3CH2: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 03w01 AWD3CH3: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 04w01 AWD3CH4: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 05w01 AWD3CH5: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 06w01 AWD3CH6: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 07w01 AWD3CH7: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 08w01 AWD3CH8: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 09w01 AWD3CH9: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 10w01 AWD3CH10: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 11w01 AWD3CH11: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 12w01 AWD3CH12: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 13w01 AWD3CH13: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 14w01 AWD3CH14: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 15w01 AWD3CH15: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 16w01 AWD3CH16: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 17w01 AWD3CH17: ADC analog watchdog 3 monitored channel selection
+0x500400A4 C   FIELD 18w01 AWD3CH18: ADC analog watchdog 3 monitored channel selection
 0x500400B0 B  REGISTER DIFSEL: ADC channel differential or single-ended mode selection register
-0x500400B0 C   FIELD 00w01 DIFSEL_0 (ro): ADC channel differential or single-ended mode for channel 0
-0x500400B0 C   FIELD 01w15 DIFSEL_1_15 (rw): ADC channel differential or single-ended mode for channels 1 to 15
-0x500400B0 C   FIELD 16w03 DIFSEL_16_18 (ro): ADC channel differential or single-ended mode for channels 18 to 16
+0x500400B0 C   FIELD 00w01 DIFSEL0: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 01w01 DIFSEL1: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 02w01 DIFSEL2: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 03w01 DIFSEL3: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 04w01 DIFSEL4: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 05w01 DIFSEL5: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 06w01 DIFSEL6: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 07w01 DIFSEL7: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 08w01 DIFSEL8: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 09w01 DIFSEL9: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 10w01 DIFSEL10: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 11w01 DIFSEL11: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 12w01 DIFSEL12: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 13w01 DIFSEL13: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 14w01 DIFSEL14: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 15w01 DIFSEL15: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 16w01 DIFSEL16: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 17w01 DIFSEL17: ADC channel differential or single-ended mode for channel 0
+0x500400B0 C   FIELD 18w01 DIFSEL18: ADC channel differential or single-ended mode for channel 0
 0x500400B4 B  REGISTER CALFACT (rw): ADC calibration factors register
 0x500400B4 C   FIELD 00w07 CALFACT_S: ADC calibration factor in single-ended mode
 0x500400B4 C   FIELD 16w07 CALFACT_D: ADC calibration factor in differential mode
