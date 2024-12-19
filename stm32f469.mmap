@@ -4111,7 +4111,7 @@
 0x4001680C C   FIELD 16w12 AHBP: Accumulated Horizontal back porch (in units of pixel clock period)
 0x40016810 B  REGISTER AWCR (rw): Active Width Configuration Register
 0x40016810 C   FIELD 00w11 AAH: Accumulated Active Height (in units of horizontal scan line)
-0x40016810 C   FIELD 16w12 AAW: Accumulated Active Width (in units of pixel clock period)
+0x40016810 C   FIELD 16w12 AAW: AAW
 0x40016814 B  REGISTER TWCR (rw): Total Width Configuration Register
 0x40016814 C   FIELD 00w11 TOTALH: Total Height (in units of horizontal scan line)
 0x40016814 C   FIELD 16w12 TOTALW: Total Width (in units of pixel clock period)
@@ -4236,381 +4236,381 @@
 0x40016944 C   FIELD 16w08 RED: Red value
 0x40016944 C   FIELD 24w08 CLUTADD: CLUT Address
 0x40016C00 A PERIPHERAL DSI
-0x40016C00 B  REGISTER VR (rw): DSI Host Version Register
-0x40016C00 C   FIELD 00w32 VERSION: Version of the DSI Host
-0x40016C04 B  REGISTER CR (rw): DSI Host Control Register
-0x40016C04 C   FIELD 00w01 EN: Enable
-0x40016C08 B  REGISTER CCR (rw): DSI HOST Clock Control Register
-0x40016C08 C   FIELD 00w08 TXECKDIV: TXECKDIV
-0x40016C08 C   FIELD 08w08 TOCKDIV: TOCKDIV
-0x40016C0C B  REGISTER LVCIDR (rw): DSI Host LTDC VCID Register
-0x40016C0C C   FIELD 00w02 VCID: Virtual Channel ID
-0x40016C10 B  REGISTER LCOLCR (rw): DSI Host LTDC Color Coding Register
-0x40016C10 C   FIELD 00w04 COLC: Color Coding
-0x40016C10 C   FIELD 08w01 LPE: Loosely Packet Enable
-0x40016C14 B  REGISTER LPCR (rw): DSI Host LTDC Polarity Configuration Register
-0x40016C14 C   FIELD 00w01 DEP: Data Enable Polarity
-0x40016C14 C   FIELD 01w01 VSP: VSYNC Polarity
-0x40016C14 C   FIELD 02w01 HSP: HSYNC Polarity
-0x40016C18 B  REGISTER LPMCR (rw): DSI Host Low-Power Mode Configuration Register
-0x40016C18 C   FIELD 00w08 VLPSIZE: VACT Largest Packet Size
-0x40016C18 C   FIELD 16w08 LPSIZE: Largest Packet Size
-0x40016C2C B  REGISTER PCR (rw): DSI Host Protocol Configuration Register
-0x40016C2C C   FIELD 00w01 ETTXE: EoTp Transmission Enable
-0x40016C2C C   FIELD 01w01 ETRXE: EoTp Reception Enable
-0x40016C2C C   FIELD 02w01 BTAE: Bus Turn Around Enable
-0x40016C2C C   FIELD 03w01 ECCRXE: ECC Reception Enable
-0x40016C2C C   FIELD 04w01 CRCRXE: CRC Reception Enable
-0x40016C30 B  REGISTER GVCIDR (rw): DSI Host Generic VCID Register
-0x40016C30 C   FIELD 00w02 VCID: Virtual Channel ID
-0x40016C34 B  REGISTER MCR (rw): DSI Host Mode Configuration Register
-0x40016C34 C   FIELD 00w01 CMDM: Command mode
-0x40016C38 B  REGISTER VMCR (rw): DSI Host Video mode Configuration Register
-0x40016C38 C   FIELD 00w02 VMT: Video mode Type
-0x40016C38 C   FIELD 08w01 LPVSAE: Low-Power Vertical Sync Active Enable
-0x40016C38 C   FIELD 09w01 LPVBPE: Low-power Vertical Back-Porch Enable
-0x40016C38 C   FIELD 10w01 LPVFPE: Low-power Vertical Front-porch Enable
-0x40016C38 C   FIELD 11w01 LPVAE: Low-Power Vertical Active Enable
-0x40016C38 C   FIELD 12w01 LPHBPE: Low-Power Horizontal Back-Porch Enable
-0x40016C38 C   FIELD 13w01 LPHFPE: Low-Power Horizontal Front-Porch Enable
-0x40016C38 C   FIELD 14w01 FBTAAE: Frame Bus-Turn-Around Acknowledge Enable
-0x40016C38 C   FIELD 15w01 LPCE: Low-Power Command Enable
-0x40016C38 C   FIELD 16w01 PGE: Pattern Generator Enable
-0x40016C38 C   FIELD 20w01 PGM: Pattern Generator Mode
-0x40016C38 C   FIELD 24w01 PGO: Pattern Generator Orientation
-0x40016C3C B  REGISTER VPCR (rw): DSI Host Video Packet Configuration Register
-0x40016C3C C   FIELD 00w15 VPSIZE: Video Packet Size
-0x40016C40 B  REGISTER VCCR (rw): DSI Host Video Chunks Configuration Register
-0x40016C40 C   FIELD 00w14 NUMC: Number of Chunks
-0x40016C44 B  REGISTER VNPCR (rw): DSI Host Video Null Packet Configuration Register
-0x40016C44 C   FIELD 00w14 NPSIZE: Null Packet Size
-0x40016C48 B  REGISTER VHSACR (rw): DSI Host Video HSA Configuration Register
-0x40016C48 C   FIELD 00w13 HSA: Horizontal Synchronism Active duration
-0x40016C4C B  REGISTER VHBPCR (rw): DSI Host Video HBP Configuration Register
-0x40016C4C C   FIELD 00w13 HBP: Horizontal Back-Porch duration
-0x40016C50 B  REGISTER VLCR (rw): DSI Host Video Line Configuration Register
-0x40016C50 C   FIELD 00w15 HLINE: Horizontal Line duration
-0x40016C54 B  REGISTER VVSACR (rw): DSI Host Video VSA Configuration Register
-0x40016C54 C   FIELD 00w10 VSA: Vertical Synchronism Active duration
-0x40016C58 B  REGISTER VVBPCR (rw): DSI Host Video VBP Configuration Register
-0x40016C58 C   FIELD 00w10 VBP: Vertical Back-Porch duration
-0x40016C5C B  REGISTER VVFPCR (rw): DSI Host Video VFP Configuration Register
-0x40016C5C C   FIELD 00w10 VFP: Vertical Front-Porch duration
-0x40016C60 B  REGISTER VVACR (rw): DSI Host Video VA Configuration Register
-0x40016C60 C   FIELD 00w14 VA: Vertical Active duration
-0x40016C64 B  REGISTER LCCR (rw): DSI Host LTDC Command Configuration Register
-0x40016C64 C   FIELD 00w16 CMDSIZE: Command Size
-0x40016C68 B  REGISTER CMCR (rw): DSI Host Command mode Configuration Register
-0x40016C68 C   FIELD 00w01 TEARE: Tearing Effect Acknowledge Request Enable
-0x40016C68 C   FIELD 01w01 ARE: Acknowledge Request Enable
-0x40016C68 C   FIELD 08w01 GSW0TX: Generic Short Write Zero parameters Transmission
-0x40016C68 C   FIELD 09w01 GSW1TX: Generic Short Write One parameters Transmission
-0x40016C68 C   FIELD 10w01 GSW2TX: Generic Short Write Two parameters Transmission
-0x40016C68 C   FIELD 11w01 GSR0TX: Generic Short Read Zero parameters Transmission
-0x40016C68 C   FIELD 12w01 GSR1TX: Generic Short Read One parameters Transmission
-0x40016C68 C   FIELD 13w01 GSR2TX: Generic Short Read Two parameters Transmission
-0x40016C68 C   FIELD 14w01 GLWTX: Generic Long Write Transmission
-0x40016C68 C   FIELD 16w01 DSW0TX: DCS Short Write Zero parameter Transmission
-0x40016C68 C   FIELD 17w01 DSW1TX: DCS Short Read One parameter Transmission
-0x40016C68 C   FIELD 18w01 DSR0TX: DCS Short Read Zero parameter Transmission
-0x40016C68 C   FIELD 19w01 DLWTX: DCS Long Write Transmission
-0x40016C68 C   FIELD 24w01 MRDPS: Maximum Read Packet Size
-0x40016C6C B  REGISTER GHCR (rw): DSI Host Generic Header Configuration Register
-0x40016C6C C   FIELD 00w06 DT: Type
-0x40016C6C C   FIELD 06w02 VCID: Channel
-0x40016C6C C   FIELD 08w08 WCLSB: WordCount LSB
-0x40016C6C C   FIELD 16w08 WCMSB: WordCount MSB
-0x40016C70 B  REGISTER GPDR (rw): DSI Host Generic Payload Data Register
-0x40016C70 C   FIELD 00w08 DATA1: Payload Byte 1
-0x40016C70 C   FIELD 08w08 DATA2: Payload Byte 2
-0x40016C70 C   FIELD 16w08 DATA3: Payload Byte 3
-0x40016C70 C   FIELD 24w08 DATA4: Payload Byte 4
-0x40016C74 B  REGISTER GPSR (rw): DSI Host Generic Packet Status Register
-0x40016C74 C   FIELD 00w01 CMDFE: Tearing Effect Acknowledge Request Enable
-0x40016C74 C   FIELD 01w01 CMDFF: Acknowledge Request Enable
-0x40016C74 C   FIELD 02w01 PWRFE: PWRFE
-0x40016C74 C   FIELD 03w01 PWRFF: PWRFF
-0x40016C74 C   FIELD 04w01 PRDFE: PRDFE
-0x40016C74 C   FIELD 05w01 PRDFF: PRDFF
-0x40016C74 C   FIELD 06w01 RCB: RCB
-0x40016C78 B  REGISTER TCCR1 (rw): DSI Host Timeout Counter Configuration Register1
-0x40016C78 C   FIELD 00w16 LPRX_TOCNT: Low-power Reception Timeout Counter
-0x40016C78 C   FIELD 16w16 HSTX_TOCNT: High-Speed Transmission Timeout Counter
-0x40016C7C B  REGISTER TCCR2 (rw): DSI Host Timeout Counter Configuration Register2
-0x40016C7C C   FIELD 00w16 HSRD_TOCNT: High-Speed Read Timeout Counter
-0x40016C80 B  REGISTER TCCR3 (rw): DSI Host Timeout Counter Configuration Register3
-0x40016C80 C   FIELD 00w16 LPRD_TOCNT: Low-Power Read Timeout Counter
-0x40016C84 B  REGISTER TCCR4 (rw): DSI Host Timeout Counter Configuration Register4
-0x40016C84 C   FIELD 00w16 HSWR_TOCNT: High-Speed Write Timeout Counter
-0x40016C84 C   FIELD 24w01 PM: Presp Mode
-0x40016C88 B  REGISTER TCCR5 (rw): DSI Host Timeout Counter Configuration Register5
-0x40016C88 C   FIELD 00w16 LSWR_TOCNT: Low-Power Write Timeout Counter
-0x40016C8C B  REGISTER TCCR6 (rw): DSI Host Timeout Counter Configuration Register6
-0x40016C8C C   FIELD 00w16 BTA_TOCNT: Bus-Turn-Around Timeout Counter
-0x40016C94 B  REGISTER CLCR (rw): DSI Host Clock Lane Configuration Register
-0x40016C94 C   FIELD 00w01 DPCC: D-PHY Clock Control
-0x40016C94 C   FIELD 01w01 ACR: Automatic Clock lane Control
-0x40016C98 B  REGISTER CLTCR (rw): DSI Host Clock Lane Timer Configuration Register
-0x40016C98 C   FIELD 00w10 LP2HS_TIME: Low-Power to High-Speed Time
-0x40016C98 C   FIELD 16w10 HS2LP_TIME: High-Speed to Low-Power Time
-0x40016C9C B  REGISTER DLTCR (rw): DSI Host Data Lane Timer Configuration Register
-0x40016C9C C   FIELD 00w15 MRD_TIME: Maximum Read Time
-0x40016C9C C   FIELD 16w08 LP2HS_TIME: Low-Power To High-Speed Time
-0x40016C9C C   FIELD 24w08 HS2LP_TIME: High-Speed To Low-Power Time
-0x40016CA0 B  REGISTER PCTLR (rw): DSI Host PHY Control Register
-0x40016CA0 C   FIELD 01w01 DEN: Digital Enable
-0x40016CA0 C   FIELD 02w01 CKE: Clock Enable
-0x40016CA4 B  REGISTER PCCONFR (rw): DSI Host PHY Configuration Register
-0x40016CA4 C   FIELD 00w02 NL: NL
-0x40016CA4 C   FIELD 08w08 SW_TIME: SW_TIME
-0x40016CA8 B  REGISTER PUCR (rw): DSI Host PHY ULPS Control Register
-0x40016CA8 C   FIELD 00w01 URCL: ULPS Request on Clock Lane
-0x40016CA8 C   FIELD 01w01 UECL: ULPS Exit on Clock Lane
-0x40016CA8 C   FIELD 02w01 URDL: ULPS Request on Data Lane
-0x40016CA8 C   FIELD 03w01 UEDL: ULPS Exit on Data Lane
-0x40016CAC B  REGISTER PTTCR (rw): DSI Host PHY TX Triggers Configuration Register
-0x40016CAC C   FIELD 00w04 TX_TRIG: Transmission Trigger
-0x40016CB0 B  REGISTER PSR (rw): DSI Host PHY Status Register
-0x40016CB0 C   FIELD 01w01 PD: PHY Direction
-0x40016CB0 C   FIELD 02w01 PSSC: PHY Stop State Clock lane
-0x40016CB0 C   FIELD 03w01 UANC: ULPS Active Not Clock lane
-0x40016CB0 C   FIELD 04w01 PSS0: PHY Stop State lane 0
-0x40016CB0 C   FIELD 05w01 UAN0: ULPS Active Not lane 1
-0x40016CB0 C   FIELD 06w01 RUE0: RX ULPS Escape lane 0
-0x40016CB0 C   FIELD 07w01 PSS1: PHY Stop State lane 1
-0x40016CB0 C   FIELD 08w01 UAN1: ULPS Active Not lane 1
-0x40016CBC B  REGISTER ISR0 (ro): DSI Host Interrupt & Status Register 0
-0x40016CBC C   FIELD 00w01 AE0: Acknowledge Error 0
-0x40016CBC C   FIELD 01w01 AE1: Acknowledge Error 1
-0x40016CBC C   FIELD 02w01 AE2: Acknowledge Error 2
-0x40016CBC C   FIELD 03w01 AE3: Acknowledge Error 3
-0x40016CBC C   FIELD 04w01 AE4: Acknowledge Error 4
-0x40016CBC C   FIELD 05w01 AE5: Acknowledge Error 5
-0x40016CBC C   FIELD 06w01 AE6: Acknowledge Error 6
-0x40016CBC C   FIELD 07w01 AE7: Acknowledge Error 7
-0x40016CBC C   FIELD 08w01 AE8: Acknowledge Error 8
-0x40016CBC C   FIELD 09w01 AE9: Acknowledge Error 9
-0x40016CBC C   FIELD 10w01 AE10: Acknowledge Error 10
-0x40016CBC C   FIELD 11w01 AE11: Acknowledge Error 11
-0x40016CBC C   FIELD 12w01 AE12: Acknowledge Error 12
-0x40016CBC C   FIELD 13w01 AE13: Acknowledge Error 13
-0x40016CBC C   FIELD 14w01 AE14: Acknowledge Error 14
-0x40016CBC C   FIELD 15w01 AE15: Acknowledge Error 15
-0x40016CBC C   FIELD 16w01 PE0: PHY Error 0
-0x40016CBC C   FIELD 17w01 PE1: PHY Error 1
-0x40016CBC C   FIELD 18w01 PE2: PHY Error 2
-0x40016CBC C   FIELD 19w01 PE3: PHY Error 3
-0x40016CBC C   FIELD 20w01 PE4: PHY Error 4
-0x40016CC0 B  REGISTER ISR1 (ro): DSI Host Interrupt & Status Register 1
-0x40016CC0 C   FIELD 00w01 TOHSTX: Timeout High-Speed Transmission
-0x40016CC0 C   FIELD 01w01 TOLPRX: Timeout Low-Power Reception
-0x40016CC0 C   FIELD 02w01 ECCSE: ECC Single-bit Error
-0x40016CC0 C   FIELD 03w01 ECCME: ECC Multi-bit Error
-0x40016CC0 C   FIELD 04w01 CRCE: CRC Error
-0x40016CC0 C   FIELD 05w01 PSE: Packet Size Error
-0x40016CC0 C   FIELD 06w01 EOTPE: EoTp Error
-0x40016CC0 C   FIELD 07w01 LPWRE: LTDC Payload Write Error
-0x40016CC0 C   FIELD 08w01 GCWRE: Generic Command Write Error
-0x40016CC0 C   FIELD 09w01 GPWRE: Generic Payload Write Error
-0x40016CC0 C   FIELD 10w01 GPTXE: Generic Payload Transmit Error
-0x40016CC0 C   FIELD 11w01 GPRDE: Generic Payload Read Error
-0x40016CC0 C   FIELD 12w01 GPRXE: Generic Payload Receive Error
-0x40016CC4 B  REGISTER IER0 (rw): DSI Host Interrupt Enable Register 0
-0x40016CC4 C   FIELD 00w01 AE0IE: Acknowledge Error 0 Interrupt Enable
-0x40016CC4 C   FIELD 01w01 AE1IE: Acknowledge Error 1 Interrupt Enable
-0x40016CC4 C   FIELD 02w01 AE2IE: Acknowledge Error 2 Interrupt Enable
-0x40016CC4 C   FIELD 03w01 AE3IE: Acknowledge Error 3 Interrupt Enable
-0x40016CC4 C   FIELD 04w01 AE4IE: Acknowledge Error 4 Interrupt Enable
-0x40016CC4 C   FIELD 05w01 AE5IE: Acknowledge Error 5 Interrupt Enable
-0x40016CC4 C   FIELD 06w01 AE6IE: Acknowledge Error 6 Interrupt Enable
-0x40016CC4 C   FIELD 07w01 AE7IE: Acknowledge Error 7 Interrupt Enable
-0x40016CC4 C   FIELD 08w01 AE8IE: Acknowledge Error 8 Interrupt Enable
-0x40016CC4 C   FIELD 09w01 AE9IE: Acknowledge Error 9 Interrupt Enable
-0x40016CC4 C   FIELD 10w01 AE10IE: Acknowledge Error 10 Interrupt Enable
-0x40016CC4 C   FIELD 11w01 AE11IE: Acknowledge Error 11 Interrupt Enable
-0x40016CC4 C   FIELD 12w01 AE12IE: Acknowledge Error 12 Interrupt Enable
-0x40016CC4 C   FIELD 13w01 AE13IE: Acknowledge Error 13 Interrupt Enable
-0x40016CC4 C   FIELD 14w01 AE14IE: Acknowledge Error 14 Interrupt Enable
-0x40016CC4 C   FIELD 15w01 AE15IE: Acknowledge Error 15 Interrupt Enable
-0x40016CC4 C   FIELD 16w01 PE0IE: PHY Error 0 Interrupt Enable
-0x40016CC4 C   FIELD 17w01 PE1IE: PHY Error 1 Interrupt Enable
-0x40016CC4 C   FIELD 18w01 PE2IE: PHY Error 2 Interrupt Enable
-0x40016CC4 C   FIELD 19w01 PE3IE: PHY Error 3 Interrupt Enable
-0x40016CC4 C   FIELD 20w01 PE4IE: PHY Error 4 Interrupt Enable
-0x40016CC8 B  REGISTER IER1 (rw): DSI Host Interrupt Enable Register 1
-0x40016CC8 C   FIELD 00w01 TOHSTXIE: Timeout High-Speed Transmission Interrupt Enable
-0x40016CC8 C   FIELD 01w01 TOLPRXIE: Timeout Low-Power Reception Interrupt Enable
-0x40016CC8 C   FIELD 02w01 ECCSEIE: ECC Single-bit Error Interrupt Enable
-0x40016CC8 C   FIELD 03w01 ECCMEIE: ECC Multi-bit Error Interrupt Enable
-0x40016CC8 C   FIELD 04w01 CRCEIE: CRC Error Interrupt Enable
-0x40016CC8 C   FIELD 05w01 PSEIE: Packet Size Error Interrupt Enable
-0x40016CC8 C   FIELD 06w01 EOTPEIE: EoTp Error Interrupt Enable
-0x40016CC8 C   FIELD 07w01 LPWREIE: LTDC Payload Write Error Interrupt Enable
-0x40016CC8 C   FIELD 08w01 GCWREIE: Generic Command Write Error Interrupt Enable
-0x40016CC8 C   FIELD 09w01 GPWREIE: Generic Payload Write Error Interrupt Enable
-0x40016CC8 C   FIELD 10w01 GPTXEIE: Generic Payload Transmit Error Interrupt Enable
-0x40016CC8 C   FIELD 11w01 GPRDEIE: Generic Payload Read Error Interrupt Enable
-0x40016CC8 C   FIELD 12w01 GPRXEIE: Generic Payload Receive Error Interrupt Enable
-0x40016CD8 B  REGISTER FIR0 (rw): DSI Host Force Interrupt Register 0
-0x40016CD8 C   FIELD 00w01 FAE0: Force Acknowledge Error 0
-0x40016CD8 C   FIELD 01w01 FAE1: Force Acknowledge Error 1
-0x40016CD8 C   FIELD 02w01 FAE2: Force Acknowledge Error 2
-0x40016CD8 C   FIELD 03w01 FAE3: Force Acknowledge Error 3
-0x40016CD8 C   FIELD 04w01 FAE4: Force Acknowledge Error 4
-0x40016CD8 C   FIELD 05w01 FAE5: Force Acknowledge Error 5
-0x40016CD8 C   FIELD 06w01 FAE6: Force Acknowledge Error 6
-0x40016CD8 C   FIELD 07w01 FAE7: Force Acknowledge Error 7
-0x40016CD8 C   FIELD 08w01 FAE8: Force Acknowledge Error 8
-0x40016CD8 C   FIELD 09w01 FAE9: Force Acknowledge Error 9
-0x40016CD8 C   FIELD 10w01 FAE10: Force Acknowledge Error 10
-0x40016CD8 C   FIELD 11w01 FAE11: Force Acknowledge Error 11
-0x40016CD8 C   FIELD 12w01 FAE12: Force Acknowledge Error 12
-0x40016CD8 C   FIELD 13w01 FAE13: Force Acknowledge Error 13
-0x40016CD8 C   FIELD 14w01 FAE14: Force Acknowledge Error 14
-0x40016CD8 C   FIELD 15w01 FAE15: Force Acknowledge Error 15
-0x40016CD8 C   FIELD 16w01 FPE0: Force PHY Error 0
-0x40016CD8 C   FIELD 17w01 FPE1: Force PHY Error 1
-0x40016CD8 C   FIELD 18w01 FPE2: Force PHY Error 2
-0x40016CD8 C   FIELD 19w01 FPE3: Force PHY Error 3
-0x40016CD8 C   FIELD 20w01 FPE4: Force PHY Error 4
-0x40016CDC B  REGISTER FIR1 (rw): DSI Host Force Interrupt Register 1
-0x40016CDC C   FIELD 00w01 FTOHSTX: Force Timeout High-Speed Transmission
-0x40016CDC C   FIELD 01w01 FTOLPRX: Force Timeout Low-Power Reception
-0x40016CDC C   FIELD 02w01 FECCSE: Force ECC Single-bit Error
-0x40016CDC C   FIELD 03w01 FECCME: Force ECC Multi-bit Error
-0x40016CDC C   FIELD 04w01 FCRCE: Force CRC Error
-0x40016CDC C   FIELD 05w01 FPSE: Force Packet Size Error
-0x40016CDC C   FIELD 06w01 FEOTPE: Force EoTp Error
-0x40016CDC C   FIELD 07w01 FLPWRE: Force LTDC Payload Write Error
-0x40016CDC C   FIELD 08w01 FGCWRE: Force Generic Command Write Error
-0x40016CDC C   FIELD 09w01 FGPWRE: Force Generic Payload Write Error
-0x40016CDC C   FIELD 10w01 FGPTXE: Force Generic Payload Transmit Error
-0x40016CDC C   FIELD 11w01 FGPRDE: Force Generic Payload Read Error
-0x40016CDC C   FIELD 12w01 FGPRXE: Force Generic Payload Receive Error
-0x40016D00 B  REGISTER VSCR (rw): DSI Host Video Shadow Control Register
-0x40016D00 C   FIELD 00w01 EN: Enable
-0x40016D00 C   FIELD 08w01 UR: Update Register
-0x40016D0C B  REGISTER LCVCIDR (rw): DSI Host LTDC Current VCID Register
-0x40016D0C C   FIELD 00w02 VCID: Virtual Channel ID
-0x40016D10 B  REGISTER LCCCR (rw): DSI Host LTDC Current Color Coding Register
-0x40016D10 C   FIELD 00w04 COLC: Color Coding
-0x40016D10 C   FIELD 08w01 LPE: Loosely Packed Enable
-0x40016D18 B  REGISTER LPMCCR (rw): DSI Host Low-power Mode Current Configuration Register
-0x40016D18 C   FIELD 00w08 VLPSIZE: VACT Largest Packet Size
-0x40016D18 C   FIELD 16w08 LPSIZE: Largest Packet Size
-0x40016D38 B  REGISTER VMCCR (rw): DSI Host Video mode Current Configuration Register
-0x40016D38 C   FIELD 00w02 VMT: Video mode Type
-0x40016D38 C   FIELD 08w01 LPVSAE: Low-Power Vertical Sync time Enable
-0x40016D38 C   FIELD 09w01 LPVBPE: Low-power Vertical Back-Porch Enable
-0x40016D38 C   FIELD 10w01 LPVFPE: Low-power Vertical Front-Porch Enable
-0x40016D38 C   FIELD 11w01 LVAE: Low-Power Vertical Active Enable
-0x40016D38 C   FIELD 12w01 LPHBPE: Low-power Horizontal Back-Porch Enable
-0x40016D38 C   FIELD 13w01 LPHFE: Low-Power Horizontal Front-Porch Enable
-0x40016D38 C   FIELD 14w01 FBTAAE: Frame BTA Acknowledge Enable
-0x40016D38 C   FIELD 15w01 LPCE: Low-Power Command Enable
-0x40016D3C B  REGISTER VPCCR (rw): DSI Host Video Packet Current Configuration Register
-0x40016D3C C   FIELD 00w15 VPSIZE: Video Packet Size
-0x40016D40 B  REGISTER VCCCR (rw): DSI Host Video Chunks Current Configuration Register
-0x40016D40 C   FIELD 00w14 NUMC: Number of Chunks
-0x40016D44 B  REGISTER VNPCCR (rw): DSI Host Video Null Packet Current Configuration Register
-0x40016D44 C   FIELD 00w14 NPSIZE: Null Packet Size
-0x40016D48 B  REGISTER VHSACCR (rw): DSI Host Video HSA Current Configuration Register
-0x40016D48 C   FIELD 00w13 HSA: Horizontal Synchronism Active duration
-0x40016D4C B  REGISTER VHBPCCR (rw): DSI Host Video HBP Current Configuration Register
-0x40016D4C C   FIELD 00w13 HBP: Horizontal Back-Porch duration
-0x40016D50 B  REGISTER VLCCR (rw): DSI Host Video Line Current Configuration Register
-0x40016D50 C   FIELD 00w15 HLINE: Horizontal Line duration
-0x40016D54 B  REGISTER VVSACCR (rw): DSI Host Video VSA Current Configuration Register
-0x40016D54 C   FIELD 00w10 VSA: Vertical Synchronism Active duration
-0x40016D58 B  REGISTER VVBPCCR (rw): DSI Host Video VBP Current Configuration Register
-0x40016D58 C   FIELD 00w10 VBP: Vertical Back-Porch duration
-0x40016D5C B  REGISTER VVFPCCR (rw): DSI Host Video VFP Current Configuration Register
-0x40016D5C C   FIELD 00w10 VFP: Vertical Front-Porch duration
-0x40016D60 B  REGISTER VVACCR (rw): DSI Host Video VA Current Configuration Register
-0x40016D60 C   FIELD 00w14 VA: Vertical Active duration
-0x40017000 B  REGISTER WCFGR (rw): DSI Wrapper Configuration Register
-0x40017000 C   FIELD 00w01 DSIM: DSI Mode
-0x40017000 C   FIELD 01w03 COLMUX: Color Multiplexing
-0x40017000 C   FIELD 04w01 TESRC: TE Source
-0x40017000 C   FIELD 05w01 TEPOL: TE Polarity
-0x40017000 C   FIELD 06w01 AR: Automatic Refresh
-0x40017000 C   FIELD 07w01 VSPOL: VSync Polarity
-0x40017004 B  REGISTER WCR (rw): DSI Wrapper Control Register
-0x40017004 C   FIELD 00w01 COLM: Color Mode
-0x40017004 C   FIELD 01w01 SHTDN: Shutdown
-0x40017004 C   FIELD 02w01 LTDCEN: LTDC Enable
-0x40017004 C   FIELD 03w01 DSIEN: DSI Enable
-0x40017008 B  REGISTER WIER (rw): DSI Wrapper Interrupt Enable Register
-0x40017008 C   FIELD 00w01 TEIE: Tearing Effect Interrupt Enable
-0x40017008 C   FIELD 01w01 ERIE: End of Refresh Interrupt Enable
-0x40017008 C   FIELD 09w01 PLLLIE: PLL Lock Interrupt Enable
-0x40017008 C   FIELD 10w01 PLLUIE: PLL Unlock Interrupt Enable
-0x40017008 C   FIELD 13w01 RRIE: Regulator Ready Interrupt Enable
-0x4001700C B  REGISTER WISR (ro): DSI Wrapper Interrupt & Status Register
-0x4001700C C   FIELD 00w01 TEIF: Tearing Effect Interrupt Flag
-0x4001700C C   FIELD 01w01 ERIF: End of Refresh Interrupt Flag
-0x4001700C C   FIELD 02w01 BUSY: Busy Flag
-0x4001700C C   FIELD 08w01 PLLLS: PLL Lock Status
-0x4001700C C   FIELD 09w01 PLLLIF: PLL Lock Interrupt Flag
-0x4001700C C   FIELD 10w01 PLLUIF: PLL Unlock Interrupt Flag
-0x4001700C C   FIELD 12w01 RRS: Regulator Ready Status
-0x4001700C C   FIELD 13w01 RRIF: Regulator Ready Interrupt Flag
-0x40017010 B  REGISTER WIFCR (rw): DSI Wrapper Interrupt Flag Clear Register
-0x40017010 C   FIELD 00w01 CTEIF: Clear Tearing Effect Interrupt Flag
-0x40017010 C   FIELD 01w01 CERIF: Clear End of Refresh Interrupt Flag
-0x40017010 C   FIELD 09w01 CPLLLIF: Clear PLL Lock Interrupt Flag
-0x40017010 C   FIELD 10w01 CPLLUIF: Clear PLL Unlock Interrupt Flag
-0x40017010 C   FIELD 13w01 CRRIF: Clear Regulator Ready Interrupt Flag
-0x40017018 B  REGISTER WPCR1 (rw): DSI Wrapper PHY Configuration Register 1
-0x40017018 C   FIELD 00w06 UIX4: Unit Interval multiplied by 4
-0x40017018 C   FIELD 06w01 SWCL: Swap Clock Lane pins
-0x40017018 C   FIELD 07w01 SWDL0: Swap Data Lane 0 pins
-0x40017018 C   FIELD 08w01 SWDL1: Swap Data Lane 1 pins
-0x40017018 C   FIELD 09w01 HSICL: Invert Hight-Speed data signal on Clock Lane
-0x40017018 C   FIELD 10w01 HSIDL0: Invert the Hight-Speed data signal on Data Lane 0
-0x40017018 C   FIELD 11w01 HSIDL1: Invert the High-Speed data signal on Data Lane 1
-0x40017018 C   FIELD 12w01 FTXSMCL: Force in TX Stop Mode the Clock Lane
-0x40017018 C   FIELD 13w01 FTXSMDL: Force in TX Stop Mode the Data Lanes
-0x40017018 C   FIELD 14w01 CDOFFDL: Contention Detection OFF on Data Lanes
-0x40017018 C   FIELD 16w01 TDDL: Turn Disable Data Lanes
-0x40017018 C   FIELD 18w01 PDEN: Pull-Down Enable
-0x40017018 C   FIELD 19w01 TCLKPREPEN: custom time for tCLK-PREPARE Enable
-0x40017018 C   FIELD 20w01 TCLKZEROEN: custom time for tCLK-ZERO Enable
-0x40017018 C   FIELD 21w01 THSPREPEN: custom time for tHS-PREPARE Enable
-0x40017018 C   FIELD 22w01 THSTRAILEN: custom time for tHS-TRAIL Enable
-0x40017018 C   FIELD 23w01 THSZEROEN: custom time for tHS-ZERO Enable
-0x40017018 C   FIELD 24w01 TLPXDEN: custom time for tLPX for Data lanes Enable
-0x40017018 C   FIELD 25w01 THSEXITEN: custom time for tHS-EXIT Enable
-0x40017018 C   FIELD 26w01 TLPXCEN: custom time for tLPX for Clock lane Enable
-0x40017018 C   FIELD 27w01 TCLKPOSTEN: custom time for tCLK-POST Enable
-0x4001701C B  REGISTER WPCR2 (rw): DSI Wrapper PHY Configuration Register 2
-0x4001701C C   FIELD 00w02 HSTXDCL: High-Speed Transmission Delay on Clock Lane
-0x4001701C C   FIELD 02w02 HSTXDLL: High-Speed Transmission Delay on Data Lanes
-0x4001701C C   FIELD 06w02 LPSRCL: Low-Power transmission Slew Rate Compensation on Clock Lane
-0x4001701C C   FIELD 08w02 LPSRDL: Low-Power transmission Slew Rate Compensation on Data Lanes
-0x4001701C C   FIELD 12w01 SDCC: SDD Control
-0x4001701C C   FIELD 16w02 HSTXSRCCL: High-Speed Transmission Slew Rate Control on Clock Lane
-0x4001701C C   FIELD 18w02 HSTXSRCDL: High-Speed Transmission Slew Rate Control on Data Lanes
-0x4001701C C   FIELD 22w01 FLPRXLPM: Forces LP Receiver in Low-Power Mode
-0x4001701C C   FIELD 25w02 LPRXFT: Low-Power RX low-pass Filtering Tuning
-0x40017020 B  REGISTER WPCR3 (rw): DSI Wrapper PHY Configuration Register 3
-0x40017020 C   FIELD 00w08 TCLKPREP: tCLK-PREPARE
-0x40017020 C   FIELD 08w08 TCLKZEO: tCLK-ZERO
-0x40017020 C   FIELD 16w08 THSPREP: tHS-PREPARE
-0x40017020 C   FIELD 24w08 THSTRAIL: tHSTRAIL
-0x40017024 B  REGISTER WPCR4 (rw): DSI_WPCR4
-0x40017024 C   FIELD 00w08 THSZERO: tHS-ZERO
-0x40017024 C   FIELD 08w08 TLPXD: tLPX for Data lanes
-0x40017024 C   FIELD 16w08 THSEXIT: tHSEXIT
-0x40017024 C   FIELD 24w08 TLPXC: tLPXC for Clock lane
-0x40017028 B  REGISTER WPCR5 (rw): DSI Wrapper PHY Configuration Register 5
-0x40017028 C   FIELD 00w08 THSZERO: tCLK-POST
-0x40017030 B  REGISTER WRPCR (rw): DSI Wrapper Regulator and PLL Control Register
-0x40017030 C   FIELD 00w01 PLLEN: PLL Enable
-0x40017030 C   FIELD 02w07 NDIV: PLL Loop Division Factor
-0x40017030 C   FIELD 11w04 IDF: PLL Input Division Factor
-0x40017030 C   FIELD 16w02 ODF: PLL Output Division Factor
-0x40017030 C   FIELD 24w01 REGEN: Regulator Enable
+0x40016C00 B  REGISTER VR: DSI Host version register
+0x40016C00 C   FIELD 00w32 VERSION (ro): Version of the DSI Host This read-only register contains the version of the DSI Host
+0x40016C04 B  REGISTER CR: DSI Host control register
+0x40016C04 C   FIELD 00w01 EN (rw): Enable This bit configures the DSI Host in either power-up mode or to reset.
+0x40016C08 B  REGISTER CCR: DSI Host clock control register
+0x40016C08 C   FIELD 00w08 TXECKDIV (rw): TX escape clock division This field indicates the division factor for the TX escape clock source (lanebyteclk). The values 0 and 1 stop the TX_ESC clock generation.
+0x40016C08 C   FIELD 08w08 TOCKDIV (rw): Timeout clock division This field indicates the division factor for the timeout clock used as the timing unit in the configuration of HS to LP and LP to HS transition error.
+0x40016C0C B  REGISTER LVCIDR: DSI Host LTDC VCID register
+0x40016C0C C   FIELD 00w02 VCID (rw): Virtual channel ID These bits configure the virtual channel ID for the LTDC interface traffic.
+0x40016C10 B  REGISTER LCOLCR: DSI Host LTDC color coding register
+0x40016C10 C   FIELD 00w04 COLC (rw): Color coding This field configures the DPI color coding. Others: Reserved
+0x40016C10 C   FIELD 08w01 LPE (rw): Loosely packet enable This bit enables the loosely packed variant to 18-bit configuration
+0x40016C14 B  REGISTER LPCR: DSI Host LTDC polarity configuration register
+0x40016C14 C   FIELD 00w01 DEP (rw): Data enable polarity This bit configures the polarity of data enable pin.
+0x40016C14 C   FIELD 01w01 VSP (rw): VSYNC polarity This bit configures the polarity of VSYNC pin.
+0x40016C14 C   FIELD 02w01 HSP (rw): HSYNC polarity This bit configures the polarity of HSYNC pin.
+0x40016C18 B  REGISTER LPMCR: DSI Host low-power mode configuration register
+0x40016C18 C   FIELD 00w08 VLPSIZE (rw): VACT largest packet size This field is used for the transmission of commands in low-power mode. It defines the size, in bytes, of the largest packet that can fit in a line during VACT regions.
+0x40016C18 C   FIELD 16w08 LPSIZE (rw): Largest packet size This field is used for the transmission of commands in low-power mode. It defines the size, in bytes, of the largest packet that can fit in a line during VSA, VBP and VFP regions.
+0x40016C2C B  REGISTER PCR: DSI Host protocol configuration register
+0x40016C2C C   FIELD 00w01 ETTXE (rw): EoTp transmission enable This bit enables the EoTP transmission.
+0x40016C2C C   FIELD 01w01 ETRXE (rw): EoTp reception enable This bit enables the EoTp reception.
+0x40016C2C C   FIELD 02w01 BTAE (rw): Bus-turn-around enable This bit enables the bus-turn-around (BTA) request.
+0x40016C2C C   FIELD 03w01 ECCRXE (rw): ECC reception enable This bit enables the ECC reception, error correction and reporting.
+0x40016C2C C   FIELD 04w01 CRCRXE (rw): CRC reception enable This bit enables the CRC reception and error reporting.
+0x40016C30 B  REGISTER GVCIDR: DSI Host generic VCID register
+0x40016C30 C   FIELD 00w02 VCID (rw): Virtual channel ID This field indicates the generic interface read-back virtual channel identification.
+0x40016C34 B  REGISTER MCR: DSI Host mode configuration register
+0x40016C34 C   FIELD 00w01 CMDM (rw): Command mode This bit configures the DSI Host in either video or command mode.
+0x40016C38 B  REGISTER VMCR: DSI Host video mode configuration register
+0x40016C38 C   FIELD 00w02 VMT (rw): Video mode type This field configures the video mode transmission type : 1x: Burst mode
+0x40016C38 C   FIELD 08w01 LPVSAE (rw): Low-power vertical sync active enable This bit enables to return to low-power inside the vertical sync time (VSA) period when timing allows.
+0x40016C38 C   FIELD 09w01 LPVBPE (rw): Low-power vertical back-porch enable This bit enables to return to low-power inside the vertical back-porch (VBP) period when timing allows.
+0x40016C38 C   FIELD 10w01 LPVFPE (rw): Low-power vertical front-porch enable This bit enables to return to low-power inside the vertical front-porch (VFP) period when timing allows.
+0x40016C38 C   FIELD 11w01 LPVAE (rw): Low-power vertical active enable This bit enables to return to low-power inside the vertical active (VACT) period when timing allows.
+0x40016C38 C   FIELD 12w01 LPHBPE (rw): Low-power horizontal back-porch enable This bit enables the return to low-power inside the horizontal back-porch (HBP) period when timing allows.
+0x40016C38 C   FIELD 13w01 LPHFPE (rw): Low-power horizontal front-porch enable This bit enables the return to low-power inside the horizontal front-porch (HFP) period when timing allows.
+0x40016C38 C   FIELD 14w01 FBTAAE (rw): Frame bus-turn-around acknowledge enable This bit enables the request for an acknowledge response at the end of a frame.
+0x40016C38 C   FIELD 15w01 LPCE (rw): Low-power command enable This bit enables the command transmission only in low-power mode.
+0x40016C38 C   FIELD 16w01 PGE (rw): Pattern generator enable This bit enables the video mode pattern generator.
+0x40016C38 C   FIELD 20w01 PGM (rw): Pattern generator mode This bit configures the pattern generator mode.
+0x40016C38 C   FIELD 24w01 PGO (rw): Pattern generator orientation This bit configures the color bar orientation.
+0x40016C3C B  REGISTER VPCR: DSI Host video packet configuration register
+0x40016C3C C   FIELD 00w14 VPSIZE (rw): Video packet size This field configures the number of pixels in a single video packet. For 18-bit not loosely packed data types, this number must be a multiple of 4. For YCbCr data types, it must be a multiple of 2 as described in the DSI specification.
+0x40016C40 B  REGISTER VCCR: DSI Host video chunks configuration register
+0x40016C40 C   FIELD 00w13 NUMC (rw): Number of chunks This register configures the number of chunks to be transmitted during a line period (a chunk consists of a video packet and a null packet). If set to 0 or 1, the video line is transmitted in a single packet. If set to 1, the packet is part of a chunk, so a null packet follows it if NPSIZE > 0. Otherwise, multiple chunks are used to transmit each video line.
+0x40016C44 B  REGISTER VNPCR: DSI Host video null packet configuration register
+0x40016C44 C   FIELD 00w13 NPSIZE (rw): Null packet size This field configures the number of bytes inside a null packet. Setting to 0 disables the null packets.
+0x40016C48 B  REGISTER VHSACR: DSI Host video HSA configuration register
+0x40016C48 C   FIELD 00w12 HSA (rw): Horizontal synchronism active duration This fields configures the horizontal synchronism active period in lane byte clock cycles.
+0x40016C4C B  REGISTER VHBPCR: DSI Host video HBP configuration register
+0x40016C4C C   FIELD 00w12 HBP (rw): Horizontal back-porch duration This fields configures the horizontal back-porch period in lane byte clock cycles.
+0x40016C50 B  REGISTER VLCR: DSI Host video line configuration register
+0x40016C50 C   FIELD 00w15 HLINE (rw): Horizontal line duration This fields configures the total of the horizontal line period (HSA+HBP+HACT+HFP) counted in lane byte clock cycles.
+0x40016C54 B  REGISTER VVSACR: DSI Host video VSA configuration register
+0x40016C54 C   FIELD 00w10 VSA (rw): Vertical synchronism active duration This fields configures the vertical synchronism active period measured in number of horizontal lines.
+0x40016C58 B  REGISTER VVBPCR: DSI Host video VBP configuration register
+0x40016C58 C   FIELD 00w10 VBP (rw): Vertical back-porch duration This fields configures the vertical back-porch period measured in number of horizontal lines.
+0x40016C5C B  REGISTER VVFPCR: DSI Host video VFP configuration register
+0x40016C5C C   FIELD 00w10 VFP (rw): Vertical front-porch duration This fields configures the vertical front-porch period measured in number of horizontal lines.
+0x40016C60 B  REGISTER VVACR: DSI Host video VA configuration register
+0x40016C60 C   FIELD 00w14 VA (rw): Vertical active duration This fields configures the vertical active period measured in number of horizontal lines.
+0x40016C64 B  REGISTER LCCR: DSI Host LTDC command configuration register
+0x40016C64 C   FIELD 00w16 CMDSIZE (rw): Command size This field configures the maximum allowed size for an LTDC write memory command, measured in pixels. Automatic partitioning of data obtained from LTDC is permanently enabled.
+0x40016C68 B  REGISTER CMCR: DSI Host command mode configuration register
+0x40016C68 C   FIELD 00w01 TEARE (rw): Tearing effect acknowledge request enable This bit enables the tearing effect acknowledge request:
+0x40016C68 C   FIELD 01w01 ARE (rw): Acknowledge request enable This bit enables the acknowledge request after each packet transmission:
+0x40016C68 C   FIELD 08w01 GSW0TX (rw): Generic short write zero parameters transmission This bit configures the generic short write packet with zero parameters command transmission type:
+0x40016C68 C   FIELD 09w01 GSW1TX (rw): Generic short write one parameters transmission This bit configures the generic short write packet with one parameters command transmission type:
+0x40016C68 C   FIELD 10w01 GSW2TX (rw): Generic short write two parameters transmission This bit configures the generic short write packet with two parameters command transmission type:
+0x40016C68 C   FIELD 11w01 GSR0TX (rw): Generic short read zero parameters transmission This bit configures the generic short read packet with zero parameters command transmission type:
+0x40016C68 C   FIELD 12w01 GSR1TX (rw): Generic short read one parameters transmission This bit configures the generic short read packet with one parameters command transmission type:
+0x40016C68 C   FIELD 13w01 GSR2TX (rw): Generic short read two parameters transmission This bit configures the generic short read packet with two parameters command transmission type:
+0x40016C68 C   FIELD 14w01 GLWTX (rw): Generic long write transmission This bit configures the generic long write packet command transmission type :
+0x40016C68 C   FIELD 16w01 DSW0TX (rw): DCS short write zero parameter transmission This bit configures the DCS short write packet with zero parameter command transmission type:
+0x40016C68 C   FIELD 17w01 DSW1TX (rw): DCS short read one parameter transmission This bit configures the DCS short read packet with one parameter command transmission type:
+0x40016C68 C   FIELD 18w01 DSR0TX (rw): DCS short read zero parameter transmission This bit configures the DCS short read packet with zero parameter command transmission type:
+0x40016C68 C   FIELD 19w01 DLWTX (rw): DCS long write transmission This bit configures the DCS long write packet command transmission type:
+0x40016C68 C   FIELD 24w01 MRDPS (rw): Maximum read packet size This bit configures the maximum read packet size command transmission type:
+0x40016C6C B  REGISTER GHCR: DSI Host generic header configuration register
+0x40016C6C C   FIELD 00w06 DT (rw): Type This field configures the packet data type of the header packet.
+0x40016C6C C   FIELD 06w02 VCID (rw): Channel This field configures the virtual channel ID of the header packet.
+0x40016C6C C   FIELD 08w08 WCLSB (rw): WordCount LSB This field configures the less significant byte of the header packet word count for long packets, or data 0 for short packets.
+0x40016C6C C   FIELD 16w08 WCMSB (rw): WordCount MSB This field configures the most significant byte of the header packet word count for long packets, or data 1 for short packets.
+0x40016C70 B  REGISTER GPDR: DSI Host generic payload data register
+0x40016C70 C   FIELD 00w08 DATA1 (rw): Payload byte 1 This field indicates the byte 1 of the packet payload.
+0x40016C70 C   FIELD 08w08 DATA2 (rw): Payload byte 2 This field indicates the byte 2 of the packet payload.
+0x40016C70 C   FIELD 16w08 DATA3 (rw): Payload byte 3 This field indicates the byte 3 of the packet payload.
+0x40016C70 C   FIELD 24w08 DATA4 (rw): Payload byte 4 This field indicates the byte 4 of the packet payload.
+0x40016C74 B  REGISTER GPSR: DSI Host generic packet status register
+0x40016C74 C   FIELD 00w01 CMDFE (ro): Command FIFO empty This bit indicates the empty status of the generic command FIFO:
+0x40016C74 C   FIELD 01w01 CMDFF (ro): Command FIFO full This bit indicates the full status of the generic command FIFO:
+0x40016C74 C   FIELD 02w01 PWRFE (ro): Payload write FIFO empty This bit indicates the empty status of the generic write payload FIFO:
+0x40016C74 C   FIELD 03w01 PWRFF (ro): Payload write FIFO full This bit indicates the full status of the generic write payload FIFO:
+0x40016C74 C   FIELD 04w01 PRDFE (ro): Payload read FIFO empty This bit indicates the empty status of the generic read payload FIFO:
+0x40016C74 C   FIELD 05w01 PRDFF (ro): Payload read FIFO full This bit indicates the full status of the generic read payload FIFO:
+0x40016C74 C   FIELD 06w01 RCB (ro): Read command busy This bit is set when a read command is issued and cleared when the entire response is stored in the FIFO:
+0x40016C78 B  REGISTER TCCR0: DSI Host timeout counter configuration register 0
+0x40016C78 C   FIELD 00w16 LPRX_TOCNT (rw): Low-power reception timeout counter This field configures the timeout counter that triggers a low-power reception timeout contention detection (measured in TOCKDIV cycles).
+0x40016C78 C   FIELD 16w16 HSTX_TOCNT (rw): High-speed transmission timeout counter This field configures the timeout counter that triggers a high-speed transmission timeout contention detection (measured in TOCKDIV cycles).
+0x40016C7C B  REGISTER TCCR1: DSI Host timeout counter configuration register 1
+0x40016C7C C   FIELD 00w16 HSRD_TOCNT (rw): High-speed read timeout counter This field sets a period for which the DSI Host keeps the link still, after sending a high-speed read operation. This period is measured in cycles of lanebyteclk. The counting starts when the D-PHY enters the Stop state and causes no interrupts.
+0x40016C80 B  REGISTER TCCR2: DSI Host timeout counter configuration register 2
+0x40016C80 C   FIELD 00w16 LPRD_TOCNT (rw): Low-power read timeout counter This field sets a period for which the DSI Host keeps the link still, after sending a low-power read operation. This period is measured in cycles of lanebyteclk. The counting starts when the D-PHY enters the Stop state and causes no interrupts.
+0x40016C84 B  REGISTER TCCR3: DSI Host timeout counter configuration register 3
+0x40016C84 C   FIELD 00w16 HSWR_TOCNT (rw): High-speed write timeout counter This field sets a period for which the DSI Host keeps the link inactive after sending a high-speed write operation. This period is measured in cycles of lanebyteclk. The counting starts when the D-PHY enters the Stop state and causes no interrupts.
+0x40016C84 C   FIELD 24w01 PM (rw): Presp mode When set to 1, this bit ensures that the peripheral response timeout caused by HSWR_TOCNT is used only once per LTDC frame in command mode, when both the following conditions are met: dpivsync_edpiwms has risen and fallen. Packets originated from LTDC in command mode have been transmitted and its FIFO is empty again. In this scenario no non-LTDC command requests are sent to the D-PHY, even if there is traffic from generic interface ready to be sent, making it return to stop state. When it does so, PRESP_TO counter is activated and only when it finishes does the controller send any other traffic that is ready.
+0x40016C88 B  REGISTER TCCR4: DSI Host timeout counter configuration register 4
+0x40016C88 C   FIELD 00w16 LPWR_TOCNT (rw): Low-power write timeout counter This field sets a period for which the DSI Host keeps the link still, after sending a low-power write operation. This period is measured in cycles of lanebyteclk. The counting starts when the D-PHY enters the Stop state and causes no interrupts.
+0x40016C8C B  REGISTER TCCR5: DSI Host timeout counter configuration register 5
+0x40016C8C C   FIELD 00w16 BTA_TOCNT (rw): Bus-turn-around timeout counter This field sets a period for which the DSI Host keeps the link still, after completing a bus-turn-around. This period is measured in cycles of lanebyteclk. The counting starts when the D-PHY enters the Stop state and causes no interrupts.
+0x40016C94 B  REGISTER CLCR: DSI Host clock lane configuration register
+0x40016C94 C   FIELD 00w01 DPCC (rw): D-PHY clock control This bit controls the D-PHY clock state:
+0x40016C94 C   FIELD 01w01 ACR (rw): Automatic clock lane control This bit enables the automatic mechanism to stop providing clock in the clock lane when time allows.
+0x40016C98 B  REGISTER CLTCR: DSI Host clock lane timer configuration register
+0x40016C98 C   FIELD 00w10 LP2HS_TIME (rw): Low-power to high-speed time This field configures the maximum time that the D-PHY clock lane takes to go from low power to high-speed transmission measured in lane byte clock cycles.
+0x40016C98 C   FIELD 16w10 HS2LP_TIME (rw): High-speed to low-power time This field configures the maximum time that the D-PHY clock lane takes to go from high speed to low-power transmission measured in lane byte clock cycles.
+0x40016C9C B  REGISTER DLTCR: DSI Host data lane timer configuration register
+0x40016C9C C   FIELD 00w15 MRD_TIME (rw): Maximum read time This field configures the maximum time required to perform a read command in lane byte clock cycles. This register can only be modified when no read command is in progress.
+0x40016C9C C   FIELD 16w08 LP2HS_TIME (rw): Low-power to high-speed time This field configures the maximum time that the D-PHY data lanes take to go from low-power to high-speed transmission measured in lane byte clock cycles.
+0x40016C9C C   FIELD 24w08 HS2LP_TIME (rw): High-speed to low-power time This field configures the maximum time that the D-PHY data lanes take to go from high-speed to low-power transmission measured in lane byte clock cycles.
+0x40016CA0 B  REGISTER PCTLR: DSI Host PHY control register
+0x40016CA0 C   FIELD 01w01 DEN (rw): Digital enable When set to 0, this bit places the digital section of the D-PHY in the reset state
+0x40016CA0 C   FIELD 02w01 CKE (rw): Clock enable This bit enables the D-PHY clock lane module:
+0x40016CA4 B  REGISTER PCONFR: DSI Host PHY configuration register
+0x40016CA4 C   FIELD 00w02 NL (rw): Number of lanes This field configures the number of active data lanes: Others: Reserved
+0x40016CA4 C   FIELD 08w08 SW_TIME (rw): Stop wait time This field configures the minimum wait period to request a high-speed transmission after the Stop state.
+0x40016CA8 B  REGISTER PUCR: DSI Host PHY ULPS control register
+0x40016CA8 C   FIELD 00w01 URCL (rw): ULPS request on clock lane ULPS mode request on clock lane.
+0x40016CA8 C   FIELD 01w01 UECL (rw): ULPS exit on clock lane ULPS mode exit on clock lane.
+0x40016CA8 C   FIELD 02w01 URDL (rw): ULPS request on data lane ULPS mode request on all active data lanes.
+0x40016CA8 C   FIELD 03w01 UEDL (rw): ULPS exit on data lane ULPS mode exit on all active data lanes.
+0x40016CAC B  REGISTER PTTCR: DSI Host PHY TX triggers configuration register
+0x40016CAC C   FIELD 00w04 TX_TRIG (rw): Transmission trigger Escape mode transmit trigger 0-3. Only one bit of TX_TRIG is asserted at any given time.
+0x40016CB0 B  REGISTER PSR: DSI Host PHY status register
+0x40016CB0 C   FIELD 01w01 PD (ro): PHY direction This bit indicates the status of phydirection D-PHY signal.
+0x40016CB0 C   FIELD 02w01 PSSC (ro): PHY stop state clock lane This bit indicates the status of phystopstateclklane D-PHY signal.
+0x40016CB0 C   FIELD 03w01 UANC (ro): ULPS active not clock lane This bit indicates the status of ulpsactivenotclklane D-PHY signal.
+0x40016CB0 C   FIELD 04w01 PSS0 (ro): PHY stop state lane 0 This bit indicates the status of phystopstate0lane D-PHY signal.
+0x40016CB0 C   FIELD 05w01 UAN0 (ro): ULPS active not lane 1 This bit indicates the status of ulpsactivenot0lane D-PHY signal.
+0x40016CB0 C   FIELD 06w01 RUE0 (ro): RX ULPS escape lane 0 This bit indicates the status of rxulpsesc0lane D-PHY signal.
+0x40016CB0 C   FIELD 07w01 PSS1 (ro): PHY stop state lane 1 This bit indicates the status of phystopstate1lane D-PHY signal.
+0x40016CB0 C   FIELD 08w01 UAN1 (ro): ULPS active not lane 1 This bit indicates the status of ulpsactivenot1lane D-PHY signal.
+0x40016CBC B  REGISTER ISR0: DSI Host interrupt and status register 0
+0x40016CBC C   FIELD 00w01 AE0 (ro): Acknowledge error 0
+0x40016CBC C   FIELD 01w01 AE1 (ro): Acknowledge error 1
+0x40016CBC C   FIELD 02w01 AE2 (ro): Acknowledge error 2
+0x40016CBC C   FIELD 03w01 AE3 (ro): Acknowledge error 3
+0x40016CBC C   FIELD 04w01 AE4 (ro): Acknowledge error 4
+0x40016CBC C   FIELD 05w01 AE5 (ro): Acknowledge error 5
+0x40016CBC C   FIELD 06w01 AE6 (ro): Acknowledge error 6
+0x40016CBC C   FIELD 07w01 AE7 (ro): Acknowledge error 7
+0x40016CBC C   FIELD 08w01 AE8 (ro): Acknowledge error 8
+0x40016CBC C   FIELD 09w01 AE9 (ro): Acknowledge error 9
+0x40016CBC C   FIELD 10w01 AE10 (ro): Acknowledge error 10
+0x40016CBC C   FIELD 11w01 AE11 (ro): Acknowledge error 11
+0x40016CBC C   FIELD 12w01 AE12 (ro): Acknowledge error 12
+0x40016CBC C   FIELD 13w01 AE13 (ro): Acknowledge error 13
+0x40016CBC C   FIELD 14w01 AE14 (ro): Acknowledge error 14
+0x40016CBC C   FIELD 15w01 AE15 (ro): Acknowledge error 15
+0x40016CBC C   FIELD 16w01 PE0 (ro): PHY error 0
+0x40016CBC C   FIELD 17w01 PE1 (ro): PHY error 1
+0x40016CBC C   FIELD 18w01 PE2 (ro): PHY error 2
+0x40016CBC C   FIELD 19w01 PE3 (ro): PHY error 3
+0x40016CBC C   FIELD 20w01 PE4 (ro): PHY error 4
+0x40016CC0 B  REGISTER ISR1: DSI Host interrupt and status register 1
+0x40016CC0 C   FIELD 00w01 TOHSTX (ro): Timeout high-speed transmission This bit indicates that the high-speed transmission timeout counter reached the end and contention is detected.
+0x40016CC0 C   FIELD 01w01 TOLPRX (ro): Timeout low-power reception This bit indicates that the low-power reception timeout counter reached the end and contention is detected.
+0x40016CC0 C   FIELD 02w01 ECCSE (ro): ECC single-bit error This bit indicates that the ECC single error is detected and corrected in a received packet.
+0x40016CC0 C   FIELD 03w01 ECCME (ro): ECC multi-bit error This bit indicates that the ECC multiple error is detected in a received packet.
+0x40016CC0 C   FIELD 04w01 CRCE (ro): CRC error This bit indicates that the CRC error is detected in the received packet payload.
+0x40016CC0 C   FIELD 05w01 PSE (ro): Packet size error This bit indicates that the packet size error is detected during the packet reception.
+0x40016CC0 C   FIELD 06w01 EOTPE (ro): EoTp error This bit indicates that the EoTp packet is not received at the end of the incoming peripheral transmission.
+0x40016CC0 C   FIELD 07w01 LPWRE (ro): LTDC payload write error This bit indicates that during a DPI pixel line storage, the payload FIFO becomes full and the data stored is corrupted.
+0x40016CC0 C   FIELD 08w01 GCWRE (ro): Generic command write error This bit indicates that the system tried to write a command through the generic interface and the FIFO is full. Therefore, the command is not written.
+0x40016CC0 C   FIELD 09w01 GPWRE (ro): Generic payload write error This bit indicates that the system tried to write a payload data through the generic interface and the FIFO is full. Therefore, the payload is not written.
+0x40016CC0 C   FIELD 10w01 GPTXE (ro): Generic payload transmit error This bit indicates that during a generic interface packet build, the payload FIFO becomes empty and corrupt data is sent.
+0x40016CC0 C   FIELD 11w01 GPRDE (ro): Generic payload read error This bit indicates that during a DCS read data, the payload FIFO becomes empty and the data sent to the interface is corrupted.
+0x40016CC0 C   FIELD 12w01 GPRXE (ro): Generic payload receive error This bit indicates that during a generic interface packet read back, the payload FIFO becomes full and the received data is corrupted.
+0x40016CC4 B  REGISTER IER0: DSI Host interrupt enable register 0
+0x40016CC4 C   FIELD 00w01 AE0IE (rw): Acknowledge error 0 interrupt enable
+0x40016CC4 C   FIELD 01w01 AE1IE (rw): Acknowledge error 1 interrupt enable
+0x40016CC4 C   FIELD 02w01 AE2IE (rw): Acknowledge error 2 interrupt enable
+0x40016CC4 C   FIELD 03w01 AE3IE (rw): Acknowledge error 3 interrupt enable
+0x40016CC4 C   FIELD 04w01 AE4IE (rw): Acknowledge error 4 interrupt enable
+0x40016CC4 C   FIELD 05w01 AE5IE (rw): Acknowledge error 5 interrupt enable
+0x40016CC4 C   FIELD 06w01 AE6IE (rw): Acknowledge error 6 interrupt enable
+0x40016CC4 C   FIELD 07w01 AE7IE (rw): Acknowledge error 7 interrupt enable
+0x40016CC4 C   FIELD 08w01 AE8IE (rw): Acknowledge error 8 interrupt enable
+0x40016CC4 C   FIELD 09w01 AE9IE (rw): Acknowledge error 9 interrupt enable
+0x40016CC4 C   FIELD 10w01 AE10IE (rw): Acknowledge error 10 interrupt enable
+0x40016CC4 C   FIELD 11w01 AE11IE (rw): Acknowledge error 11 interrupt enable
+0x40016CC4 C   FIELD 12w01 AE12IE (rw): Acknowledge error 12 interrupt enable
+0x40016CC4 C   FIELD 13w01 AE13IE (rw): Acknowledge error 13 interrupt enable
+0x40016CC4 C   FIELD 14w01 AE14IE (rw): Acknowledge error 14 interrupt enable
+0x40016CC4 C   FIELD 15w01 AE15IE (rw): Acknowledge error 15 interrupt enable
+0x40016CC4 C   FIELD 16w01 PE0IE (rw): PHY error 0 interrupt enable
+0x40016CC4 C   FIELD 17w01 PE1IE (rw): PHY error 1 interrupt enable
+0x40016CC4 C   FIELD 18w01 PE2IE (rw): PHY error 2 interrupt enable
+0x40016CC4 C   FIELD 19w01 PE3IE (rw): PHY error 3 interrupt enable
+0x40016CC4 C   FIELD 20w01 PE4IE (rw): PHY error 4 interrupt enable
+0x40016CC8 B  REGISTER IER1: DSI Host interrupt enable register 1
+0x40016CC8 C   FIELD 00w01 TOHSTXIE (rw): Timeout high-speed transmission interrupt enable This bit enables the interrupt generation on timeout high-speed transmission .
+0x40016CC8 C   FIELD 01w01 TOLPRXIE (rw): Timeout low-power reception interrupt enable This bit enables the interrupt generation on timeout low-power reception.
+0x40016CC8 C   FIELD 02w01 ECCSEIE (rw): ECC single-bit error interrupt enable This bit enables the interrupt generation on ECC single-bit error.
+0x40016CC8 C   FIELD 03w01 ECCMEIE (rw): ECC multi-bit error interrupt enable This bit enables the interrupt generation on ECC multi-bit error.
+0x40016CC8 C   FIELD 04w01 CRCEIE (rw): CRC error interrupt enable This bit enables the interrupt generation on CRC error.
+0x40016CC8 C   FIELD 05w01 PSEIE (rw): Packet size error interrupt enable This bit enables the interrupt generation on packet size error.
+0x40016CC8 C   FIELD 06w01 EOTPEIE (rw): EoTp error interrupt enable This bit enables the interrupt generation on EoTp error.
+0x40016CC8 C   FIELD 07w01 LPWREIE (rw): LTDC payload write error interrupt enable This bit enables the interrupt generation on LTDC payload write error.
+0x40016CC8 C   FIELD 08w01 GCWREIE (rw): Generic command write error interrupt enable This bit enables the interrupt generation on generic command write error.
+0x40016CC8 C   FIELD 09w01 GPWREIE (rw): Generic payload write error interrupt enable This bit enables the interrupt generation on generic payload write error.
+0x40016CC8 C   FIELD 10w01 GPTXEIE (rw): Generic payload transmit error interrupt enable This bit enables the interrupt generation on generic payload transmit error.
+0x40016CC8 C   FIELD 11w01 GPRDEIE (rw): Generic payload read error interrupt enable This bit enables the interrupt generation on generic payload read error.
+0x40016CC8 C   FIELD 12w01 GPRXEIE (rw): Generic payload receive error interrupt enable This bit enables the interrupt generation on generic payload receive error.
+0x40016CD8 B  REGISTER FIR0: DSI Host force interrupt register 0
+0x40016CD8 C   FIELD 00w01 FAE0 (wo): Force acknowledge error 0
+0x40016CD8 C   FIELD 01w01 FAE1 (wo): Force acknowledge error 1
+0x40016CD8 C   FIELD 02w01 FAE2 (wo): Force acknowledge error 2
+0x40016CD8 C   FIELD 03w01 FAE3 (wo): Force acknowledge error 3
+0x40016CD8 C   FIELD 04w01 FAE4 (wo): Force acknowledge error 4
+0x40016CD8 C   FIELD 05w01 FAE5 (wo): Force acknowledge error 5
+0x40016CD8 C   FIELD 06w01 FAE6 (wo): Force acknowledge error 6
+0x40016CD8 C   FIELD 07w01 FAE7 (wo): Force acknowledge error 7
+0x40016CD8 C   FIELD 08w01 FAE8 (wo): Force acknowledge error 8
+0x40016CD8 C   FIELD 09w01 FAE9 (wo): Force acknowledge error 9
+0x40016CD8 C   FIELD 10w01 FAE10 (wo): Force acknowledge error 10
+0x40016CD8 C   FIELD 11w01 FAE11 (wo): Force acknowledge error 11
+0x40016CD8 C   FIELD 12w01 FAE12 (wo): Force acknowledge error 12
+0x40016CD8 C   FIELD 13w01 FAE13 (wo): Force acknowledge error 13
+0x40016CD8 C   FIELD 14w01 FAE14 (wo): Force acknowledge error 14
+0x40016CD8 C   FIELD 15w01 FAE15 (wo): Force acknowledge error 15
+0x40016CD8 C   FIELD 16w01 FPE0 (wo): Force PHY error 0
+0x40016CD8 C   FIELD 17w01 FPE1 (wo): Force PHY error 1
+0x40016CD8 C   FIELD 18w01 FPE2 (wo): Force PHY error 2
+0x40016CD8 C   FIELD 19w01 FPE3 (wo): Force PHY error 3
+0x40016CD8 C   FIELD 20w01 FPE4 (wo): Force PHY error 4
+0x40016CDC B  REGISTER FIR1: DSI Host force interrupt register 1
+0x40016CDC C   FIELD 00w01 FTOHSTX (wo): Force timeout high-speed transmission Writing one to this bit forces a timeout high-speed transmission.
+0x40016CDC C   FIELD 01w01 FTOLPRX (wo): Force timeout low-power reception Writing one to this bit forces a timeout low-power reception.
+0x40016CDC C   FIELD 02w01 FECCSE (wo): Force ECC single-bit error Writing one to this bit forces a ECC single-bit error.
+0x40016CDC C   FIELD 03w01 FECCME (wo): Force ECC multi-bit error Writing one to this bit forces a ECC multi-bit error.
+0x40016CDC C   FIELD 04w01 FCRCE (wo): Force CRC error Writing one to this bit forces a CRC error.
+0x40016CDC C   FIELD 05w01 FPSE (wo): Force packet size error Writing one to this bit forces a packet size error.
+0x40016CDC C   FIELD 06w01 FEOTPE (wo): Force EoTp error Writing one to this bit forces a EoTp error.
+0x40016CDC C   FIELD 07w01 FLPWRE (wo): Force LTDC payload write error Writing one to this bit forces a LTDC payload write error.
+0x40016CDC C   FIELD 08w01 FGCWRE (wo): Force generic command write error Writing one to this bit forces a generic command write error.
+0x40016CDC C   FIELD 09w01 FGPWRE (wo): Force generic payload write error Writing one to this bit forces a generic payload write error.
+0x40016CDC C   FIELD 10w01 FGPTXE (wo): Force generic payload transmit error Writing one to this bit forces a generic payload transmit error.
+0x40016CDC C   FIELD 11w01 FGPRDE (wo): Force generic payload read error Writing one to this bit forces a generic payload read error.
+0x40016CDC C   FIELD 12w01 FGPRXE (wo): Force generic payload receive error Writing one to this bit forces a generic payload receive error.
+0x40016D00 B  REGISTER VSCR: DSI Host video shadow control register
+0x40016D00 C   FIELD 00w01 EN (rw): Enable When set to 1, DSI Host LTDC interface receives the active configuration from the auxiliary registers. When this bit is set along with the UR bit, the auxiliary registers are automatically updated.
+0x40016D00 C   FIELD 08w01 UR (rw): Update register When set to 1, the LTDC registers are copied to the auxiliary registers. After copying, this bit is auto cleared.
+0x40016D0C B  REGISTER LCVCIDR: DSI Host LTDC current VCID register
+0x40016D0C C   FIELD 00w02 VCID (rw): Virtual channel ID This field returns the virtual channel ID for the LTDC interface.
+0x40016D10 B  REGISTER LCCCR: DSI Host LTDC current color coding register
+0x40016D10 C   FIELD 00w04 COLC (ro): Color coding This field returns the current LTDC interface color coding. If LTDC interface in command mode is chosen and currently works in the command mode (CMDM=1), then 0110-1111: 24-bit
+0x40016D10 C   FIELD 08w01 LPE (ro): Loosely packed enable This bit returns the current state of the loosely packed variant to 18-bit configurations.
+0x40016D18 B  REGISTER LPMCCR: DSI Host low-power mode current configuration register
+0x40016D18 C   FIELD 00w08 VLPSIZE (ro): VACT largest packet size This field returns the current size, in bytes, of the largest packet that can fit in a line during VACT regions, for the transmission of commands in low-power mode.
+0x40016D18 C   FIELD 16w08 LPSIZE (ro): Largest packet size This field is returns the current size, in bytes, of the largest packet that can fit in a line during VSA, VBP and VFP regions, for the transmission of commands in low-power mode.
+0x40016D38 B  REGISTER VMCCR: DSI Host video mode current configuration register
+0x40016D38 C   FIELD 00w02 VMT (ro): Video mode type This field returns the current video mode transmission type: 1x: Burst mode
+0x40016D38 C   FIELD 02w01 LPVSAE (ro): Low-power vertical sync time enable This bit returns the current state of return to low-power inside the vertical sync time (VSA) period when timing allows.
+0x40016D38 C   FIELD 03w01 LPVBPE (ro): Low-power vertical back-porch enable This bit returns the current state of return to low-power inside the vertical back-porch (VBP) period when timing allows.
+0x40016D38 C   FIELD 04w01 LPVFPE (ro): Low-power vertical front-porch enable This bit returns the current state of return to low-power inside the vertical front-porch (VFP) period when timing allows.
+0x40016D38 C   FIELD 05w01 LPVAE (ro): Low-power vertical active enable This bit returns the current state of return to low-power inside the vertical active (VACT) period when timing allows.
+0x40016D38 C   FIELD 06w01 LPHBPE (ro): Low-power horizontal back-porch enable This bit returns the current state of return to low-power inside the horizontal back-porch (HBP) period when timing allows.
+0x40016D38 C   FIELD 07w01 LPHFE (ro): Low-power horizontal front-porch enable This bit returns the current state of return to low-power inside the horizontal front-porch (HFP) period when timing allows.
+0x40016D38 C   FIELD 08w01 FBTAAE (ro): Frame BTA acknowledge enable This bit returns the current state of request for an acknowledge response at the end of a frame.
+0x40016D38 C   FIELD 09w01 LPCE (ro): Low-power command enable This bit returns the current command transmission state in low-power mode.
+0x40016D3C B  REGISTER VPCCR: DSI Host video packet current configuration register
+0x40016D3C C   FIELD 00w14 VPSIZE (ro): Video packet size This field returns the number of pixels in a single video packet.
+0x40016D40 B  REGISTER VCCCR: DSI Host video chunks current configuration register
+0x40016D40 C   FIELD 00w13 NUMC (ro): Number of chunks This field returns the number of chunks being transmitted during a line period.
+0x40016D44 B  REGISTER VNPCCR: DSI Host video null packet current configuration register
+0x40016D44 C   FIELD 00w13 NPSIZE (ro): Null packet size This field returns the number of bytes inside a null packet.
+0x40016D48 B  REGISTER VHSACCR: DSI Host video HSA current configuration register
+0x40016D48 C   FIELD 00w12 HSA (ro): Horizontal synchronism active duration This fields returns the horizontal synchronism active period in lane byte clock cycles.
+0x40016D4C B  REGISTER VHBPCCR: DSI Host video HBP current configuration register
+0x40016D4C C   FIELD 00w12 HBP (ro): Horizontal back-porch duration This field returns the horizontal back-porch period in lane byte clock cycles.
+0x40016D50 B  REGISTER VLCCR: DSI Host video line current configuration register
+0x40016D50 C   FIELD 00w15 HLINE (ro): Horizontal line duration This field returns the current total of the horizontal line period (HSA+HBP+HACT+HFP) counted in lane byte clock cycles.
+0x40016D54 B  REGISTER VVSACCR: DSI Host video VSA current configuration register
+0x40016D54 C   FIELD 00w10 VSA (ro): Vertical synchronism active duration This field returns the current vertical synchronism active period measured in number of horizontal lines.
+0x40016D58 B  REGISTER VVBPCCR: DSI Host video VBP current configuration register
+0x40016D58 C   FIELD 00w10 VBP (ro): Vertical back-porch duration This field returns the current vertical back-porch period measured in number of horizontal lines.
+0x40016D5C B  REGISTER VVFPCCR: DSI Host video VFP current configuration register
+0x40016D5C C   FIELD 00w10 VFP (ro): Vertical front-porch duration This field returns the current vertical front-porch period measured in number of horizontal lines.
+0x40016D60 B  REGISTER VVACCR: DSI Host video VA current configuration register
+0x40016D60 C   FIELD 00w14 VA (ro): Vertical active duration This field returns the current vertical active period measured in number of horizontal lines.
+0x40017000 B  REGISTER WCFGR: DSI Wrapper configuration register
+0x40017000 C   FIELD 00w01 DSIM (rw): DSI mode This bit selects the mode for the video transmission. This bit must only be changed when DSI Host is stopped (DSI_CR.EN = 0).
+0x40017000 C   FIELD 01w03 COLMUX (rw): Color multiplexing This bit selects the color multiplexing used by DSI Host. This field must only be changed when DSI is stopped (DSI_WCR.DSIEN = 0 and DSI_CR.EN=0).
+0x40017000 C   FIELD 04w01 TESRC (rw): TE source This bit selects the tearing effect (TE) source. This bit must only be changed when DSI Host is stopped (DSI_CR.EN = 0).
+0x40017000 C   FIELD 05w01 TEPOL (rw): TE polarity This bit selects the polarity of the external pin tearing effect (TE) source. This bit must only be changed when DSI Host is stopped (DSI_CR.EN = 0).
+0x40017000 C   FIELD 06w01 AR (rw): Automatic refresh This bit selects the refresh mode in DBI mode. This bit must only be changed when DSI Host is stopped (DSI_CR.EN = 0).
+0x40017000 C   FIELD 07w01 VSPOL (rw): VSync polarity This bit selects the VSync edge on which the LTDC is halted. This bit must only be changed when DSI is stopped (DSI_WCR.DSIEN = 0 and DSI_CR.EN=0).
+0x40017004 B  REGISTER WCR: DSI Wrapper control register
+0x40017004 C   FIELD 00w01 COLM (rw): Color mode This bit controls the display color mode in video mode.
+0x40017004 C   FIELD 01w01 SHTDN (rw): Shutdown This bit controls the display shutdown in video mode.
+0x40017004 C   FIELD 02w01 LTDCEN (rw): LTDC enable This bit enables the LTDC for a frame transfer in adapted command mode.
+0x40017004 C   FIELD 03w01 DSIEN (rw): DSI enable This bit enables the DSI Wrapper.
+0x40017008 B  REGISTER WIER: DSI Wrapper interrupt enable register
+0x40017008 C   FIELD 00w01 TEIE (rw): Tearing effect interrupt enable This bit enables the tearing effect interrupt.
+0x40017008 C   FIELD 01w01 ERIE (rw): End of refresh interrupt enable This bit enables the end of refresh interrupt.
+0x40017008 C   FIELD 09w01 PLLLIE (rw): PLL lock interrupt enable This bit enables the PLL lock interrupt.
+0x40017008 C   FIELD 10w01 PLLUIE (rw): PLL unlock interrupt enable This bit enables the PLL unlock interrupt.
+0x40017008 C   FIELD 13w01 RRIE (rw): Regulator ready interrupt enable This bit enables the regulator ready interrupt.
+0x4001700C B  REGISTER WISR: DSI Wrapper interrupt and status register
+0x4001700C C   FIELD 00w01 TEIF (ro): Tearing effect interrupt flag This bit is set when a tearing effect event occurs.
+0x4001700C C   FIELD 01w01 ERIF (ro): End of refresh interrupt flag This bit is set when the transfer of a frame in adapted command mode is finished.
+0x4001700C C   FIELD 02w01 BUSY (ro): Busy flag This bit is set when the transfer of a frame in adapted command mode is ongoing.
+0x4001700C C   FIELD 08w01 PLLLS (ro): PLL lock status This bit is set when the PLL is locked and cleared when it is unlocked.
+0x4001700C C   FIELD 09w01 PLLLIF (ro): PLL lock interrupt flag This bit is set when the PLL becomes locked.
+0x4001700C C   FIELD 10w01 PLLUIF (ro): PLL unlock interrupt flag This bit is set when the PLL becomes unlocked.
+0x4001700C C   FIELD 12w01 RRS (ro): Regulator ready status This bit gives the status of the regulator.
+0x4001700C C   FIELD 13w01 RRIF (ro): Regulator ready interrupt flag This bit is set when the regulator becomes ready.
+0x40017010 B  REGISTER WIFCR: DSI Wrapper interrupt flag clear register
+0x40017010 C   FIELD 00w01 CTEIF (wo): Clear tearing effect interrupt flag Write 1 clears the TEIF flag in the DSI_WSR register.
+0x40017010 C   FIELD 01w01 CERIF (wo): Clear end of refresh interrupt flag Write 1 clears the ERIF flag in the DSI_WSR register.
+0x40017010 C   FIELD 09w01 CPLLLIF (wo): Clear PLL lock interrupt flag Write 1 clears the PLLLIF flag in the DSI_WSR register.
+0x40017010 C   FIELD 10w01 CPLLUIF (wo): Clear PLL unlock interrupt flag Write 1 clears the PLLUIF flag in the DSI_WSR register.
+0x40017010 C   FIELD 13w01 CRRIF (wo): Clear regulator ready interrupt flag Write 1 clears the RRIF flag in the DSI_WSR register.
+0x40017018 B  REGISTER WPCR0: DSI Wrapper PHY configuration register 0
+0x40017018 C   FIELD 00w06 UIX4 (rw): Unit interval multiplied by 4 This field defines the bit period in high-speed mode in unit of 0.25 ns. As an example, if the unit interval is 3 ns, a value of twelve (0x0C) must be driven to this input. This value is used to generate delays. If the period is not a multiple of 0.25 ns, the value driven must be rounded down. For example, a 600 Mbit/s link uses a unit interval of 1.667 ns, which, multiplied by four gives 6.667 ns. In this case a value of 6 (not 7) must be driven onto the ui_x4 input.
+0x40017018 C   FIELD 06w01 SWCL (rw): Swap clock lane pins This bit swaps the pins on clock lane.
+0x40017018 C   FIELD 07w01 SWDL0 (rw): Swap data lane 0 pins This bit swaps the pins on data lane 0.
+0x40017018 C   FIELD 08w01 SWDL1 (rw): Swap data lane 1 pins This bit swaps the pins on clock lane.
+0x40017018 C   FIELD 09w01 HSICL (rw): Invert high-speed data signal on clock lane This bit inverts the high-speed data signal on clock lane.
+0x40017018 C   FIELD 10w01 HSIDL0 (rw): Invert the high-speed data signal on data lane 0 This bit inverts the high-speed data signal on clock lane.
+0x40017018 C   FIELD 11w01 HSIDL1 (rw): Invert the high-speed data signal on data lane 1 This bit inverts the high-speed data signal on data lane 1.
+0x40017018 C   FIELD 12w01 FTXSMCL (rw): Force in TX Stop mode the clock lane This bit forces the clock lane in TX stop mode. It is used to initialize a lane module in transmit mode. It causes the lane module to immediately jump to transmit control mode and to begin transmitting a stop state (LP-11). It can be used to go back in TX mode after a wrong BTA sequence.
+0x40017018 C   FIELD 13w01 FTXSMDL (rw): Force in TX Stop mode the data lanes This bit forces the data lanes in TX stop mode. It is used to initialize a lane module in transmit mode. It causes the lane module to immediately jump to transmit control mode and to begin transmitting a stop state (LP-11). It can be used to go back in TX mode after a wrong BTA sequence.
+0x40017018 C   FIELD 14w01 CDOFFDL (rw): Contention detection OFF on data lanes When only forward escape mode is used, this signal can be made high to switch off the contention detector and reduce static power consumption.
+0x40017018 C   FIELD 16w01 TDDL (rw): Turn disable data lanes This bit forces the data lane to remain in RX event if it receives a bus-turn-around request from the other side.
+0x40017018 C   FIELD 18w01 PDEN (rw): Pull-down enable This bit enables a pull-down on the lane to prevent from floating states when unused.
+0x40017018 C   FIELD 19w01 TCLKPREPEN (rw): Custom time for t<sub>CLK-PREPARE</sub> enable This bit enables the manual programming of t<sub>CLK-PREPARE </sub>duration in the D-PHY. The desired value must be programmed in the TLKCPREP field of the DSI_WPCR2 register.
+0x40017018 C   FIELD 20w01 TCLKZEROEN (rw): Custom time for t<sub>CLK-ZERO</sub> enable This bit enables the manual programming of t<sub>CLK-ZERO </sub>duration in the D-PHY. The desired value must be programmed in the TCLKZERO field of the DSI_WPCR2 register.
+0x40017018 C   FIELD 21w01 THSPREPEN (rw): Custom time for t<sub>HS-PREPARE</sub> enable This bit enables the manual programming of t<sub>HS-PREPARE </sub>duration in the D-PHY. The desired value must be programmed in the THSPREP field of the DSI_WPCR2 register.
+0x40017018 C   FIELD 22w01 THSTRAILEN (rw): Custom time for t<sub>HS-TRAIL</sub> enable This bit enables the manual programming of T<sub>HS-TRAIL </sub>duration in the D-PHY. The desired value must be programmed in the THSRAIL field of the DSI_WPCR2 register.
+0x40017018 C   FIELD 23w01 THSZEROEN (rw): Custom time for t<sub>HS-ZERO</sub> enable This bit enables the manual programming of t<sub>HS-ZERO </sub>duration in the D-PHY. The desired value must be programmed in the THSZERO field of the DSI_WPCR3 register.
+0x40017018 C   FIELD 24w01 TLPXDEN (rw): Custom time for t<sub>LPX</sub> for data lanes enable This bit enables the manual programming of T<sub>LPX </sub>duration for the data lanes in the D-PHY. The desired value must be programmed in the TLPXD field of the DSI_WPCR3 register.
+0x40017018 C   FIELD 25w01 THSEXITEN (rw): Custom time for t<sub>HS-EXIT</sub> enable This bit enables the manual programming of t<sub>HS-EXIT </sub>duration in the D-PHY. The desired value must be programmed in the THSEXIT field of the DSI_WPCR3 register.
+0x40017018 C   FIELD 26w01 TLPXCEN (rw): Custom time for t<sub>LPX</sub> for clock lane enable This bit enables the manual programming of t<sub>LPX</sub> duration for the clock lane in the D-PHY. The desired value must be programmed in the TLPXC field of the DSI_WPCR3 register.
+0x40017018 C   FIELD 27w01 TCLKPOSTEN (rw): Custom time for t<sub>CLK-POST</sub> enable This bit enables the manual programming of t<sub>CLK-POST </sub>duration in the D-PHY. The desired value must be programmed in the TCLKPOST field of the DSI_WPCR4 register.
+0x4001701C B  REGISTER WPCR1: DSI Wrapper PHY configuration register 1
+0x4001701C C   FIELD 00w02 HSTXDCL (rw): High-speed transmission delay on clock lane Delay tuner control to change delay (up to DP/DN) in clock path. Can be used to change clock edge position with respect to data bit transitions on DP/DN. Default value = 00.
+0x4001701C C   FIELD 02w02 HSTXDDL (rw): High-speed transmission delay on data lanes Delay tuner control to change delay (up to DP/DN) in data path. Can be used to change data edge transition positions with respect to clock edge on DP/DN. Default value = 00.
+0x4001701C C   FIELD 06w02 LPSRCCL (rw): Low-power transmission slew-rate compensation on clock lane Can be used to change slew-rate of clock lane LP transitions. Default value = 00.
+0x4001701C C   FIELD 08w02 LPSRCDL (rw): Low-power transmission slew-rate compensation on data lanes Can be used to change slew-rate of data lane LP transitions. Default value = 00.
+0x4001701C C   FIELD 12w01 SDDC (rw): SDD control This bit switches on the additional current path to meet the SDDTx parameter defined by MIPI<sup></sup> D-PHY Specification on both clock and data lanes.
+0x4001701C C   FIELD 16w02 HSTXSRCCL (rw): High-speed transmission slew-rate control on clock lane Slew-rate control for high-speed transmitter output. It can be used to change slew-rate of clock lane HS transitions. Default value = 00.
+0x4001701C C   FIELD 18w02 HSTXSRCDL (rw): High-speed transmission slew-rate control on data lanes Slew-rate control for high-speed transmitter output. It can be used to change slew-rate of data lane HS transitions. Default value = 00.
+0x4001701C C   FIELD 22w01 FLPRXLPM (rw): Forces LP receiver in low-power mode This bit enables the low-power mode of LP receiver (LPRX). When set, the LPRX operates in low-power mode all the time (when this is not activated, LPRX operates in low power mode during ULPS only).
+0x4001701C C   FIELD 25w02 LPRXFT (rw): Low-power RX low-pass filtering tuning This signal can be used to tune the cutoff frequency of low-pass filter at the input of LPRX.
+0x40017020 B  REGISTER WPCR2: DSI Wrapper PHY configuration register 2
+0x40017020 C   FIELD 00w08 TCLKPREP (rw): t<sub>CLK-PREPARE</sub> This field defines the t<sub>CLK-PREPARE</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the TCLKPREPEN bit of the DSI_WPCR0 is set. TCLKPREP = 2 x t<sub>CLK-PREPARE</sub> expressed in ns.The default value used by the D-PHY when TCLKPREPEN bit of the DSI_WPCR0 is reset is 120 (60ns + 20*UI).
+0x40017020 C   FIELD 08w08 TCLKZERO (rw): t<sub>CLK-ZERO</sub> This field defines the t<sub>CLK-ZERO</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the TCLKZEROEN bit of the DSI_WPCR0 is set. TCLKZERO = t<sub>CLK-ZERO</sub> / 2 expressed in ns.The default value used by the D-PHY when TCLKZEROEN bit of the DSI_WPCR0 is reset is 195 (390ns).
+0x40017020 C   FIELD 16w08 THSPREP (rw): t<sub>HS-PREPARE</sub> This field defines the t<sub>HS-PREPARE</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the THSPREPEN bit of the DSI_WPCR0 is set. THSPREP = 2 x t<sub>HS-PREPARE</sub> expressed in ns.The default value used by the D-PHY when THSPREPEN bit of the DSI_WPCR0 is reset is 126 (63ns + 12*UI).
+0x40017020 C   FIELD 24w08 THSTRAIL (rw): t<sub>HSTRAIL</sub> This field defines the t<sub>HS-TRAIL</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the THSTRAILEN bit of the DSI_WPCR0 is set. THSTRAIL = 2 x t<sub>HS-TRAIL</sub> expressed in ns.The default value used by the D-PHY when THSTRAILEN bit of the DSI_WPCR0 is reset is 140 (70ns+8*UI).
+0x40017024 B  REGISTER WPCR3: DSI Wrapper PHY configuration register 3
+0x40017024 C   FIELD 00w08 THSZERO (rw): t<sub>HS-ZERO</sub> This field defines the t<sub>HS-ZERO</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the THSZEROEN bit of the DSI_WPCR1 is set. THSZERO = t<sub>HS-ZERO</sub> expressed in ns.The default value used by the D-PHY when THSZEROEN bit of the DSI_WPCR1 is reset is 175, (175ns).
+0x40017024 C   FIELD 08w08 TLPXD (rw): t<sub>LPX</sub> for data lanes This field defines the t<sub>LPX</sub> has specified in the MIPI<sup></sup> D-PHY specification for the data lanes. This value is used by the D-PHY when the TLPXDEN bit of the DSI_WPCR1 is set. TLPXD = 2 x t<sub>LPX</sub> expressed in ns.The default value used by the D-PHY when TLPXDEN bit of the DSI_WPCR1 is reset is 100 (50ns).
+0x40017024 C   FIELD 16w08 THSEXIT (rw): t<sub>HSEXIT</sub> This field defines the t<sub>HS-EXHigh-SpeedIT</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the THSEXITEN bit of the DSI_WPCR1 is set. THSEXIT = t<sub>HS-ZERO</sub> expressed in ns.The default value used by the D-PHY when THSEXITEN bit of the DSI_WPCR1 is reset is 100 (100ns).
+0x40017024 C   FIELD 24w08 TLPXC (rw): t<sub>LPXC</sub> for clock lane This field defines the t<sub>LPX</sub> has specified in the MIPI<sup></sup> D-PHY specification for the clock lane. This value is used by the D-PHY when the TLPXCEN bit of the DSI_WPCR1 is set. TLPXC = 2 x t<sub>LPX</sub> expressed in ns.The default value used by the D-PHY when TLPXCEN bit of the DSI_WPCR1 is reset is 100 (50ns).
+0x40017028 B  REGISTER WPCR4: DSI Wrapper PHY configuration register 4
+0x40017028 C   FIELD 00w08 TCLKPOST (rw): t<sub>CLK-POST</sub> This field defines the t<sub>CLK-POST</sub> has specified in the MIPI<sup></sup> D-PHY specification. This value is used by the D-PHY when the TCLKPOSTEN bit of the DSI_WPCR0 is set. TCLKPOST = 2 x t<sub>CLK-POST</sub> expressed in ns.The default value used by the D-PHY when TCLKPOSTEN bit of the DSI_WPCR0 is reset is 200 (100ns + 120*UI).
+0x40017030 B  REGISTER WRPCR: DSI Wrapper regulator and PLL control register
+0x40017030 C   FIELD 00w01 PLLEN (rw): PLL enable This bit enables the D-PHY PLL.
+0x40017030 C   FIELD 02w07 NDIV (rw): PLL loop division factor This field configures the PLL loop division factor. 10 to 125: Allowed loop division factor values Others: Reserved
+0x40017030 C   FIELD 11w04 IDF (rw): PLL input division factor This field configures the PLL input division factor.
+0x40017030 C   FIELD 16w02 ODF (rw): PLL output division factor This field configures the PLL output division factor.
+0x40017030 C   FIELD 24w01 REGEN (rw): Regulator enable This bit enables the DPHY regulator.
 0x40020000 A PERIPHERAL GPIOA
 0x40020000 B  REGISTER MODER (rw): GPIO port mode register
 0x40020000 C   FIELD 00w02 MODER0: Port x configuration pin 0
@@ -11242,312 +11242,6 @@
 0xA000102C C   FIELD 00w16 INTERVAL: Polling interval
 0xA0001030 B  REGISTER LPTR (rw): low-power timeout register
 0xA0001030 C   FIELD 00w16 TIMEOUT: Timeout period
-0xE000E008 A PERIPHERAL SCB_ACTRL
-0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
-0xE000E008 C   FIELD 00w01 DISMCYCINT: DISMCYCINT
-0xE000E008 C   FIELD 01w01 DISDEFWBUF: DISDEFWBUF
-0xE000E008 C   FIELD 02w01 DISFOLD: DISFOLD
-0xE000E008 C   FIELD 08w01 DISFPCA: DISFPCA
-0xE000E008 C   FIELD 09w01 DISOOFP: DISOOFP
-0xE000E010 A PERIPHERAL STK
-0xE000E010 B  REGISTER CTRL (rw): SysTick control and status register
-0xE000E010 C   FIELD 00w01 ENABLE: Counter enable
-0xE000E010 C   FIELD 01w01 TICKINT: SysTick exception request enable
-0xE000E010 C   FIELD 02w01 CLKSOURCE: Clock source selection
-0xE000E010 C   FIELD 16w01 COUNTFLAG: COUNTFLAG
-0xE000E014 B  REGISTER LOAD (rw): SysTick reload value register
-0xE000E014 C   FIELD 00w24 RELOAD: RELOAD value
-0xE000E018 B  REGISTER VAL (rw): SysTick current value register
-0xE000E018 C   FIELD 00w24 CURRENT: Current counter value
-0xE000E01C B  REGISTER CALIB (rw): SysTick calibration value register
-0xE000E01C C   FIELD 00w24 TENMS: Calibration value
-0xE000E01C C   FIELD 30w01 SKEW: SKEW flag: Indicates whether the TENMS value is exact
-0xE000E01C C   FIELD 31w01 NOREF: NOREF flag. Reads as zero
-0xE000E100 A PERIPHERAL NVIC
-0xE000E100 B  REGISTER ISER0 (rw): Interrupt Set-Enable Register
-0xE000E100 C   FIELD 00w32 SETENA: SETENA
-0xE000E104 B  REGISTER ISER1 (rw): Interrupt Set-Enable Register
-0xE000E104 C   FIELD 00w32 SETENA: SETENA
-0xE000E108 B  REGISTER ISER2 (rw): Interrupt Set-Enable Register
-0xE000E108 C   FIELD 00w32 SETENA: SETENA
-0xE000E180 B  REGISTER ICER0 (rw): Interrupt Clear-Enable Register
-0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E184 B  REGISTER ICER1 (rw): Interrupt Clear-Enable Register
-0xE000E184 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E188 B  REGISTER ICER2 (rw): Interrupt Clear-Enable Register
-0xE000E188 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E200 B  REGISTER ISPR0 (rw): Interrupt Set-Pending Register
-0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E204 B  REGISTER ISPR1 (rw): Interrupt Set-Pending Register
-0xE000E204 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E208 B  REGISTER ISPR2 (rw): Interrupt Set-Pending Register
-0xE000E208 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E280 B  REGISTER ICPR0 (rw): Interrupt Clear-Pending Register
-0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E284 B  REGISTER ICPR1 (rw): Interrupt Clear-Pending Register
-0xE000E284 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E288 B  REGISTER ICPR2 (rw): Interrupt Clear-Pending Register
-0xE000E288 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E300 B  REGISTER IABR0 (ro): Interrupt Active Bit Register
-0xE000E300 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E304 B  REGISTER IABR1 (ro): Interrupt Active Bit Register
-0xE000E304 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E308 B  REGISTER IABR2 (ro): Interrupt Active Bit Register
-0xE000E308 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register
-0xE000E400 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E400 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E400 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E400 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register
-0xE000E404 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E404 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E404 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E404 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register
-0xE000E408 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E408 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E408 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E408 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register
-0xE000E40C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E40C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E40C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E40C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register
-0xE000E410 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E410 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E410 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E410 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register
-0xE000E414 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E414 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E414 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E414 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register
-0xE000E418 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E418 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E418 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E418 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register
-0xE000E41C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E41C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E41C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E41C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E420 B  REGISTER IPR8 (rw): Interrupt Priority Register
-0xE000E420 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E420 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E420 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E420 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E424 B  REGISTER IPR9 (rw): Interrupt Priority Register
-0xE000E424 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E424 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E424 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E424 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E428 B  REGISTER IPR10 (rw): Interrupt Priority Register
-0xE000E428 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E428 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E428 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E428 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E42C B  REGISTER IPR11 (rw): Interrupt Priority Register
-0xE000E42C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E42C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E42C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E42C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E430 B  REGISTER IPR12 (rw): Interrupt Priority Register
-0xE000E430 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E430 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E430 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E430 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E434 B  REGISTER IPR13 (rw): Interrupt Priority Register
-0xE000E434 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E434 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E434 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E434 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E438 B  REGISTER IPR14 (rw): Interrupt Priority Register
-0xE000E438 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E438 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E438 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E438 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E43C B  REGISTER IPR15 (rw): Interrupt Priority Register
-0xE000E43C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E43C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E43C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E43C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E440 B  REGISTER IPR16 (rw): Interrupt Priority Register
-0xE000E440 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E440 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E440 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E440 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E444 B  REGISTER IPR17 (rw): Interrupt Priority Register
-0xE000E444 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E444 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E444 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E444 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E448 B  REGISTER IPR18 (rw): Interrupt Priority Register
-0xE000E448 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E448 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E448 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E448 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E44C B  REGISTER IPR19 (rw): Interrupt Priority Register
-0xE000E44C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E44C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E44C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E44C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E450 B  REGISTER IPR20 (rw): Interrupt Priority Register
-0xE000E450 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E450 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E450 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E450 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000ED00 A PERIPHERAL SCB
-0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
-0xE000ED00 C   FIELD 00w04 Revision: Revision number
-0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000ED00 C   FIELD 16w04 Constant: Reads as 0xF
-0xE000ED00 C   FIELD 20w04 Variant: Variant number
-0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
-0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
-0xE000ED08 C   FIELD 09w21 TBLOFF: Vector table base offset field
-0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000ED0C C   FIELD 00w01 VECTRESET: VECTRESET
-0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000ED0C C   FIELD 08w03 PRIGROUP: PRIGROUP
-0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000ED10 B  REGISTER SCR (rw): System control register
-0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
-0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000ED18 B  REGISTER SHPR1 (rw): System handler priority registers
-0xE000ED18 C   FIELD 00w08 PRI_4: Priority of system handler 4
-0xE000ED18 C   FIELD 08w08 PRI_5: Priority of system handler 5
-0xE000ED18 C   FIELD 16w08 PRI_6: Priority of system handler 6
-0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED24 B  REGISTER SHCRS (rw): System handler control and state register
-0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
-0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
-0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
-0xE000ED24 C   FIELD 07w01 SVCALLACT: SVC call active bit
-0xE000ED24 C   FIELD 08w01 MONITORACT: Debug monitor active bit
-0xE000ED24 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
-0xE000ED24 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
-0xE000ED24 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
-0xE000ED24 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
-0xE000ED24 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
-0xE000ED24 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
-0xE000ED24 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
-0xE000ED24 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
-0xE000ED24 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
-0xE000ED28 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
-0xE000ED28 C   FIELD 01w01 IACCVIOL: Instruction access violation flag
-0xE000ED28 C   FIELD 03w01 MUNSTKERR: Memory manager fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 04w01 MSTKERR: Memory manager fault on stacking for exception entry.
-0xE000ED28 C   FIELD 05w01 MLSPERR: MLSPERR
-0xE000ED28 C   FIELD 07w01 MMARVALID: Memory Management Fault Address Register (MMAR) valid flag
-0xE000ED28 C   FIELD 08w01 IBUSERR: Instruction bus error
-0xE000ED28 C   FIELD 09w01 PRECISERR: Precise data bus error
-0xE000ED28 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
-0xE000ED28 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
-0xE000ED28 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
-0xE000ED28 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
-0xE000ED28 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
-0xE000ED28 C   FIELD 17w01 INVSTATE: Invalid state usage fault
-0xE000ED28 C   FIELD 18w01 INVPC: Invalid PC load usage fault
-0xE000ED28 C   FIELD 19w01 NOCP: No coprocessor usage fault.
-0xE000ED28 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
-0xE000ED28 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
-0xE000ED2C B  REGISTER HFSR (rw): Hard fault status register
-0xE000ED2C C   FIELD 01w01 VECTTBL: Vector table hard fault
-0xE000ED2C C   FIELD 30w01 FORCED: Forced hard fault
-0xE000ED2C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
-0xE000ED34 B  REGISTER MMFAR (rw): Memory management fault address register
-0xE000ED34 C   FIELD 00w32 MMFAR: Memory management fault address
-0xE000ED38 B  REGISTER BFAR (rw): Bus fault address register
-0xE000ED38 C   FIELD 00w32 BFAR: Bus fault address
-0xE000ED3C B  REGISTER AFSR (rw): Auxiliary fault status register
-0xE000ED3C C   FIELD 00w32 IMPDEF: Implementation defined
-0xE000ED88 A PERIPHERAL FPU_CPACR
-0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
-0xE000ED88 C   FIELD 20w04 CP: CP
-0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER TYPER (ro): MPU type register
-0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
-0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
-0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER CTRL (ro): MPU control register
-0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
-0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
-0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER RNR (rw): MPU region number register
-0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
-0xE000ED9C C   FIELD 00w04 REGION: MPU region field
-0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
-0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
-0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
-0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
-0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
-0xE000EDA0 C   FIELD 16w01 B: memory attribute
-0xE000EDA0 C   FIELD 17w01 C: memory attribute
-0xE000EDA0 C   FIELD 18w01 S: Shareable memory attribute
-0xE000EDA0 C   FIELD 19w03 TEX: memory attribute
-0xE000EDA0 C   FIELD 24w03 AP: Access permission
-0xE000EDA0 C   FIELD 28w01 XN: Instruction access disable bit
-0xE000EF00 A PERIPHERAL NVIC_STIR
-0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
-0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
-0xE000EF34 A PERIPHERAL FPU
-0xE000EF34 B  REGISTER FPCCR (rw): Floating-point context control register
-0xE000EF34 C   FIELD 00w01 LSPACT: LSPACT
-0xE000EF34 C   FIELD 01w01 USER: USER
-0xE000EF34 C   FIELD 03w01 THREAD: THREAD
-0xE000EF34 C   FIELD 04w01 HFRDY: HFRDY
-0xE000EF34 C   FIELD 05w01 MMRDY: MMRDY
-0xE000EF34 C   FIELD 06w01 BFRDY: BFRDY
-0xE000EF34 C   FIELD 08w01 MONRDY: MONRDY
-0xE000EF34 C   FIELD 30w01 LSPEN: LSPEN
-0xE000EF34 C   FIELD 31w01 ASPEN: ASPEN
-0xE000EF38 B  REGISTER FPCAR (rw): Floating-point context address register
-0xE000EF38 C   FIELD 03w29 ADDRESS: Location of unpopulated floating-point
-0xE000EF3C B  REGISTER FPSCR (rw): Floating-point status control register
-0xE000EF3C C   FIELD 00w01 IOC: Invalid operation cumulative exception bit
-0xE000EF3C C   FIELD 01w01 DZC: Division by zero cumulative exception bit.
-0xE000EF3C C   FIELD 02w01 OFC: Overflow cumulative exception bit
-0xE000EF3C C   FIELD 03w01 UFC: Underflow cumulative exception bit
-0xE000EF3C C   FIELD 04w01 IXC: Inexact cumulative exception bit
-0xE000EF3C C   FIELD 07w01 IDC: Input denormal cumulative exception bit.
-0xE000EF3C C   FIELD 22w02 RMode: Rounding Mode control field
-0xE000EF3C C   FIELD 24w01 FZ: Flush-to-zero mode control bit:
-0xE000EF3C C   FIELD 25w01 DN: Default NaN mode control bit
-0xE000EF3C C   FIELD 26w01 AHP: Alternative half-precision control bit
-0xE000EF3C C   FIELD 28w01 V: Overflow condition code flag
-0xE000EF3C C   FIELD 29w01 C: Carry condition code flag
-0xE000EF3C C   FIELD 30w01 Z: Zero condition code flag
-0xE000EF3C C   FIELD 31w01 N: Negative condition code flag
 0xE0042000 A PERIPHERAL DBGMCU
 0xE0042000 B  REGISTER IDCODE (ro): IDCODE
 0xE0042000 C   FIELD 00w12 DEV_ID: DEV_ID
@@ -11600,8 +11294,6 @@ INTERRUPT 015: DMA1_Stream4 (DMA1): DMA1 Stream4 global interrupt
 INTERRUPT 016: DMA1_Stream5 (DMA1): DMA1 Stream5 global interrupt
 INTERRUPT 017: DMA1_Stream6 (DMA1): DMA1 Stream6 global interrupt
 INTERRUPT 018: ADC (ADC1): ADC1 global interrupt
-INTERRUPT 018: ADC (ADC2): ADC2 global interrupts
-INTERRUPT 018: ADC (ADC3): ADC3 global interrupts
 INTERRUPT 019: CAN1_TX (CAN1): CAN1 TX interrupts
 INTERRUPT 020: CAN1_RX0 (CAN1): CAN1 RX0 interrupts
 INTERRUPT 021: CAN1_RX1 (CAN1): CAN1 RX1 interrupts
@@ -11609,10 +11301,8 @@ INTERRUPT 022: CAN1_SCE (CAN1): CAN1 SCE interrupt
 INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line[9:5] interrupts
 INTERRUPT 024: TIM1_BRK_TIM9 (TIM1): TIM1 Break interrupt and TIM9 global interrupt
 INTERRUPT 024: TIM1_BRK_TIM9 (TIM9): TIM1 Break interrupt and TIM9 global interrupt
-INTERRUPT 025: TIM1_UP_TIM10 (TIM1): TIM1 Update interrupt and TIM10 global interrupt
 INTERRUPT 025: TIM1_UP_TIM10 (TIM10): TIM1 Update interrupt and TIM10 global interrupt
 INTERRUPT 026: TIM1_TRG_COM_TIM11 (TIM1): TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
-INTERRUPT 026: TIM1_TRG_COM_TIM11 (TIM11): TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
 INTERRUPT 027: TIM1_CC (TIM1): TIM1 Capture Compare interrupt
 INTERRUPT 028: TIM2 (TIM2): TIM2 global interrupt
 INTERRUPT 029: TIM3 (TIM3): TIM3 global interrupt
@@ -11630,11 +11320,8 @@ INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line[15:10] interrupts
 INTERRUPT 041: RTC_Alarm (RTC): RTC Alarms (A and B) through EXTI line interrupt
 INTERRUPT 042: OTG_FS_WKUP (OTG_FS_GLOBAL): USB On-The-Go FS Wakeup through EXTI line interrupt
 INTERRUPT 043: TIM8_BRK_TIM12 (TIM12): TIM8 Break interrupt and TIM12 global interrupt
-INTERRUPT 043: TIM8_BRK_TIM12 (TIM8): TIM8 Break interrupt and TIM12 global interrupt
-INTERRUPT 044: TIM8_UP_TIM13 (TIM13): TIM8 Update interrupt and TIM13 global interrupt
 INTERRUPT 044: TIM8_UP_TIM13 (TIM8): TIM8 Update interrupt and TIM13 global interrupt
 INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM14): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
-INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM8): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
 INTERRUPT 046: TIM8_CC (TIM8): TIM8 Capture Compare interrupt
 INTERRUPT 047: DMA1_Stream7 (DMA1): DMA1 Stream7 global interrupt
 INTERRUPT 048: FMC (FMC): FMC global interrupt
@@ -11643,7 +11330,6 @@ INTERRUPT 050: TIM5 (TIM5): TIM5 global interrupt
 INTERRUPT 051: SPI3 (SPI3): SPI3 global interrupt
 INTERRUPT 052: UART4 (UART4): UART4 global interrupt
 INTERRUPT 053: UART5 (UART5): UART5 global interrupt
-INTERRUPT 054: TIM6_DAC (DAC): TIM6 global interrupt, DAC1 and DAC2 underrun error interrupt
 INTERRUPT 054: TIM6_DAC (TIM6): TIM6 global interrupt, DAC1 and DAC2 underrun error interrupt
 INTERRUPT 055: TIM7 (TIM7): TIM7 global interrupt
 INTERRUPT 056: DMA2_Stream0 (DMA2): DMA2 Stream0 global interrupt
@@ -11672,7 +11358,7 @@ INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
 INTERRUPT 079: CRYP (CRYP): CRYP crypto global interrupt
 INTERRUPT 080: HASH_RNG (HASH): Hash and Rng global interrupt
 INTERRUPT 080: HASH_RNG (RNG): Hash and Rng global interrupt
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
+INTERRUPT 081: FPU (EXTI): Floating point unit interrupt
 INTERRUPT 082: UART7 (UART7): UART 7 global interrupt
 INTERRUPT 083: UART8 (UART8): UART 8 global interrupt
 INTERRUPT 084: SPI4 (SPI4): SPI 4 global interrupt
