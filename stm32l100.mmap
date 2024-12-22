@@ -1852,86 +1852,116 @@
 0x40007C00 C   FIELD 30w01 CAIF (ro): Channel acquisition interrupt flag
 0x40007C00 C   FIELD 31w01 TSUSP (rw): Suspend Timer Mode
 0x40007C04 A PERIPHERAL RI
-0x40007C08 B  REGISTER ICR (rw): RI input capture register
-0x40007C08 C   FIELD 00w04 IC1IOS: Input capture 1 select bits
-0x40007C08 C   FIELD 04w04 IC2IOS: Input capture 2 select bits
-0x40007C08 C   FIELD 08w04 IC3IOS: Input capture 3 select bits
-0x40007C08 C   FIELD 12w04 IC4IOS: Input capture 4 select bits
-0x40007C08 C   FIELD 16w02 TIM: Timer select bits
-0x40007C08 C   FIELD 18w01 IC1: IC1
-0x40007C08 C   FIELD 19w01 IC2: IC2
-0x40007C08 C   FIELD 20w01 IC3: IC3
-0x40007C08 C   FIELD 21w01 IC4: IC4
-0x40007C0C B  REGISTER ASCR1 (rw): RI analog switches control register 1
-0x40007C0C C   FIELD 00w01 CH0GR1_1: Analog switch control
-0x40007C0C C   FIELD 01w01 CH1GR1_2: Analog switch control
-0x40007C0C C   FIELD 02w01 CH2GR1_3: Analog switch control
-0x40007C0C C   FIELD 03w01 CH3GR1_4: Analog switch control
-0x40007C0C C   FIELD 04w01 CH31GR11_5: Analog switch control
-0x40007C0C C   FIELD 05w01 COMP1_SW1: Comparator 1 analog switch
-0x40007C0C C   FIELD 06w01 CH6GR2_1: Analog switch control
-0x40007C0C C   FIELD 07w01 CH7GR2_2: Analog switch control
-0x40007C0C C   FIELD 08w01 CH8GR3_1: Analog switch control
-0x40007C0C C   FIELD 09w01 CH9GR3_2: Analog switch control
-0x40007C0C C   FIELD 10w01 CH10GR8_1: Analog switch control
-0x40007C0C C   FIELD 11w01 CH11GR8_2: Analog switch control
-0x40007C0C C   FIELD 12w01 CH12GR8_3: Analog switch control
-0x40007C0C C   FIELD 13w01 CH13GR8_4: Analog switch control
-0x40007C0C C   FIELD 14w01 CH14GR9_1: Analog switch control
-0x40007C0C C   FIELD 15w01 CH15GR9_2: Analog switch control
-0x40007C0C C   FIELD 16w01 CH31GR7_1: Analog switch control
-0x40007C0C C   FIELD 18w01 CH18GR7_1: Analog switch control
-0x40007C0C C   FIELD 19w01 CH19GR7_2: Analog switch control
-0x40007C0C C   FIELD 20w01 CH20GR7_3: Analog switch control
-0x40007C0C C   FIELD 21w01 CH21GR7_4: Analog switch control
-0x40007C0C C   FIELD 22w01 CH22: Analog I/O switch control of channel CH22
-0x40007C0C C   FIELD 23w01 CH23: Analog I/O switch control of channel CH23
-0x40007C0C C   FIELD 24w01 CH24: Analog I/O switch control of channel CH24
-0x40007C0C C   FIELD 25w01 CH25: Analog I/O switch control of channel CH25
-0x40007C0C C   FIELD 26w01 VCOMP: ADC analog switch selection for internal node to comparator 1
-0x40007C0C C   FIELD 27w01 CH27GR11_1: Analog switch control
-0x40007C0C C   FIELD 28w01 CH28GR11_2: Analog switch control
-0x40007C0C C   FIELD 29w01 CH29GR11_3: Analog switch control
-0x40007C0C C   FIELD 30w01 CH30GR11_4: Analog switch control
-0x40007C0C C   FIELD 31w01 SCM: Switch control mode
-0x40007C10 B  REGISTER ASCR2 (rw): RI analog switches control register 2
-0x40007C10 C   FIELD 00w01 GR10_1: GR10_1 analog switch control
-0x40007C10 C   FIELD 01w01 GR10_2: GR10_2 analog switch control
-0x40007C10 C   FIELD 02w01 GR10_3: GR10_3 analog switch control
-0x40007C10 C   FIELD 03w01 GR10_4: GR10_4 analog switch control
-0x40007C10 C   FIELD 04w01 GR6_1: GR6_1 analog switch control
-0x40007C10 C   FIELD 05w01 GR6_2: GR6_2 analog switch control
-0x40007C10 C   FIELD 06w01 GR5_1: GR5_1 analog switch control
-0x40007C10 C   FIELD 07w01 GR5_2: GR5_2 analog switch control
-0x40007C10 C   FIELD 08w01 GR5_3: GR5_3 analog switch control
-0x40007C10 C   FIELD 09w01 GR4_1: GR4_1 analog switch control
-0x40007C10 C   FIELD 10w01 GR4_2: GR4_2 analog switch control
-0x40007C10 C   FIELD 11w01 GR4_3: GR4_3 analog switch control
-0x40007C10 C   FIELD 16w01 GR3_3: GR3_3 analog switch control
-0x40007C10 C   FIELD 17w01 GR3_4: GR3_4 analog switch control
-0x40007C10 C   FIELD 18w01 GR3_5: GR3_5 analog switch control
-0x40007C10 C   FIELD 19w01 GR9_3: GR9_3 analog switch control
-0x40007C10 C   FIELD 20w01 GR9_4: GR9_4 analog switch control
-0x40007C10 C   FIELD 21w01 GR2_3: GR2_3 analog switch control
-0x40007C10 C   FIELD 22w01 GR2_4: GR2_4 analog switch control
-0x40007C10 C   FIELD 23w01 GR2_5: GR2_5 analog switch control
-0x40007C10 C   FIELD 24w01 GR7_5: GR7_5 analog switch control
-0x40007C10 C   FIELD 25w01 GR7_6: GR7_6 analog switch control
-0x40007C10 C   FIELD 26w01 GR7_7: GR7_7 analog switch control
-0x40007C10 C   FIELD 27w01 GR6_3: GR6_3 analog switch control
-0x40007C10 C   FIELD 28w01 GR6_4: GR6_4 analog switch control
-0x40007C10 C   FIELD 29w01 GR5_4: GR5_4 analog switch control
-0x40007C14 B  REGISTER HYSCR1 (rw): RI hysteresis control register 1
-0x40007C14 C   FIELD 00w16 PA: Port A hysteresis control on/off
-0x40007C14 C   FIELD 16w16 PB: Port B hysteresis control on/off
-0x40007C18 B  REGISTER HYSCR2 (rw): RI hysteresis control register 2
-0x40007C18 C   FIELD 00w16 PC: Port C hysteresis control on/off
-0x40007C18 C   FIELD 16w16 PD: Port D hysteresis control on/off
-0x40007C1C B  REGISTER HYSCR3 (rw): RI hysteresis control register 3
-0x40007C1C C   FIELD 00w16 PE: Port E hysteresis control on/off
-0x40007C1C C   FIELD 16w16 PF: Port F hysteresis control on/off
-0x40007C20 B  REGISTER HYSCR4 (rw): Hysteresis control register
-0x40007C20 C   FIELD 00w16 PG: Port G hysteresis control on/off
+0x40007C04 B  REGISTER ICR (rw): RI input capture register
+0x40007C04 C   FIELD 00w04 IC1IOS: Input capture 1 select bits
+0x40007C04 C   FIELD 04w04 IC2IOS: Input capture 2 select bits
+0x40007C04 C   FIELD 08w04 IC3IOS: Input capture 3 select bits
+0x40007C04 C   FIELD 12w04 IC4IOS: Input capture 4 select bits
+0x40007C04 C   FIELD 16w02 TIM: Timer select bits
+0x40007C04 C   FIELD 18w01 IC1: IC1
+0x40007C04 C   FIELD 19w01 IC2: IC2
+0x40007C04 C   FIELD 20w01 IC3: IC3
+0x40007C04 C   FIELD 21w01 IC4: IC4
+0x40007C08 B  REGISTER ASCR1 (rw): RI analog switches control register 1
+0x40007C08 C   FIELD 00w01 CH0GR1_1: Analog switch control
+0x40007C08 C   FIELD 01w01 CH1GR1_2: Analog switch control
+0x40007C08 C   FIELD 02w01 CH2GR1_3: Analog switch control
+0x40007C08 C   FIELD 03w01 CH3GR1_4: Analog switch control
+0x40007C08 C   FIELD 04w01 CH31GR11_5: Analog switch control
+0x40007C08 C   FIELD 05w01 COMP1_SW1: Comparator 1 analog switch
+0x40007C08 C   FIELD 06w01 CH6GR2_1: Analog switch control
+0x40007C08 C   FIELD 07w01 CH7GR2_2: Analog switch control
+0x40007C08 C   FIELD 08w01 CH8GR3_1: Analog switch control
+0x40007C08 C   FIELD 09w01 CH9GR3_2: Analog switch control
+0x40007C08 C   FIELD 10w01 CH10GR8_1: Analog switch control
+0x40007C08 C   FIELD 11w01 CH11GR8_2: Analog switch control
+0x40007C08 C   FIELD 12w01 CH12GR8_3: Analog switch control
+0x40007C08 C   FIELD 13w01 CH13GR8_4: Analog switch control
+0x40007C08 C   FIELD 14w01 CH14GR9_1: Analog switch control
+0x40007C08 C   FIELD 15w01 CH15GR9_2: Analog switch control
+0x40007C08 C   FIELD 16w01 CH31GR7_1: Analog switch control
+0x40007C08 C   FIELD 18w01 CH18GR7_1: Analog switch control
+0x40007C08 C   FIELD 19w01 CH19GR7_2: Analog switch control
+0x40007C08 C   FIELD 20w01 CH20GR7_3: Analog switch control
+0x40007C08 C   FIELD 21w01 CH21GR7_4: Analog switch control
+0x40007C08 C   FIELD 22w01 CH22: Analog I/O switch control of channel CH22
+0x40007C08 C   FIELD 23w01 CH23: Analog I/O switch control of channel CH23
+0x40007C08 C   FIELD 24w01 CH24: Analog I/O switch control of channel CH24
+0x40007C08 C   FIELD 25w01 CH25: Analog I/O switch control of channel CH25
+0x40007C08 C   FIELD 26w01 VCOMP: ADC analog switch selection for internal node to comparator 1
+0x40007C08 C   FIELD 27w01 CH27GR11_1: Analog switch control
+0x40007C08 C   FIELD 28w01 CH28GR11_2: Analog switch control
+0x40007C08 C   FIELD 29w01 CH29GR11_3: Analog switch control
+0x40007C08 C   FIELD 30w01 CH30GR11_4: Analog switch control
+0x40007C08 C   FIELD 31w01 SCM: Switch control mode
+0x40007C0C B  REGISTER ASCR2 (rw): RI analog switches control register 2
+0x40007C0C C   FIELD 00w01 GR10_1: GR10_1 analog switch control
+0x40007C0C C   FIELD 01w01 GR10_2: GR10_2 analog switch control
+0x40007C0C C   FIELD 02w01 GR10_3: GR10_3 analog switch control
+0x40007C0C C   FIELD 03w01 GR10_4: GR10_4 analog switch control
+0x40007C0C C   FIELD 04w01 GR6_1: GR6_1 analog switch control
+0x40007C0C C   FIELD 05w01 GR6_2: GR6_2 analog switch control
+0x40007C0C C   FIELD 06w01 GR5_1: GR5_1 analog switch control
+0x40007C0C C   FIELD 07w01 GR5_2: GR5_2 analog switch control
+0x40007C0C C   FIELD 08w01 GR5_3: GR5_3 analog switch control
+0x40007C0C C   FIELD 09w01 GR4_1: GR4_1 analog switch control
+0x40007C0C C   FIELD 10w01 GR4_2: GR4_2 analog switch control
+0x40007C0C C   FIELD 11w01 GR4_3: GR4_3 analog switch control
+0x40007C0C C   FIELD 16w01 GR3_3: GR3_3 analog switch control
+0x40007C0C C   FIELD 17w01 GR3_4: GR3_4 analog switch control
+0x40007C0C C   FIELD 18w01 GR3_5: GR3_5 analog switch control
+0x40007C0C C   FIELD 19w01 GR9_3: GR9_3 analog switch control
+0x40007C0C C   FIELD 20w01 GR9_4: GR9_4 analog switch control
+0x40007C0C C   FIELD 21w01 GR2_3: GR2_3 analog switch control
+0x40007C0C C   FIELD 22w01 GR2_4: GR2_4 analog switch control
+0x40007C0C C   FIELD 23w01 GR2_5: GR2_5 analog switch control
+0x40007C0C C   FIELD 24w01 GR7_5: GR7_5 analog switch control
+0x40007C0C C   FIELD 25w01 GR7_6: GR7_6 analog switch control
+0x40007C0C C   FIELD 26w01 GR7_7: GR7_7 analog switch control
+0x40007C0C C   FIELD 27w01 GR6_3: GR6_3 analog switch control
+0x40007C0C C   FIELD 28w01 GR6_4: GR6_4 analog switch control
+0x40007C0C C   FIELD 29w01 GR5_4: GR5_4 analog switch control
+0x40007C10 B  REGISTER HYSCR1 (rw): RI hysteresis control register 1
+0x40007C10 C   FIELD 00w16 PA: Port A hysteresis control on/off
+0x40007C10 C   FIELD 16w16 PB: Port B hysteresis control on/off
+0x40007C14 B  REGISTER HYSCR2 (rw): RI hysteresis control register 2
+0x40007C14 C   FIELD 00w16 PC: Port C hysteresis control on/off
+0x40007C14 C   FIELD 16w16 PD: Port D hysteresis control on/off
+0x40007C18 B  REGISTER HYSCR3 (rw): RI hysteresis control register 3
+0x40007C18 C   FIELD 00w16 PE: Port E hysteresis control on/off
+0x40007C18 C   FIELD 16w16 PF: Port F hysteresis control on/off
+0x40007C1C B  REGISTER HYSCR4 (rw): Hysteresis control register
+0x40007C1C C   FIELD 00w16 PG: Port G hysteresis control on/off
+0x40007C20 B  REGISTER ASMR1 (rw): Analog switch mode register
+0x40007C20 C   FIELD 00w16 PA: Port A analog switch mode selection
+0x40007C24 B  REGISTER CMR1 (rw): Channel mask register
+0x40007C24 C   FIELD 00w16 PA: Port A channel masking
+0x40007C28 B  REGISTER CICR1 (rw): Channel identification for capture register
+0x40007C28 C   FIELD 00w16 PA: Port A channel identification for capture
+0x40007C2C B  REGISTER ASMR2 (rw): Analog switch mode register
+0x40007C2C C   FIELD 00w16 PB: Port B analog switch mode selection
+0x40007C30 B  REGISTER CMR2 (rw): Channel mask register
+0x40007C30 C   FIELD 00w16 PB: Port B channel masking
+0x40007C34 B  REGISTER CICR2 (rw): Channel identification for capture register
+0x40007C34 C   FIELD 00w16 PB: Port B channel identification for capture
+0x40007C38 B  REGISTER ASMR3 (rw): Analog switch mode register
+0x40007C38 C   FIELD 00w16 PC: Port C analog switch mode selection
+0x40007C3C B  REGISTER CMR3 (rw): Channel mask register
+0x40007C3C C   FIELD 00w16 PC: Port C channel masking
+0x40007C40 B  REGISTER CICR3 (rw): Channel identification for capture register
+0x40007C40 C   FIELD 00w16 PC: Port C channel identification for capture
+0x40007C44 B  REGISTER ASMR4 (rw): Analog switch mode register
+0x40007C44 C   FIELD 00w16 PF: Port F analog switch mode selection
+0x40007C48 B  REGISTER CMR4 (rw): Channel mask register
+0x40007C48 C   FIELD 00w16 PF: Port F channel masking
+0x40007C4C B  REGISTER CICR4 (rw): Channel identification for capture register
+0x40007C4C C   FIELD 00w16 PF: Port F channel identification for capture
+0x40007C50 B  REGISTER ASMR5 (rw): Analog switch mode register
+0x40007C50 C   FIELD 00w16 PG: Port G analog switch mode selection
+0x40007C54 B  REGISTER CMR5 (rw): Channel mask register
+0x40007C54 C   FIELD 00w16 PG: Port G channel masking
+0x40007C58 B  REGISTER CICR5 (rw): Channel identification for capture register
+0x40007C58 C   FIELD 00w16 PG: Port G channel identification for capture
 0x40007C5C A PERIPHERAL OPAMP
 0x40007C5C B  REGISTER CSR (rw): control/status register
 0x40007C5C C   FIELD 00w01 OPA1PD: OPAMP1 power down
@@ -4355,232 +4385,6 @@
 0xA000011C C   FIELD 20w04 CLKDIV: CLKDIV
 0xA000011C C   FIELD 24w04 DATLAT: DATLAT
 0xA000011C C   FIELD 28w02 ACCMOD: ACCMOD
-0xE000E008 A PERIPHERAL SCB_ACTRL
-0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
-0xE000E008 C   FIELD 02w01 DISFOLD: DISFOLD
-0xE000E008 C   FIELD 10w01 FPEXCODIS: FPEXCODIS
-0xE000E008 C   FIELD 11w01 DISRAMODE: DISRAMODE
-0xE000E008 C   FIELD 12w01 DISITMATBFLUSH: DISITMATBFLUSH
-0xE000E010 A PERIPHERAL STK
-0xE000E010 B  REGISTER CTRL (rw): SysTick control and status register
-0xE000E010 C   FIELD 00w01 ENABLE: Counter enable
-0xE000E010 C   FIELD 01w01 TICKINT: SysTick exception request enable
-0xE000E010 C   FIELD 02w01 CLKSOURCE: Clock source selection
-0xE000E010 C   FIELD 16w01 COUNTFLAG: COUNTFLAG
-0xE000E014 B  REGISTER LOAD_ (rw): SysTick reload value register
-0xE000E014 C   FIELD 00w24 RELOAD: RELOAD value
-0xE000E018 B  REGISTER VAL (rw): SysTick current value register
-0xE000E018 C   FIELD 00w24 CURRENT: Current counter value
-0xE000E01C B  REGISTER CALIB (rw): SysTick calibration value register
-0xE000E01C C   FIELD 00w24 TENMS: Calibration value
-0xE000E100 A PERIPHERAL NVIC
-0xE000E100 B  REGISTER ISER0 (rw): Interrupt Set-Enable Register
-0xE000E100 C   FIELD 00w32 SETENA: SETENA
-0xE000E104 B  REGISTER ISER1 (rw): Interrupt Set-Enable Register
-0xE000E104 C   FIELD 00w32 SETENA: SETENA
-0xE000E180 B  REGISTER ICER0 (rw): Interrupt Clear-Enable Register
-0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E184 B  REGISTER ICER1 (rw): Interrupt Clear-Enable Register
-0xE000E184 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E200 B  REGISTER ISPR0 (rw): Interrupt Set-Pending Register
-0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E204 B  REGISTER ISPR1 (rw): Interrupt Set-Pending Register
-0xE000E204 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E280 B  REGISTER ICPR0 (rw): Interrupt Clear-Pending Register
-0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E284 B  REGISTER ICPR1 (rw): Interrupt Clear-Pending Register
-0xE000E284 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E300 B  REGISTER IABR0 (ro): Interrupt Active Bit Register
-0xE000E300 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E304 B  REGISTER IABR1 (ro): Interrupt Active Bit Register
-0xE000E304 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register
-0xE000E400 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E400 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E400 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E400 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register
-0xE000E404 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E404 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E404 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E404 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register
-0xE000E408 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E408 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E408 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E408 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register
-0xE000E40C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E40C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E40C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E40C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register
-0xE000E410 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E410 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E410 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E410 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register
-0xE000E414 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E414 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E414 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E414 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register
-0xE000E418 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E418 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E418 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E418 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register
-0xE000E41C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E41C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E41C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E41C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E420 B  REGISTER IPR8 (rw): Interrupt Priority Register
-0xE000E420 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E420 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E420 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E420 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E424 B  REGISTER IPR9 (rw): Interrupt Priority Register
-0xE000E424 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E424 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E424 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E424 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E428 B  REGISTER IPR10 (rw): Interrupt Priority Register
-0xE000E428 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E428 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E428 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E428 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E42C B  REGISTER IPR11 (rw): Interrupt Priority Register
-0xE000E42C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E42C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E42C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E42C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E430 B  REGISTER IPR12 (rw): Interrupt Priority Register
-0xE000E430 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E430 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E430 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E430 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E434 B  REGISTER IPR13 (rw): Interrupt Priority Register
-0xE000E434 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E434 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E434 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E434 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000ED00 A PERIPHERAL SCB
-0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
-0xE000ED00 C   FIELD 00w04 Revision: Revision number
-0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000ED00 C   FIELD 16w04 Constant: Reads as 0xF
-0xE000ED00 C   FIELD 20w04 Variant: Variant number
-0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
-0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
-0xE000ED08 C   FIELD 09w21 TBLOFF: Vector table base offset field
-0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000ED0C C   FIELD 00w01 VECTRESET: VECTRESET
-0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000ED0C C   FIELD 08w03 PRIGROUP: PRIGROUP
-0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000ED10 B  REGISTER SCR (rw): System control register
-0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
-0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000ED18 B  REGISTER SHPR1 (rw): System handler priority registers
-0xE000ED18 C   FIELD 00w08 PRI_4: Priority of system handler 4
-0xE000ED18 C   FIELD 08w08 PRI_5: Priority of system handler 5
-0xE000ED18 C   FIELD 16w08 PRI_6: Priority of system handler 6
-0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED24 B  REGISTER SHCRS (rw): System handler control and state register
-0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
-0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
-0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
-0xE000ED24 C   FIELD 07w01 SVCALLACT: SVC call active bit
-0xE000ED24 C   FIELD 08w01 MONITORACT: Debug monitor active bit
-0xE000ED24 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
-0xE000ED24 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
-0xE000ED24 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
-0xE000ED24 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
-0xE000ED24 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
-0xE000ED24 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
-0xE000ED24 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
-0xE000ED24 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
-0xE000ED24 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
-0xE000ED28 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
-0xE000ED28 C   FIELD 00w01 IACCVIOL: IACCVIOL
-0xE000ED28 C   FIELD 01w01 DACCVIOL: DACCVIOL
-0xE000ED28 C   FIELD 03w01 MUNSTKERR: MUNSTKERR
-0xE000ED28 C   FIELD 04w01 MSTKERR: MSTKERR
-0xE000ED28 C   FIELD 05w01 MLSPERR: MLSPERR
-0xE000ED28 C   FIELD 07w01 MMARVALID: MMARVALID
-0xE000ED28 C   FIELD 08w01 IBUSERR: Instruction bus error
-0xE000ED28 C   FIELD 09w01 PRECISERR: Precise data bus error
-0xE000ED28 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
-0xE000ED28 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
-0xE000ED28 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
-0xE000ED28 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
-0xE000ED28 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
-0xE000ED28 C   FIELD 17w01 INVSTATE: Invalid state usage fault
-0xE000ED28 C   FIELD 18w01 INVPC: Invalid PC load usage fault
-0xE000ED28 C   FIELD 19w01 NOCP: No coprocessor usage fault.
-0xE000ED28 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
-0xE000ED28 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
-0xE000ED2C B  REGISTER HFSR (rw): Hard fault status register
-0xE000ED2C C   FIELD 01w01 VECTTBL: Vector table hard fault
-0xE000ED2C C   FIELD 30w01 FORCED: Forced hard fault
-0xE000ED2C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
-0xE000ED34 B  REGISTER MMFAR (rw): Memory management fault address register
-0xE000ED34 C   FIELD 00w32 MMFAR: Memory management fault address
-0xE000ED38 B  REGISTER BFAR (rw): Bus fault address register
-0xE000ED38 C   FIELD 00w32 BFAR: Bus fault address
-0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER TYPER (ro): MPU type register
-0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
-0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
-0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER CTRL (ro): MPU control register
-0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
-0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
-0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER RNR (rw): MPU region number register
-0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
-0xE000ED9C C   FIELD 00w04 REGION: MPU region field
-0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
-0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
-0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
-0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
-0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
-0xE000EDA0 C   FIELD 16w01 B: memory attribute
-0xE000EDA0 C   FIELD 17w01 C: memory attribute
-0xE000EDA0 C   FIELD 18w01 S: Shareable memory attribute
-0xE000EDA0 C   FIELD 19w03 TEX: memory attribute
-0xE000EDA0 C   FIELD 24w03 AP: Access permission
-0xE000EDA0 C   FIELD 28w01 XN: Instruction access disable bit
-0xE000EF00 A PERIPHERAL NVIC_STIR
-0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
-0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
 0xE0042000 A PERIPHERAL DBGMCU
 0xE0042000 B  REGISTER IDCODE (ro): DBGMCU_IDCODE
 0xE0042000 C   FIELD 00w12 DEV_ID: Device identifier
