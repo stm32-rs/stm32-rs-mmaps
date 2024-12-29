@@ -327,14 +327,14 @@
 0x4000142C B  REGISTER TIM7_ARR: TIM7 auto-reload register
 0x4000142C C   FIELD 00w16 ARR (rw): Prescaler value ARR is the value to be loaded into the actual auto-reload register. Refer to Section123.3.1: Time-base unit on page1596 for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40002400 A PERIPHERAL LCD
-0x40002400 B  REGISTER LCD_CR: LCD control register
+0x40002400 B  REGISTER CR: LCD control register
 0x40002400 C   FIELD 00w01 LCDEN (rw): LCD controller enable This bit is set by software to enable the LCD controller/driver. It is cleared by software to turn off the LCD at the beginning of the next frame. When the LCD is disabled, all COM and SEG pins are driven to V<sub>SS</sub>.
 0x40002400 C   FIELD 01w01 VSEL (rw): Voltage source selection This bit determines the voltage source for the LCD.
 0x40002400 C   FIELD 02w03 DUTY (rw): Duty selection These bits determine the duty cycle. Values 101, 110 and 111 are forbidden. Others: Reserved
 0x40002400 C   FIELD 05w02 BIAS (rw): Bias selector These bits determine the bias used. Value 11 is forbidden.
 0x40002400 C   FIELD 07w01 MUX_SEG (rw): Mux segment enable This bit is used to enable SEG pin remapping. Four SEG pins can be multiplexed with1SEG[31:28] or SEG[15:12]. See Section118.3.7.
 0x40002400 C   FIELD 08w01 BUFEN (rw): Voltage output buffer enable This bit is used to enable/disable the voltage output buffer for higher driving capability.
-0x40002404 B  REGISTER LCD_FCR: LCD frame control register
+0x40002404 B  REGISTER FCR: LCD frame control register
 0x40002404 C   FIELD 00w01 HD (rw): High drive enable This bit is written by software to enable a low resistance divider. Displays with high internal resistance may need a longer drive time to achieve satisfactory contrast. This bit is useful in this case if some additional power consumption can be tolerated.
 0x40002404 C   FIELD 01w01 SOFIE (rw): Start of frame interrupt enable This bit is set and cleared by software.
 0x40002404 C   FIELD 03w01 UDDIE (rw): Update display done interrupt enable This bit is set and cleared by software.
@@ -345,48 +345,26 @@
 0x40002404 C   FIELD 16w02 BLINK (rw): Blink mode selection
 0x40002404 C   FIELD 18w04 DIV (rw): DIV clock divider These bits are written by software to define the division factor of the DIV divider (see1Section118.3.2.) ...
 0x40002404 C   FIELD 22w04 PS (rw): PS 16-bit prescaler These bits are written by software to define the division factor of the PS 16-bit prescaler. ck_ps = LCDCLK/(2<sup>PS[3:0]</sup>). See<sub> </sub>Section118.3.2. ...
-0x40002408 B  REGISTER LCD_SR: LCD status register
+0x40002408 B  REGISTER SR: LCD status register
 0x40002408 C   FIELD 00w01 ENS (ro): LCD enabled status This bit is set and cleared by hardware. It indicates the LCD controller status. Note: This bit is set immediately when LCDEN in LCD_CR goes from 0 to 1. On deactivation, it reflects the real LCD status. It becomes 0 at the end of the last displayed frame.
 0x40002408 C   FIELD 01w01 SOF (ro): Start-of-frame flag This bit is set by hardware at the beginning of a new frame, at the same time as the display data is updated. It is cleared by writing a 1 to SOFC in LCD_CLR. The bit clear has priority over the set.
 0x40002408 C   FIELD 02w01 UDR (rw): Update display request Each time software modifies the LCD_RAM, it must set this bit to transfer the updated data to the second level buffer. This bit stays set until the end of the update. During this time, the LCD_RAM is write protected. When the display is disabled, the update is performed for all LCD_DISPLAY locations. When the display is enabled, the update is performed only for locations for which commons are active (depending on DUTY). For example if DUTY = 1/2, Note: only the LCD_DISPLAY of COM0 and COM1 are updated. Note: Writing 0 on this bit or writing 1 when it is already 1 has no effect. This bit can be cleared by hardware only. It can be cleared only when LCDEN = 1
 0x40002408 C   FIELD 03w01 UDD (ro): Update display done This bit is set by hardware. It is cleared by writing 1 to UDDC in LCD_CLR. The bit set has priority over the clear. Note: If the device is in Stop mode (PCLK not provided), UDD does not generate an interrupt even if UDDIE = 1. If the display is not enabled, the UDD interrupt never occurs.
 0x40002408 C   FIELD 04w01 RDY (ro): Ready flag This bit is set and cleared by hardware. It indicates the status of the stepup converter.
 0x40002408 C   FIELD 05w01 FCRSF (ro): LCD frame control register synchronization flag This bit is set by hardware each time the LCD_FCR register is updated in the LCDCLK domain. It is cleared by hardware when writing to the LCD_FCR register.
-0x4000240C B  REGISTER LCD_CLR: LCD clear register
+0x4000240C B  REGISTER CLR: LCD clear register
 0x4000240C C   FIELD 01w01 SOFC (wo): Start-of-frame flag clear This bit is written by software to clear SOF in LCD_SR.
 0x4000240C C   FIELD 03w01 UDDC (wo): Update display done clear This bit is written by software to clear UDD in LCD_SR.
-0x40002414 B  REGISTER LCD_RAM0: LCD display memory
-0x40002414 C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002418 B  REGISTER LCD_RAM1: LCD display memory
-0x40002418 C   FIELD 00w20 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x4000241C B  REGISTER LCD_RAM2: LCD display memory
-0x4000241C C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002420 B  REGISTER LCD_RAM3: LCD display memory
-0x40002420 C   FIELD 00w20 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002424 B  REGISTER LCD_RAM4: LCD display memory
-0x40002424 C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002428 B  REGISTER LCD_RAM5: LCD display memory
-0x40002428 C   FIELD 00w20 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x4000242C B  REGISTER LCD_RAM6: LCD display memory
-0x4000242C C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002430 B  REGISTER LCD_RAM7: LCD display memory
-0x40002430 C   FIELD 00w20 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002434 B  REGISTER LCD_RAM8: LCD display memory
-0x40002434 C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002438 B  REGISTER LCD_RAM9: LCD display memory
-0x40002438 C   FIELD 00w16 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x4000243C B  REGISTER LCD_RAM10: LCD display memory
-0x4000243C C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002440 B  REGISTER LCD_RAM11: LCD display memory
-0x40002440 C   FIELD 00w16 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002444 B  REGISTER LCD_RAM12: LCD display memory
-0x40002444 C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002448 B  REGISTER LCD_RAM13: LCD display memory
-0x40002448 C   FIELD 00w16 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x4000244C B  REGISTER LCD_RAM14: LCD display memory
-0x4000244C C   FIELD 00w32 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
-0x40002450 B  REGISTER LCD_RAM15: LCD display memory
-0x40002450 C   FIELD 00w16 SEGMENT_DATA (rw): Each bit corresponds to one pixel of the LCD display.
+0x40002414 B  REGISTER RAM_COM0 (rw): LCD display memory
+0x40002414 C   FIELD 00w48 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S47
+0x4000241C B  REGISTER RAM_COM1 (=RAM_COM0): 
+0x40002424 B  REGISTER RAM_COM2 (=RAM_COM0): 
+0x4000242C B  REGISTER RAM_COM3 (=RAM_COM0): 
+0x40002434 B  REGISTER RAM_COM4 (rw): LCD display memory
+0x40002434 C   FIELD 00w52 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S51
+0x4000243C B  REGISTER RAM_COM5 (=RAM_COM4): 
+0x40002444 B  REGISTER RAM_COM6 (=RAM_COM4): 
+0x4000244C B  REGISTER RAM_COM7 (=RAM_COM4): 
 0x40002800 A PERIPHERAL RTC
 0x40002800 B  REGISTER RTC_TR: RTC time register
 0x40002800 C   FIELD 00w04 SU (rw): Second units in BCD format

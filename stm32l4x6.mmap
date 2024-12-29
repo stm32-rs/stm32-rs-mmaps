@@ -587,22 +587,16 @@
 0x4000240C B  REGISTER CLR (wo): clear register
 0x4000240C C   FIELD 01w01 SOFC: Start of frame flag clear
 0x4000240C C   FIELD 03w01 UDDC: Update display done clear
-0x40002414 B  REGISTER RAM_COM0 (rw): display memory
+0x40002414 B  REGISTER RAM_COM0 (rw): LCD display memory
 0x40002414 C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x4000241C B  REGISTER RAM_COM1 (rw): display memory
-0x4000241C C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x40002424 B  REGISTER RAM_COM2 (rw): display memory
-0x40002424 C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x4000242C B  REGISTER RAM_COM3 (rw): display memory
-0x4000242C C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x40002434 B  REGISTER RAM_COM4 (rw): display memory
-0x40002434 C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x4000243C B  REGISTER RAM_COM5 (rw): display memory
-0x4000243C C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x40002444 B  REGISTER RAM_COM6 (rw): display memory
-0x40002444 C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
-0x4000244C B  REGISTER RAM_COM7 (rw): display memory
-0x4000244C C   FIELD 00w40 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S39
+0x4000241C B  REGISTER RAM_COM1 (=RAM_COM0): 
+0x40002424 B  REGISTER RAM_COM2 (=RAM_COM0): 
+0x4000242C B  REGISTER RAM_COM3 (=RAM_COM0): 
+0x40002434 B  REGISTER RAM_COM4 (rw): LCD display memory
+0x40002434 C   FIELD 00w44 SEGS: Segment states, one bit per segment, LSB: S00, MSB: S43
+0x4000243C B  REGISTER RAM_COM5 (=RAM_COM4): 
+0x40002444 B  REGISTER RAM_COM6 (=RAM_COM4): 
+0x4000244C B  REGISTER RAM_COM7 (=RAM_COM4): 
 0x40002800 A PERIPHERAL RTC
 0x40002800 B  REGISTER TR (rw): time register
 0x40002800 C   FIELD 00w04 SU: Second units in BCD format
