@@ -1137,17 +1137,17 @@
 0x40007000 C   FIELD 11w02 VOS: Voltage scaling range selection
 0x40007000 C   FIELD 13w01 DS_EE_KOFF: Deep sleep mode with Flash memory kept off
 0x40007000 C   FIELD 14w01 LPRUN: Low power run mode
-0x40007000 C   FIELD 16w01 LPDS: Regulator in Low-power deepsleep mode
+0x40007000 C   FIELD 16w01 LPDS: Regulator in Low-power deepsleep mode This bit allows switching the regulator to low-power mode when the CPU enters Stop mode. Its behavior depends on LPSDSR bit
 0x40007004 B  REGISTER CSR: power control/status register
 0x40007004 C   FIELD 00w01 WUF (ro): Wakeup flag
 0x40007004 C   FIELD 01w01 SBF (ro): Standby flag
 0x40007004 C   FIELD 02w01 PVDO (ro): PVD output
-0x40007004 C   FIELD 03w01 VREFINTRDYF (ro): Internal voltage reference ready flag
+0x40007004 C   FIELD 03w01 VREFINTRDYF (ro): Internal voltage reference (VREFINT) ready flag This bit indicates the state of the internal voltage reference, VREFINT.
 0x40007004 C   FIELD 04w01 VOSF (ro): Voltage Scaling select flag
 0x40007004 C   FIELD 05w01 REGLPF (ro): Regulator LP flag
 0x40007004 C   FIELD 08w01 EWUP1 (rw): Enable WKUP pin 1
 0x40007004 C   FIELD 09w01 EWUP2 (rw): Enable WKUP pin 2
-0x40007004 C   FIELD 10w01 EWUP3: Enable WKUP pin 3
+0x40007004 C   FIELD 10w01 EWUP3 (rw): Enable WKUP pin 3
 0x40007800 A PERIPHERAL I2C3
 0x40007800 B  REGISTER CR1 (rw): Control register 1
 0x40007800 C   FIELD 00w01 PE: Peripheral enable
@@ -2365,6 +2365,7 @@
 0x40022004 C   FIELD 16w01 EOPIE: End of programming interrupt enable
 0x40022004 C   FIELD 17w01 ERRIE: Error interrupt enable
 0x40022004 C   FIELD 18w01 OBL_LAUNCH: Launch the option byte loading
+0x40022004 C   FIELD 23w01 NZDISABLE: Non-Zero check notification disable
 0x40022008 B  REGISTER PDKEYR (wo): Power down key register
 0x40022008 C   FIELD 00w32 PDKEYR: RUN_PD in FLASH_ACR key
 0x4002200C B  REGISTER PEKEYR (wo): Program/erase key register
@@ -2382,17 +2383,22 @@
 0x40022018 C   FIELD 09w01 PGAERR (rw): Programming alignment error
 0x40022018 C   FIELD 10w01 SIZERR (rw): Size error
 0x40022018 C   FIELD 11w01 OPTVERR (rw): Option validity error
-0x40022018 C   FIELD 14w01 RDERR (rw): RDERR
+0x40022018 C   FIELD 13w01 RDERR (rw): RDERR
 0x40022018 C   FIELD 16w01 NOTZEROERR (rw): NOTZEROERR
 0x40022018 C   FIELD 17w01 FWWERR (rw): FWWERR
 0x4002201C B  REGISTER OPTR (ro): Option byte register
 0x4002201C C   FIELD 00w08 RDPROT: Read protection
-0x4002201C C   FIELD 08w01 WPRMOD: Selection of protection mode of WPR bits
+0x4002201C C   FIELD 08w01 WPRMOD: WPRMOD
 0x4002201C C   FIELD 16w04 BOR_LEV: BOR_LEV
-0x40022020 B  REGISTER WRPROT1 (ro): Write Protection Register 1
-0x40022020 C   FIELD 00w32 WRPROT1: Write Protection
-0x40022080 B  REGISTER WRPROT2 (ro): Write Protection Register 2
-0x40022080 C   FIELD 00w16 WRPROT2: Write Protection
+0x4002201C C   FIELD 20w01 WDG_SW: WDG_SW
+0x4002201C C   FIELD 21w01 nRST_STOP: nRST_STOP
+0x4002201C C   FIELD 22w01 nRST_STDBY: nRST_STDBY
+0x4002201C C   FIELD 23w01 BFB2: BFB2
+0x4002201C C   FIELD 31w01 nBOOT1: nBOOT1
+0x40022020 B  REGISTER WRPROT1 (ro): Write protection register
+0x40022020 C   FIELD 00w32 WRPROT1: Write protection
+0x40022080 B  REGISTER WRPROT2 (ro): Write protection register
+0x40022080 C   FIELD 00w16 WRPROT2: Write protection
 0x40023000 A PERIPHERAL CRC
 0x40023000 B  REGISTER DR (rw): Data register
 0x40023000 B  REGISTER DR16 (rw): Data register - half-word sized
@@ -3633,7 +3639,7 @@
 INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
 INTERRUPT 001: PVD (EXTI): PVD through EXTI line detection
 INTERRUPT 002: RTC (RTC): RTC global interrupt
-INTERRUPT 003: FLASH (FLASH): Flash global interrupt
+INTERRUPT 003: FLASH (FLASH): Flash memory and data EEPROM global interrupt
 INTERRUPT 004: RCC (RCC): RCC global interrupt
 INTERRUPT 005: EXTI0_1 (EXTI): EXTI Line[1:0] interrupts
 INTERRUPT 006: EXTI2_3 (EXTI): EXTI Line[3:2] interrupts
@@ -3656,5 +3662,5 @@ INTERRUPT 024: I2C2 (I2C2): I2C2 global interrupt
 INTERRUPT 025: SPI1 (SPI1): SPI1_global_interrupt
 INTERRUPT 026: SPI2 (SPI2): SPI2 global interrupt
 INTERRUPT 027: USART1 (USART1): USART1 global interrupt
-INTERRUPT 028: USART2 (USART5): USART2 global interrupt
+INTERRUPT 028: USART2 (USART2): USART2 global interrupt
 INTERRUPT 029: AES_RNG_LPUART1 (AES): AES global interrupt RNG global interrupt and LPUART1 global interrupt through
