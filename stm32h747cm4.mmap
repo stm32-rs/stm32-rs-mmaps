@@ -2822,18 +2822,18 @@
 0x4000A000 C   FIELD 28w04 REL: Core release
 0x4000A004 B  REGISTER ENDN (ro): FDCAN Core Release Register
 0x4000A004 C   FIELD 00w32 ETV: Endiannes Test Value
-0x4000A00C B  REGISTER DBTP (rw): FDCAN Data Bit Timing and Prescaler Register
+0x4000A00C B  REGISTER DBTP (ro): FDCAN Data Bit Timing and Prescaler Register
 0x4000A00C C   FIELD 00w04 DSJW: Synchronization Jump Width
 0x4000A00C C   FIELD 04w04 DTSEG2: Data time segment after sample point
 0x4000A00C C   FIELD 08w05 DTSEG1: Data time segment after sample point
 0x4000A00C C   FIELD 16w05 DBRP: Data BIt Rate Prescaler
 0x4000A00C C   FIELD 23w01 TDC: Transceiver Delay Compensation
-0x4000A010 B  REGISTER TEST (rw): FDCAN Test Register
-0x4000A010 C   FIELD 04w01 LBCK (rw): Loop Back mode
-0x4000A010 C   FIELD 05w02 TX (rw): Loop Back mode
+0x4000A010 B  REGISTER TEST (ro): FDCAN Test Register
+0x4000A010 C   FIELD 04w01 LBCK: Loop Back mode
+0x4000A010 C   FIELD 05w02 TX: Loop Back mode
 0x4000A010 C   FIELD 07w01 RX: Control of Transmit Pin
 0x4000A014 B  REGISTER RWD (ro): FDCAN RAM Watchdog Register
-0x4000A014 C   FIELD 00w08 WDC (rw): Watchdog configuration
+0x4000A014 C   FIELD 00w08 WDC: Watchdog configuration
 0x4000A014 C   FIELD 08w08 WDV: Watchdog value
 0x4000A018 B  REGISTER CCCR (rw): FDCAN CC Control Register
 0x4000A018 C   FIELD 00w01 INIT: Initialization
@@ -2851,7 +2851,7 @@
 0x4000A018 C   FIELD 14w01 TXP: TXP
 0x4000A018 C   FIELD 15w01 NISO: Non ISO Operation
 0x4000A01C B  REGISTER NBTP (rw): FDCAN Nominal Bit Timing and Prescaler Register
-0x4000A01C C   FIELD 00w07 NTSEG2: Nominal Time segment after sample point
+0x4000A01C C   FIELD 00w07 TSEG2: Nominal Time segment after sample point
 0x4000A01C C   FIELD 08w08 NTSEG1: Nominal Time segment before sample point
 0x4000A01C C   FIELD 16w09 NBRP: Bit Rate Prescaler
 0x4000A01C C   FIELD 25w07 NSJW: NSJW: Nominal (Re)Synchronization Jump Width
@@ -2868,7 +2868,7 @@
 0x4000A02C C   FIELD 00w16 TOC: Timeout Counter
 0x4000A040 B  REGISTER ECR (rw): FDCAN Error Counter Register
 0x4000A040 C   FIELD 00w08 TEC: Transmit Error Counter
-0x4000A040 C   FIELD 08w07 REC: Receive Error Counter
+0x4000A040 C   FIELD 08w07 TREC: Receive Error Counter
 0x4000A040 C   FIELD 15w01 RP: Receive Error Passive
 0x4000A040 C   FIELD 16w08 CEL: AN Error Logging
 0x4000A044 B  REGISTER PSR (rw): FDCAN Protocol Status Register
@@ -2883,10 +2883,10 @@
 0x4000A044 C   FIELD 13w01 REDL: Received FDCAN Message
 0x4000A044 C   FIELD 14w01 PXE: Protocol Exception Event
 0x4000A044 C   FIELD 16w07 TDCV: Transmitter Delay Compensation Value
-0x4000A048 B  REGISTER TDCR (rw): FDCAN Transmitter Delay Compensation Register
+0x4000A048 B  REGISTER TDCR (ro): FDCAN Transmitter Delay Compensation Register
 0x4000A048 C   FIELD 00w07 TDCF: Transmitter Delay Compensation Filter Window Length
 0x4000A048 C   FIELD 08w07 TDCO: Transmitter Delay Compensation Offset
-0x4000A050 B  REGISTER IR (rw): FDCAN Interrupt Register
+0x4000A050 B  REGISTER IR (ro): FDCAN Interrupt Register
 0x4000A050 C   FIELD 00w01 RF0N: Rx FIFO 0 New Message
 0x4000A050 C   FIELD 01w01 RF0W: Rx FIFO 0 Full
 0x4000A050 C   FIELD 02w01 RF0F: Rx FIFO 0 Full
@@ -2915,7 +2915,7 @@
 0x4000A050 C   FIELD 27w01 PEA: Protocol Error in Arbitration Phase (Nominal Bit Time is used)
 0x4000A050 C   FIELD 28w01 PED: Protocol Error in Data Phase (Data Bit Time is used)
 0x4000A050 C   FIELD 29w01 ARA: Access to Reserved Address
-0x4000A054 B  REGISTER IE (rw): FDCAN Interrupt Enable Register
+0x4000A054 B  REGISTER IE (ro): FDCAN Interrupt Enable Register
 0x4000A054 C   FIELD 00w01 RF0NE: Rx FIFO 0 New Message Enable
 0x4000A054 C   FIELD 01w01 RF0WE: Rx FIFO 0 Full Enable
 0x4000A054 C   FIELD 02w01 RF0FE: Rx FIFO 0 Full Enable
@@ -2946,7 +2946,7 @@
 0x4000A054 C   FIELD 27w01 PEAE: Protocol Error in Arbitration Phase Enable
 0x4000A054 C   FIELD 28w01 PEDE: Protocol Error in Data Phase Enable
 0x4000A054 C   FIELD 29w01 ARAE: Access to Reserved Address Enable
-0x4000A058 B  REGISTER ILS (rw): FDCAN Interrupt Line Select Register
+0x4000A058 B  REGISTER ILS (ro): FDCAN Interrupt Line Select Register
 0x4000A058 C   FIELD 00w01 RF0NL: Rx FIFO 0 New Message Interrupt Line
 0x4000A058 C   FIELD 01w01 RF0WL: Rx FIFO 0 Watermark Reached Interrupt Line
 0x4000A058 C   FIELD 02w01 RF0FL: Rx FIFO 0 Full Interrupt Line
@@ -2998,7 +2998,7 @@
 0x4000A094 C   FIELD 06w02 MSI: Message Storage Indicator
 0x4000A094 C   FIELD 08w07 FIDX: Filter Index
 0x4000A094 C   FIELD 15w01 FLST: Filter List
-0x4000A098 B  REGISTER NDAT1 (rw): FDCAN New Data 1 Register
+0x4000A098 B  REGISTER NDAT1 (ro): FDCAN New Data 1 Register
 0x4000A098 C   FIELD 00w01 ND0: New data
 0x4000A098 C   FIELD 01w01 ND1: New data
 0x4000A098 C   FIELD 02w01 ND2: New data
@@ -3031,7 +3031,7 @@
 0x4000A098 C   FIELD 29w01 ND29: New data
 0x4000A098 C   FIELD 30w01 ND30: New data
 0x4000A098 C   FIELD 31w01 ND31: New data
-0x4000A09C B  REGISTER NDAT2 (rw): FDCAN New Data 2 Register
+0x4000A09C B  REGISTER NDAT2 (ro): FDCAN New Data 2 Register
 0x4000A09C C   FIELD 00w01 ND32: New data
 0x4000A09C C   FIELD 01w01 ND33: New data
 0x4000A09C C   FIELD 02w01 ND34: New data
@@ -3066,24 +3066,22 @@
 0x4000A09C C   FIELD 31w01 ND63: New data
 0x4000A0A0 B  REGISTER RXF0C (rw): FDCAN Rx FIFO 0 Configuration Register
 0x4000A0A0 C   FIELD 02w14 F0SA: Rx FIFO 0 Start Address
-0x4000A0A0 C   FIELD 16w07 F0S: Rx FIFO 0 Size
-0x4000A0A0 C   FIELD 24w07 F0WM: FIFO 0 Watermark
-0x4000A0A0 C   FIELD 31w01 F0OM: FIFO 0 operation mode
+0x4000A0A0 C   FIELD 16w08 F0S: Rx FIFO 0 Size
+0x4000A0A0 C   FIELD 24w08 F0WM: FIFO 0 Watermark
 0x4000A0A4 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
 0x4000A0A4 C   FIELD 00w07 F0FL: Rx FIFO 0 Fill Level
-0x4000A0A4 C   FIELD 08w06 F0GI: Rx FIFO 0 Get Index
-0x4000A0A4 C   FIELD 16w06 F0PI: Rx FIFO 0 Put Index
+0x4000A0A4 C   FIELD 08w06 F0G: Rx FIFO 0 Get Index
+0x4000A0A4 C   FIELD 16w06 F0P: Rx FIFO 0 Put Index
 0x4000A0A4 C   FIELD 24w01 F0F: Rx FIFO 0 Full
 0x4000A0A4 C   FIELD 25w01 RF0L: Rx FIFO 0 Message Lost
 0x4000A0A8 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
-0x4000A0A8 C   FIELD 00w06 F0AI: Rx FIFO 0 Acknowledge Index
+0x4000A0A8 C   FIELD 00w06 FA01: Rx FIFO 0 Acknowledge Index
 0x4000A0AC B  REGISTER RXBC (rw): FDCAN Rx Buffer Configuration Register
 0x4000A0AC C   FIELD 02w14 RBSA: Rx Buffer Start Address
 0x4000A0B0 B  REGISTER RXF1C (rw): FDCAN Rx FIFO 1 Configuration Register
 0x4000A0B0 C   FIELD 02w14 F1SA: Rx FIFO 1 Start Address
 0x4000A0B0 C   FIELD 16w07 F1S: Rx FIFO 1 Size
 0x4000A0B0 C   FIELD 24w07 F1WM: Rx FIFO 1 Watermark
-0x4000A0B0 C   FIELD 31w01 F1OM: FIFO 1 operation mode
 0x4000A0B4 B  REGISTER RXF1S (rw): FDCAN Rx FIFO 1 Status Register
 0x4000A0B4 C   FIELD 00w07 F1FL: Rx FIFO 1 Fill Level
 0x4000A0B4 C   FIELD 08w07 F1GI: Rx FIFO 1 Get Index
@@ -3130,7 +3128,7 @@
 0x4000A0F4 B  REGISTER TXEFS (rw): FDCAN Tx Event FIFO Status Register
 0x4000A0F4 C   FIELD 00w06 EFFL: Event FIFO Fill Level
 0x4000A0F4 C   FIELD 08w05 EFGI: Event FIFO Get Index.
-0x4000A0F4 C   FIELD 16w05 EFPI: Event FIFO put index
+0x4000A0F4 C   FIELD 16w05 EFPI: Event FIFO put index.
 0x4000A0F4 C   FIELD 24w01 EFF: Event FIFO Full.
 0x4000A0F4 C   FIELD 25w01 TEFL: Tx Event FIFO Element Lost.
 0x4000A0F8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
@@ -3176,7 +3174,7 @@
 0x4000A114 C   FIELD 12w01 NIG: Next is Gap
 0x4000A114 C   FIELD 13w01 ESCN: External Synchronization Control
 0x4000A114 C   FIELD 15w01 LCKC: TT Operation Control Register Locked
-0x4000A118 B  REGISTER TTGTP (rw): FDCAN TT Global Time Preset Register
+0x4000A118 B  REGISTER CAN_TTGTP (rw): FDCAN TT Global Time Preset Register
 0x4000A118 C   FIELD 00w16 NCL: Time Preset
 0x4000A118 C   FIELD 16w16 CTP: Cycle Time Target Phase
 0x4000A11C B  REGISTER TTTMK (rw): FDCAN TT Time Mark Register
@@ -3247,7 +3245,7 @@
 0x4000A12C C   FIELD 00w02 EL: Error Level
 0x4000A12C C   FIELD 02w02 MS: Master State.
 0x4000A12C C   FIELD 04w02 SYS: Synchronization State
-0x4000A12C C   FIELD 06w01 QGTP: Quality of Global Time Phase
+0x4000A12C C   FIELD 06w01 GTP: Quality of Global Time Phase
 0x4000A12C C   FIELD 07w01 QCS: Quality of Clock Speed
 0x4000A12C C   FIELD 08w08 RTO: Reference Trigger Offset
 0x4000A12C C   FIELD 22w01 WGTD: Wait for Global Time Discontinuity
@@ -3267,7 +3265,7 @@
 0x4000A138 C   FIELD 00w16 CT: Cycle Time
 0x4000A138 C   FIELD 16w06 CC: Cycle Count
 0x4000A13C B  REGISTER TTCPT (ro): FDCAN TT Capture Time Register
-0x4000A13C C   FIELD 00w06 CCV: Cycle Count Value
+0x4000A13C C   FIELD 00w06 CT: Cycle Count Value
 0x4000A13C C   FIELD 16w16 SWV: Stop Watch Value
 0x4000A140 B  REGISTER TTCSM (ro): FDCAN TT Cycle Sync Mark Register
 0x4000A140 C   FIELD 00w16 CSM: Cycle Sync Mark
@@ -3284,18 +3282,18 @@
 0x4000A400 C   FIELD 28w04 REL: Core release
 0x4000A404 B  REGISTER ENDN (ro): FDCAN Core Release Register
 0x4000A404 C   FIELD 00w32 ETV: Endiannes Test Value
-0x4000A40C B  REGISTER DBTP (rw): FDCAN Data Bit Timing and Prescaler Register
+0x4000A40C B  REGISTER DBTP (ro): FDCAN Data Bit Timing and Prescaler Register
 0x4000A40C C   FIELD 00w04 DSJW: Synchronization Jump Width
 0x4000A40C C   FIELD 04w04 DTSEG2: Data time segment after sample point
 0x4000A40C C   FIELD 08w05 DTSEG1: Data time segment after sample point
 0x4000A40C C   FIELD 16w05 DBRP: Data BIt Rate Prescaler
 0x4000A40C C   FIELD 23w01 TDC: Transceiver Delay Compensation
-0x4000A410 B  REGISTER TEST (rw): FDCAN Test Register
-0x4000A410 C   FIELD 04w01 LBCK (rw): Loop Back mode
-0x4000A410 C   FIELD 05w02 TX (rw): Loop Back mode
+0x4000A410 B  REGISTER TEST (ro): FDCAN Test Register
+0x4000A410 C   FIELD 04w01 LBCK: Loop Back mode
+0x4000A410 C   FIELD 05w02 TX: Loop Back mode
 0x4000A410 C   FIELD 07w01 RX: Control of Transmit Pin
 0x4000A414 B  REGISTER RWD (ro): FDCAN RAM Watchdog Register
-0x4000A414 C   FIELD 00w08 WDC (rw): Watchdog configuration
+0x4000A414 C   FIELD 00w08 WDC: Watchdog configuration
 0x4000A414 C   FIELD 08w08 WDV: Watchdog value
 0x4000A418 B  REGISTER CCCR (rw): FDCAN CC Control Register
 0x4000A418 C   FIELD 00w01 INIT: Initialization
@@ -3313,7 +3311,7 @@
 0x4000A418 C   FIELD 14w01 TXP: TXP
 0x4000A418 C   FIELD 15w01 NISO: Non ISO Operation
 0x4000A41C B  REGISTER NBTP (rw): FDCAN Nominal Bit Timing and Prescaler Register
-0x4000A41C C   FIELD 00w07 NTSEG2: Nominal Time segment after sample point
+0x4000A41C C   FIELD 00w07 TSEG2: Nominal Time segment after sample point
 0x4000A41C C   FIELD 08w08 NTSEG1: Nominal Time segment before sample point
 0x4000A41C C   FIELD 16w09 NBRP: Bit Rate Prescaler
 0x4000A41C C   FIELD 25w07 NSJW: NSJW: Nominal (Re)Synchronization Jump Width
@@ -3330,7 +3328,7 @@
 0x4000A42C C   FIELD 00w16 TOC: Timeout Counter
 0x4000A440 B  REGISTER ECR (rw): FDCAN Error Counter Register
 0x4000A440 C   FIELD 00w08 TEC: Transmit Error Counter
-0x4000A440 C   FIELD 08w07 REC: Receive Error Counter
+0x4000A440 C   FIELD 08w07 TREC: Receive Error Counter
 0x4000A440 C   FIELD 15w01 RP: Receive Error Passive
 0x4000A440 C   FIELD 16w08 CEL: AN Error Logging
 0x4000A444 B  REGISTER PSR (rw): FDCAN Protocol Status Register
@@ -3345,10 +3343,10 @@
 0x4000A444 C   FIELD 13w01 REDL: Received FDCAN Message
 0x4000A444 C   FIELD 14w01 PXE: Protocol Exception Event
 0x4000A444 C   FIELD 16w07 TDCV: Transmitter Delay Compensation Value
-0x4000A448 B  REGISTER TDCR (rw): FDCAN Transmitter Delay Compensation Register
+0x4000A448 B  REGISTER TDCR (ro): FDCAN Transmitter Delay Compensation Register
 0x4000A448 C   FIELD 00w07 TDCF: Transmitter Delay Compensation Filter Window Length
 0x4000A448 C   FIELD 08w07 TDCO: Transmitter Delay Compensation Offset
-0x4000A450 B  REGISTER IR (rw): FDCAN Interrupt Register
+0x4000A450 B  REGISTER IR (ro): FDCAN Interrupt Register
 0x4000A450 C   FIELD 00w01 RF0N: Rx FIFO 0 New Message
 0x4000A450 C   FIELD 01w01 RF0W: Rx FIFO 0 Full
 0x4000A450 C   FIELD 02w01 RF0F: Rx FIFO 0 Full
@@ -3377,7 +3375,7 @@
 0x4000A450 C   FIELD 27w01 PEA: Protocol Error in Arbitration Phase (Nominal Bit Time is used)
 0x4000A450 C   FIELD 28w01 PED: Protocol Error in Data Phase (Data Bit Time is used)
 0x4000A450 C   FIELD 29w01 ARA: Access to Reserved Address
-0x4000A454 B  REGISTER IE (rw): FDCAN Interrupt Enable Register
+0x4000A454 B  REGISTER IE (ro): FDCAN Interrupt Enable Register
 0x4000A454 C   FIELD 00w01 RF0NE: Rx FIFO 0 New Message Enable
 0x4000A454 C   FIELD 01w01 RF0WE: Rx FIFO 0 Full Enable
 0x4000A454 C   FIELD 02w01 RF0FE: Rx FIFO 0 Full Enable
@@ -3408,7 +3406,7 @@
 0x4000A454 C   FIELD 27w01 PEAE: Protocol Error in Arbitration Phase Enable
 0x4000A454 C   FIELD 28w01 PEDE: Protocol Error in Data Phase Enable
 0x4000A454 C   FIELD 29w01 ARAE: Access to Reserved Address Enable
-0x4000A458 B  REGISTER ILS (rw): FDCAN Interrupt Line Select Register
+0x4000A458 B  REGISTER ILS (ro): FDCAN Interrupt Line Select Register
 0x4000A458 C   FIELD 00w01 RF0NL: Rx FIFO 0 New Message Interrupt Line
 0x4000A458 C   FIELD 01w01 RF0WL: Rx FIFO 0 Watermark Reached Interrupt Line
 0x4000A458 C   FIELD 02w01 RF0FL: Rx FIFO 0 Full Interrupt Line
@@ -3460,7 +3458,7 @@
 0x4000A494 C   FIELD 06w02 MSI: Message Storage Indicator
 0x4000A494 C   FIELD 08w07 FIDX: Filter Index
 0x4000A494 C   FIELD 15w01 FLST: Filter List
-0x4000A498 B  REGISTER NDAT1 (rw): FDCAN New Data 1 Register
+0x4000A498 B  REGISTER NDAT1 (ro): FDCAN New Data 1 Register
 0x4000A498 C   FIELD 00w01 ND0: New data
 0x4000A498 C   FIELD 01w01 ND1: New data
 0x4000A498 C   FIELD 02w01 ND2: New data
@@ -3493,7 +3491,7 @@
 0x4000A498 C   FIELD 29w01 ND29: New data
 0x4000A498 C   FIELD 30w01 ND30: New data
 0x4000A498 C   FIELD 31w01 ND31: New data
-0x4000A49C B  REGISTER NDAT2 (rw): FDCAN New Data 2 Register
+0x4000A49C B  REGISTER NDAT2 (ro): FDCAN New Data 2 Register
 0x4000A49C C   FIELD 00w01 ND32: New data
 0x4000A49C C   FIELD 01w01 ND33: New data
 0x4000A49C C   FIELD 02w01 ND34: New data
@@ -3528,24 +3526,22 @@
 0x4000A49C C   FIELD 31w01 ND63: New data
 0x4000A4A0 B  REGISTER RXF0C (rw): FDCAN Rx FIFO 0 Configuration Register
 0x4000A4A0 C   FIELD 02w14 F0SA: Rx FIFO 0 Start Address
-0x4000A4A0 C   FIELD 16w07 F0S: Rx FIFO 0 Size
-0x4000A4A0 C   FIELD 24w07 F0WM: FIFO 0 Watermark
-0x4000A4A0 C   FIELD 31w01 F0OM: FIFO 0 operation mode
+0x4000A4A0 C   FIELD 16w08 F0S: Rx FIFO 0 Size
+0x4000A4A0 C   FIELD 24w08 F0WM: FIFO 0 Watermark
 0x4000A4A4 B  REGISTER RXF0S (rw): FDCAN Rx FIFO 0 Status Register
 0x4000A4A4 C   FIELD 00w07 F0FL: Rx FIFO 0 Fill Level
-0x4000A4A4 C   FIELD 08w06 F0GI: Rx FIFO 0 Get Index
-0x4000A4A4 C   FIELD 16w06 F0PI: Rx FIFO 0 Put Index
+0x4000A4A4 C   FIELD 08w06 F0G: Rx FIFO 0 Get Index
+0x4000A4A4 C   FIELD 16w06 F0P: Rx FIFO 0 Put Index
 0x4000A4A4 C   FIELD 24w01 F0F: Rx FIFO 0 Full
 0x4000A4A4 C   FIELD 25w01 RF0L: Rx FIFO 0 Message Lost
 0x4000A4A8 B  REGISTER RXF0A (rw): CAN Rx FIFO 0 Acknowledge Register
-0x4000A4A8 C   FIELD 00w06 F0AI: Rx FIFO 0 Acknowledge Index
+0x4000A4A8 C   FIELD 00w06 FA01: Rx FIFO 0 Acknowledge Index
 0x4000A4AC B  REGISTER RXBC (rw): FDCAN Rx Buffer Configuration Register
 0x4000A4AC C   FIELD 02w14 RBSA: Rx Buffer Start Address
 0x4000A4B0 B  REGISTER RXF1C (rw): FDCAN Rx FIFO 1 Configuration Register
 0x4000A4B0 C   FIELD 02w14 F1SA: Rx FIFO 1 Start Address
 0x4000A4B0 C   FIELD 16w07 F1S: Rx FIFO 1 Size
 0x4000A4B0 C   FIELD 24w07 F1WM: Rx FIFO 1 Watermark
-0x4000A4B0 C   FIELD 31w01 F1OM: FIFO 1 operation mode
 0x4000A4B4 B  REGISTER RXF1S (rw): FDCAN Rx FIFO 1 Status Register
 0x4000A4B4 C   FIELD 00w07 F1FL: Rx FIFO 1 Fill Level
 0x4000A4B4 C   FIELD 08w07 F1GI: Rx FIFO 1 Get Index
@@ -3592,7 +3588,7 @@
 0x4000A4F4 B  REGISTER TXEFS (rw): FDCAN Tx Event FIFO Status Register
 0x4000A4F4 C   FIELD 00w06 EFFL: Event FIFO Fill Level
 0x4000A4F4 C   FIELD 08w05 EFGI: Event FIFO Get Index.
-0x4000A4F4 C   FIELD 16w05 EFPI: Event FIFO put index
+0x4000A4F4 C   FIELD 16w05 EFPI: Event FIFO put index.
 0x4000A4F4 C   FIELD 24w01 EFF: Event FIFO Full.
 0x4000A4F4 C   FIELD 25w01 TEFL: Tx Event FIFO Element Lost.
 0x4000A4F8 B  REGISTER TXEFA (rw): FDCAN Tx Event FIFO Acknowledge Register
@@ -3638,7 +3634,7 @@
 0x4000A514 C   FIELD 12w01 NIG: Next is Gap
 0x4000A514 C   FIELD 13w01 ESCN: External Synchronization Control
 0x4000A514 C   FIELD 15w01 LCKC: TT Operation Control Register Locked
-0x4000A518 B  REGISTER TTGTP (rw): FDCAN TT Global Time Preset Register
+0x4000A518 B  REGISTER CAN_TTGTP (rw): FDCAN TT Global Time Preset Register
 0x4000A518 C   FIELD 00w16 NCL: Time Preset
 0x4000A518 C   FIELD 16w16 CTP: Cycle Time Target Phase
 0x4000A51C B  REGISTER TTTMK (rw): FDCAN TT Time Mark Register
@@ -3709,7 +3705,7 @@
 0x4000A52C C   FIELD 00w02 EL: Error Level
 0x4000A52C C   FIELD 02w02 MS: Master State.
 0x4000A52C C   FIELD 04w02 SYS: Synchronization State
-0x4000A52C C   FIELD 06w01 QGTP: Quality of Global Time Phase
+0x4000A52C C   FIELD 06w01 GTP: Quality of Global Time Phase
 0x4000A52C C   FIELD 07w01 QCS: Quality of Clock Speed
 0x4000A52C C   FIELD 08w08 RTO: Reference Trigger Offset
 0x4000A52C C   FIELD 22w01 WGTD: Wait for Global Time Discontinuity
@@ -3729,7 +3725,7 @@
 0x4000A538 C   FIELD 00w16 CT: Cycle Time
 0x4000A538 C   FIELD 16w06 CC: Cycle Count
 0x4000A53C B  REGISTER TTCPT (ro): FDCAN TT Capture Time Register
-0x4000A53C C   FIELD 00w06 CCV: Cycle Count Value
+0x4000A53C C   FIELD 00w06 CT: Cycle Count Value
 0x4000A53C C   FIELD 16w16 SWV: Stop Watch Value
 0x4000A540 B  REGISTER TTCSM (ro): FDCAN TT Cycle Sync Mark Register
 0x4000A540 C   FIELD 00w16 CSM: Cycle Sync Mark
@@ -3955,8 +3951,8 @@
 0x40010058 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40010058 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40010058 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
-0x4001005C B  REGISTER CRR6 (rw): capture/compare register 6
-0x4001005C C   FIELD 00w16 CCR6: Capture/Compare 6 value
+0x4001005C B  REGISTER CCR6 (rw): capture/compare register
+0x4001005C C   FIELD 00w16 CCR: Capture/Compare value
 0x40010060 B  REGISTER AF1 (rw): TIM1 alternate function option register 1
 0x40010060 C   FIELD 00w01 BKINE: BRK BKIN input enable
 0x40010060 C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
@@ -4170,8 +4166,8 @@
 0x40010458 C   FIELD 29w01 GC5C1: Group Channel 5 and Channel 1
 0x40010458 C   FIELD 30w01 GC5C2: Group Channel 5 and Channel 2
 0x40010458 C   FIELD 31w01 GC5C3: Group Channel 5 and Channel 3
-0x4001045C B  REGISTER CRR6 (rw): capture/compare register 6
-0x4001045C C   FIELD 00w16 CCR6: Capture/Compare 6 value
+0x4001045C B  REGISTER CCR6 (rw): capture/compare register
+0x4001045C C   FIELD 00w16 CCR: Capture/Compare value
 0x40010460 B  REGISTER AF1 (rw): TIM1 alternate function option register 1
 0x40010460 C   FIELD 00w01 BKINE: BRK BKIN input enable
 0x40010460 C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
@@ -9573,7 +9569,10 @@
 0x4004011C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x4004011C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x40040120 B  REGISTER DIEPTXF8 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40040120 B  REGISTER OTG_DIEPTXF8: 
+0x40040120 C   FIELD 00w16 INEPTXSA (rw): IN endpoint FIFOx transmit RAM start address This field contains the memory start address for IN endpoint transmit FIFOx. The address must be aligned with a 32-bit memory location.
 0x40040120 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40040120 C   FIELD 16w16 INEPTXFD (rw): IN endpoint Tx FIFO depth This value is in terms of 32-bit words. Minimum value is 16
 0x40040120 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x40040400 A PERIPHERAL OTG1_HS_HOST
 0x40040400 B  REGISTER HCFG: OTG_HS host configuration register
@@ -11234,7 +11233,10 @@
 0x4008011C C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
 0x4008011C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x40080120 B  REGISTER DIEPTXF8 (rw): OTG_HS device IN endpoint transmit FIFO size register
+0x40080120 B  REGISTER OTG_DIEPTXF8: 
+0x40080120 C   FIELD 00w16 INEPTXSA (rw): IN endpoint FIFOx transmit RAM start address This field contains the memory start address for IN endpoint transmit FIFOx. The address must be aligned with a 32-bit memory location.
 0x40080120 C   FIELD 00w16 INEPTXSA: IN endpoint FIFOx transmit RAM start address
+0x40080120 C   FIELD 16w16 INEPTXFD (rw): IN endpoint Tx FIFO depth This value is in terms of 32-bit words. Minimum value is 16
 0x40080120 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x40080400 A PERIPHERAL OTG2_HS_HOST
 0x40080400 B  REGISTER HCFG: OTG_HS host configuration register
@@ -15123,22 +15125,22 @@
 0x5200104C C   FIELD 00w01 EN: Enable Enables the dead time functionality.
 0x5200104C C   FIELD 08w08 DT: Dead Time Dead time value in the AXI clock cycle inserted between two consecutive accesses on the AXI master port. These bits represent the minimum guaranteed number of cycles between two consecutive AXI accesses.
 0x52002000 A PERIPHERAL FLASH
-0x52002000 B  REGISTER ACR: FLASH access control register
-0x52002000 C   FIELD 00w04 LATENCY: Read latency
+0x52002000 B  REGISTER ACR (rw): Access control register
+0x52002000 C   FIELD 00w03 LATENCY: Read latency
 0x52002000 C   FIELD 04w02 WRHIGHFREQ: Flash signal delay
 0x52002004 B  CLUSTER BANK1: Cluster BANK1, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
-0x52002004 B  REGISTER KEYR1 (wo): FLASH key register for bank 1
-0x52002004 C   FIELD 00w32 KEYR: Bank access configuration unlock key
-0x52002008 B  REGISTER OPTKEYR (wo): FLASH option key register
-0x52002008 C   FIELD 00w32 OPTKEYR: FLASH option bytes control access unlock key
-0x5200200C B  REGISTER CR1: FLASH control register for bank 1
+0x52002004 B  REGISTER KEYR1 (rw): FLASH key register for bank 1
+0x52002004 C   FIELD 00w32 KEYR: Bank 1 access configuration unlock key
+0x52002008 B  REGISTER OPTKEYR (rw): FLASH option key register
+0x52002008 C   FIELD 00w32 OPTKEYR: Unlock key option bytes
+0x5200200C B  REGISTER CR1 (rw): FLASH control register for bank 1
 0x5200200C C   FIELD 00w01 LOCK: Bank 1 configuration lock bit
-0x5200200C C   FIELD 01w01 PG: Bank 1 internal buffer control bit
+0x5200200C C   FIELD 01w01 PG: Bank 1 program enable bit
 0x5200200C C   FIELD 02w01 SER: Bank 1 sector erase request
 0x5200200C C   FIELD 03w01 BER: Bank 1 erase request
 0x5200200C C   FIELD 04w02 PSIZE: Bank 1 program size
 0x5200200C C   FIELD 06w01 FW: Bank 1 write forcing control bit
-0x5200200C C   FIELD 07w01 START: Bank 1 erase start control bit
+0x5200200C C   FIELD 07w01 START: Bank 1 bank or sector erase start control bit
 0x5200200C C   FIELD 08w03 SNB: Bank 1 sector erase selection number
 0x5200200C C   FIELD 15w01 CRC_EN: Bank 1 CRC control bit
 0x5200200C C   FIELD 16w01 EOPIE: Bank 1 end-of-program interrupt control bit
@@ -15146,15 +15148,14 @@
 0x5200200C C   FIELD 18w01 PGSERRIE: Bank 1 programming sequence error interrupt enable bit
 0x5200200C C   FIELD 19w01 STRBERRIE: Bank 1 strobe error interrupt enable bit
 0x5200200C C   FIELD 21w01 INCERRIE: Bank 1 inconsistency error interrupt enable bit
-0x5200200C C   FIELD 22w01 OPERRIE: Bank 1 write
+0x5200200C C   FIELD 22w01 OPERRIE: Bank 1 write/erase error interrupt enable bit
 0x5200200C C   FIELD 23w01 RDPERRIE: Bank 1 read protection error interrupt enable bit
 0x5200200C C   FIELD 24w01 RDSERRIE: Bank 1 secure error interrupt enable bit
 0x5200200C C   FIELD 25w01 SNECCERRIE: Bank 1 ECC single correction error interrupt enable bit
 0x5200200C C   FIELD 26w01 DBECCERRIE: Bank 1 ECC double detection error interrupt enable bit
-0x5200200C C   FIELD 27w01 CRCENDIE: Bank 1 CRC end of calculation interrupt enable bit
-0x5200200C C   FIELD 28w01 CRCRDERRIE: Bank 1 CRC read error interrupt enable bit
-0x52002010 B  REGISTER SR1: FLASH status register for bank 1
-0x52002010 C   FIELD 00w01 BSY: Bank 1 busy flag
+0x5200200C C   FIELD 27w01 CRCENDIE: Bank 1 end of CRC calculation interrupt enable bit
+0x52002010 B  REGISTER SR1 (rw): FLASH status register for bank 1
+0x52002010 C   FIELD 00w01 BSY: Bank 1 ongoing program flag
 0x52002010 C   FIELD 01w01 WBNE: Bank 1 write buffer not empty flag
 0x52002010 C   FIELD 02w01 QW: Bank 1 wait queue flag
 0x52002010 C   FIELD 03w01 CRC_BUSY: Bank 1 CRC busy flag
@@ -15163,17 +15164,16 @@
 0x52002010 C   FIELD 18w01 PGSERR: Bank 1 programming sequence error flag
 0x52002010 C   FIELD 19w01 STRBERR: Bank 1 strobe error flag
 0x52002010 C   FIELD 21w01 INCERR: Bank 1 inconsistency error flag
-0x52002010 C   FIELD 22w01 OPERR: Bank 1 write
+0x52002010 C   FIELD 22w01 OPERR: Bank 1 write/erase error flag
 0x52002010 C   FIELD 23w01 RDPERR: Bank 1 read protection error flag
 0x52002010 C   FIELD 24w01 RDSERR: Bank 1 secure error flag
-0x52002010 C   FIELD 25w01 SNECCERR: Bank 1 single correction error flag
+0x52002010 C   FIELD 25w01 SNECCERR1: Bank 1 single correction error flag
 0x52002010 C   FIELD 26w01 DBECCERR: Bank 1 ECC double detection error flag
-0x52002010 C   FIELD 27w01 CRCEND: Bank 1 CRC end of calculation flag
-0x52002010 C   FIELD 28w01 CRCRDERR: Bank 1 CRC read error flag
-0x52002014 B  REGISTER CCR1: FLASH clear control register for bank 1
+0x52002010 C   FIELD 27w01 CRCEND: Bank 1 CRC-complete flag
+0x52002014 B  REGISTER CCR1 (rw): FLASH clear control register for bank 1
 0x52002014 C   FIELD 16w01 CLR_EOP: Bank 1 EOP1 flag clear bit
 0x52002014 C   FIELD 17w01 CLR_WRPERR: Bank 1 WRPERR1 flag clear bit
-0x52002014 C   FIELD 18w01 CLR_PGSERR: Bank 1 PGSERR1 flag clear bit
+0x52002014 C   FIELD 18w01 CLR_PGSERR: Bank 1 PGSERR1 flag clear bi
 0x52002014 C   FIELD 19w01 CLR_STRBERR: Bank 1 STRBERR1 flag clear bit
 0x52002014 C   FIELD 21w01 CLR_INCERR: Bank 1 INCERR1 flag clear bit
 0x52002014 C   FIELD 22w01 CLR_OPERR: Bank 1 OPERR1 flag clear bit
@@ -15182,116 +15182,103 @@
 0x52002014 C   FIELD 25w01 CLR_SNECCERR: Bank 1 SNECCERR1 flag clear bit
 0x52002014 C   FIELD 26w01 CLR_DBECCERR: Bank 1 DBECCERR1 flag clear bit
 0x52002014 C   FIELD 27w01 CLR_CRCEND: Bank 1 CRCEND1 flag clear bit
-0x52002014 C   FIELD 28w01 CLR_CRCRDERR: Bank 1 CRCRDERR1 flag clear bit
-0x52002018 B  REGISTER OPTCR: FLASH option control register
-0x52002018 C   FIELD 00w01 OPTLOCK: FLASH
+0x52002018 B  REGISTER OPTCR (rw): FLASH option control register
+0x52002018 C   FIELD 00w01 OPTLOCK: FLASH_OPTCR lock option configuration bit
 0x52002018 C   FIELD 01w01 OPTSTART: Option byte start change option configuration bit
-0x52002018 C   FIELD 04w01 MER: mass erase request
+0x52002018 C   FIELD 04w01 MER: Flash mass erase enable bit
 0x52002018 C   FIELD 30w01 OPTCHANGEERRIE: Option byte change error interrupt enable bit
-0x52002018 C   FIELD 31w01 SWAP_BANK: Bank swapping option configuration bit
-0x5200201C B  REGISTER OPTSR_CUR: FLASH option status register
+0x52002018 C   FIELD 31w01 SWAP_BANK: Bank swapping configuration bit
+0x5200201C B  REGISTER OPTSR_CUR (rw): FLASH option status register
 0x5200201C C   FIELD 00w01 OPT_BUSY: Option byte change ongoing flag
 0x5200201C C   FIELD 02w02 BOR_LEV: Brownout level option status bit
-0x5200201C C   FIELD 04w01 IWDG_SW: IWDG control mode option status bit
-0x5200201C C   FIELD 05w01 IWDG2_SW: IWDG2 control mode option status bit
-0x5200201C C   FIELD 06w01 NRST_STOP_D1: D1 domain DStop entry reset option status bit
-0x5200201C C   FIELD 07w01 RST_STDY_D1: D1 domain DStandby entry reset option status bit
+0x5200201C C   FIELD 04w01 IWDG1_HW: IWDG1 control option status bit
+0x5200201C C   FIELD 06w01 nRST_STOP_D1: D1 DStop entry reset option status bit
+0x5200201C C   FIELD 07w01 nRST_STBY_D1: D1 DStandby entry reset option status bit
 0x5200201C C   FIELD 08w08 RDP: Readout protection level option status byte
-0x5200201C C   FIELD 17w01 IWDG_FZ_STOP: IWDG Stop mode freeze option status bit
-0x5200201C C   FIELD 18w01 IWDG_FZ_SDBY: IWDG Standby mode freeze option status bit
-0x5200201C C   FIELD 19w02 ST_RAM_SIZE: ST RAM size option status
+0x5200201C C   FIELD 17w01 FZ_IWDG_STOP: IWDG Stop mode freeze option status bit
+0x5200201C C   FIELD 18w01 FZ_IWDG_SDBY: IWDG Standby mode freeze option status bit
+0x5200201C C   FIELD 19w02 ST_RAM_SIZE: DTCM RAM size option status
 0x5200201C C   FIELD 21w01 SECURITY: Security enable option status bit
-0x5200201C C   FIELD 22w01 BOOT_CM4: Arm Cortex
-0x5200201C C   FIELD 23w01 BOOT_CM7: Arm Cortex
-0x5200201C C   FIELD 24w01 NRST_STOP_D2: D2 domain DStop entry reset option status bit
-0x5200201C C   FIELD 25w01 NRST_STBY_D2: D2 domain DStandby entry reset option status bit
-0x5200201C C   FIELD 29w01 IO_HSLV: I
+0x5200201C C   FIELD 26w01 RSS1: User option bit 1
+0x5200201C C   FIELD 28w01 PERSO_OK: Device personalization status bit
+0x5200201C C   FIELD 29w01 IO_HSLV: I/O high-speed at low-voltage status bit (PRODUCT_BELOW_25V)
 0x5200201C C   FIELD 30w01 OPTCHANGEERR: Option byte change error flag
 0x5200201C C   FIELD 31w01 SWAP_BANK_OPT: Bank swapping option status bit
-0x52002020 B  REGISTER OPTSR_PRG: FLASH option status register
-0x52002020 C   FIELD 02w02 BOR_LEV: Brownout level option configuration bit
-0x52002020 C   FIELD 04w01 IWDG_SW: IWDG control mode option configuration bit
-0x52002020 C   FIELD 05w01 IWDG2_SW: IWDG2 control mode option configuration bit
-0x52002020 C   FIELD 06w01 NRST_STOP_D1: D1 domain DStop entry reset option configuration bit
-0x52002020 C   FIELD 07w01 NRST_STDY_D1: D1 domain DStandby entry reset option configuration bit
-0x52002020 C   FIELD 08w08 RDP: Readout protection level option configuration bits
-0x52002020 C   FIELD 17w01 IWDG_FZ_STOP: IWDG Stop mode freeze option configuration bit
-0x52002020 C   FIELD 18w01 IWDG_FZ_SDBY: IWDG Standby mode freeze option configuration bit
-0x52002020 C   FIELD 19w02 ST_RAM_SIZE: ST RAM size option configuration bits
-0x52002020 C   FIELD 21w01 SECURITY: Security enable option configuration bit
-0x52002020 C   FIELD 22w01 BOOT_CM4: Arm Cortex
-0x52002020 C   FIELD 23w01 BOOT_CM7: Arm Cortex
-0x52002020 C   FIELD 24w01 NRST_STOP_D2: D2 domain DStop entry reset option configuration bit
-0x52002020 C   FIELD 25w01 NRST_STBY_D2: D2 domain DStandby entry reset option configuration bit
-0x52002020 C   FIELD 29w01 IO_HSLV: I
+0x52002020 B  REGISTER OPTSR_PRG (rw): FLASH option status register
+0x52002020 C   FIELD 02w02 BOR_LEV: BOR reset level option configuration bits
+0x52002020 C   FIELD 04w01 IWDG1_HW: IWDG1 option configuration bit
+0x52002020 C   FIELD 06w01 nRST_STOP_D1: Option byte erase after D1 DStop option configuration bit
+0x52002020 C   FIELD 07w01 nRST_STBY_D1: Option byte erase after D1 DStandby option configuration bit
+0x52002020 C   FIELD 08w08 RDP: Readout protection level option configuration byte
+0x52002020 C   FIELD 17w01 FZ_IWDG_STOP: IWDG Stop mode freeze option configuration bit
+0x52002020 C   FIELD 18w01 FZ_IWDG_SDBY: IWDG Standby mode freeze option configuration bit
+0x52002020 C   FIELD 19w02 ST_RAM_SIZE: DTCM size select option configuration bits
+0x52002020 C   FIELD 21w01 SECURITY: Security option configuration bit
+0x52002020 C   FIELD 26w01 RSS1: User option configuration bit 1
+0x52002020 C   FIELD 27w01 RSS2: User option configuration bit 2
+0x52002020 C   FIELD 29w01 IO_HSLV: I/O high-speed at low-voltage (PRODUCT_BELOW_25V)
 0x52002020 C   FIELD 31w01 SWAP_BANK_OPT: Bank swapping option configuration bit
-0x52002024 B  REGISTER OPTCCR: FLASH option clear control register
+0x52002024 B  REGISTER OPTCCR (wo): FLASH option clear control register
 0x52002024 C   FIELD 30w01 CLR_OPTCHANGEERR: OPTCHANGEERR reset bit
-0x52002028 B  REGISTER PRAR_CUR1: FLASH protection address for bank 1
-0x52002028 C   FIELD 00w12 PROT_AREA_START: Bank 1 PCROP area start status bits
-0x52002028 C   FIELD 16w12 PROT_AREA_END: Bank 1 PCROP area end status bits
+0x52002028 B  REGISTER PRAR_CUR1 (ro): FLASH protection address for bank 1
+0x52002028 C   FIELD 00w12 PROT_AREA_START: Bank 1 lowest PCROP protected address
+0x52002028 C   FIELD 16w12 PROT_AREA_END: Bank 1 highest PCROP protected address
 0x52002028 C   FIELD 31w01 DMEP: Bank 1 PCROP protected erase enable option status bit
-0x5200202C B  REGISTER PRAR_PRG1: FLASH protection address for bank 1
-0x5200202C C   FIELD 00w12 PROT_AREA_START: Bank 1 PCROP area start configuration bits
-0x5200202C C   FIELD 16w12 PROT_AREA_END: Bank 1 PCROP area end configuration bits
+0x5200202C B  REGISTER PRAR_PRG1 (rw): FLASH protection address for bank 1
+0x5200202C C   FIELD 00w12 PROT_AREA_START: Bank 1 lowest PCROP protected address configuration
+0x5200202C C   FIELD 16w12 PROT_AREA_END: Bank 1 highest PCROP protected address configuration
 0x5200202C C   FIELD 31w01 DMEP: Bank 1 PCROP protected erase enable option configuration bit
-0x52002030 B  REGISTER SCAR_CUR1: FLASH secure address for bank 1
-0x52002030 C   FIELD 00w12 SEC_AREA_START: Bank 1 secure-only area start status bits
-0x52002030 C   FIELD 16w12 SEC_AREA_END: Bank 1 secure-only area end status bits
-0x52002030 C   FIELD 31w01 DMES: Bank 1 secure access protected erase enable option status bit
-0x52002034 B  REGISTER SCAR_PRG1: FLASH secure address for bank 1
-0x52002034 C   FIELD 00w12 SEC_AREA_START: Bank 1 secure-only area start configuration bits
-0x52002034 C   FIELD 16w12 SEC_AREA_END: Bank 1 secure-only area end configuration bits
-0x52002034 C   FIELD 31w01 DMES: Bank 1 secure access protected erase enable option configuration bit
-0x52002038 B  REGISTER WPSN_CURR1: FLASH write sector protection for bank 1
+0x52002030 B  REGISTER SCAR_CUR1 (rw): FLASH secure address for bank 1
+0x52002030 C   FIELD 00w12 SEC_AREA_START: Bank 1 lowest secure protected address
+0x52002030 C   FIELD 16w12 SEC_AREA_END: Bank 1 highest secure protected address
+0x52002030 C   FIELD 31w01 DMES: Bank 1 secure protected erase enable option status bit
+0x52002034 B  REGISTER SCAR_PRG1 (rw): FLASH secure address for bank 1
+0x52002034 C   FIELD 00w12 SEC_AREA_START: Bank 1 lowest secure protected address configuration
+0x52002034 C   FIELD 16w12 SEC_AREA_END: Bank 1 highest secure protected address configuration
+0x52002034 C   FIELD 31w01 DMES: Bank 1 secure protected erase enable option configuration bit
+0x52002038 B  REGISTER WPSN_CURR1 (ro): FLASH write sector protection for bank 1
 0x52002038 C   FIELD 00w08 WRPSn: Bank 1 sector write protection option status byte
-0x5200203C B  REGISTER WPSN_PRGR1: FLASH write sector protection for bank 1
-0x5200203C C   FIELD 00w08 WRPSn: Bank 1 sector write protection option status byte
-0x52002040 B  REGISTER BOOT7_CURR: FLASH register boot address for Arm Cortex-M7 core
-0x52002040 C   FIELD 00w16 BOOT_CM7_ADD0: Arm Cortex-M7 boot address 0
-0x52002040 C   FIELD 16w16 BOOT_CM7_ADD1: Arm Cortex-M7 boot address 1
-0x52002044 B  REGISTER BOOT7_PRGR: FLASH register boot address for Arm Cortex-M7 core
-0x52002044 C   FIELD 00w16 BOOT_CM7_ADD0: Arm Cortex-M7 boot address 0 configuration
-0x52002044 C   FIELD 16w16 BOOT_CM7_ADD1: Arm Cortex-M7 boot address 1 configuration
-0x52002048 B  REGISTER BOOT4_CURR: FLASH register boot address for Arm Cortex-M4 core
-0x52002048 C   FIELD 00w16 BOOT_CM4_ADD0: Arm Cortex-M4 boot address 0
-0x52002048 C   FIELD 16w16 BOOT_CM4_ADD1: Arm Cortex-M4 boot address 1
-0x5200204C B  REGISTER BOOT4_PRGR: FLASH register boot address for Arm Cortex-M4 core
-0x5200204C C   FIELD 00w16 BOOT_CM4_ADD0: Arm Cortex-M4 boot address 0 configuration
-0x5200204C C   FIELD 16w16 BOOT_CM4_ADD1: Arm Cortex-M4 boot address 1 configuration
-0x52002050 B  REGISTER CRCCR1: FLASH CRC control register for bank 1
+0x5200203C B  REGISTER WPSN_PRGR1 (rw): FLASH write sector protection for bank 1
+0x5200203C C   FIELD 00w08 WRPSn: Bank 1 sector write protection configuration byte
+0x52002040 B  REGISTER BOOT_CURR (ro): FLASH register with boot address
+0x52002040 C   FIELD 00w16 BOOT_ADD0: Boot address 0
+0x52002040 C   FIELD 16w16 BOOT_ADD1: Boot address 1
+0x52002044 B  REGISTER BOOT_PRGR (ro): FLASH register with boot address
+0x52002044 C   FIELD 00w16 BOOT_ADD0: Boot address 0
+0x52002044 C   FIELD 16w16 BOOT_ADD1: Boot address 1
+0x52002050 B  REGISTER CRCCR1 (rw): FLASH CRC control register for bank 1
 0x52002050 C   FIELD 00w03 CRC_SECT: Bank 1 CRC sector number
+0x52002050 C   FIELD 07w01 ALL_BANK: Bank 1 CRC select bit
 0x52002050 C   FIELD 08w01 CRC_BY_SECT: Bank 1 CRC sector mode select bit
 0x52002050 C   FIELD 09w01 ADD_SECT: Bank 1 CRC sector select bit
 0x52002050 C   FIELD 10w01 CLEAN_SECT: Bank 1 CRC sector list clear bit
 0x52002050 C   FIELD 16w01 START_CRC: Bank 1 CRC start bit
 0x52002050 C   FIELD 17w01 CLEAN_CRC: Bank 1 CRC clear bit
 0x52002050 C   FIELD 20w02 CRC_BURST: Bank 1 CRC burst size
-0x52002050 C   FIELD 22w01 ALL_BANK: Bank 1 CRC select bit
-0x52002054 B  REGISTER CRCSADDR1: FLASH CRC start address register for bank 1
-0x52002054 C   FIELD 02w18 CRC_START_ADDR: CRC start address on bank 1
-0x52002058 B  REGISTER CRCEADDR1: FLASH CRC end address register for bank 1
-0x52002058 C   FIELD 02w18 CRC_END_ADDR: CRC end address on bank 1
-0x5200205C B  REGISTER CRCDATAR: FLASH CRC data register
+0x52002054 B  REGISTER CRCSADDR1 (rw): FLASH CRC start address register for bank 1
+0x52002054 C   FIELD 00w32 CRC_START_ADDR: CRC start address on bank 1
+0x52002058 B  REGISTER CRCEADDR1 (rw): FLASH CRC end address register for bank 1
+0x52002058 C   FIELD 00w32 CRC_END_ADDR: CRC end address on bank 1
+0x5200205C B  REGISTER CRCDATAR (rw): FLASH CRC data register
 0x5200205C C   FIELD 00w32 CRC_DATA: CRC result
-0x52002060 B  REGISTER FAR1: FLASH ECC fail address for bank 1
+0x52002060 B  REGISTER FAR1 (ro): FLASH ECC fail address for bank 1
 0x52002060 C   FIELD 00w15 FAIL_ECC_ADDR: Bank 1 ECC error address
-0x52002100 B  REGISTER ACR_: FLASH access control register
-0x52002100 C   FIELD 00w04 LATENCY: Read latency
+0x52002100 B  REGISTER ACR_ (rw): Access control register
+0x52002100 C   FIELD 00w03 LATENCY: Read latency
 0x52002100 C   FIELD 04w02 WRHIGHFREQ: Flash signal delay
 0x52002104 B  CLUSTER BANK2: Cluster BANK2, containing KEYR?, CR?, SR?, CCR?, PRAR_CUR?, PRAR_PRG?, SCAR_CUR?, SCAR_PRG?, WPSN_CUR?R, WPSN_PRG?R, CRCCR?, CRCSADD?R, CRCEADD?R, ECC_FA?R
-0x52002104 B  REGISTER KEYR2 (wo): FLASH key register for bank 1
-0x52002104 C   FIELD 00w32 KEYR: Bank access configuration unlock key
-0x52002108 B  REGISTER OPTKEYR_ (wo): FLASH option key register
-0x52002108 C   FIELD 00w32 OPTKEYR: FLASH option bytes control access unlock key
-0x5200210C B  REGISTER CR2: FLASH control register for bank 1
+0x52002104 B  REGISTER KEYR2 (rw): FLASH key register for bank 1
+0x52002104 C   FIELD 00w32 KEYR: Bank 1 access configuration unlock key
+0x52002108 B  REGISTER OPTKEYR_ (rw): FLASH option key register
+0x52002108 C   FIELD 00w32 OPTKEYR: Unlock key option bytes
+0x5200210C B  REGISTER CR2 (rw): FLASH control register for bank 1
 0x5200210C C   FIELD 00w01 LOCK: Bank 1 configuration lock bit
-0x5200210C C   FIELD 01w01 PG: Bank 1 internal buffer control bit
+0x5200210C C   FIELD 01w01 PG: Bank 1 program enable bit
 0x5200210C C   FIELD 02w01 SER: Bank 1 sector erase request
 0x5200210C C   FIELD 03w01 BER: Bank 1 erase request
 0x5200210C C   FIELD 04w02 PSIZE: Bank 1 program size
 0x5200210C C   FIELD 06w01 FW: Bank 1 write forcing control bit
-0x5200210C C   FIELD 07w01 START: Bank 1 erase start control bit
+0x5200210C C   FIELD 07w01 START: Bank 1 bank or sector erase start control bit
 0x5200210C C   FIELD 08w03 SNB: Bank 1 sector erase selection number
 0x5200210C C   FIELD 15w01 CRC_EN: Bank 1 CRC control bit
 0x5200210C C   FIELD 16w01 EOPIE: Bank 1 end-of-program interrupt control bit
@@ -15299,15 +15286,14 @@
 0x5200210C C   FIELD 18w01 PGSERRIE: Bank 1 programming sequence error interrupt enable bit
 0x5200210C C   FIELD 19w01 STRBERRIE: Bank 1 strobe error interrupt enable bit
 0x5200210C C   FIELD 21w01 INCERRIE: Bank 1 inconsistency error interrupt enable bit
-0x5200210C C   FIELD 22w01 OPERRIE: Bank 1 write
+0x5200210C C   FIELD 22w01 OPERRIE: Bank 1 write/erase error interrupt enable bit
 0x5200210C C   FIELD 23w01 RDPERRIE: Bank 1 read protection error interrupt enable bit
 0x5200210C C   FIELD 24w01 RDSERRIE: Bank 1 secure error interrupt enable bit
 0x5200210C C   FIELD 25w01 SNECCERRIE: Bank 1 ECC single correction error interrupt enable bit
 0x5200210C C   FIELD 26w01 DBECCERRIE: Bank 1 ECC double detection error interrupt enable bit
-0x5200210C C   FIELD 27w01 CRCENDIE: Bank 1 CRC end of calculation interrupt enable bit
-0x5200210C C   FIELD 28w01 CRCRDERRIE: Bank 1 CRC read error interrupt enable bit
-0x52002110 B  REGISTER SR2: FLASH status register for bank 1
-0x52002110 C   FIELD 00w01 BSY: Bank 1 busy flag
+0x5200210C C   FIELD 27w01 CRCENDIE: Bank 1 end of CRC calculation interrupt enable bit
+0x52002110 B  REGISTER SR2 (rw): FLASH status register for bank 1
+0x52002110 C   FIELD 00w01 BSY: Bank 1 ongoing program flag
 0x52002110 C   FIELD 01w01 WBNE: Bank 1 write buffer not empty flag
 0x52002110 C   FIELD 02w01 QW: Bank 1 wait queue flag
 0x52002110 C   FIELD 03w01 CRC_BUSY: Bank 1 CRC busy flag
@@ -15316,17 +15302,16 @@
 0x52002110 C   FIELD 18w01 PGSERR: Bank 1 programming sequence error flag
 0x52002110 C   FIELD 19w01 STRBERR: Bank 1 strobe error flag
 0x52002110 C   FIELD 21w01 INCERR: Bank 1 inconsistency error flag
-0x52002110 C   FIELD 22w01 OPERR: Bank 1 write
+0x52002110 C   FIELD 22w01 OPERR: Bank 1 write/erase error flag
 0x52002110 C   FIELD 23w01 RDPERR: Bank 1 read protection error flag
 0x52002110 C   FIELD 24w01 RDSERR: Bank 1 secure error flag
-0x52002110 C   FIELD 25w01 SNECCERR: Bank 1 single correction error flag
+0x52002110 C   FIELD 25w01 SNECCERR1: Bank 1 single correction error flag
 0x52002110 C   FIELD 26w01 DBECCERR: Bank 1 ECC double detection error flag
-0x52002110 C   FIELD 27w01 CRCEND: Bank 1 CRC end of calculation flag
-0x52002110 C   FIELD 28w01 CRCRDERR: Bank 1 CRC read error flag
-0x52002114 B  REGISTER CCR2: FLASH clear control register for bank 1
+0x52002110 C   FIELD 27w01 CRCEND: Bank 1 CRC-complete flag
+0x52002114 B  REGISTER CCR2 (rw): FLASH clear control register for bank 1
 0x52002114 C   FIELD 16w01 CLR_EOP: Bank 1 EOP1 flag clear bit
 0x52002114 C   FIELD 17w01 CLR_WRPERR: Bank 1 WRPERR1 flag clear bit
-0x52002114 C   FIELD 18w01 CLR_PGSERR: Bank 1 PGSERR1 flag clear bit
+0x52002114 C   FIELD 18w01 CLR_PGSERR: Bank 1 PGSERR1 flag clear bi
 0x52002114 C   FIELD 19w01 CLR_STRBERR: Bank 1 STRBERR1 flag clear bit
 0x52002114 C   FIELD 21w01 CLR_INCERR: Bank 1 INCERR1 flag clear bit
 0x52002114 C   FIELD 22w01 CLR_OPERR: Bank 1 OPERR1 flag clear bit
@@ -15335,97 +15320,78 @@
 0x52002114 C   FIELD 25w01 CLR_SNECCERR: Bank 1 SNECCERR1 flag clear bit
 0x52002114 C   FIELD 26w01 CLR_DBECCERR: Bank 1 DBECCERR1 flag clear bit
 0x52002114 C   FIELD 27w01 CLR_CRCEND: Bank 1 CRCEND1 flag clear bit
-0x52002114 C   FIELD 28w01 CLR_CRCRDERR: Bank 1 CRCRDERR1 flag clear bit
-0x52002118 B  REGISTER OPTCR_: FLASH option control register
-0x52002118 C   FIELD 00w01 OPTLOCK: FLASH
+0x52002118 B  REGISTER OPTCR_ (rw): FLASH option control register
+0x52002118 C   FIELD 00w01 OPTLOCK: FLASH_OPTCR lock option configuration bit
 0x52002118 C   FIELD 01w01 OPTSTART: Option byte start change option configuration bit
-0x52002118 C   FIELD 04w01 MER: mass erase request
+0x52002118 C   FIELD 04w01 MER: Flash mass erase enable bit
 0x52002118 C   FIELD 30w01 OPTCHANGEERRIE: Option byte change error interrupt enable bit
-0x52002118 C   FIELD 31w01 SWAP_BANK: Bank swapping option configuration bit
-0x5200211C B  REGISTER OPTSR_CUR_: FLASH option status register
+0x52002118 C   FIELD 31w01 SWAP_BANK: Bank swapping configuration bit
+0x5200211C B  REGISTER OPTSR_CUR_ (rw): FLASH option status register
 0x5200211C C   FIELD 00w01 OPT_BUSY: Option byte change ongoing flag
 0x5200211C C   FIELD 02w02 BOR_LEV: Brownout level option status bit
-0x5200211C C   FIELD 04w01 IWDG_SW: IWDG control mode option status bit
-0x5200211C C   FIELD 05w01 IWDG2_SW: IWDG2 control mode option status bit
-0x5200211C C   FIELD 06w01 NRST_STOP_D1: D1 domain DStop entry reset option status bit
-0x5200211C C   FIELD 07w01 RST_STDY_D1: D1 domain DStandby entry reset option status bit
+0x5200211C C   FIELD 04w01 IWDG1_HW: IWDG1 control option status bit
+0x5200211C C   FIELD 06w01 nRST_STOP_D1: D1 DStop entry reset option status bit
+0x5200211C C   FIELD 07w01 nRST_STBY_D1: D1 DStandby entry reset option status bit
 0x5200211C C   FIELD 08w08 RDP: Readout protection level option status byte
-0x5200211C C   FIELD 17w01 IWDG_FZ_STOP: IWDG Stop mode freeze option status bit
-0x5200211C C   FIELD 18w01 IWDG_FZ_SDBY: IWDG Standby mode freeze option status bit
-0x5200211C C   FIELD 19w02 ST_RAM_SIZE: ST RAM size option status
+0x5200211C C   FIELD 17w01 FZ_IWDG_STOP: IWDG Stop mode freeze option status bit
+0x5200211C C   FIELD 18w01 FZ_IWDG_SDBY: IWDG Standby mode freeze option status bit
+0x5200211C C   FIELD 19w02 ST_RAM_SIZE: DTCM RAM size option status
 0x5200211C C   FIELD 21w01 SECURITY: Security enable option status bit
-0x5200211C C   FIELD 22w01 BOOT_CM4: Arm Cortex
-0x5200211C C   FIELD 23w01 BOOT_CM7: Arm Cortex
-0x5200211C C   FIELD 24w01 NRST_STOP_D2: D2 domain DStop entry reset option status bit
-0x5200211C C   FIELD 25w01 NRST_STBY_D2: D2 domain DStandby entry reset option status bit
-0x5200211C C   FIELD 29w01 IO_HSLV: I
+0x5200211C C   FIELD 26w01 RSS1: User option bit 1
+0x5200211C C   FIELD 28w01 PERSO_OK: Device personalization status bit
+0x5200211C C   FIELD 29w01 IO_HSLV: I/O high-speed at low-voltage status bit (PRODUCT_BELOW_25V)
 0x5200211C C   FIELD 30w01 OPTCHANGEERR: Option byte change error flag
 0x5200211C C   FIELD 31w01 SWAP_BANK_OPT: Bank swapping option status bit
-0x52002120 B  REGISTER OPTSR_PRG_: FLASH option status register
-0x52002120 C   FIELD 02w02 BOR_LEV: Brownout level option configuration bit
-0x52002120 C   FIELD 04w01 IWDG_SW: IWDG control mode option configuration bit
-0x52002120 C   FIELD 05w01 IWDG2_SW: IWDG2 control mode option configuration bit
-0x52002120 C   FIELD 06w01 NRST_STOP_D1: D1 domain DStop entry reset option configuration bit
-0x52002120 C   FIELD 07w01 NRST_STDY_D1: D1 domain DStandby entry reset option configuration bit
-0x52002120 C   FIELD 08w08 RDP: Readout protection level option configuration bits
-0x52002120 C   FIELD 17w01 IWDG_FZ_STOP: IWDG Stop mode freeze option configuration bit
-0x52002120 C   FIELD 18w01 IWDG_FZ_SDBY: IWDG Standby mode freeze option configuration bit
-0x52002120 C   FIELD 19w02 ST_RAM_SIZE: ST RAM size option configuration bits
-0x52002120 C   FIELD 21w01 SECURITY: Security enable option configuration bit
-0x52002120 C   FIELD 22w01 BOOT_CM4: Arm Cortex
-0x52002120 C   FIELD 23w01 BOOT_CM7: Arm Cortex
-0x52002120 C   FIELD 24w01 NRST_STOP_D2: D2 domain DStop entry reset option configuration bit
-0x52002120 C   FIELD 25w01 NRST_STBY_D2: D2 domain DStandby entry reset option configuration bit
-0x52002120 C   FIELD 29w01 IO_HSLV: I
+0x52002120 B  REGISTER OPTSR_PRG_ (rw): FLASH option status register
+0x52002120 C   FIELD 02w02 BOR_LEV: BOR reset level option configuration bits
+0x52002120 C   FIELD 04w01 IWDG1_HW: IWDG1 option configuration bit
+0x52002120 C   FIELD 06w01 nRST_STOP_D1: Option byte erase after D1 DStop option configuration bit
+0x52002120 C   FIELD 07w01 nRST_STBY_D1: Option byte erase after D1 DStandby option configuration bit
+0x52002120 C   FIELD 08w08 RDP: Readout protection level option configuration byte
+0x52002120 C   FIELD 17w01 FZ_IWDG_STOP: IWDG Stop mode freeze option configuration bit
+0x52002120 C   FIELD 18w01 FZ_IWDG_SDBY: IWDG Standby mode freeze option configuration bit
+0x52002120 C   FIELD 19w02 ST_RAM_SIZE: DTCM size select option configuration bits
+0x52002120 C   FIELD 21w01 SECURITY: Security option configuration bit
+0x52002120 C   FIELD 26w01 RSS1: User option configuration bit 1
+0x52002120 C   FIELD 27w01 RSS2: User option configuration bit 2
+0x52002120 C   FIELD 29w01 IO_HSLV: I/O high-speed at low-voltage (PRODUCT_BELOW_25V)
 0x52002120 C   FIELD 31w01 SWAP_BANK_OPT: Bank swapping option configuration bit
-0x52002124 B  REGISTER OPTCCR_: FLASH option clear control register
+0x52002124 B  REGISTER OPTCCR_ (wo): FLASH option clear control register
 0x52002124 C   FIELD 30w01 CLR_OPTCHANGEERR: OPTCHANGEERR reset bit
-0x52002128 B  REGISTER PRAR_CUR2: FLASH protection address for bank 1
-0x52002128 C   FIELD 00w12 PROT_AREA_START: Bank 1 PCROP area start status bits
-0x52002128 C   FIELD 16w12 PROT_AREA_END: Bank 1 PCROP area end status bits
+0x52002128 B  REGISTER PRAR_CUR2 (ro): FLASH protection address for bank 1
+0x52002128 C   FIELD 00w12 PROT_AREA_START: Bank 1 lowest PCROP protected address
+0x52002128 C   FIELD 16w12 PROT_AREA_END: Bank 1 highest PCROP protected address
 0x52002128 C   FIELD 31w01 DMEP: Bank 1 PCROP protected erase enable option status bit
-0x5200212C B  REGISTER PRAR_PRG2: FLASH protection address for bank 1
-0x5200212C C   FIELD 00w12 PROT_AREA_START: Bank 1 PCROP area start configuration bits
-0x5200212C C   FIELD 16w12 PROT_AREA_END: Bank 1 PCROP area end configuration bits
+0x5200212C B  REGISTER PRAR_PRG2 (rw): FLASH protection address for bank 1
+0x5200212C C   FIELD 00w12 PROT_AREA_START: Bank 1 lowest PCROP protected address configuration
+0x5200212C C   FIELD 16w12 PROT_AREA_END: Bank 1 highest PCROP protected address configuration
 0x5200212C C   FIELD 31w01 DMEP: Bank 1 PCROP protected erase enable option configuration bit
-0x52002130 B  REGISTER SCAR_CUR2: FLASH secure address for bank 1
-0x52002130 C   FIELD 00w12 SEC_AREA_START: Bank 1 secure-only area start status bits
-0x52002130 C   FIELD 16w12 SEC_AREA_END: Bank 1 secure-only area end status bits
-0x52002130 C   FIELD 31w01 DMES: Bank 1 secure access protected erase enable option status bit
-0x52002134 B  REGISTER SCAR_PRG2: FLASH secure address for bank 1
-0x52002134 C   FIELD 00w12 SEC_AREA_START: Bank 1 secure-only area start configuration bits
-0x52002134 C   FIELD 16w12 SEC_AREA_END: Bank 1 secure-only area end configuration bits
-0x52002134 C   FIELD 31w01 DMES: Bank 1 secure access protected erase enable option configuration bit
-0x52002138 B  REGISTER WPSN_CURR2: FLASH write sector protection for bank 1
+0x52002130 B  REGISTER SCAR_CUR2 (rw): FLASH secure address for bank 1
+0x52002130 C   FIELD 00w12 SEC_AREA_START: Bank 1 lowest secure protected address
+0x52002130 C   FIELD 16w12 SEC_AREA_END: Bank 1 highest secure protected address
+0x52002130 C   FIELD 31w01 DMES: Bank 1 secure protected erase enable option status bit
+0x52002134 B  REGISTER SCAR_PRG2 (rw): FLASH secure address for bank 1
+0x52002134 C   FIELD 00w12 SEC_AREA_START: Bank 1 lowest secure protected address configuration
+0x52002134 C   FIELD 16w12 SEC_AREA_END: Bank 1 highest secure protected address configuration
+0x52002134 C   FIELD 31w01 DMES: Bank 1 secure protected erase enable option configuration bit
+0x52002138 B  REGISTER WPSN_CURR2 (ro): FLASH write sector protection for bank 1
 0x52002138 C   FIELD 00w08 WRPSn: Bank 1 sector write protection option status byte
-0x5200213C B  REGISTER WPSN_PRGR2: FLASH write sector protection for bank 1
-0x5200213C C   FIELD 00w08 WRPSn: Bank 1 sector write protection option status byte
-0x52002140 B  REGISTER BOOT7_CURR_: FLASH register boot address for Arm Cortex-M7 core
-0x52002140 C   FIELD 00w16 BOOT_CM7_ADD0: Arm Cortex-M7 boot address 0
-0x52002140 C   FIELD 16w16 BOOT_CM7_ADD1: Arm Cortex-M7 boot address 1
-0x52002144 B  REGISTER BOOT7_PRGR_: FLASH register boot address for Arm Cortex-M7 core
-0x52002144 C   FIELD 00w16 BOOT_CM7_ADD0: Arm Cortex-M7 boot address 0 configuration
-0x52002144 C   FIELD 16w16 BOOT_CM7_ADD1: Arm Cortex-M7 boot address 1 configuration
-0x52002148 B  REGISTER BOOT4_CURR_: FLASH register boot address for Arm Cortex-M4 core
-0x52002148 C   FIELD 00w16 BOOT_CM4_ADD0: Arm Cortex-M4 boot address 0
-0x52002148 C   FIELD 16w16 BOOT_CM4_ADD1: Arm Cortex-M4 boot address 1
-0x5200214C B  REGISTER BOOT4_PRGR_: FLASH register boot address for Arm Cortex-M4 core
-0x5200214C C   FIELD 00w16 BOOT_CM4_ADD0: Arm Cortex-M4 boot address 0 configuration
-0x5200214C C   FIELD 16w16 BOOT_CM4_ADD1: Arm Cortex-M4 boot address 1 configuration
-0x52002150 B  REGISTER CRCCR2: FLASH CRC control register for bank 1
+0x5200213C B  REGISTER WPSN_PRGR2 (rw): FLASH write sector protection for bank 1
+0x5200213C C   FIELD 00w08 WRPSn: Bank 1 sector write protection configuration byte
+0x52002150 B  REGISTER CRCCR2 (rw): FLASH CRC control register for bank 1
 0x52002150 C   FIELD 00w03 CRC_SECT: Bank 1 CRC sector number
+0x52002150 C   FIELD 07w01 ALL_BANK: Bank 1 CRC select bit
 0x52002150 C   FIELD 08w01 CRC_BY_SECT: Bank 1 CRC sector mode select bit
 0x52002150 C   FIELD 09w01 ADD_SECT: Bank 1 CRC sector select bit
 0x52002150 C   FIELD 10w01 CLEAN_SECT: Bank 1 CRC sector list clear bit
 0x52002150 C   FIELD 16w01 START_CRC: Bank 1 CRC start bit
 0x52002150 C   FIELD 17w01 CLEAN_CRC: Bank 1 CRC clear bit
 0x52002150 C   FIELD 20w02 CRC_BURST: Bank 1 CRC burst size
-0x52002150 C   FIELD 22w01 ALL_BANK: Bank 1 CRC select bit
-0x52002154 B  REGISTER CRCSADDR2: FLASH CRC start address register for bank 1
-0x52002154 C   FIELD 02w18 CRC_START_ADDR: CRC start address on bank 1
-0x52002158 B  REGISTER CRCEADDR2: FLASH CRC end address register for bank 1
-0x52002158 C   FIELD 02w18 CRC_END_ADDR: CRC end address on bank 1
-0x52002160 B  REGISTER FAR2: FLASH ECC fail address for bank 1
+0x52002154 B  REGISTER CRCSADDR2 (rw): FLASH CRC start address register for bank 1
+0x52002154 C   FIELD 00w32 CRC_START_ADDR: CRC start address on bank 1
+0x52002158 B  REGISTER CRCEADDR2 (rw): FLASH CRC end address register for bank 1
+0x52002158 C   FIELD 00w32 CRC_END_ADDR: CRC end address on bank 1
+0x52002160 B  REGISTER FAR2 (ro): FLASH ECC fail address for bank 1
 0x52002160 C   FIELD 00w15 FAIL_ECC_ADDR: Bank 1 ECC error address
 0x52003000 A PERIPHERAL JPEG
 0x52003000 B  REGISTER CONFR0 (wo): JPEG codec control register
@@ -19577,9 +19543,9 @@
 0x58024400 C   FIELD 27w01 PLL2RDY: PLL2 clock ready flag
 0x58024400 C   FIELD 28w01 PLL3ON: PLL3 enable
 0x58024400 C   FIELD 29w01 PLL3RDY: PLL3 clock ready flag
-0x58024404 B  REGISTER HSICFGR (rw): RCC HSI configuration register
-0x58024404 C   FIELD 00w12 HSICAL: HSI clock calibration
-0x58024404 C   FIELD 24w07 HSITRIM: HSI clock trimming
+0x58024404 B  REGISTER HSICFGR: RCC HSI configuration register
+0x58024404 C   FIELD 00w12 HSICAL (ro): HSI clock calibration
+0x58024404 C   FIELD 24w07 HSITRIM (rw): HSI clock trimming
 0x58024408 B  REGISTER CRRCR (ro): RCC Clock Recovery RC Register
 0x58024408 C   FIELD 00w10 HSI48CAL: Internal RC 48 MHz clock calibration
 0x5802440C B  REGISTER CSICFGR (rw): RCC CSI configuration register
@@ -20431,7 +20397,7 @@
 0x58024C04 B  REGISTER IDR (rw): Independent Data register
 0x58024C04 C   FIELD 00w32 IDR: Independent Data register
 0x58024C08 B  REGISTER CR: Control register
-0x58024C08 C   FIELD 00w01 RESET (wo): RESET bit
+0x58024C08 C   FIELD 00w01 RESET (rw): RESET bit
 0x58024C08 C   FIELD 03w02 POLYSIZE (rw): Polynomial size
 0x58024C08 C   FIELD 05w02 REV_IN (rw): Reverse input data
 0x58024C08 C   FIELD 07w01 REV_OUT (rw): Reverse output data
@@ -21137,526 +21103,278 @@
 0x58026400 A PERIPHERAL HSEM
 0x58026400 B  REGISTER R0 (rw): HSEM register HSEM_R0
 0x58026400 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026400 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026400 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026400 C   FIELD 31w01 LOCK: Lock indication
 0x58026404 B  REGISTER R1 (rw): HSEM register HSEM_R1
 0x58026404 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026404 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026404 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026404 C   FIELD 31w01 LOCK: Lock indication
 0x58026408 B  REGISTER R2 (rw): HSEM register HSEM_R2
 0x58026408 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026408 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026408 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026408 C   FIELD 31w01 LOCK: Lock indication
 0x5802640C B  REGISTER R3 (rw): HSEM register HSEM_R3
 0x5802640C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802640C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802640C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802640C C   FIELD 31w01 LOCK: Lock indication
 0x58026410 B  REGISTER R4 (rw): HSEM register HSEM_R4
 0x58026410 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026410 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026410 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026410 C   FIELD 31w01 LOCK: Lock indication
 0x58026414 B  REGISTER R5 (rw): HSEM register HSEM_R5
 0x58026414 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026414 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026414 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026414 C   FIELD 31w01 LOCK: Lock indication
 0x58026418 B  REGISTER R6 (rw): HSEM register HSEM_R6
 0x58026418 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026418 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026418 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026418 C   FIELD 31w01 LOCK: Lock indication
 0x5802641C B  REGISTER R7 (rw): HSEM register HSEM_R7
 0x5802641C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802641C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802641C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802641C C   FIELD 31w01 LOCK: Lock indication
 0x58026420 B  REGISTER R8 (rw): HSEM register HSEM_R8
 0x58026420 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026420 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026420 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026420 C   FIELD 31w01 LOCK: Lock indication
 0x58026424 B  REGISTER R9 (rw): HSEM register HSEM_R9
 0x58026424 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026424 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026424 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026424 C   FIELD 31w01 LOCK: Lock indication
 0x58026428 B  REGISTER R10 (rw): HSEM register HSEM_R10
 0x58026428 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026428 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026428 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026428 C   FIELD 31w01 LOCK: Lock indication
 0x5802642C B  REGISTER R11 (rw): HSEM register HSEM_R11
 0x5802642C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802642C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802642C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802642C C   FIELD 31w01 LOCK: Lock indication
 0x58026430 B  REGISTER R12 (rw): HSEM register HSEM_R12
 0x58026430 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026430 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026430 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026430 C   FIELD 31w01 LOCK: Lock indication
 0x58026434 B  REGISTER R13 (rw): HSEM register HSEM_R13
 0x58026434 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026434 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026434 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026434 C   FIELD 31w01 LOCK: Lock indication
 0x58026438 B  REGISTER R14 (rw): HSEM register HSEM_R14
 0x58026438 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026438 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026438 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026438 C   FIELD 31w01 LOCK: Lock indication
 0x5802643C B  REGISTER R15 (rw): HSEM register HSEM_R15
 0x5802643C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802643C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802643C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802643C C   FIELD 31w01 LOCK: Lock indication
 0x58026440 B  REGISTER R16 (rw): HSEM register HSEM_R16
 0x58026440 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026440 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026440 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026440 C   FIELD 31w01 LOCK: Lock indication
 0x58026444 B  REGISTER R17 (rw): HSEM register HSEM_R17
 0x58026444 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026444 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026444 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026444 C   FIELD 31w01 LOCK: Lock indication
 0x58026448 B  REGISTER R18 (rw): HSEM register HSEM_R18
 0x58026448 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026448 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026448 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026448 C   FIELD 31w01 LOCK: Lock indication
 0x5802644C B  REGISTER R19 (rw): HSEM register HSEM_R19
 0x5802644C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802644C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802644C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802644C C   FIELD 31w01 LOCK: Lock indication
 0x58026450 B  REGISTER R20 (rw): HSEM register HSEM_R20
 0x58026450 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026450 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026450 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026450 C   FIELD 31w01 LOCK: Lock indication
 0x58026454 B  REGISTER R21 (rw): HSEM register HSEM_R21
 0x58026454 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026454 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026454 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026454 C   FIELD 31w01 LOCK: Lock indication
 0x58026458 B  REGISTER R22 (rw): HSEM register HSEM_R22
 0x58026458 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026458 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026458 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026458 C   FIELD 31w01 LOCK: Lock indication
 0x5802645C B  REGISTER R23 (rw): HSEM register HSEM_R23
 0x5802645C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802645C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802645C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802645C C   FIELD 31w01 LOCK: Lock indication
 0x58026460 B  REGISTER R24 (rw): HSEM register HSEM_R24
 0x58026460 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026460 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026460 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026460 C   FIELD 31w01 LOCK: Lock indication
 0x58026464 B  REGISTER R25 (rw): HSEM register HSEM_R25
 0x58026464 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026464 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026464 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026464 C   FIELD 31w01 LOCK: Lock indication
 0x58026468 B  REGISTER R26 (rw): HSEM register HSEM_R26
 0x58026468 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026468 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026468 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026468 C   FIELD 31w01 LOCK: Lock indication
 0x5802646C B  REGISTER R27 (rw): HSEM register HSEM_R27
 0x5802646C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802646C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802646C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802646C C   FIELD 31w01 LOCK: Lock indication
 0x58026470 B  REGISTER R28 (rw): HSEM register HSEM_R28
 0x58026470 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026470 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026470 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026470 C   FIELD 31w01 LOCK: Lock indication
 0x58026474 B  REGISTER R29 (rw): HSEM register HSEM_R29
 0x58026474 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026474 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026474 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026474 C   FIELD 31w01 LOCK: Lock indication
 0x58026478 B  REGISTER R30 (rw): HSEM register HSEM_R30
 0x58026478 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026478 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026478 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026478 C   FIELD 31w01 LOCK: Lock indication
 0x5802647C B  REGISTER R31 (rw): HSEM register HSEM_R31
 0x5802647C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802647C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802647C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802647C C   FIELD 31w01 LOCK: Lock indication
 0x58026480 B  REGISTER RLR0 (ro): Semaphore 0 read lock register
 0x58026480 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026480 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026480 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026480 C   FIELD 31w01 LOCK: Lock indication
 0x58026484 B  REGISTER RLR1 (ro): Semaphore 1 read lock register
 0x58026484 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026484 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026484 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026484 C   FIELD 31w01 LOCK: Lock indication
 0x58026488 B  REGISTER RLR2 (ro): Semaphore 2 read lock register
 0x58026488 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026488 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026488 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026488 C   FIELD 31w01 LOCK: Lock indication
 0x5802648C B  REGISTER RLR3 (ro): Semaphore 3 read lock register
 0x5802648C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802648C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802648C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802648C C   FIELD 31w01 LOCK: Lock indication
 0x58026490 B  REGISTER RLR4 (ro): Semaphore 4 read lock register
 0x58026490 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026490 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026490 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026490 C   FIELD 31w01 LOCK: Lock indication
 0x58026494 B  REGISTER RLR5 (ro): Semaphore 5 read lock register
 0x58026494 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026494 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026494 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026494 C   FIELD 31w01 LOCK: Lock indication
 0x58026498 B  REGISTER RLR6 (ro): Semaphore 6 read lock register
 0x58026498 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x58026498 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x58026498 C   FIELD 08w04 COREID: Semaphore COREID
 0x58026498 C   FIELD 31w01 LOCK: Lock indication
 0x5802649C B  REGISTER RLR7 (ro): Semaphore 7 read lock register
 0x5802649C C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x5802649C C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x5802649C C   FIELD 08w04 COREID: Semaphore COREID
 0x5802649C C   FIELD 31w01 LOCK: Lock indication
 0x580264A0 B  REGISTER RLR8 (ro): Semaphore 8 read lock register
 0x580264A0 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264A0 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264A0 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264A0 C   FIELD 31w01 LOCK: Lock indication
 0x580264A4 B  REGISTER RLR9 (ro): Semaphore 9 read lock register
 0x580264A4 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264A4 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264A4 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264A4 C   FIELD 31w01 LOCK: Lock indication
 0x580264A8 B  REGISTER RLR10 (ro): Semaphore 10 read lock register
 0x580264A8 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264A8 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264A8 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264A8 C   FIELD 31w01 LOCK: Lock indication
 0x580264AC B  REGISTER RLR11 (ro): Semaphore 11 read lock register
 0x580264AC C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264AC C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264AC C   FIELD 08w04 COREID: Semaphore COREID
 0x580264AC C   FIELD 31w01 LOCK: Lock indication
 0x580264B0 B  REGISTER RLR12 (ro): Semaphore 12 read lock register
 0x580264B0 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264B0 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264B0 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264B0 C   FIELD 31w01 LOCK: Lock indication
 0x580264B4 B  REGISTER RLR13 (ro): Semaphore 13 read lock register
 0x580264B4 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264B4 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264B4 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264B4 C   FIELD 31w01 LOCK: Lock indication
 0x580264B8 B  REGISTER RLR14 (ro): Semaphore 14 read lock register
 0x580264B8 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264B8 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264B8 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264B8 C   FIELD 31w01 LOCK: Lock indication
 0x580264BC B  REGISTER RLR15 (ro): Semaphore 15 read lock register
 0x580264BC C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264BC C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264BC C   FIELD 08w04 COREID: Semaphore COREID
 0x580264BC C   FIELD 31w01 LOCK: Lock indication
 0x580264C0 B  REGISTER RLR16 (ro): Semaphore 16 read lock register
 0x580264C0 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264C0 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264C0 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264C0 C   FIELD 31w01 LOCK: Lock indication
 0x580264C4 B  REGISTER RLR17 (ro): Semaphore 17 read lock register
 0x580264C4 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264C4 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264C4 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264C4 C   FIELD 31w01 LOCK: Lock indication
 0x580264C8 B  REGISTER RLR18 (ro): Semaphore 18 read lock register
 0x580264C8 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264C8 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264C8 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264C8 C   FIELD 31w01 LOCK: Lock indication
 0x580264CC B  REGISTER RLR19 (ro): Semaphore 19 read lock register
 0x580264CC C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264CC C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264CC C   FIELD 08w04 COREID: Semaphore COREID
 0x580264CC C   FIELD 31w01 LOCK: Lock indication
 0x580264D0 B  REGISTER RLR20 (ro): Semaphore 20 read lock register
 0x580264D0 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264D0 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264D0 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264D0 C   FIELD 31w01 LOCK: Lock indication
 0x580264D4 B  REGISTER RLR21 (ro): Semaphore 21 read lock register
 0x580264D4 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264D4 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264D4 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264D4 C   FIELD 31w01 LOCK: Lock indication
 0x580264D8 B  REGISTER RLR22 (ro): Semaphore 22 read lock register
 0x580264D8 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264D8 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264D8 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264D8 C   FIELD 31w01 LOCK: Lock indication
 0x580264DC B  REGISTER RLR23 (ro): Semaphore 23 read lock register
 0x580264DC C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264DC C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264DC C   FIELD 08w04 COREID: Semaphore COREID
 0x580264DC C   FIELD 31w01 LOCK: Lock indication
 0x580264E0 B  REGISTER RLR24 (ro): Semaphore 24 read lock register
 0x580264E0 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264E0 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264E0 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264E0 C   FIELD 31w01 LOCK: Lock indication
 0x580264E4 B  REGISTER RLR25 (ro): Semaphore 25 read lock register
 0x580264E4 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264E4 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264E4 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264E4 C   FIELD 31w01 LOCK: Lock indication
 0x580264E8 B  REGISTER RLR26 (ro): Semaphore 26 read lock register
 0x580264E8 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264E8 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264E8 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264E8 C   FIELD 31w01 LOCK: Lock indication
 0x580264EC B  REGISTER RLR27 (ro): Semaphore 27 read lock register
 0x580264EC C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264EC C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264EC C   FIELD 08w04 COREID: Semaphore COREID
 0x580264EC C   FIELD 31w01 LOCK: Lock indication
 0x580264F0 B  REGISTER RLR28 (ro): Semaphore 28 read lock register
 0x580264F0 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264F0 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264F0 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264F0 C   FIELD 31w01 LOCK: Lock indication
 0x580264F4 B  REGISTER RLR29 (ro): Semaphore 29 read lock register
 0x580264F4 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264F4 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264F4 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264F4 C   FIELD 31w01 LOCK: Lock indication
 0x580264F8 B  REGISTER RLR30 (ro): Semaphore 30 read lock register
 0x580264F8 C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264F8 C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264F8 C   FIELD 08w04 COREID: Semaphore COREID
 0x580264F8 C   FIELD 31w01 LOCK: Lock indication
 0x580264FC B  REGISTER RLR31 (ro): Semaphore 31 read lock register
 0x580264FC C   FIELD 00w08 PROCID: Semaphore ProcessID
-0x580264FC C   FIELD 08w08 MASTERID: Semaphore MasterID
+0x580264FC C   FIELD 08w04 COREID: Semaphore COREID
 0x580264FC C   FIELD 31w01 LOCK: Lock indication
-0x58026500 B  REGISTER C1IER (rw): HSEM Interrupt enable register of Line 1
-0x58026500 C   FIELD 00w01 ISEM0: Interrupt(1) semaphore 0 enable bit
-0x58026500 C   FIELD 01w01 ISEM1: Interrupt(1) semaphore 1 enable bit
-0x58026500 C   FIELD 02w01 ISEM2: Interrupt(1) semaphore 2 enable bit
-0x58026500 C   FIELD 03w01 ISEM3: Interrupt(1) semaphore 3 enable bit
-0x58026500 C   FIELD 04w01 ISEM4: Interrupt(1) semaphore 4 enable bit
-0x58026500 C   FIELD 05w01 ISEM5: Interrupt(1) semaphore 5 enable bit
-0x58026500 C   FIELD 06w01 ISEM6: Interrupt(1) semaphore 6 enable bit
-0x58026500 C   FIELD 07w01 ISEM7: Interrupt(1) semaphore 7 enable bit
-0x58026500 C   FIELD 08w01 ISEM8: Interrupt(1) semaphore 8 enable bit
-0x58026500 C   FIELD 09w01 ISEM9: Interrupt(1) semaphore 9 enable bit
-0x58026500 C   FIELD 10w01 ISEM10: Interrupt(1) semaphore 10 enable bit
-0x58026500 C   FIELD 11w01 ISEM11: Interrupt(1) semaphore 11 enable bit
-0x58026500 C   FIELD 12w01 ISEM12: Interrupt(1) semaphore 12 enable bit
-0x58026500 C   FIELD 13w01 ISEM13: Interrupt(1) semaphore 13 enable bit
-0x58026500 C   FIELD 14w01 ISEM14: Interrupt(1) semaphore 14 enable bit
-0x58026500 C   FIELD 15w01 ISEM15: Interrupt(1) semaphore 15 enable bit
-0x58026500 C   FIELD 16w01 ISEM16: Interrupt(1) semaphore 16 enable bit
-0x58026500 C   FIELD 17w01 ISEM17: Interrupt(1) semaphore 17 enable bit
-0x58026500 C   FIELD 18w01 ISEM18: Interrupt(1) semaphore 18 enable bit
-0x58026500 C   FIELD 19w01 ISEM19: Interrupt(1) semaphore 19 enable bit
-0x58026500 C   FIELD 20w01 ISEM20: Interrupt(1) semaphore 20 enable bit
-0x58026500 C   FIELD 21w01 ISEM21: Interrupt(1) semaphore 21 enable bit
-0x58026500 C   FIELD 22w01 ISEM22: Interrupt(1) semaphore 22 enable bit
-0x58026500 C   FIELD 23w01 ISEM23: Interrupt(1) semaphore 23 enable bit
-0x58026500 C   FIELD 24w01 ISEM24: Interrupt(1) semaphore 24 enable bit
-0x58026500 C   FIELD 25w01 ISEM25: Interrupt(1) semaphore 25 enable bit
-0x58026500 C   FIELD 26w01 ISEM26: Interrupt(1) semaphore 26 enable bit
-0x58026500 C   FIELD 27w01 ISEM27: Interrupt(1) semaphore 27 enable bit
-0x58026500 C   FIELD 28w01 ISEM28: Interrupt(1) semaphore 28 enable bit
-0x58026500 C   FIELD 29w01 ISEM29: Interrupt(1) semaphore 29 enable bit
-0x58026500 C   FIELD 30w01 ISEM30: Interrupt(1) semaphore 30 enable bit
-0x58026500 C   FIELD 31w01 ISEM31: Interrupt(1) semaphore 31 enable bit
-0x58026504 B  REGISTER C1ICR (rw): HSEM Interrupt clear register of Line 1
-0x58026504 C   FIELD 00w01 ISEM0: Interrupt(1) semaphore 0 clear
-0x58026504 C   FIELD 01w01 ISEM1: Interrupt(1) semaphore 1 clear
-0x58026504 C   FIELD 02w01 ISEM2: Interrupt(1) semaphore 2 clear
-0x58026504 C   FIELD 03w01 ISEM3: Interrupt(1) semaphore 3 clear
-0x58026504 C   FIELD 04w01 ISEM4: Interrupt(1) semaphore 4 clear
-0x58026504 C   FIELD 05w01 ISEM5: Interrupt(1) semaphore 5 clear
-0x58026504 C   FIELD 06w01 ISEM6: Interrupt(1) semaphore 6 clear
-0x58026504 C   FIELD 07w01 ISEM7: Interrupt(1) semaphore 7 clear
-0x58026504 C   FIELD 08w01 ISEM8: Interrupt(1) semaphore 8 clear
-0x58026504 C   FIELD 09w01 ISEM9: Interrupt(1) semaphore 9 clear
-0x58026504 C   FIELD 10w01 ISEM10: Interrupt(1) semaphore 10 clear
-0x58026504 C   FIELD 11w01 ISEM11: Interrupt(1) semaphore 11 clear
-0x58026504 C   FIELD 12w01 ISEM12: Interrupt(1) semaphore 12 clear
-0x58026504 C   FIELD 13w01 ISEM13: Interrupt(1) semaphore 13 clear
-0x58026504 C   FIELD 14w01 ISEM14: Interrupt(1) semaphore 14 clear
-0x58026504 C   FIELD 15w01 ISEM15: Interrupt(1) semaphore 15 clear
-0x58026504 C   FIELD 16w01 ISEM16: Interrupt(1) semaphore 16 clear
-0x58026504 C   FIELD 17w01 ISEM17: Interrupt(1) semaphore 17 clear
-0x58026504 C   FIELD 18w01 ISEM18: Interrupt(1) semaphore 18 clear
-0x58026504 C   FIELD 19w01 ISEM19: Interrupt(1) semaphore 19 clear
-0x58026504 C   FIELD 20w01 ISEM20: Interrupt(1) semaphore 20 clear
-0x58026504 C   FIELD 21w01 ISEM21: Interrupt(1) semaphore 21 clear
-0x58026504 C   FIELD 22w01 ISEM22: Interrupt(1) semaphore 22 clear
-0x58026504 C   FIELD 23w01 ISEM23: Interrupt(1) semaphore 23 clear
-0x58026504 C   FIELD 24w01 ISEM24: Interrupt(1) semaphore 24 clear
-0x58026504 C   FIELD 25w01 ISEM25: Interrupt(1) semaphore 25 clear
-0x58026504 C   FIELD 26w01 ISEM26: Interrupt(1) semaphore 26 clear
-0x58026504 C   FIELD 27w01 ISEM27: Interrupt(1) semaphore 27 clear
-0x58026504 C   FIELD 28w01 ISEM28: Interrupt(1) semaphore 28 clear
-0x58026504 C   FIELD 29w01 ISEM29: Interrupt(1) semaphore 29 clear
-0x58026504 C   FIELD 30w01 ISEM30: Interrupt(1) semaphore 30 clear
-0x58026504 C   FIELD 31w01 ISEM31: Interrupt(1) semaphore 31 clear
-0x58026508 B  REGISTER C1ISR (ro): HSEM Interrupt status register of Line 1
-0x58026508 C   FIELD 00w01 ISEM0: Interrupt(1) semaphore 0 status bit
-0x58026508 C   FIELD 01w01 ISEM1: Interrupt(1) semaphore 1 status bit
-0x58026508 C   FIELD 02w01 ISEM2: Interrupt(1) semaphore 2 status bit
-0x58026508 C   FIELD 03w01 ISEM3: Interrupt(1) semaphore 3 status bit
-0x58026508 C   FIELD 04w01 ISEM4: Interrupt(1) semaphore 4 status bit
-0x58026508 C   FIELD 05w01 ISEM5: Interrupt(1) semaphore 5 status bit
-0x58026508 C   FIELD 06w01 ISEM6: Interrupt(1) semaphore 6 status bit
-0x58026508 C   FIELD 07w01 ISEM7: Interrupt(1) semaphore 7 status bit
-0x58026508 C   FIELD 08w01 ISEM8: Interrupt(1) semaphore 8 status bit
-0x58026508 C   FIELD 09w01 ISEM9: Interrupt(1) semaphore 9 status bit
-0x58026508 C   FIELD 10w01 ISEM10: Interrupt(1) semaphore 10 status bit
-0x58026508 C   FIELD 11w01 ISEM11: Interrupt(1) semaphore 11 status bit
-0x58026508 C   FIELD 12w01 ISEM12: Interrupt(1) semaphore 12 status bit
-0x58026508 C   FIELD 13w01 ISEM13: Interrupt(1) semaphore 13 status bit
-0x58026508 C   FIELD 14w01 ISEM14: Interrupt(1) semaphore 14 status bit
-0x58026508 C   FIELD 15w01 ISEM15: Interrupt(1) semaphore 15 status bit
-0x58026508 C   FIELD 16w01 ISEM16: Interrupt(1) semaphore 16 status bit
-0x58026508 C   FIELD 17w01 ISEM17: Interrupt(1) semaphore 17 status bit
-0x58026508 C   FIELD 18w01 ISEM18: Interrupt(1) semaphore 18 status bit
-0x58026508 C   FIELD 19w01 ISEM19: Interrupt(1) semaphore 19 status bit
-0x58026508 C   FIELD 20w01 ISEM20: Interrupt(1) semaphore 20 status bit
-0x58026508 C   FIELD 21w01 ISEM21: Interrupt(1) semaphore 21 status bit
-0x58026508 C   FIELD 22w01 ISEM22: Interrupt(1) semaphore 22 status bit
-0x58026508 C   FIELD 23w01 ISEM23: Interrupt(1) semaphore 23 status bit
-0x58026508 C   FIELD 24w01 ISEM24: Interrupt(1) semaphore 24 status bit
-0x58026508 C   FIELD 25w01 ISEM25: Interrupt(1) semaphore 25 status bit
-0x58026508 C   FIELD 26w01 ISEM26: Interrupt(1) semaphore 26 status bit
-0x58026508 C   FIELD 27w01 ISEM27: Interrupt(1) semaphore 27 status bit
-0x58026508 C   FIELD 28w01 ISEM28: Interrupt(1) semaphore 28 status bit
-0x58026508 C   FIELD 29w01 ISEM29: Interrupt(1) semaphore 29 status bit
-0x58026508 C   FIELD 30w01 ISEM30: Interrupt(1) semaphore 30 status bit
-0x58026508 C   FIELD 31w01 ISEM31: Interrupt(1) semaphore 31 status bit
-0x5802650C B  REGISTER C1MISR (ro): HSEM Masked interrupt status of Line 1
-0x5802650C C   FIELD 00w01 ISEM0: masked interrupt(1) semaphore 0 status bit
-0x5802650C C   FIELD 01w01 ISEM1: masked interrupt(1) semaphore 1 status bit
-0x5802650C C   FIELD 02w01 ISEM2: masked interrupt(1) semaphore 2 status bit
-0x5802650C C   FIELD 03w01 ISEM3: masked interrupt(1) semaphore 3 status bit
-0x5802650C C   FIELD 04w01 ISEM4: masked interrupt(1) semaphore 4 status bit
-0x5802650C C   FIELD 05w01 ISEM5: masked interrupt(1) semaphore 5 status bit
-0x5802650C C   FIELD 06w01 ISEM6: masked interrupt(1) semaphore 6 status bit
-0x5802650C C   FIELD 07w01 ISEM7: masked interrupt(1) semaphore 7 status bit
-0x5802650C C   FIELD 08w01 ISEM8: masked interrupt(1) semaphore 8 status bit
-0x5802650C C   FIELD 09w01 ISEM9: masked interrupt(1) semaphore 9 status bit
-0x5802650C C   FIELD 10w01 ISEM10: masked interrupt(1) semaphore 10 status bit
-0x5802650C C   FIELD 11w01 ISEM11: masked interrupt(1) semaphore 11 status bit
-0x5802650C C   FIELD 12w01 ISEM12: masked interrupt(1) semaphore 12 status bit
-0x5802650C C   FIELD 13w01 ISEM13: masked interrupt(1) semaphore 13 status bit
-0x5802650C C   FIELD 14w01 ISEM14: masked interrupt(1) semaphore 14 status bit
-0x5802650C C   FIELD 15w01 ISEM15: masked interrupt(1) semaphore 15 status bit
-0x5802650C C   FIELD 16w01 ISEM16: masked interrupt(1) semaphore 16 status bit
-0x5802650C C   FIELD 17w01 ISEM17: masked interrupt(1) semaphore 17 status bit
-0x5802650C C   FIELD 18w01 ISEM18: masked interrupt(1) semaphore 18 status bit
-0x5802650C C   FIELD 19w01 ISEM19: masked interrupt(1) semaphore 19 status bit
-0x5802650C C   FIELD 20w01 ISEM20: masked interrupt(1) semaphore 20 status bit
-0x5802650C C   FIELD 21w01 ISEM21: masked interrupt(1) semaphore 21 status bit
-0x5802650C C   FIELD 22w01 ISEM22: masked interrupt(1) semaphore 22 status bit
-0x5802650C C   FIELD 23w01 ISEM23: masked interrupt(1) semaphore 23 status bit
-0x5802650C C   FIELD 24w01 ISEM24: masked interrupt(1) semaphore 24 status bit
-0x5802650C C   FIELD 25w01 ISEM25: masked interrupt(1) semaphore 25 status bit
-0x5802650C C   FIELD 26w01 ISEM26: masked interrupt(1) semaphore 26 status bit
-0x5802650C C   FIELD 27w01 ISEM27: masked interrupt(1) semaphore 27 status bit
-0x5802650C C   FIELD 28w01 ISEM28: masked interrupt(1) semaphore 28 status bit
-0x5802650C C   FIELD 29w01 ISEM29: masked interrupt(1) semaphore 29 status bit
-0x5802650C C   FIELD 30w01 ISEM30: masked interrupt(1) semaphore 30 status bit
-0x5802650C C   FIELD 31w01 ISEM31: masked interrupt(1) semaphore 31 status bit
-0x58026510 B  REGISTER C2IER: HSEM Interrupt enable register of Line 2
-0x58026510 C   FIELD 00w01 ISEM0: Interrupt(2) semaphore 0 enable bit
-0x58026510 C   FIELD 01w01 ISEM1: Interrupt(2) semaphore 1 enable bit
-0x58026510 C   FIELD 02w01 ISEM2: Interrupt(2) semaphore 2 enable bit
-0x58026510 C   FIELD 03w01 ISEM3: Interrupt(2) semaphore 3 enable bit
-0x58026510 C   FIELD 04w01 ISEM4: Interrupt(2) semaphore 4 enable bit
-0x58026510 C   FIELD 05w01 ISEM5: Interrupt(2) semaphore 5 enable bit
-0x58026510 C   FIELD 06w01 ISEM6: Interrupt(2) semaphore 6 enable bit
-0x58026510 C   FIELD 07w01 ISEM7: Interrupt(2) semaphore 7 enable bit
-0x58026510 C   FIELD 08w01 ISEM8: Interrupt(2) semaphore 8 enable bit
-0x58026510 C   FIELD 09w01 ISEM9: Interrupt(2) semaphore 9 enable bit
-0x58026510 C   FIELD 10w01 ISEM10: Interrupt(2) semaphore 10 enable bit
-0x58026510 C   FIELD 11w01 ISEM11: Interrupt(2) semaphore 11 enable bit
-0x58026510 C   FIELD 12w01 ISEM12: Interrupt(2) semaphore 12 enable bit
-0x58026510 C   FIELD 13w01 ISEM13: Interrupt(2) semaphore 13 enable bit
-0x58026510 C   FIELD 14w01 ISEM14: Interrupt(2) semaphore 14 enable bit
-0x58026510 C   FIELD 15w01 ISEM15: Interrupt(2) semaphore 15 enable bit
-0x58026510 C   FIELD 16w01 ISEM16: Interrupt(2) semaphore 16 enable bit
-0x58026510 C   FIELD 17w01 ISEM17: Interrupt(2) semaphore 17 enable bit
-0x58026510 C   FIELD 18w01 ISEM18: Interrupt(2) semaphore 18 enable bit
-0x58026510 C   FIELD 19w01 ISEM19: Interrupt(2) semaphore 19 enable bit
-0x58026510 C   FIELD 20w01 ISEM20: Interrupt(2) semaphore 20 enable bit
-0x58026510 C   FIELD 21w01 ISEM21: Interrupt(2) semaphore 21 enable bit
-0x58026510 C   FIELD 22w01 ISEM22: Interrupt(2) semaphore 22 enable bit
-0x58026510 C   FIELD 23w01 ISEM23: Interrupt(2) semaphore 23 enable bit
-0x58026510 C   FIELD 24w01 ISEM24: Interrupt(2) semaphore 24 enable bit
-0x58026510 C   FIELD 25w01 ISEM25: Interrupt(2) semaphore 25 enable bit
-0x58026510 C   FIELD 26w01 ISEM26: Interrupt(2) semaphore 26 enable bit
-0x58026510 C   FIELD 27w01 ISEM27: Interrupt(2) semaphore 27 enable bit
-0x58026510 C   FIELD 28w01 ISEM28: Interrupt(2) semaphore 28 enable bit
-0x58026510 C   FIELD 29w01 ISEM29: Interrupt(2) semaphore 29 enable bit
-0x58026510 C   FIELD 30w01 ISEM30: Interrupt(2) semaphore 30 enable bit
-0x58026510 C   FIELD 31w01 ISEM31: Interrupt(2) semaphore 31 enable bit
-0x58026514 B  REGISTER C2ICR (rw): HSEM Interrupt clear register of Line 2
-0x58026514 C   FIELD 00w01 ISEM0: Interrupt(2) semaphore 0 clear
-0x58026514 C   FIELD 01w01 ISEM1: Interrupt(2) semaphore 1 clear
-0x58026514 C   FIELD 02w01 ISEM2: Interrupt(2) semaphore 2 clear
-0x58026514 C   FIELD 03w01 ISEM3: Interrupt(2) semaphore 3 clear
-0x58026514 C   FIELD 04w01 ISEM4: Interrupt(2) semaphore 4 clear
-0x58026514 C   FIELD 05w01 ISEM5: Interrupt(2) semaphore 5 clear
-0x58026514 C   FIELD 06w01 ISEM6: Interrupt(2) semaphore 6 clear
-0x58026514 C   FIELD 07w01 ISEM7: Interrupt(2) semaphore 7 clear
-0x58026514 C   FIELD 08w01 ISEM8: Interrupt(2) semaphore 8 clear
-0x58026514 C   FIELD 09w01 ISEM9: Interrupt(2) semaphore 9 clear
-0x58026514 C   FIELD 10w01 ISEM10: Interrupt(2) semaphore 10 clear
-0x58026514 C   FIELD 11w01 ISEM11: Interrupt(2) semaphore 11 clear
-0x58026514 C   FIELD 12w01 ISEM12: Interrupt(2) semaphore 12 clear
-0x58026514 C   FIELD 13w01 ISEM13: Interrupt(2) semaphore 13 clear
-0x58026514 C   FIELD 14w01 ISEM14: Interrupt(2) semaphore 14 clear
-0x58026514 C   FIELD 15w01 ISEM15: Interrupt(2) semaphore 15 clear
-0x58026514 C   FIELD 16w01 ISEM16: Interrupt(2) semaphore 16 clear
-0x58026514 C   FIELD 17w01 ISEM17: Interrupt(2) semaphore 17 clear
-0x58026514 C   FIELD 18w01 ISEM18: Interrupt(2) semaphore 18 clear
-0x58026514 C   FIELD 19w01 ISEM19: Interrupt(2) semaphore 19 clear
-0x58026514 C   FIELD 20w01 ISEM20: Interrupt(2) semaphore 20 clear
-0x58026514 C   FIELD 21w01 ISEM21: Interrupt(2) semaphore 21 clear
-0x58026514 C   FIELD 22w01 ISEM22: Interrupt(2) semaphore 22 clear
-0x58026514 C   FIELD 23w01 ISEM23: Interrupt(2) semaphore 23 clear
-0x58026514 C   FIELD 24w01 ISEM24: Interrupt(2) semaphore 24 clear
-0x58026514 C   FIELD 25w01 ISEM25: Interrupt(2) semaphore 25 clear
-0x58026514 C   FIELD 26w01 ISEM26: Interrupt(2) semaphore 26 clear
-0x58026514 C   FIELD 27w01 ISEM27: Interrupt(2) semaphore 27 clear
-0x58026514 C   FIELD 28w01 ISEM28: Interrupt(2) semaphore 28 clear
-0x58026514 C   FIELD 29w01 ISEM29: Interrupt(2) semaphore 29 clear
-0x58026514 C   FIELD 30w01 ISEM30: Interrupt(2) semaphore 30 clear
-0x58026514 C   FIELD 31w01 ISEM31: Interrupt(2) semaphore 31 clear
-0x58026518 B  REGISTER C2ISR: HSEM Interrupt status register of Line 2
-0x58026518 C   FIELD 00w01 ISEM0: Interrupt(2) semaphore 0 status bit
-0x58026518 C   FIELD 01w01 ISEM1: Interrupt(2) semaphore 1 status bit
-0x58026518 C   FIELD 02w01 ISEM2: Interrupt(2) semaphore 2 status bit
-0x58026518 C   FIELD 03w01 ISEM3: Interrupt(2) semaphore 3 status bit
-0x58026518 C   FIELD 04w01 ISEM4: Interrupt(2) semaphore 4 status bit
-0x58026518 C   FIELD 05w01 ISEM5: Interrupt(2) semaphore 5 status bit
-0x58026518 C   FIELD 06w01 ISEM6: Interrupt(2) semaphore 6 status bit
-0x58026518 C   FIELD 07w01 ISEM7: Interrupt(2) semaphore 7 status bit
-0x58026518 C   FIELD 08w01 ISEM8: Interrupt(2) semaphore 8 status bit
-0x58026518 C   FIELD 09w01 ISEM9: Interrupt(2) semaphore 9 status bit
-0x58026518 C   FIELD 10w01 ISEM10: Interrupt(2) semaphore 10 status bit
-0x58026518 C   FIELD 11w01 ISEM11: Interrupt(2) semaphore 11 status bit
-0x58026518 C   FIELD 12w01 ISEM12: Interrupt(2) semaphore 12 status bit
-0x58026518 C   FIELD 13w01 ISEM13: Interrupt(2) semaphore 13 status bit
-0x58026518 C   FIELD 14w01 ISEM14: Interrupt(2) semaphore 14 status bit
-0x58026518 C   FIELD 15w01 ISEM15: Interrupt(2) semaphore 15 status bit
-0x58026518 C   FIELD 16w01 ISEM16: Interrupt(2) semaphore 16 status bit
-0x58026518 C   FIELD 17w01 ISEM17: Interrupt(2) semaphore 17 status bit
-0x58026518 C   FIELD 18w01 ISEM18: Interrupt(2) semaphore 18 status bit
-0x58026518 C   FIELD 19w01 ISEM19: Interrupt(2) semaphore 19 status bit
-0x58026518 C   FIELD 20w01 ISEM20: Interrupt(2) semaphore 20 status bit
-0x58026518 C   FIELD 21w01 ISEM21: Interrupt(2) semaphore 21 status bit
-0x58026518 C   FIELD 22w01 ISEM22: Interrupt(2) semaphore 22 status bit
-0x58026518 C   FIELD 23w01 ISEM23: Interrupt(2) semaphore 23 status bit
-0x58026518 C   FIELD 24w01 ISEM24: Interrupt(2) semaphore 24 status bit
-0x58026518 C   FIELD 25w01 ISEM25: Interrupt(2) semaphore 25 status bit
-0x58026518 C   FIELD 26w01 ISEM26: Interrupt(2) semaphore 26 status bit
-0x58026518 C   FIELD 27w01 ISEM27: Interrupt(2) semaphore 27 status bit
-0x58026518 C   FIELD 28w01 ISEM28: Interrupt(2) semaphore 28 status bit
-0x58026518 C   FIELD 29w01 ISEM29: Interrupt(2) semaphore 29 status bit
-0x58026518 C   FIELD 30w01 ISEM30: Interrupt(2) semaphore 30 status bit
-0x58026518 C   FIELD 31w01 ISEM31: Interrupt(2) semaphore 31 status bit
-0x5802651C B  REGISTER C2MISR: HSEM Masked interrupt status register of Line 2
-0x5802651C C   FIELD 00w01 ISEM0: masked interrupt(2) semaphore 0 status bit
-0x5802651C C   FIELD 01w01 ISEM1: masked interrupt(2) semaphore 1 status bit
-0x5802651C C   FIELD 02w01 ISEM2: masked interrupt(2) semaphore 2 status bit
-0x5802651C C   FIELD 03w01 ISEM3: masked interrupt(2) semaphore 3 status bit
-0x5802651C C   FIELD 04w01 ISEM4: masked interrupt(2) semaphore 4 status bit
-0x5802651C C   FIELD 05w01 ISEM5: masked interrupt(2) semaphore 5 status bit
-0x5802651C C   FIELD 06w01 ISEM6: masked interrupt(2) semaphore 6 status bit
-0x5802651C C   FIELD 07w01 ISEM7: masked interrupt(2) semaphore 7 status bit
-0x5802651C C   FIELD 08w01 ISEM8: masked interrupt(2) semaphore 8 status bit
-0x5802651C C   FIELD 09w01 ISEM9: masked interrupt(2) semaphore 9 status bit
-0x5802651C C   FIELD 10w01 ISEM10: masked interrupt(2) semaphore 10 status bit
-0x5802651C C   FIELD 11w01 ISEM11: masked interrupt(2) semaphore 11 status bit
-0x5802651C C   FIELD 12w01 ISEM12: masked interrupt(2) semaphore 12 status bit
-0x5802651C C   FIELD 13w01 ISEM13: masked interrupt(2) semaphore 13 status bit
-0x5802651C C   FIELD 14w01 ISEM14: masked interrupt(2) semaphore 14 status bit
-0x5802651C C   FIELD 15w01 ISEM15: masked interrupt(2) semaphore 15 status bit
-0x5802651C C   FIELD 16w01 ISEM16: masked interrupt(2) semaphore 16 status bit
-0x5802651C C   FIELD 17w01 ISEM17: masked interrupt(2) semaphore 17 status bit
-0x5802651C C   FIELD 18w01 ISEM18: masked interrupt(2) semaphore 18 status bit
-0x5802651C C   FIELD 19w01 ISEM19: masked interrupt(2) semaphore 19 status bit
-0x5802651C C   FIELD 20w01 ISEM20: masked interrupt(2) semaphore 20 status bit
-0x5802651C C   FIELD 21w01 ISEM21: masked interrupt(2) semaphore 21 status bit
-0x5802651C C   FIELD 22w01 ISEM22: masked interrupt(2) semaphore 22 status bit
-0x5802651C C   FIELD 23w01 ISEM23: masked interrupt(2) semaphore 23 status bit
-0x5802651C C   FIELD 24w01 ISEM24: masked interrupt(2) semaphore 24 status bit
-0x5802651C C   FIELD 25w01 ISEM25: masked interrupt(2) semaphore 25 status bit
-0x5802651C C   FIELD 26w01 ISEM26: masked interrupt(2) semaphore 26 status bit
-0x5802651C C   FIELD 27w01 ISEM27: masked interrupt(2) semaphore 27 status bit
-0x5802651C C   FIELD 28w01 ISEM28: masked interrupt(2) semaphore 28 status bit
-0x5802651C C   FIELD 29w01 ISEM29: masked interrupt(2) semaphore 29 status bit
-0x5802651C C   FIELD 30w01 ISEM30: masked interrupt(2) semaphore 30 status bit
-0x5802651C C   FIELD 31w01 ISEM31: masked interrupt(2) semaphore 31 status bit
-0x58026540 B  REGISTER CR (rw): HSEM Clear register
-0x58026540 C   FIELD 08w08 MASTERID: MasterID of semaphores to be cleared
+0x58026500 B  REGISTER C1IER (rw): HSEM Interrupt enable register
+0x58026500 C   FIELD 00w32 ISE: Interrupt semaphore x enable bit
+0x58026504 B  REGISTER C1ICR (rw): HSEM Interrupt clear register
+0x58026504 C   FIELD 00w32 ISC: Interrupt semaphore x clear bit
+0x58026508 B  REGISTER C1ISR (ro): HSEM Interrupt status register
+0x58026508 C   FIELD 00w32 ISF: Interrupt semaphore x status bit before enable (mask)
+0x5802650C B  REGISTER C1MISR (ro): HSEM Masked interrupt status register
+0x5802650C C   FIELD 00w32 MISF: masked interrupt semaphore x status bit after enable (mask)
+0x58026510 B  REGISTER C2IER (rw): HSEM Interrupt enable register
+0x58026510 C   FIELD 00w32 ISE: Interrupt semaphore x enable bit
+0x58026514 B  REGISTER C2ICR (rw): HSEM Interrupt clear register
+0x58026514 C   FIELD 00w32 ISC: Interrupt semaphore x clear bit
+0x58026518 B  REGISTER C2ISR (ro): HSEM Interrupt status register
+0x58026518 C   FIELD 00w32 ISF: Interrupt semaphore x status bit before enable (mask)
+0x5802651C B  REGISTER C2MISR (ro): HSEM Masked interrupt status register
+0x5802651C C   FIELD 00w32 MISF: masked interrupt semaphore x status bit after enable (mask)
+0x58026540 B  REGISTER CR (wo): HSEM Clear register
+0x58026540 C   FIELD 08w04 COREID: COREID of semaphores to be cleared
 0x58026540 C   FIELD 16w16 KEY: Semaphore clear Key
 0x58026544 B  REGISTER KEYR (rw): HSEM Interrupt clear register
 0x58026544 C   FIELD 16w16 KEY: Semaphore Clear Key
@@ -21783,467 +21501,11 @@
 0x5C001058 C   FIELD 16w01 DBG_RTC: RTC stop in debug
 0x5C001058 C   FIELD 18w01 DBG_WDGLSD1: LS watchdog for D1 stop in debug
 0x5C001058 C   FIELD 19w01 DBG_WDGLSD2: LS watchdog for D2 stop in debug
-0xE000E008 A PERIPHERAL SCB_ACTRL
-0xE000E008 B  REGISTER ACTRL (rw): Auxiliary control register
-0xE000E008 C   FIELD 02w01 DISFOLD: DISFOLD
-0xE000E008 C   FIELD 10w01 FPEXCODIS: FPEXCODIS
-0xE000E008 C   FIELD 11w01 DISRAMODE: DISRAMODE
-0xE000E008 C   FIELD 12w01 DISITMATBFLUSH: DISITMATBFLUSH
-0xE000E010 A PERIPHERAL STK
-0xE000E010 B  REGISTER CSR (rw): SysTick control and status register
-0xE000E010 C   FIELD 00w01 ENABLE: Counter enable
-0xE000E010 C   FIELD 01w01 TICKINT: SysTick exception request enable
-0xE000E010 C   FIELD 02w01 CLKSOURCE: Clock source selection
-0xE000E010 C   FIELD 16w01 COUNTFLAG: COUNTFLAG
-0xE000E014 B  REGISTER RVR (rw): SysTick reload value register
-0xE000E014 C   FIELD 00w24 RELOAD: RELOAD value
-0xE000E018 B  REGISTER CVR (rw): SysTick current value register
-0xE000E018 C   FIELD 00w24 CURRENT: Current counter value
-0xE000E01C B  REGISTER CALIB (rw): SysTick calibration value register
-0xE000E01C C   FIELD 00w24 TENMS: Calibration value
-0xE000E01C C   FIELD 30w01 SKEW: SKEW flag: Indicates whether the TENMS value is exact
-0xE000E01C C   FIELD 31w01 NOREF: NOREF flag. Reads as zero
-0xE000E100 A PERIPHERAL NVIC
-0xE000E100 B  REGISTER ISER0 (rw): Interrupt Set-Enable Register
-0xE000E100 C   FIELD 00w32 SETENA: SETENA
-0xE000E104 B  REGISTER ISER1 (rw): Interrupt Set-Enable Register
-0xE000E104 C   FIELD 00w32 SETENA: SETENA
-0xE000E108 B  REGISTER ISER2 (rw): Interrupt Set-Enable Register
-0xE000E108 C   FIELD 00w32 SETENA: SETENA
-0xE000E10C B  REGISTER ISER3 (rw): Interrupt Set-Enable Register
-0xE000E180 B  REGISTER ICER0 (rw): Interrupt Clear-Enable Register
-0xE000E180 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E184 B  REGISTER ICER1 (rw): Interrupt Clear-Enable Register
-0xE000E184 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E188 B  REGISTER ICER2 (rw): Interrupt Clear-Enable Register
-0xE000E188 C   FIELD 00w32 CLRENA: CLRENA
-0xE000E18C B  REGISTER ICER3 (rw): Interrupt Clear-Enable Register
-0xE000E200 B  REGISTER ISPR0 (rw): Interrupt Set-Pending Register
-0xE000E200 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E204 B  REGISTER ISPR1 (rw): Interrupt Set-Pending Register
-0xE000E204 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E208 B  REGISTER ISPR2 (rw): Interrupt Set-Pending Register
-0xE000E208 C   FIELD 00w32 SETPEND: SETPEND
-0xE000E20C B  REGISTER ISPR3 (rw): Interrupt Set-Pending Register
-0xE000E280 B  REGISTER ICPR0 (rw): Interrupt Clear-Pending Register
-0xE000E280 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E284 B  REGISTER ICPR1 (rw): Interrupt Clear-Pending Register
-0xE000E284 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E288 B  REGISTER ICPR2 (rw): Interrupt Clear-Pending Register
-0xE000E288 C   FIELD 00w32 CLRPEND: CLRPEND
-0xE000E2C0 B  REGISTER ICPR3 (rw): Interrupt Clear-Pending Register
-0xE000E300 B  REGISTER IABR0 (ro): Interrupt Active Bit Register
-0xE000E300 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E304 B  REGISTER IABR1 (ro): Interrupt Active Bit Register
-0xE000E304 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E308 B  REGISTER IABR2 (ro): Interrupt Active Bit Register
-0xE000E308 C   FIELD 00w32 ACTIVE: ACTIVE
-0xE000E30C B  REGISTER IABR3 (rw): Interrupt Active Bit Register
-0xE000E400 B  REGISTER IPR0 (rw): Interrupt Priority Register
-0xE000E400 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E400 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E400 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E400 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E404 B  REGISTER IPR1 (rw): Interrupt Priority Register
-0xE000E404 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E404 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E404 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E404 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E408 B  REGISTER IPR2 (rw): Interrupt Priority Register
-0xE000E408 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E408 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E408 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E408 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E40C B  REGISTER IPR3 (rw): Interrupt Priority Register
-0xE000E40C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E40C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E40C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E40C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E410 B  REGISTER IPR4 (rw): Interrupt Priority Register
-0xE000E410 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E410 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E410 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E410 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E414 B  REGISTER IPR5 (rw): Interrupt Priority Register
-0xE000E414 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E414 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E414 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E414 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E418 B  REGISTER IPR6 (rw): Interrupt Priority Register
-0xE000E418 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E418 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E418 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E418 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E41C B  REGISTER IPR7 (rw): Interrupt Priority Register
-0xE000E41C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E41C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E41C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E41C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E420 B  REGISTER IPR8 (rw): Interrupt Priority Register
-0xE000E420 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E420 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E420 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E420 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E424 B  REGISTER IPR9 (rw): Interrupt Priority Register
-0xE000E424 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E424 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E424 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E424 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E428 B  REGISTER IPR10 (rw): Interrupt Priority Register
-0xE000E428 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E428 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E428 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E428 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E42C B  REGISTER IPR11 (rw): Interrupt Priority Register
-0xE000E42C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E42C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E42C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E42C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E430 B  REGISTER IPR12 (rw): Interrupt Priority Register
-0xE000E430 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E430 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E430 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E430 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E434 B  REGISTER IPR13 (rw): Interrupt Priority Register
-0xE000E434 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E434 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E434 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E434 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E438 B  REGISTER IPR14 (rw): Interrupt Priority Register
-0xE000E438 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E438 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E438 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E438 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E43C B  REGISTER IPR15 (rw): Interrupt Priority Register
-0xE000E43C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E43C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E43C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E43C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E440 B  REGISTER IPR16 (rw): Interrupt Priority Register
-0xE000E440 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E440 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E440 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E440 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E444 B  REGISTER IPR17 (rw): Interrupt Priority Register
-0xE000E444 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E444 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E444 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E444 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E448 B  REGISTER IPR18 (rw): Interrupt Priority Register
-0xE000E448 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E448 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E448 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E448 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E44C B  REGISTER IPR19 (rw): Interrupt Priority Register
-0xE000E44C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E44C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E44C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E44C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E450 B  REGISTER IPR20 (rw): Interrupt Priority Register
-0xE000E450 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E450 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E450 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E450 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E454 B  REGISTER IPR21 (rw): Interrupt Priority Register
-0xE000E454 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E454 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E454 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E454 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E458 B  REGISTER IPR22 (rw): Interrupt Priority Register
-0xE000E458 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E458 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E458 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E458 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E45C B  REGISTER IPR23 (rw): Interrupt Priority Register
-0xE000E45C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E45C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E45C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E45C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E460 B  REGISTER IPR24 (rw): Interrupt Priority Register
-0xE000E460 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E460 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E460 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E460 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E464 B  REGISTER IPR25 (rw): Interrupt Priority Register
-0xE000E464 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E464 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E464 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E464 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E468 B  REGISTER IPR26 (rw): Interrupt Priority Register
-0xE000E468 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E468 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E468 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E468 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E46C B  REGISTER IPR27 (rw): Interrupt Priority Register
-0xE000E46C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E46C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E46C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E46C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E470 B  REGISTER IPR28 (rw): Interrupt Priority Register
-0xE000E470 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E470 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E470 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E470 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E474 B  REGISTER IPR29 (rw): Interrupt Priority Register
-0xE000E474 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E474 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E474 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E474 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E478 B  REGISTER IPR30 (rw): Interrupt Priority Register
-0xE000E478 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E478 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E478 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E478 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E47C B  REGISTER IPR31 (rw): Interrupt Priority Register
-0xE000E47C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E47C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E47C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E47C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E480 B  REGISTER IPR32 (rw): Interrupt Priority Register
-0xE000E480 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E480 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E480 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E480 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E484 B  REGISTER IPR33 (rw): Interrupt Priority Register
-0xE000E484 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E484 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E484 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E484 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E488 B  REGISTER IPR34 (rw): Interrupt Priority Register
-0xE000E488 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E488 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E488 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E488 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E48C B  REGISTER IPR35 (rw): Interrupt Priority Register
-0xE000E48C C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E48C C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E48C C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E48C C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E490 B  REGISTER IPR36 (rw): Interrupt Priority Register
-0xE000E490 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E490 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E490 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E490 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E494 B  REGISTER IPR37 (rw): Interrupt Priority Register
-0xE000E494 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E494 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E494 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E494 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000E498 B  REGISTER IPR38 (rw): Interrupt Priority Register
-0xE000E498 C   FIELD 00w08 IPR_N0: IPR_N0
-0xE000E498 C   FIELD 08w08 IPR_N1: IPR_N1
-0xE000E498 C   FIELD 16w08 IPR_N2: IPR_N2
-0xE000E498 C   FIELD 24w08 IPR_N3: IPR_N3
-0xE000ED00 A PERIPHERAL SCB
-0xE000ED00 B  REGISTER CPUID (ro): CPUID base register
-0xE000ED00 C   FIELD 00w04 Revision: Revision number
-0xE000ED00 C   FIELD 04w12 PartNo: Part number of the processor
-0xE000ED00 C   FIELD 16w04 Constant: Reads as 0xF
-0xE000ED00 C   FIELD 20w04 Variant: Variant number
-0xE000ED00 C   FIELD 24w08 Implementer: Implementer code
-0xE000ED04 B  REGISTER ICSR (rw): Interrupt control and state register
-0xE000ED04 C   FIELD 00w09 VECTACTIVE: Active vector
-0xE000ED04 C   FIELD 11w01 RETTOBASE: Return to base level
-0xE000ED04 C   FIELD 12w07 VECTPENDING: Pending vector
-0xE000ED04 C   FIELD 22w01 ISRPENDING: Interrupt pending flag
-0xE000ED04 C   FIELD 25w01 PENDSTCLR: SysTick exception clear-pending bit
-0xE000ED04 C   FIELD 26w01 PENDSTSET: SysTick exception set-pending bit
-0xE000ED04 C   FIELD 27w01 PENDSVCLR: PendSV clear-pending bit
-0xE000ED04 C   FIELD 28w01 PENDSVSET: PendSV set-pending bit
-0xE000ED04 C   FIELD 31w01 NMIPENDSET: NMI set-pending bit.
-0xE000ED08 B  REGISTER VTOR (rw): Vector table offset register
-0xE000ED08 C   FIELD 09w21 TBLOFF: Vector table base offset field
-0xE000ED0C B  REGISTER AIRCR (rw): Application interrupt and reset control register
-0xE000ED0C C   FIELD 00w01 VECTRESET: VECTRESET
-0xE000ED0C C   FIELD 01w01 VECTCLRACTIVE: VECTCLRACTIVE
-0xE000ED0C C   FIELD 02w01 SYSRESETREQ: SYSRESETREQ
-0xE000ED0C C   FIELD 08w03 PRIGROUP: PRIGROUP
-0xE000ED0C C   FIELD 15w01 ENDIANESS: ENDIANESS
-0xE000ED0C C   FIELD 16w16 VECTKEYSTAT: Register key
-0xE000ED10 B  REGISTER SCR (rw): System control register
-0xE000ED10 C   FIELD 01w01 SLEEPONEXIT: SLEEPONEXIT
-0xE000ED10 C   FIELD 02w01 SLEEPDEEP: SLEEPDEEP
-0xE000ED10 C   FIELD 04w01 SEVEONPEND: Send Event on Pending bit
-0xE000ED14 B  REGISTER CCR (rw): Configuration and control register
-0xE000ED14 C   FIELD 00w01 NONBASETHRDENA: Configures how the processor enters Thread mode
-0xE000ED14 C   FIELD 01w01 USERSETMPEND: USERSETMPEND
-0xE000ED14 C   FIELD 03w01 UNALIGN__TRP: UNALIGN_ TRP
-0xE000ED14 C   FIELD 04w01 DIV_0_TRP: DIV_0_TRP
-0xE000ED14 C   FIELD 08w01 BFHFNMIGN: BFHFNMIGN
-0xE000ED14 C   FIELD 09w01 STKALIGN: STKALIGN
-0xE000ED14 C   FIELD 16w01 DC: DC
-0xE000ED14 C   FIELD 17w01 IC: IC
-0xE000ED14 C   FIELD 18w01 BP: BP
-0xE000ED18 B  REGISTER SHPR1 (rw): System handler priority registers
-0xE000ED18 C   FIELD 00w08 PRI_4: Priority of system handler 4
-0xE000ED18 C   FIELD 08w08 PRI_5: Priority of system handler 5
-0xE000ED18 C   FIELD 16w08 PRI_6: Priority of system handler 6
-0xE000ED1C B  REGISTER SHPR2 (rw): System handler priority registers
-0xE000ED1C C   FIELD 24w08 PRI_11: Priority of system handler 11
-0xE000ED20 B  REGISTER SHPR3 (rw): System handler priority registers
-0xE000ED20 C   FIELD 16w08 PRI_14: Priority of system handler 14
-0xE000ED20 C   FIELD 24w08 PRI_15: Priority of system handler 15
-0xE000ED24 B  REGISTER SHCSR (rw): System handler control and state register
-0xE000ED24 C   FIELD 00w01 MEMFAULTACT: Memory management fault exception active bit
-0xE000ED24 C   FIELD 01w01 BUSFAULTACT: Bus fault exception active bit
-0xE000ED24 C   FIELD 03w01 USGFAULTACT: Usage fault exception active bit
-0xE000ED24 C   FIELD 07w01 SVCALLACT: SVC call active bit
-0xE000ED24 C   FIELD 08w01 MONITORACT: Debug monitor active bit
-0xE000ED24 C   FIELD 10w01 PENDSVACT: PendSV exception active bit
-0xE000ED24 C   FIELD 11w01 SYSTICKACT: SysTick exception active bit
-0xE000ED24 C   FIELD 12w01 USGFAULTPENDED: Usage fault exception pending bit
-0xE000ED24 C   FIELD 13w01 MEMFAULTPENDED: Memory management fault exception pending bit
-0xE000ED24 C   FIELD 14w01 BUSFAULTPENDED: Bus fault exception pending bit
-0xE000ED24 C   FIELD 15w01 SVCALLPENDED: SVC call pending bit
-0xE000ED24 C   FIELD 16w01 MEMFAULTENA: Memory management fault enable bit
-0xE000ED24 C   FIELD 17w01 BUSFAULTENA: Bus fault enable bit
-0xE000ED24 C   FIELD 18w01 USGFAULTENA: Usage fault enable bit
-0xE000ED28 B  REGISTER CFSR_UFSR_BFSR_MMFSR (rw): Configurable fault status register
-0xE000ED28 C   FIELD 00w01 IACCVIOL: IACCVIOL
-0xE000ED28 C   FIELD 01w01 DACCVIOL: DACCVIOL
-0xE000ED28 C   FIELD 03w01 MUNSTKERR: MUNSTKERR
-0xE000ED28 C   FIELD 04w01 MSTKERR: MSTKERR
-0xE000ED28 C   FIELD 05w01 MLSPERR: MLSPERR
-0xE000ED28 C   FIELD 07w01 MMARVALID: MMARVALID
-0xE000ED28 C   FIELD 08w01 IBUSERR: Instruction bus error
-0xE000ED28 C   FIELD 09w01 PRECISERR: Precise data bus error
-0xE000ED28 C   FIELD 10w01 IMPRECISERR: Imprecise data bus error
-0xE000ED28 C   FIELD 11w01 UNSTKERR: Bus fault on unstacking for a return from exception
-0xE000ED28 C   FIELD 12w01 STKERR: Bus fault on stacking for exception entry
-0xE000ED28 C   FIELD 13w01 LSPERR: Bus fault on floating-point lazy state preservation
-0xE000ED28 C   FIELD 15w01 BFARVALID: Bus Fault Address Register (BFAR) valid flag
-0xE000ED28 C   FIELD 16w01 UNDEFINSTR: Undefined instruction usage fault
-0xE000ED28 C   FIELD 17w01 INVSTATE: Invalid state usage fault
-0xE000ED28 C   FIELD 18w01 INVPC: Invalid PC load usage fault
-0xE000ED28 C   FIELD 19w01 NOCP: No coprocessor usage fault.
-0xE000ED28 C   FIELD 24w01 UNALIGNED: Unaligned access usage fault
-0xE000ED28 C   FIELD 25w01 DIVBYZERO: Divide by zero usage fault
-0xE000ED2C B  REGISTER HFSR (rw): Hard fault status register
-0xE000ED2C C   FIELD 01w01 VECTTBL: Vector table hard fault
-0xE000ED2C C   FIELD 30w01 FORCED: Forced hard fault
-0xE000ED2C C   FIELD 31w01 DEBUG_VT: Reserved for Debug use
-0xE000ED34 B  REGISTER MMFAR (rw): Memory management fault address register
-0xE000ED34 C   FIELD 00w32 ADDRESS: Memory management fault address
-0xE000ED38 B  REGISTER BFAR (rw): Bus fault address register
-0xE000ED38 C   FIELD 00w32 ADDRESS: Bus fault address
-0xE000ED78 A PERIPHERAL PF
-0xE000ED78 B  REGISTER CLIDR (ro): Cache Level ID register
-0xE000ED78 C   FIELD 00w03 CL1: CL1
-0xE000ED78 C   FIELD 03w03 CL2: CL2
-0xE000ED78 C   FIELD 06w03 CL3: CL3
-0xE000ED78 C   FIELD 09w03 CL4: CL4
-0xE000ED78 C   FIELD 12w03 CL5: CL5
-0xE000ED78 C   FIELD 15w03 CL6: CL6
-0xE000ED78 C   FIELD 18w03 CL7: CL7
-0xE000ED78 C   FIELD 21w03 LoUIS: LoUIS
-0xE000ED78 C   FIELD 24w03 LoC: LoC
-0xE000ED78 C   FIELD 27w03 LoU: LoU
-0xE000ED7C B  REGISTER CTR (ro): Cache Type register
-0xE000ED7C C   FIELD 00w04 _IminLine: IminLine
-0xE000ED7C C   FIELD 16w04 DMinLine: DMinLine
-0xE000ED7C C   FIELD 20w04 ERG: ERG
-0xE000ED7C C   FIELD 24w04 CWG: CWG
-0xE000ED7C C   FIELD 29w03 Format: Format
-0xE000ED80 B  REGISTER CCSIDR (ro): Cache Size ID register
-0xE000ED80 C   FIELD 00w03 LineSize: LineSize
-0xE000ED80 C   FIELD 03w10 Associativity: Associativity
-0xE000ED80 C   FIELD 13w15 NumSets: NumSets
-0xE000ED80 C   FIELD 28w01 WA: WA
-0xE000ED80 C   FIELD 29w01 RA: RA
-0xE000ED80 C   FIELD 30w01 WB: WB
-0xE000ED80 C   FIELD 31w01 WT: WT
-0xE000ED88 A PERIPHERAL FPU_CPACR
-0xE000ED88 B  REGISTER CPACR (rw): Coprocessor access control register
-0xE000ED88 C   FIELD 20w04 CP: CP
-0xE000ED90 A PERIPHERAL MPU
-0xE000ED90 B  REGISTER TYPER (ro): MPU type register
-0xE000ED90 C   FIELD 00w01 SEPARATE: Separate flag
-0xE000ED90 C   FIELD 08w08 DREGION: Number of MPU data regions
-0xE000ED90 C   FIELD 16w08 IREGION: Number of MPU instruction regions
-0xE000ED94 B  REGISTER CTRL (rw): MPU control register
-0xE000ED94 C   FIELD 00w01 ENABLE: Enables the MPU
-0xE000ED94 C   FIELD 01w01 HFNMIENA: Enables the operation of MPU during hard fault
-0xE000ED94 C   FIELD 02w01 PRIVDEFENA: Enable priviliged software access to default memory map
-0xE000ED98 B  REGISTER RNR (rw): MPU region number register
-0xE000ED98 C   FIELD 00w08 REGION: MPU region
-0xE000ED9C B  REGISTER RBAR (rw): MPU region base address register
-0xE000ED9C C   FIELD 00w04 REGION: MPU region field
-0xE000ED9C C   FIELD 04w01 VALID: MPU region number valid
-0xE000ED9C C   FIELD 05w27 ADDR: Region base address field
-0xE000EDA0 B  REGISTER RASR (rw): MPU region attribute and size register
-0xE000EDA0 C   FIELD 00w01 ENABLE: Region enable bit.
-0xE000EDA0 C   FIELD 01w05 SIZE: Size of the MPU protection region
-0xE000EDA0 C   FIELD 08w08 SRD: Subregion disable bits
-0xE000EDA0 C   FIELD 16w01 B: memory attribute
-0xE000EDA0 C   FIELD 17w01 C: memory attribute
-0xE000EDA0 C   FIELD 18w01 S: Shareable memory attribute
-0xE000EDA0 C   FIELD 19w03 TEX: memory attribute
-0xE000EDA0 C   FIELD 24w03 AP: Access permission
-0xE000EDA0 C   FIELD 28w01 XN: Instruction access disable bit
-0xE000EF00 A PERIPHERAL NVIC_STIR
-0xE000EF00 B  REGISTER STIR (rw): Software trigger interrupt register
-0xE000EF00 C   FIELD 00w09 INTID: Software generated interrupt ID
-0xE000EF34 A PERIPHERAL FPU
-0xE000EF34 B  REGISTER FPCCR (rw): Floating-point context control register
-0xE000EF34 C   FIELD 00w01 LSPACT: LSPACT
-0xE000EF34 C   FIELD 01w01 USER: USER
-0xE000EF34 C   FIELD 03w01 THREAD: THREAD
-0xE000EF34 C   FIELD 04w01 HFRDY: HFRDY
-0xE000EF34 C   FIELD 05w01 MMRDY: MMRDY
-0xE000EF34 C   FIELD 06w01 BFRDY: BFRDY
-0xE000EF34 C   FIELD 08w01 MONRDY: MONRDY
-0xE000EF34 C   FIELD 30w01 LSPEN: LSPEN
-0xE000EF34 C   FIELD 31w01 ASPEN: ASPEN
-0xE000EF38 B  REGISTER FPCAR (rw): Floating-point context address register
-0xE000EF38 C   FIELD 03w29 ADDRESS: Location of unpopulated floating-point
-0xE000EF3C B  REGISTER FPSCR (rw): Floating-point status control register
-0xE000EF3C C   FIELD 00w01 IOC: Invalid operation cumulative exception bit
-0xE000EF3C C   FIELD 01w01 DZC: Division by zero cumulative exception bit.
-0xE000EF3C C   FIELD 02w01 OFC: Overflow cumulative exception bit
-0xE000EF3C C   FIELD 03w01 UFC: Underflow cumulative exception bit
-0xE000EF3C C   FIELD 04w01 IXC: Inexact cumulative exception bit
-0xE000EF3C C   FIELD 07w01 IDC: Input denormal cumulative exception bit.
-0xE000EF3C C   FIELD 22w02 RMode: Rounding Mode control field
-0xE000EF3C C   FIELD 24w01 FZ: Flush-to-zero mode control bit:
-0xE000EF3C C   FIELD 25w01 DN: Default NaN mode control bit
-0xE000EF3C C   FIELD 26w01 AHP: Alternative half-precision control bit
-0xE000EF3C C   FIELD 28w01 V: Overflow condition code flag
-0xE000EF3C C   FIELD 29w01 C: Carry condition code flag
-0xE000EF3C C   FIELD 30w01 Z: Zero condition code flag
-0xE000EF3C C   FIELD 31w01 N: Negative condition code flag
-0xE000EF90 A PERIPHERAL AC
-0xE000EF90 B  REGISTER ITCMCR (rw): Instruction and Data Tightly-Coupled Memory Control Registers
-0xE000EF90 C   FIELD 00w01 EN: EN
-0xE000EF90 C   FIELD 01w01 RMW: RMW
-0xE000EF90 C   FIELD 02w01 RETEN: RETEN
-0xE000EF90 C   FIELD 03w04 SZ: SZ
-0xE000EF94 B  REGISTER DTCMCR (rw): Instruction and Data Tightly-Coupled Memory Control Registers
-0xE000EF94 C   FIELD 00w01 EN: EN
-0xE000EF94 C   FIELD 01w01 RMW: RMW
-0xE000EF94 C   FIELD 02w01 RETEN: RETEN
-0xE000EF94 C   FIELD 03w04 SZ: SZ
-0xE000EF98 B  REGISTER AHBPCR (rw): AHBP Control register
-0xE000EF98 C   FIELD 00w01 EN: EN
-0xE000EF98 C   FIELD 01w03 SZ: SZ
-0xE000EF9C B  REGISTER CACR (rw): Auxiliary Cache Control register
-0xE000EF9C C   FIELD 00w01 SIWT: SIWT
-0xE000EF9C C   FIELD 01w01 ECCEN: ECCEN
-0xE000EF9C C   FIELD 02w01 FORCEWT: FORCEWT
-0xE000EFA0 B  REGISTER AHBSCR (rw): AHB Slave Control register
-0xE000EFA0 C   FIELD 00w02 CTL: CTL
-0xE000EFA0 C   FIELD 02w09 TPRI: TPRI
-0xE000EFA0 C   FIELD 11w05 INITCOUNT: INITCOUNT
-0xE000EFA8 B  REGISTER ABFSR (rw): Auxiliary Bus Fault Status register
-0xE000EFA8 C   FIELD 00w01 ITCM: ITCM
-0xE000EFA8 C   FIELD 01w01 DTCM: DTCM
-0xE000EFA8 C   FIELD 02w01 AHBP: AHBP
-0xE000EFA8 C   FIELD 03w01 AXIM: AXIM
-0xE000EFA8 C   FIELD 04w01 EPPB: EPPB
-0xE000EFA8 C   FIELD 08w02 AXIMTYPE: AXIMTYPE
 INTERRUPT 000: WWDG2 (WWDG2): Window Watchdog interrupt
 INTERRUPT 001: PVD_PVM (EXTI): PVD through EXTI line
 INTERRUPT 002: RTC_TAMP_STAMP_CSS_LSE (RTC): RTC tamper, timestamp
 INTERRUPT 003: RTC_WKUP (RTC): RTC Wakeup interrupt
+INTERRUPT 004: FLASH (FLASH): Flash memory
 INTERRUPT 005: RCC (RCC): RCC global interrupt
 INTERRUPT 006: EXTI0 (EXTI): EXTI Line 0 interrupt
 INTERRUPT 007: EXTI1 (EXTI): EXTI Line 1 interrupt
@@ -22323,7 +21585,7 @@ INTERRUPT 077: OTG_HS (OTG2_HS_GLOBAL): OTG_HS global interrupt
 INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
 INTERRUPT 079: CRYP (CRYP): CRYP global interrupt
 INTERRUPT 080: HASH_RNG (HASH): HASH and RNG
-INTERRUPT 081: FPU (FPU): Floating point unit interrupt
+INTERRUPT 081: FPU (EXTI): CPU2
 INTERRUPT 082: UART7 (UART7): UART7 global interrupt
 INTERRUPT 083: UART8 (UART8): UART8 global interrupt
 INTERRUPT 084: SPI4 (SPI4): SPI4 global interrupt
