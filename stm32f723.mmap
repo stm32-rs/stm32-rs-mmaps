@@ -4501,33 +4501,6 @@
 0x40015C3C C   FIELD 06w01 CLFSDET: Clear late frame synchronization detection flag
 0x40015C40 B  REGISTER DRB (rw): AData register
 0x40015C40 C   FIELD 00w32 DATA: Data
-0x40017C00 A PERIPHERAL USBPHYC
-0x40017C00 B  REGISTER PLL1 (rw): USBPHYC PLL1 control register
-0x40017C00 C   FIELD 00w01 PLL1EN: Enable the PLL1 inside PHY
-0x40017C00 C   FIELD 01w03 PLL1SEL: : Controls the PHY PLL1 input clock frequency selection
-0x40017C0C B  REGISTER TUNE (rw): USBPHYC tuning control register
-0x40017C0C C   FIELD 00w01 INCURREN: Controls the current boosting function
-0x40017C0C C   FIELD 01w01 INCURRINT: Controls PHY current boosting
-0x40017C0C C   FIELD 02w01 LFSCAPEN: : Enables the Low Full Speed feedback capacitor
-0x40017C0C C   FIELD 03w01 HSDRVSLEW: Controls the HS driver slew rate
-0x40017C0C C   FIELD 04w01 HSDRVDCCUR: Decreases the HS driver DC level
-0x40017C0C C   FIELD 05w01 HSDRVDCLEV: Increases the HS Driver DC level. Not applicable during the HS Test J and Test K data transfer
-0x40017C0C C   FIELD 06w01 HSDRVCURINCR: Enable the HS driver current increase feature
-0x40017C0C C   FIELD 07w01 FSDRVRFADJ: Tuning pin to adjust the full speed rise/fall time
-0x40017C0C C   FIELD 08w01 HSDRVRFRED: High Speed rise-fall reduction enable
-0x40017C0C C   FIELD 09w04 HSDRVCHKITRM: HS Driver current trimming pins for choke compensation
-0x40017C0C C   FIELD 13w02 HSDRVCHKZTRM: Controls the PHY bus HS driver impedance tuning for choke compensation
-0x40017C0C C   FIELD 15w02 SQLCHCTL: Adjust the squelch DC threshold value
-0x40017C0C C   FIELD 17w01 HDRXGNEQEN: Enables the HS Rx Gain Equalizer
-0x40017C0C C   FIELD 18w01 STAGSEL: HS Tx staggering enable
-0x40017C0C C   FIELD 19w01 HSFALLPREEM: HS Fall time control of single ended signals during pre-emphasis
-0x40017C0C C   FIELD 20w02 HSRXOFF: : HS Receiver Offset adjustment
-0x40017C0C C   FIELD 22w01 SHTCCTCTLPROT: Enables the short circuit protection circuitry in LS/FS driver
-0x40017C0C C   FIELD 23w01 SQLBYP: This pin is used to bypass the squelch inter-locking circuitry
-0x40017C18 B  REGISTER LDO: USBPHYC LDO control and status register
-0x40017C18 C   FIELD 00w01 LDO_USED (ro): Indicates the presence of the LDO in the chip
-0x40017C18 C   FIELD 01w01 LDO_STATUS (ro): Monitors the status of the PHY's LDO
-0x40017C18 C   FIELD 02w01 LDO_DISABLE (rw): Controls disable of the High Speed PHY's LDO
 0x40020000 A PERIPHERAL GPIOA
 0x40020000 B  REGISTER MODER (rw): GPIO port mode register
 0x40020000 C   FIELD 00w02 MODER0: Port x configuration pin 0
@@ -6434,13 +6407,12 @@
 0x40023C0C C   FIELD 05w01 PGAERR (rw): Programming alignment error
 0x40023C0C C   FIELD 06w01 PGPERR (rw): Programming parallelism error
 0x40023C0C C   FIELD 07w01 ERSERR (rw): Erase Sequence Error
-0x40023C0C C   FIELD 08w01 RDERR (rw): RDERR
 0x40023C0C C   FIELD 16w01 BSY (ro): Busy
 0x40023C10 B  REGISTER CR (rw): Control register
 0x40023C10 C   FIELD 00w01 PG: Programming
 0x40023C10 C   FIELD 01w01 SER: Sector Erase
 0x40023C10 C   FIELD 02w01 MER: Mass Erase of sectors 0 to 11
-0x40023C10 C   FIELD 03w04 SNB: Sector number
+0x40023C10 C   FIELD 03w05 SNB: Sector number
 0x40023C10 C   FIELD 08w02 PSIZE: Program size
 0x40023C10 C   FIELD 16w01 STRT: Start
 0x40023C10 C   FIELD 24w01 EOPIE: End of operation interrupt enable
@@ -6456,14 +6428,14 @@
 0x40023C14 C   FIELD 06w01 nRST_STOP: nRST_STOP User option bytes
 0x40023C14 C   FIELD 07w01 nRST_STDBY: nRST_STDBY User option bytes
 0x40023C14 C   FIELD 08w08 RDP: Read protect
-0x40023C14 C   FIELD 16w08 nWRP: Not write protect
+0x40023C14 C   FIELD 16w12 nWRP: Not write protect
 0x40023C14 C   FIELD 30w01 IWDG_STDBY: Independent watchdog counter freeze in standby mode
 0x40023C14 C   FIELD 31w01 IWDG_STOP: Independent watchdog counter freeze in Stop mode
 0x40023C18 B  REGISTER OPTCR1 (rw): Flash option control register 1
 0x40023C18 C   FIELD 00w16 BOOT_ADD0: Boot base address when Boot pin =0
 0x40023C18 C   FIELD 16w16 BOOT_ADD1: Boot base address when Boot pin =1
 0x40023C1C B  REGISTER OPTCR2 (rw): Flash option control register
-0x40023C1C C   FIELD 00w08 PCROPi: PCROP option byte
+0x40023C1C C   FIELD 00w08 PCROP: PCROP option byte
 0x40023C1C C   FIELD 31w01 PCROP_RDP: PCROP zone preserved when RDP level decreased
 0x40026000 A PERIPHERAL DMA1
 0x40026000 B  REGISTER LISR (ro): low interrupt status register
@@ -6570,7 +6542,7 @@
 0x40026010 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026010 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026010 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026010 C   FIELD 25w03 CHSEL: Channel selection
+0x40026010 C   FIELD 25w04 CHSEL: Channel selection
 0x40026014 B  REGISTER NDTR0 (rw): stream x number of data register
 0x40026014 C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026018 B  REGISTER PAR0 (rw): stream x peripheral address register
@@ -6604,7 +6576,7 @@
 0x40026028 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026028 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026028 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026028 C   FIELD 25w03 CHSEL: Channel selection
+0x40026028 C   FIELD 25w04 CHSEL: Channel selection
 0x4002602C B  REGISTER NDTR1 (rw): stream x number of data register
 0x4002602C C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026030 B  REGISTER PAR1 (rw): stream x peripheral address register
@@ -6638,7 +6610,7 @@
 0x40026040 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026040 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026040 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026040 C   FIELD 25w03 CHSEL: Channel selection
+0x40026040 C   FIELD 25w04 CHSEL: Channel selection
 0x40026044 B  REGISTER NDTR2 (rw): stream x number of data register
 0x40026044 C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026048 B  REGISTER PAR2 (rw): stream x peripheral address register
@@ -6672,7 +6644,7 @@
 0x40026058 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026058 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026058 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026058 C   FIELD 25w03 CHSEL: Channel selection
+0x40026058 C   FIELD 25w04 CHSEL: Channel selection
 0x4002605C B  REGISTER NDTR3 (rw): stream x number of data register
 0x4002605C C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026060 B  REGISTER PAR3 (rw): stream x peripheral address register
@@ -6706,7 +6678,7 @@
 0x40026070 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026070 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026070 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026070 C   FIELD 25w03 CHSEL: Channel selection
+0x40026070 C   FIELD 25w04 CHSEL: Channel selection
 0x40026074 B  REGISTER NDTR4 (rw): stream x number of data register
 0x40026074 C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026078 B  REGISTER PAR4 (rw): stream x peripheral address register
@@ -6740,7 +6712,7 @@
 0x40026088 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026088 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026088 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026088 C   FIELD 25w03 CHSEL: Channel selection
+0x40026088 C   FIELD 25w04 CHSEL: Channel selection
 0x4002608C B  REGISTER NDTR5 (rw): stream x number of data register
 0x4002608C C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026090 B  REGISTER PAR5 (rw): stream x peripheral address register
@@ -6774,7 +6746,7 @@
 0x400260A0 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x400260A0 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400260A0 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x400260A0 C   FIELD 25w03 CHSEL: Channel selection
+0x400260A0 C   FIELD 25w04 CHSEL: Channel selection
 0x400260A4 B  REGISTER NDTR6 (rw): stream x number of data register
 0x400260A4 C   FIELD 00w16 NDT: Number of data items to transfer
 0x400260A8 B  REGISTER PAR6 (rw): stream x peripheral address register
@@ -6808,7 +6780,7 @@
 0x400260B8 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x400260B8 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400260B8 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x400260B8 C   FIELD 25w03 CHSEL: Channel selection
+0x400260B8 C   FIELD 25w04 CHSEL: Channel selection
 0x400260BC B  REGISTER NDTR7 (rw): stream x number of data register
 0x400260BC C   FIELD 00w16 NDT: Number of data items to transfer
 0x400260C0 B  REGISTER PAR7 (rw): stream x peripheral address register
@@ -6927,7 +6899,7 @@
 0x40026410 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026410 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026410 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026410 C   FIELD 25w03 CHSEL: Channel selection
+0x40026410 C   FIELD 25w04 CHSEL: Channel selection
 0x40026414 B  REGISTER NDTR0 (rw): stream x number of data register
 0x40026414 C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026418 B  REGISTER PAR0 (rw): stream x peripheral address register
@@ -6961,7 +6933,7 @@
 0x40026428 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026428 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026428 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026428 C   FIELD 25w03 CHSEL: Channel selection
+0x40026428 C   FIELD 25w04 CHSEL: Channel selection
 0x4002642C B  REGISTER NDTR1 (rw): stream x number of data register
 0x4002642C C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026430 B  REGISTER PAR1 (rw): stream x peripheral address register
@@ -6995,7 +6967,7 @@
 0x40026440 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026440 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026440 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026440 C   FIELD 25w03 CHSEL: Channel selection
+0x40026440 C   FIELD 25w04 CHSEL: Channel selection
 0x40026444 B  REGISTER NDTR2 (rw): stream x number of data register
 0x40026444 C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026448 B  REGISTER PAR2 (rw): stream x peripheral address register
@@ -7029,7 +7001,7 @@
 0x40026458 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026458 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026458 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026458 C   FIELD 25w03 CHSEL: Channel selection
+0x40026458 C   FIELD 25w04 CHSEL: Channel selection
 0x4002645C B  REGISTER NDTR3 (rw): stream x number of data register
 0x4002645C C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026460 B  REGISTER PAR3 (rw): stream x peripheral address register
@@ -7063,7 +7035,7 @@
 0x40026470 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026470 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026470 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026470 C   FIELD 25w03 CHSEL: Channel selection
+0x40026470 C   FIELD 25w04 CHSEL: Channel selection
 0x40026474 B  REGISTER NDTR4 (rw): stream x number of data register
 0x40026474 C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026478 B  REGISTER PAR4 (rw): stream x peripheral address register
@@ -7097,7 +7069,7 @@
 0x40026488 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x40026488 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026488 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x40026488 C   FIELD 25w03 CHSEL: Channel selection
+0x40026488 C   FIELD 25w04 CHSEL: Channel selection
 0x4002648C B  REGISTER NDTR5 (rw): stream x number of data register
 0x4002648C C   FIELD 00w16 NDT: Number of data items to transfer
 0x40026490 B  REGISTER PAR5 (rw): stream x peripheral address register
@@ -7131,7 +7103,7 @@
 0x400264A0 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x400264A0 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400264A0 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x400264A0 C   FIELD 25w03 CHSEL: Channel selection
+0x400264A0 C   FIELD 25w04 CHSEL: Channel selection
 0x400264A4 B  REGISTER NDTR6 (rw): stream x number of data register
 0x400264A4 C   FIELD 00w16 NDT: Number of data items to transfer
 0x400264A8 B  REGISTER PAR6 (rw): stream x peripheral address register
@@ -7165,7 +7137,7 @@
 0x400264B8 C   FIELD 19w01 CT: Current target (only in double buffer mode)
 0x400264B8 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400264B8 C   FIELD 23w02 MBURST: Memory burst transfer configuration
-0x400264B8 C   FIELD 25w03 CHSEL: Channel selection
+0x400264B8 C   FIELD 25w04 CHSEL: Channel selection
 0x400264BC B  REGISTER NDTR7 (rw): stream x number of data register
 0x400264BC C   FIELD 00w16 NDT: Number of data items to transfer
 0x400264C0 B  REGISTER PAR7 (rw): stream x peripheral address register
@@ -9873,70 +9845,69 @@
 0x50000E00 C   FIELD 00w01 STPPCLK: Stop PHY clock
 0x50000E00 C   FIELD 01w01 GATEHCLK: Gate HCLK
 0x50000E00 C   FIELD 04w01 PHYSUSP: PHY Suspended
-0x50060000 A PERIPHERAL AES
+0x50060000 A PERIPHERAL CRYP
 0x50060000 B  REGISTER CR (rw): control register
 0x50060000 C   FIELD 00w01 EN: AES enable
 0x50060000 C   FIELD 01w02 DATATYPE: Data type selection (for data in and data out to/from the cryptographic block)
 0x50060000 C   FIELD 03w02 MODE: AES operating mode
-0x50060000 C   FIELD 05w02 CHMOD10: AES chaining mode Bit1 Bit0
-0x50060000 C   FIELD 07w01 CCFC: Computation Complete Flag Clear
+0x50060000 C   FIELD 05w02 CHMOD: AES chaining mode
+0x50060000 C   FIELD 07w01 CCFC: Computation complete flag clear
 0x50060000 C   FIELD 08w01 ERRC: Error clear
 0x50060000 C   FIELD 09w01 CCFIE: CCF flag interrupt enable
 0x50060000 C   FIELD 10w01 ERRIE: Error interrupt enable
 0x50060000 C   FIELD 11w01 DMAINEN: Enable DMA management of data input phase
 0x50060000 C   FIELD 12w01 DMAOUTEN: Enable DMA management of data output phase
-0x50060000 C   FIELD 13w02 GCMPH: Used only for GCM, CCM and GMAC algorithms and has no effect when other algorithms are selected
-0x50060000 C   FIELD 16w01 CHMOD2: AES chaining mode Bit2
+0x50060000 C   FIELD 13w02 GCMPH: Used only for GCM, GMAC and CMAC algorithms and has no effect when other
 0x50060000 C   FIELD 18w01 KEYSIZE: Key size selection
 0x50060004 B  REGISTER SR (ro): status register
 0x50060004 C   FIELD 00w01 CCF: Computation complete flag
 0x50060004 C   FIELD 01w01 RDERR: Read error flag
 0x50060004 C   FIELD 02w01 WRERR: Write error flag
-0x50060004 C   FIELD 03w01 BUSY: Busy flag
+0x50060004 C   FIELD 03w01 Busy: Busy flag
 0x50060008 B  REGISTER DINR (rw): data input register
-0x50060008 C   FIELD 00w32 DIN: Data Input Register
+0x50060008 C   FIELD 00w32 DINR: Data input
 0x5006000C B  REGISTER DOUTR (ro): data output register
-0x5006000C C   FIELD 00w32 DOUT: Data output register
-0x50060010 B  REGISTER KEYR0 (rw): key register 0
-0x50060010 C   FIELD 00w32 KEY: Data Output Register (LSB key [31:0])
-0x50060014 B  REGISTER KEYR1 (rw): key register 1
-0x50060014 C   FIELD 00w32 KEY: AES key register (key [63:32])
-0x50060018 B  REGISTER KEYR2 (rw): key register 2
-0x50060018 C   FIELD 00w32 KEY: AES key register (key [95:64])
-0x5006001C B  REGISTER KEYR3 (rw): key register 3
-0x5006001C C   FIELD 00w32 KEY: AES key register (MSB key [127:96])
-0x50060020 B  REGISTER IVR0 (rw): initialization vector register 0
-0x50060020 C   FIELD 00w32 IVI: initialization vector register (LSB IVR [31:0])
-0x50060024 B  REGISTER IVR1 (rw): initialization vector register 1
-0x50060024 C   FIELD 00w32 IVI: Initialization Vector Register (IVR [63:32])
-0x50060028 B  REGISTER IVR2 (rw): initialization vector register 2
-0x50060028 C   FIELD 00w32 IVI: Initialization Vector Register (IVR [95:64])
-0x5006002C B  REGISTER IVR3 (rw): initialization vector register 3
-0x5006002C C   FIELD 00w32 IVI: Initialization Vector Register (MSB IVR [127:96])
-0x50060030 B  REGISTER KEYR4 (rw): key register 4
-0x50060030 C   FIELD 00w32 KEY: AES key register (MSB key [159:128])
-0x50060034 B  REGISTER KEYR5 (rw): key register 5
-0x50060034 C   FIELD 00w32 KEY: AES key register (MSB key [191:160])
-0x50060038 B  REGISTER KEYR6 (rw): key register 6
-0x50060038 C   FIELD 00w32 KEY: AES key register (MSB key [223:192])
-0x5006003C B  REGISTER KEYR7 (rw): key register 7
-0x5006003C C   FIELD 00w32 KEY: AES key register (MSB key [255:224])
-0x50060040 B  REGISTER SUSP0R (rw): AES suspend register 0
-0x50060040 C   FIELD 00w32 SUSP: AES suspend register 0
-0x50060044 B  REGISTER SUSP1R (rw): AES suspend register 1
-0x50060044 C   FIELD 00w32 SUSP: AES suspend register 1
-0x50060048 B  REGISTER SUSP2R (rw): AES suspend register 2
-0x50060048 C   FIELD 00w32 SUSP: AES suspend register 2
-0x5006004C B  REGISTER SUSP3R (rw): AES suspend register 3
-0x5006004C C   FIELD 00w32 SUSP: AES suspend register 3
-0x50060050 B  REGISTER SUSP4R (rw): AES suspend register 4
-0x50060050 C   FIELD 00w32 SUSP: AES suspend register 4
-0x50060054 B  REGISTER SUSP5R (rw): AES suspend register 5
-0x50060054 C   FIELD 00w32 SUSP: AES suspend register 5
-0x50060058 B  REGISTER SUSP6R (rw): AES suspend register 6
-0x50060058 C   FIELD 00w32 SUSP: AES suspend register 6
-0x5006005C B  REGISTER SUSP7R (rw): AES suspend register 7
-0x5006005C C   FIELD 00w32 SUSP: AES suspend register 7
+0x5006000C C   FIELD 00w32 DOUTR: Data output
+0x50060010 B  REGISTER KEYR0 (rw): key register
+0x50060010 C   FIELD 00w31 KEYR0: Data output register
+0x50060014 B  REGISTER KEYR1 (rw): key register
+0x50060014 C   FIELD 00w32 KEYR1: Data output register
+0x50060018 B  REGISTER KEYR2 (ro): key register
+0x50060018 C   FIELD 00w31 KEYR2: Data output register
+0x5006001C B  REGISTER KEYR3 (ro): key register
+0x5006001C C   FIELD 00w32 KEYR3: Data output register
+0x50060020 B  REGISTER IVR0 (rw): initialization vector register
+0x50060020 C   FIELD 00w32 IVR0: initialization vector register
+0x50060024 B  REGISTER IVR1 (rw): initialization vector register
+0x50060024 C   FIELD 00w32 IVR1: Initialization vector register
+0x50060028 B  REGISTER IVR2 (rw): initialization vector register
+0x50060028 C   FIELD 00w32 IVR2: Initialization vector register
+0x5006002C B  REGISTER IVR3 (rw): initialization vector register
+0x5006002C C   FIELD 00w32 IVR3: Initialization vector register
+0x50060030 B  REGISTER KEYR4 (rw): key registers
+0x50060030 C   FIELD 00w32 KEYR4: Data output register
+0x50060034 B  REGISTER KEYR5 (rw): key registers
+0x50060034 C   FIELD 00w32 KEYR5: Data output register
+0x50060038 B  REGISTER KEYR6 (rw): key registers
+0x50060038 C   FIELD 00w32 KEYR6: Data output register
+0x5006003C B  REGISTER KEYR7 (rw): key registers
+0x5006003C C   FIELD 00w32 KEYR7: Data output register
+0x50060040 B  REGISTER SUSP0R (rw): Suspend registers
+0x50060040 C   FIELD 00w32 SUSP0R: AES Suspend
+0x50060044 B  REGISTER SUSP1R (rw): Suspend registers
+0x50060044 C   FIELD 00w32 SUSP1R: AES Suspend
+0x50060048 B  REGISTER SUSP2R (rw): Suspend registers
+0x50060048 C   FIELD 00w32 SUSP2R: AES Suspend
+0x5006004C B  REGISTER SUSP3R (rw): Suspend registers
+0x5006004C C   FIELD 00w32 SUSP3R: IV127
+0x50060050 B  REGISTER SUSP4R (rw): Suspend registers
+0x50060050 C   FIELD 00w32 SUSP4R: AES Suspend
+0x50060054 B  REGISTER SUSP5R (rw): Suspend registers
+0x50060054 C   FIELD 00w32 SUSP5R: AES Suspend
+0x50060058 B  REGISTER SUSP6R (rw): Suspend registers
+0x50060058 C   FIELD 00w32 SUSP6R: AES Suspend
+0x5006005C B  REGISTER SUSP7R (rw): Suspend registers
+0x5006005C C   FIELD 00w32 SUSP7R: AES Suspend
 0x50060800 A PERIPHERAL RNG
 0x50060800 B  REGISTER CR (rw): control register
 0x50060800 C   FIELD 02w01 RNGEN: Random number generator enable
@@ -10250,7 +10221,7 @@
 0xE004200C C   FIELD 17w01 DBG_TIM10_STOP: TIM10 counter stopped when core is halted
 0xE004200C C   FIELD 18w01 DBG_TIM11_STOP: TIM11 counter stopped when core is halted
 INTERRUPT 000: WWDG (WWDG): Window Watchdog interrupt
-INTERRUPT 001: PVD (EXTI): PVD through EXTI line detection interrupt
+INTERRUPT 001: PVD (PWR): PVD through EXTI line detection interrupt
 INTERRUPT 002: TAMP_STAMP (EXTI): Tamper and TimeStamp interrupts through the EXTI line
 INTERRUPT 003: RTC_WKUP (RTC): RTC Tamper or TimeStamp /CSS on LSE through EXTI line 19 interrupts
 INTERRUPT 004: FLASH (FLASH): Flash global interrupt
@@ -10259,7 +10230,7 @@ INTERRUPT 006: EXTI0 (EXTI): EXTI Line0 interrupt
 INTERRUPT 007: EXTI1 (EXTI): EXTI Line1 interrupt
 INTERRUPT 008: EXTI2 (EXTI): EXTI Line2 interrupt
 INTERRUPT 009: EXTI3 (EXTI): EXTI Line3 interrupt
-INTERRUPT 010: EXTI4 (EXTI): EXTI Line4 interrupt
+INTERRUPT 010: EXTI4 (RNG): EXTI Line4 interrupt
 INTERRUPT 011: DMA1_Stream0 (DMA1): DMA1 Stream0 global interrupt
 INTERRUPT 012: DMA1_Stream1 (DMA1): DMA1 Stream1 global interrupt
 INTERRUPT 013: DMA1_Stream2 (DMA1): DMA1 Stream2 global interrupt
@@ -10272,7 +10243,7 @@ INTERRUPT 019: CAN1_TX (CAN1): CAN1 TX interrupts
 INTERRUPT 020: CAN1_RX0 (CAN1): CAN1 RX0 interrupts
 INTERRUPT 021: CAN1_RX1 (CAN1): CAN1 RX1 interrupts
 INTERRUPT 022: CAN1_SCE (CAN1): CAN1 SCE interrupt
-INTERRUPT 023: EXTI9_5 (EXTI): EXTI Line[9:5] interrupts
+INTERRUPT 023: EXTI9_5 (RNG): EXTI Line[9:5] interrupts
 INTERRUPT 024: TIM1_BRK_TIM9 (TIM1): TIM1 Break interrupt and TIM9 global interrupt
 INTERRUPT 025: TIM1_UP_TIM10 (TIM1): TIM1 Update interrupt and TIM10
 INTERRUPT 026: TIM1_TRG_COM_TIM11 (TIM1): TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
@@ -10289,12 +10260,12 @@ INTERRUPT 036: SPI2 (SPI2): SPI2 global interrupt
 INTERRUPT 037: USART1 (USART1): USART1 global interrupt
 INTERRUPT 038: USART2 (USART2): USART2 global interrupt
 INTERRUPT 039: USART3 (USART3): USART3 global interrupt
-INTERRUPT 040: EXTI15_10 (EXTI): EXTI Line[15:10] interrupts
+INTERRUPT 040: EXTI15_10 (RNG): EXTI Line[15:10] interrupts
 INTERRUPT 041: RTC_ALARM (RTC): RTC alarms through EXTI line 18 interrupts
-INTERRUPT 042: OTG_FS_WKUP (OTG_FS_PWRCLK): USB On-The-Go FS Wakeup through EXTI line interrupt
-INTERRUPT 043: TIM8_BRK_TIM12 (TIM8): TIM8 Break interrupt and TIM12 global interrupt
-INTERRUPT 044: TIM8_UP_TIM13 (TIM8): TIM8 Update interrupt and TIM13 global interrupt
-INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM8): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
+INTERRUPT 042: OTG_FS_WKUP (OTG_FS_HOST): USB On-The-Go FS Wakeup through EXTI line interrupt
+INTERRUPT 043: TIM8_BRK_TIM12 (TIM12): TIM8 Break interrupt and TIM12 global interrupt
+INTERRUPT 044: TIM8_UP_TIM13 (TIM13): TIM8 Update interrupt and TIM13 global interrupt
+INTERRUPT 045: TIM8_TRG_COM_TIM14 (TIM14): TIM8 Trigger and Commutation interrupts and TIM14 global interrupt
 INTERRUPT 046: TIM8_CC (TIM8): TIM8 Capture Compare interrupt
 INTERRUPT 047: DMA1_Stream7 (DMA1): DMA1 Stream7 global interrupt
 INTERRUPT 048: FSMC (FMC): FMC global interrupt
@@ -10310,7 +10281,7 @@ INTERRUPT 057: DMA2_Stream1 (DMA2): DMA2 Stream1 global interrupt
 INTERRUPT 058: DMA2_Stream2 (DMA2): DMA2 Stream2 global interrupt
 INTERRUPT 059: DMA2_Stream3 (DMA2): DMA2 Stream3 global interrupt
 INTERRUPT 060: DMA2_Stream4 (DMA2): DMA2 Stream4 global interrupt
-INTERRUPT 067: OTG_FS (OTG_FS_HOST): USB On The Go FS global interrupt
+INTERRUPT 067: OTG_FS (OTG_HS_HOST): USB On The Go FS global interrupt
 INTERRUPT 068: DMA2_Stream5 (DMA2): DMA2 Stream5 global interrupt
 INTERRUPT 069: DMA2_Stream6 (DMA2): DMA2 Stream6 global interrupt
 INTERRUPT 070: DMA2_Stream7 (DMA2): DMA2 Stream7 global interrupt
@@ -10319,17 +10290,18 @@ INTERRUPT 072: I2C3_EV (I2C3): I2C3 event interrupt
 INTERRUPT 073: I2C3_ER (I2C3): I2C3 error interrupt
 INTERRUPT 074: OTG_HS_EP1_OUT (OTG_HS_GLOBAL): USB On The Go HS End Point 1 Out
 INTERRUPT 075: OTG_HS_EP1_IN (OTG_HS_GLOBAL): USB On The Go HS End Point 1 In
-INTERRUPT 076: OTG_HS_WKUP (OTG_HS_PWRCLK): USB On The Go HS Wakeup through
+INTERRUPT 076: OTG_HS_WKUP (OTG_HS_GLOBAL): USB On The Go HS Wakeup through
 INTERRUPT 077: OTG_HS (OTG_HS_GLOBAL): USB On The Go HS global interrupt
-INTERRUPT 079: AES (AES): AES global interrupt
+INTERRUPT 079: AES (CRYP): AES global interrupt
 INTERRUPT 080: RNG (RNG): Rng global interrupt
+INTERRUPT 081: FPU (DBGMCU): FPU global interrupt
 INTERRUPT 081: FPU (EXTI): Floating point unit interrupt
 INTERRUPT 082: UART7 (UART7): UART7 global interrupt
 INTERRUPT 083: UART8 (UART8): UART 8 global interrupt
 INTERRUPT 084: SPI4 (SPI4): SPI 4 global interrupt
 INTERRUPT 085: SPI5 (SPI5): SPI 5 global interrupt
-INTERRUPT 087: SAI1 (SAI1): SAI1 global interrupt
+INTERRUPT 087: SAI1 (SPI4): SAI1 global interrupt
 INTERRUPT 091: SAI2 (SAI2): SAI2 global interrupt
 INTERRUPT 092: QuadSPI (QUADSPI): QuadSPI global interrupt
 INTERRUPT 093: LP_Timer1 (LPTIM1): LP Timer1 global interrupt
-INTERRUPT 103: SDMMC2 (SDMMC2): SDMMC2 global interrupt
+INTERRUPT 103: SDMMC2 (UART4): SDMMC2 global interrupt
