@@ -584,8 +584,6 @@
 0x40007000 C   FIELD 01w01 PDDS: Power down deepsleep
 0x40007000 C   FIELD 02w01 CWUF: Clear wakeup flag
 0x40007000 C   FIELD 03w01 CSBF: Clear standby flag
-0x40007000 C   FIELD 04w01 PVDE: Power voltage detector enable
-0x40007000 C   FIELD 05w03 PLS: PVD level selection
 0x40007000 C   FIELD 08w01 DBP: Disable backup domain write protection
 0x40007000 C   FIELD 09w01 ULP: Ultra-low-power mode
 0x40007000 C   FIELD 10w01 FWU: Fast wakeup
@@ -596,13 +594,12 @@
 0x40007004 B  REGISTER CSR: power control/status register
 0x40007004 C   FIELD 00w01 WUF (ro): Wakeup flag
 0x40007004 C   FIELD 01w01 SBF (ro): Standby flag
-0x40007004 C   FIELD 02w01 PVDO (ro): PVD output
-0x40007004 C   FIELD 03w01 VREFINTRDYF (ro): Internal voltage reference ready flag
+0x40007004 C   FIELD 03w01 VREFINTRDYF (ro): Internal voltage reference (VREFINT) ready flag
 0x40007004 C   FIELD 04w01 VOSF (ro): Voltage Scaling select flag
 0x40007004 C   FIELD 05w01 REGLPF (ro): Regulator LP flag
 0x40007004 C   FIELD 08w01 EWUP1 (rw): Enable WKUP pin 1
 0x40007004 C   FIELD 09w01 EWUP2 (rw): Enable WKUP pin 2
-0x40007004 C   FIELD 10w01 EWUP3: Enable WKUP pin 3
+0x40007004 C   FIELD 10w01 EWUP3 (rw): Enable WKUP pin 3
 0x40007C00 A PERIPHERAL LPTIM
 0x40007C00 B  REGISTER ISR (ro): Interrupt and Status Register
 0x40007C00 C   FIELD 00w01 CMPM: Compare match
@@ -2851,5 +2848,5 @@ INTERRUPT 020: TIM21 (TIM22): TIMER21 global interrupt
 INTERRUPT 022: TIM22 (LPUART1): TIMER22 global interrupt
 INTERRUPT 023: I2C1 (PWR): I2C1 global interrupt
 INTERRUPT 025: SPI1 (I2C1): SPI1_global_interrupt
-INTERRUPT 028: USART2 (IWDG): USART2 global interrupt
+INTERRUPT 028: USART2 (USART2): USART2 global interrupt
 INTERRUPT 029: LPUART1 (NVIC): LPUART1 global interrupt through
