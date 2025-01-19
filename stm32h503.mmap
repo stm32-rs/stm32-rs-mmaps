@@ -8322,71 +8322,58 @@
 0x4400782C B  REGISTER SHIFTR: RTC shift control register
 0x4400782C C   FIELD 00w15 SUBFS (wo): Subtract a fraction of a second These bits are write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). The value which is written to SUBFS is added to the synchronous prescaler counter. Since this counter counts down, this operation effectively subtracts from (delays) the clock by: Delay (seconds) = SUBFS / (PREDIV_S + 1) A fraction of a second can effectively be added to the clock (advancing the clock) when the ADD1S function is used in conjunction with SUBFS, effectively advancing the clock by: Advance (seconds) = (1 - (SUBFS / (PREDIV_S + 1))). In mixed BCD-binary mode (BIN=10 or 11), the SUBFS[14:BCDU+8] must be written with 0. Note: Writing to SUBFS causes RSF to be cleared. Software can then wait until RSF = 1 to be sure that the shadow registers have been updated with the shifted time.
 0x4400782C C   FIELD 31w01 ADD1S (wo): Add one second This bit is write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). This function is intended to be used with SUBFS (see description below) in order to effectively add a fraction of a second to the clock in an atomic operation.
-0x44007830 B  REGISTER TSTR: RTC timestamp time register
-0x44007830 C   FIELD 00w04 SU (ro): Second units in BCD format.
-0x44007830 C   FIELD 04w03 ST (ro): Second tens in BCD format.
-0x44007830 C   FIELD 08w04 MNU (ro): Minute units in BCD format.
-0x44007830 C   FIELD 12w03 MNT (ro): Minute tens in BCD format.
-0x44007830 C   FIELD 16w04 HU (ro): Hour units in BCD format.
-0x44007830 C   FIELD 20w02 HT (ro): Hour tens in BCD format.
-0x44007830 C   FIELD 22w01 PM (ro): AM/PM notation
-0x44007834 B  REGISTER TSDR: RTC timestamp date register
-0x44007834 C   FIELD 00w04 DU (ro): Date units in BCD format
-0x44007834 C   FIELD 04w02 DT (ro): Date tens in BCD format
-0x44007834 C   FIELD 08w04 MU (ro): Month units in BCD format
-0x44007834 C   FIELD 12w01 MT (ro): Month tens in BCD format
-0x44007834 C   FIELD 13w03 WDU (ro): Week day units
-0x44007838 B  REGISTER TSSSR: RTC timestamp subsecond register
-0x44007838 C   FIELD 00w32 SS (ro): Subsecond value/synchronous binary counter values SS[31:0] is the value of the synchronous prescaler counter when the timestamp event occurred.
-0x44007840 B  REGISTER ALRMAR: RTC alarm A register
-0x44007840 C   FIELD 00w04 SU (rw): Second units in BCD format.
-0x44007840 C   FIELD 04w03 ST (rw): Second tens in BCD format.
-0x44007840 C   FIELD 07w01 MSK1 (rw): Alarm A seconds mask
+0x44007830 B  REGISTER TSTR (=TR): RTC timestamp time register
+0x44007834 B  REGISTER TSDR (=DR): RTC timestamp date register
+0x44007838 B  REGISTER TSSSR (=SSR): RTC timestamp subsecond register
+0x44007840 B  REGISTER ALRMAR: Alarm A register
+0x44007840 C   FIELD 00w04 SU (rw): Second units in BCD format
+0x44007840 C   FIELD 04w03 ST (rw): Second tens in BCD format
+0x44007840 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x44007840 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x44007840 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x44007840 C   FIELD 15w01 MSK2 (rw): Alarm A minutes mask
+0x44007840 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x44007840 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x44007840 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x44007840 C   FIELD 22w01 PM (rw): AM/PM notation
-0x44007840 C   FIELD 23w01 MSK3 (rw): Alarm A hours mask
+0x44007840 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x44007840 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x44007840 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x44007840 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x44007840 C   FIELD 31w01 MSK4 (rw): Alarm A date mask
-0x44007844 B  REGISTER ALRMASSR: RTC alarm A subsecond register
+0x44007840 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x44007844 B  REGISTER ALRMASSR: Alarm A sub-second register
 0x44007844 C   FIELD 00w15 SS (rw): Subseconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. This field is the mirror of SS[14:0] in the RTC_ALRMABINR, and so can also be read or written through RTC_ALRMABINR.
 0x44007844 C   FIELD 24w06 MASKSS (rw): Mask the most-significant bits starting at this bit ... From 32 to 63: All 32 SS bits are compared and must match to activate alarm. Note: In BCD mode (BIN=00) the overflow bits of the synchronous counter (bits 31:15) are never compared. These bits can be different from 0 only after a shift operation.
 0x44007844 C   FIELD 31w01 SSCLR (rw): Clear synchronous counter on alarm (Binary mode only) Note: SSCLR must be kept to 0 when BCD or mixed mode is used (BIN = 00, 10 or 11).
-0x44007848 B  REGISTER ALRMBR: RTC alarm B register
+0x44007848 B  REGISTER ALRMBR: Alarm B register
 0x44007848 C   FIELD 00w04 SU (rw): Second units in BCD format
 0x44007848 C   FIELD 04w03 ST (rw): Second tens in BCD format
-0x44007848 C   FIELD 07w01 MSK1 (rw): Alarm B seconds mask
+0x44007848 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x44007848 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x44007848 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x44007848 C   FIELD 15w01 MSK2 (rw): Alarm B minutes mask
+0x44007848 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x44007848 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x44007848 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x44007848 C   FIELD 22w01 PM (rw): AM/PM notation
-0x44007848 C   FIELD 23w01 MSK3 (rw): Alarm B hours mask
+0x44007848 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x44007848 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x44007848 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x44007848 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x44007848 C   FIELD 31w01 MSK4 (rw): Alarm B date mask
-0x4400784C B  REGISTER ALRMBSSR: RTC alarm B subsecond register
-0x4400784C C   FIELD 00w15 SS (rw): Subseconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm B is to be activated. Only bits 0 up to MASKSS-1 are compared. This field is the mirror of SS[14:0] in the RTC_ALRMBBINR, and so can also be read or written through RTC_ALRMBBINR.
-0x4400784C C   FIELD 24w06 MASKSS (rw): Mask the most-significant bits starting at this bit ... From 32 to 63: All 32 SS bits are compared and must match to activate alarm. Note: In BCD mode (BIN=00)The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
+0x44007848 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x4400784C B  REGISTER ALRMBSSR: Alarm B sub-second register
+0x4400784C C   FIELD 00w15 SS (rw): Subseconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. This field is the mirror of SS[14:0] in the RTC_ALRMABINR, and so can also be read or written through RTC_ALRMABINR.
+0x4400784C C   FIELD 24w06 MASKSS (rw): Mask the most-significant bits starting at this bit ... From 32 to 63: All 32 SS bits are compared and must match to activate alarm. Note: In BCD mode (BIN=00) the overflow bits of the synchronous counter (bits 31:15) are never compared. These bits can be different from 0 only after a shift operation.
 0x4400784C C   FIELD 31w01 SSCLR (rw): Clear synchronous counter on alarm (Binary mode only) Note: SSCLR must be kept to 0 when BCD or mixed mode is used (BIN = 00, 10 or 11).
 0x44007850 B  REGISTER SR: RTC status register
-0x44007850 C   FIELD 00w01 ALRAF (ro): Alarm A flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm A register (RTC_ALRMAR).
-0x44007850 C   FIELD 01w01 ALRBF (ro): Alarm B flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm B register (RTC_ALRMBR).
+0x44007850 C   FIELD 00w01 ALRAF (ro): Alarm A flag
+0x44007850 C   FIELD 01w01 ALRBF (ro): Alarm B flag
 0x44007850 C   FIELD 02w01 WUTF (ro): Wakeup timer flag This flag is set by hardware when the wakeup auto-reload counter reaches 0. If WUTOCLR[15:0] is different from 0x0000, WUTF is cleared by hardware when the wakeup auto-reload counter reaches WUTOCLR value. If WUTOCLR[15:0] is 0x0000, WUTF must be cleared by software. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x44007850 C   FIELD 03w01 TSF (ro): Timestamp flag This flag is set by hardware when a timestamp event occurs. If ITSF flag is set, TSF must be cleared together with ITSF. Note: TSF is not set if TAMPTS = 1 and the tamper flag is read during the 3 ck_apre cycles following tamper event. Refer to Timestamp on tamper event for more details.
 0x44007850 C   FIELD 04w01 TSOVF (ro): Timestamp overflow flag This flag is set by hardware when a timestamp event occurs while TSF is already set. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
 0x44007850 C   FIELD 05w01 ITSF (ro): Internal timestamp flag This flag is set by hardware when a timestamp on the internal event occurs.
 0x44007850 C   FIELD 06w01 SSRUF (ro): SSR underflow flag This flag is set by hardware when the SSR rolls under 0. SSRUF is not set when SSCLR=1.
 0x44007854 B  REGISTER MISR: RTC masked interrupt status register
-0x44007854 C   FIELD 00w01 ALRAMF (ro): Alarm A masked flag This flag is set by hardware when the alarm A interrupt occurs.
-0x44007854 C   FIELD 01w01 ALRBMF (ro): Alarm B masked flag This flag is set by hardware when the alarm B interrupt occurs.
+0x44007854 C   FIELD 00w01 ALRAMF (ro): Alarm A masked flag
+0x44007854 C   FIELD 01w01 ALRBMF (ro): Alarm B masked flag
 0x44007854 C   FIELD 02w01 WUTMF (ro): Wakeup timer masked flag This flag is set by hardware when the wakeup timer interrupt occurs. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x44007854 C   FIELD 03w01 TSMF (ro): Timestamp masked flag This flag is set by hardware when a timestamp interrupt occurs. If ITSF flag is set, TSF must be cleared together with ITSF.
 0x44007854 C   FIELD 04w01 TSOVMF (ro): Timestamp overflow masked flag This flag is set by hardware when a timestamp interrupt occurs while TSMF is already set. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
@@ -8400,10 +8387,10 @@
 0x4400785C C   FIELD 04w01 CTSOVF (wo): Clear timestamp overflow flag Writing 1 in this bit clears the TSOVF bit in the RTC_SR register. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
 0x4400785C C   FIELD 05w01 CITSF (wo): Clear internal timestamp flag Writing 1 in this bit clears the ITSF bit in the RTC_SR register.
 0x4400785C C   FIELD 06w01 CSSRUF (wo): Clear SSR underflow flag Writing '1' in this bit clears the SSRUF in the RTC_SR register.
-0x44007870 B  REGISTER ALRABINR: RTC alarm A binary mode register
+0x44007870 B  REGISTER ALRABINR: Alarm A binary mode register
 0x44007870 C   FIELD 00w32 SS (rw): Synchronous counter alarm value in Binary mode This value is compared with the contents of the synchronous counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. SS[14:0] is the mirror of SS[14:0] in the RTC_ALRMASSRR, and so can also be read or written through RTC_ALRMASSR.
-0x44007874 B  REGISTER ALRBBINR: RTC alarm B binary mode register
-0x44007874 C   FIELD 00w32 SS (rw): Synchronous counter alarm value in Binary mode This value is compared with the contents of the synchronous counter to determine if Alarm Bis to be activated. Only bits 0 up MASKSS-1 are compared. SS[14:0] is the mirror of SS[14:0] in the RTC_ALRMBSSRR, and so can also be read or written through RTC_ALRMBSSR.
+0x44007874 B  REGISTER ALRBBINR: Alarm B binary mode register
+0x44007874 C   FIELD 00w32 SS (rw): Synchronous counter alarm value in Binary mode This value is compared with the contents of the synchronous counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. SS[14:0] is the mirror of SS[14:0] in the RTC_ALRMASSRR, and so can also be read or written through RTC_ALRMASSR.
 0x44007C00 A PERIPHERAL TAMP
 0x44007C00 B  REGISTER CR1: TAMP control register 1
 0x44007C00 C   FIELD 00w01 TAMP1E (rw): Tamper detection on TAMP_IN1 enable

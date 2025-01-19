@@ -327,7 +327,7 @@
 0x4000142C B  REGISTER TIM7_ARR: TIM7 auto-reload register
 0x4000142C C   FIELD 00w16 ARR (rw): Prescaler value ARR is the value to be loaded into the actual auto-reload register. Refer to Section123.3.1: Time-base unit on page1596 for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40002800 A PERIPHERAL RTC
-0x40002800 B  REGISTER RTC_TR: RTC time register
+0x40002800 B  REGISTER TR: RTC time register
 0x40002800 C   FIELD 00w04 SU (rw): Second units in BCD format
 0x40002800 C   FIELD 04w03 ST (rw): Second tens in BCD format
 0x40002800 C   FIELD 08w04 MNU (rw): Minute units in BCD format
@@ -335,7 +335,7 @@
 0x40002800 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002800 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002800 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002804 B  REGISTER RTC_DR: RTC date register
+0x40002804 B  REGISTER DR: RTC date register
 0x40002804 C   FIELD 00w04 DU (rw): Date units in BCD format
 0x40002804 C   FIELD 04w02 DT (rw): Date tens in BCD format
 0x40002804 C   FIELD 08w04 MU (rw): Month units in BCD format
@@ -343,9 +343,9 @@
 0x40002804 C   FIELD 13w03 WDU (rw): Week day units ...
 0x40002804 C   FIELD 16w04 YU (rw): Year units in BCD format
 0x40002804 C   FIELD 20w04 YT (rw): Year tens in BCD format
-0x40002808 B  REGISTER RTC_SSR: RTC subsecond register
+0x40002808 B  REGISTER SSR: RTC subsecond register
 0x40002808 C   FIELD 00w32 SS (ro): Synchronous binary counter SS[31:16]: Synchronous binary counter MSB values When Binary or Mixed mode is selected (BIN = 01 or 10 or 11): SS[31:16] are the 16 MSB of the SS[31:0] free-running down-counter. When BCD mode is selected (BIN=00): SS[31:16] are forced by hardware to 0x0000. SS[15:0]: Subsecond value/synchronous binary counter LSB values When Binary mode is selected (BIN = 01 or 10 or 11): SS[15:0] are the 16 LSB of the SS[31:0] free-running down-counter. When BCD mode is selected (BIN=00): SS[15:0] is the value in the synchronous prescaler counter. The fraction of a second is given by the formula below: Second fraction = (PREDIV_S - SS) / (PREDIV_S + 1) SS can be larger than PREDIV_S only after a shift operation. In that case, the correct time/date is one second less than as indicated by RTC_TR/RTC_DR.
-0x4000280C B  REGISTER RTC_ICSR: RTC initialization control and status register
+0x4000280C B  REGISTER ICSR: RTC initialization control and status register
 0x4000280C C   FIELD 02w01 WUTWF (ro): Wake-up timer write flag This bit is set by hardware when WUT value can be changed, after the WUTE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
 0x4000280C C   FIELD 03w01 SHPF (ro): Shift operation pending This flag is set by hardware as soon as a shift operation is initiated by a write to the RTC_SHIFTR register. It is cleared by hardware when the corresponding shift operation has been executed. Writing to the SHPF bit has no effect.
 0x4000280C C   FIELD 04w01 INITS (ro): Initialization status flag This bit is set by hardware when the calendar year field is different from 0 (Backup domain reset state).
@@ -355,13 +355,13 @@
 0x4000280C C   FIELD 08w02 BIN (rw): Binary mode
 0x4000280C C   FIELD 10w03 BCDU (rw): BCD update (BIN = 10 or 11) In mixed mode when both BCD calendar and binary extended counter are used (BIN = 10 or 11), the calendar second is incremented using the SSR Least Significant Bits.
 0x4000280C C   FIELD 16w01 RECALPF (ro): Recalibration pending Flag The RECALPF status flag is automatically set to 1 when software writes to the RTC_CALR register, indicating that the RTC_CALR register is blocked. When the new calibration settings are taken into account, this bit returns to 0. Refer to Re-calibration on-the-fly.
-0x40002810 B  REGISTER RTC_PRER: RTC prescaler register
+0x40002810 B  REGISTER PRER: RTC prescaler register
 0x40002810 C   FIELD 00w15 PREDIV_S (rw): Synchronous prescaler factor This is the synchronous division factor: ck_spre frequency = ck_apre frequency/(PREDIV_S+1)
 0x40002810 C   FIELD 16w07 PREDIV_A (rw): Asynchronous prescaler factor This is the asynchronous division factor: ck_apre frequency = RTCCLK frequency/(PREDIV_A+1)
-0x40002814 B  REGISTER RTC_WUTR: RTC wake-up timer register
+0x40002814 B  REGISTER WUTR: RTC wake-up timer register
 0x40002814 C   FIELD 00w16 WUT (rw): Wake-up auto-reload value bits When the wake-up timer is enabled (WUTE set to 1), the WUTF flag is set every (WUT[15:0]1+11) ck_wut cycles. The ck_wut period is selected through WUCKSEL[2:0] bits of the RTC_CR register. When WUCKSEL[2] = 1, the wake-up timer becomes 17-bits and WUCKSEL[1] effectively becomes WUT[16] the most-significant bit to be reloaded into the timer. The first assertion of WUTF occurs between WUT and (WUT + 2) ck_wut cycles after WUTE is set. Setting WUT[15:0] to 0x0000 with WUCKSEL[2:0] = 011 (RTCCLK/2) is forbidden.
 0x40002814 C   FIELD 16w16 WUTOCLR (rw): Wake-up auto-reload output clear value When WUTOCLR[15:0] is different from 0x0000, WUTF is set by hardware when the auto-reload down-counter reaches 0 and is cleared by hardware when the auto-reload downcounter reaches WUTOCLR[15:0]. When WUTOCLR[15:0] = 0x0000, WUTF is set by hardware when the WUT down-counter reaches 0 and is cleared by software.
-0x40002818 B  REGISTER RTC_CR: RTC control register
+0x40002818 B  REGISTER CR: RTC control register
 0x40002818 C   FIELD 00w03 WUCKSEL (rw): ck_wut wake-up clock selection 10x: ck_spre (usually 11Hz) clock is selected in BCD mode. In binary or mixed mode, this is the clock selected by BCDU. 11x: ck_spre (usually 1 Hz) clock is selected in BCD mode. In binary or mixed mode, this is the clock selected by BCDU. Furthermore, 2<sup>16</sup> is added to the WUT counter value.
 0x40002818 C   FIELD 03w01 TSEDGE (rw): Timestamp event active edge TSE must be reset when TSEDGE is changed to avoid unwanted TSF setting.
 0x40002818 C   FIELD 04w01 REFCKON (rw): RTC_REFIN reference clock detection enable (50 or 601Hz) Note: BIN must be 0x00 and PREDIV_S must be 0x00FF.
@@ -391,88 +391,75 @@
 0x40002818 C   FIELD 29w01 TAMPALRM_PU (rw): TAMPALRM pull-up enable
 0x40002818 C   FIELD 30w01 TAMPALRM_TYPE (rw): TAMPALRM output type
 0x40002818 C   FIELD 31w01 OUT2EN (rw): RTC_OUT2 output enable
-0x40002824 B  REGISTER RTC_WPR: RTC write protection register
+0x40002824 B  REGISTER WPR: RTC write protection register
 0x40002824 C   FIELD 00w08 KEY (wo): Write protection key This byte is written by software. Reading this byte always returns 0x00. Refer to RTC register write protection for a description of how to unlock RTC register write protection.
-0x40002828 B  REGISTER RTC_CALR: RTC calibration register
+0x40002828 B  REGISTER CALR: RTC calibration register
 0x40002828 C   FIELD 00w09 CALM (rw): Calibration minus The frequency of the calendar is reduced by masking CALM out of 2<sup>20</sup> RTCCLK pulses (321seconds if the input frequency is 327681Hz). This decreases the frequency of the calendar with a resolution of 0.95371ppm. To increase the frequency of the calendar, this feature should be used in conjunction with CALP. See Section128.3.14: RTC smooth digital calibration on page1733.
 0x40002828 C   FIELD 12w01 LPCAL (rw): RTC low-power mode
 0x40002828 C   FIELD 13w01 CALW16 (rw): Use a 16-second calibration cycle period When CALW16 is set to 1, the 16-second calibration cycle period is selected. This bit must not be set to 1 if CALW8 = 1. Note: CALM[0] is stuck at 0 when CALW16 = 1. Refer to Section128.3.14: RTC smooth digital calibration.
 0x40002828 C   FIELD 14w01 CALW8 (rw): Use an 8-second calibration cycle period When CALW8 is set to 1, the 8-second calibration cycle period is selected. Note: CALM[1:0] are stuck at 00 when CALW8 = 1. Refer to Section128.3.14: RTC smooth digital calibration.
 0x40002828 C   FIELD 15w01 CALP (rw): Increase frequency of RTC by 488.51ppm.
-0x4000282C B  REGISTER RTC_SHIFTR: RTC shift control register
+0x4000282C B  REGISTER SHIFTR: RTC shift control register
 0x4000282C C   FIELD 00w15 SUBFS (wo): Subtract a fraction of a second These bits are write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). The value which is written to SUBFS is added to the synchronous prescaler counter. Since this counter counts down, this operation effectively subtracts from (delays) the clock by: Delay (seconds) = SUBFS / (PREDIV_S + 1) A fraction of a second can effectively be added to the clock (advancing the clock) when the ADD1S function is used in conjunction with SUBFS, effectively advancing the clock by: Advance (seconds) = (1 - (SUBFS / (PREDIV_S + 1))). In mixed BCD-binary mode (BIN=10 or 11), the SUBFS[14:BCDU+8] must be written with 0. Note: Writing to SUBFS causes RSF to be cleared. Software can then wait until RSF = 1 to be sure that the shadow registers have been updated with the shifted time.
 0x4000282C C   FIELD 31w01 ADD1S (wo): Add one second This bit is write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). This function is intended to be used with SUBFS (see description below) in order to effectively add a fraction of a second to the clock in an atomic operation.
-0x40002830 B  REGISTER RTC_TSTR: RTC timestamp time register
-0x40002830 C   FIELD 00w04 SU (ro): Second units in BCD format.
-0x40002830 C   FIELD 04w03 ST (ro): Second tens in BCD format.
-0x40002830 C   FIELD 08w04 MNU (ro): Minute units in BCD format.
-0x40002830 C   FIELD 12w03 MNT (ro): Minute tens in BCD format.
-0x40002830 C   FIELD 16w04 HU (ro): Hour units in BCD format.
-0x40002830 C   FIELD 20w02 HT (ro): Hour tens in BCD format.
-0x40002830 C   FIELD 22w01 PM (ro): AM/PM notation
-0x40002834 B  REGISTER RTC_TSDR: RTC timestamp date register
-0x40002834 C   FIELD 00w04 DU (ro): Date units in BCD format
-0x40002834 C   FIELD 04w02 DT (ro): Date tens in BCD format
-0x40002834 C   FIELD 08w04 MU (ro): Month units in BCD format
-0x40002834 C   FIELD 12w01 MT (ro): Month tens in BCD format
-0x40002834 C   FIELD 13w03 WDU (ro): Week day units
-0x40002838 B  REGISTER RTC_TSSSR: RTC timestamp subsecond register
-0x40002838 C   FIELD 00w32 SS (ro): Subsecond value/synchronous binary counter values SS[31:0] is the value of the synchronous prescaler counter when the timestamp event occurred.
-0x40002840 B  REGISTER RTC_ALRMAR: RTC alarm A register
-0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format.
-0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format.
-0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm A seconds mask
+0x40002830 B  REGISTER TSTR (=TR): RTC timestamp time register
+0x40002834 B  REGISTER TSDR (=DR): RTC timestamp date register
+0x40002838 B  REGISTER TSSSR (=SSR): RTC timestamp subsecond register
+0x40002840 B  REGISTER ALRMAR: Alarm A register
+0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format
+0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format
+0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x40002840 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002840 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm A minutes mask
+0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x40002840 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002840 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002840 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm A hours mask
+0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x40002840 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002840 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002840 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm A date mask
-0x40002844 B  REGISTER RTC_ALRMASSR: RTC alarm A subsecond register
+0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x40002844 B  REGISTER ALRMASSR: Alarm A sub-second register
 0x40002844 C   FIELD 00w15 SS (rw): Subseconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. This field is the mirror of SS[14:0] in the RTC_ALRABINR, and so can also be read or written through RTC_ALRABINR.
 0x40002844 C   FIELD 24w06 MASKSS (rw): Mask the most-significant bits starting at this bit ... From 32 to 63: All 32 SS bits are compared and must match to activate alarm. Note: In BCD mode (BIN=00) the overflow bits of the synchronous counter (bits 31:15) are never compared. These bits can be different from 0 only after a shift operation.
 0x40002844 C   FIELD 31w01 SSCLR (rw): Clear synchronous counter on alarm (Binary mode only) Note: SSCLR must be kept to 0 when BCD or mixed mode is used (BIN = 00, 10 or 11).
-0x40002848 B  REGISTER RTC_ALRMBR: RTC alarm B register
+0x40002848 B  REGISTER ALRMBR: Alarm B register
 0x40002848 C   FIELD 00w04 SU (rw): Second units in BCD format
 0x40002848 C   FIELD 04w03 ST (rw): Second tens in BCD format
-0x40002848 C   FIELD 07w01 MSK1 (rw): Alarm B seconds mask
+0x40002848 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x40002848 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002848 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002848 C   FIELD 15w01 MSK2 (rw): Alarm B minutes mask
+0x40002848 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x40002848 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002848 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002848 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002848 C   FIELD 23w01 MSK3 (rw): Alarm B hours mask
+0x40002848 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x40002848 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002848 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002848 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002848 C   FIELD 31w01 MSK4 (rw): Alarm B date mask
-0x4000284C B  REGISTER RTC_ALRMBSSR: RTC alarm B subsecond register
-0x4000284C C   FIELD 00w15 SS (rw): Subseconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm B is to be activated. Only bits 0 up to MASKSS-1 are compared. This field is the mirror of SS[14:0] in the RTC_ALRBBINR, and so can also be read or written through RTC_ALRBBINR.
-0x4000284C C   FIELD 24w06 MASKSS (rw): Mask the most-significant bits starting at this bit ... From 32 to 63: All 32 SS bits are compared and must match to activate alarm. Note: In BCD mode (BIN=00)The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
+0x40002848 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x4000284C B  REGISTER ALRMBSSR: Alarm B sub-second register
+0x4000284C C   FIELD 00w15 SS (rw): Subseconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. This field is the mirror of SS[14:0] in the RTC_ALRABINR, and so can also be read or written through RTC_ALRABINR.
+0x4000284C C   FIELD 24w06 MASKSS (rw): Mask the most-significant bits starting at this bit ... From 32 to 63: All 32 SS bits are compared and must match to activate alarm. Note: In BCD mode (BIN=00) the overflow bits of the synchronous counter (bits 31:15) are never compared. These bits can be different from 0 only after a shift operation.
 0x4000284C C   FIELD 31w01 SSCLR (rw): Clear synchronous counter on alarm (Binary mode only) Note: SSCLR must be kept to 0 when BCD or mixed mode is used (BIN = 00, 10 or 11).
-0x40002850 B  REGISTER RTC_SR: RTC status register
-0x40002850 C   FIELD 00w01 ALRAF (ro): Alarm A flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm A register (RTC_ALRMAR).
-0x40002850 C   FIELD 01w01 ALRBF (ro): Alarm B flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm B register (RTC_ALRMBR).
+0x40002850 B  REGISTER SR: RTC status register
+0x40002850 C   FIELD 00w01 ALRAF (ro): Alarm A flag
+0x40002850 C   FIELD 01w01 ALRBF (ro): Alarm B flag
 0x40002850 C   FIELD 02w01 WUTF (ro): Wake-up timer flag This flag is set by hardware when the wake-up auto-reload counter reaches 0. If WUTOCLR[15:0] is different from 0x0000, WUTF is cleared by hardware when the wake-up auto-reload counter reaches WUTOCLR value. If WUTOCLR[15:0] is 0x0000, WUTF must be cleared by software. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x40002850 C   FIELD 03w01 TSF (ro): Timestamp flag This flag is set by hardware when a timestamp event occurs. If ITSF flag is set, TSF must be cleared together with ITSF. Note: TSF is not set if TAMPTS1=11 and the tamper flag is read during the 3 ck_apre cycles following tamper event. Refer to Timestamp on tamper event for more details.
 0x40002850 C   FIELD 04w01 TSOVF (ro): Timestamp overflow flag This flag is set by hardware when a timestamp event occurs while TSF is already set. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
 0x40002850 C   FIELD 05w01 ITSF (ro): Internal timestamp flag This flag is set by hardware when a timestamp on the internal event occurs.
 0x40002850 C   FIELD 06w01 SSRUF (ro): SSR underflow flag This flag is set by hardware when the SSR rolls under 0. SSRUF is not set when SSCLR=1.
-0x40002854 B  REGISTER RTC_MISR: RTC masked interrupt status register
-0x40002854 C   FIELD 00w01 ALRAMF (ro): Alarm A masked flag This flag is set by hardware when the alarm A interrupt occurs.
-0x40002854 C   FIELD 01w01 ALRBMF (ro): Alarm B masked flag This flag is set by hardware when the alarm B interrupt occurs.
+0x40002854 B  REGISTER MISR: RTC masked interrupt status register
+0x40002854 C   FIELD 00w01 ALRAMF (ro): Alarm A masked flag
+0x40002854 C   FIELD 01w01 ALRBMF (ro): Alarm B masked flag
 0x40002854 C   FIELD 02w01 WUTMF (ro): Wake-up timer masked flag This flag is set by hardware when the wake-up timer interrupt occurs. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x40002854 C   FIELD 03w01 TSMF (ro): Timestamp masked flag This flag is set by hardware when a timestamp interrupt occurs. If ITSF flag is set, TSF must be cleared together with ITSF.
 0x40002854 C   FIELD 04w01 TSOVMF (ro): Timestamp overflow masked flag This flag is set by hardware when a timestamp interrupt occurs while TSMF is already set. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
 0x40002854 C   FIELD 05w01 ITSMF (ro): Internal timestamp masked flag This flag is set by hardware when a timestamp on the internal event occurs and timestampinterrupt is raised.
 0x40002854 C   FIELD 06w01 SSRUMF (ro): SSR underflow masked flag This flag is set by hardware when the SSR underflow interrupt occurs.
-0x4000285C B  REGISTER RTC_SCR: RTC status clear register
+0x4000285C B  REGISTER SCR: RTC status clear register
 0x4000285C C   FIELD 00w01 CALRAF (wo): Clear alarm A flag Writing 1 in this bit clears the ALRAF bit in the RTC_SR register.
 0x4000285C C   FIELD 01w01 CALRBF (wo): Clear alarm B flag Writing 1 in this bit clears the ALRBF bit in the RTC_SR register.
 0x4000285C C   FIELD 02w01 CWUTF (wo): Clear wake-up timer flag Writing 1 in this bit clears the WUTF bit in the RTC_SR register.
@@ -480,10 +467,10 @@
 0x4000285C C   FIELD 04w01 CTSOVF (wo): Clear timestamp overflow flag Writing 1 in this bit clears the TSOVF bit in the RTC_SR register. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
 0x4000285C C   FIELD 05w01 CITSF (wo): Clear internal timestamp flag Writing 1 in this bit clears the ITSF bit in the RTC_SR register.
 0x4000285C C   FIELD 06w01 CSSRUF (wo): Clear SSR underflow flag Writing 1 in this bit clears the SSRUF in the RTC_SR register.
-0x40002870 B  REGISTER RTC_ALRABINR: RTC alarm A binary mode register
+0x40002870 B  REGISTER ALRABINR: Alarm A binary mode register
 0x40002870 C   FIELD 00w32 SS (rw): Synchronous counter alarm value in Binary mode This value is compared with the contents of the synchronous counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. SS[14:0] is the mirror of SS[14:0] in the RTC_ALRMASSRR, and so can also be read or written through RTC_ALRMASSR.
-0x40002874 B  REGISTER RTC_ALRBBINR: RTC alarm B binary mode register
-0x40002874 C   FIELD 00w32 SS (rw): Synchronous counter alarm value in Binary mode This value is compared with the contents of the synchronous counter to determine if Alarm Bis to be activated. Only bits 0 up MASKSS-1 are compared. SS[14:0] is the mirror of SS[14:0] in the RTC_ALRMBSSRR, and so can also be read or written through RTC_ALRMBSSR.
+0x40002874 B  REGISTER ALRBBINR: Alarm B binary mode register
+0x40002874 C   FIELD 00w32 SS (rw): Synchronous counter alarm value in Binary mode This value is compared with the contents of the synchronous counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared. SS[14:0] is the mirror of SS[14:0] in the RTC_ALRMASSRR, and so can also be read or written through RTC_ALRMASSR.
 0x40002C00 A PERIPHERAL WWDG
 0x40002C00 B  REGISTER WWDG_CR: WWDG control register
 0x40002C00 C   FIELD 00w07 T (rw): 7-bit counter (MSB to LSB) These bits contain the value of the watchdog counter, decremented every (4096 x 2<sup>WDGTB[2:0]</sup>) PCLK cycles. A reset is produced when it is decremented from 0x40 to 0x3F (T6 becomes cleared).

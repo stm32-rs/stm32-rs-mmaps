@@ -388,8 +388,8 @@
 0x40002808 B  REGISTER SSR: RTC sub second register
 0x40002808 C   FIELD 00w16 SS (ro): Sub second value SS[15:0] is the value in the synchronous prescaler counter. The fraction of a second is given by the formula below: Second fraction = (PREDIV_S - SS) / (PREDIV_S + 1) Note: SS can be larger than PREDIV_S only after a shift operation. In that case, the correct time/date is one second less than as indicated by RTC_TR/RTC_DR.
 0x4000280C B  REGISTER ICSR: RTC initialization control and status register
-0x4000280C C   FIELD 00w01 ALRAWF (ro): Alarm A write flag This bit is set by hardware when alarm A values can be changed, after the ALRAE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
-0x4000280C C   FIELD 01w01 ALRBWF (ro): Alarm B write flag This bit is set by hardware when alarm B values can be changed, after the ALRBE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
+0x4000280C C   FIELD 00w01 ALRAWF (ro): Alarm A write flag
+0x4000280C C   FIELD 01w01 ALRBWF (ro): Alarm B write flag
 0x4000280C C   FIELD 02w01 WUTWF (ro): Wakeup timer write flag This bit is set by hardware when WUT value can be changed, after the WUTE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
 0x4000280C C   FIELD 03w01 SHPF (ro): Shift operation pending This flag is set by hardware as soon as a shift operation is initiated by a write to the RTC_SHIFTR register. It is cleared by hardware when the corresponding shift operation has been executed. Writing to the SHPF bit has no effect.
 0x4000280C C   FIELD 04w01 INITS (ro): Initialization status flag This bit is set by hardware when the calendar year field is different from 0 (RTC domain reset state).
@@ -479,15 +479,15 @@
 0x4000284C C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x4000284C C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit 2: SS[14:2] are don't care in alarm A comparison. Only SS[1:0] are compared. 3: SS[14:3] are don't care in alarm A comparison. Only SS[2:0] are compared. ... 12: SS[14:12] are don't care in alarm A comparison. SS[11:0] are compared. 13: SS[14:13] are don't care in alarm A comparison. SS[12:0] are compared. 14: SS[14] is don't care in alarm A comparison. SS[13:0] are compared. 15: All 15 SS bits are compared and must match to activate alarm. The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation. Note: The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
 0x40002850 B  REGISTER SR: RTC status register
-0x40002850 C   FIELD 00w01 ALRAF (ro): Alarm A flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm A register (RTC_ALRMAR).
-0x40002850 C   FIELD 01w01 ALRBF (ro): Alarm B flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the alarm B register (RTC_ALRMBR).
+0x40002850 C   FIELD 00w01 ALRAF (ro): Alarm A flag
+0x40002850 C   FIELD 01w01 ALRBF (ro): Alarm B flag
 0x40002850 C   FIELD 02w01 WUTF (ro): Wakeup timer flag This flag is set by hardware when the wakeup auto-reload counter reaches 0. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x40002850 C   FIELD 03w01 TSF (ro): Timestamp flag This flag is set by hardware when a timestamp event occurs. If ITSF flag is set, TSF must be cleared together with ITSF.
 0x40002850 C   FIELD 04w01 TSOVF (ro): Timestamp overflow flag This flag is set by hardware when a timestamp event occurs while TSF is already set. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.
 0x40002850 C   FIELD 05w01 ITSF (ro): Internal timestamp flag This flag is set by hardware when a timestamp on the internal event occurs.
 0x40002854 B  REGISTER MISR: RTC masked interrupt status register
-0x40002854 C   FIELD 00w01 ALRAMF (ro): Alarm A masked flag This flag is set by hardware when the alarm A interrupt occurs.
-0x40002854 C   FIELD 01w01 ALRBMF (ro): Alarm B masked flag This flag is set by hardware when the alarm B interrupt occurs.
+0x40002854 C   FIELD 00w01 ALRAMF (ro): Alarm A masked flag
+0x40002854 C   FIELD 01w01 ALRBMF (ro): Alarm B masked flag
 0x40002854 C   FIELD 02w01 WUTMF (ro): Wakeup timer masked flag This flag is set by hardware when the wakeup timer interrupt occurs. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x40002854 C   FIELD 03w01 TSMF (ro): Timestamp masked flag This flag is set by hardware when a timestamp interrupt occurs. If ITSF flag is set, TSF must be cleared together with ITSF.
 0x40002854 C   FIELD 04w01 TSOVMF (ro): Timestamp overflow masked flag This flag is set by hardware when a timestamp interrupt occurs while TSMF is already set. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a timestamp event occurs immediately before the TSF bit is cleared.

@@ -16439,16 +16439,16 @@
 0x58004008 C   FIELD 23w01 COE (rw): Calibration output enable This bit enables the RTC_CALIB output
 0x58004008 C   FIELD 24w01 ITSE (rw): timestamp on internal event enable
 0x5800400C B  REGISTER ISR: This register is write protected (except for RTC_ISR[13:8] bits). The write access procedure is described in RTC register write protection on page9.
-0x5800400C C   FIELD 00w01 ALRAWF (ro): Alarm A write flag This bit is set by hardware when Alarm A values can be changed, after the ALRAE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
-0x5800400C C   FIELD 01w01 ALRBWF (ro): Alarm B write flag This bit is set by hardware when Alarm B values can be changed, after the ALRBE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
+0x5800400C C   FIELD 00w01 ALRAWF (ro): Alarm A write flag
+0x5800400C C   FIELD 01w01 ALRBWF (ro): Alarm B write flag
 0x5800400C C   FIELD 02w01 WUTWF (ro): Wakeup timer write flag This bit is set by hardware up to 2 RTCCLK cycles after the WUTE bit has been set to 0 in RTC_CR, and is cleared up to 2 RTCCLK cycles after the WUTE bit has been set to 1. The wakeup timer values can be changed when WUTE bit is cleared and WUTWF is set.
 0x5800400C C   FIELD 03w01 SHPF (ro): Shift operation pending This flag is set by hardware as soon as a shift operation is initiated by a write to the RTC_SHIFTR register. It is cleared by hardware when the corresponding shift operation has been executed. Writing to the SHPF bit has no effect.
 0x5800400C C   FIELD 04w01 INITS (ro): Initialization status flag This bit is set by hardware when the calendar year field is different from 0 (Backup domain reset state).
 0x5800400C C   FIELD 05w01 RSF (rw): Registers synchronization flag This bit is set by hardware each time the calendar registers are copied into the shadow registers (RTC_SSRx, RTC_TRx and RTC_DRx). This bit is cleared by hardware in initialization mode, while a shift operation is pending (SHPF=1), or when in bypass shadow register mode (BYPSHAD=1). This bit can also be cleared by software. It is cleared either by software or by hardware in initialization mode.
 0x5800400C C   FIELD 06w01 INITF (ro): Initialization flag When this bit is set to 1, the RTC is in initialization state, and the time, date and prescaler registers can be updated.
 0x5800400C C   FIELD 07w01 INIT (rw): Initialization mode
-0x5800400C C   FIELD 08w01 ALRAF (rw): Alarm A flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm A register (RTC_ALRMAR). This flag is cleared by software by writing 0.
-0x5800400C C   FIELD 09w01 ALRBF (rw): Alarm B flag This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm B register (RTC_ALRMBR). This flag is cleared by software by writing 0.
+0x5800400C C   FIELD 08w01 ALRAF (rw): Alarm A flag
+0x5800400C C   FIELD 09w01 ALRBF (rw): Alarm B flag
 0x5800400C C   FIELD 10w01 WUTF (rw): Wakeup timer flag This flag is set by hardware when the wakeup auto-reload counter reaches 0. This flag is cleared by software by writing 0. This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1 again.
 0x5800400C C   FIELD 11w01 TSF (rw): Time-stamp flag This flag is set by hardware when a time-stamp event occurs. This flag is cleared by software by writing 0.
 0x5800400C C   FIELD 12w01 TSOVF (rw): Time-stamp overflow flag This flag is set by hardware when a time-stamp event occurs while TSF is already set. This flag is cleared by software by writing 0. It is recommended to check and then clear TSOVF only after clearing the TSF bit. Otherwise, an overflow might not be noticed if a time-stamp event occurs immediately before the TSF bit is cleared.

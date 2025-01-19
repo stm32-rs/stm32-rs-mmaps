@@ -17800,71 +17800,58 @@
 0x4600782C B  REGISTER SHIFTR (wo): shift control register
 0x4600782C C   FIELD 00w15 SUBFS: Subtract a fraction of a second
 0x4600782C C   FIELD 31w01 ADD1S: Add one second
-0x46007830 B  REGISTER TSTR (ro): time stamp time register
-0x46007830 C   FIELD 00w04 SU: Second units in BCD format
-0x46007830 C   FIELD 04w03 ST: Second tens in BCD format
-0x46007830 C   FIELD 08w04 MNU: Minute units in BCD format
-0x46007830 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x46007830 C   FIELD 16w04 HU: Hour units in BCD format
-0x46007830 C   FIELD 20w02 HT: Hour tens in BCD format
-0x46007830 C   FIELD 22w01 PM: AM/PM notation
-0x46007834 B  REGISTER TSDR (ro): time stamp date register
-0x46007834 C   FIELD 00w04 DU: Date units in BCD format
-0x46007834 C   FIELD 04w02 DT: Date tens in BCD format
-0x46007834 C   FIELD 08w04 MU: Month units in BCD format
-0x46007834 C   FIELD 12w01 MT: Month tens in BCD format
-0x46007834 C   FIELD 13w03 WDU: Week day units
-0x46007838 B  REGISTER TSSSR (ro): timestamp sub second register
-0x46007838 C   FIELD 00w32 SS: Sub second value
-0x46007840 B  REGISTER ALRMAR (rw): alarm A register
+0x46007830 B  REGISTER TSTR (=TR): time stamp time register
+0x46007834 B  REGISTER TSDR (=DR): time stamp date register
+0x46007838 B  REGISTER TSSSR (=SSR): timestamp sub second register
+0x46007840 B  REGISTER ALRMAR (rw): Alarm A register
 0x46007840 C   FIELD 00w04 SU: Second units in BCD format
 0x46007840 C   FIELD 04w03 ST: Second tens in BCD format
-0x46007840 C   FIELD 07w01 MSK1: Alarm A seconds mask
+0x46007840 C   FIELD 07w01 MSK1: Alarm seconds mask
 0x46007840 C   FIELD 08w04 MNU: Minute units in BCD format
 0x46007840 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x46007840 C   FIELD 15w01 MSK2: Alarm A minutes mask
+0x46007840 C   FIELD 15w01 MSK2: Alarm minutes mask
 0x46007840 C   FIELD 16w04 HU: Hour units in BCD format
 0x46007840 C   FIELD 20w02 HT: Hour tens in BCD format
 0x46007840 C   FIELD 22w01 PM: AM/PM notation
-0x46007840 C   FIELD 23w01 MSK3: Alarm A hours mask
+0x46007840 C   FIELD 23w01 MSK3: Alarm hours mask
 0x46007840 C   FIELD 24w04 DU: Date units or day in BCD format
 0x46007840 C   FIELD 28w02 DT: Date tens in BCD format
 0x46007840 C   FIELD 30w01 WDSEL: Week day selection
-0x46007840 C   FIELD 31w01 MSK4: Alarm A date mask
-0x46007844 B  REGISTER ALRMASSR (rw): alarm A sub second register
+0x46007840 C   FIELD 31w01 MSK4: Alarm date mask
+0x46007844 B  REGISTER ALRMASSR (rw): Alarm A sub-second register
 0x46007844 C   FIELD 00w15 SS: Sub seconds value
 0x46007844 C   FIELD 24w06 MASKSS: Mask the most-significant bits starting at this bit
 0x46007844 C   FIELD 31w01 SSCLR: SSCLR
-0x46007848 B  REGISTER ALRMBR (rw): alarm B register
+0x46007848 B  REGISTER ALRMBR (rw): Alarm B register
 0x46007848 C   FIELD 00w04 SU: Second units in BCD format
 0x46007848 C   FIELD 04w03 ST: Second tens in BCD format
-0x46007848 C   FIELD 07w01 MSK1: Alarm B seconds mask
+0x46007848 C   FIELD 07w01 MSK1: Alarm seconds mask
 0x46007848 C   FIELD 08w04 MNU: Minute units in BCD format
 0x46007848 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x46007848 C   FIELD 15w01 MSK2: Alarm B minutes mask
+0x46007848 C   FIELD 15w01 MSK2: Alarm minutes mask
 0x46007848 C   FIELD 16w04 HU: Hour units in BCD format
 0x46007848 C   FIELD 20w02 HT: Hour tens in BCD format
 0x46007848 C   FIELD 22w01 PM: AM/PM notation
-0x46007848 C   FIELD 23w01 MSK3: Alarm B hours mask
+0x46007848 C   FIELD 23w01 MSK3: Alarm hours mask
 0x46007848 C   FIELD 24w04 DU: Date units or day in BCD format
 0x46007848 C   FIELD 28w02 DT: Date tens in BCD format
 0x46007848 C   FIELD 30w01 WDSEL: Week day selection
-0x46007848 C   FIELD 31w01 MSK4: Alarm B date mask
-0x4600784C B  REGISTER ALRMBSSR (rw): alarm B sub second register
+0x46007848 C   FIELD 31w01 MSK4: Alarm date mask
+0x4600784C B  REGISTER ALRMBSSR (rw): Alarm B sub-second register
 0x4600784C C   FIELD 00w15 SS: Sub seconds value
 0x4600784C C   FIELD 24w06 MASKSS: Mask the most-significant bits starting at this bit
 0x4600784C C   FIELD 31w01 SSCLR: SSCLR
 0x46007850 B  REGISTER SR (ro): RTC status register
-0x46007850 C   FIELD 00w01 ALRAF: ALRAF
-0x46007850 C   FIELD 01w01 ALRBF: ALRBF
+0x46007850 C   FIELD 00w01 ALRAF: Alarm A flag
+0x46007850 C   FIELD 01w01 ALRBF: Alarm B flag
 0x46007850 C   FIELD 02w01 WUTF: WUTF
 0x46007850 C   FIELD 03w01 TSF: TSF
 0x46007850 C   FIELD 04w01 TSOVF: TSOVF
 0x46007850 C   FIELD 05w01 ITSF: ITSF
 0x46007850 C   FIELD 06w01 SSRUF: SSRUF
 0x46007854 B  REGISTER MISR (ro): RTC non-secure masked interrupt status register
-0x46007854 C   FIELD 00w01 ALRAMF: ALRAMF
-0x46007854 C   FIELD 01w01 ALRBMF: ALRBMF
+0x46007854 C   FIELD 00w01 ALRAMF: Alarm A masked flag
+0x46007854 C   FIELD 01w01 ALRBMF: Alarm B masked flag
 0x46007854 C   FIELD 02w01 WUTMF: WUTMF
 0x46007854 C   FIELD 03w01 TSMF: TSMF
 0x46007854 C   FIELD 04w01 TSOVMF: TSOVMF
@@ -17886,9 +17873,9 @@
 0x4600785C C   FIELD 04w01 CTSOVF: CTSOVF
 0x4600785C C   FIELD 05w01 CITSF: CITSF
 0x4600785C C   FIELD 06w01 CSSRUF: CSSRUF
-0x46007870 B  REGISTER ALRABINR (rw): RTC alarm A binary mode register
+0x46007870 B  REGISTER ALRABINR (rw): Alarm A binary mode register
 0x46007870 C   FIELD 00w32 SS: Synchronous counter alarm value in Binary mode
-0x46007874 B  REGISTER ALRBBINR (rw): RTC alarm B binary mode register
+0x46007874 B  REGISTER ALRBBINR (rw): Alarm B binary mode register
 0x46007874 C   FIELD 00w32 SS: Synchronous counter alarm value in Binary mode
 0x46007C00 A PERIPHERAL TAMP
 0x46007C00 B  REGISTER CR1 (rw): control register 1
@@ -38168,71 +38155,58 @@
 0x5600782C B  REGISTER SHIFTR (wo): shift control register
 0x5600782C C   FIELD 00w15 SUBFS: Subtract a fraction of a second
 0x5600782C C   FIELD 31w01 ADD1S: Add one second
-0x56007830 B  REGISTER TSTR (ro): time stamp time register
-0x56007830 C   FIELD 00w04 SU: Second units in BCD format
-0x56007830 C   FIELD 04w03 ST: Second tens in BCD format
-0x56007830 C   FIELD 08w04 MNU: Minute units in BCD format
-0x56007830 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x56007830 C   FIELD 16w04 HU: Hour units in BCD format
-0x56007830 C   FIELD 20w02 HT: Hour tens in BCD format
-0x56007830 C   FIELD 22w01 PM: AM/PM notation
-0x56007834 B  REGISTER TSDR (ro): time stamp date register
-0x56007834 C   FIELD 00w04 DU: Date units in BCD format
-0x56007834 C   FIELD 04w02 DT: Date tens in BCD format
-0x56007834 C   FIELD 08w04 MU: Month units in BCD format
-0x56007834 C   FIELD 12w01 MT: Month tens in BCD format
-0x56007834 C   FIELD 13w03 WDU: Week day units
-0x56007838 B  REGISTER TSSSR (ro): timestamp sub second register
-0x56007838 C   FIELD 00w32 SS: Sub second value
-0x56007840 B  REGISTER ALRMAR (rw): alarm A register
+0x56007830 B  REGISTER TSTR (=TR): time stamp time register
+0x56007834 B  REGISTER TSDR (=DR): time stamp date register
+0x56007838 B  REGISTER TSSSR (=SSR): timestamp sub second register
+0x56007840 B  REGISTER ALRMAR (rw): Alarm A register
 0x56007840 C   FIELD 00w04 SU: Second units in BCD format
 0x56007840 C   FIELD 04w03 ST: Second tens in BCD format
-0x56007840 C   FIELD 07w01 MSK1: Alarm A seconds mask
+0x56007840 C   FIELD 07w01 MSK1: Alarm seconds mask
 0x56007840 C   FIELD 08w04 MNU: Minute units in BCD format
 0x56007840 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x56007840 C   FIELD 15w01 MSK2: Alarm A minutes mask
+0x56007840 C   FIELD 15w01 MSK2: Alarm minutes mask
 0x56007840 C   FIELD 16w04 HU: Hour units in BCD format
 0x56007840 C   FIELD 20w02 HT: Hour tens in BCD format
 0x56007840 C   FIELD 22w01 PM: AM/PM notation
-0x56007840 C   FIELD 23w01 MSK3: Alarm A hours mask
+0x56007840 C   FIELD 23w01 MSK3: Alarm hours mask
 0x56007840 C   FIELD 24w04 DU: Date units or day in BCD format
 0x56007840 C   FIELD 28w02 DT: Date tens in BCD format
 0x56007840 C   FIELD 30w01 WDSEL: Week day selection
-0x56007840 C   FIELD 31w01 MSK4: Alarm A date mask
-0x56007844 B  REGISTER ALRMASSR (rw): alarm A sub second register
+0x56007840 C   FIELD 31w01 MSK4: Alarm date mask
+0x56007844 B  REGISTER ALRMASSR (rw): Alarm A sub-second register
 0x56007844 C   FIELD 00w15 SS: Sub seconds value
 0x56007844 C   FIELD 24w06 MASKSS: Mask the most-significant bits starting at this bit
 0x56007844 C   FIELD 31w01 SSCLR: SSCLR
-0x56007848 B  REGISTER ALRMBR (rw): alarm B register
+0x56007848 B  REGISTER ALRMBR (rw): Alarm B register
 0x56007848 C   FIELD 00w04 SU: Second units in BCD format
 0x56007848 C   FIELD 04w03 ST: Second tens in BCD format
-0x56007848 C   FIELD 07w01 MSK1: Alarm B seconds mask
+0x56007848 C   FIELD 07w01 MSK1: Alarm seconds mask
 0x56007848 C   FIELD 08w04 MNU: Minute units in BCD format
 0x56007848 C   FIELD 12w03 MNT: Minute tens in BCD format
-0x56007848 C   FIELD 15w01 MSK2: Alarm B minutes mask
+0x56007848 C   FIELD 15w01 MSK2: Alarm minutes mask
 0x56007848 C   FIELD 16w04 HU: Hour units in BCD format
 0x56007848 C   FIELD 20w02 HT: Hour tens in BCD format
 0x56007848 C   FIELD 22w01 PM: AM/PM notation
-0x56007848 C   FIELD 23w01 MSK3: Alarm B hours mask
+0x56007848 C   FIELD 23w01 MSK3: Alarm hours mask
 0x56007848 C   FIELD 24w04 DU: Date units or day in BCD format
 0x56007848 C   FIELD 28w02 DT: Date tens in BCD format
 0x56007848 C   FIELD 30w01 WDSEL: Week day selection
-0x56007848 C   FIELD 31w01 MSK4: Alarm B date mask
-0x5600784C B  REGISTER ALRMBSSR (rw): alarm B sub second register
+0x56007848 C   FIELD 31w01 MSK4: Alarm date mask
+0x5600784C B  REGISTER ALRMBSSR (rw): Alarm B sub-second register
 0x5600784C C   FIELD 00w15 SS: Sub seconds value
 0x5600784C C   FIELD 24w06 MASKSS: Mask the most-significant bits starting at this bit
 0x5600784C C   FIELD 31w01 SSCLR: SSCLR
 0x56007850 B  REGISTER SR (ro): RTC status register
-0x56007850 C   FIELD 00w01 ALRAF: ALRAF
-0x56007850 C   FIELD 01w01 ALRBF: ALRBF
+0x56007850 C   FIELD 00w01 ALRAF: Alarm A flag
+0x56007850 C   FIELD 01w01 ALRBF: Alarm B flag
 0x56007850 C   FIELD 02w01 WUTF: WUTF
 0x56007850 C   FIELD 03w01 TSF: TSF
 0x56007850 C   FIELD 04w01 TSOVF: TSOVF
 0x56007850 C   FIELD 05w01 ITSF: ITSF
 0x56007850 C   FIELD 06w01 SSRUF: SSRUF
 0x56007854 B  REGISTER MISR (ro): RTC non-secure masked interrupt status register
-0x56007854 C   FIELD 00w01 ALRAMF: ALRAMF
-0x56007854 C   FIELD 01w01 ALRBMF: ALRBMF
+0x56007854 C   FIELD 00w01 ALRAMF: Alarm A masked flag
+0x56007854 C   FIELD 01w01 ALRBMF: Alarm B masked flag
 0x56007854 C   FIELD 02w01 WUTMF: WUTMF
 0x56007854 C   FIELD 03w01 TSMF: TSMF
 0x56007854 C   FIELD 04w01 TSOVMF: TSOVMF
@@ -38254,9 +38228,9 @@
 0x5600785C C   FIELD 04w01 CTSOVF: CTSOVF
 0x5600785C C   FIELD 05w01 CITSF: CITSF
 0x5600785C C   FIELD 06w01 CSSRUF: CSSRUF
-0x56007870 B  REGISTER ALRABINR (rw): RTC alarm A binary mode register
+0x56007870 B  REGISTER ALRABINR (rw): Alarm A binary mode register
 0x56007870 C   FIELD 00w32 SS: Synchronous counter alarm value in Binary mode
-0x56007874 B  REGISTER ALRBBINR (rw): RTC alarm B binary mode register
+0x56007874 B  REGISTER ALRBBINR (rw): Alarm B binary mode register
 0x56007874 C   FIELD 00w32 SS: Synchronous counter alarm value in Binary mode
 0x56007C00 A PERIPHERAL SEC_TAMP
 0x56007C00 B  REGISTER CR1 (rw): control register 1

@@ -377,38 +377,25 @@
 0x4000282C B  REGISTER SHIFTR (wo): RTC shift control register
 0x4000282C C   FIELD 00w15 SUBFS (wo): Subtract a fraction of a second These bits are write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). The value which is written to SUBFS is added to the synchronous prescaler counter. Since this counter counts down, this operation effectively subtracts from (delays) the clock by: Delay (seconds) = SUBFS / (PREDIV_S + 1) A fraction of a second can effectively be added to the clock (advancing the clock) when the ADD1S function is used in conjunction with SUBFS, effectively advancing the clock by: Advance (seconds) = (1 - (SUBFS / (PREDIV_S + 1))). Note: Writing to SUBFS causes RSF to be cleared. Software can then wait until RSF = 1 to be sure that the shadow registers have been updated with the shifted time.
 0x4000282C C   FIELD 31w01 ADD1S (wo): Add one second This bit is write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF = 1, in RTC_ICSR). This function is intended to be used with SUBFS (see description below) in order to effectively add a fraction of a second to the clock in an atomic operation.
-0x40002830 B  REGISTER TSTR (ro): RTC timestamp time register
-0x40002830 C   FIELD 00w04 SU (ro): Second units in BCD format.
-0x40002830 C   FIELD 04w03 ST (ro): Second tens in BCD format.
-0x40002830 C   FIELD 08w04 MNU (ro): Minute units in BCD format.
-0x40002830 C   FIELD 12w03 MNT (ro): Minute tens in BCD format.
-0x40002830 C   FIELD 16w04 HU (ro): Hour units in BCD format.
-0x40002830 C   FIELD 20w02 HT (ro): Hour tens in BCD format.
-0x40002830 C   FIELD 22w01 PM (ro): AM/PM notation
-0x40002834 B  REGISTER TSDR (ro): RTC timestamp date register
-0x40002834 C   FIELD 00w04 DU (ro): Date units in BCD format
-0x40002834 C   FIELD 04w02 DT (ro): Date tens in BCD format
-0x40002834 C   FIELD 08w04 MU (ro): Month units in BCD format
-0x40002834 C   FIELD 12w01 MT (ro): Month tens in BCD format
-0x40002834 C   FIELD 13w03 WDU (ro): Week day units
-0x40002838 B  REGISTER TSSSR (ro): RTC timestamp sub second register
-0x40002838 C   FIELD 00w16 SS (ro): Sub second value SS[15:0] is the value of the synchronous prescaler counter when the timestamp event occurred.
-0x40002840 B  REGISTER ALRMAR (rw): RTC alarm A register
-0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format.
-0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format.
-0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm A seconds mask
+0x40002830 B  REGISTER TSTR (=TR): RTC timestamp time register
+0x40002834 B  REGISTER TSDR (=DR): RTC timestamp date register
+0x40002838 B  REGISTER TSSSR (=SSR): RTC timestamp sub second register
+0x40002840 B  REGISTER ALRMAR (rw): Alarm register
+0x40002840 C   FIELD 00w04 SU (rw): Second units in BCD format
+0x40002840 C   FIELD 04w03 ST (rw): Second tens in BCD format
+0x40002840 C   FIELD 07w01 MSK1 (rw): Alarm seconds mask
 0x40002840 C   FIELD 08w04 MNU (rw): Minute units in BCD format
 0x40002840 C   FIELD 12w03 MNT (rw): Minute tens in BCD format
-0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm A minutes mask
+0x40002840 C   FIELD 15w01 MSK2 (rw): Alarm minutes mask
 0x40002840 C   FIELD 16w04 HU (rw): Hour units in BCD format
 0x40002840 C   FIELD 20w02 HT (rw): Hour tens in BCD format
 0x40002840 C   FIELD 22w01 PM (rw): AM/PM notation
-0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm A hours mask
+0x40002840 C   FIELD 23w01 MSK3 (rw): Alarm hours mask
 0x40002840 C   FIELD 24w04 DU (rw): Date units or day in BCD format
 0x40002840 C   FIELD 28w02 DT (rw): Date tens in BCD format
 0x40002840 C   FIELD 30w01 WDSEL (rw): Week day selection
-0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm A date mask
-0x40002844 B  REGISTER ALRMASSR (rw): RTC alarm A sub second register
+0x40002840 C   FIELD 31w01 MSK4 (rw): Alarm date mask
+0x40002844 B  REGISTER ALRMASSR (rw): Alarm sub-second register
 0x40002844 C   FIELD 00w15 SS (rw): Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
 0x40002844 C   FIELD 24w04 MASKSS (rw): Mask the most-significant bits starting at this bit ... The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation. Note: The overflow bits of the synchronous counter (bits 15) is never compared. This bit can be different from 0 only after a shift operation.
 0x40002850 B  REGISTER SR (ro): RTC status register
