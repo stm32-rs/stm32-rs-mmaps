@@ -1797,7 +1797,7 @@
 0x40012C04 C   FIELD 20w04 MMS2 (rw): Master mode selection 2 These bits allow the information to be sent to ADC for synchronization (tim_trgo2) to be selected. The combination is as follows: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
 0x40012C04 C   FIELD 25w01 MMS_H (rw): MMS[3]
 0x40012C08 B  REGISTER SMCR: TIM1 slave mode control register
-0x40012C08 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo or the tim_trgo2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40012C08 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
 0x40012C08 C   FIELD 03w01 OCCS (rw): OCREF clear selection This bit is used to select the OCREF clear source.
 0x40012C08 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection This bitfield is combined with TS[4:3] bits. This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 605: TIMx internal trigger connection for more details on tim_itrx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40012C08 C   FIELD 07w01 MSM (rw): Master/slave mode
@@ -8978,7 +8978,7 @@
 0x44020CE4 C   FIELD 26w02 I3C2SEL (rw): I3C2 kernel clock source selection
 0x44020CE8 B  REGISTER CCIPR5: RCC kernel clock configuration register
 0x44020CE8 C   FIELD 00w03 ADCDACSEL (rw): ADC and DAC kernel clock source selection others: reserved, the kernel clock is disabled
-0x44020CE8 C   FIELD 03w01 DAC1SEL (rw): DAC hold clock
+0x44020CE8 C   FIELD 03w01 DAC1SEL (rw): DAC1 sample and hold clock source selection
 0x44020CE8 C   FIELD 04w02 RNGSEL (rw): RNG kernel clock source selection
 0x44020CE8 C   FIELD 08w02 FDCANSEL (rw): FDCAN kernel clock source selection
 0x44020CE8 C   FIELD 30w02 CKPERSEL (rw): per_ck clock source selection
