@@ -12762,6 +12762,253 @@
 0x48020028 C   FIELD 08w08 Byte1: Data byte 1
 0x48020028 C   FIELD 16w08 Byte2: Data byte 2
 0x48020028 C   FIELD 24w08 Byte3: Data byte 3
+0x48021000 A PERIPHERAL CRYP
+0x48021000 B  REGISTER CR: control register
+0x48021000 C   FIELD 02w01 ALGODIR (rw): Algorithm direction
+0x48021000 C   FIELD 03w03 ALGOMODE0 (rw): Algorithm mode
+0x48021000 C   FIELD 06w02 DATATYPE (rw): Data type selection
+0x48021000 C   FIELD 08w02 KEYSIZE (rw): Key size selection (AES mode only)
+0x48021000 C   FIELD 14w01 FFLUSH (wo): FIFO flush
+0x48021000 C   FIELD 15w01 CRYPEN (rw): Cryptographic processor enable
+0x48021000 C   FIELD 16w02 GCM_CCMPH (rw): GCM_CCMPH
+0x48021000 C   FIELD 19w01 ALGOMODE3 (rw): ALGOMODE
+0x48021004 B  REGISTER SR (ro): status register
+0x48021004 C   FIELD 00w01 IFEM: Input FIFO empty
+0x48021004 C   FIELD 01w01 IFNF: Input FIFO not full
+0x48021004 C   FIELD 02w01 OFNE: Output FIFO not empty
+0x48021004 C   FIELD 03w01 OFFU: Output FIFO full
+0x48021004 C   FIELD 04w01 BUSY: Busy bit
+0x48021008 B  REGISTER DIN (rw): data input register
+0x48021008 C   FIELD 00w32 DATAIN: Data input
+0x4802100C B  REGISTER DOUT (ro): data output register
+0x4802100C C   FIELD 00w32 DATAOUT: Data output
+0x48021010 B  REGISTER DMACR (rw): DMA control register
+0x48021010 C   FIELD 00w01 DIEN: DMA input enable
+0x48021010 C   FIELD 01w01 DOEN: DMA output enable
+0x48021014 B  REGISTER IMSCR (rw): interrupt mask set/clear register
+0x48021014 C   FIELD 00w01 INIM: Input FIFO service interrupt mask
+0x48021014 C   FIELD 01w01 OUTIM: Output FIFO service interrupt mask
+0x48021018 B  REGISTER RISR (ro): raw interrupt status register
+0x48021018 C   FIELD 00w01 INRIS: Input FIFO service raw interrupt status
+0x48021018 C   FIELD 01w01 OUTRIS: Output FIFO service raw interrupt status
+0x4802101C B  REGISTER MISR (ro): masked interrupt status register
+0x4802101C C   FIELD 00w01 INMIS: Input FIFO service masked interrupt status
+0x4802101C C   FIELD 01w01 OUTMIS: Output FIFO service masked interrupt status
+0x48021020 B  REGISTER K0LR (wo): key registers
+0x48021020 C   FIELD 00w32 b2: b224
+0x48021024 B  REGISTER K0RR (wo): key registers
+0x48021024 C   FIELD 00w32 b: b192
+0x48021028 B  REGISTER K1LR (wo): key registers
+0x48021028 C   FIELD 00w32 b1: b160
+0x4802102C B  REGISTER K1RR (wo): key registers
+0x4802102C C   FIELD 00w32 b1: b128
+0x48021030 B  REGISTER K2LR (wo): key registers
+0x48021030 C   FIELD 00w32 b: b96
+0x48021034 B  REGISTER K2RR (wo): key registers
+0x48021034 C   FIELD 00w32 b: b64
+0x48021038 B  REGISTER K3LR (wo): key registers
+0x48021038 C   FIELD 00w32 b: b32
+0x4802103C B  REGISTER K3RR (wo): key registers
+0x4802103C C   FIELD 00w32 b: b0
+0x48021040 B  REGISTER IV0LR (rw): initialization vector registers
+0x48021040 C   FIELD 00w32 IV: IV31
+0x48021044 B  REGISTER IV0RR (rw): initialization vector registers
+0x48021044 C   FIELD 00w32 IV: IV63
+0x48021048 B  REGISTER IV1LR (rw): initialization vector registers
+0x48021048 C   FIELD 00w32 IV: IV95
+0x4802104C B  REGISTER IV1RR (rw): initialization vector registers
+0x4802104C C   FIELD 00w32 IV: IV127
+0x48021050 B  REGISTER CSGCMCCM0R (rw): context swap register
+0x48021050 C   FIELD 00w32 CSGCMCCM0R: CSGCMCCM0R
+0x48021054 B  REGISTER CSGCMCCM1R (rw): context swap register
+0x48021054 C   FIELD 00w32 CSGCMCCM1R: CSGCMCCM1R
+0x48021058 B  REGISTER CSGCMCCM2R (rw): context swap register
+0x48021058 C   FIELD 00w32 CSGCMCCM2R: CSGCMCCM2R
+0x4802105C B  REGISTER CSGCMCCM3R (rw): context swap register
+0x4802105C C   FIELD 00w32 CSGCMCCM3R: CSGCMCCM3R
+0x48021060 B  REGISTER CSGCMCCM4R (rw): context swap register
+0x48021060 C   FIELD 00w32 CSGCMCCM4R: CSGCMCCM4R
+0x48021064 B  REGISTER CSGCMCCM5R (rw): context swap register
+0x48021064 C   FIELD 00w32 CSGCMCCM5R: CSGCMCCM5R
+0x48021068 B  REGISTER CSGCMCCM6R (rw): context swap register
+0x48021068 C   FIELD 00w32 CSGCMCCM6R: CSGCMCCM6R
+0x4802106C B  REGISTER CSGCMCCM7R (rw): context swap register
+0x4802106C C   FIELD 00w32 CSGCMCCM7R: CSGCMCCM7R
+0x48021070 B  REGISTER CSGCM0R (rw): context swap register
+0x48021070 C   FIELD 00w32 CSGCM0R: CSGCM0R
+0x48021074 B  REGISTER CSGCM1R (rw): context swap register
+0x48021074 C   FIELD 00w32 CSGCM1R: CSGCM1R
+0x48021078 B  REGISTER CSGCM2R (rw): context swap register
+0x48021078 C   FIELD 00w32 CSGCM2R: CSGCM2R
+0x4802107C B  REGISTER CSGCM3R (rw): context swap register
+0x4802107C C   FIELD 00w32 CSGCM3R: CSGCM3R
+0x48021080 B  REGISTER CSGCM4R (rw): context swap register
+0x48021080 C   FIELD 00w32 CSGCM4R: CSGCM4R
+0x48021084 B  REGISTER CSGCM5R (rw): context swap register
+0x48021084 C   FIELD 00w32 CSGCM5R: CSGCM5R
+0x48021088 B  REGISTER CSGCM6R (rw): context swap register
+0x48021088 C   FIELD 00w32 CSGCM6R: CSGCM6R
+0x4802108C B  REGISTER CSGCM7R (rw): context swap register
+0x4802108C C   FIELD 00w32 CSGCM7R: CSGCM7R
+0x48021400 A PERIPHERAL HASH
+0x48021400 B  REGISTER CR: control register
+0x48021400 C   FIELD 02w01 INIT (wo): Initialize message digest calculation
+0x48021400 C   FIELD 03w01 DMAE (rw): DMA enable
+0x48021400 C   FIELD 04w02 DATATYPE (rw): Data type selection
+0x48021400 C   FIELD 06w01 MODE (rw): Mode selection
+0x48021400 C   FIELD 07w01 ALGO0 (rw): Algorithm selection
+0x48021400 C   FIELD 08w04 NBW (ro): Number of words already pushed
+0x48021400 C   FIELD 12w01 DINNE (ro): DIN not empty
+0x48021400 C   FIELD 13w01 MDMAT (rw): Multiple DMA Transfers
+0x48021400 C   FIELD 16w01 LKEY (rw): Long key selection
+0x48021400 C   FIELD 18w01 ALGO1 (rw): ALGO
+0x48021404 B  REGISTER DIN (rw): data input register
+0x48021404 C   FIELD 00w32 DATAIN: Data input
+0x48021408 B  REGISTER STR: start register
+0x48021408 C   FIELD 00w05 NBLW (rw): Number of valid bits in the last word of the message
+0x48021408 C   FIELD 08w01 DCAL (wo): Digest calculation
+0x4802140C B  REGISTER HR0 (ro): digest registers
+0x4802140C C   FIELD 00w32 H: H0
+0x48021410 B  REGISTER HR1 (ro): digest registers
+0x48021410 C   FIELD 00w32 H: H0
+0x48021414 B  REGISTER HR2 (ro): digest registers
+0x48021414 C   FIELD 00w32 H: H0
+0x48021418 B  REGISTER HR3 (ro): digest registers
+0x48021418 C   FIELD 00w32 H: H0
+0x4802141C B  REGISTER HR4 (ro): digest registers
+0x4802141C C   FIELD 00w32 H: H0
+0x48021420 B  REGISTER IMR (rw): interrupt enable register
+0x48021420 C   FIELD 00w01 DINIE: Data input interrupt enable
+0x48021420 C   FIELD 01w01 DCIE: Digest calculation completion interrupt enable
+0x48021424 B  REGISTER SR: status register
+0x48021424 C   FIELD 00w01 DINIS (rw): Data input interrupt status
+0x48021424 C   FIELD 01w01 DCIS (rw): Digest calculation completion interrupt status
+0x48021424 C   FIELD 02w01 DMAS (ro): DMA Status
+0x48021424 C   FIELD 03w01 BUSY (ro): Busy bit
+0x480214F8 B  REGISTER CSR0 (rw): context swap registers
+0x480214F8 C   FIELD 00w32 CSR: CSR0
+0x480214FC B  REGISTER CSR1 (rw): context swap registers
+0x480214FC C   FIELD 00w32 CSR: CSR0
+0x48021500 B  REGISTER CSR2 (rw): context swap registers
+0x48021500 C   FIELD 00w32 CSR: CSR0
+0x48021504 B  REGISTER CSR3 (rw): context swap registers
+0x48021504 C   FIELD 00w32 CSR: CSR0
+0x48021508 B  REGISTER CSR4 (rw): context swap registers
+0x48021508 C   FIELD 00w32 CSR: CSR0
+0x4802150C B  REGISTER CSR5 (rw): context swap registers
+0x4802150C C   FIELD 00w32 CSR: CSR0
+0x48021510 B  REGISTER CSR6 (rw): context swap registers
+0x48021510 C   FIELD 00w32 CSR: CSR0
+0x48021514 B  REGISTER CSR7 (rw): context swap registers
+0x48021514 C   FIELD 00w32 CSR: CSR0
+0x48021518 B  REGISTER CSR8 (rw): context swap registers
+0x48021518 C   FIELD 00w32 CSR: CSR0
+0x4802151C B  REGISTER CSR9 (rw): context swap registers
+0x4802151C C   FIELD 00w32 CSR: CSR0
+0x48021520 B  REGISTER CSR10 (rw): context swap registers
+0x48021520 C   FIELD 00w32 CSR: CSR0
+0x48021524 B  REGISTER CSR11 (rw): context swap registers
+0x48021524 C   FIELD 00w32 CSR: CSR0
+0x48021528 B  REGISTER CSR12 (rw): context swap registers
+0x48021528 C   FIELD 00w32 CSR: CSR0
+0x4802152C B  REGISTER CSR13 (rw): context swap registers
+0x4802152C C   FIELD 00w32 CSR: CSR0
+0x48021530 B  REGISTER CSR14 (rw): context swap registers
+0x48021530 C   FIELD 00w32 CSR: CSR0
+0x48021534 B  REGISTER CSR15 (rw): context swap registers
+0x48021534 C   FIELD 00w32 CSR: CSR0
+0x48021538 B  REGISTER CSR16 (rw): context swap registers
+0x48021538 C   FIELD 00w32 CSR: CSR0
+0x4802153C B  REGISTER CSR17 (rw): context swap registers
+0x4802153C C   FIELD 00w32 CSR: CSR0
+0x48021540 B  REGISTER CSR18 (rw): context swap registers
+0x48021540 C   FIELD 00w32 CSR: CSR0
+0x48021544 B  REGISTER CSR19 (rw): context swap registers
+0x48021544 C   FIELD 00w32 CSR: CSR0
+0x48021548 B  REGISTER CSR20 (rw): context swap registers
+0x48021548 C   FIELD 00w32 CSR: CSR0
+0x4802154C B  REGISTER CSR21 (rw): context swap registers
+0x4802154C C   FIELD 00w32 CSR: CSR0
+0x48021550 B  REGISTER CSR22 (rw): context swap registers
+0x48021550 C   FIELD 00w32 CSR: CSR0
+0x48021554 B  REGISTER CSR23 (rw): context swap registers
+0x48021554 C   FIELD 00w32 CSR: CSR0
+0x48021558 B  REGISTER CSR24 (rw): context swap registers
+0x48021558 C   FIELD 00w32 CSR: CSR0
+0x4802155C B  REGISTER CSR25 (rw): context swap registers
+0x4802155C C   FIELD 00w32 CSR: CSR0
+0x48021560 B  REGISTER CSR26 (rw): context swap registers
+0x48021560 C   FIELD 00w32 CSR: CSR0
+0x48021564 B  REGISTER CSR27 (rw): context swap registers
+0x48021564 C   FIELD 00w32 CSR: CSR0
+0x48021568 B  REGISTER CSR28 (rw): context swap registers
+0x48021568 C   FIELD 00w32 CSR: CSR0
+0x4802156C B  REGISTER CSR29 (rw): context swap registers
+0x4802156C C   FIELD 00w32 CSR: CSR0
+0x48021570 B  REGISTER CSR30 (rw): context swap registers
+0x48021570 C   FIELD 00w32 CSR: CSR0
+0x48021574 B  REGISTER CSR31 (rw): context swap registers
+0x48021574 C   FIELD 00w32 CSR: CSR0
+0x48021578 B  REGISTER CSR32 (rw): context swap registers
+0x48021578 C   FIELD 00w32 CSR: CSR0
+0x4802157C B  REGISTER CSR33 (rw): context swap registers
+0x4802157C C   FIELD 00w32 CSR: CSR0
+0x48021580 B  REGISTER CSR34 (rw): context swap registers
+0x48021580 C   FIELD 00w32 CSR: CSR0
+0x48021584 B  REGISTER CSR35 (rw): context swap registers
+0x48021584 C   FIELD 00w32 CSR: CSR0
+0x48021588 B  REGISTER CSR36 (rw): context swap registers
+0x48021588 C   FIELD 00w32 CSR: CSR0
+0x4802158C B  REGISTER CSR37 (rw): context swap registers
+0x4802158C C   FIELD 00w32 CSR: CSR0
+0x48021590 B  REGISTER CSR38 (rw): context swap registers
+0x48021590 C   FIELD 00w32 CSR: CSR0
+0x48021594 B  REGISTER CSR39 (rw): context swap registers
+0x48021594 C   FIELD 00w32 CSR: CSR0
+0x48021598 B  REGISTER CSR40 (rw): context swap registers
+0x48021598 C   FIELD 00w32 CSR: CSR0
+0x4802159C B  REGISTER CSR41 (rw): context swap registers
+0x4802159C C   FIELD 00w32 CSR: CSR0
+0x480215A0 B  REGISTER CSR42 (rw): context swap registers
+0x480215A0 C   FIELD 00w32 CSR: CSR0
+0x480215A4 B  REGISTER CSR43 (rw): context swap registers
+0x480215A4 C   FIELD 00w32 CSR: CSR0
+0x480215A8 B  REGISTER CSR44 (rw): context swap registers
+0x480215A8 C   FIELD 00w32 CSR: CSR0
+0x480215AC B  REGISTER CSR45 (rw): context swap registers
+0x480215AC C   FIELD 00w32 CSR: CSR0
+0x480215B0 B  REGISTER CSR46 (rw): context swap registers
+0x480215B0 C   FIELD 00w32 CSR: CSR0
+0x480215B4 B  REGISTER CSR47 (rw): context swap registers
+0x480215B4 C   FIELD 00w32 CSR: CSR0
+0x480215B8 B  REGISTER CSR48 (rw): context swap registers
+0x480215B8 C   FIELD 00w32 CSR: CSR0
+0x480215BC B  REGISTER CSR49 (rw): context swap registers
+0x480215BC C   FIELD 00w32 CSR: CSR0
+0x480215C0 B  REGISTER CSR50 (rw): context swap registers
+0x480215C0 C   FIELD 00w32 CSR: CSR0
+0x480215C4 B  REGISTER CSR51 (rw): context swap registers
+0x480215C4 C   FIELD 00w32 CSR: CSR0
+0x480215C8 B  REGISTER CSR52 (rw): context swap registers
+0x480215C8 C   FIELD 00w32 CSR: CSR0
+0x480215CC B  REGISTER CSR53 (rw): context swap registers
+0x480215CC C   FIELD 00w32 CSR: CSR0
+0x48021710 B  REGISTER HASH_HR0 (ro): HASH digest register 0
+0x48021710 C   FIELD 00w32 H: H0
+0x48021714 B  REGISTER HASH_HR1 (ro): HASH digest register 1
+0x48021714 C   FIELD 00w32 H: H0
+0x48021718 B  REGISTER HASH_HR2 (ro): HASH digest register 2
+0x48021718 C   FIELD 00w32 H: H0
+0x4802171C B  REGISTER HASH_HR3 (ro): HASH digest register 3
+0x4802171C C   FIELD 00w32 H: H0
+0x48021720 B  REGISTER HASH_HR4 (ro): HASH digest register 4
+0x48021720 C   FIELD 00w32 H: H0
+0x48021724 B  REGISTER HASH_HR5 (ro): HASH digest register 5
+0x48021724 C   FIELD 00w32 H: H0
+0x48021728 B  REGISTER HASH_HR6 (ro): HASH digest register 6
+0x48021728 C   FIELD 00w32 H: H0
+0x4802172C B  REGISTER HASH_HR7 (ro): HASH digest register 7
+0x4802172C C   FIELD 00w32 H: H0
 0x48021800 A PERIPHERAL RNG
 0x48021800 B  REGISTER CR (rw): RNG control register
 0x48021800 C   FIELD 02w01 RNGEN: Random number generator enable
@@ -21335,7 +21582,90 @@
 0x58027050 C   FIELD 00w32 FDATAH (ro): ECC failing data high
 0x58027054 B  REGISTER M2FECR (rw): RAMECC monitor 2 failing error code register
 0x58027054 C   FIELD 00w32 FEC (ro): ECC failing code
-INTERRUPT 000: WWDG2 (WWDG2): Window Watchdog interrupt
+0x5C001000 A PERIPHERAL DBGMCU
+0x5C001000 B  REGISTER IDC (ro): DBGMCU Identity Code Register
+0x5C001000 C   FIELD 00w12 DEV_ID: Device ID
+0x5C001000 C   FIELD 16w16 REV_ID: Revision
+0x5C001004 B  REGISTER CR (rw): DBGMCU Configuration Register
+0x5C001004 C   FIELD 00w01 DBGSLPD1: Allow D1 domain debug in Sleep mode
+0x5C001004 C   FIELD 01w01 DBGSTPD1: Allow D1 domain debug in Stop mode
+0x5C001004 C   FIELD 02w01 DBGSTBD1: Allow D1 domain debug in Standby mode
+0x5C001004 C   FIELD 03w01 DBGSLPD2: Allow D2 domain debug in Sleep mode
+0x5C001004 C   FIELD 04w01 DBGSTPD2: Allow D2 domain debug in Stop mode
+0x5C001004 C   FIELD 05w01 DBGSTBD2: Allow D2 domain debug in Standby mode
+0x5C001004 C   FIELD 07w01 DBGSTPD3: Allow debug in D3 Stop mode
+0x5C001004 C   FIELD 08w01 DBGSTBD3: Allow debug in D3 Standby mode
+0x5C001004 C   FIELD 20w01 TRACECLKEN: Trace port clock enable
+0x5C001004 C   FIELD 21w01 D1DBGCKEN: D1 debug clock enable
+0x5C001004 C   FIELD 22w01 D3DBGCKEN: D3 debug clock enable
+0x5C001004 C   FIELD 28w01 TRGOEN: External trigger output enable
+0x5C001034 B  REGISTER APB3FZ1 (rw): DBGMCU APB3 peripheral freeze register CPU1
+0x5C001034 C   FIELD 06w01 WWDG1: WWDG1 stop in debug
+0x5C001038 B  REGISTER APB3FZ2 (rw): DBGMCU APB3 peripheral freeze register CPU2
+0x5C001038 C   FIELD 06w01 WWDG1: WWDG1 stop in debug
+0x5C00103C B  REGISTER APB1LFZ1 (rw): DBGMCU APB1L peripheral freeze register
+0x5C00103C C   FIELD 00w01 DBG_TIM2: TIM2 stop in debug
+0x5C00103C C   FIELD 01w01 DBG_TIM3: TIM3 stop in debug
+0x5C00103C C   FIELD 02w01 DBG_TIM4: TIM4 stop in debug
+0x5C00103C C   FIELD 03w01 DBG_TIM5: TIM5 stop in debug
+0x5C00103C C   FIELD 04w01 DBG_TIM6: TIM6 stop in debug
+0x5C00103C C   FIELD 05w01 DBG_TIM7: TIM7 stop in debug
+0x5C00103C C   FIELD 06w01 DBG_TIM12: TIM12 stop in debug
+0x5C00103C C   FIELD 07w01 DBG_TIM13: TIM13 stop in debug
+0x5C00103C C   FIELD 08w01 DBG_TIM14: TIM14 stop in debug
+0x5C00103C C   FIELD 09w01 DBG_LPTIM1: LPTIM1 stop in debug
+0x5C00103C C   FIELD 11w01 DBG_WWDG2: WWDG2 stop in debug
+0x5C00103C C   FIELD 21w01 DBG_I2C1: I2C1 SMBUS timeout stop in debug
+0x5C00103C C   FIELD 22w01 DBG_I2C2: I2C2 SMBUS timeout stop in debug
+0x5C00103C C   FIELD 23w01 DBG_I2C3: I2C3 SMBUS timeout stop in debug
+0x5C001040 B  REGISTER APB1LFZ2 (rw): DBGMCU APB1L peripheral freeze register CPU2
+0x5C001040 C   FIELD 00w01 DBG_TIM2: TIM2 stop in debug
+0x5C001040 C   FIELD 01w01 DBG_TIM3: TIM3 stop in debug
+0x5C001040 C   FIELD 02w01 DBG_TIM4: TIM4 stop in debug
+0x5C001040 C   FIELD 03w01 DBG_TIM5: TIM5 stop in debug
+0x5C001040 C   FIELD 04w01 DBG_TIM6: TIM6 stop in debug
+0x5C001040 C   FIELD 05w01 DBG_TIM7: TIM4 stop in debug
+0x5C001040 C   FIELD 06w01 DBG_TIM12: TIM12 stop in debug
+0x5C001040 C   FIELD 07w01 DBG_TIM13: TIM13 stop in debug
+0x5C001040 C   FIELD 08w01 DBG_TIM14: TIM14 stop in debug
+0x5C001040 C   FIELD 09w01 DBG_LPTIM1: LPTIM1 stop in debug
+0x5C001040 C   FIELD 11w01 DBG_WWDG2: WWDG2 stop in debug
+0x5C001040 C   FIELD 21w01 DBG_I2C1: I2C1 SMBUS timeout stop in debug
+0x5C001040 C   FIELD 22w01 DBG_I2C2: I2C2 SMBUS timeout stop in debug
+0x5C001040 C   FIELD 23w01 DBG_I2C3: I2C3 SMBUS timeout stop in debug
+0x5C00104C B  REGISTER APB2FZ1 (rw): DBGMCU APB2 peripheral freeze register
+0x5C00104C C   FIELD 00w01 DBG_TIM1: TIM1 stop in debug
+0x5C00104C C   FIELD 01w01 DBG_TIM8: TIM8 stop in debug
+0x5C00104C C   FIELD 16w01 DBG_TIM15: TIM15 stop in debug
+0x5C00104C C   FIELD 17w01 DBG_TIM16: TIM16 stop in debug
+0x5C00104C C   FIELD 18w01 DBG_TIM17: TIM17 stop in debug
+0x5C00104C C   FIELD 29w01 DBG_HRTIM: HRTIM stop in debug
+0x5C001050 B  REGISTER APB2FZ2 (rw): DBGMCU APB2 peripheral freeze register CPU2
+0x5C001050 C   FIELD 00w01 DBG_TIM1: TIM1 stop in debug
+0x5C001050 C   FIELD 01w01 DBG_TIM8: TIM8 stop in debug
+0x5C001050 C   FIELD 16w01 DBG_TIM15: TIM15 stop in debug
+0x5C001050 C   FIELD 17w01 DBG_TIM16: TIM16 stop in debug
+0x5C001050 C   FIELD 18w01 DBG_TIM17: TIM17 stop in debug
+0x5C001050 C   FIELD 29w01 DBG_HRTIM: HRTIM stop in debug
+0x5C001054 B  REGISTER APB4FZ1 (rw): DBGMCU APB4 peripheral freeze register
+0x5C001054 C   FIELD 07w01 DBG_I2C4: I2C4 SMBUS timeout stop in debug
+0x5C001054 C   FIELD 09w01 DBG_LPTIM2: LPTIM2 stop in debug
+0x5C001054 C   FIELD 10w01 DBG_LPTIM3: LPTIM2 stop in debug
+0x5C001054 C   FIELD 11w01 DBG_LPTIM4: LPTIM4 stop in debug
+0x5C001054 C   FIELD 12w01 DBG_LPTIM5: LPTIM5 stop in debug
+0x5C001054 C   FIELD 16w01 DBG_RTC: RTC stop in debug
+0x5C001054 C   FIELD 18w01 DBG_WDGLSD1: Independent watchdog for D1 stop in debug
+0x5C001054 C   FIELD 19w01 DBG_WDGLSD2: Independent watchdog for D2 stop in debug
+0x5C001058 B  REGISTER APB4FZ2 (rw): DBGMCU APB4 peripheral freeze register CPU2
+0x5C001058 C   FIELD 07w01 DBG_I2C4: I2C4 SMBUS timeout stop in debug
+0x5C001058 C   FIELD 09w01 DBG_LPTIM2: LPTIM2 stop in debug
+0x5C001058 C   FIELD 10w01 DBG_LPTIM3: LPTIM2 stop in debug
+0x5C001058 C   FIELD 11w01 DBG_LPTIM4: LPTIM4 stop in debug
+0x5C001058 C   FIELD 12w01 DBG_LPTIM5: LPTIM5 stop in debug
+0x5C001058 C   FIELD 16w01 DBG_RTC: RTC stop in debug
+0x5C001058 C   FIELD 18w01 DBG_WDGLSD1: LS watchdog for D1 stop in debug
+0x5C001058 C   FIELD 19w01 DBG_WDGLSD2: LS watchdog for D2 stop in debug
+INTERRUPT 000: WWDG1 (WWDG1): Window Watchdog interrupt
 INTERRUPT 001: PVD_PVM (EXTI): PVD through EXTI line
 INTERRUPT 002: RTC_TAMP_STAMP_CSS_LSE (RTC): RTC tamper, timestamp
 INTERRUPT 003: RTC_WKUP (RTC): RTC Wakeup interrupt
@@ -21397,7 +21727,7 @@ INTERRUPT 060: DMA2_STR4 (DMA2): DMA2 Stream4 interrupt
 INTERRUPT 061: ETH (Ethernet_MAC): Ethernet global interrupt
 INTERRUPT 062: ETH_WKUP (Ethernet_MAC): Ethernet wakeup through EXTI
 INTERRUPT 063: FDCAN_CAL (FDCAN1): CAN2TX interrupts
-INTERRUPT 064: cm7_sev_it (EXTI): ArmÃ‚Â® CortexÃ‚Â®-M7 Send
+INTERRUPT 065: cm4_sev_it (EXTI): Arm Cortex-M4 Send even interrupt
 INTERRUPT 068: DMA2_STR5 (DMA2): DMA2 Stream5 interrupt
 INTERRUPT 069: DMA2_STR6 (DMA2): DMA2 Stream6 interrupt
 INTERRUPT 070: DMA2_STR7 (DMA2): DMA2 Stream7 interrupt
@@ -21409,8 +21739,9 @@ INTERRUPT 075: OTG_HS_EP1_IN (OTG2_HS_GLOBAL): OTG_HS in global interrupt
 INTERRUPT 076: OTG_HS_WKUP (OTG2_HS_GLOBAL): OTG_HS wakeup interrupt
 INTERRUPT 077: OTG_HS (OTG2_HS_GLOBAL): OTG_HS global interrupt
 INTERRUPT 078: DCMI (DCMI): DCMI global interrupt
-INTERRUPT 080: HASH_RNG (RNG): HASH and RNG global interrupt
-INTERRUPT 081: FPU (EXTI): CPU2
+INTERRUPT 079: CRYP (CRYP): CRYP global interrupt
+INTERRUPT 080: HASH_RNG (HASH): HASH and RNG
+INTERRUPT 081: FPU (EXTI): CPU1
 INTERRUPT 082: UART7 (UART7): UART7 global interrupt
 INTERRUPT 083: UART8 (UART8): UART8 global interrupt
 INTERRUPT 084: SPI4 (SPI4): SPI4 global interrupt
@@ -21471,9 +21802,9 @@ INTERRUPT 139: LPTIM3 (LPTIM3): LPTIM2 timer interrupt
 INTERRUPT 140: LPTIM4 (LPTIM4): LPTIM2 timer interrupt
 INTERRUPT 141: LPTIM5 (LPTIM5): LPTIM2 timer interrupt
 INTERRUPT 142: LPUART (LPUART1): LPUART global interrupt
-INTERRUPT 143: WWDG1_RST (WWDG1): Window Watchdog interrupt
+INTERRUPT 143: WWDG2_RST (WWDG2): Window Watchdog interrupt
 INTERRUPT 144: CRS (CRS): Clock Recovery System globa
 INTERRUPT 145: RAMECC (RAMECC1): ECC diagnostic global interrupt for all RAMECC controllers
 INTERRUPT 146: SAI4 (SAI4): SAI4 global interrupt
-INTERRUPT 148: HOLD_CORE (EXTI): CPU2 hold
+INTERRUPT 148: HOLD_CORE (EXTI): CPU1 hold
 INTERRUPT 149: WKUP (EXTI): WKUP1 to WKUP6 pins
