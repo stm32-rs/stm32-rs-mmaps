@@ -85,8 +85,8 @@
 0x40000018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000018 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000018 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x40000018 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x40000018 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40000018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x40000018 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x4000001C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000001C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x4000001C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -105,8 +105,8 @@
 0x4000001C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4000001C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x4000001C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x4000001C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x4000001C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x4000001C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x4000001C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x40000020 B  REGISTER CCER (rw): capture/compare enable register
 0x40000020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40000020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -121,26 +121,20 @@
 0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
-0x40000024 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x40000024 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x40000024 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x40000024 C   FIELD 00w32 CNT: Counter value
+0x40000024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000028 B  REGISTER PSC (rw): prescaler
 0x40000028 C   FIELD 00w16 PSC: Prescaler value
 0x4000002C B  REGISTER ARR (rw): auto-reload register
-0x4000002C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x4000002C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x4000002C C   FIELD 00w32 ARR: Auto-reload value
 0x40000034 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40000034 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000034 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000034 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x40000038 B  REGISTER CCR2 (rw): capture/compare register 2
-0x40000038 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x40000038 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x40000038 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x4000003C B  REGISTER CCR3 (rw): capture/compare register 3
-0x4000003C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x4000003C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x4000003C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x40000040 B  REGISTER CCR4 (rw): capture/compare register 4
-0x40000040 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x40000040 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x40000040 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x40000058 B  REGISTER ECR (rw): DMA address for full transfer
 0x40000058 C   FIELD 00w01 IE: Index enable
 0x40000058 C   FIELD 01w02 IDIR: Index direction
@@ -250,8 +244,8 @@
 0x40000418 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000418 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000418 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x40000418 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x40000418 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40000418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x40000418 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x4000041C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000041C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x4000041C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -270,8 +264,8 @@
 0x4000041C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4000041C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x4000041C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x4000041C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x4000041C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x4000041C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x4000041C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x40000420 B  REGISTER CCER (rw): capture/compare enable register
 0x40000420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40000420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -286,26 +280,20 @@
 0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
-0x40000424 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x40000424 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x40000424 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x40000424 C   FIELD 00w32 CNT: Counter value
+0x40000424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
 0x4000042C B  REGISTER ARR (rw): auto-reload register
-0x4000042C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x4000042C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x4000042C C   FIELD 00w32 ARR: Auto-reload value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40000434 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000434 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register 2
-0x40000438 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x40000438 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x40000438 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register 3
-0x4000043C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x4000043C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x4000043C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register 4
-0x40000440 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x40000440 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x40000440 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x40000458 B  REGISTER ECR (rw): DMA address for full transfer
 0x40000458 C   FIELD 00w01 IE: Index enable
 0x40000458 C   FIELD 01w02 IDIR: Index direction
@@ -415,8 +403,8 @@
 0x40000818 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000818 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000818 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x40000818 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x40000818 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40000818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x40000818 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x4000081C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000081C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x4000081C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -435,8 +423,8 @@
 0x4000081C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4000081C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x4000081C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x4000081C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x4000081C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x4000081C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x4000081C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x40000820 B  REGISTER CCER (rw): capture/compare enable register
 0x40000820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40000820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -451,26 +439,20 @@
 0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
-0x40000824 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x40000824 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x40000824 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x40000824 C   FIELD 00w32 CNT: Counter value
+0x40000824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
 0x4000082C B  REGISTER ARR (rw): auto-reload register
-0x4000082C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x4000082C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x4000082C C   FIELD 00w32 ARR: Auto-reload value
 0x40000834 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40000834 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000834 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000834 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x40000838 B  REGISTER CCR2 (rw): capture/compare register 2
-0x40000838 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x40000838 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x40000838 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x4000083C B  REGISTER CCR3 (rw): capture/compare register 3
-0x4000083C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x4000083C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x4000083C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x40000840 B  REGISTER CCR4 (rw): capture/compare register 4
-0x40000840 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x40000840 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x40000840 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x40000858 B  REGISTER ECR (rw): DMA address for full transfer
 0x40000858 C   FIELD 00w01 IE: Index enable
 0x40000858 C   FIELD 01w02 IDIR: Index direction
@@ -580,8 +562,8 @@
 0x40000C18 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40000C18 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40000C18 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x40000C18 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x40000C18 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40000C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x40000C18 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x40000C1C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x40000C1C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x40000C1C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -600,8 +582,8 @@
 0x40000C1C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x40000C1C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x40000C1C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x40000C1C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x40000C1C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x40000C1C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x40000C1C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x40000C20 B  REGISTER CCER (rw): capture/compare enable register
 0x40000C20 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40000C20 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -616,26 +598,20 @@
 0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x40000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000C24 B  REGISTER CNT (rw): counter
-0x40000C24 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x40000C24 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x40000C24 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x40000C24 C   FIELD 00w32 CNT: Counter value
+0x40000C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000C28 B  REGISTER PSC (rw): prescaler
 0x40000C28 C   FIELD 00w16 PSC: Prescaler value
 0x40000C2C B  REGISTER ARR (rw): auto-reload register
-0x40000C2C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x40000C2C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x40000C2C C   FIELD 00w32 ARR: Auto-reload value
 0x40000C34 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40000C34 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x40000C34 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x40000C34 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x40000C38 B  REGISTER CCR2 (rw): capture/compare register 2
-0x40000C38 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x40000C38 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x40000C38 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x40000C3C B  REGISTER CCR3 (rw): capture/compare register 3
-0x40000C3C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x40000C3C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x40000C3C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x40000C40 B  REGISTER CCR4 (rw): capture/compare register 4
-0x40000C40 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x40000C40 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x40000C40 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x40000C58 B  REGISTER ECR (rw): DMA address for full transfer
 0x40000C58 C   FIELD 00w01 IE: Index enable
 0x40000C58 C   FIELD 01w02 IDIR: Index direction
@@ -2351,28 +2327,28 @@
 0x40012C18 C   FIELD 12w03 OC2M: Output Compare 2 mode
 0x40012C18 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40012C18 C   FIELD 15w01 OC2CE: Output Compare 2 clear enable
-0x40012C18 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x40012C18 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40012C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x40012C18 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x40012C1C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x40012C1C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
+0x40012C1C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x40012C1C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x40012C1C C   FIELD 00w02 CC3S_1_0: Capture/Compare 3 selection
 0x40012C1C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x40012C1C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
 0x40012C1C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
-0x40012C1C C   FIELD 04w03 OC3M_2_0: Output compare 3 mode
+0x40012C1C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x40012C1C C   FIELD 04w04 IC3F: Input capture 3 filter
 0x40012C1C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x40012C1C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x40012C1C C   FIELD 08w02 CC4S_1_0: Capture/Compare 4 selection
+0x40012C1C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
 0x40012C1C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x40012C1C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
 0x40012C1C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
-0x40012C1C C   FIELD 12w03 OC4M_3_0: Output compare 4 mode
+0x40012C1C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x40012C1C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x40012C1C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x40012C1C C   FIELD 16w01 OC3M_3: Output compare 3 mode
-0x40012C1C C   FIELD 24w01 OC4M_bit3: Output Compare 4 mode - bit 3
+0x40012C1C C   FIELD 24w01 OC4M_3: Output Compare 4 mode - bit 3
 0x40012C20 B  REGISTER CCER (rw): capture/compare enable register
 0x40012C20 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40012C20 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -2711,28 +2687,28 @@
 0x40013418 C   FIELD 12w03 OC2M: Output Compare 2 mode
 0x40013418 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x40013418 C   FIELD 15w01 OC2CE: Output Compare 2 clear enable
-0x40013418 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x40013418 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40013418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x40013418 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x4001341C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4001341C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
+0x4001341C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x4001341C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x4001341C C   FIELD 00w02 CC3S_1_0: Capture/Compare 3 selection
 0x4001341C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x4001341C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
 0x4001341C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
-0x4001341C C   FIELD 04w03 OC3M_2_0: Output compare 3 mode
+0x4001341C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x4001341C C   FIELD 04w04 IC3F: Input capture 3 filter
 0x4001341C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x4001341C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x4001341C C   FIELD 08w02 CC4S_1_0: Capture/Compare 4 selection
+0x4001341C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
 0x4001341C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x4001341C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
 0x4001341C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
-0x4001341C C   FIELD 12w03 OC4M_3_0: Output compare 4 mode
+0x4001341C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x4001341C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x4001341C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x4001341C C   FIELD 16w01 OC3M_3: Output compare 3 mode
-0x4001341C C   FIELD 24w01 OC4M_bit3: Output Compare 4 mode - bit 3
+0x4001341C C   FIELD 24w01 OC4M_3: Output Compare 4 mode - bit 3
 0x40013420 B  REGISTER CCER (rw): capture/compare enable register
 0x40013420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40013420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -3061,9 +3037,9 @@
 0x40014004 C   FIELD 03w01 CCDS: Capture/compare DMA selection
 0x40014004 C   FIELD 04w02 MMS: Master mode selection
 0x40014004 C   FIELD 07w01 TI1S: TI1 selection
-0x40014004 C   FIELD 08w01 OIS1: Output Idle state 1
-0x40014004 C   FIELD 09w01 OIS1N: Output Idle state 1
-0x40014004 C   FIELD 10w01 OIS2: Output idle state 2 (OC2 output)
+0x40014004 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x40014004 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
+0x40014004 C   FIELD 10w01 OIS2: Output Idle state (OC2 output)
 0x40014008 B  REGISTER SMCR (rw): slave mode control register
 0x40014008 C   FIELD 00w03 SMS: Slave mode selection
 0x40014008 C   FIELD 04w03 TS_2_0: Trigger selection
@@ -3086,7 +3062,7 @@
 0x40014010 B  REGISTER SR (rw): status register
 0x40014010 C   FIELD 00w01 UIF: Update interrupt flag
 0x40014010 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
-0x40014010 C   FIELD 02w01 CC2IF: Capture/Compare 2 interrupt flag
+0x40014010 C   FIELD 02w01 CC2IF: Capture/compare 2 interrupt flag
 0x40014010 C   FIELD 05w01 COMIF: COM interrupt flag
 0x40014010 C   FIELD 06w01 TIF: Trigger interrupt flag
 0x40014010 C   FIELD 07w01 BIF: Break interrupt flag
@@ -3095,7 +3071,7 @@
 0x40014014 B  REGISTER EGR: event generation register
 0x40014014 C   FIELD 00w01 UG (wo): Update generation
 0x40014014 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
-0x40014014 C   FIELD 02w01 CC2G (wo): Capture/Compare 2 generation
+0x40014014 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
 0x40014014 C   FIELD 05w01 COMG (rw): Capture/Compare control update generation
 0x40014014 C   FIELD 06w01 TG (wo): Trigger generation
 0x40014014 C   FIELD 07w01 BG (wo): Break generation
@@ -3103,29 +3079,29 @@
 0x40014018 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40014018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40014018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40014018 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40014018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40014018 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40014018 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x40014018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x40014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x40014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x40014018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x40014018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x40014018 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
-0x40014018 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x40014018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x40014018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x40014018 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x40014018 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode
-0x40014018 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x40014018 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
+0x40014018 C   FIELD 24w01 OC2M_3: Output compare 2 mode, bit 3
 0x40014020 B  REGISTER CCER (rw): capture/compare enable register
 0x40014020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014020 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
 0x40014020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
-0x40014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output polarity
-0x40014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 complementary output polarity
+0x40014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
+0x40014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
 0x40014024 B  REGISTER CNT: counter
 0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
@@ -3135,10 +3111,10 @@
 0x4001402C C   FIELD 00w20 ARR: Auto-reload value
 0x40014030 B  REGISTER RCR (rw): repetition counter register
 0x40014030 C   FIELD 00w08 REP: Repetition counter value
-0x40014034 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40014034 C   FIELD 00w20 CCR1: Capture/Compare 1 value
-0x40014038 B  REGISTER CCR2 (rw): capture/compare register 2
-0x40014038 C   FIELD 00w20 CCR2: Capture/Compare 2 value
+0x40014034 B  REGISTER CCR1 (rw): capture/compare register
+0x40014034 C   FIELD 00w20 CCR: Capture/Compare value
+0x40014038 B  REGISTER CCR2 (rw): capture/compare register
+0x40014038 C   FIELD 00w20 CCR: Capture/Compare value
 0x40014044 B  REGISTER BDTR (rw): break and dead-time register
 0x40014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -3189,12 +3165,13 @@
 0x40014400 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40014400 C   FIELD 08w02 CKD: Clock division
 0x40014400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
+0x40014400 C   FIELD 12w01 DITHEN: Dithering Enable
 0x40014404 B  REGISTER CR2 (rw): control register 2
 0x40014404 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x40014404 C   FIELD 02w01 CCUS: Capture/compare control update selection
 0x40014404 C   FIELD 03w01 CCDS: Capture/compare DMA selection
-0x40014404 C   FIELD 08w01 OIS1: Output Idle state 1
-0x40014404 C   FIELD 09w01 OIS1N: Output Idle state 1
+0x40014404 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x40014404 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
 0x4001440C B  REGISTER DIER (rw): DMA/interrupt enable register
 0x4001440C C   FIELD 00w01 UIE: Update interrupt enable
 0x4001440C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -3205,10 +3182,10 @@
 0x4001440C C   FIELD 13w01 COMDE: COM DMA request enable
 0x40014410 B  REGISTER SR (rw): status register
 0x40014410 C   FIELD 00w01 UIF: Update interrupt flag
-0x40014410 C   FIELD 01w01 CC1IF: Capture/Compare 1 interrupt flag
+0x40014410 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
 0x40014410 C   FIELD 05w01 COMIF: COM interrupt flag
 0x40014410 C   FIELD 07w01 BIF: Break interrupt flag
-0x40014410 C   FIELD 09w01 CC1OF: CC1OF
+0x40014410 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
 0x40014414 B  REGISTER EGR (wo): event generation register
 0x40014414 C   FIELD 00w01 UG: Update generation
 0x40014414 C   FIELD 01w01 CC1G: Capture/compare 1 generation
@@ -3218,13 +3195,13 @@
 0x40014418 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40014418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014418 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40014418 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40014418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014418 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40014418 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40014418 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40014418 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40014418 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40014418 C   FIELD 07w01 OC1CE: Output Compare 1 clear enable
-0x40014418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode
+0x40014418 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
+0x40014418 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
 0x40014420 B  REGISTER CCER (rw): capture/compare enable register
 0x40014420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -3239,8 +3216,8 @@
 0x4001442C C   FIELD 00w20 ARR: Auto-reload value
 0x40014430 B  REGISTER RCR (rw): repetition counter register
 0x40014430 C   FIELD 00w08 REP: Repetition counter value
-0x40014434 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40014434 C   FIELD 00w20 CCR1: Capture/Compare 1 value
+0x40014434 B  REGISTER CCR1 (rw): capture/compare register
+0x40014434 C   FIELD 00w20 CCR: Capture/Compare value
 0x40014444 B  REGISTER BDTR (rw): break and dead-time register
 0x40014444 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014444 C   FIELD 08w02 LOCK: Lock configuration
@@ -3291,12 +3268,13 @@
 0x40014800 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40014800 C   FIELD 08w02 CKD: Clock division
 0x40014800 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
+0x40014800 C   FIELD 12w01 DITHEN: Dithering Enable
 0x40014804 B  REGISTER CR2 (rw): control register 2
 0x40014804 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x40014804 C   FIELD 02w01 CCUS: Capture/compare control update selection
 0x40014804 C   FIELD 03w01 CCDS: Capture/compare DMA selection
-0x40014804 C   FIELD 08w01 OIS1: Output Idle state 1
-0x40014804 C   FIELD 09w01 OIS1N: Output Idle state 1
+0x40014804 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x40014804 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
 0x4001480C B  REGISTER DIER (rw): DMA/interrupt enable register
 0x4001480C C   FIELD 00w01 UIE: Update interrupt enable
 0x4001480C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -3307,10 +3285,10 @@
 0x4001480C C   FIELD 13w01 COMDE: COM DMA request enable
 0x40014810 B  REGISTER SR (rw): status register
 0x40014810 C   FIELD 00w01 UIF: Update interrupt flag
-0x40014810 C   FIELD 01w01 CC1IF: Capture/Compare 1 interrupt flag
+0x40014810 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
 0x40014810 C   FIELD 05w01 COMIF: COM interrupt flag
 0x40014810 C   FIELD 07w01 BIF: Break interrupt flag
-0x40014810 C   FIELD 09w01 CC1OF: CC1OF
+0x40014810 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
 0x40014814 B  REGISTER EGR (wo): event generation register
 0x40014814 C   FIELD 00w01 UG: Update generation
 0x40014814 C   FIELD 01w01 CC1G: Capture/compare 1 generation
@@ -3320,13 +3298,13 @@
 0x40014818 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x40014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x40014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014818 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x40014818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x40014818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014818 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x40014818 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x40014818 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x40014818 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x40014818 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40014818 C   FIELD 07w01 OC1CE: Output Compare 1 clear enable
-0x40014818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode
+0x40014818 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
+0x40014818 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
 0x40014820 B  REGISTER CCER (rw): capture/compare enable register
 0x40014820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -3341,8 +3319,8 @@
 0x4001482C C   FIELD 00w20 ARR: Auto-reload value
 0x40014830 B  REGISTER RCR (rw): repetition counter register
 0x40014830 C   FIELD 00w08 REP: Repetition counter value
-0x40014834 B  REGISTER CCR1 (rw): capture/compare register 1
-0x40014834 C   FIELD 00w20 CCR1: Capture/Compare 1 value
+0x40014834 B  REGISTER CCR1 (rw): capture/compare register
+0x40014834 C   FIELD 00w20 CCR: Capture/Compare value
 0x40014844 B  REGISTER BDTR (rw): break and dead-time register
 0x40014844 C   FIELD 00w08 DTG: Dead-time generator setup
 0x40014844 C   FIELD 08w02 LOCK: Lock configuration
@@ -20636,8 +20614,8 @@
 0x50000018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x50000018 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x50000018 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x50000018 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x50000018 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50000018 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x50000018 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x5000001C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x5000001C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x5000001C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -20656,8 +20634,8 @@
 0x5000001C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x5000001C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x5000001C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x5000001C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x5000001C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x5000001C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x5000001C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x50000020 B  REGISTER CCER (rw): capture/compare enable register
 0x50000020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50000020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -20672,26 +20650,20 @@
 0x50000020 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x50000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000024 B  REGISTER CNT (rw): counter
-0x50000024 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x50000024 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x50000024 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x50000024 C   FIELD 00w32 CNT: Counter value
+0x50000024 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x50000028 B  REGISTER PSC (rw): prescaler
 0x50000028 C   FIELD 00w16 PSC: Prescaler value
 0x5000002C B  REGISTER ARR (rw): auto-reload register
-0x5000002C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x5000002C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x5000002C C   FIELD 00w32 ARR: Auto-reload value
 0x50000034 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50000034 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x50000034 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x50000034 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x50000038 B  REGISTER CCR2 (rw): capture/compare register 2
-0x50000038 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x50000038 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x50000038 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x5000003C B  REGISTER CCR3 (rw): capture/compare register 3
-0x5000003C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x5000003C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x5000003C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x50000040 B  REGISTER CCR4 (rw): capture/compare register 4
-0x50000040 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x50000040 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x50000040 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x50000058 B  REGISTER ECR (rw): DMA address for full transfer
 0x50000058 C   FIELD 00w01 IE: Index enable
 0x50000058 C   FIELD 01w02 IDIR: Index direction
@@ -20801,8 +20773,8 @@
 0x50000418 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x50000418 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x50000418 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x50000418 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x50000418 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50000418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x50000418 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x5000041C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x5000041C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x5000041C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -20821,8 +20793,8 @@
 0x5000041C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x5000041C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x5000041C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x5000041C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x5000041C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x5000041C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x5000041C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x50000420 B  REGISTER CCER (rw): capture/compare enable register
 0x50000420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50000420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -20837,26 +20809,20 @@
 0x50000420 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x50000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000424 B  REGISTER CNT (rw): counter
-0x50000424 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x50000424 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x50000424 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x50000424 C   FIELD 00w32 CNT: Counter value
+0x50000424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x50000428 B  REGISTER PSC (rw): prescaler
 0x50000428 C   FIELD 00w16 PSC: Prescaler value
 0x5000042C B  REGISTER ARR (rw): auto-reload register
-0x5000042C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x5000042C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x5000042C C   FIELD 00w32 ARR: Auto-reload value
 0x50000434 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50000434 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x50000434 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x50000434 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x50000438 B  REGISTER CCR2 (rw): capture/compare register 2
-0x50000438 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x50000438 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x50000438 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x5000043C B  REGISTER CCR3 (rw): capture/compare register 3
-0x5000043C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x5000043C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x5000043C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x50000440 B  REGISTER CCR4 (rw): capture/compare register 4
-0x50000440 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x50000440 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x50000440 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x50000458 B  REGISTER ECR (rw): DMA address for full transfer
 0x50000458 C   FIELD 00w01 IE: Index enable
 0x50000458 C   FIELD 01w02 IDIR: Index direction
@@ -20966,8 +20932,8 @@
 0x50000818 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x50000818 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x50000818 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x50000818 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x50000818 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50000818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x50000818 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x5000081C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x5000081C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x5000081C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -20986,8 +20952,8 @@
 0x5000081C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x5000081C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x5000081C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x5000081C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x5000081C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x5000081C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x5000081C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x50000820 B  REGISTER CCER (rw): capture/compare enable register
 0x50000820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50000820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -21002,26 +20968,20 @@
 0x50000820 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x50000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000824 B  REGISTER CNT (rw): counter
-0x50000824 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x50000824 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x50000824 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x50000824 C   FIELD 00w32 CNT: Counter value
+0x50000824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x50000828 B  REGISTER PSC (rw): prescaler
 0x50000828 C   FIELD 00w16 PSC: Prescaler value
 0x5000082C B  REGISTER ARR (rw): auto-reload register
-0x5000082C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x5000082C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x5000082C C   FIELD 00w32 ARR: Auto-reload value
 0x50000834 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50000834 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x50000834 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x50000834 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x50000838 B  REGISTER CCR2 (rw): capture/compare register 2
-0x50000838 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x50000838 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x50000838 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x5000083C B  REGISTER CCR3 (rw): capture/compare register 3
-0x5000083C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x5000083C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x5000083C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x50000840 B  REGISTER CCR4 (rw): capture/compare register 4
-0x50000840 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x50000840 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x50000840 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x50000858 B  REGISTER ECR (rw): DMA address for full transfer
 0x50000858 C   FIELD 00w01 IE: Index enable
 0x50000858 C   FIELD 01w02 IDIR: Index direction
@@ -21131,8 +21091,8 @@
 0x50000C18 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x50000C18 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x50000C18 C   FIELD 15w01 OC2CE: Output compare 2 clear enable
-0x50000C18 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x50000C18 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50000C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x50000C18 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x50000C1C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x50000C1C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
 0x50000C1C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
@@ -21151,8 +21111,8 @@
 0x50000C1C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x50000C1C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x50000C1C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
-0x50000C1C C   FIELD 16w01 OC3M_bit3: Output Compare 1 mode - bit 3
-0x50000C1C C   FIELD 24w01 OC4M_bit3: Output Compare 2 mode - bit 3
+0x50000C1C C   FIELD 16w01 OC3M_3: Output Compare 1 mode - bit 3
+0x50000C1C C   FIELD 24w01 OC4M_3: Output Compare 2 mode - bit 3
 0x50000C20 B  REGISTER CCER (rw): capture/compare enable register
 0x50000C20 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50000C20 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -21167,26 +21127,20 @@
 0x50000C20 C   FIELD 13w01 CC4P: Capture/Compare 3 output Polarity
 0x50000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000C24 B  REGISTER CNT (rw): counter
-0x50000C24 C   FIELD 00w16 CNT_L: Least significant part of counter value
-0x50000C24 C   FIELD 16w15 CNT_H: Most significant part counter value (on TIM2 and TIM5)
-0x50000C24 C   FIELD 31w01 CNT_bit31: Most significant bit of counter value (on TIM2 and TIM5)
+0x50000C24 C   FIELD 00w32 CNT: Counter value
+0x50000C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x50000C28 B  REGISTER PSC (rw): prescaler
 0x50000C28 C   FIELD 00w16 PSC: Prescaler value
 0x50000C2C B  REGISTER ARR (rw): auto-reload register
-0x50000C2C C   FIELD 00w16 ARR_L: Low Auto-reload value
-0x50000C2C C   FIELD 16w16 ARR_H: High Auto-reload value (TIM2 only)
+0x50000C2C C   FIELD 00w32 ARR: Auto-reload value
 0x50000C34 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50000C34 C   FIELD 00w16 CCR1_L: Low Capture/Compare 1 value
-0x50000C34 C   FIELD 16w16 CCR1_H: High Capture/Compare 1 value (TIM2 only)
+0x50000C34 C   FIELD 00w32 CCR1: Capture/Compare 1 value
 0x50000C38 B  REGISTER CCR2 (rw): capture/compare register 2
-0x50000C38 C   FIELD 00w16 CCR2_L: Low Capture/Compare 2 value
-0x50000C38 C   FIELD 16w16 CCR2_H: High Capture/Compare 2 value (TIM2 only)
+0x50000C38 C   FIELD 00w32 CCR2: Capture/Compare 2 value
 0x50000C3C B  REGISTER CCR3 (rw): capture/compare register 3
-0x50000C3C C   FIELD 00w16 CCR3_L: Low Capture/Compare value
-0x50000C3C C   FIELD 16w16 CCR3_H: High Capture/Compare value (TIM2 only)
+0x50000C3C C   FIELD 00w32 CCR3: Capture/Compare 3 value
 0x50000C40 B  REGISTER CCR4 (rw): capture/compare register 4
-0x50000C40 C   FIELD 00w16 CCR4_L: Low Capture/Compare value
-0x50000C40 C   FIELD 16w16 CCR4_H: High Capture/Compare value (TIM2 only)
+0x50000C40 C   FIELD 00w32 CCR4: Capture/Compare 4 value
 0x50000C58 B  REGISTER ECR (rw): DMA address for full transfer
 0x50000C58 C   FIELD 00w01 IE: Index enable
 0x50000C58 C   FIELD 01w02 IDIR: Index direction
@@ -22902,28 +22856,28 @@
 0x50012C18 C   FIELD 12w03 OC2M: Output Compare 2 mode
 0x50012C18 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x50012C18 C   FIELD 15w01 OC2CE: Output Compare 2 clear enable
-0x50012C18 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x50012C18 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50012C18 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x50012C18 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x50012C1C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x50012C1C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
+0x50012C1C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x50012C1C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x50012C1C C   FIELD 00w02 CC3S_1_0: Capture/Compare 3 selection
 0x50012C1C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x50012C1C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
 0x50012C1C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
-0x50012C1C C   FIELD 04w03 OC3M_2_0: Output compare 3 mode
+0x50012C1C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x50012C1C C   FIELD 04w04 IC3F: Input capture 3 filter
 0x50012C1C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x50012C1C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x50012C1C C   FIELD 08w02 CC4S_1_0: Capture/Compare 4 selection
+0x50012C1C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
 0x50012C1C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x50012C1C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
 0x50012C1C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
-0x50012C1C C   FIELD 12w03 OC4M_3_0: Output compare 4 mode
+0x50012C1C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x50012C1C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x50012C1C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x50012C1C C   FIELD 16w01 OC3M_3: Output compare 3 mode
-0x50012C1C C   FIELD 24w01 OC4M_bit3: Output Compare 4 mode - bit 3
+0x50012C1C C   FIELD 24w01 OC4M_3: Output Compare 4 mode - bit 3
 0x50012C20 B  REGISTER CCER (rw): capture/compare enable register
 0x50012C20 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50012C20 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -23262,28 +23216,28 @@
 0x50013418 C   FIELD 12w03 OC2M: Output Compare 2 mode
 0x50013418 C   FIELD 12w04 IC2F: Input capture 2 filter
 0x50013418 C   FIELD 15w01 OC2CE: Output Compare 2 clear enable
-0x50013418 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode - bit 3
-0x50013418 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50013418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode - bit 3
+0x50013418 C   FIELD 24w01 OC2M_3: Output Compare 2 mode - bit 3
 0x5001341C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x5001341C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
+0x5001341C C   FIELD 00w02 CC3S: Capture/Compare 3 selection
 0x5001341C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x5001341C C   FIELD 00w02 CC3S_1_0: Capture/Compare 3 selection
 0x5001341C C   FIELD 02w01 OC3FE: Output compare 3 fast enable
 0x5001341C C   FIELD 02w02 IC3PSC: Input capture 3 prescaler
 0x5001341C C   FIELD 03w01 OC3PE: Output compare 3 preload enable
-0x5001341C C   FIELD 04w03 OC3M_2_0: Output compare 3 mode
+0x5001341C C   FIELD 04w03 OC3M: Output compare 3 mode
 0x5001341C C   FIELD 04w04 IC3F: Input capture 3 filter
 0x5001341C C   FIELD 07w01 OC3CE: Output compare 3 clear enable
 0x5001341C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x5001341C C   FIELD 08w02 CC4S_1_0: Capture/Compare 4 selection
+0x5001341C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
 0x5001341C C   FIELD 10w01 OC4FE: Output compare 4 fast enable
 0x5001341C C   FIELD 10w02 IC4PSC: Input capture 4 prescaler
 0x5001341C C   FIELD 11w01 OC4PE: Output compare 4 preload enable
-0x5001341C C   FIELD 12w03 OC4M_3_0: Output compare 4 mode
+0x5001341C C   FIELD 12w03 OC4M: Output compare 4 mode
 0x5001341C C   FIELD 12w04 IC4F: Input capture 4 filter
 0x5001341C C   FIELD 15w01 OC4CE: Output compare 4 clear enable
 0x5001341C C   FIELD 16w01 OC3M_3: Output compare 3 mode
-0x5001341C C   FIELD 24w01 OC4M_bit3: Output Compare 4 mode - bit 3
+0x5001341C C   FIELD 24w01 OC4M_3: Output Compare 4 mode - bit 3
 0x50013420 B  REGISTER CCER (rw): capture/compare enable register
 0x50013420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50013420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -23612,9 +23566,9 @@
 0x50014004 C   FIELD 03w01 CCDS: Capture/compare DMA selection
 0x50014004 C   FIELD 04w02 MMS: Master mode selection
 0x50014004 C   FIELD 07w01 TI1S: TI1 selection
-0x50014004 C   FIELD 08w01 OIS1: Output Idle state 1
-0x50014004 C   FIELD 09w01 OIS1N: Output Idle state 1
-0x50014004 C   FIELD 10w01 OIS2: Output idle state 2 (OC2 output)
+0x50014004 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x50014004 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
+0x50014004 C   FIELD 10w01 OIS2: Output Idle state (OC2 output)
 0x50014008 B  REGISTER SMCR (rw): slave mode control register
 0x50014008 C   FIELD 00w03 SMS: Slave mode selection
 0x50014008 C   FIELD 04w03 TS_2_0: Trigger selection
@@ -23637,7 +23591,7 @@
 0x50014010 B  REGISTER SR (rw): status register
 0x50014010 C   FIELD 00w01 UIF: Update interrupt flag
 0x50014010 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
-0x50014010 C   FIELD 02w01 CC2IF: Capture/Compare 2 interrupt flag
+0x50014010 C   FIELD 02w01 CC2IF: Capture/compare 2 interrupt flag
 0x50014010 C   FIELD 05w01 COMIF: COM interrupt flag
 0x50014010 C   FIELD 06w01 TIF: Trigger interrupt flag
 0x50014010 C   FIELD 07w01 BIF: Break interrupt flag
@@ -23646,7 +23600,7 @@
 0x50014014 B  REGISTER EGR: event generation register
 0x50014014 C   FIELD 00w01 UG (wo): Update generation
 0x50014014 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
-0x50014014 C   FIELD 02w01 CC2G (wo): Capture/Compare 2 generation
+0x50014014 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
 0x50014014 C   FIELD 05w01 COMG (rw): Capture/Compare control update generation
 0x50014014 C   FIELD 06w01 TG (wo): Trigger generation
 0x50014014 C   FIELD 07w01 BG (wo): Break generation
@@ -23654,29 +23608,29 @@
 0x50014018 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x50014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x50014018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x50014018 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x50014018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x50014018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x50014018 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x50014018 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x50014018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x50014018 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x50014018 C   FIELD 04w04 IC1F: Input capture 1 filter
 0x50014018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
 0x50014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x50014018 C   FIELD 08w02 CC2S: Capture/Compare 2 selection
 0x50014018 C   FIELD 10w01 OC2FE: Output compare 2 fast enable
 0x50014018 C   FIELD 10w02 IC2PSC: Input capture 2 prescaler
-0x50014018 C   FIELD 11w01 OC2PE: Output Compare 2 preload enable
-0x50014018 C   FIELD 12w03 OC2M: Output Compare 2 mode
+0x50014018 C   FIELD 11w01 OC2PE: Output compare 2 preload enable
+0x50014018 C   FIELD 12w03 OC2M: Output compare 2 mode
 0x50014018 C   FIELD 12w04 IC2F: Input capture 2 filter
-0x50014018 C   FIELD 16w01 OC1M_bit3: Output Compare 1 mode
-0x50014018 C   FIELD 24w01 OC2M_bit3: Output Compare 2 mode - bit 3
+0x50014018 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
+0x50014018 C   FIELD 24w01 OC2M_3: Output compare 2 mode, bit 3
 0x50014020 B  REGISTER CCER (rw): capture/compare enable register
 0x50014020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50014020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x50014020 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x50014020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
 0x50014020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
-0x50014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output polarity
-0x50014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 complementary output polarity
+0x50014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
+0x50014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
 0x50014024 B  REGISTER CNT: counter
 0x50014024 C   FIELD 00w16 CNT (rw): counter value
 0x50014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
@@ -23686,10 +23640,10 @@
 0x5001402C C   FIELD 00w20 ARR: Auto-reload value
 0x50014030 B  REGISTER RCR (rw): repetition counter register
 0x50014030 C   FIELD 00w08 REP: Repetition counter value
-0x50014034 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50014034 C   FIELD 00w20 CCR1: Capture/Compare 1 value
-0x50014038 B  REGISTER CCR2 (rw): capture/compare register 2
-0x50014038 C   FIELD 00w20 CCR2: Capture/Compare 2 value
+0x50014034 B  REGISTER CCR1 (rw): capture/compare register
+0x50014034 C   FIELD 00w20 CCR: Capture/Compare value
+0x50014038 B  REGISTER CCR2 (rw): capture/compare register
+0x50014038 C   FIELD 00w20 CCR: Capture/Compare value
 0x50014044 B  REGISTER BDTR (rw): break and dead-time register
 0x50014044 C   FIELD 00w08 DTG: Dead-time generator setup
 0x50014044 C   FIELD 08w02 LOCK: Lock configuration
@@ -23740,12 +23694,13 @@
 0x50014400 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x50014400 C   FIELD 08w02 CKD: Clock division
 0x50014400 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
+0x50014400 C   FIELD 12w01 DITHEN: Dithering Enable
 0x50014404 B  REGISTER CR2 (rw): control register 2
 0x50014404 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x50014404 C   FIELD 02w01 CCUS: Capture/compare control update selection
 0x50014404 C   FIELD 03w01 CCDS: Capture/compare DMA selection
-0x50014404 C   FIELD 08w01 OIS1: Output Idle state 1
-0x50014404 C   FIELD 09w01 OIS1N: Output Idle state 1
+0x50014404 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x50014404 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
 0x5001440C B  REGISTER DIER (rw): DMA/interrupt enable register
 0x5001440C C   FIELD 00w01 UIE: Update interrupt enable
 0x5001440C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -23756,10 +23711,10 @@
 0x5001440C C   FIELD 13w01 COMDE: COM DMA request enable
 0x50014410 B  REGISTER SR (rw): status register
 0x50014410 C   FIELD 00w01 UIF: Update interrupt flag
-0x50014410 C   FIELD 01w01 CC1IF: Capture/Compare 1 interrupt flag
+0x50014410 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
 0x50014410 C   FIELD 05w01 COMIF: COM interrupt flag
 0x50014410 C   FIELD 07w01 BIF: Break interrupt flag
-0x50014410 C   FIELD 09w01 CC1OF: CC1OF
+0x50014410 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
 0x50014414 B  REGISTER EGR (wo): event generation register
 0x50014414 C   FIELD 00w01 UG: Update generation
 0x50014414 C   FIELD 01w01 CC1G: Capture/compare 1 generation
@@ -23769,13 +23724,13 @@
 0x50014418 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x50014418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x50014418 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x50014418 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x50014418 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x50014418 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x50014418 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x50014418 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x50014418 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x50014418 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x50014418 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x50014418 C   FIELD 07w01 OC1CE: Output Compare 1 clear enable
-0x50014418 C   FIELD 16w01 OC1M_3: Output Compare 1 mode
+0x50014418 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
+0x50014418 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
 0x50014420 B  REGISTER CCER (rw): capture/compare enable register
 0x50014420 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -23790,8 +23745,8 @@
 0x5001442C C   FIELD 00w20 ARR: Auto-reload value
 0x50014430 B  REGISTER RCR (rw): repetition counter register
 0x50014430 C   FIELD 00w08 REP: Repetition counter value
-0x50014434 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50014434 C   FIELD 00w20 CCR1: Capture/Compare 1 value
+0x50014434 B  REGISTER CCR1 (rw): capture/compare register
+0x50014434 C   FIELD 00w20 CCR: Capture/Compare value
 0x50014444 B  REGISTER BDTR (rw): break and dead-time register
 0x50014444 C   FIELD 00w08 DTG: Dead-time generator setup
 0x50014444 C   FIELD 08w02 LOCK: Lock configuration
@@ -23842,12 +23797,13 @@
 0x50014800 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x50014800 C   FIELD 08w02 CKD: Clock division
 0x50014800 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
+0x50014800 C   FIELD 12w01 DITHEN: Dithering Enable
 0x50014804 B  REGISTER CR2 (rw): control register 2
 0x50014804 C   FIELD 00w01 CCPC: Capture/compare preloaded control
 0x50014804 C   FIELD 02w01 CCUS: Capture/compare control update selection
 0x50014804 C   FIELD 03w01 CCDS: Capture/compare DMA selection
-0x50014804 C   FIELD 08w01 OIS1: Output Idle state 1
-0x50014804 C   FIELD 09w01 OIS1N: Output Idle state 1
+0x50014804 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
+0x50014804 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
 0x5001480C B  REGISTER DIER (rw): DMA/interrupt enable register
 0x5001480C C   FIELD 00w01 UIE: Update interrupt enable
 0x5001480C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
@@ -23858,10 +23814,10 @@
 0x5001480C C   FIELD 13w01 COMDE: COM DMA request enable
 0x50014810 B  REGISTER SR (rw): status register
 0x50014810 C   FIELD 00w01 UIF: Update interrupt flag
-0x50014810 C   FIELD 01w01 CC1IF: Capture/Compare 1 interrupt flag
+0x50014810 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
 0x50014810 C   FIELD 05w01 COMIF: COM interrupt flag
 0x50014810 C   FIELD 07w01 BIF: Break interrupt flag
-0x50014810 C   FIELD 09w01 CC1OF: CC1OF
+0x50014810 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
 0x50014814 B  REGISTER EGR (wo): event generation register
 0x50014814 C   FIELD 00w01 UG: Update generation
 0x50014814 C   FIELD 01w01 CC1G: Capture/compare 1 generation
@@ -23871,13 +23827,13 @@
 0x50014818 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
 0x50014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
 0x50014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x50014818 C   FIELD 02w01 OC1FE: Output Compare 1 fast enable
+0x50014818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
 0x50014818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x50014818 C   FIELD 03w01 OC1PE: Output Compare 1 preload enable
-0x50014818 C   FIELD 04w03 OC1M: Output Compare 1 mode
+0x50014818 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
+0x50014818 C   FIELD 04w03 OC1M: Output compare 1 mode
 0x50014818 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x50014818 C   FIELD 07w01 OC1CE: Output Compare 1 clear enable
-0x50014818 C   FIELD 16w01 OC1M_3: Output Compare 1 mode
+0x50014818 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
+0x50014818 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
 0x50014820 B  REGISTER CCER (rw): capture/compare enable register
 0x50014820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x50014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -23892,8 +23848,8 @@
 0x5001482C C   FIELD 00w20 ARR: Auto-reload value
 0x50014830 B  REGISTER RCR (rw): repetition counter register
 0x50014830 C   FIELD 00w08 REP: Repetition counter value
-0x50014834 B  REGISTER CCR1 (rw): capture/compare register 1
-0x50014834 C   FIELD 00w20 CCR1: Capture/Compare 1 value
+0x50014834 B  REGISTER CCR1 (rw): capture/compare register
+0x50014834 C   FIELD 00w20 CCR: Capture/Compare value
 0x50014844 B  REGISTER BDTR (rw): break and dead-time register
 0x50014844 C   FIELD 00w08 DTG: Dead-time generator setup
 0x50014844 C   FIELD 08w02 LOCK: Lock configuration
