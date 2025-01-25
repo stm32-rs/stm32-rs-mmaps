@@ -47,79 +47,79 @@
 0x4000000C C   FIELD 23w01 TERRIE (rw): Transition error interrupt enable
 0x40000010 B  REGISTER SR: TIM2 status register
 0x40000010 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow and if UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in TIMx_EGR register, if URS=0 and UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by a trigger event (refer to the synchro control register description), if URS=0 and UDIS=0 in the TIMx_CR1 register.
-0x40000010 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag This flag is set by hardware. It is cleared by software (input capture or output compare mode) or by reading the TIMx_CCR1 register (input capture mode only). If channel CC1 is configured as output: this flag is set when the content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. When the content of TIMx_CCR1 is greater than the content of TIMx_ARR, the CC1IF bit goes high on the counter overflow (in up-counting and up/down-counting modes) or underflow (in downcounting mode). There are 3 possible options for flag setting in center-aligned mode, refer to the CMS bits in the TIMx_CR1 register for the full description. If channel CC1 is configured as input: this bit is set when counter value has been captured in TIMx_CCR1 register (an edge has been detected on IC1, as per the edge sensitivity defined with the CC1P and CC1NP bits setting, in TIMx_CCER).
-0x40000010 C   FIELD 02w01 CC2IF (rw): Capture/Compare 2 interrupt flag Refer to CC1IF description
-0x40000010 C   FIELD 03w01 CC3IF (rw): Capture/Compare 3 interrupt flag Refer to CC1IF description
-0x40000010 C   FIELD 04w01 CC4IF (rw): Capture/Compare 4 interrupt flag Refer to CC1IF description
+0x40000010 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
+0x40000010 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
+0x40000010 C   FIELD 03w01 CC3IF (rw): Capture/compare 3 interrupt flag
+0x40000010 C   FIELD 04w01 CC4IF (rw): Capture/compare 4 interrupt flag
 0x40000010 C   FIELD 06w01 TIF (rw): Trigger interrupt flag This flag is set by hardware on the TRG trigger event (active edge detected on tim_trgi input when the slave mode controller is enabled in all modes but gated mode. It is set when the counter starts or stops when gated mode is selected. It is cleared by software.
-0x40000010 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag This flag is set by hardware only when the corresponding channel is configured in input capture mode. It is cleared by software by writing it to '0'.
-0x40000010 C   FIELD 10w01 CC2OF (rw): Capture/compare 2 overcapture flag refer to CC1OF description
-0x40000010 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag refer to CC1OF description
-0x40000010 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag refer to CC1OF description
+0x40000010 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
+0x40000010 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
+0x40000010 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag
+0x40000010 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag
 0x40000010 C   FIELD 20w01 IDXF (rw): Index interrupt flag This flag is set by hardware when an index event is detected. It is cleared by software by writing it to '0'.
 0x40000010 C   FIELD 21w01 DIRF (rw): Direction change interrupt flag This flag is set by hardware when the direction changes in encoder mode (DIR bit value in TIMx_CR is changing). It is cleared by software by writing it to '0'.
 0x40000010 C   FIELD 22w01 IERRF (rw): Index error interrupt flag This flag is set by hardware when an index error is detected. It is cleared by software by writing it to '0'.
 0x40000010 C   FIELD 23w01 TERRF (rw): Transition error interrupt flag This flag is set by hardware when a transition error is detected in encoder mode. It is cleared by software by writing it to '0'.
 0x40000014 B  REGISTER EGR: TIM2 event generation register
 0x40000014 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
-0x40000014 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation This bit is set by software in order to generate an event, it is automatically cleared by hardware. If channel CC1 is configured as output: CC1IF flag is set, Corresponding interrupt or DMA request is sent if enabled. If channel CC1 is configured as input: The current value of the counter is captured in TIMx_CCR1 register. The CC1IF flag is set, the corresponding interrupt or DMA request is sent if enabled. The CC1OF flag is set if the CC1IF flag was already high.
-0x40000014 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation Refer to CC1G description
-0x40000014 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation Refer to CC1G description
-0x40000014 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation Refer to CC1G description
+0x40000014 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
+0x40000014 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
+0x40000014 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation
+0x40000014 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation
 0x40000014 C   FIELD 06w01 TG (wo): Trigger generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
 0x40000018 B  REGISTER CCMR1_Input: TIM2 capture/compare mode register 1 [alternate]
 0x40000018 B  REGISTER CCMR1_Output: TIM2 capture/compare mode register 1 [alternate]
+0x40000018 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
 0x40000018 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
-0x40000018 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
-0x40000018 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable This bit decreases the latency between a trigger event and a transition on the timer output. It must be used in one-pulse mode (OPM bit set in TIMx_CR1 register), to have the output pulse starting as soon as possible after the starting trigger.
-0x40000018 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler This bit-field defines the ratio of the prescaler acting on CC1 input (tim_ic1). The prescaler is reset as soon as CC1E=0 (TIMx_CCER register).
+0x40000018 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
+0x40000018 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
 0x40000018 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40000018 C   FIELD 04w03 OC1M (rw): Output compare 1 mode These bits define the behavior of the output reference signal tim_oc1ref from which tim_oc1 is derived. tim_oc1ref is active high whereas tim_oc1 active level depends on CC1P bit. Note: In PWM mode, the tim_ocref_clr level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode.
-0x40000018 C   FIELD 04w04 IC1F (rw): Input capture 1 filter This bit-field defines the frequency used to sample tim_ti1 input and the length of the digital filter applied to tim_ti1. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
+0x40000018 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
+0x40000018 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
 0x40000018 C   FIELD 07w01 OC1CE (rw): Output compare 1 clear enable
-0x40000018 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC2S bits are writable only when the channel is OFF (CC2E = 0 in TIMx_CCER).
+0x40000018 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
 0x40000018 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC2S bits are writable only when the channel is OFF (CC2E = 0 in TIMx_CCER).
 0x40000018 C   FIELD 10w01 OC2FE (rw): Output compare 2 fast enable
 0x40000018 C   FIELD 10w02 IC2PSC (rw): Input capture 2 prescaler
 0x40000018 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40000018 C   FIELD 12w03 OC2M (rw): Output compare 2 mode refer to OC1M description on bits 6:4
+0x40000018 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40000018 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
 0x40000018 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
-0x40000018 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode These bits define the behavior of the output reference signal tim_oc1ref from which tim_oc1 is derived. tim_oc1ref is active high whereas tim_oc1 active level depends on CC1P bit. Note: In PWM mode, the tim_ocref_clr level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode.
-0x40000018 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode refer to OC1M description on bits 6:4
+0x40000018 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
+0x40000018 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x4000001C B  REGISTER CCMR2_Input: TIM2 capture/compare mode register 2 [alternate]
 0x4000001C B  REGISTER CCMR2_Output: TIM2 capture/compare mode register 2 [alternate]
+0x4000001C C   FIELD 00w02 CC3S (=TIM2.CCMR1_Output.CC%sS) (rw): Capture/Compare 3 selection
 0x4000001C C   FIELD 00w02 CC3S (rw): Capture/Compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = 0 in TIMx_CCER).
-0x4000001C C   FIELD 00w02 CC3S (rw): Capture/Compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = 0 in TIMx_CCER).
-0x4000001C C   FIELD 02w01 OC3FE (rw): Output compare 3 fast enable
-0x4000001C C   FIELD 02w02 IC3PSC (rw): Input capture 3 prescaler
-0x4000001C C   FIELD 03w01 OC3PE (rw): Output compare 3 preload enable
-0x4000001C C   FIELD 04w03 OC3M (rw): Output compare 3 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
-0x4000001C C   FIELD 04w04 IC3F (rw): Input capture 3 filter
-0x4000001C C   FIELD 07w01 OC3CE (rw): Output compare 3 clear enable
+0x4000001C C   FIELD 02w01 OC3FE (=TIM2.CCMR1_Output.OC%sFE) (rw): Output compare 3 fast enable
+0x4000001C C   FIELD 02w02 IC3PSC (=TIM2.CCMR1_Input.IC%sPSC) (rw): Input capture 3 prescaler
+0x4000001C C   FIELD 03w01 OC3PE (=TIM2.CCMR1_Output.OC%sPE) (rw): Output compare 3 preload enable
+0x4000001C C   FIELD 04w03 OC3M (=TIM2.CCMR1_Output.OC%sM) (rw): Output compare 3 mode
+0x4000001C C   FIELD 04w04 IC3F (=TIM2.CCMR1_Input.IC%sF) (rw): Input capture 3 filter
+0x4000001C C   FIELD 07w01 OC3CE (=TIM2.CCMR1_Output.OC%sCE) (rw): Output compare 3 clear enable
+0x4000001C C   FIELD 08w02 CC4S (=TIM2.CCMR1_Output.CC%sS) (rw): Capture/Compare 4 selection
 0x4000001C C   FIELD 08w02 CC4S (rw): Capture/Compare 4 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC4S bits are writable only when the channel is OFF (CC4E = 0 in TIMx_CCER).
-0x4000001C C   FIELD 08w02 CC4S (rw): Capture/Compare 4 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC4S bits are writable only when the channel is OFF (CC4E = 0 in TIMx_CCER).
-0x4000001C C   FIELD 10w01 OC4FE (rw): Output compare 4 fast enable
-0x4000001C C   FIELD 10w02 IC4PSC (rw): Input capture 4 prescaler
-0x4000001C C   FIELD 11w01 OC4PE (rw): Output compare 4 preload enable
-0x4000001C C   FIELD 12w03 OC4M (rw): Output compare 4 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
-0x4000001C C   FIELD 12w04 IC4F (rw): Input capture 4 filter
-0x4000001C C   FIELD 15w01 OC4CE (rw): Output compare 4 clear enable
-0x4000001C C   FIELD 16w01 OC3M_3 (rw): Output compare 3 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
-0x4000001C C   FIELD 24w01 OC4M_3 (rw): Output compare 4 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
+0x4000001C C   FIELD 10w01 OC4FE (=TIM2.CCMR1_Output.OC%sFE) (rw): Output compare 4 fast enable
+0x4000001C C   FIELD 10w02 IC4PSC (=TIM2.CCMR1_Input.IC%sPSC) (rw): Input capture 4 prescaler
+0x4000001C C   FIELD 11w01 OC4PE (=TIM2.CCMR1_Output.OC%sPE) (rw): Output compare 4 preload enable
+0x4000001C C   FIELD 12w03 OC4M (=TIM2.CCMR1_Output.OC%sM) (rw): Output compare 4 mode
+0x4000001C C   FIELD 12w04 IC4F (=TIM2.CCMR1_Input.IC%sF) (rw): Input capture 4 filter
+0x4000001C C   FIELD 15w01 OC4CE (=TIM2.CCMR1_Output.OC%sCE) (rw): Output compare 4 clear enable
+0x4000001C C   FIELD 16w01 OC3M_3 (=TIM2.CCMR1_Output.OC%sM_3) (rw): Output compare 3 mode, bit 3
+0x4000001C C   FIELD 24w01 OC4M_3 (=TIM2.CCMR1_Output.OC%sM_3) (rw): Output compare 4 mode, bit 3
 0x40000020 B  REGISTER CCER: TIM2 capture/compare enable register
-0x40000020 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable.
-0x40000020 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity. When CC1 channel is configured as input, both CC1NP/CC1P bits select the active polarity of TI1FP1 and TI2FP1 for trigger or capture operations. CC1NP=0, CC1P=0: non-inverted/rising edge. The circuit is sensitive to TIxFP1 rising edge (capture or trigger operations in reset, external clock or trigger mode), TIxFP1 is not inverted (trigger operation in gated mode or encoder mode). CC1NP=0, CC1P=1: inverted/falling edge. The circuit is sensitive to TIxFP1 falling edge (capture or trigger operations in reset, external clock or trigger mode), TIxFP1 is inverted (trigger operation in gated mode or encoder mode). CC1NP=1, CC1P=1: non-inverted/both edges. The circuit is sensitive to both TIxFP1 rising and falling edges (capture or trigger operations in reset, external clock or trigger mode), TIxFP1is not inverted (trigger operation in gated mode). This configuration must not be used in encoder mode. CC1NP=1, CC1P=0: this configuration is reserved, it must not be used.
-0x40000020 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity. CC1 channel configured as output: CC1NP must be kept cleared in this case. CC1 channel configured as input: This bit is used in conjunction with CC1P to define tim_ti1fp1/tim_ti2fp1 polarity. refer to CC1P description.
-0x40000020 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable. Refer to CC1E description
-0x40000020 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity. refer to CC1P description
-0x40000020 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity. Refer to CC1NP description
-0x40000020 C   FIELD 08w01 CC3E (rw): Capture/Compare 3 output enable. Refer to CC1E description
-0x40000020 C   FIELD 09w01 CC3P (rw): Capture/Compare 3 output Polarity. Refer to CC1P description
-0x40000020 C   FIELD 11w01 CC3NP (rw): Capture/Compare 3 output Polarity. Refer to CC1NP description
-0x40000020 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable. refer to CC1E description
-0x40000020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity. Refer to CC1P description
-0x40000020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity. Refer to CC1NP description
+0x40000020 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
+0x40000020 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
+0x40000020 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x40000020 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
+0x40000020 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
+0x40000020 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
+0x40000020 C   FIELD 08w01 CC3E (rw): Capture/Compare 3 output enable
+0x40000020 C   FIELD 09w01 CC3P (rw): Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 11w01 CC3NP (rw): Capture/Compare 3 output Polarity
+0x40000020 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable
+0x40000020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
+0x40000020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT: TIM2 counter
 0x40000024 C   FIELD 00w32 CNT (rw): Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register holds the non-dithered part. The fractional part is not available.
 0x40000024 C   FIELD 31w01 UIFCPY (ro): Read-only copy of the UIF bit of the TIMx_ISR register
@@ -127,14 +127,14 @@
 0x40000028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency tim_cnt_ck is equal to ftim_psc_ck / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
 0x4000002C B  REGISTER ARR: TIM2 auto-reload register
 0x4000002C C   FIELD 00w32 ARR (rw): Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null. Non-dithering mode (DITHEN = 0) The register holds the auto-reload value. Dithering mode (DITHEN = 1) The register holds the integer part in ARR[31:4]. The ARR[3:0] bitfield contains the dithered part.
-0x40000034 B  REGISTER CCR1: TIM2 capture/compare register 1
-0x40000034 C   FIELD 00w32 CCR1 (rw): Capture/compare 1 value If channel CC1 is configured as output: CCR1 is the value to be loaded in the actual capture/compare 1 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR1 register (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc1 output. Non-dithering mode (DITHEN = 0) The register holds the compare value. Dithering mode (DITHEN = 1) The register holds the integer part in CCR1[31:4]. The CCR1[3:0] bitfield contains the dithered part. If channel CC1 is configured as input: CCR1 is the counter value transferred by the last input capture 1 event (tim_ic1). The TIMx_CCR1 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value. Dithering mode (DITHEN = 1) The register holds the capture in CCR1[31:0]. The CCR1[3:0] bits are reset.
-0x40000038 B  REGISTER CCR2: TIM2 capture/compare register 2
-0x40000038 C   FIELD 00w32 CCR2 (rw): Capture/compare 2 value If channel CC2 is configured as output: CCR2 is the value to be loaded in the actual capture/compare 2 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR2 register (bit OC2PE). Else the preload value is copied in the active capture/compare 2 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc2 output. Non-dithering mode (DITHEN = 0) The register holds the compare value. Dithering mode (DITHEN = 1) The register holds the integer part in CCR2[31:4]. The CCR2[3:0] bitfield contains the dithered part. If channel CC2 is configured as input: CCR2 is the counter value transferred by the last input capture 2 event (tim_ic2). The TIMx_CCR2 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value. Dithering mode (DITHEN = 1) The register holds the capture in CCR2[31:0]. The CCR2[3:0] bits are reset.
-0x4000003C B  REGISTER CCR3: TIM2 capture/compare register 3
-0x4000003C C   FIELD 00w32 CCR3 (rw): Capture/compare 3 value If channel CC3 is configured as output: CCR3 is the value to be loaded in the actual capture/compare 3 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR3 register (bit OC3PE). Else the preload value is copied in the active capture/compare 3 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc3 output. Non-dithering mode (DITHEN = 0) The register holds the compare value. Dithering mode (DITHEN = 1) The register holds the integer part in CCR3[31:4]. The CCR3[3:0] bitfield contains the dithered part. If channel CC3 is configured as input: CCR3 is the counter value transferred by the last input capture 3 event (tim_ic3). The TIMx_CCR3 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value. Dithering mode (DITHEN = 1) The register holds the capture in CCR3[31:0]. The CCR3[3:0] bits are reset.
-0x40000040 B  REGISTER CCR4: TIM2 capture/compare register 4
-0x40000040 C   FIELD 00w32 CCR4 (rw): Capture/compare 4 value If channel CC4 is configured as output: CCR4 is the value to be loaded in the actual capture/compare 4 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR4 register (bit OC4PE). Else the preload value is copied in the active capture/compare 4 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc4 output. Non-dithering mode (DITHEN = 0) The register holds the compare value. Dithering mode (DITHEN = 1) The register holds the integer part in CCR4[31:4]. The CCR4[3:0] bitfield contains the dithered part. If channel CC4 is configured as input: CCR4 is the counter value transferred by the last input capture 4 event (tim_ic4). The TIMx_CCR4 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value. Dithering mode (DITHEN = 1) The register holds the capture in CCR4[31:0]. The CCR4[3:0] bits are reset.
+0x40000034 B  REGISTER CCR1: capture/compare register
+0x40000034 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000038 B  REGISTER CCR2: capture/compare register
+0x40000038 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x4000003C B  REGISTER CCR3: capture/compare register
+0x4000003C C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000040 B  REGISTER CCR4: capture/compare register
+0x40000040 C   FIELD 00w32 CCR (rw): Capture/Compare value
 0x40000058 B  REGISTER ECR: TIM2 timer encoder control register
 0x40000058 C   FIELD 00w01 IE (rw): Index enable This bit indicates if the Index event resets the counter.
 0x40000058 C   FIELD 01w02 IDIR (rw): Index direction This bit indicates in which direction the Index event resets the counter. Note: The IDR[1:0] bitfield must be written when IE bit is reset (index disabled).
@@ -207,79 +207,79 @@
 0x4000040C C   FIELD 23w01 TERRIE (rw): Transition error interrupt enable
 0x40000410 B  REGISTER SR: TIM3 status register
 0x40000410 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow and if UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in TIMx_EGR register, if URS=0 and UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by a trigger event (refer to the synchro control register description), if URS=0 and UDIS=0 in the TIMx_CR1 register.
-0x40000410 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag This flag is set by hardware. It is cleared by software (input capture or output compare mode) or by reading the TIMx_CCR1 register (input capture mode only). If channel CC1 is configured as output: this flag is set when the content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. When the content of TIMx_CCR1 is greater than the content of TIMx_ARR, the CC1IF bit goes high on the counter overflow (in up-counting and up/down-counting modes) or underflow (in downcounting mode). There are 3 possible options for flag setting in center-aligned mode, refer to the CMS bits in the TIMx_CR1 register for the full description. If channel CC1 is configured as input: this bit is set when counter value has been captured in TIMx_CCR1 register (an edge has been detected on IC1, as per the edge sensitivity defined with the CC1P and CC1NP bits setting, in TIMx_CCER).
-0x40000410 C   FIELD 02w01 CC2IF (rw): Capture/Compare 2 interrupt flag Refer to CC1IF description
-0x40000410 C   FIELD 03w01 CC3IF (rw): Capture/Compare 3 interrupt flag Refer to CC1IF description
-0x40000410 C   FIELD 04w01 CC4IF (rw): Capture/Compare 4 interrupt flag Refer to CC1IF description
+0x40000410 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
+0x40000410 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
+0x40000410 C   FIELD 03w01 CC3IF (rw): Capture/compare 3 interrupt flag
+0x40000410 C   FIELD 04w01 CC4IF (rw): Capture/compare 4 interrupt flag
 0x40000410 C   FIELD 06w01 TIF (rw): Trigger interrupt flag This flag is set by hardware on the TRG trigger event (active edge detected on tim_trgi input when the slave mode controller is enabled in all modes but gated mode. It is set when the counter starts or stops when gated mode is selected. It is cleared by software.
-0x40000410 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag This flag is set by hardware only when the corresponding channel is configured in input capture mode. It is cleared by software by writing it to '0'.
-0x40000410 C   FIELD 10w01 CC2OF (rw): Capture/compare 2 overcapture flag refer to CC1OF description
-0x40000410 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag refer to CC1OF description
-0x40000410 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag refer to CC1OF description
+0x40000410 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
+0x40000410 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
+0x40000410 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag
+0x40000410 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag
 0x40000410 C   FIELD 20w01 IDXF (rw): Index interrupt flag This flag is set by hardware when an index event is detected. It is cleared by software by writing it to '0'.
 0x40000410 C   FIELD 21w01 DIRF (rw): Direction change interrupt flag This flag is set by hardware when the direction changes in encoder mode (DIR bit value in TIMx_CR is changing). It is cleared by software by writing it to '0'.
 0x40000410 C   FIELD 22w01 IERRF (rw): Index error interrupt flag This flag is set by hardware when an index error is detected. It is cleared by software by writing it to '0'.
 0x40000410 C   FIELD 23w01 TERRF (rw): Transition error interrupt flag This flag is set by hardware when a transition error is detected in encoder mode. It is cleared by software by writing it to '0'.
 0x40000414 B  REGISTER EGR: TIM3 event generation register
 0x40000414 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
-0x40000414 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation This bit is set by software in order to generate an event, it is automatically cleared by hardware. If channel CC1 is configured as output: CC1IF flag is set, Corresponding interrupt or DMA request is sent if enabled. If channel CC1 is configured as input: The current value of the counter is captured in TIMx_CCR1 register. The CC1IF flag is set, the corresponding interrupt or DMA request is sent if enabled. The CC1OF flag is set if the CC1IF flag was already high.
-0x40000414 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation Refer to CC1G description
-0x40000414 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation Refer to CC1G description
-0x40000414 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation Refer to CC1G description
+0x40000414 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
+0x40000414 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
+0x40000414 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation
+0x40000414 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation
 0x40000414 C   FIELD 06w01 TG (wo): Trigger generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
 0x40000418 B  REGISTER CCMR1_Input: TIM3 capture/compare mode register 1 [alternate]
 0x40000418 B  REGISTER CCMR1_Output: TIM3 capture/compare mode register 1 [alternate]
+0x40000418 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
 0x40000418 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
-0x40000418 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
-0x40000418 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable This bit decreases the latency between a trigger event and a transition on the timer output. It must be used in one-pulse mode (OPM bit set in TIMx_CR1 register), to have the output pulse starting as soon as possible after the starting trigger.
-0x40000418 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler This bit-field defines the ratio of the prescaler acting on CC1 input (tim_ic1). The prescaler is reset as soon as CC1E=0 (TIMx_CCER register).
+0x40000418 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
+0x40000418 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
 0x40000418 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40000418 C   FIELD 04w03 OC1M (rw): Output compare 1 mode These bits define the behavior of the output reference signal tim_oc1ref from which tim_oc1 is derived. tim_oc1ref is active high whereas tim_oc1 active level depends on CC1P bit. Note: In PWM mode, the tim_ocref_clr level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode.
-0x40000418 C   FIELD 04w04 IC1F (rw): Input capture 1 filter This bit-field defines the frequency used to sample tim_ti1 input and the length of the digital filter applied to tim_ti1. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
+0x40000418 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
+0x40000418 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
 0x40000418 C   FIELD 07w01 OC1CE (rw): Output compare 1 clear enable
-0x40000418 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC2S bits are writable only when the channel is OFF (CC2E = 0 in TIMx_CCER).
+0x40000418 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
 0x40000418 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC2S bits are writable only when the channel is OFF (CC2E = 0 in TIMx_CCER).
 0x40000418 C   FIELD 10w01 OC2FE (rw): Output compare 2 fast enable
 0x40000418 C   FIELD 10w02 IC2PSC (rw): Input capture 2 prescaler
 0x40000418 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40000418 C   FIELD 12w03 OC2M (rw): Output compare 2 mode refer to OC1M description on bits 6:4
+0x40000418 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40000418 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
 0x40000418 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
-0x40000418 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode These bits define the behavior of the output reference signal tim_oc1ref from which tim_oc1 is derived. tim_oc1ref is active high whereas tim_oc1 active level depends on CC1P bit. Note: In PWM mode, the tim_ocref_clr level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode.
-0x40000418 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode refer to OC1M description on bits 6:4
+0x40000418 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
+0x40000418 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x4000041C B  REGISTER CCMR2_Input: TIM3 capture/compare mode register 2 [alternate]
 0x4000041C B  REGISTER CCMR2_Output: TIM3 capture/compare mode register 2 [alternate]
+0x4000041C C   FIELD 00w02 CC3S (=TIM3.CCMR1_Output.CC%sS) (rw): Capture/Compare 3 selection
 0x4000041C C   FIELD 00w02 CC3S (rw): Capture/Compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = 0 in TIMx_CCER).
-0x4000041C C   FIELD 00w02 CC3S (rw): Capture/Compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = 0 in TIMx_CCER).
-0x4000041C C   FIELD 02w01 OC3FE (rw): Output compare 3 fast enable
-0x4000041C C   FIELD 02w02 IC3PSC (rw): Input capture 3 prescaler
-0x4000041C C   FIELD 03w01 OC3PE (rw): Output compare 3 preload enable
-0x4000041C C   FIELD 04w03 OC3M (rw): Output compare 3 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
-0x4000041C C   FIELD 04w04 IC3F (rw): Input capture 3 filter
-0x4000041C C   FIELD 07w01 OC3CE (rw): Output compare 3 clear enable
+0x4000041C C   FIELD 02w01 OC3FE (=TIM3.CCMR1_Output.OC%sFE) (rw): Output compare 3 fast enable
+0x4000041C C   FIELD 02w02 IC3PSC (=TIM3.CCMR1_Input.IC%sPSC) (rw): Input capture 3 prescaler
+0x4000041C C   FIELD 03w01 OC3PE (=TIM3.CCMR1_Output.OC%sPE) (rw): Output compare 3 preload enable
+0x4000041C C   FIELD 04w03 OC3M (=TIM3.CCMR1_Output.OC%sM) (rw): Output compare 3 mode
+0x4000041C C   FIELD 04w04 IC3F (=TIM3.CCMR1_Input.IC%sF) (rw): Input capture 3 filter
+0x4000041C C   FIELD 07w01 OC3CE (=TIM3.CCMR1_Output.OC%sCE) (rw): Output compare 3 clear enable
+0x4000041C C   FIELD 08w02 CC4S (=TIM3.CCMR1_Output.CC%sS) (rw): Capture/Compare 4 selection
 0x4000041C C   FIELD 08w02 CC4S (rw): Capture/Compare 4 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC4S bits are writable only when the channel is OFF (CC4E = 0 in TIMx_CCER).
-0x4000041C C   FIELD 08w02 CC4S (rw): Capture/Compare 4 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC4S bits are writable only when the channel is OFF (CC4E = 0 in TIMx_CCER).
-0x4000041C C   FIELD 10w01 OC4FE (rw): Output compare 4 fast enable
-0x4000041C C   FIELD 10w02 IC4PSC (rw): Input capture 4 prescaler
-0x4000041C C   FIELD 11w01 OC4PE (rw): Output compare 4 preload enable
-0x4000041C C   FIELD 12w03 OC4M (rw): Output compare 4 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
-0x4000041C C   FIELD 12w04 IC4F (rw): Input capture 4 filter
-0x4000041C C   FIELD 15w01 OC4CE (rw): Output compare 4 clear enable
-0x4000041C C   FIELD 16w01 OC3M_3 (rw): Output compare 3 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
-0x4000041C C   FIELD 24w01 OC4M_3 (rw): Output compare 4 mode Refer to OC1M description (bits 6:4 in TIMx_CCMR1 register)
+0x4000041C C   FIELD 10w01 OC4FE (=TIM3.CCMR1_Output.OC%sFE) (rw): Output compare 4 fast enable
+0x4000041C C   FIELD 10w02 IC4PSC (=TIM3.CCMR1_Input.IC%sPSC) (rw): Input capture 4 prescaler
+0x4000041C C   FIELD 11w01 OC4PE (=TIM3.CCMR1_Output.OC%sPE) (rw): Output compare 4 preload enable
+0x4000041C C   FIELD 12w03 OC4M (=TIM3.CCMR1_Output.OC%sM) (rw): Output compare 4 mode
+0x4000041C C   FIELD 12w04 IC4F (=TIM3.CCMR1_Input.IC%sF) (rw): Input capture 4 filter
+0x4000041C C   FIELD 15w01 OC4CE (=TIM3.CCMR1_Output.OC%sCE) (rw): Output compare 4 clear enable
+0x4000041C C   FIELD 16w01 OC3M_3 (=TIM3.CCMR1_Output.OC%sM_3) (rw): Output compare 3 mode, bit 3
+0x4000041C C   FIELD 24w01 OC4M_3 (=TIM3.CCMR1_Output.OC%sM_3) (rw): Output compare 4 mode, bit 3
 0x40000420 B  REGISTER CCER: TIM3 capture/compare enable register
-0x40000420 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable.
-0x40000420 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity. When CC1 channel is configured as input, both CC1NP/CC1P bits select the active polarity of TI1FP1 and TI2FP1 for trigger or capture operations. CC1NP=0, CC1P=0: non-inverted/rising edge. The circuit is sensitive to TIxFP1 rising edge (capture or trigger operations in reset, external clock or trigger mode), TIxFP1 is not inverted (trigger operation in gated mode or encoder mode). CC1NP=0, CC1P=1: inverted/falling edge. The circuit is sensitive to TIxFP1 falling edge (capture or trigger operations in reset, external clock or trigger mode), TIxFP1 is inverted (trigger operation in gated mode or encoder mode). CC1NP=1, CC1P=1: non-inverted/both edges. The circuit is sensitive to both TIxFP1 rising and falling edges (capture or trigger operations in reset, external clock or trigger mode), TIxFP1is not inverted (trigger operation in gated mode). This configuration must not be used in encoder mode. CC1NP=1, CC1P=0: this configuration is reserved, it must not be used.
-0x40000420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity. CC1 channel configured as output: CC1NP must be kept cleared in this case. CC1 channel configured as input: This bit is used in conjunction with CC1P to define tim_ti1fp1/tim_ti2fp1 polarity. refer to CC1P description.
-0x40000420 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable. Refer to CC1E description
-0x40000420 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity. refer to CC1P description
-0x40000420 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity. Refer to CC1NP description
-0x40000420 C   FIELD 08w01 CC3E (rw): Capture/Compare 3 output enable. Refer to CC1E description
-0x40000420 C   FIELD 09w01 CC3P (rw): Capture/Compare 3 output Polarity. Refer to CC1P description
-0x40000420 C   FIELD 11w01 CC3NP (rw): Capture/Compare 3 output Polarity. Refer to CC1NP description
-0x40000420 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable. refer to CC1E description
-0x40000420 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity. Refer to CC1P description
-0x40000420 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity. Refer to CC1NP description
+0x40000420 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
+0x40000420 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
+0x40000420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x40000420 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
+0x40000420 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
+0x40000420 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
+0x40000420 C   FIELD 08w01 CC3E (rw): Capture/Compare 3 output enable
+0x40000420 C   FIELD 09w01 CC3P (rw): Capture/Compare 3 output Polarity
+0x40000420 C   FIELD 11w01 CC3NP (rw): Capture/Compare 3 output Polarity
+0x40000420 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable
+0x40000420 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
+0x40000420 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT: TIM3 counter
 0x40000424 C   FIELD 00w16 CNT (rw): Counter value' Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register holds the non-dithered part in CNT[15:0]. The fractional part is not available.
 0x40000424 C   FIELD 31w01 UIFCPY (rw): Value depends on IUFREMAP in TIMx_CR1. If UIFREMAP = 0 Reserved If UIFREMAP = 1 UIFCPY: UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
@@ -287,14 +287,14 @@
 0x40000428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency tim_cnt_ck is equal to ftim_psc_ck / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
 0x4000042C B  REGISTER ARR: TIM3 auto-reload register
 0x4000042C C   FIELD 00w20 ARR (rw): Low Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null. Non-dithering mode (DITHEN = 0) The register holds the auto-reload value. Dithering mode (DITHEN = 1) The register holds the integer part in ARR[19:4]. The ARR[3:0] bitfield contains the dithered part.
-0x40000434 B  REGISTER CCR1: TIM3 capture/compare register 1
-0x40000434 C   FIELD 00w20 CCR1 (rw): Capture/compare 1 value If channel CC1 is configured as output: CCR1 is the value to be loaded in the actual capture/compare 1 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR1 register (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc1 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR1[15:0]. The CCR1[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR1[19:4]. The CCR1[3:0] bitfield contains the dithered part. If channel CC1 is configured as input: CCR1 is the counter value transferred by the last input capture 1 event (tim_ic1). The TIMx_CCR1 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The CCR1[15:0] bits hold the capture value. The CCR1[19:16] bits are reserved. Dithering mode (DITHEN = 1) The register holds the capture in CCR1[19:0]. The CCR1[3:0] bits are reset.
-0x40000438 B  REGISTER CCR2: TIM3 capture/compare register 2
-0x40000438 C   FIELD 00w20 CCR2 (rw): Capture/compare 1 value If channel CC2 is configured as output: CCR2 is the value to be loaded in the actual capture/compare 2 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR2 register (bit OC2PE). Else the preload value is copied in the active capture/compare 2 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc2 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR2[15:0]. The CCR2[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR2[19:4]. The CCR2[3:0] bitfield contains the dithered part. If channel CC2 is configured as input: CCR2 is the counter value transferred by the last input capture 2 event (tim_ic2). The TIMx_CCR2 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The CCR2[15:0] bits hold the capture value. The CCR2[19:16] bits are reserved. Dithering mode (DITHEN = 1) The register holds the capture in CCR2[19:0]. The CCR2[3:0] bits are reset.
-0x4000043C B  REGISTER CCR3: TIM3 capture/compare register 3
-0x4000043C C   FIELD 00w20 CCR3 (rw): Capture/compare 3 value If channel CC3 is configured as output: CCR3 is the value to be loaded in the actual capture/compare 3 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR3 register (bit OC3PE). Else the preload value is copied in the active capture/compare 3 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc3 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR3[15:0]. The CCR3[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR3[19:4]. The CCR3[3:0] bitfield contains the dithered part. If channel CC3 is configured as input: CCR3 is the counter value transferred by the last input capture 3 event (tim_ic3). The TIMx_CCR3 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The CCR3[15:0] bits hold the capture value. The CCR3[19:16] bits are reserved. Dithering mode (DITHEN = 1) The register holds the capture in CCR3[19:0]. The CCR3[3:0] bits are reset.
-0x40000440 B  REGISTER CCR4: TIM3 capture/compare register 4
-0x40000440 C   FIELD 00w20 CCR4 (rw): Capture/compare 4 value If channel CC4 is configured as output: CCR4 is the value to be loaded in the actual capture/compare 4 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR4 register (bit OC4PE). Else the preload value is copied in the active capture/compare 4 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc4 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR4[15:0]. The CCR4[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR4[19:4]. The CCR4[3:0] bitfield contains the dithered part. If channel CC4 is configured as input: CCR4 is the counter value transferred by the last input capture 4 event (tim_ic4). The TIMx_CCR4 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The CCR4[15:0] bits hold the capture value. The CCR4[19:16] bits are reserved. Dithering mode (DITHEN = 1) The register holds the capture in CCR4[19:0]. The CCR4[3:0] bits are reset.
+0x40000434 B  REGISTER CCR1: capture/compare register
+0x40000434 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40000438 B  REGISTER CCR2: capture/compare register
+0x40000438 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x4000043C B  REGISTER CCR3: capture/compare register
+0x4000043C C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40000440 B  REGISTER CCR4: capture/compare register
+0x40000440 C   FIELD 00w20 CCR (rw): Capture/Compare value
 0x40000458 B  REGISTER ECR: TIM3 timer encoder control register
 0x40000458 C   FIELD 00w01 IE (rw): Index enable This bit indicates if the Index event resets the counter.
 0x40000458 C   FIELD 01w02 IDIR (rw): Index direction This bit indicates in which direction the Index event resets the counter. Note: The IDR[1:0] bitfield must be written when IE bit is reset (index disabled).
@@ -1784,16 +1784,16 @@
 0x40012C04 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
 0x40012C04 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection These bits select the information to be sent in master mode to slave timers for synchronization (tim_trgo). The combination is as follows: Other codes reserved Note: The clock of the slave timer or ADC must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
 0x40012C04 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
-0x40012C04 C   FIELD 08w01 OIS1 (rw): Output idle state 1 (tim_oc1 output) Note: This bit can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40012C04 C   FIELD 09w01 OIS1N (rw): Output idle state 1 (tim_oc1n output) Note: This bit can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40012C04 C   FIELD 10w01 OIS2 (rw): Output idle state 2 (tim_oc2 output) Refer to OIS1 bit
-0x40012C04 C   FIELD 11w01 OIS2N (rw): Output idle state 2 (tim_oc2n output) Refer to OIS1N bit
-0x40012C04 C   FIELD 12w01 OIS3 (rw): Output idle state 3 (tim_oc3n output) Refer to OIS1 bit
-0x40012C04 C   FIELD 13w01 OIS3N (rw): Output idle state 3 (tim_oc3n output) Refer to OIS1N bit
-0x40012C04 C   FIELD 14w01 OIS4 (rw): Output idle state 4 (tim_oc4 output) Refer to OIS1 bit
-0x40012C04 C   FIELD 15w01 OIS4N (rw): Output idle state 4 (tim_oc4n output) Refer to OIS1N bit
-0x40012C04 C   FIELD 16w01 OIS5 (rw): Output idle state 5 (tim_oc5 output) Refer to OIS1 bit
-0x40012C04 C   FIELD 18w01 OIS6 (rw): Output idle state 6 (tim_oc6 output) Refer to OIS1 bit
+0x40012C04 C   FIELD 08w01 OIS1 (rw): Output Idle state (OC1 output)
+0x40012C04 C   FIELD 09w01 OIS1N (rw): Output Idle state (OC1N output)
+0x40012C04 C   FIELD 10w01 OIS2 (rw): Output Idle state (OC2 output)
+0x40012C04 C   FIELD 11w01 OIS2N (rw): Output Idle state (OC2N output)
+0x40012C04 C   FIELD 12w01 OIS3 (rw): Output Idle state (OC3 output)
+0x40012C04 C   FIELD 13w01 OIS3N (rw): Output Idle state (OC3N output)
+0x40012C04 C   FIELD 14w01 OIS4 (rw): Output Idle state (OC4 output)
+0x40012C04 C   FIELD 15w01 OIS4N (rw): Output Idle state (OC4N output)
+0x40012C04 C   FIELD 16w01 OIS5 (rw): Output Idle state (OC5 output)
+0x40012C04 C   FIELD 18w01 OIS6 (rw): Output Idle state (OC6 output)
 0x40012C04 C   FIELD 20w04 MMS2 (rw): Master mode selection 2 These bits allow the information to be sent to ADC for synchronization (tim_trgo2) to be selected. The combination is as follows: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
 0x40012C04 C   FIELD 25w01 MMS_H (rw): MMS[3]
 0x40012C08 B  REGISTER SMCR: TIM1 slave mode control register
@@ -1811,18 +1811,18 @@
 0x40012C08 C   FIELD 25w01 SMSPS (rw): SMS preload source This bit selects whether the events that triggers the SMS[3:0] bitfield transfer from preload to active
 0x40012C0C B  REGISTER DIER: TIM1 DMA/interrupt enable register
 0x40012C0C C   FIELD 00w01 UIE (rw): Update interrupt enable
-0x40012C0C C   FIELD 01w01 CC1IE (rw): Capture/compare 1 interrupt enable
-0x40012C0C C   FIELD 02w01 CC2IE (rw): Capture/compare 2 interrupt enable
-0x40012C0C C   FIELD 03w01 CC3IE (rw): Capture/compare 3 interrupt enable
-0x40012C0C C   FIELD 04w01 CC4IE (rw): Capture/compare 4 interrupt enable
+0x40012C0C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
+0x40012C0C C   FIELD 02w01 CC2IE (rw): Capture/Compare 2 interrupt enable
+0x40012C0C C   FIELD 03w01 CC3IE (rw): Capture/Compare 3 interrupt enable
+0x40012C0C C   FIELD 04w01 CC4IE (rw): Capture/Compare 4 interrupt enable
 0x40012C0C C   FIELD 05w01 COMIE (rw): COM interrupt enable
 0x40012C0C C   FIELD 06w01 TIE (rw): Trigger interrupt enable
 0x40012C0C C   FIELD 07w01 BIE (rw): Break interrupt enable
 0x40012C0C C   FIELD 08w01 UDE (rw): Update DMA request enable
-0x40012C0C C   FIELD 09w01 CC1DE (rw): Capture/compare 1 DMA request enable
-0x40012C0C C   FIELD 10w01 CC2DE (rw): Capture/compare 2 DMA request enable
-0x40012C0C C   FIELD 11w01 CC3DE (rw): Capture/compare 3 DMA request enable
-0x40012C0C C   FIELD 12w01 CC4DE (rw): Capture/compare 4 DMA request enable
+0x40012C0C C   FIELD 09w01 CC1DE (rw): Capture/Compare 1 DMA request enable
+0x40012C0C C   FIELD 10w01 CC2DE (rw): Capture/Compare 2 DMA request enable
+0x40012C0C C   FIELD 11w01 CC3DE (rw): Capture/Compare 3 DMA request enable
+0x40012C0C C   FIELD 12w01 CC4DE (rw): Capture/Compare 4 DMA request enable
 0x40012C0C C   FIELD 13w01 COMDE (rw): COM DMA request enable
 0x40012C0C C   FIELD 14w01 TDE (rw): Trigger DMA request enable
 0x40012C0C C   FIELD 20w01 IDXIE (rw): Index interrupt enable
@@ -1831,18 +1831,18 @@
 0x40012C0C C   FIELD 23w01 TERRIE (rw): Transition error interrupt enable
 0x40012C10 B  REGISTER SR: TIM1 status register
 0x40012C10 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow regarding the repetition counter value (update if repetition counter = 0) and if the UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in TIMx_EGR register, if URS=0 and UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by a trigger event (refer to Section 65.6.3: TIM1 slave mode control register (TIM1_SMCR)), if URS=0 and UDIS=0 in the TIMx_CR1 register.
-0x40012C10 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag This flag is set by hardware. It is cleared by software (input capture or output compare mode) or by reading the TIMx_CCR1 register (input capture mode only). If channel CC1 is configured as output: this flag is set when the content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. When the content of TIMx_CCR1 is greater than the content of TIMx_ARR, the CC1IF bit goes high on the counter overflow (in up-counting and up/down-counting modes) or underflow (in downcounting mode). There are 3 possible options for flag setting in center-aligned mode, refer to the CMS bits in the TIMx_CR1 register for the full description. If channel CC1 is configured as input: this bit is set when counter value has been captured in TIMx_CCR1 register (an edge has been detected on IC1, as per the edge sensitivity defined with the CC1P and CC1NP bits setting, in TIMx_CCER).
-0x40012C10 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag Refer to CC1IF description
-0x40012C10 C   FIELD 03w01 CC3IF (rw): Capture/compare 3 interrupt flag Refer to CC1IF description
-0x40012C10 C   FIELD 04w01 CC4IF (rw): Capture/compare 4 interrupt flag Refer to CC1IF description
+0x40012C10 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
+0x40012C10 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
+0x40012C10 C   FIELD 03w01 CC3IF (rw): Capture/compare 3 interrupt flag
+0x40012C10 C   FIELD 04w01 CC4IF (rw): Capture/compare 4 interrupt flag
 0x40012C10 C   FIELD 05w01 COMIF (rw): COM interrupt flag This flag is set by hardware on COM event (when capture/compare Control bits - CCxE, CCxNE, OCxM - have been updated). It is cleared by software.
 0x40012C10 C   FIELD 06w01 TIF (rw): Trigger interrupt flag This flag is set by hardware on the TRG trigger event (active edge detected on tim_trgi input when the slave mode controller is enabled in all modes but gated mode. It is set when the counter starts or stops when gated mode is selected. It is cleared by software.
 0x40012C10 C   FIELD 07w01 BIF (rw): Break interrupt flag This flag is set by hardware as soon as the break input goes active. It can be cleared by software if the break input is not active.
 0x40012C10 C   FIELD 08w01 B2IF (rw): Break 2 interrupt flag This flag is set by hardware as soon as the break 2 input goes active. It can be cleared by software if the break 2 input is not active.
-0x40012C10 C   FIELD 09w01 CC1OF (rw): Capture/compare 1 overcapture flag This flag is set by hardware only when the corresponding channel is configured in input capture mode. It is cleared by software by writing it to '0'.
-0x40012C10 C   FIELD 10w01 CC2OF (rw): Capture/compare 2 overcapture flag Refer to CC1OF description
-0x40012C10 C   FIELD 11w01 CC3OF (rw): Capture/compare 3 overcapture flag Refer to CC1OF description
-0x40012C10 C   FIELD 12w01 CC4OF (rw): Capture/compare 4 overcapture flag Refer to CC1OF description
+0x40012C10 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
+0x40012C10 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
+0x40012C10 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag
+0x40012C10 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag
 0x40012C10 C   FIELD 13w01 SBIF (rw): System break interrupt flag This flag is set by hardware as soon as the system break input goes active. It can be cleared by software if the system break input is not active. This flag must be reset to re-start PWM operation.
 0x40012C10 C   FIELD 16w01 CC5IF (rw): Compare 5 interrupt flag Refer to CC1IF description Note: Channel 5 can only be configured as output.
 0x40012C10 C   FIELD 17w01 CC6IF (rw): Compare 6 interrupt flag Refer to CC1IF description Note: Channel 6 can only be configured as output.
@@ -1852,75 +1852,75 @@
 0x40012C10 C   FIELD 23w01 TERRF (rw): Transition error interrupt flag This flag is set by hardware when a transition error is detected in encoder mode. It is cleared by software by writing it to '0'.
 0x40012C14 B  REGISTER EGR: TIM1 event generation register
 0x40012C14 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
-0x40012C14 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation This bit is set by software in order to generate an event, it is automatically cleared by hardware. If channel CC1 is configured as output: CC1IF flag is set, Corresponding interrupt or DMA request is sent if enabled. If channel CC1 is configured as input: The current value of the counter is captured in TIMx_CCR1 register. The CC1IF flag is set, the corresponding interrupt or DMA request is sent if enabled. The CC1OF flag is set if the CC1IF flag was already high.
-0x40012C14 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation Refer to CC1G description
-0x40012C14 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation Refer to CC1G description
-0x40012C14 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation Refer to CC1G description
+0x40012C14 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
+0x40012C14 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
+0x40012C14 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation
+0x40012C14 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation
 0x40012C14 C   FIELD 05w01 COMG (wo): Capture/compare control update generation This bit can be set by software, it is automatically cleared by hardware Note: This bit acts only on channels having a complementary output.
 0x40012C14 C   FIELD 06w01 TG (wo): Trigger generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
 0x40012C14 C   FIELD 07w01 BG (wo): Break generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
 0x40012C14 C   FIELD 08w01 B2G (wo): Break 2 generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
 0x40012C18 B  REGISTER CCMR1_Input: TIM1 capture/compare mode register 1 [alternate]
 0x40012C18 B  REGISTER CCMR1_Output: TIM1 capture/compare mode register 1 [alternate]
+0x40012C18 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
 0x40012C18 C   FIELD 00w02 CC1S (rw): Capture/compare 1 Selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = '0' in TIMx_CCER).
-0x40012C18 C   FIELD 00w02 CC1S (rw): Capture/compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = '0' in TIMx_CCER).
-0x40012C18 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable This bit decreases the latency between a trigger event and a transition on the timer output. It must be used in one-pulse mode (OPM bit set in TIMx_CR1 register), to have the output pulse starting as soon as possible after the starting trigger.
-0x40012C18 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler This bit-field defines the ratio of the prescaler acting on CC1 input (tim_ic1). The prescaler is reset as soon as CC1E='0' (TIMx_CCER register).
-0x40012C18 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable Note: These bits can not be modified as long as LOCK level 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (the channel is configured in output).
-0x40012C18 C   FIELD 04w03 OC1M (rw): OC1M[2:0]: Output compare 1 mode These bits define the behavior of the output reference signal tim_oc1ref from which tim_oc1 and tim_oc1n are derived. tim_oc1ref is active high whereas tim_oc1 and tim_oc1n active level depends on CC1P and CC1NP bits. Note: These bits can not be modified as long as LOCK level 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (the channel is configured in output). Note: In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. Note: On channels having a complementary output, this bit field is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the OC1M active bits take the new value from the preloaded bits only when a COM event is generated.
-0x40012C18 C   FIELD 04w04 IC1F (rw): Input capture 1 filter This bit-field defines the frequency used to sample tim_ti1 input and the length of the digital filter applied to tim_ti1. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
+0x40012C18 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
+0x40012C18 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
+0x40012C18 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
+0x40012C18 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
+0x40012C18 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
 0x40012C18 C   FIELD 07w01 OC1CE (rw): Output compare 1 clear enable
-0x40012C18 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC2S bits are writable only when the channel is OFF (CC2E = '0' in TIMx_CCER).
+0x40012C18 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
 0x40012C18 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC2S bits are writable only when the channel is OFF (CC2E = '0' in TIMx_CCER).
 0x40012C18 C   FIELD 10w01 OC2FE (rw): Output compare 2 fast enable
 0x40012C18 C   FIELD 10w02 IC2PSC (rw): Input capture 2 prescaler
 0x40012C18 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40012C18 C   FIELD 12w03 OC2M (rw): OC2M[2:0]: Output compare 2 mode
+0x40012C18 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40012C18 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
 0x40012C18 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
-0x40012C18 C   FIELD 16w01 OC1M_3 (rw): OC1M[3]
-0x40012C18 C   FIELD 24w01 OC2M_3 (rw): OC2M[3]
+0x40012C18 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
+0x40012C18 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x40012C1C B  REGISTER CCMR2_Input: TIM1 capture/compare mode register 2 [alternate]
 0x40012C1C B  REGISTER CCMR2_Output: TIM1 capture/compare mode register 2 [alternate]
+0x40012C1C C   FIELD 00w02 CC3S (=TIM1.CCMR1_Output.CC%sS) (rw): Capture/Compare 3 selection
 0x40012C1C C   FIELD 00w02 CC3S (rw): Capture/compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = '0' in TIMx_CCER).
-0x40012C1C C   FIELD 00w02 CC3S (rw): Capture/compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = '0' in TIMx_CCER).
-0x40012C1C C   FIELD 02w01 OC3FE (rw): Output compare 3 fast enable
-0x40012C1C C   FIELD 02w02 IC3PSC (rw): Input capture 3 prescaler
-0x40012C1C C   FIELD 03w01 OC3PE (rw): Output compare 3 preload enable
-0x40012C1C C   FIELD 04w03 OC3M (rw): OC3M[2:0]: Output compare 3 mode These bits define the behavior of the output reference signal tim_oc3ref from which tim_oc3 and tim_oc3n are derived. tim_oc3ref is active high whereas tim_oc3 and tim_oc3n active level depends on CC3P and CC3NP bits. Note: These bits can not be modified as long as LOCK level 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (the channel is configured in output). Note: In PWM mode, the OCREF level changes only when the result of the comparison changes or when the output compare mode switches from 'frozen' mode to 'PWM' mode. On channels having a complementary output, this bit field is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the OC3M active bits take the new value from the preloaded bits only when a COM event is generated.
-0x40012C1C C   FIELD 04w04 IC3F (rw): Input capture 3 filter
-0x40012C1C C   FIELD 07w01 OC3CE (rw): Output compare 3 clear enable
+0x40012C1C C   FIELD 02w01 OC3FE (=TIM1.CCMR1_Output.OC%sFE) (rw): Output compare 3 fast enable
+0x40012C1C C   FIELD 02w02 IC3PSC (=TIM1.CCMR1_Input.IC%sPSC) (rw): Input capture 3 prescaler
+0x40012C1C C   FIELD 03w01 OC3PE (=TIM1.CCMR1_Output.OC%sPE) (rw): Output compare 3 preload enable
+0x40012C1C C   FIELD 04w03 OC3M (=TIM1.CCMR1_Output.OC%sM) (rw): Output compare 3 mode
+0x40012C1C C   FIELD 04w04 IC3F (=TIM1.CCMR1_Input.IC%sF) (rw): Input capture 3 filter
+0x40012C1C C   FIELD 07w01 OC3CE (=TIM1.CCMR1_Output.OC%sCE) (rw): Output compare 3 clear enable
+0x40012C1C C   FIELD 08w02 CC4S (=TIM1.CCMR1_Output.CC%sS) (rw): Capture/Compare 4 selection
 0x40012C1C C   FIELD 08w02 CC4S (rw): Capture/compare 4 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC4S bits are writable only when the channel is OFF (CC4E = '0' in TIMx_CCER).
-0x40012C1C C   FIELD 08w02 CC4S (rw): Capture/compare 4 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC4S bits are writable only when the channel is OFF (CC4E = '0' in TIMx_CCER).
-0x40012C1C C   FIELD 10w01 OC4FE (rw): Output compare 4 fast enable
-0x40012C1C C   FIELD 10w02 IC4PSC (rw): Input capture 4 prescaler
-0x40012C1C C   FIELD 11w01 OC4PE (rw): Output compare 4 preload enable
-0x40012C1C C   FIELD 12w03 OC4M (rw): OC4M[2:0]: Output compare 4 mode Refer to OC3M[3:0] bit description
-0x40012C1C C   FIELD 12w04 IC4F (rw): Input capture 4 filter
-0x40012C1C C   FIELD 15w01 OC4CE (rw): Output compare 4 clear enable
-0x40012C1C C   FIELD 16w01 OC3M_3 (rw): OC3M[3]
-0x40012C1C C   FIELD 24w01 OC4M_3 (rw): OC4M[3]
+0x40012C1C C   FIELD 10w01 OC4FE (=TIM1.CCMR1_Output.OC%sFE) (rw): Output compare 4 fast enable
+0x40012C1C C   FIELD 10w02 IC4PSC (=TIM1.CCMR1_Input.IC%sPSC) (rw): Input capture 4 prescaler
+0x40012C1C C   FIELD 11w01 OC4PE (=TIM1.CCMR1_Output.OC%sPE) (rw): Output compare 4 preload enable
+0x40012C1C C   FIELD 12w03 OC4M (=TIM1.CCMR1_Output.OC%sM) (rw): Output compare 4 mode
+0x40012C1C C   FIELD 12w04 IC4F (=TIM1.CCMR1_Input.IC%sF) (rw): Input capture 4 filter
+0x40012C1C C   FIELD 15w01 OC4CE (=TIM1.CCMR1_Output.OC%sCE) (rw): Output compare 4 clear enable
+0x40012C1C C   FIELD 16w01 OC3M_3 (=TIM1.CCMR1_Output.OC%sM_3) (rw): Output compare 3 mode, bit 3
+0x40012C1C C   FIELD 24w01 OC4M_3 (=TIM1.CCMR1_Output.OC%sM_3) (rw): Output compare 4 mode, bit 3
 0x40012C20 B  REGISTER CCER: TIM1 capture/compare enable register
-0x40012C20 C   FIELD 00w01 CC1E (rw): Capture/compare 1 output enable When CC1 channel is configured as output, the OC1 level depends on MOE, OSSI, OSSR, OIS1, OIS1N and CC1NE bits, regardless of the CC1E bits state. Refer to Table 619 for details. Note: On channels having a complementary output, this bit is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the CC1E active bit takes the new value from the preloaded bit only when a Commutation event is generated.
-0x40012C20 C   FIELD 01w01 CC1P (rw): Capture/compare 1 output polarity When CC1 channel is configured as input, both CC1NP/CC1P bits select the active polarity of TI1FP1 and TI2FP1 for trigger or capture operations. CC1NP=0, CC1P=0: non-inverted/rising edge. The circuit is sensitive to TIxFP1 rising edge (capture or trigger operations in reset, external clock or trigger mode), TIxFP1 is not inverted (trigger operation in gated mode or encoder mode). CC1NP=0, CC1P=1: inverted/falling edge. The circuit is sensitive to TIxFP1 falling edge (capture or trigger operations in reset, external clock or trigger mode), TIxFP1 is inverted (trigger operation in gated mode or encoder mode). CC1NP=1, CC1P=1: non-inverted/both edges/ The circuit is sensitive to both TIxFP1 rising and falling edges (capture or trigger operations in reset, external clock or trigger mode), TIxFP1is not inverted (trigger operation in gated mode). This configuration must not be used in encoder mode. CC1NP=1, CC1P=0: the configuration is reserved, it must not be used. Note: This bit is not writable as soon as LOCK level 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register). Note: On channels having a complementary output, this bit is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the CC1P active bit takes the new value from the preloaded bit only when a Commutation event is generated.
-0x40012C20 C   FIELD 02w01 CC1NE (rw): Capture/compare 1 complementary output enable Note: On channels having a complementary output, this bit is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the CC1NE active bit takes the new value from the preloaded bit only when a Commutation event is generated.
-0x40012C20 C   FIELD 03w01 CC1NP (rw): Capture/compare 1 complementary output polarity CC1 channel configured as output: CC1 channel configured as input: This bit is used in conjunction with CC1P to define the polarity of tim_ti1fp1 and tim_ti2fp1. Refer to CC1P description. Note: This bit is not writable as soon as LOCK level 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register) and CC1S='00' (channel configured as output). Note: On channels having a complementary output, this bit is preloaded. If the CCPC bit is set in the TIMx_CR2 register then the CC1NP active bit takes the new value from the preloaded bit only when a Commutation event is generated.
-0x40012C20 C   FIELD 04w01 CC2E (rw): Capture/compare 2 output enable Refer to CC1E description
-0x40012C20 C   FIELD 05w01 CC2P (rw): Capture/compare 2 output polarity Refer to CC1P description
-0x40012C20 C   FIELD 06w01 CC2NE (rw): Capture/compare 2 complementary output enable Refer to CC1NE description
-0x40012C20 C   FIELD 07w01 CC2NP (rw): Capture/compare 2 complementary output polarity Refer to CC1NP description
-0x40012C20 C   FIELD 08w01 CC3E (rw): Capture/compare 3 output enable Refer to CC1E description
-0x40012C20 C   FIELD 09w01 CC3P (rw): Capture/compare 3 output polarity Refer to CC1P description
-0x40012C20 C   FIELD 10w01 CC3NE (rw): Capture/compare 3 complementary output enable Refer to CC1NE description
-0x40012C20 C   FIELD 11w01 CC3NP (rw): Capture/compare 3 complementary output polarity Refer to CC1NP description
-0x40012C20 C   FIELD 12w01 CC4E (rw): Capture/compare 4 output enable Refer to CC1E description
-0x40012C20 C   FIELD 13w01 CC4P (rw): Capture/compare 4 output polarity Refer to CC1P description
-0x40012C20 C   FIELD 14w01 CC4NE (rw): Capture/compare 4 complementary output enable Refer to CC1NE description
-0x40012C20 C   FIELD 15w01 CC4NP (rw): Capture/compare 4 complementary output polarity Refer to CC1NP description
-0x40012C20 C   FIELD 16w01 CC5E (rw): Capture/compare 5 output enable Refer to CC1E description
-0x40012C20 C   FIELD 17w01 CC5P (rw): Capture/compare 5 output polarity Refer to CC1P description
-0x40012C20 C   FIELD 20w01 CC6E (rw): Capture/compare 6 output enable Refer to CC1E description
-0x40012C20 C   FIELD 21w01 CC6P (rw): Capture/compare 6 output polarity Refer to CC1P description
+0x40012C20 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
+0x40012C20 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
+0x40012C20 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
+0x40012C20 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x40012C20 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
+0x40012C20 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
+0x40012C20 C   FIELD 06w01 CC2NE (rw): Capture/Compare 2 complementary output enable
+0x40012C20 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
+0x40012C20 C   FIELD 08w01 CC3E (rw): Capture/Compare 3 output enable
+0x40012C20 C   FIELD 09w01 CC3P (rw): Capture/Compare 3 output Polarity
+0x40012C20 C   FIELD 10w01 CC3NE (rw): Capture/Compare 3 complementary output enable
+0x40012C20 C   FIELD 11w01 CC3NP (rw): Capture/Compare 3 output Polarity
+0x40012C20 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable
+0x40012C20 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
+0x40012C20 C   FIELD 14w01 CC4NE (rw): Capture/Compare 4 complementary output enable
+0x40012C20 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
+0x40012C20 C   FIELD 16w01 CC5E (rw): Capture/Compare 5 output enable
+0x40012C20 C   FIELD 17w01 CC5P (rw): Capture/Compare 5 output Polarity
+0x40012C20 C   FIELD 20w01 CC6E (rw): Capture/Compare 6 output enable
+0x40012C20 C   FIELD 21w01 CC6P (rw): Capture/Compare 6 output Polarity
 0x40012C24 B  REGISTER CNT: TIM1 counter
 0x40012C24 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
 0x40012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0.
@@ -1930,14 +1930,14 @@
 0x40012C2C C   FIELD 00w20 ARR (rw): Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the Section 65.3.3: Time-base unit on page 4457 for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null. Non-dithering mode (DITHEN = 0) The register holds the auto-reload value. Dithering mode (DITHEN = 1) The register holds the integer part in ARR[19:4]. The ARR[3:0] bitfield contains the dithered part.
 0x40012C30 B  REGISTER RCR: TIM1 repetition counter register
 0x40012C30 C   FIELD 00w16 REP (rw): Repetition counter reload value This bitfield defines the update rate of the compare registers (i.e. periodic transfers from preload to active registers) when preload registers are enable. It also defines the update interrupt generation rate, if this interrupt is enable. When the repetition down-counter reaches zero, an update event is generated and it restarts counting from REP value. As the repetition counter is reloaded with REP value only at the repetition update event UEV, any write to the TIMx_RCR register is not taken in account until the next repetition update event. It means in PWM mode (REP+1) corresponds to: the number of PWM periods in edge-aligned mode the number of half PWM period in center-aligned mode.
-0x40012C34 B  REGISTER CCR1: TIM1 capture/compare register 1
-0x40012C34 C   FIELD 00w20 CCR1 (rw): Capture/compare 1 value If channel CC1 is configured as output: CCR1 is the value to be loaded in the actual capture/compare 1 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR1 register (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc1 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR1[15:0]. The CCR1[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR1[19:4]. The CCR1[3:0] bitfield contains the dithered part. If channel CC1 is configured as input: CR1 is the counter value transferred by the last input capture 1 event (tim_ic1). The TIMx_CCR1 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value in CCR1[15:0]. The CCR1[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the capture in CCR1[19:4]. The CCR1[3:0] bits are reset.
-0x40012C38 B  REGISTER CCR2: TIM1 capture/compare register 2
-0x40012C38 C   FIELD 00w20 CCR2 (rw): Capture/compare 2 value If channel CC2 is configured as output: CCR2 is the value to be loaded in the actual capture/compare 2 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR1 register (bit OC2PE). Else the preload value is copied in the active capture/compare 2 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc2 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR2[15:0]. The CCR2[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR2[19:4]. The CCR2[3:0] bitfield contains the dithered part. If channel CC2 is configured as input: CCR2 is the counter value transferred by the last input capture 2 event (tim_ic2). The TIMx_CCR2 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value in CCR2[15:0]. The CCR2[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the capture in CCR2[19:4]. The CCR2[3:0] bits are reset.
-0x40012C3C B  REGISTER CCR3: TIM1 capture/compare register 3
-0x40012C3C C   FIELD 00w20 CCR3 (rw): Capture/compare value If channel CC3 is configured as output: CCR3 is the value to be loaded in the actual capture/compare 3 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR2 register (bit OC3PE). Else the preload value is copied in the active capture/compare 3 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc3 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR3[15:0]. The CCR3[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR3[19:4]. The CCR3[3:0] bitfield contains the dithered part. If channel CC3 is configured as input: CCR3 is the counter value transferred by the last input capture 3 event (tim_ic3). The TIMx_CCR3 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value in CCR3[15:0]. The CCR3[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the capture in CCR3[19:4]. The CCR3[3:0] bits are reset.
-0x40012C40 B  REGISTER CCR4: TIM1 capture/compare register 4
-0x40012C40 C   FIELD 00w20 CCR4 (rw): Capture/compare value If channel CC4 is configured as output: CCR4 is the value to be loaded in the actual capture/compare 4 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR2 register (bit OC4PE). Else the preload value is copied in the active capture/compare 4 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signalled on tim_oc4 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR4[15:0]. The CCR4[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR4[19:4]. The CCR4[3:0] bitfield contains the dithered part. If channel CC4 is configured as input: CCR4 is the counter value transferred by the last input capture 4 event (tim_ic4). The TIMx_CCR4 register is read-only and cannot be programmed. Non-dithering mode (DITHEN = 0) The register holds the capture value in CCR4[15:0]. The CCR4[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the capture in CCR4[19:4]. The CCR4[3:0] bits are reset.
+0x40012C34 B  REGISTER CCR1: capture/compare register
+0x40012C34 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40012C38 B  REGISTER CCR2: capture/compare register
+0x40012C38 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40012C3C B  REGISTER CCR3: capture/compare register
+0x40012C3C C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40012C40 B  REGISTER CCR4: capture/compare register
+0x40012C40 C   FIELD 00w20 CCR (rw): Capture/Compare value
 0x40012C44 B  REGISTER BDTR: TIM1 break and dead-time register
 0x40012C44 C   FIELD 00w08 DTG (rw): Dead-time generator setup This bit-field defines the duration of the dead-time inserted between the complementary outputs. DT correspond to this duration. DTG[7:5]=0xx = DT=DTG[7:0]x t dtg with t dtg =t DTS . DTG[7:5]=10x = DT=(64+DTG[5:0])xt dtg with T dtg =2xt DTS . DTG[7:5]=110 = DT=(32+DTG[4:0])xt dtg with T dtg =8xt DTS . DTG[7:5]=111 = DT=(32+DTG[4:0])xt dtg with T dtg =16xt DTS . Example if T DTS =125ns (8MHz), dead-time possible values are: 0 to 15875 ns by 125 ns steps, 16 us to 31750 ns by 250 ns steps, 32 us to 63us by 1 us steps, 64 us to 126 us by 2 us steps Note: This bit-field can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40012C44 C   FIELD 08w02 LOCK (rw): Lock configuration These bits offer a write protection against software errors. Note: The LOCK bits can be written only once after the reset. Once the TIMx_BDTR register has been written, their content is frozen until the next reset.
@@ -1955,13 +1955,13 @@
 0x40012C44 C   FIELD 27w01 BK2DSRM (rw): Break2 disarm Refer to BKDSRM description
 0x40012C44 C   FIELD 28w01 BKBID (rw): Break bidirectional In the bidirectional mode (BKBID bit set to 1), the break input is configured both in input mode and in open drain output mode. Any active break event asserts a low logic level on the Break input to indicate an internal break event to external devices. Note: This bit cannot be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register). Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
 0x40012C44 C   FIELD 29w01 BK2BID (rw): Break2 bidirectional Refer to BKBID description
-0x40012C48 B  REGISTER CCR5: TIM1 capture/compare register 5
-0x40012C48 C   FIELD 00w20 CCR5 (rw): Capture/compare 5 value CCR5 is the value to be loaded in the actual capture/compare 5 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR3 register (bit OC5PE). Else the preload value is copied in the active capture/compare 5 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc5 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR5[15:0]. The CCR5[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR5[19:4]. The CCR5[3:0] bitfield contains the dithered part.
+0x40012C48 B  REGISTER CCR5: capture/compare register
+0x40012C48 C   FIELD 00w20 CCR (rw): Capture/Compare value
 0x40012C48 C   FIELD 29w01 GC5C1 (rw): Group channel 5 and channel 1 Distortion on channel 1 output: This bit can either have immediate effect or be preloaded and taken into account after an update event (if preload feature is selected in TIMxCCMR1). Note: it is also possible to apply this distortion on combined PWM signals.
 0x40012C48 C   FIELD 30w01 GC5C2 (rw): Group channel 5 and channel 2 Distortion on channel 2 output: This bit can either have immediate effect or be preloaded and taken into account after an update event (if preload feature is selected in TIMxCCMR1). Note: it is also possible to apply this distortion on combined PWM signals.
 0x40012C48 C   FIELD 31w01 GC5C3 (rw): Group channel 5 and channel 3 Distortion on channel 3 output: This bit can either have immediate effect or be preloaded and taken into account after an update event (if preload feature is selected in TIMxCCMR2). Note: it is also possible to apply this distortion on combined PWM signals.
-0x40012C4C B  REGISTER CCR6: TIM1 capture/compare register 6
-0x40012C4C C   FIELD 00w20 CCR6 (rw): Capture/compare 6 value CCR6 is the value to be loaded in the actual capture/compare 6 register (preload value). It is loaded permanently if the preload feature is not selected in the TIMx_CCMR3 register (bit OC6PE). Else the preload value is copied in the active capture/compare 6 register when an update event occurs. The active capture/compare register contains the value to be compared to the counter TIMx_CNT and signaled on tim_oc6 output. Non-dithering mode (DITHEN = 0) The register holds the compare value in CCR6[15:0]. The CCR6[19:16] bits are reset. Dithering mode (DITHEN = 1) The register holds the integer part in CCR6[19:4]. The CCR6[3:0] bitfield contains the dithered part.
+0x40012C4C B  REGISTER CCR6: capture/compare register
+0x40012C4C C   FIELD 00w20 CCR (rw): Capture/Compare value
 0x40012C50 B  REGISTER CCMR3: TIM1 capture/compare mode register 3
 0x40012C50 C   FIELD 02w01 OC5FE (rw): Output compare 5 fast enable
 0x40012C50 C   FIELD 03w01 OC5PE (rw): Output compare 5 preload enable
