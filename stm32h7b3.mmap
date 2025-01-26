@@ -11423,7 +11423,7 @@
 0x48020028 C   FIELD 16w08 Byte2: Data byte 2
 0x48020028 C   FIELD 24w08 Byte3: Data byte 3
 0x48020400 A PERIPHERAL PSSI
-0x48020400 B  REGISTER PSSI_CR: 
+0x48020400 B  REGISTER CR: 
 0x48020400 C   FIELD 05w01 CKPOL (rw): Parallel data clock polarity This bit configures the capture edge of the parallel clock or the edge used for driving outputs, depending on OUTEN.
 0x48020400 C   FIELD 06w01 DEPOL (rw): Data enable (PSSI_DE) polarity This bit indicates the level on the PSSI_DE pin when the data are not valid on the parallel interface.
 0x48020400 C   FIELD 08w01 RDYPOL (rw): Ready (PSSI_RDY) polarity This bit indicates the level on the PSSI_RDY pin when the data are not valid on the parallel interface.
@@ -11432,18 +11432,18 @@
 0x48020400 C   FIELD 18w03 DERDYCFG (rw): Data enable and ready configuration When the PSSI_RDY function is mapped to the PSSI_DE pin (settings 101 or 111), it is still the RDYPOL bit which determines its polarity. Similarly, when the PSSI_DE function is mapped to the PSSI_RDY pin (settings 110 or 111), it is still the DEPOL bit which determines its polarity.
 0x48020400 C   FIELD 30w01 DMAEN (rw): DMA enable bit
 0x48020400 C   FIELD 31w01 OUTEN (rw): Data direction selection bit
-0x48020404 B  REGISTER PSSI_SR: 
+0x48020404 B  REGISTER SR: 
 0x48020404 C   FIELD 02w01 RTT4B (ro): FIFO is ready to transfer four bytes
 0x48020404 C   FIELD 03w01 RTT1B (ro): FIFO is ready to transfer one byte
-0x48020408 B  REGISTER PSSI_RIS: PSSI raw interrupt status register
+0x48020408 B  REGISTER RIS: PSSI raw interrupt status register
 0x48020408 C   FIELD 01w01 OVR_RIS (ro): Data buffer overrun/underrun raw interrupt status This bit is cleared by writing a 1 to the OVR_ISC bit in PSSI_ICR.
-0x4802040C B  REGISTER PSSI_IER: 
+0x4802040C B  REGISTER IER: 
 0x4802040C C   FIELD 01w01 OVR_IE (rw): Data buffer overrun/underrun interrupt enable
-0x48020410 B  REGISTER PSSI_MIS: PSSI masked interrupt status register
+0x48020410 B  REGISTER MIS: PSSI masked interrupt status register
 0x48020410 C   FIELD 01w01 OVR_MIS (ro): Data buffer overrun/underrun masked interrupt status This bit is set to 1 only when PSSI_IER/OVR_IE and PSSI_RIS/OVR_RIS are both set to 1.
-0x48020414 B  REGISTER PSSI_ICR: PSSI interrupt clear register
+0x48020414 B  REGISTER ICR: PSSI interrupt clear register
 0x48020414 C   FIELD 01w01 OVR_ISC (wo): Data buffer overrun/underrun interrupt status clear Writing this bit to 1 clears the OVR_RIS bit in PSSI_RIS.
-0x48020428 B  REGISTER PSSI_DR: PSSI data register
+0x48020428 B  REGISTER DR: PSSI data register
 0x48020428 C   FIELD 00w08 BYTE0 (rw): Data byte 0
 0x48020428 C   FIELD 08w08 BYTE1 (rw): Data byte 1
 0x48020428 C   FIELD 16w08 BYTE2 (rw): Data byte 2
@@ -16402,7 +16402,7 @@
 0x58004060 B  REGISTER CFGR: RTC configuration register
 0x58004060 C   FIELD 00w01 OUT2_RMP (rw): RTC_OUT2 mapping
 0x58004400 A PERIPHERAL TAMP
-0x58004400 B  REGISTER TAMP_CR1: TAMP control register 1
+0x58004400 B  REGISTER CR1: TAMP control register 1
 0x58004400 C   FIELD 00w01 TAMP1E (rw): Tamper detection on TAMP_IN1 enable
 0x58004400 C   FIELD 01w01 TAMP2E (rw): Tamper detection on TAMP_IN2 enable
 0x58004400 C   FIELD 02w01 TAMP3E (rw): Tamper detection on TAMP_IN3 enable
@@ -16413,7 +16413,7 @@
 0x58004400 C   FIELD 20w01 ITAMP5E (rw): Internal tamper 5 enable: RTC calendar overflow
 0x58004400 C   FIELD 21w01 ITAMP6E (rw): Internal tamper 6 enable: ST manufacturer readout
 0x58004400 C   FIELD 23w01 ITAMP8E (rw): Internal tamper 8 enable: monotonic counter overflow
-0x58004404 B  REGISTER TAMP_CR2: TAMP control register 2
+0x58004404 B  REGISTER CR2: TAMP control register 2
 0x58004404 C   FIELD 00w01 TAMP1NOER (rw): Tamper 1 no erase
 0x58004404 C   FIELD 01w01 TAMP2NOER (rw): Tamper 2 no erase
 0x58004404 C   FIELD 02w01 TAMP3NOER (rw): Tamper 3 no erase
@@ -16423,12 +16423,12 @@
 0x58004404 C   FIELD 24w01 TAMP1TRG (rw): Active level for tamper 1 input (active mode disabled) If TAMPFLT = 00 Tamper 1 input rising edge and high level triggers a tamper detection event. If TAMPFLT = 00 Tamper 1 input falling edge and low level triggers a tamper detection event.
 0x58004404 C   FIELD 25w01 TAMP2TRG (rw): Active level for tamper 2 input (active mode disabled) If TAMPFLT = 00 Tamper 2 input rising edge and high level triggers a tamper detection event. If TAMPFLT = 00 Tamper 2 input falling edge and low level triggers a tamper detection event.
 0x58004404 C   FIELD 26w01 TAMP3TRG (rw): Active level for tamper 3 input (active mode disabled) If TAMPFLT = 00 Tamper 3 input rising edge and high level triggers a tamper detection event. If TAMPFLT = 00 Tamper 3 input falling edge and low level triggers a tamper detection event.
-0x5800440C B  REGISTER TAMP_FLTCR: TAMP filter control register
+0x5800440C B  REGISTER FLTCR: TAMP filter control register
 0x5800440C C   FIELD 00w03 TAMPFREQ (rw): Tamper sampling frequency Determines the frequency at which each of the TAMP_INx inputs are sampled.
 0x5800440C C   FIELD 03w02 TAMPFLT (rw): TAMP_INx filter count These bits determines the number of consecutive samples at the specified level (TAMP*TRG) needed to activate a tamper event. TAMPFLT is valid for each of the TAMP_INx inputs.
 0x5800440C C   FIELD 05w02 TAMPPRCH (rw): TAMP_INx precharge duration These bit determines the duration of time during which the pull-up/is activated before each sample. TAMPPRCH is valid for each of the TAMP_INx inputs.
 0x5800440C C   FIELD 07w01 TAMPPUDIS (rw): TAMP_INx pull-up disable This bit determines if each of the TAMPx pins are precharged before each sample.
-0x58004410 B  REGISTER TAMP_ATCR1: TAMP active tamper control register 1
+0x58004410 B  REGISTER ATCR1: TAMP active tamper control register 1
 0x58004410 C   FIELD 00w01 TAMP1AM (rw): Tamper 1 active mode
 0x58004410 C   FIELD 01w01 TAMP2AM (rw): Tamper 2 active mode
 0x58004410 C   FIELD 02w01 TAMP3AM (rw): Tamper 3 active mode
@@ -16439,13 +16439,13 @@
 0x58004410 C   FIELD 24w03 ATPER (rw): Active tamper output change period The tamper output is changed every CK_ATPER = (2ATPER x CK_ATPRE) cycles. Refer to .
 0x58004410 C   FIELD 30w01 ATOSHARE (rw): Active tamper output sharing
 0x58004410 C   FIELD 31w01 FLTEN (rw): Active tamper filter enable
-0x58004414 B  REGISTER TAMP_ATSEEDR: TAMP active tamper seed register
+0x58004414 B  REGISTER ATSEEDR: TAMP active tamper seed register
 0x58004414 C   FIELD 00w32 SEED (wo): Pseudo-random generator seed value This register must be written four times with 32-bit values to provide the 128-bit seed to the PRNG. Writing to this register automatically sends the seed value to the PRNG.
-0x58004418 B  REGISTER TAMP_ATOR: TAMP active tamper output register
+0x58004418 B  REGISTER ATOR: TAMP active tamper output register
 0x58004418 C   FIELD 00w08 PRNG (ro): Pseudo-random generator value This field provides the values of the PRNG output. Because of potential inconsistencies due to synchronization delays, PRNG must be read at least twice. The read value is correct if it is equal to previous read value.
 0x58004418 C   FIELD 14w01 SEEDF (ro): Seed running flag This flag is set by hardware when a new seed is written in the TAMP_ATSEEDR. It is cleared by hardware when the PRNG has absorbed this new seed, and by system reset. The TAMP APB cock must not be switched off as long as SEEDF is set.
 0x58004418 C   FIELD 15w01 INITS (ro): Active tamper initialization status This flag is set by hardware when the PRNG has absorbed the first 128-bit seed, meaning that the enabled active tampers are functional. This flag is left unchanged when the active tampers are disabled.
-0x5800442C B  REGISTER TAMP_IER: TAMP interrupt enable register
+0x5800442C B  REGISTER IER: TAMP interrupt enable register
 0x5800442C C   FIELD 00w01 TAMP1IE (rw): Tamper 1 interrupt enable
 0x5800442C C   FIELD 01w01 TAMP2IE (rw): Tamper 2 interrupt enable
 0x5800442C C   FIELD 02w01 TAMP3IE (rw): Tamper 3 interrupt enable
@@ -16456,7 +16456,7 @@
 0x5800442C C   FIELD 20w01 ITAMP5IE (rw): Internal tamper 5 interrupt enable: RTC calendar overflow
 0x5800442C C   FIELD 21w01 ITAMP6IE (rw): Internal tamper 6 interrupt enable: ST manufacturer readout
 0x5800442C C   FIELD 23w01 ITAMP8IE (rw): Internal tamper 8 interrupt enable: monotonic counter overflow
-0x58004430 B  REGISTER TAMP_SR: TAMP status register
+0x58004430 B  REGISTER SR: TAMP status register
 0x58004430 C   FIELD 00w01 TAMP1F (ro): TAMP1 detection flag This flag is set by hardware when a tamper detection event is detected on the TAMP1 input.
 0x58004430 C   FIELD 01w01 TAMP2F (ro): TAMP2 detection flag This flag is set by hardware when a tamper detection event is detected on the TAMP2 input.
 0x58004430 C   FIELD 02w01 TAMP3F (ro): TAMP3 detection flag This flag is set by hardware when a tamper detection event is detected on the TAMP3 input.
@@ -16467,7 +16467,7 @@
 0x58004430 C   FIELD 20w01 ITAMP5F (ro): RTC calendar overflow tamper detection flag This flag is set by hardware when a tamper detection event is detected on the internal tamper 5.
 0x58004430 C   FIELD 21w01 ITAMP6F (ro): ST manufacturer readout tamper detection flag This flag is set by hardware when a tamper detection event is detected on the internal tamper 6.
 0x58004430 C   FIELD 23w01 ITAMP8F (ro): Monotonic counter overflow tamper flag This flag is set by hardware when a tamper detection event is detected on the internal tamper 8.
-0x58004434 B  REGISTER TAMP_MISR: TAMP masked interrupt status register
+0x58004434 B  REGISTER MISR: TAMP masked interrupt status register
 0x58004434 C   FIELD 00w01 TAMP1MF (ro): TAMP1 interrupt masked flag This flag is set by hardware when the tamper 1 interrupt is raised.
 0x58004434 C   FIELD 01w01 TAMP2MF (ro): TAMP2 interrupt masked flag This flag is set by hardware when the tamper 2 interrupt is raised.
 0x58004434 C   FIELD 02w01 TAMP3MF (ro): TAMP3 interrupt masked flag This flag is set by hardware when the tamper 3 interrupt is raised.
@@ -16478,7 +16478,7 @@
 0x58004434 C   FIELD 20w01 ITAMP5MF (ro): RTC calendar overflow tamper interrupt masked flag This flag is set by hardware when the internal tamper 5 interrupt is raised.
 0x58004434 C   FIELD 21w01 ITAMP6MF (ro): ST manufacturer readout tamper interrupt masked flag This flag is set by hardware when the internal tamper 6 interrupt is raised.
 0x58004434 C   FIELD 23w01 ITAMP8MF (ro): Monotonic counter overflow interrupt masked flag This flag is set by hardware when the internal tamper 8 interrupt is raised.
-0x5800443C B  REGISTER TAMP_SCR: TAMP status clear register
+0x5800443C B  REGISTER SCR: TAMP status clear register
 0x5800443C C   FIELD 00w01 CTAMP1F (wo): Clear TAMP1 detection flag Writing 1 in this bit clears the TAMP1F bit in the TAMP_SR register.
 0x5800443C C   FIELD 01w01 CTAMP2F (wo): Clear TAMP2 detection flag Writing 1 in this bit clears the TAMP2F bit in the TAMP_SR register.
 0x5800443C C   FIELD 02w01 CTAMP3F (wo): Clear TAMP3 detection flag Writing 1 in this bit clears the TAMP3F bit in the TAMP_SR register.
@@ -16489,73 +16489,73 @@
 0x5800443C C   FIELD 20w01 CITAMP5F (wo): Clear ITAMP5 detection flag Writing 1 in this bit clears the ITAMP5F bit in the TAMP_SR register.
 0x5800443C C   FIELD 21w01 CITAMP6F (wo): Clear ITAMP6 detection flag Writing 1 in this bit clears the ITAMP6F bit in the TAMP_SR register.
 0x5800443C C   FIELD 23w01 CITAMP8F (wo): Clear ITAMP8 detection flag Writing 1 in this bit clears the ITAMP8F bit in the TAMP_SR register.
-0x58004440 B  REGISTER TAMP_COUNTR: TAMP monotonic counter register
+0x58004440 B  REGISTER COUNTR: TAMP monotonic counter register
 0x58004440 C   FIELD 00w32 COUNT (ro): This register is read-only only and is incremented by one when a write access is done to this register. This register cannot roll-over and is frozen when reaching the maximum value.
-0x58004450 B  REGISTER TAMP_CFGR: TAMP configuration register
+0x58004450 B  REGISTER CFGR: TAMP configuration register
 0x58004450 C   FIELD 00w01 OUT3_RMP (rw): TAMP_OUT3 mapping
-0x58004500 B  REGISTER TAMP_BKP0R: TAMP backup 0 register
+0x58004500 B  REGISTER BKP0R: TAMP backup 0 register
 0x58004500 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004504 B  REGISTER TAMP_BKP1R: TAMP backup 1 register
+0x58004504 B  REGISTER BKP1R: TAMP backup 1 register
 0x58004504 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004508 B  REGISTER TAMP_BKP2R: TAMP backup 2 register
+0x58004508 B  REGISTER BKP2R: TAMP backup 2 register
 0x58004508 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800450C B  REGISTER TAMP_BKP3R: TAMP backup 3 register
+0x5800450C B  REGISTER BKP3R: TAMP backup 3 register
 0x5800450C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004510 B  REGISTER TAMP_BKP4R: TAMP backup 4 register
+0x58004510 B  REGISTER BKP4R: TAMP backup 4 register
 0x58004510 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004514 B  REGISTER TAMP_BKP5R: TAMP backup 5 register
+0x58004514 B  REGISTER BKP5R: TAMP backup 5 register
 0x58004514 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004518 B  REGISTER TAMP_BKP6R: TAMP backup 6 register
+0x58004518 B  REGISTER BKP6R: TAMP backup 6 register
 0x58004518 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800451C B  REGISTER TAMP_BKP7R: TAMP backup 7 register
+0x5800451C B  REGISTER BKP7R: TAMP backup 7 register
 0x5800451C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004520 B  REGISTER TAMP_BKP8R: TAMP backup 8 register
+0x58004520 B  REGISTER BKP8R: TAMP backup 8 register
 0x58004520 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004524 B  REGISTER TAMP_BKP9R: TAMP backup 9 register
+0x58004524 B  REGISTER BKP9R: TAMP backup 9 register
 0x58004524 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004528 B  REGISTER TAMP_BKP10R: TAMP backup 10 register
+0x58004528 B  REGISTER BKP10R: TAMP backup 10 register
 0x58004528 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800452C B  REGISTER TAMP_BKP11R: TAMP backup 11 register
+0x5800452C B  REGISTER BKP11R: TAMP backup 11 register
 0x5800452C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004530 B  REGISTER TAMP_BKP12R: TAMP backup 12 register
+0x58004530 B  REGISTER BKP12R: TAMP backup 12 register
 0x58004530 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004534 B  REGISTER TAMP_BKP13R: TAMP backup 13 register
+0x58004534 B  REGISTER BKP13R: TAMP backup 13 register
 0x58004534 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004538 B  REGISTER TAMP_BKP14R: TAMP backup 14 register
+0x58004538 B  REGISTER BKP14R: TAMP backup 14 register
 0x58004538 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800453C B  REGISTER TAMP_BKP15R: TAMP backup 15 register
+0x5800453C B  REGISTER BKP15R: TAMP backup 15 register
 0x5800453C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004540 B  REGISTER TAMP_BKP16R: TAMP backup 16 register
+0x58004540 B  REGISTER BKP16R: TAMP backup 16 register
 0x58004540 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004544 B  REGISTER TAMP_BKP17R: TAMP backup 17 register
+0x58004544 B  REGISTER BKP17R: TAMP backup 17 register
 0x58004544 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004548 B  REGISTER TAMP_BKP18R: TAMP backup 18 register
+0x58004548 B  REGISTER BKP18R: TAMP backup 18 register
 0x58004548 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800454C B  REGISTER TAMP_BKP19R: TAMP backup 19 register
+0x5800454C B  REGISTER BKP19R: TAMP backup 19 register
 0x5800454C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004550 B  REGISTER TAMP_BKP20R: TAMP backup 20 register
+0x58004550 B  REGISTER BKP20R: TAMP backup 20 register
 0x58004550 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004554 B  REGISTER TAMP_BKP21R: TAMP backup 21 register
+0x58004554 B  REGISTER BKP21R: TAMP backup 21 register
 0x58004554 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004558 B  REGISTER TAMP_BKP22R: TAMP backup 22 register
+0x58004558 B  REGISTER BKP22R: TAMP backup 22 register
 0x58004558 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800455C B  REGISTER TAMP_BKP23R: TAMP backup 23 register
+0x5800455C B  REGISTER BKP23R: TAMP backup 23 register
 0x5800455C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004560 B  REGISTER TAMP_BKP24R: TAMP backup 24 register
+0x58004560 B  REGISTER BKP24R: TAMP backup 24 register
 0x58004560 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004564 B  REGISTER TAMP_BKP25R: TAMP backup 25 register
+0x58004564 B  REGISTER BKP25R: TAMP backup 25 register
 0x58004564 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004568 B  REGISTER TAMP_BKP26R: TAMP backup 26 register
+0x58004568 B  REGISTER BKP26R: TAMP backup 26 register
 0x58004568 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800456C B  REGISTER TAMP_BKP27R: TAMP backup 27 register
+0x5800456C B  REGISTER BKP27R: TAMP backup 27 register
 0x5800456C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004570 B  REGISTER TAMP_BKP28R: TAMP backup 28 register
+0x58004570 B  REGISTER BKP28R: TAMP backup 28 register
 0x58004570 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004574 B  REGISTER TAMP_BKP29R: TAMP backup 29 register
+0x58004574 B  REGISTER BKP29R: TAMP backup 29 register
 0x58004574 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x58004578 B  REGISTER TAMP_BKP30R: TAMP backup 30 register
+0x58004578 B  REGISTER BKP30R: TAMP backup 30 register
 0x58004578 C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
-0x5800457C B  REGISTER TAMP_BKP31R: TAMP backup 31 register
+0x5800457C B  REGISTER BKP31R: TAMP backup 31 register
 0x5800457C C   FIELD 00w32 BKP (rw): The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. In the default configuration this register is reset on a tamper detection event. It is forced to reset value as long as there is at least one internal or external tamper flag being set. This register is also reset when the readout protection (RDP) is disabled.
 0x58004800 A PERIPHERAL IWDG
 0x58004800 B  REGISTER KR (wo): Key register

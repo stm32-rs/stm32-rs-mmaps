@@ -12036,7 +12036,7 @@
 0x48020028 C   FIELD 16w08 Byte2: Data byte 2
 0x48020028 C   FIELD 24w08 Byte3: Data byte 3
 0x48020400 A PERIPHERAL PSSI
-0x48020400 B  REGISTER PSSI_CR: PSSI control register
+0x48020400 B  REGISTER CR: PSSI control register
 0x48020400 C   FIELD 05w01 CKPOL (rw): Parallel data clock polarity This bit configures the capture edge of the parallel clock or the edge used for driving outputs, depending on OUTEN.
 0x48020400 C   FIELD 06w01 DEPOL (rw): Data enable (PSSI_DE) polarity This bit indicates the level on the PSSI_DE pin when the data are not valid on the parallel interface.
 0x48020400 C   FIELD 08w01 RDYPOL (rw): Ready (PSSI_RDY) polarity This bit indicates the level on the PSSI_RDY pin when the data are not valid on the parallel interface.
@@ -12045,18 +12045,18 @@
 0x48020400 C   FIELD 18w03 DERDYCFG (rw): Data enable and ready configuration When the PSSI_RDY function is mapped to the PSSI_DE pin (settings 101 or 111), it is still the RDYPOL bit which determines its polarity. Similarly, when the PSSI_DE function is mapped to the PSSI_RDY pin (settings 110 or 111), it is still the DEPOL bit which determines its polarity.
 0x48020400 C   FIELD 30w01 DMAEN (rw): DMA enable bit
 0x48020400 C   FIELD 31w01 OUTEN (rw): Data direction selection bit
-0x48020404 B  REGISTER PSSI_SR: PSSI status register
+0x48020404 B  REGISTER SR: PSSI status register
 0x48020404 C   FIELD 02w01 RTT4B (ro): FIFO is ready to transfer four bytes
 0x48020404 C   FIELD 03w01 RTT1B (ro): FIFO is ready to transfer one byte
-0x48020408 B  REGISTER PSSI_RIS: PSSI raw interrupt status register
+0x48020408 B  REGISTER RIS: PSSI raw interrupt status register
 0x48020408 C   FIELD 01w01 OVR_RIS (ro): Data buffer overrun/underrun raw interrupt status This bit is cleared by writing a 1 to the OVR_ISC bit in PSSI_ICR.
-0x4802040C B  REGISTER PSSI_IER: PSSI interrupt enable register
+0x4802040C B  REGISTER IER: PSSI interrupt enable register
 0x4802040C C   FIELD 01w01 OVR_IE (rw): Data buffer overrun/underrun interrupt enable
-0x48020410 B  REGISTER PSSI_MIS: PSSI masked interrupt status register
+0x48020410 B  REGISTER MIS: PSSI masked interrupt status register
 0x48020410 C   FIELD 01w01 OVR_MIS (ro): Data buffer overrun/underrun masked interrupt status This bit is set to 1 only when PSSI_IER/OVR_IE and PSSI_RIS/OVR_RIS are both set to 1.
-0x48020414 B  REGISTER PSSI_ICR: PSSI interrupt clear register
+0x48020414 B  REGISTER ICR: PSSI interrupt clear register
 0x48020414 C   FIELD 01w01 OVR_ISC (wo): Data buffer overrun/underrun interrupt status clear Writing this bit to 1 clears the OVR_RIS bit in PSSI_RIS.
-0x48020428 B  REGISTER PSSI_DR: PSSI data register
+0x48020428 B  REGISTER DR: PSSI data register
 0x48020428 C   FIELD 00w08 BYTE0 (rw): Data byte 0
 0x48020428 C   FIELD 08w08 BYTE1 (rw): Data byte 1
 0x48020428 C   FIELD 16w08 BYTE2 (rw): Data byte 2
@@ -12329,24 +12329,24 @@
 0x480230B4 B  REGISTER M5FECR (ro): RAMECC monitor x failing ECC error code register
 0x480230B4 C   FIELD 00w32 FEC: Failing error code
 0x48024000 A PERIPHERAL FMAC
-0x48024000 B  REGISTER FMAC_X1BUFCFG: FMAC X1 buffer configuration register
+0x48024000 B  REGISTER X1BUFCFG: FMAC X1 buffer configuration register
 0x48024000 C   FIELD 00w08 X1_BASE (rw): Base address of X1 buffer
 0x48024000 C   FIELD 08w08 X1_BUF_SIZE (rw): Allocated size of X1 buffer in 16-bit words The minimum buffer size is the number of feed-forward taps in the filter (+ the watermark threshold - 1).
 0x48024000 C   FIELD 24w02 FULL_WM (rw): Watermark for buffer full flag Defines the threshold for setting the X1 buffer full flag when operating in circular mode. The flag is set if the number of free spaces in the buffer is less than 2FULL_WM. 2: Threshold = 4 3: Threshold = 8 Setting a threshold greater than 1 allows several data to be transferred into the buffer under one interrupt. Threshold should be set to 1 if DMA write requests are enabled (DMAWEN = 1 in FMAC_CR register).
-0x48024004 B  REGISTER FMAC_X2BUFCFG: FMAC X2 buffer configuration register
+0x48024004 B  REGISTER X2BUFCFG: FMAC X2 buffer configuration register
 0x48024004 C   FIELD 00w08 X2_BASE (rw): Base address of X2 buffer The X2 buffer base address can be modified while START=1, for example to change coefficient values. The filter should be stalled when doing this, since changing the coefficients while a calculation is ongoing affects the result.
 0x48024004 C   FIELD 08w08 X2_BUF_SIZE (rw): Size of X2 buffer in 16-bit words This bitfield can not be modified when a function is ongoing (START = 1).
-0x48024008 B  REGISTER FMAC_YBUFCFG: FMAC Y buffer configuration register
+0x48024008 B  REGISTER YBUFCFG: FMAC Y buffer configuration register
 0x48024008 C   FIELD 00w08 Y_BASE (rw): Base address of Y buffer
 0x48024008 C   FIELD 08w08 Y_BUF_SIZE (rw): Size of Y buffer in 16-bit words For FIR filters, the minimum buffer size is 1 (+ the watermark threshold). For IIR filters the minimum buffer size is the number of feedback taps (+ the watermark threshold).
 0x48024008 C   FIELD 24w02 EMPTY_WM (rw): Watermark for buffer empty flag Defines the threshold for setting the Y buffer empty flag when operating in circular mode. The flag is set if the number of unread values in the buffer is less than 2EMPTY_WM. 2: Threshold = 4 3: Threshold = 8 Setting a threshold greater than 1 allows several data to be transferred from the buffer under one interrupt. Threshold should be set to 1 if DMA read requests are enabled (DMAREN = 1 in FMAC_CR register).
-0x4802400C B  REGISTER FMAC_PARAM: FMAC parameter register
+0x4802400C B  REGISTER PARAM: FMAC parameter register
 0x4802400C C   FIELD 00w08 P (rw): Input parameter P. The value of this parameter is dependent on the function This bitfield can not be modified when a function is ongoing (START = 1)
 0x4802400C C   FIELD 08w08 Q (rw): Input parameter Q. The value of this parameter is dependent on the function. This bitfield can not be modified when a function is ongoing (START = 1)
 0x4802400C C   FIELD 16w08 R (rw): Input parameter R. The value of this parameter is dependent on the function. This bitfield can not be modified when a function is ongoing (START = 1)
 0x4802400C C   FIELD 24w07 FUNC (rw): Function 2: Load X2 buffer 3: Load Y buffer 4 to 7: Reserved 8: Convolution (FIR filter) 9: IIR filter (direct form 1) This bitfield can not be modified when a function is ongoing (START = 1)
 0x4802400C C   FIELD 31w01 START (rw): Enable execution Setting this bit triggers the execution of the function selected in the FUNC bitfield. Resetting it by software stops any ongoing function. For initialization functions, this bit is reset by hardware.
-0x48024010 B  REGISTER FMAC_CR: FMAC control register
+0x48024010 B  REGISTER CR: FMAC control register
 0x48024010 C   FIELD 00w01 RIEN (rw): Enable read interrupt This bit is set and cleared by software. A read returns the current state of the bit.
 0x48024010 C   FIELD 01w01 WIEN (rw): Enable write interrupt This bit is set and cleared by software. A read returns the current state of the bit.
 0x48024010 C   FIELD 02w01 OVFLIEN (rw): Enable overflow error interrupts This bit is set and cleared by software. A read returns the current state of the bit.
@@ -12356,15 +12356,15 @@
 0x48024010 C   FIELD 09w01 DMAWEN (rw): Enable DMA write channel requests This bit can only be modified when START= 0 in the FMAC_PARAM register. A read returns the current state of the bit.
 0x48024010 C   FIELD 15w01 CLIPEN (rw): Enable clipping
 0x48024010 C   FIELD 16w01 RESET (rw): Reset FMAC unit This resets the write and read pointers, the internal control logic, the FMAC_SR register and the FMAC_PARAM register, including the START bit if active. Other register settings are not affected. This bit is reset by hardware.
-0x48024014 B  REGISTER FMAC_SR: FMAC status register
+0x48024014 B  REGISTER SR: FMAC status register
 0x48024014 C   FIELD 00w01 YEMPTY (ro): Y buffer empty flag The buffer is flagged as empty if the number of unread data is less than the EMPTY_WM threshold. The number of unread data is the difference between the read pointer and the current output destination address. This flag is set and cleared by hardware, or by a reset. Note: after the last sample is read from the Y buffer there is a delay of 3 clock cycles before the YEMPTY flag goes high. To avoid any risk of underflow it is recommended to insert a software delay after reading from the Y buffer before reading the FMAC_SR. Alternatively, an EMPTY_WM threshold of 2 can be used.
 0x48024014 C   FIELD 01w01 X1FULL (ro): X1 buffer full flag The buffer is flagged as full if the number of available spaces is less than the FULL_WM threshold. The number of available spaces is the difference between the write pointer and the least recent sample currently in use. This flag is set and cleared by hardware, or by a reset. Note: after the last available space in the X1 buffer is filled there is a delay of 3 clock cycles before the X1FULL flag goes high. To avoid any risk of overflow it is recommended to insert a software delay after writing to the X1 buffer before reading the FMAC_SR. Alternatively, a FULL_WM threshold of 2 can be used.
 0x48024014 C   FIELD 08w01 OVFL (ro): Overflow error flag An overflow occurs when a write is made to FMAC_WDATA when no free space is available in the X1 buffer. This flag is cleared by a reset of the unit.
 0x48024014 C   FIELD 09w01 UNFL (ro): Underflow error flag An underflow occurs when a read is made from FMAC_RDATA when no valid data is available in the Y buffer. This flag is cleared by a reset of the unit.
 0x48024014 C   FIELD 10w01 SAT (ro): Saturation error flag Saturation occurs when the result of an accumulation exceeds the numeric range of the accumulator. This flag is cleared by a reset of the unit.
-0x48024018 B  REGISTER FMAC_WDATA: FMAC write data register
+0x48024018 B  REGISTER WDATA: FMAC write data register
 0x48024018 C   FIELD 00w16 WDATA (wo): Write data When a write access to this register occurs, the write data are transferred to the address offset indicated by the write pointer. The pointer address is automatically incremented after each write access.
-0x4802401C B  REGISTER FMAC_RDATA: FMAC read data register
+0x4802401C B  REGISTER RDATA: FMAC read data register
 0x4802401C C   FIELD 00w16 RDATA (ro): Read data When a read access to this register occurs, the read data are the contents of the Y output buffer at the address offset indicated by the READ pointer. The pointer address is automatically incremented after each read access.
 0x48024400 A PERIPHERAL CORDIC
 0x48024400 B  REGISTER CSR: CORDIC control/status register
@@ -18746,514 +18746,264 @@
 0x58024C14 B  REGISTER POL (rw): CRC polynomial
 0x58024C14 C   FIELD 00w32 POL: Programmable polynomial
 0x58025400 A PERIPHERAL BDMA
-0x58025400 B  REGISTER BDMA_ISR: BDMA interrupt status register
-0x58025400 B  REGISTER ISR (ro): Interrupt status register
-0x58025400 C   FIELD 00w01 GIF0 (ro): global interrupt flag for channel 0
-0x58025400 C   FIELD 00w01 GIF0: Channel 0 Global interrupt flag
-0x58025400 C   FIELD 01w01 TCIF0 (ro): transfer complete (TC) flag for channel 0
-0x58025400 C   FIELD 01w01 TCIF0: Channel 0 Transfer Complete flag
-0x58025400 C   FIELD 02w01 HTIF0 (ro): half transfer (HT) flag for channel 0
-0x58025400 C   FIELD 02w01 HTIF0: Channel 0 Half Transfer Complete flag
-0x58025400 C   FIELD 03w01 TEIF0 (ro): transfer error (TE) flag for channel 0
-0x58025400 C   FIELD 03w01 TEIF0: Channel 0 Transfer Error flag
-0x58025400 C   FIELD 04w01 GIF1 (ro): global interrupt flag for channel 1
-0x58025400 C   FIELD 04w01 GIF1: Channel 1 Global interrupt flag
-0x58025400 C   FIELD 05w01 TCIF1 (ro): transfer complete (TC) flag for channel 1
-0x58025400 C   FIELD 05w01 TCIF1: Channel 1 Transfer Complete flag
-0x58025400 C   FIELD 06w01 HTIF1 (ro): half transfer (HT) flag for channel 1
-0x58025400 C   FIELD 06w01 HTIF1: Channel 1 Half Transfer Complete flag
-0x58025400 C   FIELD 07w01 TEIF1 (ro): transfer error (TE) flag for channel 1
-0x58025400 C   FIELD 07w01 TEIF1: Channel 1 Transfer Error flag
-0x58025400 C   FIELD 08w01 GIF2 (ro): global interrupt flag for channel 2
-0x58025400 C   FIELD 08w01 GIF2: Channel 2 Global interrupt flag
-0x58025400 C   FIELD 09w01 TCIF2 (ro): transfer complete (TC) flag for channel 2
-0x58025400 C   FIELD 09w01 TCIF2: Channel 2 Transfer Complete flag
-0x58025400 C   FIELD 10w01 HTIF2 (ro): half transfer (HT) flag for channel 2
-0x58025400 C   FIELD 10w01 HTIF2: Channel 2 Half Transfer Complete flag
-0x58025400 C   FIELD 11w01 TEIF2 (ro): transfer error (TE) flag for channel 2
-0x58025400 C   FIELD 11w01 TEIF2: Channel 2 Transfer Error flag
-0x58025400 C   FIELD 12w01 GIF3 (ro): global interrupt flag for channel 3
-0x58025400 C   FIELD 12w01 GIF3: Channel 3 Global interrupt flag
-0x58025400 C   FIELD 13w01 TCIF3 (ro): transfer complete (TC) flag for channel 3
-0x58025400 C   FIELD 13w01 TCIF3: Channel 3 Transfer Complete flag
-0x58025400 C   FIELD 14w01 HTIF3 (ro): half transfer (HT) flag for channel 3
-0x58025400 C   FIELD 14w01 HTIF3: Channel 3 Half Transfer Complete flag
-0x58025400 C   FIELD 15w01 TEIF3 (ro): transfer error (TE) flag for channel 3
-0x58025400 C   FIELD 15w01 TEIF3: Channel 3 Transfer Error flag
-0x58025400 C   FIELD 16w01 GIF4 (ro): global interrupt flag for channel 4
-0x58025400 C   FIELD 16w01 GIF4: Channel 4 Global interrupt flag
-0x58025400 C   FIELD 17w01 TCIF4 (ro): transfer complete (TC) flag for channel 4
-0x58025400 C   FIELD 17w01 TCIF4: Channel 4 Transfer Complete flag
-0x58025400 C   FIELD 18w01 HTIF4 (ro): half transfer (HT) flag for channel 4
-0x58025400 C   FIELD 18w01 HTIF4: Channel 4 Half Transfer Complete flag
-0x58025400 C   FIELD 19w01 TEIF4 (ro): transfer error (TE) flag for channel 4
-0x58025400 C   FIELD 19w01 TEIF4: Channel 4 Transfer Error flag
-0x58025400 C   FIELD 20w01 GIF5 (ro): global interrupt flag for channel 5
-0x58025400 C   FIELD 20w01 GIF5: Channel 5 Global interrupt flag
-0x58025400 C   FIELD 21w01 TCIF5 (ro): transfer complete (TC) flag for channel 5
-0x58025400 C   FIELD 21w01 TCIF5: Channel 5 Transfer Complete flag
-0x58025400 C   FIELD 22w01 HTIF5 (ro): half transfer (HT) flag for channel 5
-0x58025400 C   FIELD 22w01 HTIF5: Channel 5 Half Transfer Complete flag
-0x58025400 C   FIELD 23w01 TEIF5 (ro): transfer error (TE) flag for channel 5
-0x58025400 C   FIELD 23w01 TEIF5: Channel 5 Transfer Error flag
-0x58025400 C   FIELD 24w01 GIF6 (ro): global interrupt flag for channel 6
-0x58025400 C   FIELD 24w01 GIF6: Channel 6 Global interrupt flag
-0x58025400 C   FIELD 25w01 TCIF6 (ro): transfer complete (TC) flag for channel 6
-0x58025400 C   FIELD 25w01 TCIF6: Channel 6 Transfer Complete flag
-0x58025400 C   FIELD 26w01 HTIF6 (ro): half transfer (HT) flag for channel 6
-0x58025400 C   FIELD 26w01 HTIF6: Channel 6 Half Transfer Complete flag
-0x58025400 C   FIELD 27w01 TEIF6 (ro): transfer error (TE) flag for channel 6
-0x58025400 C   FIELD 27w01 TEIF6: Channel 6 Transfer Error flag
-0x58025400 C   FIELD 28w01 GIF7 (ro): global interrupt flag for channel 7
-0x58025400 C   FIELD 28w01 GIF7: Channel 7 Global interrupt flag
-0x58025400 C   FIELD 29w01 TCIF7 (ro): transfer complete (TC) flag for channel 7
-0x58025400 C   FIELD 29w01 TCIF7: Channel 7 Transfer Complete flag
-0x58025400 C   FIELD 30w01 HTIF7 (ro): half transfer (HT) flag for channel 7
-0x58025400 C   FIELD 30w01 HTIF7: Channel 7 Half Transfer Complete flag
-0x58025400 C   FIELD 31w01 TEIF7 (ro): transfer error (TE) flag for channel 7
-0x58025400 C   FIELD 31w01 TEIF7: Channel 7 Transfer Error flag
-0x58025404 B  REGISTER BDMA_IFCR: BDMA interrupt flag clear register
-0x58025404 B  REGISTER IFCR (wo): Interrupt flag clear register
-0x58025404 C   FIELD 00w01 CGIF0 (wo): global interrupt flag clear for channel 0
-0x58025404 C   FIELD 00w01 CGIF0: Channel 0 Global interrupt clear
-0x58025404 C   FIELD 01w01 CTCIF0 (wo): transfer complete flag clear for channel 0
-0x58025404 C   FIELD 01w01 CTCIF0: Channel 0 Transfer Complete clear
-0x58025404 C   FIELD 02w01 CHTIF0 (wo): half transfer flag clear for channel 0
-0x58025404 C   FIELD 02w01 CHTIF0: Channel 0 Half Transfer clear
-0x58025404 C   FIELD 03w01 CTEIF0 (wo): transfer error flag clear for channel 0
-0x58025404 C   FIELD 03w01 CTEIF0: Channel 0 Transfer Error clear
-0x58025404 C   FIELD 04w01 CGIF1 (wo): global interrupt flag clear for channel 0
-0x58025404 C   FIELD 04w01 CGIF1: Channel 1 Global interrupt clear
-0x58025404 C   FIELD 05w01 CTCIF1 (wo): transfer complete flag clear for channel 1
-0x58025404 C   FIELD 05w01 CTCIF1: Channel 1 Transfer Complete clear
-0x58025404 C   FIELD 06w01 CHTIF1 (wo): half transfer flag clear for channel 1
-0x58025404 C   FIELD 06w01 CHTIF1: Channel 1 Half Transfer clear
-0x58025404 C   FIELD 07w01 CTEIF1 (wo): transfer error flag clear for channel 1
-0x58025404 C   FIELD 07w01 CTEIF1: Channel 1 Transfer Error clear
-0x58025404 C   FIELD 08w01 CGIF2 (wo): global interrupt flag clear for channel 2
-0x58025404 C   FIELD 08w01 CGIF2: Channel 2 Global interrupt clear
-0x58025404 C   FIELD 09w01 CTCIF2 (wo): transfer complete flag clear for channel 2
-0x58025404 C   FIELD 09w01 CTCIF2: Channel 2 Transfer Complete clear
-0x58025404 C   FIELD 10w01 CHTIF2 (wo): half transfer flag clear for channe2
-0x58025404 C   FIELD 10w01 CHTIF2: Channel 2 Half Transfer clear
-0x58025404 C   FIELD 11w01 CTEIF2 (wo): transfer error flag clear for channel 2
-0x58025404 C   FIELD 11w01 CTEIF2: Channel 2 Transfer Error clear
-0x58025404 C   FIELD 12w01 CGIF3 (wo): global interrupt flag clear for channel 3
-0x58025404 C   FIELD 12w01 CGIF3: Channel 3 Global interrupt clear
-0x58025404 C   FIELD 13w01 CTCIF3 (wo): transfer complete flag clear for channel 3
-0x58025404 C   FIELD 13w01 CTCIF3: Channel 3 Transfer Complete clear
-0x58025404 C   FIELD 14w01 CHTIF3 (wo): half transfer flag clear for channel 3
-0x58025404 C   FIELD 14w01 CHTIF3: Channel 3 Half Transfer clear
-0x58025404 C   FIELD 15w01 CTEIF3 (wo): transfer error flag clear for channel 3
-0x58025404 C   FIELD 15w01 CTEIF3: Channel 3 Transfer Error clear
-0x58025404 C   FIELD 16w01 CGIF4 (wo): global interrupt flag clear for channel 4
-0x58025404 C   FIELD 16w01 CGIF4: Channel 4 Global interrupt clear
-0x58025404 C   FIELD 17w01 CTCIF4 (wo): transfer complete flag clear for channel 4
-0x58025404 C   FIELD 17w01 CTCIF4: Channel 4 Transfer Complete clear
-0x58025404 C   FIELD 18w01 CHTIF4 (wo): half transfer flag clear for channel 4
-0x58025404 C   FIELD 18w01 CHTIF4: Channel 4 Half Transfer clear
-0x58025404 C   FIELD 19w01 CTEIF4 (wo): transfer error flag clear for channel 4
-0x58025404 C   FIELD 19w01 CTEIF4: Channel 4 Transfer Error clear
-0x58025404 C   FIELD 20w01 CGIF5 (wo): global interrupt flag clear for channel 5
-0x58025404 C   FIELD 20w01 CGIF5: Channel 5 Global interrupt clear
-0x58025404 C   FIELD 21w01 CTCIF5 (wo): transfer complete flag clear for channel 5
-0x58025404 C   FIELD 21w01 CTCIF5: Channel 5 Transfer Complete clear
-0x58025404 C   FIELD 22w01 CHTIF5 (wo): half transfer flag clear for channel 5
-0x58025404 C   FIELD 22w01 CHTIF5: Channel 5 Half Transfer clear
-0x58025404 C   FIELD 23w01 CTEIF5 (wo): transfer error flag clear for channel 5
-0x58025404 C   FIELD 23w01 CTEIF5: Channel 5 Transfer Error clear
-0x58025404 C   FIELD 24w01 CGIF6 (wo): global interrupt flag clear for channel 6
-0x58025404 C   FIELD 24w01 CGIF6: Channel 6 Global interrupt clear
-0x58025404 C   FIELD 25w01 CTCIF6 (wo): transfer complete flag clear for channel 6
-0x58025404 C   FIELD 25w01 CTCIF6: Channel 6 Transfer Complete clear
-0x58025404 C   FIELD 26w01 CHTIF6 (wo): half transfer flag clear for channel 6
-0x58025404 C   FIELD 26w01 CHTIF6: Channel 6 Half Transfer clear
-0x58025404 C   FIELD 27w01 CTEIF6 (wo): transfer error flag clear for channel 6
-0x58025404 C   FIELD 27w01 CTEIF6: Channel 6 Transfer Error clear
-0x58025404 C   FIELD 28w01 CGIF7 (wo): global interrupt flag clear for channel 7
-0x58025404 C   FIELD 28w01 CGIF7: Channel 7 Global interrupt clear
-0x58025404 C   FIELD 29w01 CTCIF7 (wo): transfer complete flag clear for channel 7
-0x58025404 C   FIELD 29w01 CTCIF7: Channel 7 Transfer Complete clear
-0x58025404 C   FIELD 30w01 CHTIF7 (wo): half transfer flag clear for channel 7
-0x58025404 C   FIELD 30w01 CHTIF7: Channel 7 Half Transfer clear
-0x58025404 C   FIELD 31w01 CTEIF7 (wo): transfer error flag clear for channel 7
-0x58025404 C   FIELD 31w01 CTEIF7: Channel 7 Transfer Error clear
+0x58025400 B  REGISTER ISR: BDMA interrupt status register
+0x58025400 C   FIELD 00w01 GIF0 (ro): Channel 0 Global interrupt flag
+0x58025400 C   FIELD 01w01 TCIF0 (ro): Channel 0 Transfer Complete flag
+0x58025400 C   FIELD 02w01 HTIF0 (ro): Channel 0 Half Transfer Complete flag
+0x58025400 C   FIELD 03w01 TEIF0 (ro): Channel 0 Transfer Error flag
+0x58025400 C   FIELD 04w01 GIF1 (ro): Channel 1 Global interrupt flag
+0x58025400 C   FIELD 05w01 TCIF1 (ro): Channel 1 Transfer Complete flag
+0x58025400 C   FIELD 06w01 HTIF1 (ro): Channel 1 Half Transfer Complete flag
+0x58025400 C   FIELD 07w01 TEIF1 (ro): Channel 1 Transfer Error flag
+0x58025400 C   FIELD 08w01 GIF2 (ro): Channel 2 Global interrupt flag
+0x58025400 C   FIELD 09w01 TCIF2 (ro): Channel 2 Transfer Complete flag
+0x58025400 C   FIELD 10w01 HTIF2 (ro): Channel 2 Half Transfer Complete flag
+0x58025400 C   FIELD 11w01 TEIF2 (ro): Channel 2 Transfer Error flag
+0x58025400 C   FIELD 12w01 GIF3 (ro): Channel 3 Global interrupt flag
+0x58025400 C   FIELD 13w01 TCIF3 (ro): Channel 3 Transfer Complete flag
+0x58025400 C   FIELD 14w01 HTIF3 (ro): Channel 3 Half Transfer Complete flag
+0x58025400 C   FIELD 15w01 TEIF3 (ro): Channel 3 Transfer Error flag
+0x58025400 C   FIELD 16w01 GIF4 (ro): Channel 4 Global interrupt flag
+0x58025400 C   FIELD 17w01 TCIF4 (ro): Channel 4 Transfer Complete flag
+0x58025400 C   FIELD 18w01 HTIF4 (ro): Channel 4 Half Transfer Complete flag
+0x58025400 C   FIELD 19w01 TEIF4 (ro): Channel 4 Transfer Error flag
+0x58025400 C   FIELD 20w01 GIF5 (ro): Channel 5 Global interrupt flag
+0x58025400 C   FIELD 21w01 TCIF5 (ro): Channel 5 Transfer Complete flag
+0x58025400 C   FIELD 22w01 HTIF5 (ro): Channel 5 Half Transfer Complete flag
+0x58025400 C   FIELD 23w01 TEIF5 (ro): Channel 5 Transfer Error flag
+0x58025400 C   FIELD 24w01 GIF6 (ro): Channel 6 Global interrupt flag
+0x58025400 C   FIELD 25w01 TCIF6 (ro): Channel 6 Transfer Complete flag
+0x58025400 C   FIELD 26w01 HTIF6 (ro): Channel 6 Half Transfer Complete flag
+0x58025400 C   FIELD 27w01 TEIF6 (ro): Channel 6 Transfer Error flag
+0x58025400 C   FIELD 28w01 GIF7 (ro): Channel 7 Global interrupt flag
+0x58025400 C   FIELD 29w01 TCIF7 (ro): Channel 7 Transfer Complete flag
+0x58025400 C   FIELD 30w01 HTIF7 (ro): Channel 7 Half Transfer Complete flag
+0x58025400 C   FIELD 31w01 TEIF7 (ro): Channel 7 Transfer Error flag
+0x58025404 B  REGISTER IFCR: BDMA interrupt flag clear register
+0x58025404 C   FIELD 00w01 CGIF0 (wo): Channel 0 Global interrupt clear
+0x58025404 C   FIELD 01w01 CTCIF0 (wo): Channel 0 Transfer Complete clear
+0x58025404 C   FIELD 02w01 CHTIF0 (wo): Channel 0 Half Transfer clear
+0x58025404 C   FIELD 03w01 CTEIF0 (wo): Channel 0 Transfer Error clear
+0x58025404 C   FIELD 04w01 CGIF1 (wo): Channel 1 Global interrupt clear
+0x58025404 C   FIELD 05w01 CTCIF1 (wo): Channel 1 Transfer Complete clear
+0x58025404 C   FIELD 06w01 CHTIF1 (wo): Channel 1 Half Transfer clear
+0x58025404 C   FIELD 07w01 CTEIF1 (wo): Channel 1 Transfer Error clear
+0x58025404 C   FIELD 08w01 CGIF2 (wo): Channel 2 Global interrupt clear
+0x58025404 C   FIELD 09w01 CTCIF2 (wo): Channel 2 Transfer Complete clear
+0x58025404 C   FIELD 10w01 CHTIF2 (wo): Channel 2 Half Transfer clear
+0x58025404 C   FIELD 11w01 CTEIF2 (wo): Channel 2 Transfer Error clear
+0x58025404 C   FIELD 12w01 CGIF3 (wo): Channel 3 Global interrupt clear
+0x58025404 C   FIELD 13w01 CTCIF3 (wo): Channel 3 Transfer Complete clear
+0x58025404 C   FIELD 14w01 CHTIF3 (wo): Channel 3 Half Transfer clear
+0x58025404 C   FIELD 15w01 CTEIF3 (wo): Channel 3 Transfer Error clear
+0x58025404 C   FIELD 16w01 CGIF4 (wo): Channel 4 Global interrupt clear
+0x58025404 C   FIELD 17w01 CTCIF4 (wo): Channel 4 Transfer Complete clear
+0x58025404 C   FIELD 18w01 CHTIF4 (wo): Channel 4 Half Transfer clear
+0x58025404 C   FIELD 19w01 CTEIF4 (wo): Channel 4 Transfer Error clear
+0x58025404 C   FIELD 20w01 CGIF5 (wo): Channel 5 Global interrupt clear
+0x58025404 C   FIELD 21w01 CTCIF5 (wo): Channel 5 Transfer Complete clear
+0x58025404 C   FIELD 22w01 CHTIF5 (wo): Channel 5 Half Transfer clear
+0x58025404 C   FIELD 23w01 CTEIF5 (wo): Channel 5 Transfer Error clear
+0x58025404 C   FIELD 24w01 CGIF6 (wo): Channel 6 Global interrupt clear
+0x58025404 C   FIELD 25w01 CTCIF6 (wo): Channel 6 Transfer Complete clear
+0x58025404 C   FIELD 26w01 CHTIF6 (wo): Channel 6 Half Transfer clear
+0x58025404 C   FIELD 27w01 CTEIF6 (wo): Channel 6 Transfer Error clear
+0x58025404 C   FIELD 28w01 CGIF7 (wo): Channel 7 Global interrupt clear
+0x58025404 C   FIELD 29w01 CTCIF7 (wo): Channel 7 Transfer Complete clear
+0x58025404 C   FIELD 30w01 CHTIF7 (wo): Channel 7 Half Transfer clear
+0x58025404 C   FIELD 31w01 CTEIF7 (wo): Channel 7 Transfer Error clear
 0x58025408 B  CLUSTER CH0: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x58025408 B  REGISTER BDMA_CCR0: BDMA channel 0 configuration register
-0x58025408 B  REGISTER CR0 (rw): Channel x configuration register
+0x58025408 B  REGISTER CR0: BDMA channel 0 configuration register
 0x58025408 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x58025408 C   FIELD 01w01 EN: Channel enable
 0x58025408 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x58025408 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x58025408 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x58025408 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 04w01 DIR: Data transfer direction
 0x58025408 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 05w01 CIRC: Circular mode
 0x58025408 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 06w01 PINC: Peripheral increment mode
 0x58025408 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 07w01 MINC: Memory increment mode
 0x58025408 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 08w02 PSIZE: Peripheral size
 0x58025408 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 10w02 MSIZE: Memory size
 0x58025408 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 12w02 PL: Priority level
 0x58025408 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x58025408 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 15w01 DBM: Double-buffer mode
 0x58025408 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025408 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x5802540C B  REGISTER BDMA_CNDTR0: 
-0x5802540C B  REGISTER NDTR0 (rw): Channel x number of data to transfer register
+0x5802540C B  REGISTER NDTR0: 
 0x5802540C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802540C C   FIELD 00w16 NDT: Number of data to transfer
-0x58025410 B  REGISTER BDMA_CPAR0: 
-0x58025410 B  REGISTER PAR0 (rw): Channel x peripheral address register
+0x58025410 B  REGISTER PAR0: 
 0x58025410 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025410 C   FIELD 00w32 PA: Peripheral address
-0x58025414 B  REGISTER BDMA_CM0AR0: 
-0x58025414 B  REGISTER M0AR0 (rw): Channel x memory 0 address register
+0x58025414 B  REGISTER M0AR0: 
 0x58025414 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025414 C   FIELD 00w32 MA: Memory address
-0x58025418 B  REGISTER BDMA_CM1AR0: 
-0x58025418 B  REGISTER M1AR0 (rw): Channel x memory 1 address register
+0x58025418 B  REGISTER M1AR0: 
 0x58025418 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025418 C   FIELD 00w32 MA: Memory address
 0x5802541C B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x5802541C B  REGISTER BDMA_CCR1: BDMA channel 1 configuration register
-0x5802541C B  REGISTER CR1 (rw): Channel x configuration register
+0x5802541C B  REGISTER CR1: BDMA channel 0 configuration register
 0x5802541C C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x5802541C C   FIELD 01w01 EN: Channel enable
 0x5802541C C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x5802541C C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x5802541C C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x5802541C C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 04w01 DIR: Data transfer direction
 0x5802541C C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 05w01 CIRC: Circular mode
 0x5802541C C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 06w01 PINC: Peripheral increment mode
 0x5802541C C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 07w01 MINC: Memory increment mode
 0x5802541C C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 08w02 PSIZE: Peripheral size
 0x5802541C C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 10w02 MSIZE: Memory size
 0x5802541C C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 12w02 PL: Priority level
 0x5802541C C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x5802541C C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 15w01 DBM: Double-buffer mode
 0x5802541C C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802541C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x58025420 B  REGISTER BDMA_CNDTR1: 
-0x58025420 B  REGISTER NDTR1 (rw): Channel x number of data to transfer register
+0x58025420 B  REGISTER NDTR1: 
 0x58025420 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025420 C   FIELD 00w16 NDT: Number of data to transfer
-0x58025424 B  REGISTER BDMA_CPAR1: 
-0x58025424 B  REGISTER PAR1 (rw): Channel x peripheral address register
+0x58025424 B  REGISTER PAR1: 
 0x58025424 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025424 C   FIELD 00w32 PA: Peripheral address
-0x58025428 B  REGISTER BDMA_CM0AR1: 
-0x58025428 B  REGISTER M0AR1 (rw): Channel x memory 0 address register
+0x58025428 B  REGISTER M0AR1: 
 0x58025428 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025428 C   FIELD 00w32 MA: Memory address
-0x5802542C B  REGISTER BDMA_CM1AR1: 
-0x5802542C B  REGISTER M1AR1 (rw): Channel x memory 1 address register
+0x5802542C B  REGISTER M1AR1: 
 0x5802542C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802542C C   FIELD 00w32 MA: Memory address
 0x58025430 B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x58025430 B  REGISTER BDMA_CCR2: BDMA channel 2 configuration register
-0x58025430 B  REGISTER CR2 (rw): Channel x configuration register
+0x58025430 B  REGISTER CR2: BDMA channel 0 configuration register
 0x58025430 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x58025430 C   FIELD 01w01 EN: Channel enable
 0x58025430 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x58025430 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x58025430 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x58025430 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 04w01 DIR: Data transfer direction
 0x58025430 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 05w01 CIRC: Circular mode
 0x58025430 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 06w01 PINC: Peripheral increment mode
 0x58025430 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 07w01 MINC: Memory increment mode
 0x58025430 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 08w02 PSIZE: Peripheral size
 0x58025430 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 10w02 MSIZE: Memory size
 0x58025430 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 12w02 PL: Priority level
 0x58025430 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x58025430 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 15w01 DBM: Double-buffer mode
 0x58025430 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025430 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x58025434 B  REGISTER BDMA_CNDTR2: 
-0x58025434 B  REGISTER NDTR2 (rw): Channel x number of data to transfer register
+0x58025434 B  REGISTER NDTR2: 
 0x58025434 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025434 C   FIELD 00w16 NDT: Number of data to transfer
-0x58025438 B  REGISTER BDMA_CPAR2: 
-0x58025438 B  REGISTER PAR2 (rw): Channel x peripheral address register
+0x58025438 B  REGISTER PAR2: 
 0x58025438 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025438 C   FIELD 00w32 PA: Peripheral address
-0x5802543C B  REGISTER BDMA_CM0AR2: 
-0x5802543C B  REGISTER M0AR2 (rw): Channel x memory 0 address register
+0x5802543C B  REGISTER M0AR2: 
 0x5802543C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802543C C   FIELD 00w32 MA: Memory address
-0x58025440 B  REGISTER BDMA_CM1AR2: 
-0x58025440 B  REGISTER M1AR2 (rw): Channel x memory 1 address register
+0x58025440 B  REGISTER M1AR2: 
 0x58025440 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025440 C   FIELD 00w32 MA: Memory address
 0x58025444 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x58025444 B  REGISTER BDMA_CCR3: BDMA channel 3 configuration register
-0x58025444 B  REGISTER CR3 (rw): Channel x configuration register
+0x58025444 B  REGISTER CR3: BDMA channel 0 configuration register
 0x58025444 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x58025444 C   FIELD 01w01 EN: Channel enable
 0x58025444 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x58025444 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x58025444 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x58025444 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 04w01 DIR: Data transfer direction
 0x58025444 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 05w01 CIRC: Circular mode
 0x58025444 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 06w01 PINC: Peripheral increment mode
 0x58025444 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 07w01 MINC: Memory increment mode
 0x58025444 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 08w02 PSIZE: Peripheral size
 0x58025444 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 10w02 MSIZE: Memory size
 0x58025444 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 12w02 PL: Priority level
 0x58025444 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x58025444 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 15w01 DBM: Double-buffer mode
 0x58025444 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025444 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x58025448 B  REGISTER BDMA_CNDTR3: 
-0x58025448 B  REGISTER NDTR3 (rw): Channel x number of data to transfer register
+0x58025448 B  REGISTER NDTR3: 
 0x58025448 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025448 C   FIELD 00w16 NDT: Number of data to transfer
-0x5802544C B  REGISTER BDMA_CPAR3: 
-0x5802544C B  REGISTER PAR3 (rw): Channel x peripheral address register
+0x5802544C B  REGISTER PAR3: 
 0x5802544C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802544C C   FIELD 00w32 PA: Peripheral address
-0x58025450 B  REGISTER BDMA_CM0AR3: 
-0x58025450 B  REGISTER M0AR3 (rw): Channel x memory 0 address register
+0x58025450 B  REGISTER M0AR3: 
 0x58025450 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025450 C   FIELD 00w32 MA: Memory address
-0x58025454 B  REGISTER BDMA_CM1AR3: 
-0x58025454 B  REGISTER M1AR3 (rw): Channel x memory 1 address register
+0x58025454 B  REGISTER M1AR3: 
 0x58025454 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025454 C   FIELD 00w32 MA: Memory address
 0x58025458 B  CLUSTER CH4: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x58025458 B  REGISTER BDMA_CCR4: BDMA channel 4 configuration register
-0x58025458 B  REGISTER CR4 (rw): Channel x configuration register
+0x58025458 B  REGISTER CR4: BDMA channel 0 configuration register
 0x58025458 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x58025458 C   FIELD 01w01 EN: Channel enable
 0x58025458 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x58025458 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x58025458 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x58025458 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 04w01 DIR: Data transfer direction
 0x58025458 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 05w01 CIRC: Circular mode
 0x58025458 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 06w01 PINC: Peripheral increment mode
 0x58025458 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 07w01 MINC: Memory increment mode
 0x58025458 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 08w02 PSIZE: Peripheral size
 0x58025458 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 10w02 MSIZE: Memory size
 0x58025458 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 12w02 PL: Priority level
 0x58025458 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x58025458 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 15w01 DBM: Double-buffer mode
 0x58025458 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025458 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x5802545C B  REGISTER BDMA_CNDTR4: 
-0x5802545C B  REGISTER NDTR4 (rw): Channel x number of data to transfer register
+0x5802545C B  REGISTER NDTR4: 
 0x5802545C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802545C C   FIELD 00w16 NDT: Number of data to transfer
-0x58025460 B  REGISTER BDMA_CPAR4: 
-0x58025460 B  REGISTER PAR4 (rw): Channel x peripheral address register
+0x58025460 B  REGISTER PAR4: 
 0x58025460 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025460 C   FIELD 00w32 PA: Peripheral address
-0x58025464 B  REGISTER BDMA_CM0AR4: 
-0x58025464 B  REGISTER M0AR4 (rw): Channel x memory 0 address register
+0x58025464 B  REGISTER M0AR4: 
 0x58025464 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025464 C   FIELD 00w32 MA: Memory address
-0x58025468 B  REGISTER BDMA_CM1AR4: 
-0x58025468 B  REGISTER M1AR4 (rw): Channel x memory 1 address register
+0x58025468 B  REGISTER M1AR4: 
 0x58025468 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025468 C   FIELD 00w32 MA: Memory address
 0x5802546C B  CLUSTER CH5: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x5802546C B  REGISTER BDMA_CCR5: BDMA channel 5 configuration register
-0x5802546C B  REGISTER CR5 (rw): Channel x configuration register
+0x5802546C B  REGISTER CR5: BDMA channel 0 configuration register
 0x5802546C C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x5802546C C   FIELD 01w01 EN: Channel enable
 0x5802546C C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x5802546C C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x5802546C C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x5802546C C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 04w01 DIR: Data transfer direction
 0x5802546C C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 05w01 CIRC: Circular mode
 0x5802546C C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 06w01 PINC: Peripheral increment mode
 0x5802546C C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 07w01 MINC: Memory increment mode
 0x5802546C C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 08w02 PSIZE: Peripheral size
 0x5802546C C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 10w02 MSIZE: Memory size
 0x5802546C C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 12w02 PL: Priority level
 0x5802546C C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x5802546C C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 15w01 DBM: Double-buffer mode
 0x5802546C C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x5802546C C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x58025470 B  REGISTER BDMA_CNDTR5: 
-0x58025470 B  REGISTER NDTR5 (rw): Channel x number of data to transfer register
+0x58025470 B  REGISTER NDTR5: 
 0x58025470 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025470 C   FIELD 00w16 NDT: Number of data to transfer
-0x58025474 B  REGISTER BDMA_CPAR5: 
-0x58025474 B  REGISTER PAR5 (rw): Channel x peripheral address register
+0x58025474 B  REGISTER PAR5: 
 0x58025474 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025474 C   FIELD 00w32 PA: Peripheral address
-0x58025478 B  REGISTER BDMA_CM0AR5: 
-0x58025478 B  REGISTER M0AR5 (rw): Channel x memory 0 address register
+0x58025478 B  REGISTER M0AR5: 
 0x58025478 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025478 C   FIELD 00w32 MA: Memory address
-0x5802547C B  REGISTER BDMA_CM1AR5: 
-0x5802547C B  REGISTER M1AR5 (rw): Channel x memory 1 address register
+0x5802547C B  REGISTER M1AR5: 
 0x5802547C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802547C C   FIELD 00w32 MA: Memory address
 0x58025480 B  CLUSTER CH6: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x58025480 B  REGISTER BDMA_CCR6: BDMA channel 6 configuration register
-0x58025480 B  REGISTER CR6 (rw): Channel x configuration register
+0x58025480 B  REGISTER CR6: BDMA channel 0 configuration register
 0x58025480 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x58025480 C   FIELD 01w01 EN: Channel enable
 0x58025480 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x58025480 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x58025480 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x58025480 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 04w01 DIR: Data transfer direction
 0x58025480 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 05w01 CIRC: Circular mode
 0x58025480 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 06w01 PINC: Peripheral increment mode
 0x58025480 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 07w01 MINC: Memory increment mode
 0x58025480 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 08w02 PSIZE: Peripheral size
 0x58025480 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 10w02 MSIZE: Memory size
 0x58025480 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 12w02 PL: Priority level
 0x58025480 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x58025480 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 15w01 DBM: Double-buffer mode
 0x58025480 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025480 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x58025484 B  REGISTER BDMA_CNDTR6: 
-0x58025484 B  REGISTER NDTR6 (rw): Channel x number of data to transfer register
+0x58025484 B  REGISTER NDTR6: 
 0x58025484 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025484 C   FIELD 00w16 NDT: Number of data to transfer
-0x58025488 B  REGISTER BDMA_CPAR6: 
-0x58025488 B  REGISTER PAR6 (rw): Channel x peripheral address register
+0x58025488 B  REGISTER PAR6: 
 0x58025488 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025488 C   FIELD 00w32 PA: Peripheral address
-0x5802548C B  REGISTER BDMA_CM0AR6: 
-0x5802548C B  REGISTER M0AR6 (rw): Channel x memory 0 address register
+0x5802548C B  REGISTER M0AR6: 
 0x5802548C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802548C C   FIELD 00w32 MA: Memory address
-0x58025490 B  REGISTER BDMA_CM1AR6: 
-0x58025490 B  REGISTER M1AR6 (rw): Channel x memory 1 address register
+0x58025490 B  REGISTER M1AR6: 
 0x58025490 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025490 C   FIELD 00w32 MA: Memory address
 0x58025494 B  CLUSTER CH7: Channel cluster: CCR?, CNDTR?, CPAR?, CM0AR? and CM1AR? registers
-0x58025494 B  REGISTER BDMA_CCR7: BDMA channel 7 configuration register
-0x58025494 B  REGISTER CR7 (rw): Channel x configuration register
+0x58025494 B  REGISTER CR7: BDMA channel 0 configuration register
 0x58025494 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the BDMA_ISR register is cleared (by setting the CTEIFx bit of the BDMA_IFCR register). Note: this bit is set and cleared by software.
-0x58025494 C   FIELD 01w01 EN: Channel enable
 0x58025494 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 01w01 TCIE: Transfer complete interrupt enable
 0x58025494 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 02w01 HTIE: Half transfer error interrupt enable
 0x58025494 C   FIELD 03w01 TEIE (rw): transfer error interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 03w01 TEIE: Transfer error interrupt enable
 0x58025494 C   FIELD 04w01 DIR (rw): data transfer direction This bit must be set only in memory-to-peripheral and peripheral-to-memory modes. Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Destination attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register. This is still valid in a memory-to-memory mode. Source attributes are defined by MSIZE and MINC, plus the BDMA_CM0/1ARx register. This is still valid in a peripheral-to-peripheral mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 04w01 DIR: Data transfer direction
 0x58025494 C   FIELD 05w01 CIRC (rw): circular mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 05w01 CIRC: Circular mode
 0x58025494 C   FIELD 06w01 PINC (rw): peripheral increment mode Defines the increment mode for each DMA transfer to the identified peripheral. n memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 06w01 PINC: Peripheral increment mode
 0x58025494 C   FIELD 07w01 MINC (rw): memory increment mode Defines the increment mode for each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 07w01 MINC: Memory increment mode
 0x58025494 C   FIELD 08w02 PSIZE (rw): peripheral size Defines the data size of each DMA transfer to the identified peripheral. In memory-to-memory mode, this field identifies the memory destination if DIR = 1 and the memory source if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral destination if DIR = 1 and the peripheral source if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 08w02 PSIZE: Peripheral size
 0x58025494 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 10w02 MSIZE: Memory size
 0x58025494 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 12w02 PL: Priority level
 0x58025494 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 14w01 MEM2MEM: Memory-to-memory mode
 0x58025494 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 15w01 DBM: Double-buffer mode
 0x58025494 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025494 C   FIELD 16w01 CT: Current target memory of DMA transfer in double-buffer mode
-0x58025498 B  REGISTER BDMA_CNDTR7: 
-0x58025498 B  REGISTER NDTR7 (rw): Channel x number of data to transfer register
+0x58025498 B  REGISTER NDTR7: 
 0x58025498 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x58025498 C   FIELD 00w16 NDT: Number of data to transfer
-0x5802549C B  REGISTER BDMA_CPAR7: 
-0x5802549C B  REGISTER PAR7 (rw): Channel x peripheral address register
+0x5802549C B  REGISTER PAR7: 
 0x5802549C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x5802549C C   FIELD 00w32 PA: Peripheral address
-0x580254A0 B  REGISTER BDMA_CM0AR7: 
-0x580254A0 B  REGISTER M0AR7 (rw): Channel x memory 0 address register
+0x580254A0 B  REGISTER M0AR7: 
 0x580254A0 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x580254A0 C   FIELD 00w32 MA: Memory address
-0x580254A4 B  REGISTER BDMA_CM1AR7: 
-0x580254A4 B  REGISTER M1AR7 (rw): Channel x memory 1 address register
+0x580254A4 B  REGISTER M1AR7: 
 0x580254A4 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x580254A4 C   FIELD 00w32 MA: Memory address
 0x58025800 A PERIPHERAL DMAMUX2
 0x58025800 B  REGISTER C0CR (rw): DMAMux - DMA request line multiplexer channel x control register
 0x58025800 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected

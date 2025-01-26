@@ -2187,7 +2187,7 @@
 0x40006C14 C   FIELD 11w01 TXERRIE: Tx-Error Interrupt Enable The TXERRIE bit is set and cleared by software.
 0x40006C14 C   FIELD 12w01 TXACKIE: Tx-Missing Acknowledge Error Interrupt Enable The TXACKEIE bit is set and cleared by software.
 0x40007400 A PERIPHERAL DAC
-0x40007400 B  REGISTER DAC_CR (rw): DAC control register
+0x40007400 B  REGISTER CR (rw): DAC control register
 0x40007400 C   FIELD 00w01 EN1: DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
 0x40007400 C   FIELD 01w01 TEN1: DAC channel1 trigger enable
 0x40007400 C   FIELD 02w03 TSEL1: DAC channel1 trigger selection These bits select the external event used to trigger DAC channel1. Note: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
@@ -2204,55 +2204,55 @@
 0x40007400 C   FIELD 28w01 DMAEN2: DAC channel2 DMA enable This bit is set and cleared by software.
 0x40007400 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable This bit is set and cleared by software.
 0x40007400 C   FIELD 30w01 CEN2: DAC Channel 2 calibration enable This bit is set and cleared by software to enable/disable DAC channel 2 calibration, it can be written only if bit EN2=0 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored.
-0x40007404 B  REGISTER DAC_SWTRGR (wo): DAC software trigger register
+0x40007404 B  REGISTER SWTRGR (wo): DAC software trigger register
 0x40007404 C   FIELD 00w01 SWTRIG1: DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
 0x40007404 C   FIELD 01w01 SWTRIG2: DAC channel2 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR2 register value has been loaded into the DAC_DOR2 register.
-0x40007408 B  REGISTER DAC_DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
+0x40007408 B  REGISTER DHR12R1 (rw): DAC channel1 12-bit right-aligned data holding register
 0x40007408 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
-0x4000740C B  REGISTER DAC_DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
+0x4000740C B  REGISTER DHR12L1 (rw): DAC channel1 12-bit left aligned data holding register
 0x4000740C C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
-0x40007410 B  REGISTER DAC_DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
+0x40007410 B  REGISTER DHR8R1 (rw): DAC channel1 8-bit right aligned data holding register
 0x40007410 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
-0x40007414 B  REGISTER DAC_DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
+0x40007414 B  REGISTER DHR12R2 (rw): DAC channel2 12-bit right aligned data holding register
 0x40007414 C   FIELD 00w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007418 B  REGISTER DAC_DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
+0x40007418 B  REGISTER DHR12L2 (rw): DAC channel2 12-bit left aligned data holding register
 0x40007418 C   FIELD 04w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
-0x4000741C B  REGISTER DAC_DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
+0x4000741C B  REGISTER DHR8R2 (rw): DAC channel2 8-bit right-aligned data holding register
 0x4000741C C   FIELD 00w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x40007420 B  REGISTER DAC_DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
+0x40007420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
 0x40007420 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007420 C   FIELD 16w12 DACC2DHR: DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007424 B  REGISTER DAC_DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
+0x40007424 B  REGISTER DHR12LD (rw): DUAL DAC 12-bit left aligned data holding register
 0x40007424 C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
 0x40007424 C   FIELD 20w12 DACC2DHR: DAC channel2 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
-0x40007428 B  REGISTER DAC_DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
+0x40007428 B  REGISTER DHR8RD (rw): DUAL DAC 8-bit right aligned data holding register
 0x40007428 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
 0x40007428 C   FIELD 08w08 DACC2DHR: DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
-0x4000742C B  REGISTER DAC_DOR1 (ro): DAC channel1 data output register
+0x4000742C B  REGISTER DOR1 (ro): DAC channel1 data output register
 0x4000742C C   FIELD 00w12 DACC1DOR: DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
-0x40007430 B  REGISTER DAC_DOR2 (ro): DAC channel2 data output register
+0x40007430 B  REGISTER DOR2 (ro): DAC channel2 data output register
 0x40007430 C   FIELD 00w12 DACC2DOR: DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
-0x40007434 B  REGISTER DAC_SR: DAC status register
+0x40007434 B  REGISTER SR: DAC status register
 0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC Channel 1 calibration offset status This bit is set and cleared by hardware
 0x40007434 C   FIELD 15w01 BWST1 (ro): DAC Channel 1 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3LSI periods of synchronization).
 0x40007434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
 0x40007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC Channel 2 calibration offset status This bit is set and cleared by hardware
 0x40007434 C   FIELD 31w01 BWST2 (ro): DAC Channel 2 busy writing sample time flag This bit is systematically set just after Sample & Hold mode enable and is set each time the software writes the register DAC_SHSR2, It is cleared by hardware when the write operation of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization).
-0x40007438 B  REGISTER DAC_CCR (rw): DAC calibration control register
+0x40007438 B  REGISTER CCR (rw): DAC calibration control register
 0x40007438 C   FIELD 00w05 OTRIM1: DAC Channel 1 offset trimming value
 0x40007438 C   FIELD 16w05 OTRIM2: DAC Channel 2 offset trimming value
-0x4000743C B  REGISTER DAC_MCR (rw): DAC mode control register
+0x4000743C B  REGISTER MCR (rw): DAC mode control register
 0x4000743C C   FIELD 00w03 MODE1: DAC Channel 1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 1 mode: DAC Channel 1 in normal Mode DAC Channel 1 in sample &amp; hold mode
 0x4000743C C   FIELD 16w03 MODE2: DAC Channel 2 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 2 mode: DAC Channel 2 in normal Mode DAC Channel 2 in sample &amp; hold mode
-0x40007440 B  REGISTER DAC_SHSR1 (rw): DAC Sample and Hold sample time register 1
+0x40007440 B  REGISTER SHSR1 (rw): DAC Sample and Hold sample time register 1
 0x40007440 C   FIELD 00w10 TSAMPLE1: DAC Channel 1 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, If BWSTx=1, the write operation is ignored.
-0x40007444 B  REGISTER DAC_SHSR2 (rw): DAC Sample and Hold sample time register 2
+0x40007444 B  REGISTER SHSR2 (rw): DAC Sample and Hold sample time register 2
 0x40007444 C   FIELD 00w10 TSAMPLE2: DAC Channel 2 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, if BWSTx=1, the write operation is ignored.
-0x40007448 B  REGISTER DAC_SHHR (rw): DAC Sample and Hold hold time register
+0x40007448 B  REGISTER SHHR (rw): DAC Sample and Hold hold time register
 0x40007448 C   FIELD 00w10 THOLD1: DAC Channel 1 hold Time (only valid in sample &amp; hold mode) Hold time= (THOLD[9:0]) x T LSI
 0x40007448 C   FIELD 16w10 THOLD2: DAC Channel 2 hold time (only valid in sample &amp; hold mode). Hold time= (THOLD[9:0]) x T LSI
-0x4000744C B  REGISTER DAC_SHRR (rw): DAC Sample and Hold refresh time register
+0x4000744C B  REGISTER SHRR (rw): DAC Sample and Hold refresh time register
 0x4000744C C   FIELD 00w08 TREFRESH1: DAC Channel 1 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x4000744C C   FIELD 16w08 TREFRESH2: DAC Channel 2 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH[7:0]) x T LSI
 0x40007800 A PERIPHERAL UART7
@@ -2530,7 +2530,7 @@
 0x40007C2C B  REGISTER PRESC (rw): USART prescaler register
 0x40007C2C C   FIELD 00w04 PRESCALER: Clock prescaler
 0x40008400 A PERIPHERAL CRS
-0x40008400 B  REGISTER CRS_CR: CRS control register
+0x40008400 B  REGISTER CR: CRS control register
 0x40008400 C   FIELD 00w01 SYNCOKIE (rw): SYNC event OK interrupt enable
 0x40008400 C   FIELD 01w01 SYNCWARNIE (rw): SYNC warning interrupt enable
 0x40008400 C   FIELD 02w01 ERRIE (rw): Synchronization or trimming error interrupt enable
@@ -2539,13 +2539,13 @@
 0x40008400 C   FIELD 06w01 AUTOTRIMEN (rw): Automatic trimming enable This bit enables the automatic hardware adjustment of TRIM bits according to the measured frequency error between two SYNC events. If this bit is set, the TRIM bits are read-only. The TRIM value can be adjusted by hardware by one or two steps at a time, depending on the measured frequency error value. Refer to Section7.3.4: Frequency error evaluation and automatic trimming for more details.
 0x40008400 C   FIELD 07w01 SWSYNC (ro): Generate software SYNC event This bit is set by software in order to generate a software SYNC event. It is automatically cleared by hardware.
 0x40008400 C   FIELD 08w06 TRIM (rw): HSI48 oscillator smooth trimming These bits provide a user-programmable trimming value to the HSI48 oscillator. They can be programmed to adjust to variations in voltage and temperature that influence the frequency of the HSI48. The default value is 32, which corresponds to the middle of the trimming interval. The trimming step is around 67 kHz between two consecutive TRIM steps. A higher TRIM value corresponds to a higher output frequency. When the AUTOTRIMEN bit is set, this field is controlled by hardware and is read-only.
-0x40008404 B  REGISTER CRS_CFGR (rw): This register can be written only when the frequency error counter is disabled (CEN bit is cleared in CRS_CR). When the counter is enabled, this register is write-protected.
+0x40008404 B  REGISTER CFGR (rw): This register can be written only when the frequency error counter is disabled (CEN bit is cleared in CRS_CR). When the counter is enabled, this register is write-protected.
 0x40008404 C   FIELD 00w16 RELOAD: Counter reload value RELOAD is the value to be loaded in the frequency error counter with each SYNC event. Refer to Section7.3.3: Frequency error measurement for more details about counter behavior.
 0x40008404 C   FIELD 16w08 FELIM: Frequency error limit FELIM contains the value to be used to evaluate the captured frequency error value latched in the FECAP[15:0] bits of the CRS_ISR register. Refer to Section7.3.4: Frequency error evaluation and automatic trimming for more details about FECAP evaluation.
 0x40008404 C   FIELD 24w03 SYNCDIV: SYNC divider These bits are set and cleared by software to control the division factor of the SYNC signal.
 0x40008404 C   FIELD 28w02 SYNCSRC: SYNC signal source selection These bits are set and cleared by software to select the SYNC signal source. Note: When using USB LPM (Link Power Management) and the device is in Sleep mode, the periodic USB SOF will not be generated by the host. No SYNC signal will therefore be provided to the CRS to calibrate the HSI48 on the run. To guarantee the required clock precision after waking up from Sleep mode, the LSE or reference clock on the GPIOs should be used as SYNC signal.
 0x40008404 C   FIELD 31w01 SYNCPOL: SYNC polarity selection This bit is set and cleared by software to select the input polarity for the SYNC signal source.
-0x40008408 B  REGISTER CRS_ISR (ro): CRS interrupt and status register
+0x40008408 B  REGISTER ISR (ro): CRS interrupt and status register
 0x40008408 C   FIELD 00w01 SYNCOKF: SYNC event OK flag This flag is set by hardware when the measured frequency error is smaller than FELIM * 3. This means that either no adjustment of the TRIM value is needed or that an adjustment by one trimming step is enough to compensate the frequency error. An interrupt is generated if the SYNCOKIE bit is set in the CRS_CR register. It is cleared by software by setting the SYNCOKC bit in the CRS_ICR register.
 0x40008408 C   FIELD 01w01 SYNCWARNF: SYNC warning flag This flag is set by hardware when the measured frequency error is greater than or equal to FELIM * 3, but smaller than FELIM * 128. This means that to compensate the frequency error, the TRIM value must be adjusted by two steps or more. An interrupt is generated if the SYNCWARNIE bit is set in the CRS_CR register. It is cleared by software by setting the SYNCWARNC bit in the CRS_ICR register.
 0x40008408 C   FIELD 02w01 ERRF: Error flag This flag is set by hardware in case of any synchronization or trimming error. It is the logical OR of the TRIMOVF, SYNCMISS and SYNCERR bits. An interrupt is generated if the ERRIE bit is set in the CRS_CR register. It is cleared by software in reaction to setting the ERRC bit in the CRS_ICR register, which clears the TRIMOVF, SYNCMISS and SYNCERR bits.
@@ -2555,7 +2555,7 @@
 0x40008408 C   FIELD 10w01 TRIMOVF: Trimming overflow or underflow This flag is set by hardware when the automatic trimming tries to over- or under-flow the TRIM value. An interrupt is generated if the ERRIE bit is set in the CRS_CR register. It is cleared by software by setting the ERRC bit in the CRS_ICR register.
 0x40008408 C   FIELD 15w01 FEDIR: Frequency error direction FEDIR is the counting direction of the frequency error counter latched in the time of the last SYNC event. It shows whether the actual frequency is below or above the target.
 0x40008408 C   FIELD 16w16 FECAP: Frequency error capture FECAP is the frequency error counter value latched in the time of the last SYNC event. Refer to Section7.3.4: Frequency error evaluation and automatic trimming for more details about FECAP usage.
-0x4000840C B  REGISTER CRS_ICR (rw): CRS interrupt flag clear register
+0x4000840C B  REGISTER ICR (rw): CRS interrupt flag clear register
 0x4000840C C   FIELD 00w01 SYNCOKC: SYNC event OK clear flag Writing 1 to this bit clears the SYNCOKF flag in the CRS_ISR register.
 0x4000840C C   FIELD 01w01 SYNCWARNC: SYNC warning clear flag Writing 1 to this bit clears the SYNCWARNF flag in the CRS_ISR register.
 0x4000840C C   FIELD 02w01 ERRC: Error clear flag Writing 1 to this bit clears TRIMOVF, SYNCMISS and SYNCERR bits and consequently also the ERRF flag in the CRS_ISR register.
@@ -2651,156 +2651,156 @@
 0x40009018 C   FIELD 00w05 TRIMLPOFFSETN: Trim for NMOS differential pairs
 0x40009018 C   FIELD 08w05 TRIMLPOFFSETP: Trim for PMOS differential pairs
 0x40009400 A PERIPHERAL MDIOS
-0x40009400 B  REGISTER MDIOS_CR (rw): MDIOS configuration register
+0x40009400 B  REGISTER CR (rw): MDIOS configuration register
 0x40009400 C   FIELD 00w01 EN: Peripheral enable
 0x40009400 C   FIELD 01w01 WRIE: Register write interrupt enable
 0x40009400 C   FIELD 02w01 RDIE: Register Read Interrupt Enable
 0x40009400 C   FIELD 03w01 EIE: Error interrupt enable
 0x40009400 C   FIELD 07w01 DPC: Disable Preamble Check
 0x40009400 C   FIELD 08w05 PORT_ADDRESS: Slaves's address
-0x40009404 B  REGISTER MDIOS_WRFR (ro): MDIOS write flag register
+0x40009404 B  REGISTER WRFR (ro): MDIOS write flag register
 0x40009404 C   FIELD 00w32 WRF: Write flags for MDIO registers 0 to 31
-0x40009408 B  REGISTER MDIOS_CWRFR (rw): MDIOS clear write flag register
+0x40009408 B  REGISTER CWRFR (rw): MDIOS clear write flag register
 0x40009408 C   FIELD 00w32 CWRF: Clear the write flag
-0x4000940C B  REGISTER MDIOS_RDFR (ro): MDIOS read flag register
+0x4000940C B  REGISTER RDFR (ro): MDIOS read flag register
 0x4000940C C   FIELD 00w32 RDF: Read flags for MDIO registers 0 to 31
-0x40009410 B  REGISTER MDIOS_CRDFR (rw): MDIOS clear read flag register
+0x40009410 B  REGISTER CRDFR (rw): MDIOS clear read flag register
 0x40009410 C   FIELD 00w32 CRDF: Clear the read flag
-0x40009414 B  REGISTER MDIOS_SR (ro): MDIOS status register
+0x40009414 B  REGISTER SR (ro): MDIOS status register
 0x40009414 C   FIELD 00w01 PERF: Preamble error flag
 0x40009414 C   FIELD 01w01 SERF: Start error flag
 0x40009414 C   FIELD 02w01 TERF: Turnaround error flag
-0x40009418 B  REGISTER MDIOS_CLRFR (rw): MDIOS clear flag register
+0x40009418 B  REGISTER CLRFR (rw): MDIOS clear flag register
 0x40009418 C   FIELD 00w01 CPERF: Clear the preamble error flag
 0x40009418 C   FIELD 01w01 CSERF: Clear the start error flag
 0x40009418 C   FIELD 02w01 CTERF: Clear the turnaround error flag
-0x4000941C B  REGISTER MDIOS_DINR0 (ro): MDIOS input data register 0
+0x4000941C B  REGISTER DINR0 (ro): MDIOS input data register 0
 0x4000941C C   FIELD 00w16 DIN0: Input data received from MDIO Master during write frames
-0x40009420 B  REGISTER MDIOS_DINR1 (ro): MDIOS input data register 1
+0x40009420 B  REGISTER DINR1 (ro): MDIOS input data register 1
 0x40009420 C   FIELD 00w16 DIN1: Input data received from MDIO Master during write frames
-0x40009424 B  REGISTER MDIOS_DINR2 (ro): MDIOS input data register 2
+0x40009424 B  REGISTER DINR2 (ro): MDIOS input data register 2
 0x40009424 C   FIELD 00w16 DIN2: Input data received from MDIO Master during write frames
-0x40009428 B  REGISTER MDIOS_DINR3 (ro): MDIOS input data register 3
+0x40009428 B  REGISTER DINR3 (ro): MDIOS input data register 3
 0x40009428 C   FIELD 00w16 DIN3: Input data received from MDIO Master during write frames
-0x4000942C B  REGISTER MDIOS_DINR4 (ro): MDIOS input data register 4
+0x4000942C B  REGISTER DINR4 (ro): MDIOS input data register 4
 0x4000942C C   FIELD 00w16 DIN4: Input data received from MDIO Master during write frames
-0x40009430 B  REGISTER MDIOS_DINR5 (ro): MDIOS input data register 5
+0x40009430 B  REGISTER DINR5 (ro): MDIOS input data register 5
 0x40009430 C   FIELD 00w16 DIN5: Input data received from MDIO Master during write frames
-0x40009434 B  REGISTER MDIOS_DINR6 (ro): MDIOS input data register 6
+0x40009434 B  REGISTER DINR6 (ro): MDIOS input data register 6
 0x40009434 C   FIELD 00w16 DIN6: Input data received from MDIO Master during write frames
-0x40009438 B  REGISTER MDIOS_DINR7 (ro): MDIOS input data register 7
+0x40009438 B  REGISTER DINR7 (ro): MDIOS input data register 7
 0x40009438 C   FIELD 00w16 DIN7: Input data received from MDIO Master during write frames
-0x4000943C B  REGISTER MDIOS_DINR8 (ro): MDIOS input data register 8
+0x4000943C B  REGISTER DINR8 (ro): MDIOS input data register 8
 0x4000943C C   FIELD 00w16 DIN8: Input data received from MDIO Master during write frames
-0x40009440 B  REGISTER MDIOS_DINR9 (ro): MDIOS input data register 9
+0x40009440 B  REGISTER DINR9 (ro): MDIOS input data register 9
 0x40009440 C   FIELD 00w16 DIN9: Input data received from MDIO Master during write frames
-0x40009444 B  REGISTER MDIOS_DINR10 (ro): MDIOS input data register 10
+0x40009444 B  REGISTER DINR10 (ro): MDIOS input data register 10
 0x40009444 C   FIELD 00w16 DIN10: Input data received from MDIO Master during write frames
-0x40009448 B  REGISTER MDIOS_DINR11 (ro): MDIOS input data register 11
+0x40009448 B  REGISTER DINR11 (ro): MDIOS input data register 11
 0x40009448 C   FIELD 00w16 DIN11: Input data received from MDIO Master during write frames
-0x4000944C B  REGISTER MDIOS_DINR12 (ro): MDIOS input data register 12
+0x4000944C B  REGISTER DINR12 (ro): MDIOS input data register 12
 0x4000944C C   FIELD 00w16 DIN12: Input data received from MDIO Master during write frames
-0x40009450 B  REGISTER MDIOS_DINR13 (ro): MDIOS input data register 13
+0x40009450 B  REGISTER DINR13 (ro): MDIOS input data register 13
 0x40009450 C   FIELD 00w16 DIN13: Input data received from MDIO Master during write frames
-0x40009454 B  REGISTER MDIOS_DINR14 (ro): MDIOS input data register 14
+0x40009454 B  REGISTER DINR14 (ro): MDIOS input data register 14
 0x40009454 C   FIELD 00w16 DIN14: Input data received from MDIO Master during write frames
-0x40009458 B  REGISTER MDIOS_DINR15 (ro): MDIOS input data register 15
+0x40009458 B  REGISTER DINR15 (ro): MDIOS input data register 15
 0x40009458 C   FIELD 00w16 DIN15: Input data received from MDIO Master during write frames
-0x4000945C B  REGISTER MDIOS_DINR16 (ro): MDIOS input data register 16
+0x4000945C B  REGISTER DINR16 (ro): MDIOS input data register 16
 0x4000945C C   FIELD 00w16 DIN16: Input data received from MDIO Master during write frames
-0x40009460 B  REGISTER MDIOS_DINR17 (ro): MDIOS input data register 17
+0x40009460 B  REGISTER DINR17 (ro): MDIOS input data register 17
 0x40009460 C   FIELD 00w16 DIN17: Input data received from MDIO Master during write frames
-0x40009464 B  REGISTER MDIOS_DINR18 (ro): MDIOS input data register 18
+0x40009464 B  REGISTER DINR18 (ro): MDIOS input data register 18
 0x40009464 C   FIELD 00w16 DIN18: Input data received from MDIO Master during write frames
-0x40009468 B  REGISTER MDIOS_DINR19 (ro): MDIOS input data register 19
+0x40009468 B  REGISTER DINR19 (ro): MDIOS input data register 19
 0x40009468 C   FIELD 00w16 DIN19: Input data received from MDIO Master during write frames
-0x4000946C B  REGISTER MDIOS_DINR20 (ro): MDIOS input data register 20
+0x4000946C B  REGISTER DINR20 (ro): MDIOS input data register 20
 0x4000946C C   FIELD 00w16 DIN20: Input data received from MDIO Master during write frames
-0x40009470 B  REGISTER MDIOS_DINR21 (ro): MDIOS input data register 21
+0x40009470 B  REGISTER DINR21 (ro): MDIOS input data register 21
 0x40009470 C   FIELD 00w16 DIN21: Input data received from MDIO Master during write frames
-0x40009474 B  REGISTER MDIOS_DINR22 (ro): MDIOS input data register 22
+0x40009474 B  REGISTER DINR22 (ro): MDIOS input data register 22
 0x40009474 C   FIELD 00w16 DIN22: Input data received from MDIO Master during write frames
-0x40009478 B  REGISTER MDIOS_DINR23 (ro): MDIOS input data register 23
+0x40009478 B  REGISTER DINR23 (ro): MDIOS input data register 23
 0x40009478 C   FIELD 00w16 DIN23: Input data received from MDIO Master during write frames
-0x4000947C B  REGISTER MDIOS_DINR24 (ro): MDIOS input data register 24
+0x4000947C B  REGISTER DINR24 (ro): MDIOS input data register 24
 0x4000947C C   FIELD 00w16 DIN24: Input data received from MDIO Master during write frames
-0x40009480 B  REGISTER MDIOS_DINR25 (ro): MDIOS input data register 25
+0x40009480 B  REGISTER DINR25 (ro): MDIOS input data register 25
 0x40009480 C   FIELD 00w16 DIN25: Input data received from MDIO Master during write frames
-0x40009484 B  REGISTER MDIOS_DINR26 (ro): MDIOS input data register 26
+0x40009484 B  REGISTER DINR26 (ro): MDIOS input data register 26
 0x40009484 C   FIELD 00w16 DIN26: Input data received from MDIO Master during write frames
-0x40009488 B  REGISTER MDIOS_DINR27 (ro): MDIOS input data register 27
+0x40009488 B  REGISTER DINR27 (ro): MDIOS input data register 27
 0x40009488 C   FIELD 00w16 DIN27: Input data received from MDIO Master during write frames
-0x4000948C B  REGISTER MDIOS_DINR28 (ro): MDIOS input data register 28
+0x4000948C B  REGISTER DINR28 (ro): MDIOS input data register 28
 0x4000948C C   FIELD 00w16 DIN28: Input data received from MDIO Master during write frames
-0x40009490 B  REGISTER MDIOS_DINR29 (ro): MDIOS input data register 29
+0x40009490 B  REGISTER DINR29 (ro): MDIOS input data register 29
 0x40009490 C   FIELD 00w16 DIN29: Input data received from MDIO Master during write frames
-0x40009494 B  REGISTER MDIOS_DINR30 (ro): MDIOS input data register 30
+0x40009494 B  REGISTER DINR30 (ro): MDIOS input data register 30
 0x40009494 C   FIELD 00w16 DIN30: Input data received from MDIO Master during write frames
-0x40009498 B  REGISTER MDIOS_DINR31 (ro): MDIOS input data register 31
+0x40009498 B  REGISTER DINR31 (ro): MDIOS input data register 31
 0x40009498 C   FIELD 00w16 DIN31: Input data received from MDIO Master during write frames
-0x4000949C B  REGISTER MDIOS_DOUTR0 (rw): MDIOS output data register 0
+0x4000949C B  REGISTER DOUTR0 (rw): MDIOS output data register 0
 0x4000949C C   FIELD 00w16 DOUT0: Output data sent to MDIO Master during read frames
-0x400094A0 B  REGISTER MDIOS_DOUTR1 (rw): MDIOS output data register 1
+0x400094A0 B  REGISTER DOUTR1 (rw): MDIOS output data register 1
 0x400094A0 C   FIELD 00w16 DOUT1: Output data sent to MDIO Master during read frames
-0x400094A4 B  REGISTER MDIOS_DOUTR2 (rw): MDIOS output data register 2
+0x400094A4 B  REGISTER DOUTR2 (rw): MDIOS output data register 2
 0x400094A4 C   FIELD 00w16 DOUT2: Output data sent to MDIO Master during read frames
-0x400094A8 B  REGISTER MDIOS_DOUTR3 (rw): MDIOS output data register 3
+0x400094A8 B  REGISTER DOUTR3 (rw): MDIOS output data register 3
 0x400094A8 C   FIELD 00w16 DOUT3: Output data sent to MDIO Master during read frames
-0x400094AC B  REGISTER MDIOS_DOUTR4 (rw): MDIOS output data register 4
+0x400094AC B  REGISTER DOUTR4 (rw): MDIOS output data register 4
 0x400094AC C   FIELD 00w16 DOUT4: Output data sent to MDIO Master during read frames
-0x400094B0 B  REGISTER MDIOS_DOUTR5 (rw): MDIOS output data register 5
+0x400094B0 B  REGISTER DOUTR5 (rw): MDIOS output data register 5
 0x400094B0 C   FIELD 00w16 DOUT5: Output data sent to MDIO Master during read frames
-0x400094B4 B  REGISTER MDIOS_DOUTR6 (rw): MDIOS output data register 6
+0x400094B4 B  REGISTER DOUTR6 (rw): MDIOS output data register 6
 0x400094B4 C   FIELD 00w16 DOUT6: Output data sent to MDIO Master during read frames
-0x400094B8 B  REGISTER MDIOS_DOUTR7 (rw): MDIOS output data register 7
+0x400094B8 B  REGISTER DOUTR7 (rw): MDIOS output data register 7
 0x400094B8 C   FIELD 00w16 DOUT7: Output data sent to MDIO Master during read frames
-0x400094BC B  REGISTER MDIOS_DOUTR8 (rw): MDIOS output data register 8
+0x400094BC B  REGISTER DOUTR8 (rw): MDIOS output data register 8
 0x400094BC C   FIELD 00w16 DOUT8: Output data sent to MDIO Master during read frames
-0x400094C0 B  REGISTER MDIOS_DOUTR9 (rw): MDIOS output data register 9
+0x400094C0 B  REGISTER DOUTR9 (rw): MDIOS output data register 9
 0x400094C0 C   FIELD 00w16 DOUT9: Output data sent to MDIO Master during read frames
-0x400094C4 B  REGISTER MDIOS_DOUTR10 (rw): MDIOS output data register 10
+0x400094C4 B  REGISTER DOUTR10 (rw): MDIOS output data register 10
 0x400094C4 C   FIELD 00w16 DOUT10: Output data sent to MDIO Master during read frames
-0x400094C8 B  REGISTER MDIOS_DOUTR11 (rw): MDIOS output data register 11
+0x400094C8 B  REGISTER DOUTR11 (rw): MDIOS output data register 11
 0x400094C8 C   FIELD 00w16 DOUT11: Output data sent to MDIO Master during read frames
-0x400094CC B  REGISTER MDIOS_DOUTR12 (rw): MDIOS output data register 12
+0x400094CC B  REGISTER DOUTR12 (rw): MDIOS output data register 12
 0x400094CC C   FIELD 00w16 DOUT12: Output data sent to MDIO Master during read frames
-0x400094D0 B  REGISTER MDIOS_DOUTR13 (rw): MDIOS output data register 13
+0x400094D0 B  REGISTER DOUTR13 (rw): MDIOS output data register 13
 0x400094D0 C   FIELD 00w16 DOUT13: Output data sent to MDIO Master during read frames
-0x400094D4 B  REGISTER MDIOS_DOUTR14 (rw): MDIOS output data register 14
+0x400094D4 B  REGISTER DOUTR14 (rw): MDIOS output data register 14
 0x400094D4 C   FIELD 00w16 DOUT14: Output data sent to MDIO Master during read frames
-0x400094D8 B  REGISTER MDIOS_DOUTR15 (rw): MDIOS output data register 15
+0x400094D8 B  REGISTER DOUTR15 (rw): MDIOS output data register 15
 0x400094D8 C   FIELD 00w16 DOUT15: Output data sent to MDIO Master during read frames
-0x400094DC B  REGISTER MDIOS_DOUTR16 (rw): MDIOS output data register 16
+0x400094DC B  REGISTER DOUTR16 (rw): MDIOS output data register 16
 0x400094DC C   FIELD 00w16 DOUT16: Output data sent to MDIO Master during read frames
-0x400094E0 B  REGISTER MDIOS_DOUTR17 (rw): MDIOS output data register 17
+0x400094E0 B  REGISTER DOUTR17 (rw): MDIOS output data register 17
 0x400094E0 C   FIELD 00w16 DOUT17: Output data sent to MDIO Master during read frames
-0x400094E4 B  REGISTER MDIOS_DOUTR18 (rw): MDIOS output data register 18
+0x400094E4 B  REGISTER DOUTR18 (rw): MDIOS output data register 18
 0x400094E4 C   FIELD 00w16 DOUT18: Output data sent to MDIO Master during read frames
-0x400094E8 B  REGISTER MDIOS_DOUTR19 (rw): MDIOS output data register 19
+0x400094E8 B  REGISTER DOUTR19 (rw): MDIOS output data register 19
 0x400094E8 C   FIELD 00w16 DOUT19: Output data sent to MDIO Master during read frames
-0x400094EC B  REGISTER MDIOS_DOUTR20 (rw): MDIOS output data register 20
+0x400094EC B  REGISTER DOUTR20 (rw): MDIOS output data register 20
 0x400094EC C   FIELD 00w16 DOUT20: Output data sent to MDIO Master during read frames
-0x400094F0 B  REGISTER MDIOS_DOUTR21 (rw): MDIOS output data register 21
+0x400094F0 B  REGISTER DOUTR21 (rw): MDIOS output data register 21
 0x400094F0 C   FIELD 00w16 DOUT21: Output data sent to MDIO Master during read frames
-0x400094F4 B  REGISTER MDIOS_DOUTR22 (rw): MDIOS output data register 22
+0x400094F4 B  REGISTER DOUTR22 (rw): MDIOS output data register 22
 0x400094F4 C   FIELD 00w16 DOUT22: Output data sent to MDIO Master during read frames
-0x400094F8 B  REGISTER MDIOS_DOUTR23 (rw): MDIOS output data register 23
+0x400094F8 B  REGISTER DOUTR23 (rw): MDIOS output data register 23
 0x400094F8 C   FIELD 00w16 DOUT23: Output data sent to MDIO Master during read frames
-0x400094FC B  REGISTER MDIOS_DOUTR24 (rw): MDIOS output data register 24
+0x400094FC B  REGISTER DOUTR24 (rw): MDIOS output data register 24
 0x400094FC C   FIELD 00w16 DOUT24: Output data sent to MDIO Master during read frames
-0x40009500 B  REGISTER MDIOS_DOUTR25 (rw): MDIOS output data register 25
+0x40009500 B  REGISTER DOUTR25 (rw): MDIOS output data register 25
 0x40009500 C   FIELD 00w16 DOUT25: Output data sent to MDIO Master during read frames
-0x40009504 B  REGISTER MDIOS_DOUTR26 (rw): MDIOS output data register 26
+0x40009504 B  REGISTER DOUTR26 (rw): MDIOS output data register 26
 0x40009504 C   FIELD 00w16 DOUT26: Output data sent to MDIO Master during read frames
-0x40009508 B  REGISTER MDIOS_DOUTR27 (rw): MDIOS output data register 27
+0x40009508 B  REGISTER DOUTR27 (rw): MDIOS output data register 27
 0x40009508 C   FIELD 00w16 DOUT27: Output data sent to MDIO Master during read frames
-0x4000950C B  REGISTER MDIOS_DOUTR28 (rw): MDIOS output data register 28
+0x4000950C B  REGISTER DOUTR28 (rw): MDIOS output data register 28
 0x4000950C C   FIELD 00w16 DOUT28: Output data sent to MDIO Master during read frames
-0x40009510 B  REGISTER MDIOS_DOUTR29 (rw): MDIOS output data register 29
+0x40009510 B  REGISTER DOUTR29 (rw): MDIOS output data register 29
 0x40009510 C   FIELD 00w16 DOUT29: Output data sent to MDIO Master during read frames
-0x40009514 B  REGISTER MDIOS_DOUTR30 (rw): MDIOS output data register 30
+0x40009514 B  REGISTER DOUTR30 (rw): MDIOS output data register 30
 0x40009514 C   FIELD 00w16 DOUT30: Output data sent to MDIO Master during read frames
-0x40009518 B  REGISTER MDIOS_DOUTR31 (rw): MDIOS output data register 31
+0x40009518 B  REGISTER DOUTR31 (rw): MDIOS output data register 31
 0x40009518 C   FIELD 00w16 DOUT31: Output data sent to MDIO Master during read frames
 0x4000A000 A PERIPHERAL FDCAN1
 0x4000A000 B  REGISTER CREL (ro): FDCAN Core Release Register
@@ -8808,7 +8808,7 @@
 0x4002230C C   FIELD 00w16 RDATA_MST: Regular data of the master ADC
 0x4002230C C   FIELD 16w16 RDATA_SLV: Regular data of the slave ADC
 0x40028000 A PERIPHERAL ETH
-0x40028000 B  REGISTER ETH_MACCR: Operating mode configuration register
+0x40028000 B  REGISTER MACCR: Operating mode configuration register
 0x40028000 C   FIELD 00w01 RE (rw): Receiver Enable When this bit is set, the Rx state machine of the MAC is enabled for receiving packets from the MII interface. When this bit is reset, the MAC Rx state machine is disabled after it completes the reception of the current packet. The Rx state machine does not receive any more packets from the MII interface.
 0x40028000 C   FIELD 01w01 TE (rw): Transmitter Enable When this bit is set, the Tx state machine of the MAC is enabled for transmission on the MII interface. When this bit is reset, the MAC Tx state machine is disabled after it completes the transmission of the current packet. The Tx state machine does not transmit any more packets.
 0x40028000 C   FIELD 02w02 PRELEN (rw): Preamble Length for Transmit packets These bits control the number of preamble bytes that are added to the beginning of every Tx packet. The preamble reduction occurs only when the MAC is operating in the full-duplex mode.
@@ -8832,14 +8832,14 @@
 0x40028000 C   FIELD 27w01 IPC (rw): Checksum Offload When set, this bit enables the IPv4 header checksum checking and IPv4 or IPv6 TCP, UDP, or ICMP payload checksum checking. When this bit is reset, the COE function in the receiver is disabled. The Layer 3 and Layer 4 Packet Filter feature automatically selects the IPC Full Checksum Offload Engine on the Receive side. When this feature is enabled, you must set the IPC bit.
 0x40028000 C   FIELD 28w03 SARC (rw): Source Address Insertion or Replacement Control This field controls the source address insertion or replacement for all transmitted packets. Bit 30 specifies which MAC Address register (0 or 1) is used for source address insertion or replacement based on the values of Bits[29:28]: Others: Reserved, must not be used. Note: Changes to this field take effect only on the start of a packet. If you write to this register field when a packet is being transmitted, only the subsequent packet can use the updated value, that is, the current packet does not use the updated value.
 0x40028000 C   FIELD 31w01 ARPEN (rw): ARP Offload Enable When this bit is set, the MAC can recognize an incoming ARP request packet and schedules the ARP packet for transmission. It will forward the ARP packet to the application and also indicate the events in the RxStatus. When this bit is reset, the MAC receiver does not recognize any ARP packet and indicates them as Type frame in the RxStatus.
-0x40028004 B  REGISTER ETH_MACECR: Extended operating mode configuration register
+0x40028004 B  REGISTER MACECR: Extended operating mode configuration register
 0x40028004 C   FIELD 00w14 GPSL (rw): Giant Packet Size Limit If the received packet size is greater than the value programmed in this field in units of bytes, the MAC declares the received packet as Giant packet. The value programmed in this field must be greater than or equal to 1,518 bytes. Any other programmed value is considered as 1,518 bytes. For VLAN tagged packets, the MAC adds 4 bytes to the programmed value. For double VLAN tagged packets, the MAC adds 8 bytes to the programmed value. The value in this field is applicable when the GPSLCE bit is set in ETH_MACCR register.
 0x40028004 C   FIELD 16w01 DCRCC (rw): Disable CRC Checking for Received Packets When this bit is set, the MAC receiver does not check the CRC field in the received packets. When this bit is reset, the MAC receiver always checks the CRC field in the received packets.
 0x40028004 C   FIELD 17w01 SPEN (rw): Slow Protocol Detection Enable When this bit is set, MAC processes the Slow Protocol packets (Ether Type 0x8809) and provides the Rx status. The MAC discards the Slow Protocol packets with invalid sub-types. When this bit is reset, the MAC forwards all error-free Slow Protocol packets to the application. The MAC considers such packets as normal Type packets.
 0x40028004 C   FIELD 18w01 USP (rw): Unicast Slow Protocol Packet Detect When this bit is set, the MAC detects the Slow Protocol packets with unicast address of the station specified in the and MAC Address 0 low register . The MAC also detects the Slow Protocol packets with the Slow Protocols multicast address (01-80-C2-00-00-02). When this bit is reset, the MAC detects only Slow Protocol packets with the Slow Protocol multicast address specified in the IEEE 802.3-2008, Section 5.
 0x40028004 C   FIELD 24w01 EIPGEN (rw): Extended Inter-Packet Gap Enable When this bit is set, the MAC interprets EIPG field and IPG field in configuration register (ETH_MACCR) together as minimum IPG greater than 96 bit times in steps of 8 bit times. When this bit is reset, the MAC ignores EIPG field and interprets IPG field in configuration register (ETH_MACCR) as minimum IPG less than or equal to 96 bit times in steps of 8 bit times. Note: The extended Inter-Packet Gap feature must be enabled when operating in Full-Duplex mode only. There may be undesirable effects on back-pressure function and frame transmission if it is enabled in Half-Duplex mode.
 0x40028004 C   FIELD 25w05 EIPG (rw): Extended Inter-Packet Gap The value in this field is applicable when the EIPGEN bit is set. This field (as Most Significant bits) along with IPG field in , gives the minimum IPG greater than 96 bit times in steps of 8 bit times. For example: EIPG = 0 and IPG = 0 give 104 bit times EIPG = 0 and IPG = 1 give 112 bit times EIPG = 0 and IPG = 2 give 120 bit times .. EIPG = 7 and IPG = 31 give 2144 bit times
-0x40028008 B  REGISTER ETH_MACPFR: Packet filtering control register
+0x40028008 B  REGISTER MACPFR: Packet filtering control register
 0x40028008 C   FIELD 00w01 PR (rw): Promiscuous Mode When this bit is set, the Address Filtering module passes all incoming packets irrespective of the destination or source address. The SA or DA Filter Fails status bits of the Rx Status Word are always cleared when PR is set.
 0x40028008 C   FIELD 01w01 HUC (rw): Hash Unicast When this bit is set, the MAC performs the destination address filtering of unicast packets according to the Hash table. When this bit is reset, the MAC performs a perfect destination address filtering for unicast packets, that is, it compares the DA field with the values programmed in DA registers.
 0x40028008 C   FIELD 02w01 HMC (rw): Hash Multicast When this bit is set, the MAC performs the destination address filtering of received multicast packets according to the Hash table. When this bit is reset, the MAC performs the perfect destination address filtering for multicast packets, that is, it compares the DA field with the values programmed in DA registers.
@@ -8854,14 +8854,14 @@
 0x40028008 C   FIELD 20w01 IPFE (rw): Layer 3 and Layer 4 Filter Enable When this bit is set, the MAC drops packets that do not match the enabled Layer 3 and Layer 4 filters. If Layer 3 or Layer 4 filters are not enabled for matching, this bit does not have any effect. When this bit is reset, the MAC forwards all packets irrespective of the match status of the Layer 3 and Layer 4 fields.
 0x40028008 C   FIELD 21w01 DNTU (rw): Drop Non-TCP/UDP over IP Packets When this bit is set, the MAC drops the non-TCP or UDP over IP packets. The MAC forward only those packets that are processed by the Layer 4 filter. When this bit is reset, the MAC forwards all non-TCP or UDP over IP packets.
 0x40028008 C   FIELD 31w01 RA (rw): Receive All When this bit is set, the MAC Receiver module passes all received packets to the application, irrespective of whether they pass the address filter or not. The result of the SA or DA filtering is updated (pass or fail) in the corresponding bit in the Rx Status Word. When this bit is reset, the Receiver module passes only those packets to the application that pass the SA or DA address filter.
-0x4002800C B  REGISTER ETH_MACWTR: Watchdog timeout register
+0x4002800C B  REGISTER MACWTR: Watchdog timeout register
 0x4002800C C   FIELD 00w04 WTO (rw): Watchdog Timeout When the PWE bit is set and the WD bit of the (ETH_MACCR) register is reset, this field is used as watchdog timeout for a received packet. If the length of a received packet exceeds the value of this field, such packet is terminated and declared as an error packet. Encoding is as follows: .. Note: When the PWE bit is set, the value in this field should be more than 1,522 (0x05F2). Otherwise, the IEEE 802.3-specified valid tagged packets are declared as error packets and then dropped.
 0x4002800C C   FIELD 08w01 PWE (rw): Programmable Watchdog Enable When this bit is set and the WD bit of the (ETH_MACCR) register is reset, the WTO field is used as watchdog timeout for a received packet. When this bit is cleared, the watchdog timeout for a received packet is controlled by setting of WD and JE bits in register.
-0x40028010 B  REGISTER ETH_MACHT0R: Hash Table 0 register
+0x40028010 B  REGISTER MACHT0R: Hash Table 0 register
 0x40028010 C   FIELD 00w32 HT31T0 (rw): MAC Hash Table First 32 Bits This field contains the first 32 Bits [31:0] of the Hash table.
-0x40028014 B  REGISTER ETH_MACHT1R: Hash Table 1 register
+0x40028014 B  REGISTER MACHT1R: Hash Table 1 register
 0x40028014 C   FIELD 00w32 HT63T32 (rw): MAC Hash Table Second 32 Bits This field contains the second 32 Bits [63:32] of the Hash table.
-0x40028050 B  REGISTER ETH_MACVTR: VLAN tag register
+0x40028050 B  REGISTER MACVTR: VLAN tag register
 0x40028050 C   FIELD 00w16 VL (rw): VLAN Tag Identifier for Receive Packets This field contains the 802.1Q VLAN tag to identify the VLAN packets. This VLAN tag identifier is compared to the 15th and 16th bytes of the packets being received for VLAN packets. The following list describes the bits of this field: Bits[15:13]: User Priority Bit 12: Canonical Format Indicator (CFI) or Drop Eligible Indicator (DEI) Bits[11:0]: VLAN Identifier (VID) field of VLAN tag When the ETV bit is set, only the VID is used for comparison. If this field ([11:0] if ETV is set) is all zeros, the MAC does not check the 15th and 16th bytes for VLAN tag comparison and declares all packets with Type field value of 0x8100 or 0x88a8 as VLAN packets.
 0x40028050 C   FIELD 16w01 ETV (rw): Enable 12-Bit VLAN Tag Comparison When this bit is set, a 12-bit VLAN identifier is used for comparing and filtering instead of the complete 16-bit VLAN tag. Bits[11:0] of VLAN tag are compared with the corresponding field in the received VLAN-tagged packet. Similarly, when enabled, only 12 bits of the VLAN tag in the received packet are used for Hash-based VLAN filtering. When this bit is reset, all 16 bits of the 15th and 16th bytes of the received VLAN packet are used for comparison and VLAN Hash filtering.
 0x40028050 C   FIELD 17w01 VTIM (rw): VLAN Tag Inverse Match Enable When this bit is set, this bit enables the VLAN Tag inverse matching. The packets without matching VLAN Tag are marked as matched. When reset, this bit enables the VLAN Tag perfect matching. The packets with matched VLAN Tag are marked as matched.
@@ -8875,10 +8875,10 @@
 0x40028050 C   FIELD 27w01 ERIVLT (rw): Enable Inner VLAN Tag When this bit and the EDVLP field are set, the MAC receiver enables operation on the inner VLAN Tag (if present). When this bit is reset, the MAC receiver enables operation on the outer VLAN Tag (if present). The ERSVLM bit determines which VLAN type is enabled for filtering or matching.The ERSVLM bit and DOVLTC bit determines which VLAN type is enabled for filtering.
 0x40028050 C   FIELD 28w02 EIVLS (rw): Enable Inner VLAN Tag Stripping on Receive This field indicates the stripping operation on inner VLAN Tag in received packet:
 0x40028050 C   FIELD 31w01 EIVLRXS (rw): Enable Inner VLAN Tag in Rx Status When this bit is set, the MAC provides the inner VLAN Tag in the Rx status. When this bit is reset, the MAC does not provide the inner VLAN Tag in Rx status.
-0x40028058 B  REGISTER ETH_MACVHTR: VLAN Hash table register
+0x40028058 B  REGISTER MACVHTR: VLAN Hash table register
 0x40028058 C   FIELD 00w16 VLHT (rw): VLAN Hash Table This field contains the 16-bit VLAN Hash Table.
-0x40028060 B  REGISTER ETH_MACVIR: VLAN inclusion register
-0x40028060 B  REGISTER ETH_MACVIRALTERNATE: VLAN inclusion register
+0x40028060 B  REGISTER MACVIR: VLAN inclusion register
+0x40028060 B  REGISTER MACVIRALTERNATE: VLAN inclusion register
 0x40028060 C   FIELD 00w16 VLT (rw): VLAN Tag for Transmit Packets This field contains the value of the VLAN tag to be inserted or replaced. The value must only be changed when the transmit lines are inactive or during the initialization phase. The following list describes the bits of this field: Bits[15:13]: User Priority Bit 12: Canonical Format Indicator (CFI) or Drop Eligible Indicator (DEI) Bits[11:0]: VLAN Identifier (VID) field of VLAN tag
 0x40028060 C   FIELD 00w16 VLT (rw): VLAN Tag for Transmit Packets This field contains the value of the VLAN tag to be inserted or replaced. The value must only be changed when the transmit lines are inactive or during the initialization phase. The following list describes the bits of this field: Bits[15:13]: User Priority Bit 12: Canonical Format Indicator (CFI) or Drop Eligible Indicator (DEI) Bits[11:0]: VLAN Identifier (VID) field of VLAN tag
 0x40028060 C   FIELD 16w02 VLC (rw): VLAN Tag Control in Transmit Packets Note: Changes to this field take effect only on the start of a packet. If you write this register field when a packet is being transmitted, only the subsequent packet can use the updated value, that is, the current packet does not use the updated value.
@@ -8890,22 +8890,22 @@
 0x40028060 C   FIELD 24w01 ADDR (rw): Address This field selects one of the queue/channel specific VLAN Inclusion register for read/write access This does not have any effect when CBTI is reset
 0x40028060 C   FIELD 30w01 RDWR (rw): Read write control This bit controls the read or write operation for indirectly accessing the queue/channel specific VLAN Inclusion register. When set indicates write operation and when reset indicates read operation This has no effect when CBTI is reset
 0x40028060 C   FIELD 31w01 BUSY (ro): Busy This bit indicates the status of the read/write operation of indirect access to the queue/channel specific VLAN inclusion register. For write operation write to a register is complete when this bit is reset. For read operation the read data is valid when the bit is reset. No further writes are allowed to this register when this bit is set. This does not have any effect when CBTI is reset
-0x40028064 B  REGISTER ETH_MACIVIR: Inner VLAN inclusion register
+0x40028064 B  REGISTER MACIVIR: Inner VLAN inclusion register
 0x40028064 C   FIELD 00w16 VLT (rw): VLAN Tag for Transmit Packets This field contains the value of the VLAN tag to be inserted or replaced. The value must only be changed when the transmit lines are inactive or during the initialization phase. The following list describes the bits of this field: Bits[15:13]: User Priority Bit 12: Canonical Format Indicator (CFI) or Drop Eligible Indicator (DEI) Bits[11:0]: VLAN Identifier (VID) field of VLAN tag
 0x40028064 C   FIELD 16w02 VLC (rw): VLAN Tag Control in Transmit Packets The MAC removes the VLAN type (bytes 17 and 18) and VLAN tag (bytes 19 and 20) of all transmitted packets with VLAN tags. The MAC inserts VLT in bytes 19 and 20 of the packet after inserting the Type value (0x8100 or 0x88a8) in bytes 17 and 18. This operation is performed on all transmitted packets, irrespective of whether they already have a VLAN tag. The MAC replaces VLT in bytes 19 and 20 of all VLAN-type transmitted packets (Bytes 17 and 18 are 0x8100 or 0x88a8). Note: Changes to this field take effect only on the start of a packet. If you write to this register field when a packet is being transmitted, only the subsequent packet can use the updated value, that is, the current packet does not use the updated value.
 0x40028064 C   FIELD 18w01 VLP (rw): VLAN Priority Control When this bit is set, the VLC field is used for VLAN deletion, insertion, or replacement. When this bit is reset, the VLC field is ignored.
 0x40028064 C   FIELD 19w01 CSVL (rw): C-VLAN or S-VLAN When this bit is set, S-VLAN type (0x88A8) is inserted or replaced in the 13th and 14th bytes of transmitted packets. When this bit is reset, C-VLAN type (0x8100) is inserted or replaced in the 13th and 14th bytes of transmitted packets.
 0x40028064 C   FIELD 20w01 VLTI (rw): VLAN Tag Input When this bit is set, it indicates that the VLAN tag to be inserted or replaced in Tx packet should be taken from the Tx descriptor
-0x40028070 B  REGISTER ETH_MACQTXFCR: Tx Queue flow control register
+0x40028070 B  REGISTER MACQTXFCR: Tx Queue flow control register
 0x40028070 C   FIELD 00w01 FCB_BPA (rw): Flow Control Busy or Backpressure Activate This bit initiates a Pause packet in the full-duplex mode and activates the backpressure function in the half-duplex mode if the TFE bit is set. Full-Duplex Mode: this bit should be read as 0 before writing to this register. To initiate a Pause packet, the application must set this bit to 1. During Control packet transfer, this bit continues to be set to indicate that a packet transmission is in progress. When Pause packet transmission is complete, the MAC resets this bit to 0. You should not write to this register until this bit is cleared. Half-Duplex Mode: When this bit is set (and TFE bit is set) in the half-duplex mode, the MAC asserts the backpressure. During backpressure, when the MAC receives a new packet, the transmitter starts sending a JAM pattern resulting in a collision. When the MAC is configured for the full-duplex mode, the BPA is automatically disabled.
 0x40028070 C   FIELD 01w01 TFE (rw): Transmit Flow Control Enable Full-Duplex Mode: when this bit is set, the MAC enables the flow control operation to Tx Pause packets. When this bit is reset, the flow control operation in the MAC is disabled, and the MAC does not transmit any Pause packets. Half-Duplex Mode: when this bit is set, the MAC enables the backpressure operation. When this bit is reset, the backpressure feature is disabled.
 0x40028070 C   FIELD 04w03 PLT (rw): Pause Low Threshold This field configures the threshold of the Pause timer at which the input flow is checked for automatic retransmission of the Pause packet. The threshold values should be always less than the Pause Time configured in Bits[31:16]. For example, if PT = 100H (256 slot times), and PLT = 001, a second Pause packet is automatically transmitted at 228 (256-28) slot times after the first Pause packet is transmitted. The following list provides the threshold values for different values: The slot time is defined as the time taken to transmit 512 bits (64 bytes) on the MII interface. This (approximate) computation is based on the packet size (64, 1518, 2000, 9018, 16384, or 32768) + 2 Pause Packet Size + IPG in Slot Times.
 0x40028070 C   FIELD 07w01 DZPQ (rw): Disable Zero-Quanta Pause When this bit is set, it disables the automatic generation of the zero-quanta Pause packets. When this bit is reset, normal operation with automatic zero-quanta Pause packet generation is enabled.
 0x40028070 C   FIELD 16w16 PT (rw): Pause Time This field holds the value to be used in the Pause Time field in the Tx control packet. I
-0x40028090 B  REGISTER ETH_MACRXFCR: Rx flow control register
+0x40028090 B  REGISTER MACRXFCR: Rx flow control register
 0x40028090 C   FIELD 00w01 RFE (rw): Receive Flow Control Enable When this bit is set and the MAC is operating in full-duplex mode, the MAC decodes the received Pause packet and disables its transmitter for a specified (Pause) time. When this bit is reset or the MAC is operating in half-duplex mode, the decode function of the Pause packet is disabled. When PFC is enabled, flow control is enabled for PFC packets. The MAC decodes the received PFC packet and disables the Transmit queue, with matching priorities, for a duration of received Pause time.
 0x40028090 C   FIELD 01w01 UP (rw): Unicast Pause Packet Detect A pause packet is processed when it has the unique multicast address specified in the IEEE 802.3. When this bit is set, the MAC can also detect Pause packets with unicast address of the station. This unicast address should be as specified in (ETH_MACA0HR) and MAC Address 0 low register (ETH_MACAxLR). When this bit is reset, the MAC only detects Pause packets with unique multicast address. Note: The MAC does not process a Pause packet if the multicast address is different from the unique multicast address. This is also applicable to the received PFC packet when the Priority Flow Control (PFC) is enabled. The unique multicast address (0x01_80_C2_00_00_01) is as specified in IEEE 802.1 Qbb-2011.
-0x400280B0 B  REGISTER ETH_MACISR: Interrupt status register
+0x400280B0 B  REGISTER MACISR: Interrupt status register
 0x400280B0 C   FIELD 03w01 PHYIS (ro): PHY Interrupt This bit is set when rising edge is detected on the ETH_PHY_INTN input. This bit is cleared when this register is read.
 0x400280B0 C   FIELD 04w01 PMTIS (ro): PMT Interrupt Status This bit is set when a Magic packet or Wake-on-LAN packet is received in the power-down mode (RWKPRCVD and MGKPRCVD bits in ETH_MACPCSR register). This bit is cleared when Bits[6:5] are cleared because of a Read operation to the (ETH_MACPCSR).
 0x400280B0 C   FIELD 05w01 LPIIS (ro): LPI Interrupt Status This bit is set for any LPI state entry or exit in the MAC Transmitter or Receiver. This bit is cleared when the TLPIEN bit of is read.
@@ -8915,14 +8915,14 @@
 0x400280B0 C   FIELD 12w01 TSIS (rw): Timestamp Interrupt Status If the Timestamp feature is enabled, this bit is set when any of the following conditions is true: The system time value is equal to or exceeds the value specified in the Target Time High and Low registers. There is an overflow in the Seconds register. The Target Time Error occurred, that is, programmed target time already elapsed. If the Auxiliary Snapshot feature is enabled, this bit is set when the auxiliary snapshot trigger is asserted. When drop transmit status is enabled in MTL, this bit is set when the captured transmit timestamp is updated in the (ETH_MACTXTSSNR) and registers. When PTP offload feature is enabled, this bit is set when the captured transmit timestamp is updated in the and timestamp status seconds register (ETH_MACTXTSSSR) registers, for PTO generated Delay Request and Pdelay request packets. This bit is cleared when the corresponding interrupt source bit is read (or corresponding interrupt source bit is written to 1 when RCWE bit of (ETH_MACCSRSWCR) is set) in the .
 0x400280B0 C   FIELD 13w01 TXSTSIS (rw): Transmit Status Interrupt This bit indicates the status of transmitted packets. This bit is set when any of the following bits is set in the : Excessive Collision (EXCOL) Late Collision (LCOL) Excessive Deferral (EXDEF) Loss of Carrier (LCARR) No Carrier (NCARR) Jabber Timeout (TJT) This bit is cleared when the corresponding interrupt source bit is read (or corresponding interrupt source bit is written to 1 when RCWE bit of (ETH_MACCSRSWCR) is set) in the ETH_MACISR register.
 0x400280B0 C   FIELD 14w01 RXSTSIS (rw): Receive Status Interrupt This bit indicates the status of received packets. This bit is set when the RWT bit is set in the . This bit is cleared when the corresponding interrupt source bit is read (or corresponding interrupt source bit is written to 1 when RCWE bit of is set) in the ETH_MACISR register.
-0x400280B4 B  REGISTER ETH_MACIER: Interrupt enable register
+0x400280B4 B  REGISTER MACIER: Interrupt enable register
 0x400280B4 C   FIELD 03w01 PHYIE (rw): PHY Interrupt Enable When this bit is set, it enables the assertion of the interrupt signal because of the setting of PHYIS bit in .
 0x400280B4 C   FIELD 04w01 PMTIE (rw): PMT Interrupt Enable When this bit is set, it enables the assertion of the interrupt signal because of the setting of PMTIS bit in .
 0x400280B4 C   FIELD 05w01 LPIIE (rw): LPI Interrupt Enable When this bit is set, it enables the assertion of the interrupt signal because of the setting of LPIIS bit in .
 0x400280B4 C   FIELD 12w01 TSIE (rw): Timestamp Interrupt Enable When this bit is set, it enables the assertion of the interrupt signal because of the setting of TSIS bit in .
 0x400280B4 C   FIELD 13w01 TXSTSIE (rw): Transmit Status Interrupt Enable When this bit is set, it enables the assertion of the interrupt signal because of the setting of TXSTSIS bit in the .
 0x400280B4 C   FIELD 14w01 RXSTSIE (rw): Receive Status Interrupt Enable When this bit is set, it enables the assertion of the interrupt signal because of the setting of RXSTSIS bit in the .
-0x400280B8 B  REGISTER ETH_MACRXTXSR: Rx Tx status register
+0x400280B8 B  REGISTER MACRXTXSR: Rx Tx status register
 0x400280B8 C   FIELD 00w01 TJT (rw): Transmit Jabber Timeout This bit indicates that the Transmit Jabber Timer expired which happens when the packet size exceeds 2,048 bytes (10,240 bytes when the Jumbo packet is enabled) and JD bit is reset in the . This bit is set when the packet size exceeds 16,383 bytes and the JD bit is set in the register (ETH_MACCR). Cleared on read (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
 0x400280B8 C   FIELD 01w01 NCARR (rw): No Carrier When the DTXSTS bit is set in the , this bit indicates that the carrier signal from the PHY is not present at the end of preamble transmission. Cleared on read (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
 0x400280B8 C   FIELD 02w01 LCARR (rw): Loss of Carrier When the DTXSTS bit is set in the , this bit indicates that the loss of carrier occurred during packet transmission, that is, the ETH_CRS signal was inactive for one or more transmission clock periods during packet transmission. This bit is valid only for packets transmitted without collision. Cleared on read (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
@@ -8930,7 +8930,7 @@
 0x400280B8 C   FIELD 04w01 LCOL (rw): Late Collision When the DTXSTS bit is set in the , this bit indicates that the packet transmission aborted because a collision occurred after the collision window (64 bytes including Preamble in MII mode. This bit is not valid if the Underflow error occurs. Cleared on read (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
 0x400280B8 C   FIELD 05w01 EXCOL (rw): Excessive Collisions When the DTXSTS bit is set in the , this bit indicates that the transmission aborted after 16 successive collisions while attempting to transmit the current packet. If the DR bit is set in the (ETH_MACCR), this bit is set after the first collision and the packet transmission is aborted. Cleared on read (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
 0x400280B8 C   FIELD 08w01 RWT (rw): Receive Watchdog Timeout This bit is set when a packet with length greater than 2,048 bytes is received (10, 240 bytes when Jumbo Packet mode is enabled) and the WD bit is reset in the configuration register (ETH_MACCR). This bit is set when a packet with length greater than 16,383 bytes is received and the WD bit is set in the (ETH_MACCR). Cleared on read (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
-0x400280C0 B  REGISTER ETH_MACPCSR: 
+0x400280C0 B  REGISTER MACPCSR: 
 0x400280C0 C   FIELD 00w01 PWRDWN (rw): Power Down When this bit is set, the MAC receiver drops all received packets until it receives the expected magic packet or remote wakeup packet. This bit is then self-cleared and the power-down mode is disabled. The software can clear this bit before the expected magic packet or remote wakeup packet is received. The packets received by the MAC after this bit is cleared are forwarded to the application. This bit must only be set when the Magic Packet Enable, Global Unicast, or Remote wakeup Packet Enable bit is set high. Note: You can gate-off the CSR clock during the power-down mode. However, when the CSR clock is gated-off, you cannot perform any read or write operations on this register. Therefore, the Software cannot clear this bit.
 0x400280C0 C   FIELD 01w01 MGKPKTEN (rw): Magic Packet Enable When this bit is set, a power management event is generated when the MAC receives a magic packet.
 0x400280C0 C   FIELD 02w01 RWKPKTEN (rw): Remote wakeup Packet Enable When this bit is set, a power management event is generated when the MAC receives a remote wakeup packet.
@@ -8940,9 +8940,9 @@
 0x400280C0 C   FIELD 10w01 RWKPFE (rw): Remote wakeup Packet Forwarding Enable When this bit is set along with RWKPKTEN, the MAC receiver drops all received frames until it receives the expected wakeup frame. All frames after that event including the received wakeup frame are forwarded to application. This bit is then self-cleared on receiving the wakeup packet. The application can also clear this bit before the expected wakeup frame is received. In such cases, the MAC reverts to the default behavior where packets received are forwarded to the application. This bit must only be set when RWKPKTEN is set high and PWRDWN is set low. The setting of this bit has no effect when PWRDWN is set high. Note: If Magic Packet Enable and wakeup Frame Enable are both set along with setting of this bit and Magic Packet is received prior to wakeup frame, this bit is self-cleared on receiving Magic Packet, the received Magic packet is dropped, and all frames after received Magic Packet are forwarded to application.
 0x400280C0 C   FIELD 24w05 RWKPTR (ro): Remote wakeup FIFO Pointer This field gives the current value (0 to 7) of the Remote wakeup Packet Filter register pointer. When the value of this pointer is equal to 7, the contents of the Remote wakeup Packet Filter Register are transferred to the eth_mii_rx_clk domain when a Write occurs to that register.
 0x400280C0 C   FIELD 31w01 RWKFILTRST (rw): Remote wakeup Packet Filter Register Pointer Reset When this bit is set, the remote wakeup packet filter register pointer is reset to 0. It is automatically cleared after 1 clock cycle.
-0x400280C4 B  REGISTER ETH_MACRWKPFR: 
+0x400280C4 B  REGISTER MACRWKPFR: 
 0x400280C4 C   FIELD 00w32 MACRWKPFR (rw): Remote wakeup packet filter Refer to , and for details on register content and programming sequence.
-0x400280D0 B  REGISTER ETH_MACLCSR: LPI control and status register
+0x400280D0 B  REGISTER MACLCSR: LPI control and status register
 0x400280D0 C   FIELD 00w01 TLPIEN (ro): Transmit LPI Entry When this bit is set, it indicates that the MAC Transmitter has entered the LPI state because of the setting of the LPIEN bit. This bit is cleared by a read into this register (or write of 1 when RCWE bit in is set).
 0x400280D0 C   FIELD 01w01 TLPIEX (ro): Transmit LPI Exit When this bit is set, it indicates that the MAC transmitter exited the LPI state after the application cleared the LPIEN bit and the LPI TW Timer has expired. This bit is cleared by a read into this register (or write of 1 when RCWE bit in (ETH_MACCSRSWCR) is set).
 0x400280D0 C   FIELD 02w01 RLPIEN (ro): Receive LPI Entry When this bit is set, it indicates that the MAC Receiver has received an LPI pattern and entered the LPI state. This bit is cleared by a read into this register (or write of 1 when RCWE bit in is set). Note: This bit may not be set if the MAC stops receiving the LPI pattern for a very short duration, such as, less than three clock cycles of CSR clock.
@@ -8954,22 +8954,22 @@
 0x400280D0 C   FIELD 19w01 LPITXA (rw): LPI Tx Automate This bit controls the behavior of the MAC when it is entering or coming out of the LPI mode on the Transmit side. If the LPITXA and LPIEN bits are set to 1, the MAC enters the LPI mode only after all outstanding packets (in the core) and pending packets (in the application interface) have been transmitted. The MAC comes out of the LPI mode when the application sends any packet for transmission or the application issues a Tx FIFO Flush command. In addition, the MAC automatically clears the LPIEN bit when it exits the LPI state. If Tx FIFO Flush is set in the FTQ bit of ETH_MTLTxQOMR, when the MAC is in the LPI mode, it exits the LPI mode. When this bit is 0, the LPIEN bit directly controls behavior of the MAC when it is entering or coming out of the LPI mode.
 0x400280D0 C   FIELD 20w01 LPITE (rw): LPI Timer Enable This bit controls the automatic entry of the MAC Transmitter into and exit out of the LPI state. When LPITE, LPITXA and LPIEN bits are set, the MAC Transmitter enters LPI state only when the complete MAC TX data path is IDLE for a period indicated by the ETH_MACLETR register. After entering LPI state, if the data path becomes non-IDLE (due to a new packet being accepted for transmission), the Transmitter exits LPI state but does not clear LPIEN bit. This enables the re-entry into LPI state when it is IDLE again. When LPITE is 0, the LPI Auto timer is disabled and MAC Transmitter enters LPI state based on the settings of LPITXA and LPIEN bit descriptions.
 0x400280D0 C   FIELD 21w01 LPITCSE (rw): LPI Tx Clock Stop Enable When this bit is set, the MAC asserts sbd_tx_clk_gating_ctrl_o signal high after it enters Tx LPI mode to indicate that the Tx clock to MAC can be stopped. When this bit is reset, the MAC does not assert sbd_tx_clk_gating_ctrl_o signal high after it enters Tx LPI mode. If RGMII Interface is selected, the Tx clock is required for transmitting the LPI pattern. The Tx Clock cannot be gated and so the LPITCSE bit cannot be programmed.
-0x400280D4 B  REGISTER ETH_MACLTCR: LPI timers control register
+0x400280D4 B  REGISTER MACLTCR: LPI timers control register
 0x400280D4 C   FIELD 00w16 TWT (rw): LPI TW Timer This field specifies the minimum time (in microseconds) for which the MAC waits after it stops transmitting the LPI pattern to the PHY and before it resumes the normal transmission. The TLPIEX status bit is set after the expiry of this timer.
 0x400280D4 C   FIELD 16w10 LST (rw): LPI LS Timer This field specifies the minimum time (in milliseconds) for which the link status from the PHY should be up (OKAY) before the LPI pattern can be transmitted to the PHY. The MAC does not transmit the LPI pattern even when the LPIEN bit is set unless the LPI LS Timer reaches the programmed terminal count. The default value of the LPI LS Timer is 1000 (1 sec) as defined in the IEEE standard.
-0x400280D8 B  REGISTER ETH_MACLETR: LPI entry timer register
+0x400280D8 B  REGISTER MACLETR: LPI entry timer register
 0x400280D8 C   FIELD 00w20 LPIET (rw): LPI Entry Timer This field specifies the time in microseconds the MAC will wait to enter LPI mode, after it has transmitted all the frames. This field is valid and used only when LPITE and LPITXA are set to 1. Bits [2:0] are read-only so that the granularity of this timer is in steps of 8 micro-seconds.
-0x400280DC B  REGISTER ETH_MAC1USTCR: One-microsecond-tick counter register
+0x400280DC B  REGISTER MAC1USTCR: One-microsecond-tick counter register
 0x400280DC C   FIELD 00w12 TIC_1US_CNTR (rw): 1 �s tick Counter The application must program this counter so that the number of clock cycles of CSR clock is 1 �s (subtract 1 from the value before programming). For example if the CSR clock is 100 MHz then this field needs to be programmed to 100 - 1 = 99 (which is 0x63). This is required to generate the 1 �s events that are used to update some of the EEE related counters.
-0x40028110 B  REGISTER ETH_MACVR: Version register
+0x40028110 B  REGISTER MACVR: Version register
 0x40028110 C   FIELD 00w08 SNPSVER (ro): IP version
 0x40028110 C   FIELD 08w08 USERVER (ro): ST-defined version
-0x40028114 B  REGISTER ETH_MACDR: Debug register
+0x40028114 B  REGISTER MACDR: Debug register
 0x40028114 C   FIELD 00w01 RPESTS (ro): MAC MII Receive Protocol Engine Status When this bit is set, it indicates that the MAC MII receive protocol engine is actively receiving data, and it is not in the Idle state.
 0x40028114 C   FIELD 01w02 RFCFCSTS (ro): MAC Receive Packet Controller FIFO Status When this bit is set, this field indicates the active state of the small FIFO Read and Write controllers of the MAC Receive Packet Controller module.
 0x40028114 C   FIELD 16w01 TPESTS (ro): MAC MII Transmit Protocol Engine Status When this bit is set, it indicates that the MAC MII transmit protocol engine is actively transmitting data, and it is not in the Idle state.
 0x40028114 C   FIELD 17w02 TFCSTS (ro): MAC Transmit Packet Controller Status This field indicates the state of the MAC Transmit Packet Controller module: Status of the previous packet IPG or backoff period to be over
-0x4002811C B  REGISTER ETH_MACHWF0R: HW feature 0 register
+0x4002811C B  REGISTER MACHWF0R: HW feature 0 register
 0x4002811C C   FIELD 00w01 MIISEL (ro): 10 or 100 Mbps Support This bit is set to 1 when 10/100 Mbps is selected as operating mode.
 0x4002811C C   FIELD 01w01 GMIISEL (ro): 1000 Mbps Support This bit is set to 1 when 1000 Mbps is selected as operating mode.
 0x4002811C C   FIELD 02w01 HDSEL (ro): Half-duplex Support This bit is set to 1 when the half-duplex mode is selected
@@ -8990,7 +8990,7 @@
 0x4002811C C   FIELD 25w02 TSSTSSEL (ro): Timestamp System Time Source This bit indicates the source of the Timestamp system time: This bit is set to 1 when the Enable IEEE 1588 Timestamp Support option is selected
 0x4002811C C   FIELD 27w01 SAVLANINS (ro): Source Address or VLAN Insertion Enable This bit is set to 1 when the Enable SA and VLAN Insertion on Tx option is selected
 0x4002811C C   FIELD 28w03 ACTPHYSEL (ro): Active PHY Selected When you have multiple PHY interfaces in your configuration, this field indicates the sampled value of phy_intf_sel_i during reset de-assertion: Others: Reserved, must not be used
-0x40028120 B  REGISTER ETH_MACHWF1R: HW feature 1 register
+0x40028120 B  REGISTER MACHWF1R: HW feature 1 register
 0x40028120 C   FIELD 00w05 RXFIFOSIZE (ro): MTL Receive FIFO Size This field contains the configured value of MTL Rx FIFO in bytes expressed as Log to base 2 minus 7, that is, Log2(RXFIFO_SIZE) -7:
 0x40028120 C   FIELD 06w05 TXFIFOSIZE (ro): MTL Transmit FIFO Size This field contains the configured value of MTL Tx FIFO in bytes expressed as Log to base 2 minus 7, that is, Log2(TXFIFO_SIZE) -7:
 0x40028120 C   FIELD 11w01 OSTEN (ro): One-Step Timestamping Enable This bit is set to 1 when the Enable One-Step Timestamp Feature is selected.
@@ -9006,7 +9006,7 @@
 0x40028120 C   FIELD 23w01 POUOST (ro): One Step for PTP over UDP/IP Feature Enable This bit is set to 1 when the Enable one step timestamp for PTP over UDP/IP feature is selected.
 0x40028120 C   FIELD 24w02 HASHTBLSZ (ro): Hash Table Size This field indicates the size of the Hash table:
 0x40028120 C   FIELD 27w04 L3L4FNUM (ro): Total number of L3 or L4 Filters This field indicates the total number of L3 or L4 filters: ..
-0x40028124 B  REGISTER ETH_MACHWF2R: HW feature 2 register
+0x40028124 B  REGISTER MACHWF2R: HW feature 2 register
 0x40028124 C   FIELD 00w04 RXQCNT (ro): Number of MTL Receive Queues This field indicates the number of MTL Receive queues: ..
 0x40028124 C   FIELD 06w04 TXQCNT (ro): Number of MTL Transmit Queues This field indicates the number of MTL Transmit queues: ..
 0x40028124 C   FIELD 12w04 RXCHCNT (ro): Number of DMA Receive Channels This field indicates the number of DMA Receive channels: ..
@@ -9015,11 +9015,11 @@
 0x40028124 C   FIELD 22w02 TDCSZ (ro): Tx DMA Descriptor Cache Size in terms of 16-byte descriptors
 0x40028124 C   FIELD 24w03 PPSOUTNUM (ro): Number of PPS Outputs This field indicates the number of PPS outputs:
 0x40028124 C   FIELD 28w03 AUXSNAPNUM (ro): Number of Auxiliary Snapshot Inputs This field indicates the number of auxiliary snapshot inputs:
-0x40028128 B  REGISTER ETH_MACHWF3R: HW feature 3 register
+0x40028128 B  REGISTER MACHWF3R: HW feature 3 register
 0x40028128 C   FIELD 00w03 NRVF (ro): Number of Extended VLAN Tag Filters Enabled This field indicates the Number of Extended VLAN Tag Filters selected:
 0x40028128 C   FIELD 04w01 CBTISEL (ro): Queue/Channel based VLAN tag insertion on Tx enable This bit is set to 1 when the Enable Queue/Channel based VLAN tag insertion on Tx feature is selected.
 0x40028128 C   FIELD 05w01 DVLAN (ro): Double VLAN processing enable This bit is set to 1 when Double VLAN processing is enabled.
-0x40028200 B  REGISTER ETH_MACMDIOAR: MDIO address register
+0x40028200 B  REGISTER MACMDIOAR: MDIO address register
 0x40028200 C   FIELD 00w01 MB (rw): MII Busy The application sets this bit to instruct the SMA to initiate a Read or Write access to the MDIOS. The MAC clears this bit after the MDIO frame transfer is completed. Hence the software must not write or change any of the fields in and (ETH_MACMDIODR) as long as this bit is set. For write transfers, the application must first write 16-bit data in the MD field (and also RA field when C45E is set) in register before setting this bit. When C45E is set, it should also write into the RA field of (ETH_MACMDIODR) before initiating a read transfer. When a read transfer is completed (MII busy=0), the data read from the PHY register is valid in the MD field of the register (ETH_MACMDIODR). Note: Even if the addressed PHY is not present, there is no change in the functionality of this bit.
 0x40028200 C   FIELD 01w01 C45E (rw): Clause 45 PHY Enable When this bit is set, Clause 45 capable PHY is connected to MDIO. When this bit is reset, Clause 22 capable PHY is connected to MDIO.
 0x40028200 C   FIELD 02w02 GOC (rw): MII Operation Command This bit indicates the operation command to the PHY. When Clause 22 PHY is enabled, only Write and Read commands are valid.
@@ -9030,41 +9030,41 @@
 0x40028200 C   FIELD 21w05 PA (rw): Physical Layer Address This field indicates which Clause 22 PHY devices (out of 32 devices) the MAC is accessing. This field indicates which Clause 45 capable PHYs (out of 32 PHYs) the MAC is accessing.
 0x40028200 C   FIELD 26w01 BTB (rw): Back to Back transactions When this bit is set and the NTC has value greater than 0, then the MAC will inform the completion of a read or write command at the end of frame transfer (before the trailing clocks are transmitted). The software can thus initiate the next command which will be executed immediately irrespective of the number trailing clocks generated for the previous frame. When this bit is reset, then the read/write command completion (MII busy is cleared) only after the trailing clocks are generated. In this mode, it is ensured that the NTC is always generated after each frame. This bit must not be set when NTC=0.
 0x40028200 C   FIELD 27w01 PSE (rw): Preamble Suppression Enable When this bit is set, the SMA will suppress the 32-bit preamble and transmit MDIO frames with only 1 preamble bit. When this bit is 0, the MDIO frame always has 32 bits of preamble as defined in the IEEE specifications.
-0x40028204 B  REGISTER ETH_MACMDIODR: MDIO data register
+0x40028204 B  REGISTER MACMDIODR: MDIO data register
 0x40028204 C   FIELD 00w16 MD (rw): MII Data This field contains the 16-bit data value read from the PHY after a Management Read operation or the 16-bit data value to be written to the PHY before a Management Write operation.
 0x40028204 C   FIELD 16w16 RA (rw): Register Address This field is valid only when C45E is set. It contains the Register Address in the PHY to which the MDIO frame is intended for.
-0x40028210 B  REGISTER ETH_MACARPAR: ARP address register
+0x40028210 B  REGISTER MACARPAR: ARP address register
 0x40028210 C   FIELD 00w32 ARPPA (rw): ARP Protocol Address This field contains the IPv4 Destination Address of the MAC. This address is used for perfect match with the Protocol Address of Target field in the received ARP packet.
-0x40028230 B  REGISTER ETH_MACCSRSWCR: CSR software control register
+0x40028230 B  REGISTER MACCSRSWCR: CSR software control register
 0x40028230 C   FIELD 00w01 RCWE (rw): Register Clear on Write 1 Enable When this bit is set, the access mode to some register fields changes to rc_w1 (clear on write) meaning that the application needs to set that respective bit to 1 to clear it. When this bit is reset, the access mode to these register fields remains rc_r (clear on read).
 0x40028230 C   FIELD 08w01 SEEN (rw): Slave Error Response Enable When this bit is set, the MAC responds with a Slave Error for accesses to reserved registers in CSR space. When this bit is reset, the MAC responds with an Okay response to any register accessed from CSR space.
-0x40028300 B  REGISTER ETH_MACA0HR: MAC Address 0 high register
+0x40028300 B  REGISTER MACA0HR: MAC Address 0 high register
 0x40028300 C   FIELD 00w16 ADDRHI (rw): MAC Address0[47:32] This field contains the upper 16 bits [47:32] of the first 6-byte MAC address. The MAC uses this field for filtering the received packets and inserting the MAC address in the Transmit Flow Control (Pause) Packets.
 0x40028300 C   FIELD 31w01 AE (ro): Address Enable This bit is always set to 1.
-0x40028304 B  REGISTER ETH_MACA0LR: MAC Address 0 low register
+0x40028304 B  REGISTER MACA0LR: MAC Address 0 low register
 0x40028304 C   FIELD 00w32 ADDRLO (rw): MAC Address x [31:0] (x = 0 to 3) This field contains the lower 32 bits of the first 6-byte MAC address. The MAC uses this field for filtering the received packets and inserting the MAC address in the Transmit Flow Control (Pause) Packets.
-0x40028308 B  REGISTER ETH_MACA1HR: MAC Address 1 high register
+0x40028308 B  REGISTER MACA1HR: MAC Address 1 high register
 0x40028308 C   FIELD 00w16 ADDRHI (rw): MAC Address1 [47:32] This field contains the upper 16 bits[47:32] of the second 6-byte MAC address.
 0x40028308 C   FIELD 24w06 MBC (rw): Mask Byte Control These bits are mask control bits for comparing each of the MAC Address bytes. When set high, the MAC does not compare the corresponding byte of received DA or SA with the contents of MAC Address1 registers. Each bit controls the masking of the bytes as follows: Bit 29: ETH_MACAxHR[15:8] Bit 28: ETH_MACAxHR[7:0] Bit 27: ETH_MACAxLR[31:24] Bit 26: ETH_MACAxLR[23:16] Bit 25: ETH_MACAxLR[15:8] Bit 24: ETH_MACAxLR[7:0] You can filter a group of addresses (known as group address filtering) by masking one or more bytes of the address.
 0x40028308 C   FIELD 30w01 SA (rw): Source Address When this bit is set, the MAC Address1[47:0] is used to compare with the SA fields of the received packet. When this bit is reset, the MAC Address x[47:0] is used to compare with the DA fields of the received packet.
 0x40028308 C   FIELD 31w01 AE (rw): Address Enable When this bit is set, the address filter module uses the second MAC address for perfect filtering. When this bit is reset, the address filter module ignores the address for filtering.
-0x4002830C B  REGISTER ETH_MACA1LR: MAC Address 1 low register
+0x4002830C B  REGISTER MACA1LR: MAC Address 1 low register
 0x4002830C C   FIELD 00w32 ADDRLO (rw): MAC Address x [31:0] (x = 0 to 3) This field contains the lower 32 bits of the first 6-byte MAC address. The MAC uses this field for filtering the received packets and inserting the MAC address in the Transmit Flow Control (Pause) Packets.
-0x40028310 B  REGISTER ETH_MACA2HR: MAC Address 2 high register
+0x40028310 B  REGISTER MACA2HR: MAC Address 2 high register
 0x40028310 C   FIELD 00w16 ADDRHI (rw): MAC Address1 [47:32] This field contains the upper 16 bits[47:32] of the second 6-byte MAC address.
 0x40028310 C   FIELD 24w06 MBC (rw): Mask Byte Control These bits are mask control bits for comparing each of the MAC Address bytes. When set high, the MAC does not compare the corresponding byte of received DA or SA with the contents of MAC Address1 registers. Each bit controls the masking of the bytes as follows: Bit 29: ETH_MACAxHR[15:8] Bit 28: ETH_MACAxHR[7:0] Bit 27: ETH_MACAxLR[31:24] Bit 26: ETH_MACAxLR[23:16] Bit 25: ETH_MACAxLR[15:8] Bit 24: ETH_MACAxLR[7:0] You can filter a group of addresses (known as group address filtering) by masking one or more bytes of the address.
 0x40028310 C   FIELD 30w01 SA (rw): Source Address When this bit is set, the MAC Address1[47:0] is used to compare with the SA fields of the received packet. When this bit is reset, the MAC Address x[47:0] is used to compare with the DA fields of the received packet.
 0x40028310 C   FIELD 31w01 AE (rw): Address Enable When this bit is set, the address filter module uses the second MAC address for perfect filtering. When this bit is reset, the address filter module ignores the address for filtering.
-0x40028314 B  REGISTER ETH_MACA2LR: MAC Address 2 low register
+0x40028314 B  REGISTER MACA2LR: MAC Address 2 low register
 0x40028314 C   FIELD 00w32 ADDRLO (rw): MAC Address x [31:0] (x = 0 to 3) This field contains the lower 32 bits of the first 6-byte MAC address. The MAC uses this field for filtering the received packets and inserting the MAC address in the Transmit Flow Control (Pause) Packets.
-0x40028318 B  REGISTER ETH_MACA3HR: MAC Address 3 high register
+0x40028318 B  REGISTER MACA3HR: MAC Address 3 high register
 0x40028318 C   FIELD 00w16 ADDRHI (rw): MAC Address1 [47:32] This field contains the upper 16 bits[47:32] of the second 6-byte MAC address.
 0x40028318 C   FIELD 24w06 MBC (rw): Mask Byte Control These bits are mask control bits for comparing each of the MAC Address bytes. When set high, the MAC does not compare the corresponding byte of received DA or SA with the contents of MAC Address1 registers. Each bit controls the masking of the bytes as follows: Bit 29: ETH_MACAxHR[15:8] Bit 28: ETH_MACAxHR[7:0] Bit 27: ETH_MACAxLR[31:24] Bit 26: ETH_MACAxLR[23:16] Bit 25: ETH_MACAxLR[15:8] Bit 24: ETH_MACAxLR[7:0] You can filter a group of addresses (known as group address filtering) by masking one or more bytes of the address.
 0x40028318 C   FIELD 30w01 SA (rw): Source Address When this bit is set, the MAC Address1[47:0] is used to compare with the SA fields of the received packet. When this bit is reset, the MAC Address x[47:0] is used to compare with the DA fields of the received packet.
 0x40028318 C   FIELD 31w01 AE (rw): Address Enable When this bit is set, the address filter module uses the second MAC address for perfect filtering. When this bit is reset, the address filter module ignores the address for filtering.
-0x4002831C B  REGISTER ETH_MACA3LR: MAC Address 3 low register
+0x4002831C B  REGISTER MACA3LR: MAC Address 3 low register
 0x4002831C C   FIELD 00w32 ADDRLO (rw): MAC Address x [31:0] (x = 0 to 3) This field contains the lower 32 bits of the first 6-byte MAC address. The MAC uses this field for filtering the received packets and inserting the MAC address in the Transmit Flow Control (Pause) Packets.
-0x40028700 B  REGISTER ETH_MMC_CONTROL: MMC control register
+0x40028700 B  REGISTER MMC_CONTROL: MMC control register
 0x40028700 C   FIELD 00w01 CNTRST (rw): Counters Reset When this bit is set, all counters are reset. This bit is cleared automatically after 1 clock cycle.
 0x40028700 C   FIELD 01w01 CNTSTOPRO (rw): Counter Stop Rollover When this bit is set, the counter does not roll over to zero after reaching the maximum value.
 0x40028700 C   FIELD 02w01 RSTONRD (rw): Reset on Read When this bit is set, the MMC counters are reset to zero after Read (self-clearing after reset). The counters are cleared when the least significant byte lane (Bits[7:0]) is read.
@@ -9072,51 +9072,51 @@
 0x40028700 C   FIELD 04w01 CNTPRST (rw): Counters Preset When this bit is set, all counters are initialized or preset to almost full or almost half according to the CNTPRSTLVL bit. This bit is cleared automatically after 1 clock cycle. This bit, along with the CNTPRSTLVL bit, is useful for debugging and testing the assertion of interrupts because of MMC counter becoming half-full or full.
 0x40028700 C   FIELD 05w01 CNTPRSTLVL (rw): Full-Half Preset When this bit is low and the CNTPRST bit is set, all MMC counters get preset to almost-half value. All octet counters get preset to 0x7FFF_F800 (Half 2Kbytes) and all packet-counters get preset to 0x7FFF_FFF0 (Half 16). When this bit is high and the CNTPRST bit is set, all MMC counters get preset to almost-full value. All octet counters get preset to 0xFFFF_F800 (Full 2Kbytes) and all packet-counters get preset to 0xFFFF_FFF0 (Full 16). For 16-bit counters, the almost-half preset values are 0x7800 and 0x7FF0 for the respective octet and packet counters. Similarly, the almost-full preset values for the 16-bit counters are 0xF800 and 0xFFF0.
 0x40028700 C   FIELD 08w01 UCDBC (rw): Update MMC Counters for Dropped Broadcast Packets The CNTRST bit has a higher priority than the CNTPRST bit. Therefore, when the software tries to set both bits in the same write cycle, all counters are cleared and the CNTPRST bit is not set. When set, the MAC updates all related MMC Counters for Broadcast packets that are dropped because of the setting of the DBF bit of (ETH_MACPFR). When reset, the MMC Counters are not updated for dropped Broadcast packets.
-0x40028704 B  REGISTER ETH_MMC_RX_INTERRUPT: MMC Rx interrupt register
+0x40028704 B  REGISTER MMC_RX_INTERRUPT: MMC Rx interrupt register
 0x40028704 C   FIELD 05w01 RXCRCERPIS (rw): MMC Receive CRC Error Packet Counter Interrupt Status This bit is set when the counter reaches half of the maximum value or the maximum value.
 0x40028704 C   FIELD 06w01 RXALGNERPIS (rw): MMC Receive Alignment Error Packet Counter Interrupt Status This bit is set when the (ETH_RX_ALIGNMENT_ERROR_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x40028704 C   FIELD 17w01 RXUCGPIS (rw): MMC Receive Unicast Good Packet Counter Interrupt Status This bit is set when the (ETH_RX_UNICAST_PACKETS_GOOD) counter reaches half of the maximum value or the maximum value.
 0x40028704 C   FIELD 26w01 RXLPIUSCIS (rw): MMC Receive LPI microsecond counter interrupt status This bit is set when the counter reaches half of the maximum value or the maximum value.
 0x40028704 C   FIELD 27w01 RXLPITRCIS (rw): MMC Receive LPI transition counter interrupt status This bit is set when the counter reaches half of the maximum value or the maximum value.
-0x40028708 B  REGISTER ETH_MMC_TX_INTERRUPT: MMC Tx interrupt register
+0x40028708 B  REGISTER MMC_TX_INTERRUPT: MMC Tx interrupt register
 0x40028708 C   FIELD 14w01 TXSCOLGPIS (rw): MMC Transmit Single Collision Good Packet Counter Interrupt Status This bit is set when the (ETH_TX_SINGLE_COLLISION_GOOD_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x40028708 C   FIELD 15w01 TXMCOLGPIS (rw): MMC Transmit Multiple Collision Good Packet Counter Interrupt Status This bit is set when the (ETH_TX_MULTIPLE_COLLISION_GOOD_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x40028708 C   FIELD 21w01 TXGPKTIS (rw): MMC Transmit Good Packet Counter Interrupt Status This bit is set when the counter reaches half of the maximum value or the maximum value.
 0x40028708 C   FIELD 26w01 TXLPIUSCIS (rw): MMC Transmit LPI microsecond counter interrupt status This bit is set when the counter reaches half of the maximum value or the maximum value.
 0x40028708 C   FIELD 27w01 TXLPITRCIS (rw): MMC Transmit LPI transition counter interrupt status This bit is set when the counter reaches half of the maximum value or the maximum value.
-0x4002870C B  REGISTER ETH_MMC_RX_INTERRUPT_MASK: MMC Rx interrupt mask register
+0x4002870C B  REGISTER MMC_RX_INTERRUPT_MASK: MMC Rx interrupt mask register
 0x4002870C C   FIELD 05w01 RXCRCERPIM (rw): MMC Receive CRC Error Packet Counter Interrupt Mask Setting this bit masks the interrupt when the (ETH_RX_CRC_ERROR_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x4002870C C   FIELD 06w01 RXALGNERPIM (rw): MMC Receive Alignment Error Packet Counter Interrupt Mask Setting this bit masks the interrupt when the (ETH_RX_ALIGNMENT_ERROR_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x4002870C C   FIELD 17w01 RXUCGPIM (rw): MMC Receive Unicast Good Packet Counter Interrupt Mask Setting this bit masks the interrupt when the (ETH_RX_UNICAST_PACKETS_GOOD) counter reaches half of the maximum value or the maximum value.
 0x4002870C C   FIELD 26w01 RXLPIUSCIM (rw): MMC Receive LPI microsecond counter interrupt Mask Setting this bit masks the interrupt when the (ETH_RX_LPI_USEC_CNTR) counter reaches half of the maximum value or the maximum value.
 0x4002870C C   FIELD 27w01 RXLPITRCIM (rw): MMC Receive LPI transition counter interrupt Mask Setting this bit masks the interrupt when the (ETH_RX_LPI_TRAN_CNTR) counter reaches half of the maximum value or the maximum value.
-0x40028710 B  REGISTER ETH_MMC_TX_INTERRUPT_MASK: MMC Tx interrupt mask register
+0x40028710 B  REGISTER MMC_TX_INTERRUPT_MASK: MMC Tx interrupt mask register
 0x40028710 C   FIELD 14w01 TXSCOLGPIM (rw): MMC Transmit Single Collision Good Packet Counter Interrupt Mask Setting this bit masks the interrupt when the (ETH_TX_SINGLE_COLLISION_GOOD_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x40028710 C   FIELD 15w01 TXMCOLGPIM (rw): MMC Transmit Multiple Collision Good Packet Counter Interrupt Mask Setting this bit masks the interrupt when the (ETH_TX_MULTIPLE_COLLISION_GOOD_PACKETS) counter reaches half of the maximum value or the maximum value.
 0x40028710 C   FIELD 21w01 TXGPKTIM (rw): MMC Transmit Good Packet Counter Interrupt Mask Setting this bit masks the interrupt when the (ETH_TX_PACKET_COUNT_GOOD) counter reaches half of the maximum value or the maximum value.
 0x40028710 C   FIELD 26w01 TXLPIUSCIM (rw): MMC Transmit LPI microsecond counter interrupt Mask Setting this bit masks the interrupt when the (ETH_TX_LPI_USEC_CNTR) counter reaches half of the maximum value or the maximum value.
 0x40028710 C   FIELD 27w01 TXLPITRCIM (rw): MMC Transmit LPI transition counter interrupt Mask Setting this bit masks the interrupt when the (ETH_TX_LPI_TRAN_CNTR) counter reaches half of the maximum value or the maximum value.
-0x4002874C B  REGISTER ETH_TX_SINGLE_COLLISION_GOOD_PACKETS: Tx single collision good packets register
+0x4002874C B  REGISTER TX_SINGLE_COLLISION_GOOD_PACKETS: Tx single collision good packets register
 0x4002874C C   FIELD 00w32 TXSNGLCOLG (ro): Tx Single Collision Good Packets This field indicates the number of successfully transmitted packets after a single collision in the half-duplex mode.
-0x40028750 B  REGISTER ETH_TX_MULTIPLE_COLLISION_GOOD_PACKETS: Tx multiple collision good packets register
+0x40028750 B  REGISTER TX_MULTIPLE_COLLISION_GOOD_PACKETS: Tx multiple collision good packets register
 0x40028750 C   FIELD 00w32 TXMULTCOLG (ro): Tx Multiple Collision Good Packets This field indicates the number of successfully transmitted packets after multiple collisions in the half-duplex mode.
-0x40028768 B  REGISTER ETH_TX_PACKET_COUNT_GOOD: Tx packet count good register
+0x40028768 B  REGISTER TX_PACKET_COUNT_GOOD: Tx packet count good register
 0x40028768 C   FIELD 00w32 TXPKTG (ro): Tx Packet Count Good This field indicates the number of good packets transmitted.
-0x40028794 B  REGISTER ETH_RX_CRC_ERROR_PACKETS: Rx CRC error packets register
+0x40028794 B  REGISTER RX_CRC_ERROR_PACKETS: Rx CRC error packets register
 0x40028794 C   FIELD 00w32 RXCRCERR (ro): Rx CRC Error Packets This field indicates the number of packets received with CRC error.
-0x40028798 B  REGISTER ETH_RX_ALIGNMENT_ERROR_PACKETS: Rx alignment error packets register
+0x40028798 B  REGISTER RX_ALIGNMENT_ERROR_PACKETS: Rx alignment error packets register
 0x40028798 C   FIELD 00w32 RXALGNERR (ro): Rx Alignment Error Packets This field indicates the number of packets received with alignment (dribble) error. It is valid only in 10/100 mode.
-0x400287C4 B  REGISTER ETH_RX_UNICAST_PACKETS_GOOD: Rx unicast packets good register
+0x400287C4 B  REGISTER RX_UNICAST_PACKETS_GOOD: Rx unicast packets good register
 0x400287C4 C   FIELD 00w32 RXUCASTG (ro): Rx Unicast Packets Good This field indicates the number of good unicast packets received.
-0x400287EC B  REGISTER ETH_TX_LPI_USEC_CNTR: Tx LPI microsecond timer register
+0x400287EC B  REGISTER TX_LPI_USEC_CNTR: Tx LPI microsecond timer register
 0x400287EC C   FIELD 00w32 TXLPIUSC (ro): Tx LPI Microseconds Counter This field indicates the number of microseconds Tx LPI is asserted. For every Tx LPI Entry and Exit, the Timer value can have an error of +/- 1 microsecond.
-0x400287F0 B  REGISTER ETH_TX_LPI_TRAN_CNTR: Tx LPI transition counter register
+0x400287F0 B  REGISTER TX_LPI_TRAN_CNTR: Tx LPI transition counter register
 0x400287F0 C   FIELD 00w32 TXLPITRC (ro): Tx LPI Transition counter This field indicates the number of times Tx LPI Entry has occurred. Even if Tx LPI Entry occurs in Automate mode (because of LPITXA bit set in the (ETH_MACLCSR)), the counter will increment.
-0x400287F4 B  REGISTER ETH_RX_LPI_USEC_CNTR: Rx LPI microsecond counter register
+0x400287F4 B  REGISTER RX_LPI_USEC_CNTR: Rx LPI microsecond counter register
 0x400287F4 C   FIELD 00w32 RXLPIUSC (ro): Rx LPI Microseconds Counter This field indicates the number of microseconds Rx LPI is asserted. For every Rx LPI Entry and Exit, the Timer value can have an error of +/- 1 microsecond.
-0x400287F8 B  REGISTER ETH_RX_LPI_TRAN_CNTR: Rx LPI transition counter register
+0x400287F8 B  REGISTER RX_LPI_TRAN_CNTR: Rx LPI transition counter register
 0x400287F8 C   FIELD 00w32 RXLPITRC (ro): Rx LPI Transition counter This field indicates the number of times Rx LPI Entry has occurred.
-0x40028900 B  REGISTER ETH_MACL3L4C0R: L3 and L4 control 0 register
+0x40028900 B  REGISTER MACL3L4C0R: L3 and L4 control 0 register
 0x40028900 C   FIELD 00w01 L3PEN0 (rw): Layer 3 Protocol Enable When this bit is set, the Layer 3 IP Source or Destination Address matching is enabled for IPv6 packets. When this bit is reset, the Layer 3 IP Source or Destination Address matching is enabled for IPv4 packets. The Layer 3 matching is done only when the L3SAM0 or L3DAM0 bit is set.
 0x40028900 C   FIELD 02w01 L3SAM0 (rw): Layer 3 IP SA Match Enable When this bit is set, the Layer 3 IP Source Address field is enabled for matching. When this bit is reset, the MAC ignores the Layer 3 IP Source Address field for matching. Note: When the L3PEN0 bit is set, you should set either this bit or the L3DAM0 bit because either IPv6 SA or DA can be checked for filtering.
 0x40028900 C   FIELD 03w01 L3SAIM0 (rw): Layer 3 IP SA Inverse Match Enable When this bit is set, the Layer 3 IP Source Address field is enabled for inverse matching. When this bit reset, the Layer 3 IP Source Address field is enabled for perfect matching. This bit is valid and applicable only when the L3SAM0 bit is set.
@@ -9129,18 +9129,18 @@
 0x40028900 C   FIELD 19w01 L4SPIM0 (rw): Layer 4 Source Port Inverse Match Enable When this bit is set, the Layer 4 Source Port number field is enabled for inverse matching. When this bit is reset, the Layer 4 Source Port number field is enabled for perfect matching. This bit is valid and applicable only when the L4SPM0 bit is set high.
 0x40028900 C   FIELD 20w01 L4DPM0 (rw): Layer 4 Destination Port Match Enable When this bit is set, the Layer 4 Destination Port number field is enabled for matching. When this bit is reset, the MAC ignores the Layer 4 Destination Port number field for matching.
 0x40028900 C   FIELD 21w01 L4DPIM0 (rw): Layer 4 Destination Port Inverse Match Enable When this bit is set, the Layer 4 Destination Port number field is enabled for inverse matching. When this bit is reset, the Layer 4 Destination Port number field is enabled for perfect matching. This bit is valid and applicable only when the L4DPM0 bit is set high.
-0x40028904 B  REGISTER ETH_MACL4A0R: 
+0x40028904 B  REGISTER MACL4A0R: 
 0x40028904 C   FIELD 00w16 L4SP0 (rw): Layer 4 Source Port Number Field When the L4PEN0 bit is reset and the L4DPM0 bit is set in the (ETH_MACL3L4C0R), this field contains the value to be matched with the TCP Source Port Number field in the IPv4 or IPv6 packets. When the L4PEN0 and L4DPM0 bits are set in (ETH_MACL3L4C0R), this field contains the value to be matched with the UDP Source Port Number field in the IPv4 or IPv6 packets.
 0x40028904 C   FIELD 16w16 L4DP0 (rw): Layer 4 Destination Port Number Field When the L4PEN0 bit is reset and the L4DPM0 bit is set in the (ETH_MACL3L4C0R), this field contains the value to be matched with the TCP Destination Port Number field in the IPv4 or IPv6 packets. When the L4PEN0 and L4DPM0 bits are set in (ETH_MACL3L4C0R), this field contains the value to be matched with the UDP Destination Port Number field in the IPv4 or IPv6 packets.
-0x40028910 B  REGISTER ETH_MACL3A00R: Layer3 Address 0 filter 0 register
+0x40028910 B  REGISTER MACL3A00R: Layer3 Address 0 filter 0 register
 0x40028910 C   FIELD 00w32 L3A00 (rw): Layer 3 Address 0 Field When the L3PEN0 and L3SAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[31:0] of the IP Source Address field in the IPv6 packets. When the L3PEN0 and L3DAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[31:0] of the IP Destination Address field in the IPv6 packets. When the L3PEN0 bit is reset and the L3SAM0 bit is set in the (ETH_MACL3L4C0R), this field contains the value to be matched with the IP Source Address field in the IPv4 packets.
-0x40028914 B  REGISTER ETH_MACL3A10R: Layer3 Address 1 filter 0 register
+0x40028914 B  REGISTER MACL3A10R: Layer3 Address 1 filter 0 register
 0x40028914 C   FIELD 00w32 L3A10 (rw): Layer 3 Address 1 Field When the L3PEN0 and L3SAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[63:32] of the IP Source Address field in the IPv6 packets. When the L3PEN0 and L3DAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[63:32] of the IP Destination Address field in the IPv6 packets. When the L3PEN0 bit is reset and the L3SAM0 bit is set in the (ETH_MACL3L4C0R), this field contains the value to be matched with the IP Destination Address field in the IPv4 packets.
-0x40028918 B  REGISTER ETH_MACL3A20R: Layer3 Address 2 filter 0 register
+0x40028918 B  REGISTER MACL3A20R: Layer3 Address 2 filter 0 register
 0x40028918 C   FIELD 00w32 L3A20 (rw): Layer 3 Address 2 Field When the L3PEN0 and L3SAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[95:64] of the IP Source Address field in the IPv6 packets. When the L3PEN0 and L3DAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[95:64] of the IP Destination Address field in the IPv6 packets. When the L3PEN0 bit is reset in the , this field is not used.
-0x4002891C B  REGISTER ETH_MACL3A30R: Layer3 Address 3 filter 0 register
+0x4002891C B  REGISTER MACL3A30R: Layer3 Address 3 filter 0 register
 0x4002891C C   FIELD 00w32 L3A30 (rw): Layer 3 Address 3 Field When the L3PEN0 and L3SAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[127:96] of the IP Source Address field in the IPv6 packets. When the L3PEN0 and L3DAM0 bits are set in the (ETH_MACL3L4C0R), this field contains the value to be matched with Bits[127:96] of the IP Destination Address field in the IPv6 packets. When the L3PEN0 bit is reset in the , this field is not used.
-0x40028930 B  REGISTER ETH_MACL3L4C1R: L3 and L4 control 1 register
+0x40028930 B  REGISTER MACL3L4C1R: L3 and L4 control 1 register
 0x40028930 C   FIELD 00w01 L3PEN1 (rw): Layer 3 Protocol Enable When this bit is set, the Layer 3 IP Source or Destination Address matching is enabled for IPv6 packets. When this bit is reset, the Layer 3 IP Source or Destination Address matching is enabled for IPv4 packets. The Layer 3 matching is done only when the L3SAM1 or L3DAM1 bit is set.
 0x40028930 C   FIELD 02w01 L3SAM1 (rw): Layer 3 IP SA Match Enable When this bit is set, the Layer 3 IP Source Address field is enabled for matching. When this bit is reset, the MAC ignores the Layer 3 IP Source Address field for matching. Note: When the L3PEN01 bit is set, you should set either this bit or the L3DAM1 bit because either IPv6 SA or DA can be checked for filtering.
 0x40028930 C   FIELD 03w01 L3SAIM1 (rw): Layer 3 IP SA Inverse Match Enable When this bit is set, the Layer 3 IP Source Address field is enabled for inverse matching. When this bit reset, the Layer 3 IP Source Address field is enabled for perfect matching. This bit is valid and applicable only when the L3SAM1 bit is set.
@@ -9153,18 +9153,18 @@
 0x40028930 C   FIELD 19w01 L4SPIM1 (rw): Layer 4 Source Port Inverse Match Enable When this bit is set, the Layer 4 Source Port number field is enabled for inverse matching. When this bit is reset, the Layer 4 Source Port number field is enabled for perfect matching. This bit is valid and applicable only when the L4SPM1 bit is set high.
 0x40028930 C   FIELD 20w01 L4DPM1 (rw): Layer 4 Destination Port Match Enable When this bit is set, the Layer 4 Destination Port number field is enabled for matching. When this bit is reset, the MAC ignores the Layer 4 Destination Port number field for matching.
 0x40028930 C   FIELD 21w01 L4DPIM1 (rw): Layer 4 Destination Port Inverse Match Enable When this bit is set, the Layer 4 Destination Port number field is enabled for inverse matching. When this bit is reset, the Layer 4 Destination Port number field is enabled for perfect matching. This bit is valid and applicable only when the L4DPM1 bit is set high.
-0x40028934 B  REGISTER ETH_MACL4A1R: 
+0x40028934 B  REGISTER MACL4A1R: 
 0x40028934 C   FIELD 00w16 L4SP1 (rw): Layer 4 Source Port Number Field When the L4PEN1 bit is reset and the L4DPM1 bit is set in the (ETH_MACL3L4C1R), this field contains the value to be matched with the TCP Source Port Number field in the IPv4 or IPv6 packets. When the L4PEN1 and L4DPM1 bits are set in (ETH_MACL3L4C1R), this field contains the value to be matched with the UDP Source Port Number field in the IPv4 or IPv6 packets.
 0x40028934 C   FIELD 16w16 L4DP1 (rw): Layer 4 Destination Port Number Field When the L4PEN1 bit is reset and the L4DPM1 bit is set in the (ETH_MACL3L4C1R), this field contains the value to be matched with the TCP Destination Port Number field in the IPv4 or IPv6 packets. When the L4PEN1 and L4DPM1 bits are set in (ETH_MACL3L4C1R), this field contains the value to be matched with the UDP Destination Port Number field in the IPv4 or IPv6 packets.
-0x40028940 B  REGISTER ETH_MACL3A01R: Layer3 address 0 filter 1 Register
+0x40028940 B  REGISTER MACL3A01R: Layer3 address 0 filter 1 Register
 0x40028940 C   FIELD 00w32 L3A01 (rw): Layer 3 Address 0 Field When the L3PEN1 and L3SAM1bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[31:0] of the IP Source Address field in the IPv6 packets. When the L3PEN1 and L3DAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[31:0] of the IP Destination Address field in the IPv6 packets. When the L3PEN1 bit is reset and the L3SAM1 bit is set in the (ETH_MACL3L4C1R), this field contains the value to be matched with the IP Source Address field in the IPv4 packets.
-0x40028944 B  REGISTER ETH_MACL3A11R: Layer3 address 1 filter 1 register
+0x40028944 B  REGISTER MACL3A11R: Layer3 address 1 filter 1 register
 0x40028944 C   FIELD 00w32 L3A11 (rw): Layer 3 Address 1 Field When the L3PEN1 and L3SAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[63:32] of the IP Source Address field in the IPv6 packets. When the L3PEN1 and L3DAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[63:32] of the IP Destination Address field in the IPv6 packets. When the L3PEN1 bit is reset and the L3SAM1 bit is set in the (ETH_MACL3L4C1R), this field contains the value to be matched with the IP Destination Address field in the IPv4 packets.
-0x40028948 B  REGISTER ETH_MACL3A21R: Layer3 address 2 filter 1 Register
+0x40028948 B  REGISTER MACL3A21R: Layer3 address 2 filter 1 Register
 0x40028948 C   FIELD 00w32 L3A21 (rw): Layer 3 Address 2 Field When the L3PEN1 and L3SAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[95:64] of the IP Source Address field in the IPv6 packets. When the L3PEN1 and L3DAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[95:64] of the IP Destination Address field in the IPv6 packets. When the L3PEN1 bit is reset in the , this field is not used.
-0x4002894C B  REGISTER ETH_MACL3A31R: Layer3 address 3 filter 1 register
+0x4002894C B  REGISTER MACL3A31R: Layer3 address 3 filter 1 register
 0x4002894C C   FIELD 00w32 L3A31 (rw): Layer 3 Address 3 Field When the L3PEN1 and L3SAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[127:96] of the IP Source Address field in the IPv6 packets. When the L3PEN1 and L3DAM1 bits are set in the (ETH_MACL3L4C1R), this field contains the value to be matched with Bits[127:96] of the IP Destination Address field in the IPv6 packets. When the L3PEN1 bit is reset in the , this field is not used.
-0x40028B00 B  REGISTER ETH_MACTSCR: Timestamp control Register
+0x40028B00 B  REGISTER MACTSCR: Timestamp control Register
 0x40028B00 C   FIELD 00w01 TSENA (rw): Enable Timestamp When this bit is set, the timestamp is added for Transmit and Receive packets. When disabled, timestamp is not added for transmit and receive packets and the Timestamp Generator is also suspended. You need to initialize the Timestamp (system time) after enabling this mode. On the Receive side, the MAC processes the 1588 packets only if this bit is set.
 0x40028B00 C   FIELD 01w01 TSCFUPDT (rw): Fine or Coarse Timestamp Update When this bit is set, the Fine method is used to update system timestamp. When this bit is reset, Coarse method is used to update the system timestamp.
 0x40028B00 C   FIELD 02w01 TSINIT (rw): Initialize Timestamp When this bit is set, the system time is initialized (overwritten) with the value specified in the and update register (ETH_MACSTNUR). This bit should be zero before it is updated. This bit is reset when the initialization is complete.
@@ -9182,20 +9182,20 @@
 0x40028B00 C   FIELD 18w01 TSENMACADDR (rw): Enable MAC Address for PTP Packet Filtering When this bit is set, the DA MAC address (that matches any MAC Address register) is used to filter the PTP packets when PTP is directly sent over Ethernet. When this bit is set, received PTP packets with DA containing a special multicast or unicast address that matches the one programmed in MAC address registers are considered for processing as indicated below, when PTP is directly sent over Ethernet. For normal time stamping operation, MAC address registers 0 to 31 is considered for unicast destination address matching. For PTP offload, only MAC address register 0 is considered for unicast destination address matching.
 0x40028B00 C   FIELD 24w01 TXTSSTSM (rw): Transmit Timestamp Status Mode When this bit is set, the MAC overwrites the earlier transmit timestamp status even if it is not read by the software. The MAC indicates this by setting the TXTSSMIS bit of the timestamp status nanoseconds register (ETH_MACTXTSSNR) register. When this bit is reset, the MAC ignores the timestamp status of current packet if the timestamp status of previous packet is not read by the software. The MAC indicates this by setting the TXTSSMIS bit of the (ETH_MACTXTSSNR).
 0x40028B00 C   FIELD 28w01 AV8021ASMEN (rw): AV 802.1AS Mode Enable When this bit is set, the MAC processes only untagged PTP over Ethernet packets for providing PTP status and capturing timestamp snapshots, that is, IEEE 802.1AS operating mode. When PTP offload feature is enabled, for the purpose of PTP offload, the transport specific field in the PTP header is generated and checked based on the value of this bit.
-0x40028B04 B  REGISTER ETH_MACSSIR: Sub-second increment register
+0x40028B04 B  REGISTER MACSSIR: Sub-second increment register
 0x40028B04 C   FIELD 16w08 SSINC (rw): Sub-second Increment Value The value programmed in this field is accumulated every clock cycle (of clk_ptp_i) with the contents of the sub-second register. For example, when the PTP clock is 50 MHz (period is 20 ns), you should program 20 (0x14) when the System Time Nanoseconds register has an accuracy of 1 ns [TSCTRLSSR bit is set in (ETH_MACTSCR)]. When TSCTRLSSR is cleared, the Nanoseconds register has a resolution of ~0.465 ns. In this case, you should program a value of 43 (0x2B) which is derived by 20 ns/0.465.
-0x40028B08 B  REGISTER ETH_MACSTSR: System time seconds register
+0x40028B08 B  REGISTER MACSTSR: System time seconds register
 0x40028B08 C   FIELD 00w32 TSS (ro): Timestamp Second The value in this field indicates the current value in seconds of the System Time maintained by the MAC.
-0x40028B0C B  REGISTER ETH_MACSTNR: System time nanoseconds register
+0x40028B0C B  REGISTER MACSTNR: System time nanoseconds register
 0x40028B0C C   FIELD 00w31 TSSS (ro): Timestamp Sub-seconds The value in this field has the sub-second representation of time, with an accuracy of 0.46 ns. When TSCTRLSSR is set in , each bit represents 1 ns. The maximum value is 0x3B9A_C9FF after which it rolls-over to zero.
-0x40028B10 B  REGISTER ETH_MACSTSUR: System time seconds update register
+0x40028B10 B  REGISTER MACSTSUR: System time seconds update register
 0x40028B10 C   FIELD 00w32 TSS (rw): Timestamp Seconds The value in this field is the sub-second part of the update. When ADDSUB is reset, this field must be programmed with the sub-second part of the update value, with an accuracy based on the TSCTRLSSR bit of the . When ADDSUB is set, then this field must be programmed with the complement of the sub-second part of the update value as described below. When TSCTRLSSR is set, then the programmed value must be 10^9 - <sub-second value>. When TSCTRLSSR is reset, then the programmed value must be 2^31 - <sub-second_value> For example, when TSCTRLSSR bit is set and if 2.000000001 seconds need to be subtracted from the system time, then the TSS field in the register (ETH_MACSTSUR) must be 0xFFFF_FFFE (that is, 2^32 - 2), ADDSUB bit in this register should be set, and the TSSS field must be 0x3B9A_C9FF (that is, 10^9 - 1).
-0x40028B14 B  REGISTER ETH_MACSTNUR: 
+0x40028B14 B  REGISTER MACSTNUR: 
 0x40028B14 C   FIELD 00w31 TSSS (rw): Timestamp Sub-seconds The value in this field has the sub-second representation of time, with an accuracy of 0.46 ns. When the TSCTRLSSR bit is set in the , each bit represents 1 ns and the programmed value should not exceed 0x3B9A_C9FF.
 0x40028B14 C   FIELD 31w01 ADDSUB (rw): Add or Subtract Time When this bit is set, the time value is subtracted with the contents of the update register. When this bit is reset, the time value is added with the contents of the update register.
-0x40028B18 B  REGISTER ETH_MACTSAR: Timestamp addend register
+0x40028B18 B  REGISTER MACTSAR: Timestamp addend register
 0x40028B18 C   FIELD 00w32 TSAR (rw): Timestamp Addend Register This field indicates the 32-bit time value to be added to the Accumulator register to achieve time synchronization.
-0x40028B20 B  REGISTER ETH_MACTSSR: Timestamp status register
+0x40028B20 B  REGISTER MACTSSR: Timestamp status register
 0x40028B20 C   FIELD 00w01 TSSOVF (rw): Timestamp Seconds Overflow When this bit is set, it indicates that the seconds value of the timestamp (when supporting version 2 format) has overflowed beyond 32'hFFFF_FFFF. This bit is cleared when the application reads this bit (or write of 1 when RCWE bit in software control register (ETH_MACCSRSWCR) is set)
 0x40028B20 C   FIELD 01w01 TSTARGT0 (rw): Timestamp Target Time Reached When set, this bit indicates that the value of system time is greater than or equal to the value specified in the and nanoseconds register (ETH_MACPPSTTNR). This bit is cleared when the application reads this bit (or write of 1 when RCWE bit in software control register (ETH_MACCSRSWCR) is set)
 0x40028B20 C   FIELD 02w01 AUXTSTRIG (rw): Auxiliary Timestamp Trigger Snapshot This bit is set high when the auxiliary snapshot is written to the FIFO. This bit is cleared when the application reads this bit (or write of 1 when RCWE bit in software control register (ETH_MACCSRSWCR) is set).
@@ -9204,47 +9204,47 @@
 0x40028B20 C   FIELD 16w04 ATSSTN (rw): Auxiliary Timestamp Snapshot Trigger Identifier These bits identify the Auxiliary trigger inputs for which the timestamp available in the Auxiliary Snapshot Register is applicable. When more than one bit is set at the same time, it means that corresponding auxiliary triggers were sampled at the same clock. These bits are applicable only if the number of Auxiliary snapshots is more than one. One bit is assigned for each trigger as shown in the following list: Bit 16: Auxiliary trigger 0 Bit 17: Auxiliary trigger 1 Bit 18: Auxiliary trigger 2 Bit 19: Auxiliary trigger 3 The software can read this register to find the triggers that are set when the timestamp is taken.
 0x40028B20 C   FIELD 24w01 ATSSTM (rw): Auxiliary Timestamp Snapshot Trigger Missed This bit is set when the Auxiliary timestamp snapshot FIFO is full and external trigger was set. This indicates that the latest snapshot is not stored in the FIFO.
 0x40028B20 C   FIELD 25w05 ATSNS (ro): Number of Auxiliary Timestamp Snapshots This field indicates the number of Snapshots available in the FIFO. A value equal to the depth of FIFO (4) indicates that the Auxiliary Snapshot FIFO is full. These bits are cleared (to 00000) when the Auxiliary snapshot FIFO clear bit is set.
-0x40028B30 B  REGISTER ETH_MACTXTSSNR: Tx timestamp status nanoseconds register
+0x40028B30 B  REGISTER MACTXTSSNR: Tx timestamp status nanoseconds register
 0x40028B30 C   FIELD 00w31 TXTSSLO (rw): Transmit Timestamp Status Low This field contains the 31 bits of the Nanoseconds field of the Transmit packet's captured timestamp.
 0x40028B30 C   FIELD 31w01 TXTSSMIS (ro): Transmit Timestamp Status Missed When this bit is set, it indicates one of the following: The timestamp of the current packet is ignored if TXTSSTSM bit of the control Register (ETH_MACTSCR) is reset The timestamp of the previous packet is overwritten with timestamp of the current packet if TXTSSTSM bit of the is set.
-0x40028B34 B  REGISTER ETH_MACTXTSSSR: Tx timestamp status seconds register
+0x40028B34 B  REGISTER MACTXTSSSR: Tx timestamp status seconds register
 0x40028B34 C   FIELD 00w32 TXTSSHI (ro): Transmit Timestamp Status High This field contains the lower 32 bits of the Seconds field of Transmit packet's captured timestamp.
-0x40028B40 B  REGISTER ETH_MACACR: Auxiliary control register
+0x40028B40 B  REGISTER MACACR: Auxiliary control register
 0x40028B40 C   FIELD 00w01 ATSFC (rw): Auxiliary Snapshot FIFO Clear When set, this bit resets the pointers of the Auxiliary Snapshot FIFO. This bit is cleared when the pointers are reset and the FIFO is empty. When this bit is high, the auxiliary snapshots are stored in the FIFO.
 0x40028B40 C   FIELD 04w01 ATSEN0 (rw): Auxiliary Snapshot 0 Enable This bit controls the capturing of Auxiliary Snapshot Trigger 0. When this bit is set, the auxiliary snapshot of the event on eth_ptp_trg0 input is enabled. When this bit is reset, the events on this input are ignored.
 0x40028B40 C   FIELD 05w01 ATSEN1 (rw): Auxiliary Snapshot 1 Enable This bit controls the capturing of Auxiliary Snapshot Trigger 1. When this bit is set, the auxiliary snapshot of the event on eth_ptp_trg1 input is enabled. When this bit is reset, the events on this input are ignored.
 0x40028B40 C   FIELD 06w01 ATSEN2 (rw): Auxiliary Snapshot 2 Enable This bit controls the capturing of Auxiliary Snapshot Trigger 2. When this bit is set, the auxiliary snapshot of the event on eth_ptp_trg2 input is enabled. When this bit is reset, the events on this input are ignored.
 0x40028B40 C   FIELD 07w01 ATSEN3 (rw): Auxiliary Snapshot 3 Enable This bit controls the capturing of Auxiliary Snapshot Trigger 3. When this bit is set, the auxiliary snapshot of the event on eth_ptp_trg3 input is enabled. When this bit is reset, the events on this input are ignored.
-0x40028B48 B  REGISTER ETH_MACATSNR: Auxiliary timestamp nanoseconds register
+0x40028B48 B  REGISTER MACATSNR: Auxiliary timestamp nanoseconds register
 0x40028B48 C   FIELD 00w31 AUXTSLO (ro): Auxiliary Timestamp Contains the lower 31 bits (nanoseconds field) of the auxiliary timestamp.
-0x40028B4C B  REGISTER ETH_MACATSSR: Auxiliary timestamp seconds register
+0x40028B4C B  REGISTER MACATSSR: Auxiliary timestamp seconds register
 0x40028B4C C   FIELD 00w32 AUXTSHI (ro): Auxiliary Timestamp Contains the lower 32 bits of the Seconds field of the auxiliary timestamp.
-0x40028B50 B  REGISTER ETH_MACTSIACR: Timestamp Ingress asymmetric correction register
+0x40028B50 B  REGISTER MACTSIACR: Timestamp Ingress asymmetric correction register
 0x40028B50 C   FIELD 00w32 OSTIAC (rw): One-Step Timestamp Ingress Asymmetry Correction This field contains the ingress path asymmetry value to be added to correctionField of Pdelay_Resp PTP packet. The programmed value should be in units of nanoseconds and multiplied by 2^16. For example, 2.5 ns is represented as 0x00028000. The value can also be negative, which is represented in 2's complement form with bit 31 representing the sign bit.
-0x40028B54 B  REGISTER ETH_MACTSEACR: Timestamp Egress asymmetric correction register
+0x40028B54 B  REGISTER MACTSEACR: Timestamp Egress asymmetric correction register
 0x40028B54 C   FIELD 00w32 OSTEAC (rw): One-Step Timestamp Egress Asymmetry Correction This field contains the egress path asymmetry value to be subtracted from correctionField of Pdelay_Resp PTP packet. The programmed value must be the negated value in units of nanoseconds multiplied by 2^16. For example, if the required correction is +2.5 ns, the programmed value must be 0xFFFD_8000, which is the 2's complement of 0x0002_8000(2.5 * 2^16). Similarly, if the required correction is -3.3 ns, the programmed value is 0x0003_4CCC (3.3 *2^16).
-0x40028B58 B  REGISTER ETH_MACTSICNR: Timestamp Ingress correction nanosecond register
+0x40028B58 B  REGISTER MACTSICNR: Timestamp Ingress correction nanosecond register
 0x40028B58 C   FIELD 00w32 TSIC (rw): Timestamp Ingress Correction This field contains the ingress path correction value as defined by the Ingress Correction expression.
-0x40028B5C B  REGISTER ETH_MACTSECNR: Timestamp Egress correction nanosecond register
+0x40028B5C B  REGISTER MACTSECNR: Timestamp Egress correction nanosecond register
 0x40028B5C C   FIELD 00w32 TSEC (rw): Timestamp Egress Correction This field contains the nanoseconds part of the egress path correction value as defined by the Egress Correction expression.
-0x40028B70 B  REGISTER ETH_MACPPSCR: ETH_MACPPSCR
-0x40028B70 B  REGISTER ETH_MACPPSCRALTERNATE: ETH_MACPPSCRALTERNATE
+0x40028B70 B  REGISTER MACPPSCR: ETH_MACPPSCR
+0x40028B70 B  REGISTER MACPPSCRALTERNATE: ETH_MACPPSCRALTERNATE
 0x40028B70 C   FIELD 00w04 PPSCMD (rw): Flexible PPS Output (eth_ptp_pps_out) Control Programming these bits with a non-zero value instructs the MAC to initiate an event. When the command is transferred or synchronized to the PTP clock domain, these bits get cleared automatically. The software should ensure that these bits are programmed only when they are ‘all zero’. The following list describes the values of PPSCMD0: This command generates single pulse rising at the start point defined in Target Time Registers (register 455 and 456) and of a duration defined in the PPS Width Register. This command generates the train of pulses rising at the start point defined in the Target Time Registers and of a duration defined in the PPS Width Register and repeated at interval defined in the PPS Interval Register. By default, the PPS pulse train is free-running unless stopped by the 'Stop Pulse train at time' or 'Stop Pulse Train immediately' commands. This command cancels the START Single Pulse and START Pulse Train commands if the system time has not crossed the programmed start time. This command stops the train of pulses initiated by the START Pulse Train command (PPSCMD = 0010) after the time programmed in the Target Time registers elapses. This command immediately stops the train of pulses initiated by the START Pulse Train command (PPSCMD = 0010). This command cancels the STOP pulse train at time command if the programmed stop time has not elapsed. The PPS pulse train becomes free-running on the successful execution of this command.
 0x40028B70 C   FIELD 00w04 PPSCTRL (rw): PPS Output Frequency Control This field controls the frequency of the PPS output (eth_ptp_pps_out) signal. The default value of PPSCTRL is 0000, and the PPS output is 1 pulse (of width clk_ptp_i) every second. For other values of PPSCTRL, the PPS output becomes a generated clock of following frequencies: .. Note: In the binary rollover mode, the PPS output (eth_ptp_pps_out) has a duty cycle of 50 percent with these frequencies. In the digital rollover mode, the PPS output frequency is an average number. The actual clock is of different frequency that gets synchronized every second. For example: When PPSCTRL = 0001, the PPS (1 Hz) has a low period of 537 ms and a high period of 463 ms When PPSCTRL = 0010, the PPS (2 Hz) is a sequence of One clock of 50 percent duty cycle and 537 ms period Second clock of 463 ms period (268 ms low and 195 ms high) When PPSCTRL = 0011, the PPS (4 Hz) is a sequence of Three clocks of 50 percent duty cycle and 268 ms period Fourth clock of 195 ms period (134 ms low and 61 ms high) This behavior is because of the non-linear toggling of bits in the digital rollover mode in the ETH_MACSTNR register.
 0x40028B70 C   FIELD 04w01 PPSEN0 (rw): Flexible PPS Output Mode Enable When this bit is set, Bits[3:0] function as PPSCMD. When this bit is reset, Bits[3:0] function as PPSCTRL (Fixed PPS mode).
 0x40028B70 C   FIELD 04w01 PPSEN0 (rw): Flexible PPS Output Mode Enable When this bit is set, PPSCTRL[3:0] function as PPSCMD. When this bit is reset, PPSCTRL[3:0] function as PPSCTRL (Fixed PPS mode).
 0x40028B70 C   FIELD 05w02 TRGTMODSEL0 (rw): Target Time Register Mode for PPS Output This field indicates the Target Time registers ((ETH_MACPPSTTSR) and ) mode for PPS output signal:
 0x40028B70 C   FIELD 05w02 TRGTMODSEL0 (rw): Target Time Register Mode for PPS Output This field indicates the Target Time registers (MAC registers 96 and 97) mode for PPS output signal:
-0x40028B80 B  REGISTER ETH_MACPPSTTSR: PPS target time seconds register
+0x40028B80 B  REGISTER MACPPSTTSR: PPS target time seconds register
 0x40028B80 C   FIELD 00w32 TSTRH0 (rw): PPS Target Time Seconds Register This field stores the time in seconds. When the timestamp value matches or exceeds both Target Timestamp registers, the MAC starts or stops the PPS signal output and generates an interrupt (if enabled) based on Target Time mode selected for the corresponding PPS output in the .
-0x40028B84 B  REGISTER ETH_MACPPSTTNR: PPS target time nanoseconds register
+0x40028B84 B  REGISTER MACPPSTTNR: PPS target time nanoseconds register
 0x40028B84 C   FIELD 00w31 TTSL0 (rw): Target Time Low for PPS Register This register stores the time in (signed) nanoseconds. When the value of the timestamp matches the value in both Target Timestamp registers, the MAC starts or stops the PPS signal output and generates an interrupt (if enabled) based on the TRGTMODSEL0 field (Bits [6:5]) in . When the TSCTRLSSR bit is set in the , this value should not exceed 0x3B9A_C9FF. The actual start or stop time of the PPS signal output may have an error margin up to one unit of sub-second increment value.
 0x40028B84 C   FIELD 31w01 TRGTBUSY0 (rw): PPS Target Time Register Busy The MAC sets this bit when the PPSCMD0 field in the (ETH_MACPPSCR) is programmed to 010 or 011. Programming the PPSCMD0 field to 010 or 011 instructs the MAC to synchronize the Target Time Registers to the PTP clock domain. The MAC clears this bit after synchronizing the Target Time Registers to the PTP clock domain The application must not update the Target Time Registers when this bit is read as 1. Otherwise, the synchronization of the previous programmed time gets corrupted.
-0x40028B88 B  REGISTER ETH_MACPPSIR: PPS interval register
+0x40028B88 B  REGISTER MACPPSIR: PPS interval register
 0x40028B88 C   FIELD 00w32 PPSINT0 (rw): PPS Output Signal Interval These bits store the interval between the rising edges of PPS signal output. The interval is stored in terms of number of units of sub-second increment value. You need to program one value less than the required interval. For example, if the PTP reference clock is 50 MHz (period of 20 ns), and desired interval between the rising edges of PPS signal output is 100 ns (that is, 5 units of sub-second increment value), you should program value 4 (5-1) in this register.
-0x40028B8C B  REGISTER ETH_MACPPSWR: PPS width register
+0x40028B8C B  REGISTER MACPPSWR: PPS width register
 0x40028B8C C   FIELD 00w32 PPSWIDTH0 (rw): PPS Output Signal Width These bits store the width between the rising edge and corresponding falling edge of PPS signal output. The width is stored in terms of number of units of sub-second increment value. You need to program one value less than the required interval. For example, if PTP reference clock is 50 MHz (period of 20 ns), and width between the rising and corresponding falling edges of PPS signal output is 80 ns (that is, four units of sub-second increment value), you should program value 3 (4-1) in this register. Note: The value programmed in this register must be lesser than the value programmed in .
-0x40028BC0 B  REGISTER ETH_MACPOCR: PTP Offload control register
+0x40028BC0 B  REGISTER MACPOCR: PTP Offload control register
 0x40028BC0 C   FIELD 00w01 PTOEN (rw): PTP Offload Enable When this bit is set, the PTP Offload feature is enabled.
 0x40028BC0 C   FIELD 01w01 ASYNCEN (rw): Automatic PTP SYNC message Enable When this bit is set, PTP SYNC message is generated periodically based on interval programmed or trigger from application, when the MAC is programmed to be in Clock Master mode.
 0x40028BC0 C   FIELD 02w01 APDREQEN (rw): Automatic PTP Pdelay_Req message Enable When this bit is set, PTP Pdelay_Req message is generated periodically based on interval programmed or trigger from application, when the MAC is programmed to be in Peer-to-Peer Transparent mode.
@@ -9252,32 +9252,32 @@
 0x40028BC0 C   FIELD 05w01 APDREQTRIG (rw): Automatic PTP Pdelay_Req message Trigger When this bit is set, one PTP Pdelay_Req message is transmitted. This bit is automatically cleared after the PTP Pdelay_Req message is transmitted. The application should set the APDREQEN bit for this operation.
 0x40028BC0 C   FIELD 06w01 DRRDIS (rw): Disable PTO Delay Request/Response response generation When this bit is set, the Delay Request and Delay response will not be generated for received SYNC and Delay request packet respectively, as required by the programmed mode.
 0x40028BC0 C   FIELD 08w08 DN (rw): Domain Number This field indicates the domain Number in which the PTP node is operating.
-0x40028BC4 B  REGISTER ETH_MACSPI0R: PTP Source Port Identity 0 Register
+0x40028BC4 B  REGISTER MACSPI0R: PTP Source Port Identity 0 Register
 0x40028BC4 C   FIELD 00w32 SPI0 (rw): Source Port Identity 0 This field indicates bits [31:0] of sourcePortIdentity of PTP node.
-0x40028BC8 B  REGISTER ETH_MACSPI1R: PTP Source port identity 1 register
+0x40028BC8 B  REGISTER MACSPI1R: PTP Source port identity 1 register
 0x40028BC8 C   FIELD 00w32 SPI1 (rw): Source Port Identity 1 This field indicates bits [63:32] of sourcePortIdentity of PTP node.
-0x40028BCC B  REGISTER ETH_MACSPI2R: PTP Source port identity 2 register
+0x40028BCC B  REGISTER MACSPI2R: PTP Source port identity 2 register
 0x40028BCC C   FIELD 00w16 SPI2 (rw): Source Port Identity 2 This field indicates bits [79:64] of sourcePortIdentity of PTP node.
-0x40028BD0 B  REGISTER ETH_MACLMIR: Log message interval register
+0x40028BD0 B  REGISTER MACLMIR: Log message interval register
 0x40028BD0 C   FIELD 00w08 LSI (rw): Log Sync Interval This field indicates the periodicity of the automatically generated SYNC message when the PTP node is Master. Allowed values are -15 to 15. Negative value must be represented in 2's-complement form. For example, if the required value is -1, the value programmed must be 0xFF.
 0x40028BD0 C   FIELD 08w03 DRSYNCR (rw): Delay_Req to SYNC Ratio In Slave mode, it is used for controlling frequency of Delay_Req messages transmitted. 2: for every 4 SYNC messages 3: for every 8 SYNC messages 4: for every 16 SYNC messages 5: for every 32 SYNC messages Others: Reserved, must not be used The master sends this information (logMinDelayReqInterval) in the DelayResp PTP messages to the slave. The reception processes this value from the received DelayResp messages and updates this field accordingly. In the Slave mode, the host must not write/update this register unless it has to override the received value. In Master mode, the sum of this field and logSyncInterval (LSI) field is provided in the logMinDelayReqInterval field of the generated multicast Delay_Resp PTP message.
 0x40028BD0 C   FIELD 24w08 LMPDRI (rw): Log Min Pdelay_Req Interval This field indicates logMinPdelayReqInterval of PTP node. This is used to schedule the periodic Pdelay request packet transmission. Allowed values are -15 to 15.Negative value must be represented in 2's-complement form. For example, if the required value is -1, the value programmed must be 0xFF.
-0x40028C00 B  REGISTER ETH_MTLOMR: Operating mode Register
+0x40028C00 B  REGISTER MTLOMR: Operating mode Register
 0x40028C00 C   FIELD 01w01 DTXSTS (rw): Drop Transmit Status When this bit is set, the Tx packet status received from the MAC is dropped in the MTL. When this bit is reset, the Tx packet status received from the MAC is forwarded to the application.
 0x40028C00 C   FIELD 08w01 CNTPRST (rw): Counters Preset When this bit is set: is initialized/preset to 0x7F0. Missed Packet and Overflow Packet counters in overflow counter register (ETH_MTLRXQMPOCR) is initialized/preset to 0x7F0 This bit is cleared automatically.
 0x40028C00 C   FIELD 09w01 CNTCLR (rw): Counters Reset When this bit is set, all counters are reset. This bit is cleared automatically after 1 clock cycle. If this bit is set along with CNTPRST bit, CNTPRST has precedence.
-0x40028C20 B  REGISTER ETH_MTLISR: Interrupt status Register
+0x40028C20 B  REGISTER MTLISR: Interrupt status Register
 0x40028C20 C   FIELD 00w01 Q0IS (ro): Queue interrupt status This bit indicates that an interrupt has been generated by Queue. To reset this bit, read ETH_MTLQICSR register to identify the interrupt cause and clear the source.
-0x40028D00 B  REGISTER ETH_MTLTXQOMR: Tx queue operating mode Register
+0x40028D00 B  REGISTER MTLTXQOMR: Tx queue operating mode Register
 0x40028D00 C   FIELD 00w01 FTQ (rw): Flush Transmit Queue When this bit is set, the Tx queue controller logic is reset to its default values. Therefore, all the data in the Tx queue is lost or flushed. This bit is internally reset when the flushing operation is complete. Until this bit is reset, you should not write to the ETH_MTLTXQOMR register. The data which is already accepted by the MAC transmitter is not flushed. It is scheduled for transmission and results in underflow and runt packet transmission. Note: The flush operation is complete only when the Tx queue is empty and the application has accepted the pending Tx Status of all transmitted packets. To complete this flush operation, the PHY Tx clock (eth_mii_tx_clk) should be active.
 0x40028D00 C   FIELD 01w01 TSF (rw): Transmit Store and Forward When this bit is set, the transmission starts when a full packet resides in the MTL Tx queue. When this bit is set, the TTC values specified in Bits[6:4] of this register are ignored. This bit should be changed only when the transmission is stopped.
 0x40028D00 C   FIELD 02w02 TXQEN (ro): Transmit Queue Enable This field is used to enable/disable the transmit queue . Others: Reserved, must not be used. Note: In multiple Tx queues configuration, all the queues are disabled by default. Enable the Tx queue by programming this field.
 0x40028D00 C   FIELD 04w03 TTC (rw): Transmit Threshold Control These bits control the threshold level of the MTL Tx queue. The transmission starts when the packet size within the MTL Tx queue is larger than the threshold. In addition, full packets with length less than the threshold are also transmitted. These bits are used only when the TSF bit is reset.
 0x40028D00 C   FIELD 16w03 TQS (rw): Transmit queue size This field indicates the size of the allocated transmit queues in blocks of 256 bytes. Queue size range from 256 bytes (TQS=0b000) to 2048 bytes (TQS=0b111).
-0x40028D04 B  REGISTER ETH_MTLTXQUR: Tx queue underflow register
+0x40028D04 B  REGISTER MTLTXQUR: Tx queue underflow register
 0x40028D04 C   FIELD 00w11 UFFRMCNT (rw): Underflow Packet Counter This field indicates the number of packets aborted by the controller because of Tx queue Underflow. This counter is incremented each time the MAC aborts outgoing packet because of underflow. The counter is cleared when this register is read.
 0x40028D04 C   FIELD 11w01 UFCNTOVF (rw): Overflow Bit for Underflow Packet Counter This bit is set every time the Tx queue Underflow Packet Counter field overflows, that is, it has crossed the maximum count. In such a scenario, the overflow packet counter is reset to all-zeros and this bit indicates that the rollover happened.
-0x40028D08 B  REGISTER ETH_MTLTXQDR: Tx queue debug Register
+0x40028D08 B  REGISTER MTLTXQDR: Tx queue debug Register
 0x40028D08 C   FIELD 00w01 TXQPAUSED (ro): Transmit Queue in Pause When this bit is high and the Rx flow control is enabled, it indicates that the Tx queue is in the Pause condition (in the full-duplex only mode) because of the following: Reception of the PFC packet for the priorities assigned to the Tx queue when PFC is enabled Reception of 802.3x Pause packet when PFC is disabled
 0x40028D08 C   FIELD 01w02 TRCSTS (ro): MTL Tx Queue Read Controller Status This field indicates the state of the Tx Queue Read Controller:
 0x40028D08 C   FIELD 03w01 TWCSTS (ro): MTL Tx Queue Write Controller Status When high, this bit indicates that the MTL Tx queue Write Controller is active, and it is transferring the data to the Tx queue.
@@ -9285,75 +9285,75 @@
 0x40028D08 C   FIELD 05w01 TXSTSFSTS (ro): MTL Tx Status FIFO Full Status When high, this bit indicates that the MTL Tx Status FIFO is full. Therefore, the MTL cannot accept any more packets for transmission.
 0x40028D08 C   FIELD 16w03 PTXQ (ro): Number of Packets in the Transmit Queue This field indicates the current number of packets in the Tx queue. When the DTXSTS bit of register is set to 1, this field does not reflect the number of packets in the Transmit queue.
 0x40028D08 C   FIELD 20w03 STXSTSF (ro): Number of Status Words in Tx Status FIFO of Queue This field indicates the current number of status in the Tx Status FIFO of this queue. When the DTXSTS bit of ETH_MTLOMR register is set to 1, this field does not reflect the number of status words in Tx Status FIFO.
-0x40028D2C B  REGISTER ETH_MTLQICSR: Queue interrupt control status Register
+0x40028D2C B  REGISTER MTLQICSR: Queue interrupt control status Register
 0x40028D2C C   FIELD 00w01 TXUNFIS (rw): Transmit Queue Underflow Interrupt Status This bit indicates that the Transmit Queue had an underflow while transmitting the packet. Transmission is suspended and an Underflow Error TDES3[2] is set. This bit is cleared when the application writes 1 to this bit.
 0x40028D2C C   FIELD 08w01 TXUIE (rw): Transmit Queue Underflow Interrupt Enable When this bit is set, the Transmit Queue Underflow interrupt is enabled. When this bit is reset, the Transmit Queue Underflow interrupt is disabled.
 0x40028D2C C   FIELD 16w01 RXOVFIS (rw): Receive Queue Overflow Interrupt Status This bit indicates that the Receive Queue had an overflow while receiving the packet. If a partial packet is transferred to the application, the overflow status is set in RDES3[21]. This bit is cleared when the application writes 1 to this bit.
 0x40028D2C C   FIELD 24w01 RXOIE (rw): Receive Queue Overflow Interrupt Enable When this bit is set, the Receive Queue Overflow interrupt is enabled. When this bit is reset, the Receive Queue Overflow interrupt is disabled.
-0x40028D30 B  REGISTER ETH_MTLRXQOMR: Rx queue operating mode register
+0x40028D30 B  REGISTER MTLRXQOMR: Rx queue operating mode register
 0x40028D30 C   FIELD 00w02 RTC (rw): Receive Queue Threshold Control These bits control the threshold level of the MTL Rx queue (in bytes): The received packet is transferred to the application or DMA when the packet size within the MTL Rx queue is larger than the threshold. In addition, full packets with length less than the threshold are automatically transferred. This field is valid only when the RSF bit is zero. This field is ignored when the RSF bit is set to 1.
 0x40028D30 C   FIELD 03w01 FUP (rw): Forward Undersized Good Packets When this bit is set, the Rx queue forwards the undersized good packets (packets with no error and length less than 64 bytes), including pad-bytes and CRC. When this bit is reset, the Rx queue drops all packets of less than 64 bytes, unless a packet is already transferred because of the lower value of Rx Threshold, for example, RTC = 01.
 0x40028D30 C   FIELD 04w01 FEP (rw): Forward Error Packets When this bit is reset, the Rx queue drops packets with error status (CRC error, receive error, watchdog timeout, or overflow). However, if the start byte (write) pointer of a packet is already transferred to the read controller side (in Threshold mode), the packet is not dropped. When this bit is set, all packets except the runt error packets are forwarded to the application or DMA. If the RSF bit is set and the Rx queue overflows when a partial packet is written, the packet is dropped irrespective of the setting of this bit. However, if the RSF bit is reset and the Rx queue overflows when a partial packet is written, a partial packet may be forwarded to the application or DMA.
 0x40028D30 C   FIELD 05w01 RSF (rw): Receive Queue Store and Forward When this bit is set, the Ethernet peripheral reads a packet from the Rx queue only after the complete packet has been written to it, ignoring the RTC field of this register. When this bit is reset, the Rx queue operates in the Threshold (cut-through) mode, subject to the threshold specified by the RTC field of this register.
 0x40028D30 C   FIELD 06w01 DIS_TCP_EF (rw): Disable Dropping of TCP/IP Checksum Error Packets When this bit is set, the MAC does not drop the packets which only have the errors detected by the Receive Checksum Offload engine. Such packets have errors only in the encapsulated payload. There are no errors (including FCS error) in the Ethernet packet received by the MAC. When this bit is reset, all error packets are dropped if the FEP bit is reset.
 0x40028D30 C   FIELD 20w03 RQS (ro): Receive Queue Size This field is read-only and the configured Rx FIFO size in blocks of 256 bytes is reflected in the reset value. The size of the Queue is (RQS + 1) * 256 bytes.
-0x40028D34 B  REGISTER ETH_MTLRXQMPOCR: Rx queue missed packet and overflow counter register
+0x40028D34 B  REGISTER MTLRXQMPOCR: Rx queue missed packet and overflow counter register
 0x40028D34 C   FIELD 00w11 OVFPKTCNT (rw): Overflow Packet Counter This field indicates the number of packets discarded by the Ethernet peripheral because of Receive queue overflow. This counter is incremented each time the Ethernet peripheral discards an incoming packet because of overflow. This counter is reset when this register is read.
 0x40028D34 C   FIELD 11w01 OVFCNTOVF (rw): Overflow Counter Overflow Bit When set, this bit indicates that the Rx Queue Overflow Packet Counter field crossed the maximum limit.
 0x40028D34 C   FIELD 16w11 MISPKTCNT (rw): Missed Packet Counter This field indicates the number of packets missed by the Ethernet peripheral because the application requested to flush the packets for this queue. This counter is reset when this register is read. This counter is incremented by 1 when the DMA discards the packet because of buffer unavailability.
 0x40028D34 C   FIELD 27w01 MISCNTOVF (rw): Missed Packet Counter Overflow Bit When set, this bit indicates that the Rx Queue Missed Packet Counter crossed the maximum limit.
-0x40028D38 B  REGISTER ETH_MTLRXQDR: Rx queue debug register
+0x40028D38 B  REGISTER MTLRXQDR: Rx queue debug register
 0x40028D38 C   FIELD 00w01 RWCSTS (ro): MTL Rx Queue Write Controller Active Status When high, this bit indicates that the MTL Rx queue Write controller is active, and it is transferring a received packet to the Rx queue.
 0x40028D38 C   FIELD 01w02 RRCSTS (ro): MTL Rx Queue Read Controller State This field gives the state of the Rx queue Read controller:
 0x40028D38 C   FIELD 04w02 RXQSTS (ro): MTL Rx Queue Fill-Level Status This field gives the status of the fill-level of the Rx queue:
 0x40028D38 C   FIELD 16w14 PRXQ (ro): Number of Packets in Receive Queue This field indicates the current number of packets in the Rx queue. The theoretical maximum value for this field is 256Kbyte/16bytes = 16K Packets, that is, Max_Queue_Size/Min_Packet_Size.
-0x40029000 B  REGISTER ETH_DMAMR: DMA mode register
+0x40029000 B  REGISTER DMAMR: DMA mode register
 0x40029000 C   FIELD 00w01 SWR (rw): Software Reset When this bit is set, the MAC and the DMA controller reset the logic and all internal registers of the DMA, MTL, and MAC. This bit is automatically cleared after the reset operation is complete in all clock domains. Before reprogramming any register, a value of zero should be read in this bit. Note: The reset operation is complete only when all resets in all active clock domains are deasserted. Therefore, it is essential that all PHY inputs clocks (applicable for the selected PHY interface) are present for software reset completion. The time to complete the software reset operation depends on the frequency of the slowest active clock.
 0x40029000 C   FIELD 01w01 DA (rw): DMA Tx or Rx Arbitration Scheme This bit specifies the arbitration scheme between the Transmit and Receive paths of all channels: The priority between the paths is according to the priority specified in Bits[14:12] and the priority weight is specified in the TXPR bit. The Tx path has priority over the Rx path when the TXPR bit is set. Otherwise, the Rx path has priority over the Tx path.
 0x40029000 C   FIELD 11w01 TXPR (rw): Transmit priority When set, this bit indicates that the Tx DMA has higher priority than the Rx DMA during arbitration for the system-side bus.
 0x40029000 C   FIELD 12w03 PR (rw): Priority ratio These bits control the priority ratio in weighted round-robin arbitration between the Rx DMA and Tx DMA. These bits are valid only when the DA bit is reset. The priority ratio is Rx:Tx or Tx:Rx depending on whether the TXPR bit is reset or set.
 0x40029000 C   FIELD 16w02 INTM (rw): Interrupt Mode This field defines the interrupt mode of the Ethernet peripheral. The behavior of the interrupt signal and of the RI/TI bits in the ETH_DMACSR register changes depending on the INTM value (refer to behavior).
-0x40029004 B  REGISTER ETH_DMASBMR: System bus mode register
+0x40029004 B  REGISTER DMASBMR: System bus mode register
 0x40029004 C   FIELD 00w01 FB (rw): Fixed Burst Length When this bit is set to 1, the AHB master will initiate burst transfers of specified length (INCRx or SINGLE). When this bit is set to 0, the AHB master will initiate transfers of unspecified length (INCR) or SINGLE transfers.
 0x40029004 C   FIELD 12w01 AAL (rw): Address-Aligned Beats When this bit is set to 1, the master performs address-aligned burst transfers on Read and Write channels.
 0x40029004 C   FIELD 14w01 MB (ro): Mixed Burst When this bit is set high and the FB bit is low, the AHB master performs undefined bursts transfers (INCR) for burst length of 16 or more. For burst length of 16 or less, the AHB master performs fixed burst transfers (INCRx and SINGLE).
 0x40029004 C   FIELD 15w01 RB (ro): Rebuild INCRx Burst When this bit is set high and the AHB master gets SPLIT, RETRY, or Early Burst Termination (EBT) response, the AHB master interface rebuilds the pending beats of any initiated burst transfer with INCRx and SINGLE transfers. By default, the AHB master interface rebuilds pending beats of an EBT with an unspecified (INCR) burst.
-0x40029008 B  REGISTER ETH_DMAISR: Interrupt status register
+0x40029008 B  REGISTER DMAISR: Interrupt status register
 0x40029008 C   FIELD 00w01 DC0IS (ro): DMA Channel Interrupt Status This bit indicates an interrupt event in DMA Channel. To reset this bit to 0, the software must read the corresponding register in DMA Channel to get the exact cause of the interrupt and clear its source.
 0x40029008 C   FIELD 16w01 MTLIS (ro): MTL Interrupt Status This bit indicates an interrupt event in the MTL. To reset this bit to 1'b0, the software must read the corresponding register in the MTL to get the exact cause of the interrupt and clear its source.
 0x40029008 C   FIELD 17w01 MACIS (ro): MAC Interrupt Status This bit indicates an interrupt event in the MAC. To reset this bit to 1'b0, the software must read the corresponding register in the MAC to get the exact cause of the interrupt and clear its source.
-0x4002900C B  REGISTER ETH_DMADSR: Debug status register
+0x4002900C B  REGISTER DMADSR: Debug status register
 0x4002900C C   FIELD 00w01 AXWHSTS (ro): AHB Master Write Channel When high, this bit indicates that the write channel of the AHB master FMSs are in non-idle state.
 0x4002900C C   FIELD 08w04 RPS0 (ro): DMA Channel Receive Process State This field indicates the Rx DMA FSM state for Channel: The MSB of this field always returns 0. This field does not generate an interrupt.
 0x4002900C C   FIELD 12w04 TPS0 (ro): DMA Channel Transmit Process State This field indicates the Tx DMA FSM state for Channel: The MSB of this field always returns 0. This field does not generate an interrupt.
-0x40029100 B  REGISTER ETH_DMACCR: Channel control register
+0x40029100 B  REGISTER DMACCR: Channel control register
 0x40029100 C   FIELD 00w14 MSS (rw): Maximum Segment Size This field specifies the maximum segment size that should be used while segmenting the packet. This field is valid only if the TSE bit of (ETH_DMACTXCR) is set. The value programmed in this field must be more than the configured Data width in bytes. It is recommended to use a MSS value of 64 bytes or more.
 0x40029100 C   FIELD 16w01 PBLX8 (rw): 8xPBL mode When this bit is set, the PBL value programmed in Bits[21:16] in register (ETH_DMACTXCR) is multiplied eight times. Therefore, the DMA transfers the data in 8, 16, 32, 64, 128, and 256 beats depending on the PBL value.
 0x40029100 C   FIELD 18w03 DSL (rw): Descriptor Skip Length This bit specifies the 32-bit word number to skip between two unchained descriptors. The address skipping starts from the end of the current descriptor to the start of the next descriptor. When the DSL value is equal to zero, the DMA takes the descriptor table as contiguous.
-0x40029104 B  REGISTER ETH_DMACTXCR: Channel transmit control register
+0x40029104 B  REGISTER DMACTXCR: Channel transmit control register
 0x40029104 C   FIELD 00w01 ST (rw): Start or Stop Transmission Command When this bit is set, transmission is placed in the Running state. The DMA checks the Transmit list at the current position for a packet to be transmitted. The DMA tries to acquire descriptor from either of the following positions: The current position in the list: this is the base address of the Transmit list set by the ETH_DMACTXDLAR register. The position at which the transmission was previously stopped If the DMA does not own the current descriptor, the transmission enters the Suspended state and the TBU bit of the ETH_DMACSR is set. The Start Transmission command is effective only when the transmission is stopped. If the command is issued before setting the ETH_DMACTXDLAR register, the DMA behavior is unpredictable. When this bit is reset, the transmission process is placed in the Stopped state after completing the transmission of the current packet. The Next Descriptor position in the Transmit list is saved, and it becomes the current position when the transmission is restarted. To change the list address, you need to program ETH_DMACTXDLAR register with a new value when this bit is reset. The new value is considered when this bit is set again. The stop transmission command is effective only when the transmission of the current packet is complete or the transmission is in the Suspended state.
 0x40029104 C   FIELD 04w01 OSF (rw): Operate on Second Packet When this bit is set, it instructs the DMA to process the second packet of the Transmit data even before the status for the first packet is obtained.
 0x40029104 C   FIELD 12w01 TSE (rw): TCP Segmentation Enabled When this bit is set, the DMA performs the TCP segmentation for packets in Channel i. The TCP segmentation is done only for those packets for which the TSE bit (TDES0[19]) is set in the Tx Normal descriptor. When this bit is set, the TxPBL value must be greater than or equal to 4.
 0x40029104 C   FIELD 16w06 TXPBL (rw): Transmit Programmable Burst Length These bits indicate the maximum number of beats to be transferred in one DMA data transfer. This is the maximum value that is used in a single block Read or Write. The DMA always attempts to burst as specified in PBL each time it starts a burst transfer on the application bus. You can program PBL with any of the following values: 1, 2, 4, 8, 16, or 32. Any other value results in undefined behavior. To transfer more than 32 beats, perform the following steps: Set the PBLx8 mode in ETH_DMACCR. Set the TXPBL[5:0]. Note: The maximum value of TXPBL must be less than or equal to half the Tx Queue size (TQS field of ) in terms of beats. This is required so that the Tx Queue has space to store at least another Tx PBL worth of data while the MTL Tx Queue Controller is transferring data to MAC. The total locations in Tx Queue of size 2048 bytes is 512, TXPBL and 8xPBL needs to be programmed to less than or equal to 512/2.
-0x40029108 B  REGISTER ETH_DMACRXCR: Channel receive control register
+0x40029108 B  REGISTER DMACRXCR: Channel receive control register
 0x40029108 C   FIELD 00w01 SR (rw): Start or Stop Receive When this bit is set, the DMA tries to acquire the descriptor from the Receive list and processes the incoming packets. The DMA tries to acquire descriptor from either of the following positions: The current position in the list: this is the address set by the list address register (ETH_DMACRXDLAR). The position at which the Rx process was previously stopped If the DMA does not own the current descriptor, the reception is suspended and the RBU bit of the ETH_DMACSR is set. The Start Receive command is effective only when the reception is stopped. If the command is issued before setting the register (ETH_DMACRXDLAR), the DMA behavior is unpredictable. When this bit is reset, the Rx DMA operation is stopped after the transfer of the current packet. The next descriptor position in the Receive list is saved, and it becomes the current position after the Rx process is restarted. The Stop Receive command is effective only when the Rx process is in the Running (waiting for Rx packet) or Suspended state.
 0x40029108 C   FIELD 01w14 RBSZ (rw): Receive Buffer size This field indicates the size of the Rx buffers specified in bytes. The maximum buffer size is limited to 16 Kbytes. Note: The buffer size must be a multiple of 4. This is required even if the value of buffer address pointer is not aligned to bus width. If the buffer size is not a multiple of 4, it may result into an undefined behavior. The LSB bits (1:0) are ignored and the DMA internally takes the LSB bits as all-zero. Therefore, these LSB bits are read-only (RO).
 0x40029108 C   FIELD 16w06 RXPBL (rw): Receive Programmable Burst Length These bits indicate the maximum number of beats to be transferred in one DMA data transfer. This is the maximum value that is used in a single block Read or Write. The DMA always attempts to burst as specified in PBL each time it starts a burst transfer on the application bus. You can program PBL with any of the following values: 1, 2, 4, 8, 16, or 32. Any other value results in undefined behavior. To transfer more than 32 beats, perform the following steps: Set the PBLx8 mode in the ETH_DMACCR. Set the RXPBL[5:0]. Note: The maximum value of RXPBL must be less than or equal to half the Rx Queue size (RQS field of ) in terms of beats. This is required so that the Rx Queue has space to store at least another Rx PBL worth of data while the MTL Rx Queue Controller is transferring data to MAC.The total locations in Rx Queue of size 2048 bytes is 512, RXPBL and 8xPBL needs to be programmed to less than or equal to 512/2.
 0x40029108 C   FIELD 31w01 RPF (rw): DMA Rx Channel Packet Flush When this bit is set to 1, the Ethernet peripheral will automatically flush the packet from the Rx queues destined to DMA Rx Channel when the DMA Rx Channel is stopped after a system bus error has occurred. When this bit remains set and the DMA is re-started by the software driver, the packets residing in the Rx Queues that were received when this RxDMA was stopped, are flushed out. The packets that are received by the MAC after the RxDMA is re-started are routed to the RxDMA. The flushing happens on the Read side of the Rx queue. When this bit is set to 0 the Ethernet peripheral does not flush the packet in the Rx queue destined to DMA Rx Channel after the DMA is stopped due to a system bus error. This might cause head-of-line blocking in the corresponding RxQueue. Note: The stopping of packet flow from a Rx DMA Channel to the application by setting RPF works only when there is one-to-one mapping of Rx Queue to Rx DMA channels. In Dynamic mapping mode, setting RPF bit in ETH_DMACRXCR register might flush packets from unintended Rx Queues which are destined to the stopped Rx DMA Channel.
-0x40029114 B  REGISTER ETH_DMACTXDLAR: Channel Tx descriptor list address register
+0x40029114 B  REGISTER DMACTXDLAR: Channel Tx descriptor list address register
 0x40029114 C   FIELD 00w32 TDESLA (rw): Start of Transmit List This field contains the base address of the first descriptor in the Transmit descriptor list. The DMA ignores the LSB bits (1:0) for 32-bit bus width and internally takes these bits as all-zero. Therefore, these LSB bits are read-only (RO).
-0x4002911C B  REGISTER ETH_DMACRXDLAR: Channel Rx descriptor list address register
+0x4002911C B  REGISTER DMACRXDLAR: Channel Rx descriptor list address register
 0x4002911C C   FIELD 00w32 RDESLA (rw): Start of Receive List This field contains the base address of the first descriptor in the Rx Descriptor list. The DMA ignores the LSB bits (1:0) for 32-bit bus width and internally takes these bits as all-zero. Therefore, these LSB bits are read-only (RO).
-0x40029120 B  REGISTER ETH_DMACTXDTPR: Channel Tx descriptor tail pointer register
+0x40029120 B  REGISTER DMACTXDTPR: Channel Tx descriptor tail pointer register
 0x40029120 C   FIELD 00w32 TDT (rw): Transmit Descriptor Tail Pointer This field contains the tail pointer for the Tx descriptor ring. The software writes the tail pointer to add more descriptors to the Tx channel. The hardware tries to transmit all packets referenced by the descriptors between the head and the tail pointer registers.
-0x40029128 B  REGISTER ETH_DMACRXDTPR: Channel Rx descriptor tail pointer register
+0x40029128 B  REGISTER DMACRXDTPR: Channel Rx descriptor tail pointer register
 0x40029128 C   FIELD 00w32 RDT (rw): Receive Descriptor Tail Pointer This field contains the tail pointer for the Rx descriptor ring. The software writes the tail pointer to add more descriptors to the Rx channel. The hardware tries to write all received packets to the descriptors referenced between the head and the tail pointer registers.
-0x4002912C B  REGISTER ETH_DMACTXRLR: Channel Tx descriptor ring length register
+0x4002912C B  REGISTER DMACTXRLR: Channel Tx descriptor ring length register
 0x4002912C C   FIELD 00w10 TDRL (rw): Transmit Descriptor Ring Length This field sets the maximum number of Tx descriptors in the circular descriptor ring. The maximum number of descriptors is limited to 1K descriptors. It is recommended to put a minimum ring descriptor length of 4. For example, you can program any value up to 0x3FF in this field. This field is 10 bits wide, if you program 0x3FF, you can have 1024 descriptors. If you want to have 10 descriptors, program it to a value of 0x9.
-0x40029130 B  REGISTER ETH_DMACRXRLR: Channel Rx descriptor ring length register
+0x40029130 B  REGISTER DMACRXRLR: Channel Rx descriptor ring length register
 0x40029130 C   FIELD 00w10 RDRL (rw): Receive Descriptor Ring Length This register sets the maximum number of Rx descriptors in the circular descriptor ring. The maximum number of descriptors is limited to 1K descriptors. For example, you can program any value up to 0x3FF in this field. This field is 10-bit wide. If you program 0x3FF, you can have 1024 descriptors. If you want to have 10 descriptors, program it to a value of 0x9.
 0x40029130 C   FIELD 16w08 ARBS (rw): Alternate Receive Buffer Size Indicates size in bytes for Buffer 1 when ARBS[7:0] is programmed to a non-zero value. When ARBS[7:0] = 0, Rx Buffer1 and Rx Buffer2 sizes are based on RBSZ[13:0] field of .
-0x40029134 B  REGISTER ETH_DMACIER: Channel interrupt enable register
+0x40029134 B  REGISTER DMACIER: Channel interrupt enable register
 0x40029134 C   FIELD 00w01 TIE (rw): Transmit Interrupt Enable When this bit is set along with the NIE bit, the Transmit Interrupt is enabled. When this bit is reset, the Transmit Interrupt is disabled.
 0x40029134 C   FIELD 01w01 TXSE (rw): Transmit Stopped Enable When this bit is set along with the AIE bit, the Transmission Stopped interrupt is enabled. When this bit is reset, the Transmission Stopped interrupt is disabled.
 0x40029134 C   FIELD 02w01 TBUE (rw): Transmit Buffer Unavailable Enable When this bit is set along with the NIE bit, the Transmit Buffer Unavailable interrupt is enabled. When this bit is reset, the Transmit Buffer Unavailable interrupt is disabled.
@@ -9367,18 +9367,18 @@
 0x40029134 C   FIELD 13w01 CDEE (rw): Context Descriptor Error Enable When this bit is set along with the AIE bit, the Context Descriptor error interrupt is enabled. When this bit is reset, the Context Descriptor error interrupt is disabled.
 0x40029134 C   FIELD 14w01 AIE (rw): Abnormal Interrupt Summary Enable When this bit is set, the abnormal interrupt summary is enabled. This bit enables the following interrupts in the : Bit 1: Transmit Process Stopped Bit 7: Rx Buffer Unavailable Bit 8: Receive Process Stopped Bit 9: Receive Watchdog Timeout Bit 10: Early Transmit Interrupt Bit 12: Fatal Bus Error When this bit is reset, the abnormal interrupt summary is disabled.
 0x40029134 C   FIELD 15w01 NIE (rw): Normal Interrupt Summary Enable When this bit is set, the normal interrupt summary is enabled. This bit enables the following interrupts in the : Bit 0: Transmit Interrupt Bit 2: Transmit Buffer Unavailable Bit 6: Receive Interrupt Bit 11: Early Receive Interrupt When this bit is reset, the normal interrupt summary is disabled.
-0x40029138 B  REGISTER ETH_DMACRXIWTR: Channel Rx interrupt watchdog timer register
+0x40029138 B  REGISTER DMACRXIWTR: Channel Rx interrupt watchdog timer register
 0x40029138 C   FIELD 00w08 RWT (rw): Receive Interrupt Watchdog Timer Count This field indicates the number of system clock cycles, multiplied by factor indicated in RWTU field, for which the watchdog timer is set. The watchdog timer is triggered with the programmed value after the Rx DMA completes the transfer of a packet for which the RI bit is not set in the ETH_DMACSR, because of the setting of Interrupt Enable bit in the corresponding descriptor RDES3[30]. When the watchdog timer runs out, the RI bit is set and the timer is stopped. The watchdog timer is reset when the RI bit is set high because of automatic setting of RI as per the Interrupt Enable bit RDES3[30] of any received packet.
 0x40029138 C   FIELD 16w02 RWTU (rw): Receive Interrupt Watchdog Timer Count Units This field indicates the number of system clock cycles corresponding to one unit in RWT[7:0] field. For example, when RWT[7:0] = 2 and RWTU[1:0] = 1, the watchdog timer is set for 2 * 512 = 1024 system clock cycles.
-0x40029144 B  REGISTER ETH_DMACCATXDR: Channel current application transmit descriptor register
+0x40029144 B  REGISTER DMACCATXDR: Channel current application transmit descriptor register
 0x40029144 C   FIELD 00w32 CURTDESAPTR (ro): Application Transmit Descriptor Address Pointer The DMA updates this pointer during Tx operation. This pointer is cleared on reset.
-0x4002914C B  REGISTER ETH_DMACCARXDR: Channel current application receive descriptor register
+0x4002914C B  REGISTER DMACCARXDR: Channel current application receive descriptor register
 0x4002914C C   FIELD 00w32 CURRDESAPTR (ro): Application Receive Descriptor Address Pointer The DMA updates this pointer during Rx operation. This pointer is cleared on reset.
-0x40029154 B  REGISTER ETH_DMACCATXBR: Channel current application transmit buffer register
+0x40029154 B  REGISTER DMACCATXBR: Channel current application transmit buffer register
 0x40029154 C   FIELD 00w32 CURTBUFAPTR (ro): Application Transmit Buffer Address Pointer The DMA updates this pointer during Tx operation. This pointer is cleared on reset.
-0x4002915C B  REGISTER ETH_DMACCARXBR: Channel current application receive buffer register
+0x4002915C B  REGISTER DMACCARXBR: Channel current application receive buffer register
 0x4002915C C   FIELD 00w32 CURRBUFAPTR (ro): Application Receive Buffer Address Pointer The DMA updates this pointer during Rx operation. This pointer is cleared on reset.
-0x40029160 B  REGISTER ETH_DMACSR: Channel status register
+0x40029160 B  REGISTER DMACSR: Channel status register
 0x40029160 C   FIELD 00w01 TI (rw): Transmit Interrupt This bit indicates that the packet transmission is complete. When transmission is complete, Bit 31 of TDES3 is reset in the last descriptor, and the specific packet status information is updated in the descriptor.
 0x40029160 C   FIELD 01w01 TPS (rw): Transmit Process Stopped This bit is set when the transmission is stopped.
 0x40029160 C   FIELD 02w01 TBU (rw): Transmit Buffer Unavailable This bit indicates that the application owns the next descriptor in the Transmit list, and the DMA cannot acquire it. Transmission is suspended. The TPSi field of the register (ETH_DMADSR) register explains the Transmit Process state transitions. To resume processing the Transmit descriptors, the application should do the following: 1. Change the ownership of the descriptor by setting Bit 31 of TDES3. 2. Issue a Transmit Poll Demand command. For ring mode, the application should advance the Transmit Descriptor Tail Pointer register of a channel.
@@ -9394,7 +9394,7 @@
 0x40029160 C   FIELD 15w01 NIS (rw): Normal Interrupt Summary Normal Interrupt Summary bit value is the logical OR of the following bits when the corresponding interrupt bits are enabled in the ETH_DMACIER register: Bit 0: Transmit Interrupt Bit 2: Transmit Buffer Unavailable Bit 6: Receive Interrupt Bit 11: Early Receive Interrupt Only unmasked bits (interrupts for which interrupt enable is set in ETH_DMACIER register) affect the Normal Interrupt Summary bit. This is a sticky bit. You must clear this bit (by writing 1 to this bit) each time a corresponding bit which causes NIS to be set is cleared.
 0x40029160 C   FIELD 16w03 TEB (ro): Tx DMA Error Bits This field indicates the type of error that caused a Bus Error. For example, error response on the AHB interface. Bit[2]: Error during data transfer by Tx DMA when 1, no Error during data transfer by Tx DMA when 0 Bit[1]: Error during descriptor access when 1, Error during data buffer access when 0 Bit[0]: Error during read transfer when 1, Error during write transfer when 0 This field is valid only when the FBE bit is set. This field does not generate an interrupt.
 0x40029160 C   FIELD 19w03 REB (ro): Rx DMA Error Bits This field indicates the type of error that caused a Bus Error. For example, error response on the AHB interface. Bit [2]: Error during data transfer by Rx DMA when 1, no Error during data transfer by Rx DMA when 0. Bit[1]: Error during descriptor access when 1, Error during data buffer access when 0 Bit[0]: Error during read transfer when 1, Error during write transfer when 0 This field is valid only when the FBE bit is set. This field does not generate an interrupt.
-0x4002916C B  REGISTER ETH_DMACMFCR: Channel missed frame count register
+0x4002916C B  REGISTER DMACMFCR: Channel missed frame count register
 0x4002916C C   FIELD 00w11 MFC (rw): Dropped Packet Counters This counter indicates the number of packet counters that are dropped by the DMA either because of bus error or because of programing RPF field in register (ETH_DMACRXCR). The counter gets cleared when this register is read.
 0x4002916C C   FIELD 15w01 MFCO (rw): Overflow status of the MFC Counter When this bit is set then the MFC counter does not get incremented further. The bit gets cleared when this register is read.
 0x40040000 A PERIPHERAL OTG1_HS_GLOBAL
@@ -15432,48 +15432,48 @@
 0x52002160 B  REGISTER FAR2 (ro): FLASH ECC fail address for bank 1
 0x52002160 C   FIELD 00w15 FAIL_ECC_ADDR: Bank 1 ECC error address
 0x52003000 A PERIPHERAL JPEG
-0x52003000 B  REGISTER JPEG_CONFR0 (wo): JPEG codec control register
+0x52003000 B  REGISTER CONFR0 (wo): JPEG codec control register
 0x52003000 C   FIELD 00w01 START: Start This bit start or stop the encoding or decoding process. Read this register always return 0.
-0x52003004 B  REGISTER JPEG_CONFR1 (rw): JPEG codec configuration register 1
+0x52003004 B  REGISTER CONFR1 (rw): JPEG codec configuration register 1
 0x52003004 C   FIELD 00w02 NF: Number of color components This field defines the number of color components minus 1.
 0x52003004 C   FIELD 03w01 DE: Decoding Enable This bit selects the coding or decoding process
 0x52003004 C   FIELD 04w02 COLORSPACE: Color Space This filed defines the number of quantization tables minus 1 to insert in the output stream.
 0x52003004 C   FIELD 06w02 NS: Number of components for Scan This field defines the number of components minus 1 for scan header marker segment.
 0x52003004 C   FIELD 08w01 HDR: Header Processing This bit enable the header processing (generation/parsing).
 0x52003004 C   FIELD 16w16 YSIZE: Y Size This field defines the number of lines in source image.
-0x52003008 B  REGISTER JPEG_CONFR2 (rw): JPEG codec configuration register 2
+0x52003008 B  REGISTER CONFR2 (rw): JPEG codec configuration register 2
 0x52003008 C   FIELD 00w26 NMCU: Number of MCU For encoding: this field defines the number of MCU units minus 1 to encode. For decoding: this field indicates the number of complete MCU units minus 1 to be decoded (this field is updated after the JPEG header parsing). If the decoded image size has not a X or Y size multiple of 8 or 16 (depending on the sub-sampling process), the resulting incomplete or empty MCU must be added to this value to get the total number of MCU generated.
-0x5200300C B  REGISTER JPEG_CONFR3 (rw): JPEG codec configuration register 3
+0x5200300C B  REGISTER CONFR3 (rw): JPEG codec configuration register 3
 0x5200300C C   FIELD 16w16 XSIZE: X size This field defines the number of pixels per line.
-0x52003010 B  REGISTER JPEG_CONFRN1 (rw): JPEG codec configuration register 4-7
+0x52003010 B  REGISTER CONFRN1 (rw): JPEG codec configuration register 4-7
 0x52003010 C   FIELD 00w01 HD: Huffman DC Selects the Huffman table for encoding the DC coefficients.
 0x52003010 C   FIELD 01w01 HA: Huffman AC Selects the Huffman table for encoding the AC coefficients.
 0x52003010 C   FIELD 02w02 QT: Quantization Table Selects quantization table associated with a color component.
 0x52003010 C   FIELD 04w04 NB: Number of Block Number of data units minus 1 that belong to a particular color in the MCU.
 0x52003010 C   FIELD 08w04 VSF: Vertical Sampling Factor Vertical sampling factor for component i.
 0x52003010 C   FIELD 12w04 HSF: Horizontal Sampling Factor Horizontal sampling factor for component i.
-0x52003014 B  REGISTER JPEG_CONFRN2 (rw): JPEG codec configuration register 4-7
+0x52003014 B  REGISTER CONFRN2 (rw): JPEG codec configuration register 4-7
 0x52003014 C   FIELD 00w01 HD: Huffman DC Selects the Huffman table for encoding the DC coefficients.
 0x52003014 C   FIELD 01w01 HA: Huffman AC Selects the Huffman table for encoding the AC coefficients.
 0x52003014 C   FIELD 02w02 QT: Quantization Table Selects quantization table associated with a color component.
 0x52003014 C   FIELD 04w04 NB: Number of Block Number of data units minus 1 that belong to a particular color in the MCU.
 0x52003014 C   FIELD 08w04 VSF: Vertical Sampling Factor Vertical sampling factor for component i.
 0x52003014 C   FIELD 12w04 HSF: Horizontal Sampling Factor Horizontal sampling factor for component i.
-0x52003018 B  REGISTER JPEG_CONFRN3 (rw): JPEG codec configuration register 4-7
+0x52003018 B  REGISTER CONFRN3 (rw): JPEG codec configuration register 4-7
 0x52003018 C   FIELD 00w01 HD: Huffman DC Selects the Huffman table for encoding the DC coefficients.
 0x52003018 C   FIELD 01w01 HA: Huffman AC Selects the Huffman table for encoding the AC coefficients.
 0x52003018 C   FIELD 02w02 QT: Quantization Table Selects quantization table associated with a color component.
 0x52003018 C   FIELD 04w04 NB: Number of Block Number of data units minus 1 that belong to a particular color in the MCU.
 0x52003018 C   FIELD 08w04 VSF: Vertical Sampling Factor Vertical sampling factor for component i.
 0x52003018 C   FIELD 12w04 HSF: Horizontal Sampling Factor Horizontal sampling factor for component i.
-0x5200301C B  REGISTER JPEG_CONFRN4 (rw): JPEG codec configuration register 4-7
+0x5200301C B  REGISTER CONFRN4 (rw): JPEG codec configuration register 4-7
 0x5200301C C   FIELD 00w01 HD: Huffman DC Selects the Huffman table for encoding the DC coefficients.
 0x5200301C C   FIELD 01w01 HA: Huffman AC Selects the Huffman table for encoding the AC coefficients.
 0x5200301C C   FIELD 02w02 QT: Quantization Table Selects quantization table associated with a color component.
 0x5200301C C   FIELD 04w04 NB: Number of Block Number of data units minus 1 that belong to a particular color in the MCU.
 0x5200301C C   FIELD 08w04 VSF: Vertical Sampling Factor Vertical sampling factor for component i.
 0x5200301C C   FIELD 12w04 HSF: Horizontal Sampling Factor Horizontal sampling factor for component i.
-0x52003030 B  REGISTER JPEG_CR (rw): JPEG control register
+0x52003030 B  REGISTER CR (rw): JPEG control register
 0x52003030 C   FIELD 00w01 JCEN: JPEG Core Enable Enable the JPEG codec Core.
 0x52003030 C   FIELD 01w01 IFTIE: Input FIFO Threshold Interrupt Enable This bit enables the interrupt generation when input FIFO reach the threshold.
 0x52003030 C   FIELD 02w01 IFNFIE: Input FIFO Not Full Interrupt Enable This bit enables the interrupt generation when input FIFO is not empty.
@@ -15485,7 +15485,7 @@
 0x52003030 C   FIELD 12w01 ODMAEN: Output DMA Enable Enable the DMA request generation for the output FIFO.
 0x52003030 C   FIELD 13w01 IFF: Input FIFO Flush This bit flush the input FIFO. This bit is always read as 0.
 0x52003030 C   FIELD 14w01 OFF: Output FIFO Flush This bit flush the output FIFO. This bit is always read as 0.
-0x52003034 B  REGISTER JPEG_SR (ro): JPEG status register
+0x52003034 B  REGISTER SR (ro): JPEG status register
 0x52003034 C   FIELD 01w01 IFTF: Input FIFO Threshold Flag This bit is set when the input FIFO is not full and is bellow its threshold.
 0x52003034 C   FIELD 02w01 IFNFF: Input FIFO Not Full Flag This bit is set when the input FIFO is not full (a data can be written).
 0x52003034 C   FIELD 03w01 OFTF: Output FIFO Threshold Flag This bit is set when the output FIFO is not empty and has reach its threshold.
@@ -15493,12 +15493,12 @@
 0x52003034 C   FIELD 05w01 EOCF: End of Conversion Flag This bit is set when the JPEG codec core has finished the encoding or the decoding process and than last data has been sent to the output FIFO.
 0x52003034 C   FIELD 06w01 HPDF: Header Parsing Done Flag This bit is set in decode mode when the JPEG codec has finished the parsing of the headers and the internal registers have been updated.
 0x52003034 C   FIELD 07w01 COF: Codec Operation Flag This bit is set when when a JPEG codec operation is on going (encoding or decoding).
-0x52003038 B  REGISTER JPEG_CFR (rw): JPEG clear flag register
+0x52003038 B  REGISTER CFR (rw): JPEG clear flag register
 0x52003038 C   FIELD 05w01 CEOCF: Clear End of Conversion Flag Writing 1 clears the End of Conversion Flag of the JPEG Status Register.
 0x52003038 C   FIELD 06w01 CHPDF: Clear Header Parsing Done Flag Writing 1 clears the Header Parsing Done Flag of the JPEG Status Register.
-0x52003040 B  REGISTER JPEG_DIR (wo): JPEG data input register
+0x52003040 B  REGISTER DIR (wo): JPEG data input register
 0x52003040 C   FIELD 00w32 DATAIN: Data Input FIFO Input FIFO data register.
-0x52003044 B  REGISTER JPEG_DOR (ro): JPEG data output register
+0x52003044 B  REGISTER DOR (ro): JPEG data output register
 0x52003044 C   FIELD 00w32 DATAOUT: Data Output FIFO Output FIFO data register.
 0x52004000 A PERIPHERAL FMC
 0x52004000 B  REGISTER BCR1 (rw): This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
@@ -17057,12 +17057,12 @@
 0x58003810 C   FIELD 24w04 BLANKING: COMP channel 1 blanking source selection bits
 0x58003810 C   FIELD 31w01 LOCK: Lock bit
 0x58003C00 A PERIPHERAL VREFBUF
-0x58003C00 B  REGISTER VREFBUF_CSR: VREFBUF control and status register
+0x58003C00 B  REGISTER CSR: VREFBUF control and status register
 0x58003C00 C   FIELD 00w01 ENVR (rw): Voltage reference buffer mode enable This bit is used to enable the voltage reference buffer mode.
 0x58003C00 C   FIELD 01w01 HIZ (rw): High impedance mode This bit controls the analog switch to connect or not the VREF+ pin. Refer to Table196: VREF buffer modes for the mode descriptions depending on ENVR bit configuration.
 0x58003C00 C   FIELD 03w01 VRR (ro): Voltage reference buffer ready
 0x58003C00 C   FIELD 04w03 VRS (rw): Voltage reference scale These bits select the value generated by the voltage reference buffer. Other: Reserved
-0x58003C04 B  REGISTER VREFBUF_CCR (rw): VREFBUF calibration control register
+0x58003C04 B  REGISTER CCR (rw): VREFBUF calibration control register
 0x58003C04 C   FIELD 00w06 TRIM: Trimming code These bits are automatically initialized after reset with the trimming value stored in the Flash memory during the production test. Writing into these bits allows to tune the internal reference buffer voltage.
 0x58004000 A PERIPHERAL RTC
 0x58004000 B  REGISTER TR (rw): The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
@@ -20070,7 +20070,7 @@
 0x5802457C C   FIELD 16w01 RTCAPBLPEN: RTC APB Clock Enable During CSleep Mode
 0x5802457C C   FIELD 21w01 SAI4LPEN: SAI4 Peripheral Clocks Enable During CSleep Mode
 0x58024800 A PERIPHERAL PWR
-0x58024800 B  REGISTER PWR_CR1 (rw): PWR control register 1
+0x58024800 B  REGISTER CR1 (rw): PWR control register 1
 0x58024800 C   FIELD 00w01 LPDS: Low-power Deepsleep with SVOS3 (SVOS4 and SVOS5 always use low-power, regardless of the setting of this bit)
 0x58024800 C   FIELD 04w01 PVDE: Programmable voltage detector enable
 0x58024800 C   FIELD 05w03 PLS: Programmable voltage detector level selection These bits select the voltage threshold detected by the PVD. Note: Refer to Section Electrical characteristics of the product datasheet for more details.
@@ -20079,12 +20079,12 @@
 0x58024800 C   FIELD 14w02 SVOS: System Stop mode voltage scaling selection These bits control the VCORE voltage level in system Stop mode, to obtain the best trade-off between power consumption and performance.
 0x58024800 C   FIELD 16w01 AVDEN: Peripheral voltage monitor on VDDA enable
 0x58024800 C   FIELD 17w02 ALS: Analog voltage detector level selection These bits select the voltage threshold detected by the AVD.
-0x58024804 B  REGISTER PWR_CSR1 (ro): PWR control status register 1
+0x58024804 B  REGISTER CSR1 (ro): PWR control status register 1
 0x58024804 C   FIELD 04w01 PVDO: Programmable voltage detect output This bit is set and cleared by hardware. It is valid only if the PVD has been enabled by the PVDE bit. Note: since the PVD is disabled in Standby mode, this bit is equal to 0 after Standby or reset until the PVDE bit is set.
 0x58024804 C   FIELD 13w01 ACTVOSRDY: Voltage levels ready bit for currently used VOS and SDLEVEL This bit is set to 1 by hardware when the voltage regulator and the SD converter are both disabled and Bypass mode is selected in PWR control register 3 (PWR_CR3).
 0x58024804 C   FIELD 14w02 ACTVOS: VOS currently applied for VCORE voltage scaling selection. These bits reflect the last VOS value applied to the PMU.
 0x58024804 C   FIELD 16w01 AVDO: Analog voltage detector output on VDDA This bit is set and cleared by hardware. It is valid only if AVD on VDDA is enabled by the AVDEN bit. Note: Since the AVD is disabled in Standby mode, this bit is equal to 0 after Standby or reset until the AVDEN bit is set.
-0x58024808 B  REGISTER PWR_CR2: This register is not reset by wakeup from Standby mode, RESET signal and VDD POR. It is only reset by VSW POR and VSWRST reset. This register shall not be accessed when VSWRST bit in RCC_BDCR register resets the VSW domain.After reset, PWR_CR2 register is write-protected. Prior to modifying its content, the DBP bit in PWR_CR1 register must be set to disable the write protection.
+0x58024808 B  REGISTER CR2: This register is not reset by wakeup from Standby mode, RESET signal and VDD POR. It is only reset by VSW POR and VSWRST reset. This register shall not be accessed when VSWRST bit in RCC_BDCR register resets the VSW domain.After reset, PWR_CR2 register is write-protected. Prior to modifying its content, the DBP bit in PWR_CR1 register must be set to disable the write protection.
 0x58024808 C   FIELD 00w01 BREN (rw): Backup regulator enable When set, the Backup regulator (used to maintain the backup RAM content in Standby and VBAT modes) is enabled. If BREN is reset, the backup regulator is switched off. The backup RAM can still be used in Run and Stop modes. However, its content will be lost in Standby and VBAT modes. If BREN is set, the application must wait till the Backup Regulator Ready flag (BRRDY) is set to indicate that the data written into the SRAM will be maintained in Standby and VBAT modes.
 0x58024808 C   FIELD 04w01 MONEN (rw): VBAT and temperature monitoring enable When set, the VBAT supply and temperature monitoring is enabled.
 0x58024808 C   FIELD 16w01 BRRDY (ro): Backup regulator ready This bit is set by hardware to indicate that the Backup regulator is ready.
@@ -20092,7 +20092,7 @@
 0x58024808 C   FIELD 21w01 VBATH (ro): VBAT level monitoring versus high threshold
 0x58024808 C   FIELD 22w01 TEMPL (ro): Temperature level monitoring versus low threshold
 0x58024808 C   FIELD 23w01 TEMPH (ro): Temperature level monitoring versus high threshold
-0x5802480C B  REGISTER PWR_CR3: Reset only by POR only, not reset by wakeup from Standby mode and RESET pad. The lower byte of this register is written once after POR and shall be written before changing VOS level or ck_sys clock frequency. No limitation applies to the upper bytes.Programming data corresponding to an invalid combination of SDLEVEL, SDEXTHP, SDEN, LDOEN and BYPASS bits (see Table9) will be ignored: data will not be written, the written-once mechanism will lock the register and any further write access will be ignored. The default supply configuration will be kept and the ACTVOSRDY bit in PWR control status register 1 (PWR_CSR1) will go on indicating invalid voltage levels. The system shall be power cycled before writing a new value.
+0x5802480C B  REGISTER CR3: Reset only by POR only, not reset by wakeup from Standby mode and RESET pad. The lower byte of this register is written once after POR and shall be written before changing VOS level or ck_sys clock frequency. No limitation applies to the upper bytes.Programming data corresponding to an invalid combination of SDLEVEL, SDEXTHP, SDEN, LDOEN and BYPASS bits (see Table9) will be ignored: data will not be written, the written-once mechanism will lock the register and any further write access will be ignored. The default supply configuration will be kept and the ACTVOSRDY bit in PWR control status register 1 (PWR_CSR1) will go on indicating invalid voltage levels. The system shall be power cycled before writing a new value.
 0x5802480C C   FIELD 00w01 BYPASS (rw): Power management unit bypass
 0x5802480C C   FIELD 01w01 LDOEN (rw): Low drop-out regulator enable
 0x5802480C C   FIELD 02w01 SDEN (rw): SD converter Enable
@@ -20101,7 +20101,7 @@
 0x5802480C C   FIELD 24w01 USB33DEN (wo): VDD33USB voltage level detector enable.
 0x5802480C C   FIELD 25w01 USBREGEN (rw): USB regulator enable.
 0x5802480C C   FIELD 26w01 USB33RDY (ro): USB supply ready.
-0x58024810 B  REGISTER PWR_CPUCR: This register allows controlling CPU1 power.
+0x58024810 B  REGISTER CPUCR: This register allows controlling CPU1 power.
 0x58024810 C   FIELD 00w01 PDDS_D1 (rw): D1 domain Power Down Deepsleep selection. This bit allows CPU1 to define the Deepsleep mode for D1 domain.
 0x58024810 C   FIELD 01w01 PDDS_D2 (rw): D2 domain Power Down Deepsleep. This bit allows CPU1 to define the Deepsleep mode for D2 domain.
 0x58024810 C   FIELD 02w01 PDDS_D3 (rw): System D3 domain Power Down Deepsleep. This bit allows CPU1 to define the Deepsleep mode for System D3 domain.
@@ -20111,19 +20111,19 @@
 0x58024810 C   FIELD 08w01 SBF_D2 (ro): D2 domain DStandby flag This bit is set by hardware and cleared by any system reset or by setting the CPU1 CSSF bit. Once set, this bit can be cleared only when the D2 domain is no longer in DStandby mode.
 0x58024810 C   FIELD 09w01 CSSF (rw): Clear D1 domain CPU1 Standby, Stop and HOLD flags (always read as 0) This bit is cleared to 0 by hardware.
 0x58024810 C   FIELD 11w01 RUN_D3 (rw): Keep system D3 domain in Run mode regardless of the CPU sub-systems modes
-0x58024818 B  REGISTER PWR_D3CR: This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
+0x58024818 B  REGISTER D3CR: This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
 0x58024818 C   FIELD 13w01 VOSRDY (ro): VOS Ready bit for VCORE voltage scaling output selection. This bit is set to 1 by hardware when Bypass mode is selected in PWR control register 3 (PWR_CR3).
 0x58024818 C   FIELD 14w02 VOS (rw): Voltage scaling selection according to performance These bits control the VCORE voltage level and allow to obtains the best trade-off between power consumption and performance: When increasing the performance, the voltage scaling shall be changed before increasing the system frequency. When decreasing performance, the system frequency shall first be decreased before changing the voltage scaling.
-0x58024820 B  REGISTER PWR_WKUPCR (rw): reset only by system reset, not reset by wakeup from Standby mode5 wait states are required when writing this register (when clearing a WKUPF bit in PWR_WKUPFR, the AHB write access will complete after the WKUPF has been cleared).
+0x58024820 B  REGISTER WKUPCR (rw): reset only by system reset, not reset by wakeup from Standby mode5 wait states are required when writing this register (when clearing a WKUPF bit in PWR_WKUPFR, the AHB write access will complete after the WKUPF has been cleared).
 0x58024820 C   FIELD 00w06 WKUPC: Clear Wakeup pin flag for WKUP. These bits are always read as 0.
-0x58024824 B  REGISTER PWR_WKUPFR (rw): reset only by system reset, not reset by wakeup from Standby mode
+0x58024824 B  REGISTER WKUPFR (rw): reset only by system reset, not reset by wakeup from Standby mode
 0x58024824 C   FIELD 00w01 WKUPF1: Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
 0x58024824 C   FIELD 01w01 WKUPF2: Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
 0x58024824 C   FIELD 02w01 WKUPF3: Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
 0x58024824 C   FIELD 03w01 WKUPF4: Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
 0x58024824 C   FIELD 04w01 WKUPF5: Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
 0x58024824 C   FIELD 05w01 WKUPF6: Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
-0x58024828 B  REGISTER PWR_WKUPEPR (rw): Reset only by system reset, not reset by wakeup from Standby mode
+0x58024828 B  REGISTER WKUPEPR (rw): Reset only by system reset, not reset by wakeup from Standby mode
 0x58024828 C   FIELD 00w01 WKUPEN1: Enable Wakeup Pin WKUPn+1 Each bit is set and cleared by software. Note: An additional wakeup event is detected if WKUPn+1 pin is enabled (by setting the WKUPENn+1 bit) when WKUPn+1 pin level is already high when WKUPPn+1 selects rising edge, or low when WKUPPn+1 selects falling edge.
 0x58024828 C   FIELD 01w01 WKUPEN2: Enable Wakeup Pin WKUPn+1 Each bit is set and cleared by software. Note: An additional wakeup event is detected if WKUPn+1 pin is enabled (by setting the WKUPENn+1 bit) when WKUPn+1 pin level is already high when WKUPPn+1 selects rising edge, or low when WKUPPn+1 selects falling edge.
 0x58024828 C   FIELD 02w01 WKUPEN3: Enable Wakeup Pin WKUPn+1 Each bit is set and cleared by software. Note: An additional wakeup event is detected if WKUPn+1 pin is enabled (by setting the WKUPENn+1 bit) when WKUPn+1 pin level is already high when WKUPPn+1 selects rising edge, or low when WKUPPn+1 selects falling edge.
