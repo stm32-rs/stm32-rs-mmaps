@@ -7139,6 +7139,13 @@
 0x420C0804 C   FIELD 06w01 SEIS (rw): Seed error interrupt status This bit is set at the same time as SECS. It is cleared by writing 0 (unless CONDRST is used). Writing 1 has no effect. An interrupt is pending if IE = 1 in the RNG_CR register.
 0x420C0808 B  REGISTER DR: RNG data register
 0x420C0808 C   FIELD 00w32 RNDATA (ro): Random data 32-bit random data which are valid when DRDY = 1. When DRDY = 0 RNDATA value is zero. It is recommended to always verify that RNG_DR is different from zero. Because when it is the case a seed error occurred between RNG_SR polling and RND_DR output reading (rare event).
+0x420C080C B  REGISTER NSCR: RNG noise source control register
+0x420C080C C   FIELD 00w03 EN_OSC1: Each bit drives one oscillator enable signal input of instance number 1, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+0x420C080C C   FIELD 03w03 EN_OSC2: Each bit drives one oscillator enable signal input of instance number 2, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+0x420C080C C   FIELD 06w03 EN_OSC3: Each bit drives one oscillator enable signal input of instance number 3, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+0x420C080C C   FIELD 09w03 EN_OSC4: Each bit drives one oscillator enable signal input of instance number 4, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+0x420C080C C   FIELD 12w03 EN_OSC5: Each bit drives one oscillator enable signal input of instance number 5, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
+0x420C080C C   FIELD 15w03 EN_OSC6: Each bit drives one oscillator enable signal input of instance number 6, gated with the RNGEN bit in RNG_CR (set bit to enable the oscillator).
 0x420C0810 B  REGISTER HTCR: RNG health test control register
 0x420C0810 C   FIELD 00w32 HTCFG (rw): health test configuration This configuration is used by RNG to configure the health tests. See Section 23.6: RNG entropy source validation for the recommended value. Note: The RNG behavior, including the read to this register, is not guaranteed if a different value from the recommended value is written.
 0x44000400 A PERIPHERAL SBS
