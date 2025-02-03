@@ -1089,16 +1089,8 @@
 0x40004400 C   FIELD 13w01 MME: Mute mode enable
 0x40004400 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40004400 C   FIELD 15w01 OVER8: Oversampling mode
-0x40004400 C   FIELD 16w01 DEDT0: DEDT0
-0x40004400 C   FIELD 17w01 DEDT1: DEDT1
-0x40004400 C   FIELD 18w01 DEDT2: DEDT2
-0x40004400 C   FIELD 19w01 DEDT3: DEDT3
-0x40004400 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x40004400 C   FIELD 21w01 DEAT0: DEAT0
-0x40004400 C   FIELD 22w01 DEAT1: DEAT1
-0x40004400 C   FIELD 23w01 DEAT2: DEAT2
-0x40004400 C   FIELD 24w01 DEAT3: DEAT3
-0x40004400 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x40004400 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40004400 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x40004400 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x40004400 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x40004400 C   FIELD 28w01 M1: Word length
@@ -1123,11 +1115,9 @@
 0x40004404 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004404 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004404 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40004404 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x40004404 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x40004404 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004404 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004404 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004404 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004404 C   FIELD 24w08 ADD: Address of the USART node
 0x40004408 B  REGISTER CR3 (rw): Control register 3
 0x40004408 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004408 C   FIELD 01w01 IREN: Ir mode enable
@@ -1181,6 +1171,7 @@
 0x4000441C C   FIELD 10w01 CTS: CTS
 0x4000441C C   FIELD 11w01 RTOF: RTOF
 0x4000441C C   FIELD 12w01 EOBF: EOBF
+0x4000441C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x4000441C C   FIELD 14w01 ABRE: ABRE
 0x4000441C C   FIELD 15w01 ABRF: ABRF
 0x4000441C C   FIELD 16w01 BUSY: BUSY
@@ -1235,16 +1226,8 @@
 0x40004800 C   FIELD 13w01 MME: Mute mode enable
 0x40004800 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40004800 C   FIELD 15w01 OVER8: Oversampling mode
-0x40004800 C   FIELD 16w01 DEDT0: DEDT0
-0x40004800 C   FIELD 17w01 DEDT1: DEDT1
-0x40004800 C   FIELD 18w01 DEDT2: DEDT2
-0x40004800 C   FIELD 19w01 DEDT3: DEDT3
-0x40004800 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x40004800 C   FIELD 21w01 DEAT0: DEAT0
-0x40004800 C   FIELD 22w01 DEAT1: DEAT1
-0x40004800 C   FIELD 23w01 DEAT2: DEAT2
-0x40004800 C   FIELD 24w01 DEAT3: DEAT3
-0x40004800 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x40004800 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40004800 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x40004800 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x40004800 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x40004800 C   FIELD 28w01 M1: Word length
@@ -1269,11 +1252,9 @@
 0x40004804 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004804 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004804 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40004804 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x40004804 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x40004804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004804 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004804 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004804 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004804 C   FIELD 24w08 ADD: Address of the USART node
 0x40004808 B  REGISTER CR3 (rw): Control register 3
 0x40004808 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004808 C   FIELD 01w01 IREN: Ir mode enable
@@ -1327,6 +1308,7 @@
 0x4000481C C   FIELD 10w01 CTS: CTS
 0x4000481C C   FIELD 11w01 RTOF: RTOF
 0x4000481C C   FIELD 12w01 EOBF: EOBF
+0x4000481C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x4000481C C   FIELD 14w01 ABRE: ABRE
 0x4000481C C   FIELD 15w01 ABRF: ABRF
 0x4000481C C   FIELD 16w01 BUSY: BUSY
@@ -1381,16 +1363,8 @@
 0x40004C00 C   FIELD 13w01 MME: Mute mode enable
 0x40004C00 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40004C00 C   FIELD 15w01 OVER8: Oversampling mode
-0x40004C00 C   FIELD 16w01 DEDT0: DEDT0
-0x40004C00 C   FIELD 17w01 DEDT1: DEDT1
-0x40004C00 C   FIELD 18w01 DEDT2: DEDT2
-0x40004C00 C   FIELD 19w01 DEDT3: DEDT3
-0x40004C00 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x40004C00 C   FIELD 21w01 DEAT0: DEAT0
-0x40004C00 C   FIELD 22w01 DEAT1: DEAT1
-0x40004C00 C   FIELD 23w01 DEAT2: DEAT2
-0x40004C00 C   FIELD 24w01 DEAT3: DEAT3
-0x40004C00 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x40004C00 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40004C00 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x40004C00 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x40004C00 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x40004C00 C   FIELD 28w01 M1: Word length
@@ -1415,11 +1389,9 @@
 0x40004C04 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004C04 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004C04 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40004C04 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x40004C04 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x40004C04 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004C04 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004C04 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004C04 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004C04 C   FIELD 24w08 ADD: Address of the USART node
 0x40004C08 B  REGISTER CR3 (rw): Control register 3
 0x40004C08 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004C08 C   FIELD 01w01 IREN: Ir mode enable
@@ -1473,6 +1445,7 @@
 0x40004C1C C   FIELD 10w01 CTS: CTS
 0x40004C1C C   FIELD 11w01 RTOF: RTOF
 0x40004C1C C   FIELD 12w01 EOBF: EOBF
+0x40004C1C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x40004C1C C   FIELD 14w01 ABRE: ABRE
 0x40004C1C C   FIELD 15w01 ABRF: ABRF
 0x40004C1C C   FIELD 16w01 BUSY: BUSY
@@ -1527,16 +1500,8 @@
 0x40005000 C   FIELD 13w01 MME: Mute mode enable
 0x40005000 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40005000 C   FIELD 15w01 OVER8: Oversampling mode
-0x40005000 C   FIELD 16w01 DEDT0: DEDT0
-0x40005000 C   FIELD 17w01 DEDT1: DEDT1
-0x40005000 C   FIELD 18w01 DEDT2: DEDT2
-0x40005000 C   FIELD 19w01 DEDT3: DEDT3
-0x40005000 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x40005000 C   FIELD 21w01 DEAT0: DEAT0
-0x40005000 C   FIELD 22w01 DEAT1: DEAT1
-0x40005000 C   FIELD 23w01 DEAT2: DEAT2
-0x40005000 C   FIELD 24w01 DEAT3: DEAT3
-0x40005000 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x40005000 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40005000 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x40005000 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x40005000 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x40005000 C   FIELD 28w01 M1: Word length
@@ -1561,11 +1526,9 @@
 0x40005004 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40005004 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40005004 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40005004 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x40005004 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x40005004 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40005004 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40005004 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40005004 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40005004 C   FIELD 24w08 ADD: Address of the USART node
 0x40005008 B  REGISTER CR3 (rw): Control register 3
 0x40005008 C   FIELD 00w01 EIE: Error interrupt enable
 0x40005008 C   FIELD 01w01 IREN: Ir mode enable
@@ -1619,6 +1582,7 @@
 0x4000501C C   FIELD 10w01 CTS: CTS
 0x4000501C C   FIELD 11w01 RTOF: RTOF
 0x4000501C C   FIELD 12w01 EOBF: EOBF
+0x4000501C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x4000501C C   FIELD 14w01 ABRE: ABRE
 0x4000501C C   FIELD 15w01 ABRF: ABRF
 0x4000501C C   FIELD 16w01 BUSY: BUSY
@@ -2501,10 +2465,9 @@
 0x40008004 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40008004 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40008004 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40008004 C   FIELD 18w01 TAINV: Binary data inversion
+0x40008004 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40008004 C   FIELD 19w01 MSBFIRST: Most significant bit first
-0x40008004 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40008004 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40008004 C   FIELD 24w08 ADD: Address of the USART node
 0x40008008 B  REGISTER CR3 (rw): Control register 3
 0x40008008 C   FIELD 00w01 EIE: Error interrupt enable
 0x40008008 C   FIELD 03w01 HDSEL: Half-duplex selection
@@ -3867,16 +3830,8 @@
 0x40013800 C   FIELD 13w01 MME: Mute mode enable
 0x40013800 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40013800 C   FIELD 15w01 OVER8: Oversampling mode
-0x40013800 C   FIELD 16w01 DEDT0: DEDT0
-0x40013800 C   FIELD 17w01 DEDT1: DEDT1
-0x40013800 C   FIELD 18w01 DEDT2: DEDT2
-0x40013800 C   FIELD 19w01 DEDT3: DEDT3
-0x40013800 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x40013800 C   FIELD 21w01 DEAT0: DEAT0
-0x40013800 C   FIELD 22w01 DEAT1: DEAT1
-0x40013800 C   FIELD 23w01 DEAT2: DEAT2
-0x40013800 C   FIELD 24w01 DEAT3: DEAT3
-0x40013800 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x40013800 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40013800 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x40013800 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x40013800 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x40013800 C   FIELD 28w01 M1: Word length
@@ -3901,11 +3856,9 @@
 0x40013804 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40013804 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40013804 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40013804 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x40013804 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x40013804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40013804 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40013804 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40013804 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40013804 C   FIELD 24w08 ADD: Address of the USART node
 0x40013808 B  REGISTER CR3 (rw): Control register 3
 0x40013808 C   FIELD 00w01 EIE: Error interrupt enable
 0x40013808 C   FIELD 01w01 IREN: Ir mode enable
@@ -3959,6 +3912,7 @@
 0x4001381C C   FIELD 10w01 CTS: CTS
 0x4001381C C   FIELD 11w01 RTOF: RTOF
 0x4001381C C   FIELD 12w01 EOBF: EOBF
+0x4001381C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x4001381C C   FIELD 14w01 ABRE: ABRE
 0x4001381C C   FIELD 15w01 ABRF: ABRF
 0x4001381C C   FIELD 16w01 BUSY: BUSY
@@ -14862,16 +14816,8 @@
 0x50004400 C   FIELD 13w01 MME: Mute mode enable
 0x50004400 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x50004400 C   FIELD 15w01 OVER8: Oversampling mode
-0x50004400 C   FIELD 16w01 DEDT0: DEDT0
-0x50004400 C   FIELD 17w01 DEDT1: DEDT1
-0x50004400 C   FIELD 18w01 DEDT2: DEDT2
-0x50004400 C   FIELD 19w01 DEDT3: DEDT3
-0x50004400 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x50004400 C   FIELD 21w01 DEAT0: DEAT0
-0x50004400 C   FIELD 22w01 DEAT1: DEAT1
-0x50004400 C   FIELD 23w01 DEAT2: DEAT2
-0x50004400 C   FIELD 24w01 DEAT3: DEAT3
-0x50004400 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x50004400 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x50004400 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x50004400 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x50004400 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x50004400 C   FIELD 28w01 M1: Word length
@@ -14896,11 +14842,9 @@
 0x50004404 C   FIELD 18w01 DATAINV: Binary data inversion
 0x50004404 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x50004404 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x50004404 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x50004404 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x50004404 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x50004404 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x50004404 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x50004404 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x50004404 C   FIELD 24w08 ADD: Address of the USART node
 0x50004408 B  REGISTER CR3 (rw): Control register 3
 0x50004408 C   FIELD 00w01 EIE: Error interrupt enable
 0x50004408 C   FIELD 01w01 IREN: Ir mode enable
@@ -14954,6 +14898,7 @@
 0x5000441C C   FIELD 10w01 CTS: CTS
 0x5000441C C   FIELD 11w01 RTOF: RTOF
 0x5000441C C   FIELD 12w01 EOBF: EOBF
+0x5000441C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x5000441C C   FIELD 14w01 ABRE: ABRE
 0x5000441C C   FIELD 15w01 ABRF: ABRF
 0x5000441C C   FIELD 16w01 BUSY: BUSY
@@ -15008,16 +14953,8 @@
 0x50004800 C   FIELD 13w01 MME: Mute mode enable
 0x50004800 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x50004800 C   FIELD 15w01 OVER8: Oversampling mode
-0x50004800 C   FIELD 16w01 DEDT0: DEDT0
-0x50004800 C   FIELD 17w01 DEDT1: DEDT1
-0x50004800 C   FIELD 18w01 DEDT2: DEDT2
-0x50004800 C   FIELD 19w01 DEDT3: DEDT3
-0x50004800 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x50004800 C   FIELD 21w01 DEAT0: DEAT0
-0x50004800 C   FIELD 22w01 DEAT1: DEAT1
-0x50004800 C   FIELD 23w01 DEAT2: DEAT2
-0x50004800 C   FIELD 24w01 DEAT3: DEAT3
-0x50004800 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x50004800 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x50004800 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x50004800 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x50004800 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x50004800 C   FIELD 28w01 M1: Word length
@@ -15042,11 +14979,9 @@
 0x50004804 C   FIELD 18w01 DATAINV: Binary data inversion
 0x50004804 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x50004804 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x50004804 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x50004804 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x50004804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x50004804 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x50004804 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x50004804 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x50004804 C   FIELD 24w08 ADD: Address of the USART node
 0x50004808 B  REGISTER CR3 (rw): Control register 3
 0x50004808 C   FIELD 00w01 EIE: Error interrupt enable
 0x50004808 C   FIELD 01w01 IREN: Ir mode enable
@@ -15100,6 +15035,7 @@
 0x5000481C C   FIELD 10w01 CTS: CTS
 0x5000481C C   FIELD 11w01 RTOF: RTOF
 0x5000481C C   FIELD 12w01 EOBF: EOBF
+0x5000481C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x5000481C C   FIELD 14w01 ABRE: ABRE
 0x5000481C C   FIELD 15w01 ABRF: ABRF
 0x5000481C C   FIELD 16w01 BUSY: BUSY
@@ -15154,16 +15090,8 @@
 0x50004C00 C   FIELD 13w01 MME: Mute mode enable
 0x50004C00 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x50004C00 C   FIELD 15w01 OVER8: Oversampling mode
-0x50004C00 C   FIELD 16w01 DEDT0: DEDT0
-0x50004C00 C   FIELD 17w01 DEDT1: DEDT1
-0x50004C00 C   FIELD 18w01 DEDT2: DEDT2
-0x50004C00 C   FIELD 19w01 DEDT3: DEDT3
-0x50004C00 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x50004C00 C   FIELD 21w01 DEAT0: DEAT0
-0x50004C00 C   FIELD 22w01 DEAT1: DEAT1
-0x50004C00 C   FIELD 23w01 DEAT2: DEAT2
-0x50004C00 C   FIELD 24w01 DEAT3: DEAT3
-0x50004C00 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x50004C00 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x50004C00 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x50004C00 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x50004C00 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x50004C00 C   FIELD 28w01 M1: Word length
@@ -15188,11 +15116,9 @@
 0x50004C04 C   FIELD 18w01 DATAINV: Binary data inversion
 0x50004C04 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x50004C04 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x50004C04 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x50004C04 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x50004C04 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x50004C04 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x50004C04 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x50004C04 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x50004C04 C   FIELD 24w08 ADD: Address of the USART node
 0x50004C08 B  REGISTER CR3 (rw): Control register 3
 0x50004C08 C   FIELD 00w01 EIE: Error interrupt enable
 0x50004C08 C   FIELD 01w01 IREN: Ir mode enable
@@ -15246,6 +15172,7 @@
 0x50004C1C C   FIELD 10w01 CTS: CTS
 0x50004C1C C   FIELD 11w01 RTOF: RTOF
 0x50004C1C C   FIELD 12w01 EOBF: EOBF
+0x50004C1C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x50004C1C C   FIELD 14w01 ABRE: ABRE
 0x50004C1C C   FIELD 15w01 ABRF: ABRF
 0x50004C1C C   FIELD 16w01 BUSY: BUSY
@@ -15300,16 +15227,8 @@
 0x50005000 C   FIELD 13w01 MME: Mute mode enable
 0x50005000 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x50005000 C   FIELD 15w01 OVER8: Oversampling mode
-0x50005000 C   FIELD 16w01 DEDT0: DEDT0
-0x50005000 C   FIELD 17w01 DEDT1: DEDT1
-0x50005000 C   FIELD 18w01 DEDT2: DEDT2
-0x50005000 C   FIELD 19w01 DEDT3: DEDT3
-0x50005000 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x50005000 C   FIELD 21w01 DEAT0: DEAT0
-0x50005000 C   FIELD 22w01 DEAT1: DEAT1
-0x50005000 C   FIELD 23w01 DEAT2: DEAT2
-0x50005000 C   FIELD 24w01 DEAT3: DEAT3
-0x50005000 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x50005000 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x50005000 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x50005000 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x50005000 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x50005000 C   FIELD 28w01 M1: Word length
@@ -15334,11 +15253,9 @@
 0x50005004 C   FIELD 18w01 DATAINV: Binary data inversion
 0x50005004 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x50005004 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x50005004 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x50005004 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x50005004 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x50005004 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x50005004 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x50005004 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x50005004 C   FIELD 24w08 ADD: Address of the USART node
 0x50005008 B  REGISTER CR3 (rw): Control register 3
 0x50005008 C   FIELD 00w01 EIE: Error interrupt enable
 0x50005008 C   FIELD 01w01 IREN: Ir mode enable
@@ -15392,6 +15309,7 @@
 0x5000501C C   FIELD 10w01 CTS: CTS
 0x5000501C C   FIELD 11w01 RTOF: RTOF
 0x5000501C C   FIELD 12w01 EOBF: EOBF
+0x5000501C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x5000501C C   FIELD 14w01 ABRE: ABRE
 0x5000501C C   FIELD 15w01 ABRF: ABRF
 0x5000501C C   FIELD 16w01 BUSY: BUSY
@@ -16274,10 +16192,9 @@
 0x50008004 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x50008004 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x50008004 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x50008004 C   FIELD 18w01 TAINV: Binary data inversion
+0x50008004 C   FIELD 18w01 DATAINV: Binary data inversion
 0x50008004 C   FIELD 19w01 MSBFIRST: Most significant bit first
-0x50008004 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x50008004 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x50008004 C   FIELD 24w08 ADD: Address of the USART node
 0x50008008 B  REGISTER CR3 (rw): Control register 3
 0x50008008 C   FIELD 00w01 EIE: Error interrupt enable
 0x50008008 C   FIELD 03w01 HDSEL: Half-duplex selection
@@ -17640,16 +17557,8 @@
 0x50013800 C   FIELD 13w01 MME: Mute mode enable
 0x50013800 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x50013800 C   FIELD 15w01 OVER8: Oversampling mode
-0x50013800 C   FIELD 16w01 DEDT0: DEDT0
-0x50013800 C   FIELD 17w01 DEDT1: DEDT1
-0x50013800 C   FIELD 18w01 DEDT2: DEDT2
-0x50013800 C   FIELD 19w01 DEDT3: DEDT3
-0x50013800 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x50013800 C   FIELD 21w01 DEAT0: DEAT0
-0x50013800 C   FIELD 22w01 DEAT1: DEAT1
-0x50013800 C   FIELD 23w01 DEAT2: DEAT2
-0x50013800 C   FIELD 24w01 DEAT3: DEAT3
-0x50013800 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x50013800 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x50013800 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x50013800 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x50013800 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x50013800 C   FIELD 28w01 M1: Word length
@@ -17674,11 +17583,9 @@
 0x50013804 C   FIELD 18w01 DATAINV: Binary data inversion
 0x50013804 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x50013804 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x50013804 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x50013804 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x50013804 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x50013804 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x50013804 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x50013804 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x50013804 C   FIELD 24w08 ADD: Address of the USART node
 0x50013808 B  REGISTER CR3 (rw): Control register 3
 0x50013808 C   FIELD 00w01 EIE: Error interrupt enable
 0x50013808 C   FIELD 01w01 IREN: Ir mode enable
@@ -17732,6 +17639,7 @@
 0x5001381C C   FIELD 10w01 CTS: CTS
 0x5001381C C   FIELD 11w01 RTOF: RTOF
 0x5001381C C   FIELD 12w01 EOBF: EOBF
+0x5001381C C   FIELD 13w01 UDR (ro): SPI slave underrun error flag In Slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
 0x5001381C C   FIELD 14w01 ABRE: ABRE
 0x5001381C C   FIELD 15w01 ABRF: ABRF
 0x5001381C C   FIELD 16w01 BUSY: BUSY
