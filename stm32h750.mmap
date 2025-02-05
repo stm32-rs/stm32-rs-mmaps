@@ -1026,7 +1026,7 @@
 0x40002418 C   FIELD 00w16 ARR: Auto reload value
 0x4000241C B  REGISTER CNT (ro): Counter Register
 0x4000241C C   FIELD 00w16 CNT: Counter value
-0x40002424 B  REGISTER LPTIM_CFGR2 (rw): LPTIM configuration register 2
+0x40002424 B  REGISTER CFGR2 (rw): LPTIM configuration register 2
 0x40002424 C   FIELD 00w02 IN1SEL: LPTIM Input 1 selection
 0x40002424 C   FIELD 04w02 IN2SEL: LPTIM Input 2 selection
 0x40003800 A PERIPHERAL SPI2
@@ -13104,12 +13104,12 @@
 0x48021808 B  REGISTER DR (ro): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
 0x48021808 C   FIELD 00w32 RNDATA: Random data 32-bit random data which are valid when DRDY=1.
 0x48022400 A PERIPHERAL SDMMC2
-0x48022400 B  REGISTER SDMMC_POWER (rw): SDMMC power control register
+0x48022400 B  REGISTER POWER (rw): SDMMC power control register
 0x48022400 C   FIELD 00w02 PWRCTRL: SDMMC state control bits. These bits can only be written when the SDMMC is not in the power-on state (PWRCTRL?11). These bits are used to define the functional state of the SDMMC signals: Any further write will be ignored, PWRCTRL value will keep 11.
 0x48022400 C   FIELD 02w01 VSWITCH: Voltage switch sequence start. This bit is used to start the timing critical section of the voltage switch sequence:
 0x48022400 C   FIELD 03w01 VSWITCHEN: Voltage switch procedure enable. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). This bit is used to stop the SDMMC_CK after the voltage switch command response:
 0x48022400 C   FIELD 04w01 DIRPOL: Data and command direction signals polarity selection. This bit can only be written when the SDMMC is in the power-off state (PWRCTRL = 00).
-0x48022404 B  REGISTER SDMMC_CLKCR (rw): The SDMMC_CLKCR register controls the SDMMC_CK output clock, the SDMMC_RX_CLK receive clock, and the bus width.
+0x48022404 B  REGISTER CLKCR (rw): The SDMMC_CLKCR register controls the SDMMC_CK output clock, the SDMMC_RX_CLK receive clock, and the bus width.
 0x48022404 C   FIELD 00w10 CLKDIV: Clock divide factor This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). This field defines the divide factor between the input clock (SDMMCCLK) and the output clock (SDMMC_CK): SDMMC_CK frequency = SDMMCCLK / [2 * CLKDIV]. 0xx: etc.. xxx: etc..
 0x48022404 C   FIELD 12w01 PWRSAV: Power saving configuration bit This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0) For power saving, the SDMMC_CK clock output can be disabled when the bus is idle by setting PWRSAV:
 0x48022404 C   FIELD 14w02 WIDBUS: Wide bus mode enable bit This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
@@ -13118,9 +13118,9 @@
 0x48022404 C   FIELD 18w01 DDR: Data rate signaling selection This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0) DDR rate shall only be selected with 4-bit or 8-bit wide bus mode. (WIDBUS &gt; 00). DDR = 1 has no effect when WIDBUS = 00 (1-bit wide bus). DDR rate shall only be selected with clock division &gt;1. (CLKDIV &gt; 0)
 0x48022404 C   FIELD 19w01 BUSSPEED: Bus speed mode selection between DS, HS, SDR12, SDR25 and SDR50, DDR50, SDR104. This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
 0x48022404 C   FIELD 20w02 SELCLKRX: Receive clock selection. These bits can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
-0x48022408 B  REGISTER SDMMC_ARGR (rw): The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
+0x48022408 B  REGISTER ARGR (rw): The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
 0x48022408 C   FIELD 00w32 CMDARG: Command argument. These bits can only be written by firmware when CPSM is disabled (CPSMEN = 0). Command argument sent to a card as part of a command message. If a command contains an argument, it must be loaded into this register before writing a command to the command register.
-0x4802240C B  REGISTER SDMMC_CMDR (rw): The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
+0x4802240C B  REGISTER CMDR (rw): The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
 0x4802240C C   FIELD 00w06 CMDINDEX: Command index. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). The command index is sent to the card as part of a command message.
 0x4802240C C   FIELD 06w01 CMDTRANS: The CPSM treats the command as a data transfer command, stops the interrupt period, and signals DataEnable to the DPSM This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). If this bit is set, the CPSM issues an end of interrupt period and issues DataEnable signal to the DPSM when the command is sent.
 0x4802240C C   FIELD 07w01 CMDSTOP: The CPSM treats the command as a Stop Transmission command and signals Abort to the DPSM. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). If this bit is set, the CPSM issues the Abort signal to the DPSM when the command is sent.
@@ -13132,21 +13132,21 @@
 0x4802240C C   FIELD 14w01 BOOTMODE: Select the boot mode procedure to be used. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0)
 0x4802240C C   FIELD 15w01 BOOTEN: Enable boot mode procedure.
 0x4802240C C   FIELD 16w01 CMDSUSPEND: The CPSM treats the command as a Suspend or Resume command and signals interrupt period start/end. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). CMDSUSPEND = 1 and CMDTRANS = 0 Suspend command, start interrupt period when response bit BS=0. CMDSUSPEND = 1 and CMDTRANS = 1 Resume command with data, end interrupt period when response bit DF=1.
-0x48022410 B  REGISTER SDMMC_RESPCMDR (ro): SDMMC command response register
+0x48022410 B  REGISTER RESPCMDR (ro): SDMMC command response register
 0x48022410 C   FIELD 00w06 RESPCMD: Response command index
-0x48022414 B  REGISTER SDMMC_RESP1R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x48022414 B  REGISTER RESP1R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x48022414 C   FIELD 00w32 CARDSTATUS1: see Table 432
-0x48022418 B  REGISTER SDMMC_RESP2R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x48022418 B  REGISTER RESP2R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x48022418 C   FIELD 00w32 CARDSTATUS2: see Table404.
-0x4802241C B  REGISTER SDMMC_RESP3R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x4802241C B  REGISTER RESP3R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x4802241C C   FIELD 00w32 CARDSTATUS3: see Table404.
-0x48022420 B  REGISTER SDMMC_RESP4R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x48022420 B  REGISTER RESP4R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x48022420 C   FIELD 00w32 CARDSTATUS4: see Table404.
-0x48022424 B  REGISTER SDMMC_DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
+0x48022424 B  REGISTER DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
 0x48022424 C   FIELD 00w32 DATATIME: Data and R1b busy timeout period This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). Data and R1b busy timeout period expressed in card bus clock periods.
-0x48022428 B  REGISTER SDMMC_DLENR (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
+0x48022428 B  REGISTER DLENR (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
 0x48022428 C   FIELD 00w25 DATALENGTH: Data length value This register can only be written by firmware when DPSM is inactive (DPSMACT = 0). Number of data bytes to be transferred. When DDR = 1 DATALENGTH is truncated to a multiple of 2. (The last odd byte is not transfered) When DATALENGTH = 0 no data will be transfered, when requested by a CPSMEN and CMDTRANS = 1 also no command will be transfered. DTEN and CPSMEN are cleared to 0.
-0x4802242C B  REGISTER SDMMC_DCTRL (rw): The SDMMC_DCTRL register control the data path state machine (DPSM).
+0x4802242C B  REGISTER DCTRL (rw): The SDMMC_DCTRL register control the data path state machine (DPSM).
 0x4802242C C   FIELD 00w01 DTEN: Data transfer enable bit This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). This bit is cleared by Hardware when data transfer completes. This bit shall only be used to transfer data when no associated data transfer command is used, i.e. shall not be used with SD or eMMC cards.
 0x4802242C C   FIELD 01w01 DTDIR: Data transfer direction selection This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x4802242C C   FIELD 02w02 DTMODE: Data transfer mode selection. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
@@ -13157,9 +13157,9 @@
 0x4802242C C   FIELD 11w01 SDIOEN: SD I/O interrupt enable functions This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). If this bit is set, the DPSM enables the SD I/O card specific interrupt operation.
 0x4802242C C   FIELD 12w01 BOOTACKEN: Enable the reception of the boot acknowledgment. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x4802242C C   FIELD 13w01 FIFORST: FIFO reset, will flush any remaining data. This bit can only be written by firmware when IDMAEN= 0 and DPSM is active (DPSMACT = 1). This bit will only take effect when a transfer error or transfer hold occurs.
-0x48022430 B  REGISTER SDMMC_DCNTR (ro): The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
+0x48022430 B  REGISTER DCNTR (ro): The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
 0x48022430 C   FIELD 00w25 DATACOUNT: Data count value When read, the number of remaining data bytes to be transferred is returned. Write has no effect.
-0x48022434 B  REGISTER SDMMC_STAR (ro): The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits [29,21,11:0]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits [20:12]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
+0x48022434 B  REGISTER STAR (ro): The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits [29,21,11:0]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits [20:12]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
 0x48022434 C   FIELD 00w01 CCRCFAIL: Command response received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x48022434 C   FIELD 01w01 DCRCFAIL: Data block sent/received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x48022434 C   FIELD 02w01 CTIMEOUT: Command response timeout. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR. The Command Timeout period has a fixed value of 64 SDMMC_CK clock periods.
@@ -13189,7 +13189,7 @@
 0x48022434 C   FIELD 26w01 CKSTOP: SDMMC_CK stopped in Voltage switch procedure. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x48022434 C   FIELD 27w01 IDMATE: IDMA transfer error. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x48022434 C   FIELD 28w01 IDMABTC: IDMA buffer transfer complete. interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x48022438 B  REGISTER SDMMC_ICR (rw): The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
+0x48022438 B  REGISTER ICR (rw): The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
 0x48022438 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit Set by software to clear the CCRCFAIL flag.
 0x48022438 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit Set by software to clear the DCRCFAIL flag.
 0x48022438 C   FIELD 02w01 CTIMEOUTC: CTIMEOUT flag clear bit Set by software to clear the CTIMEOUT flag.
@@ -13210,7 +13210,7 @@
 0x48022438 C   FIELD 26w01 CKSTOPC: CKSTOP flag clear bit Set by software to clear the CKSTOP flag.
 0x48022438 C   FIELD 27w01 IDMATEC: IDMA transfer error clear bit Set by software to clear the IDMATE flag.
 0x48022438 C   FIELD 28w01 IDMABTCC: IDMA buffer transfer complete clear bit Set by software to clear the IDMABTC flag.
-0x4802243C B  REGISTER SDMMC_MASKR (rw): The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
+0x4802243C B  REGISTER MASKR (rw): The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
 0x4802243C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by command CRC failure.
 0x4802243C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by data CRC failure.
 0x4802243C C   FIELD 02w01 CTIMEOUTIE: Command timeout interrupt enable Set and cleared by software to enable/disable interrupt caused by command timeout.
@@ -13234,24 +13234,24 @@
 0x4802243C C   FIELD 25w01 VSWENDIE: Voltage switch critical timing section completion interrupt enable Set and cleared by software to enable/disable the interrupt generated when voltage switch critical timing section completion.
 0x4802243C C   FIELD 26w01 CKSTOPIE: Voltage Switch clock stopped interrupt enable Set and cleared by software to enable/disable interrupt caused by Voltage Switch clock stopped.
 0x4802243C C   FIELD 28w01 IDMABTCIE: IDMA buffer transfer complete interrupt enable Set and cleared by software to enable/disable the interrupt generated when the IDMA has transferred all data belonging to a memory buffer.
-0x48022440 B  REGISTER SDMMC_ACKTIMER (rw): The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
+0x48022440 B  REGISTER ACKTIMER (rw): The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
 0x48022440 C   FIELD 00w25 ACKTIME: Boot acknowledgment timeout period This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). Boot acknowledgment timeout period expressed in card bus clock periods.
-0x48022450 B  REGISTER SDMMC_IDMACTRLR (rw): The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
+0x48022450 B  REGISTER IDMACTRLR (rw): The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
 0x48022450 C   FIELD 00w01 IDMAEN: IDMA enable This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x48022450 C   FIELD 01w01 IDMABMODE: Buffer mode selection. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x48022450 C   FIELD 02w01 IDMABACT: Double buffer mode active buffer indication This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). When IDMA is enabled this bit is toggled by hardware.
-0x48022454 B  REGISTER SDMMC_IDMABSIZER (rw): The SDMMC_IDMABSIZER register contains the buffers size when in double buffer configuration.
+0x48022454 B  REGISTER IDMABSIZER (rw): The SDMMC_IDMABSIZER register contains the buffers size when in double buffer configuration.
 0x48022454 C   FIELD 05w08 IDMABNDT: Number of transfers per buffer. This 8-bit value shall be multiplied by 8 to get the size of the buffer in 32-bit words and by 32 to get the size of the buffer in bytes. Example: IDMABNDT = 0x01: buffer size = 8 words = 32 bytes. These bits can only be written by firmware when DPSM is inactive (DPSMACT = 0).
-0x48022458 B  REGISTER SDMMC_IDMABASE0R (rw): The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
+0x48022458 B  REGISTER IDMABASE0R (rw): The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
 0x48022458 C   FIELD 00w32 IDMABASE0: Buffer 0 memory base address bits [31:2], shall be word aligned (bit [1:0] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 0 is inactive (IDMABACT = 1).
-0x4802245C B  REGISTER SDMMC_IDMABASE1R (rw): The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
+0x4802245C B  REGISTER IDMABASE1R (rw): The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
 0x4802245C C   FIELD 00w32 IDMABASE1: Buffer 1 memory base address, shall be word aligned (bit [1:0] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 1 is inactive (IDMABACT = 0).
-0x48022480 B  REGISTER SDMMC_FIFOR (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
+0x48022480 B  REGISTER FIFOR (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
 0x48022480 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data This register can only be read or written by firmware when the DPSM is active (DPSMACT=1). The FIFO data occupies 16 entries of 32-bit words.
-0x480227F4 B  REGISTER SDMMC_VER (ro): SDMMC IP version register
+0x480227F4 B  REGISTER VER (ro): SDMMC IP version register
 0x480227F4 C   FIELD 00w04 MINREV: IP minor revision number.
 0x480227F4 C   FIELD 04w04 MAJREV: IP major revision number.
-0x480227F8 B  REGISTER SDMMC_ID (ro): SDMMC IP identification register
+0x480227F8 B  REGISTER ID (ro): SDMMC IP identification register
 0x480227F8 C   FIELD 00w32 IP_ID: SDMMC IP identification.
 0x48022800 A PERIPHERAL DELAY_Block_SDMMC2
 0x48022800 B  REGISTER CR (rw): DLYB control register
@@ -15469,12 +15469,12 @@
 0x52006004 C   FIELD 16w12 LNG: Delay line length value
 0x52006004 C   FIELD 31w01 LNGF: Length valid flag
 0x52007000 A PERIPHERAL SDMMC1
-0x52007000 B  REGISTER SDMMC_POWER (rw): SDMMC power control register
+0x52007000 B  REGISTER POWER (rw): SDMMC power control register
 0x52007000 C   FIELD 00w02 PWRCTRL: SDMMC state control bits. These bits can only be written when the SDMMC is not in the power-on state (PWRCTRL?11). These bits are used to define the functional state of the SDMMC signals: Any further write will be ignored, PWRCTRL value will keep 11.
 0x52007000 C   FIELD 02w01 VSWITCH: Voltage switch sequence start. This bit is used to start the timing critical section of the voltage switch sequence:
 0x52007000 C   FIELD 03w01 VSWITCHEN: Voltage switch procedure enable. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). This bit is used to stop the SDMMC_CK after the voltage switch command response:
 0x52007000 C   FIELD 04w01 DIRPOL: Data and command direction signals polarity selection. This bit can only be written when the SDMMC is in the power-off state (PWRCTRL = 00).
-0x52007004 B  REGISTER SDMMC_CLKCR (rw): The SDMMC_CLKCR register controls the SDMMC_CK output clock, the SDMMC_RX_CLK receive clock, and the bus width.
+0x52007004 B  REGISTER CLKCR (rw): The SDMMC_CLKCR register controls the SDMMC_CK output clock, the SDMMC_RX_CLK receive clock, and the bus width.
 0x52007004 C   FIELD 00w10 CLKDIV: Clock divide factor This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). This field defines the divide factor between the input clock (SDMMCCLK) and the output clock (SDMMC_CK): SDMMC_CK frequency = SDMMCCLK / [2 * CLKDIV]. 0xx: etc.. xxx: etc..
 0x52007004 C   FIELD 12w01 PWRSAV: Power saving configuration bit This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0) For power saving, the SDMMC_CK clock output can be disabled when the bus is idle by setting PWRSAV:
 0x52007004 C   FIELD 14w02 WIDBUS: Wide bus mode enable bit This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
@@ -15483,9 +15483,9 @@
 0x52007004 C   FIELD 18w01 DDR: Data rate signaling selection This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0) DDR rate shall only be selected with 4-bit or 8-bit wide bus mode. (WIDBUS &gt; 00). DDR = 1 has no effect when WIDBUS = 00 (1-bit wide bus). DDR rate shall only be selected with clock division &gt;1. (CLKDIV &gt; 0)
 0x52007004 C   FIELD 19w01 BUSSPEED: Bus speed mode selection between DS, HS, SDR12, SDR25 and SDR50, DDR50, SDR104. This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
 0x52007004 C   FIELD 20w02 SELCLKRX: Receive clock selection. These bits can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0)
-0x52007008 B  REGISTER SDMMC_ARGR (rw): The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
+0x52007008 B  REGISTER ARGR (rw): The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
 0x52007008 C   FIELD 00w32 CMDARG: Command argument. These bits can only be written by firmware when CPSM is disabled (CPSMEN = 0). Command argument sent to a card as part of a command message. If a command contains an argument, it must be loaded into this register before writing a command to the command register.
-0x5200700C B  REGISTER SDMMC_CMDR (rw): The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
+0x5200700C B  REGISTER CMDR (rw): The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
 0x5200700C C   FIELD 00w06 CMDINDEX: Command index. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). The command index is sent to the card as part of a command message.
 0x5200700C C   FIELD 06w01 CMDTRANS: The CPSM treats the command as a data transfer command, stops the interrupt period, and signals DataEnable to the DPSM This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). If this bit is set, the CPSM issues an end of interrupt period and issues DataEnable signal to the DPSM when the command is sent.
 0x5200700C C   FIELD 07w01 CMDSTOP: The CPSM treats the command as a Stop Transmission command and signals Abort to the DPSM. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). If this bit is set, the CPSM issues the Abort signal to the DPSM when the command is sent.
@@ -15497,21 +15497,21 @@
 0x5200700C C   FIELD 14w01 BOOTMODE: Select the boot mode procedure to be used. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0)
 0x5200700C C   FIELD 15w01 BOOTEN: Enable boot mode procedure.
 0x5200700C C   FIELD 16w01 CMDSUSPEND: The CPSM treats the command as a Suspend or Resume command and signals interrupt period start/end. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). CMDSUSPEND = 1 and CMDTRANS = 0 Suspend command, start interrupt period when response bit BS=0. CMDSUSPEND = 1 and CMDTRANS = 1 Resume command with data, end interrupt period when response bit DF=1.
-0x52007010 B  REGISTER SDMMC_RESPCMDR (ro): SDMMC command response register
+0x52007010 B  REGISTER RESPCMDR (ro): SDMMC command response register
 0x52007010 C   FIELD 00w06 RESPCMD: Response command index
-0x52007014 B  REGISTER SDMMC_RESP1R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x52007014 B  REGISTER RESP1R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x52007014 C   FIELD 00w32 CARDSTATUS1: see Table 432
-0x52007018 B  REGISTER SDMMC_RESP2R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x52007018 B  REGISTER RESP2R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x52007018 C   FIELD 00w32 CARDSTATUS2: see Table404.
-0x5200701C B  REGISTER SDMMC_RESP3R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x5200701C B  REGISTER RESP3R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x5200701C C   FIELD 00w32 CARDSTATUS3: see Table404.
-0x52007020 B  REGISTER SDMMC_RESP4R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
+0x52007020 B  REGISTER RESP4R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
 0x52007020 C   FIELD 00w32 CARDSTATUS4: see Table404.
-0x52007024 B  REGISTER SDMMC_DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
+0x52007024 B  REGISTER DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
 0x52007024 C   FIELD 00w32 DATATIME: Data and R1b busy timeout period This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). Data and R1b busy timeout period expressed in card bus clock periods.
-0x52007028 B  REGISTER SDMMC_DLENR (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
+0x52007028 B  REGISTER DLENR (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
 0x52007028 C   FIELD 00w25 DATALENGTH: Data length value This register can only be written by firmware when DPSM is inactive (DPSMACT = 0). Number of data bytes to be transferred. When DDR = 1 DATALENGTH is truncated to a multiple of 2. (The last odd byte is not transfered) When DATALENGTH = 0 no data will be transfered, when requested by a CPSMEN and CMDTRANS = 1 also no command will be transfered. DTEN and CPSMEN are cleared to 0.
-0x5200702C B  REGISTER SDMMC_DCTRL (rw): The SDMMC_DCTRL register control the data path state machine (DPSM).
+0x5200702C B  REGISTER DCTRL (rw): The SDMMC_DCTRL register control the data path state machine (DPSM).
 0x5200702C C   FIELD 00w01 DTEN: Data transfer enable bit This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). This bit is cleared by Hardware when data transfer completes. This bit shall only be used to transfer data when no associated data transfer command is used, i.e. shall not be used with SD or eMMC cards.
 0x5200702C C   FIELD 01w01 DTDIR: Data transfer direction selection This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x5200702C C   FIELD 02w02 DTMODE: Data transfer mode selection. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
@@ -15522,9 +15522,9 @@
 0x5200702C C   FIELD 11w01 SDIOEN: SD I/O interrupt enable functions This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). If this bit is set, the DPSM enables the SD I/O card specific interrupt operation.
 0x5200702C C   FIELD 12w01 BOOTACKEN: Enable the reception of the boot acknowledgment. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x5200702C C   FIELD 13w01 FIFORST: FIFO reset, will flush any remaining data. This bit can only be written by firmware when IDMAEN= 0 and DPSM is active (DPSMACT = 1). This bit will only take effect when a transfer error or transfer hold occurs.
-0x52007030 B  REGISTER SDMMC_DCNTR (ro): The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
+0x52007030 B  REGISTER DCNTR (ro): The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
 0x52007030 C   FIELD 00w25 DATACOUNT: Data count value When read, the number of remaining data bytes to be transferred is returned. Write has no effect.
-0x52007034 B  REGISTER SDMMC_STAR (ro): The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits [29,21,11:0]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits [20:12]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
+0x52007034 B  REGISTER STAR (ro): The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits [29,21,11:0]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits [20:12]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
 0x52007034 C   FIELD 00w01 CCRCFAIL: Command response received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x52007034 C   FIELD 01w01 DCRCFAIL: Data block sent/received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x52007034 C   FIELD 02w01 CTIMEOUT: Command response timeout. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR. The Command Timeout period has a fixed value of 64 SDMMC_CK clock periods.
@@ -15554,7 +15554,7 @@
 0x52007034 C   FIELD 26w01 CKSTOP: SDMMC_CK stopped in Voltage switch procedure. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x52007034 C   FIELD 27w01 IDMATE: IDMA transfer error. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
 0x52007034 C   FIELD 28w01 IDMABTC: IDMA buffer transfer complete. interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
-0x52007038 B  REGISTER SDMMC_ICR (rw): The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
+0x52007038 B  REGISTER ICR (rw): The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
 0x52007038 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit Set by software to clear the CCRCFAIL flag.
 0x52007038 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit Set by software to clear the DCRCFAIL flag.
 0x52007038 C   FIELD 02w01 CTIMEOUTC: CTIMEOUT flag clear bit Set by software to clear the CTIMEOUT flag.
@@ -15575,7 +15575,7 @@
 0x52007038 C   FIELD 26w01 CKSTOPC: CKSTOP flag clear bit Set by software to clear the CKSTOP flag.
 0x52007038 C   FIELD 27w01 IDMATEC: IDMA transfer error clear bit Set by software to clear the IDMATE flag.
 0x52007038 C   FIELD 28w01 IDMABTCC: IDMA buffer transfer complete clear bit Set by software to clear the IDMABTC flag.
-0x5200703C B  REGISTER SDMMC_MASKR (rw): The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
+0x5200703C B  REGISTER MASKR (rw): The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
 0x5200703C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by command CRC failure.
 0x5200703C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by data CRC failure.
 0x5200703C C   FIELD 02w01 CTIMEOUTIE: Command timeout interrupt enable Set and cleared by software to enable/disable interrupt caused by command timeout.
@@ -15599,24 +15599,24 @@
 0x5200703C C   FIELD 25w01 VSWENDIE: Voltage switch critical timing section completion interrupt enable Set and cleared by software to enable/disable the interrupt generated when voltage switch critical timing section completion.
 0x5200703C C   FIELD 26w01 CKSTOPIE: Voltage Switch clock stopped interrupt enable Set and cleared by software to enable/disable interrupt caused by Voltage Switch clock stopped.
 0x5200703C C   FIELD 28w01 IDMABTCIE: IDMA buffer transfer complete interrupt enable Set and cleared by software to enable/disable the interrupt generated when the IDMA has transferred all data belonging to a memory buffer.
-0x52007040 B  REGISTER SDMMC_ACKTIMER (rw): The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
+0x52007040 B  REGISTER ACKTIMER (rw): The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
 0x52007040 C   FIELD 00w25 ACKTIME: Boot acknowledgment timeout period This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). Boot acknowledgment timeout period expressed in card bus clock periods.
-0x52007050 B  REGISTER SDMMC_IDMACTRLR (rw): The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
+0x52007050 B  REGISTER IDMACTRLR (rw): The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
 0x52007050 C   FIELD 00w01 IDMAEN: IDMA enable This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x52007050 C   FIELD 01w01 IDMABMODE: Buffer mode selection. This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
 0x52007050 C   FIELD 02w01 IDMABACT: Double buffer mode active buffer indication This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). When IDMA is enabled this bit is toggled by hardware.
-0x52007054 B  REGISTER SDMMC_IDMABSIZER (rw): The SDMMC_IDMABSIZER register contains the buffers size when in double buffer configuration.
+0x52007054 B  REGISTER IDMABSIZER (rw): The SDMMC_IDMABSIZER register contains the buffers size when in double buffer configuration.
 0x52007054 C   FIELD 05w08 IDMABNDT: Number of transfers per buffer. This 8-bit value shall be multiplied by 8 to get the size of the buffer in 32-bit words and by 32 to get the size of the buffer in bytes. Example: IDMABNDT = 0x01: buffer size = 8 words = 32 bytes. These bits can only be written by firmware when DPSM is inactive (DPSMACT = 0).
-0x52007058 B  REGISTER SDMMC_IDMABASE0R (rw): The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
+0x52007058 B  REGISTER IDMABASE0R (rw): The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
 0x52007058 C   FIELD 00w32 IDMABASE0: Buffer 0 memory base address bits [31:2], shall be word aligned (bit [1:0] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 0 is inactive (IDMABACT = 1).
-0x5200705C B  REGISTER SDMMC_IDMABASE1R (rw): The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
+0x5200705C B  REGISTER IDMABASE1R (rw): The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
 0x5200705C C   FIELD 00w32 IDMABASE1: Buffer 1 memory base address, shall be word aligned (bit [1:0] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 1 is inactive (IDMABACT = 0).
-0x52007080 B  REGISTER SDMMC_FIFOR (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
+0x52007080 B  REGISTER FIFOR (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
 0x52007080 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data This register can only be read or written by firmware when the DPSM is active (DPSMACT=1). The FIFO data occupies 16 entries of 32-bit words.
-0x520073F4 B  REGISTER SDMMC_VER (ro): SDMMC IP version register
+0x520073F4 B  REGISTER VER (ro): SDMMC IP version register
 0x520073F4 C   FIELD 00w04 MINREV: IP minor revision number.
 0x520073F4 C   FIELD 04w04 MAJREV: IP major revision number.
-0x520073F8 B  REGISTER SDMMC_ID (ro): SDMMC IP identification register
+0x520073F8 B  REGISTER ID (ro): SDMMC IP identification register
 0x520073F8 C   FIELD 00w32 IP_ID: SDMMC IP identification.
 0x52008000 A PERIPHERAL DELAY_Block_SDMMC1
 0x52008000 B  REGISTER CR (rw): DLYB control register
@@ -16537,7 +16537,7 @@
 0x58002418 C   FIELD 00w16 ARR: Auto reload value
 0x5800241C B  REGISTER CNT (ro): Counter Register
 0x5800241C C   FIELD 00w16 CNT: Counter value
-0x58002424 B  REGISTER LPTIM_CFGR2 (rw): LPTIM configuration register 2
+0x58002424 B  REGISTER CFGR2 (rw): LPTIM configuration register 2
 0x58002424 C   FIELD 00w02 IN1SEL: LPTIM Input 1 selection
 0x58002424 C   FIELD 04w02 IN2SEL: LPTIM Input 2 selection
 0x58002800 A PERIPHERAL LPTIM3
@@ -16591,7 +16591,7 @@
 0x58002818 C   FIELD 00w16 ARR: Auto reload value
 0x5800281C B  REGISTER CNT (ro): Counter Register
 0x5800281C C   FIELD 00w16 CNT: Counter value
-0x58002824 B  REGISTER LPTIM_CFGR2 (rw): LPTIM configuration register 2
+0x58002824 B  REGISTER CFGR2 (rw): LPTIM configuration register 2
 0x58002824 C   FIELD 00w02 IN1SEL: LPTIM Input 1 selection
 0x58002C00 A PERIPHERAL LPTIM4
 0x58002C00 B  REGISTER ISR (ro): Interrupt and Status Register
@@ -16644,7 +16644,7 @@
 0x58002C18 C   FIELD 00w16 ARR: Auto reload value
 0x58002C1C B  REGISTER CNT (ro): Counter Register
 0x58002C1C C   FIELD 00w16 CNT: Counter value
-0x58002C24 B  REGISTER LPTIM_CFGR2 (rw): LPTIM configuration register 2
+0x58002C24 B  REGISTER CFGR2 (rw): LPTIM configuration register 2
 0x58002C24 C   FIELD 00w02 IN1SEL: LPTIM Input 1 selection
 0x58003000 A PERIPHERAL LPTIM5
 0x58003000 B  REGISTER ISR (ro): Interrupt and Status Register
@@ -16697,7 +16697,7 @@
 0x58003018 C   FIELD 00w16 ARR: Auto reload value
 0x5800301C B  REGISTER CNT (ro): Counter Register
 0x5800301C C   FIELD 00w16 CNT: Counter value
-0x58003024 B  REGISTER LPTIM_CFGR2 (rw): LPTIM configuration register 2
+0x58003024 B  REGISTER CFGR2 (rw): LPTIM configuration register 2
 0x58003024 C   FIELD 00w02 IN1SEL: LPTIM Input 1 selection
 0x58003800 A PERIPHERAL COMP1
 0x58003800 B  REGISTER COMP1_SR (ro): Comparator status register

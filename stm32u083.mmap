@@ -541,7 +541,7 @@
 0x40003014 C   FIELD 14w01 EWIC (wo): Watchdog early interrupt acknowledge The software must write a 1 into this bit in order to acknowledge the early wake-up interrupt and to clear the EWIF flag. Writing 0 has not effect, reading this flag returns a 0.
 0x40003014 C   FIELD 15w01 EWIE (rw): Watchdog early interrupt enable Set and reset by software. The EWU bit in the IWDG status register (IWDG_SR) must be reset to be able to change the value of this bit.
 0x40003800 A PERIPHERAL SPI2
-0x40003800 B  REGISTER SPI_CR1: SPI control register 1
+0x40003800 B  REGISTER CR1: SPI control register 1
 0x40003800 C   FIELD 00w01 CPHA (rw): Clock phase Note: This bit should not be changed when communication is ongoing. Note: This bit is not used in SPI TI mode except the case when CRC is applied at TI mode.
 0x40003800 C   FIELD 01w01 CPOL (rw): Clock polarity Note: This bit should not be changed when communication is ongoing. Note: This bit is not used in SPI TI mode except the case when CRC is applied at TI mode.
 0x40003800 C   FIELD 02w01 MSTR (rw): Master selection Note: This bit should not be changed when communication is ongoing.
@@ -556,7 +556,7 @@
 0x40003800 C   FIELD 13w01 CRCEN (rw): Hardware CRC calculation enable Note: This bit should be written only when SPI is disabled (SPE = 0) for correct operation.
 0x40003800 C   FIELD 14w01 BIDIOE (rw): Output enable in bidirectional mode This bit combined with the BIDIMODE bit selects the direction of transfer in bidirectional mode. Note: In master mode, the MOSI pin is used and in slave mode, the MISO pin is used.
 0x40003800 C   FIELD 15w01 BIDIMODE (rw): Bidirectional data mode enable. This bit enables half-duplex communication using common single bidirectional data line. Keep RXONLY bit clear when bidirectional mode is active.
-0x40003804 B  REGISTER SPI_CR2: SPI control register 2
+0x40003804 B  REGISTER CR2: SPI control register 2
 0x40003804 C   FIELD 00w01 RXDMAEN (rw): Rx buffer DMA enable When this bit is set, a DMA request is generated whenever the RXNE flag is set.
 0x40003804 C   FIELD 01w01 TXDMAEN (rw): Tx buffer DMA enable When this bit is set, a DMA request is generated whenever the TXE flag is set.
 0x40003804 C   FIELD 02w01 SSOE (rw): SS output enable Note: This bit is not used in SPI TI mode.
@@ -569,7 +569,7 @@
 0x40003804 C   FIELD 12w01 FRXTH (rw): FIFO reception threshold This bit is used to set the threshold of the RXFIFO that triggers an RXNE event
 0x40003804 C   FIELD 13w01 LDMA_RX (rw): Last DMA transfer for reception This bit is used in data packing mode, to define if the total number of data to receive by DMA is odd or even. It has significance only if the RXDMAEN bit in the SPI_CR2 register is set and if packing mode is used (data length =< 8-bit and write access to SPI_DR is 16-bit wide). It has to be written when the SPI is disabled (SPE = 0 in the SPI_CR1 register). Note: Refer to Procedure for disabling the SPI on page1954 if the CRCEN bit is set.
 0x40003804 C   FIELD 14w01 LDMA_TX (rw): Last DMA transfer for transmission This bit is used in data packing mode, to define if the total number of data to transmit by DMA is odd or even. It has significance only if the TXDMAEN bit in the SPI_CR2 register is set and if packing mode is used (data length =< 8-bit and write access to SPI_DR is 16-bit wide). It has to be written when the SPI is disabled (SPE = 0 in the SPI_CR1 register). Note: Refer to Procedure for disabling the SPI on page1954 if the CRCEN bit is set.
-0x40003808 B  REGISTER SPI_SR: SPI status register
+0x40003808 B  REGISTER SR: SPI status register
 0x40003808 C   FIELD 00w01 RXNE (ro): Receive buffer not empty
 0x40003808 C   FIELD 01w01 TXE (ro): Transmit buffer empty
 0x40003808 C   FIELD 04w01 CRCERR (rw): CRC error flag Note: This flag is set by hardware and cleared by software writing 0.
@@ -579,16 +579,16 @@
 0x40003808 C   FIELD 08w01 FRE (ro): Frame format error This flag is used for SPI in TI slave mode. Refer to Section133.4.11: SPI error flags. This flag is set by hardware and reset when SPI_SR is read by software.
 0x40003808 C   FIELD 09w02 FRLVL (ro): FIFO reception level These bits are set and cleared by hardware. Note: These bits are not used in SPI receive-only mode while CRC calculation is enabled.
 0x40003808 C   FIELD 11w02 FTLVL (ro): FIFO transmission level These bits are set and cleared by hardware.
-0x4000380C B  REGISTER SPI_DR: SPI data register
+0x4000380C B  REGISTER DR: SPI data register
 0x4000380C C   FIELD 00w16 DR (rw): Data register Data received or to be transmitted The data register serves as an interface between the Rx and Tx FIFOs. When the data register is read, RxFIFO is accessed while the write to data register accesses TxFIFO (See Section133.4.9: Data transmission and reception procedures). Note: Data is always right-aligned. Unused bits are ignored when writing to the register, and read as zero when the register is read. The Rx threshold setting must always correspond with the read access currently used.
-0x40003810 B  REGISTER SPI_CRCPR: SPI CRC polynomial register
+0x40003810 B  REGISTER CRCPR: SPI CRC polynomial register
 0x40003810 C   FIELD 00w16 CRCPOLY (rw): CRC polynomial register This register contains the polynomial for the CRC calculation. The CRC polynomial (0x0007) is the reset value of this register. Another polynomial can be configured as required.
-0x40003814 B  REGISTER SPI_RXCRCR: SPI Rx CRC register
+0x40003814 B  REGISTER RXCRCR: SPI Rx CRC register
 0x40003814 C   FIELD 00w16 RXCRC (ro): Rx CRC register When CRC calculation is enabled, the RXCRC[15:0] bits contain the computed CRC value of the subsequently received bytes. This register is reset when the CRCEN bit in SPI_CR1 register is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY Flag is set could return an incorrect value.
-0x40003818 B  REGISTER SPI_TXCRCR: SPI Tx CRC register
+0x40003818 B  REGISTER TXCRCR: SPI Tx CRC register
 0x40003818 C   FIELD 00w16 TXCRC (ro): Tx CRC register When CRC calculation is enabled, the TXCRC[7:0] bits contain the computed CRC value of the subsequently transmitted bytes. This register is reset when the CRCEN bit of SPI_CR1 is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY flag is set could return an incorrect value.
 0x40003C00 A PERIPHERAL SPI3
-0x40003C00 B  REGISTER SPI_CR1: SPI control register 1
+0x40003C00 B  REGISTER CR1: SPI control register 1
 0x40003C00 C   FIELD 00w01 CPHA (rw): Clock phase Note: This bit should not be changed when communication is ongoing. Note: This bit is not used in SPI TI mode except the case when CRC is applied at TI mode.
 0x40003C00 C   FIELD 01w01 CPOL (rw): Clock polarity Note: This bit should not be changed when communication is ongoing. Note: This bit is not used in SPI TI mode except the case when CRC is applied at TI mode.
 0x40003C00 C   FIELD 02w01 MSTR (rw): Master selection Note: This bit should not be changed when communication is ongoing.
@@ -603,7 +603,7 @@
 0x40003C00 C   FIELD 13w01 CRCEN (rw): Hardware CRC calculation enable Note: This bit should be written only when SPI is disabled (SPE = 0) for correct operation.
 0x40003C00 C   FIELD 14w01 BIDIOE (rw): Output enable in bidirectional mode This bit combined with the BIDIMODE bit selects the direction of transfer in bidirectional mode. Note: In master mode, the MOSI pin is used and in slave mode, the MISO pin is used.
 0x40003C00 C   FIELD 15w01 BIDIMODE (rw): Bidirectional data mode enable. This bit enables half-duplex communication using common single bidirectional data line. Keep RXONLY bit clear when bidirectional mode is active.
-0x40003C04 B  REGISTER SPI_CR2: SPI control register 2
+0x40003C04 B  REGISTER CR2: SPI control register 2
 0x40003C04 C   FIELD 00w01 RXDMAEN (rw): Rx buffer DMA enable When this bit is set, a DMA request is generated whenever the RXNE flag is set.
 0x40003C04 C   FIELD 01w01 TXDMAEN (rw): Tx buffer DMA enable When this bit is set, a DMA request is generated whenever the TXE flag is set.
 0x40003C04 C   FIELD 02w01 SSOE (rw): SS output enable Note: This bit is not used in SPI TI mode.
@@ -616,7 +616,7 @@
 0x40003C04 C   FIELD 12w01 FRXTH (rw): FIFO reception threshold This bit is used to set the threshold of the RXFIFO that triggers an RXNE event
 0x40003C04 C   FIELD 13w01 LDMA_RX (rw): Last DMA transfer for reception This bit is used in data packing mode, to define if the total number of data to receive by DMA is odd or even. It has significance only if the RXDMAEN bit in the SPI_CR2 register is set and if packing mode is used (data length =< 8-bit and write access to SPI_DR is 16-bit wide). It has to be written when the SPI is disabled (SPE = 0 in the SPI_CR1 register). Note: Refer to Procedure for disabling the SPI on page1954 if the CRCEN bit is set.
 0x40003C04 C   FIELD 14w01 LDMA_TX (rw): Last DMA transfer for transmission This bit is used in data packing mode, to define if the total number of data to transmit by DMA is odd or even. It has significance only if the TXDMAEN bit in the SPI_CR2 register is set and if packing mode is used (data length =< 8-bit and write access to SPI_DR is 16-bit wide). It has to be written when the SPI is disabled (SPE = 0 in the SPI_CR1 register). Note: Refer to Procedure for disabling the SPI on page1954 if the CRCEN bit is set.
-0x40003C08 B  REGISTER SPI_SR: SPI status register
+0x40003C08 B  REGISTER SR: SPI status register
 0x40003C08 C   FIELD 00w01 RXNE (ro): Receive buffer not empty
 0x40003C08 C   FIELD 01w01 TXE (ro): Transmit buffer empty
 0x40003C08 C   FIELD 04w01 CRCERR (rw): CRC error flag Note: This flag is set by hardware and cleared by software writing 0.
@@ -626,13 +626,13 @@
 0x40003C08 C   FIELD 08w01 FRE (ro): Frame format error This flag is used for SPI in TI slave mode. Refer to Section133.4.11: SPI error flags. This flag is set by hardware and reset when SPI_SR is read by software.
 0x40003C08 C   FIELD 09w02 FRLVL (ro): FIFO reception level These bits are set and cleared by hardware. Note: These bits are not used in SPI receive-only mode while CRC calculation is enabled.
 0x40003C08 C   FIELD 11w02 FTLVL (ro): FIFO transmission level These bits are set and cleared by hardware.
-0x40003C0C B  REGISTER SPI_DR: SPI data register
+0x40003C0C B  REGISTER DR: SPI data register
 0x40003C0C C   FIELD 00w16 DR (rw): Data register Data received or to be transmitted The data register serves as an interface between the Rx and Tx FIFOs. When the data register is read, RxFIFO is accessed while the write to data register accesses TxFIFO (See Section133.4.9: Data transmission and reception procedures). Note: Data is always right-aligned. Unused bits are ignored when writing to the register, and read as zero when the register is read. The Rx threshold setting must always correspond with the read access currently used.
-0x40003C10 B  REGISTER SPI_CRCPR: SPI CRC polynomial register
+0x40003C10 B  REGISTER CRCPR: SPI CRC polynomial register
 0x40003C10 C   FIELD 00w16 CRCPOLY (rw): CRC polynomial register This register contains the polynomial for the CRC calculation. The CRC polynomial (0x0007) is the reset value of this register. Another polynomial can be configured as required.
-0x40003C14 B  REGISTER SPI_RXCRCR: SPI Rx CRC register
+0x40003C14 B  REGISTER RXCRCR: SPI Rx CRC register
 0x40003C14 C   FIELD 00w16 RXCRC (ro): Rx CRC register When CRC calculation is enabled, the RXCRC[15:0] bits contain the computed CRC value of the subsequently received bytes. This register is reset when the CRCEN bit in SPI_CR1 register is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY Flag is set could return an incorrect value.
-0x40003C18 B  REGISTER SPI_TXCRCR: SPI Tx CRC register
+0x40003C18 B  REGISTER TXCRCR: SPI Tx CRC register
 0x40003C18 C   FIELD 00w16 TXCRC (ro): Tx CRC register When CRC calculation is enabled, the TXCRC[7:0] bits contain the computed CRC value of the subsequently transmitted bytes. This register is reset when the CRCEN bit of SPI_CR1 is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY flag is set could return an incorrect value.
 0x40004400 A PERIPHERAL USART2
 0x40004400 B  REGISTER CR1: USART control register 1
@@ -1046,7 +1046,7 @@
 0x40004C2C B  REGISTER PRESC: USART prescaler register
 0x40004C2C C   FIELD 00w04 PRESCALER (rw): Clock prescaler The USART input clock can be divided by a prescaler factor: Remaining combinations: Reserved Note: When PRESCALER is programmed with a value different of the allowed ones, programmed prescaler value is equal to 1011 i.e. input clock divided by 256.
 0x40005400 A PERIPHERAL I2C1
-0x40005400 B  REGISTER I2C_CR1: I2C control register 1
+0x40005400 B  REGISTER CR1: I2C control register 1
 0x40005400 C   FIELD 00w01 PE (rw): Peripheral enable Note: When PE = 0, the I2C SCL and SDA lines are released. Internal state machines and status bits are put back to their reset value. When cleared, PE must be kept low for at least three APB clock cycles.
 0x40005400 C   FIELD 01w01 TXIE (rw): TX interrupt enable
 0x40005400 C   FIELD 02w01 RXIE (rw): RX interrupt enable
@@ -1066,7 +1066,7 @@
 0x40005400 C   FIELD 24w01 FMP (rw): Fast-mode Plus 20 mA drive enable
 0x40005400 C   FIELD 30w01 ADDRACLR (rw): Address match flag (ADDR) automatic clear
 0x40005400 C   FIELD 31w01 STOPFACLR (rw): STOP detection flag (STOPF) automatic clear
-0x40005404 B  REGISTER I2C_CR2: I2C control register 2
+0x40005404 B  REGISTER CR2: I2C control register 2
 0x40005404 C   FIELD 00w10 SADD (rw): Slave address (master mode) In 7-bit addressing mode (ADD10 = 0): SADD[7:1] must be written with the 7-bit slave address to be sent. Bits SADD[9], SADD[8] and SADD[0] are don't care. In 10-bit addressing mode (ADD10 = 1): SADD[9:0] must be written with the 10-bit slave address to be sent. Note: Changing these bits when the START bit is set is not allowed.
 0x40005404 C   FIELD 10w01 RD_WRN (rw): Transfer direction (master mode) Note: Changing this bit when the START bit is set is not allowed.
 0x40005404 C   FIELD 11w01 ADD10 (rw): 10-bit addressing mode (master mode) Note: Changing this bit when the START bit is set is not allowed.
@@ -1077,27 +1077,27 @@
 0x40005404 C   FIELD 16w08 NBYTES (rw): Number of bytes
 0x40005404 C   FIELD 24w01 RELOAD (rw): NBYTES reload mode This bit is set and cleared by software.
 0x40005404 C   FIELD 25w01 AUTOEND (rw): Automatic end mode (master mode) This bit is set and cleared by software. Note: This bit has no effect in slave mode or when the RELOAD bit is set.
-0x40005408 B  REGISTER I2C_OAR1: I2C own address 1 register
+0x40005408 B  REGISTER OAR1: I2C own address 1 register
 0x40005408 C   FIELD 00w10 OA1 (rw): Interface own slave address 7-bit addressing mode: OA1[7:1] contains the 7-bit own slave address. Bits OA1[9], OA1[8] and OA1[0] are don't care. 10-bit addressing mode: OA1[9:0] contains the 10-bit own slave address. Note: These bits can be written only when OA1EN = 0.
 0x40005408 C   FIELD 10w01 OA1MODE (rw): Own address 1 10-bit mode Note: This bit can be written only when OA1EN = 0.
 0x40005408 C   FIELD 15w01 OA1EN (rw): Own address 1 enable
-0x4000540C B  REGISTER I2C_OAR2: I2C own address 2 register
+0x4000540C B  REGISTER OAR2: I2C own address 2 register
 0x4000540C C   FIELD 01w07 OA2 (rw): Interface address 7-bit addressing mode: 7-bit address Note: These bits can be written only when OA2EN = 0.
 0x4000540C C   FIELD 08w03 OA2MSK (rw): Own address 2 masks Note: These bits can be written only when OA2EN = 0. Note: As soon as OA2MSK is not equal to 0, the reserved I2C addresses (0b0000xxx and 0b1111xxx) are not acknowledged even if the comparison matches.
 0x4000540C C   FIELD 15w01 OA2EN (rw): Own address 2 enable
-0x40005410 B  REGISTER I2C_TIMINGR: I2C timing register
+0x40005410 B  REGISTER TIMINGR: I2C timing register
 0x40005410 C   FIELD 00w08 SCLL (rw): SCL low period (master mode) This field is used to generate the SCL low period in master mode. t<sub>SCLL </sub>= (SCLL + 1) x t<sub>PRESC</sub> Note: SCLL is also used to generate t<sub>BUF </sub>and t<sub>SU:STA </sub>timings.
 0x40005410 C   FIELD 08w08 SCLH (rw): SCL high period (master mode) This field is used to generate the SCL high period in master mode. t<sub>SCLH </sub>= (SCLH + 1) x t<sub>PRESC</sub> Note: SCLH is also used to generate t<sub>SU:STO </sub>and t<sub>HD:STA </sub>timing.
 0x40005410 C   FIELD 16w04 SDADEL (rw): Data hold time This field is used to generate the delay t<sub>SDADEL </sub>between SCL falling edge and SDA edge. In master and in slave modes with NOSTRETCH = 0, the SCL line is stretched low during t<sub>SDADEL</sub>. t<sub>SDADEL</sub>= SDADEL x t<sub>PRESC</sub> Note: SDADEL is used to generate t<sub>HD:DAT </sub>timing.
 0x40005410 C   FIELD 20w04 SCLDEL (rw): Data setup time This field is used to generate a delay t<sub>SCLDEL </sub>between SDA edge and SCL rising edge. In master and in slave modes with NOSTRETCH = 0, the SCL line is stretched low during t<sub>SCLDEL</sub>. t<sub>SCLDEL </sub>= (SCLDEL + 1) x t<sub>PRESC</sub> Note: t<sub>SCLDEL</sub> is used to generate t<sub>SU:DAT </sub>timing.
 0x40005410 C   FIELD 28w04 PRESC (rw): Timing prescaler This field is used to prescale I2CCLK to generate the clock period t<sub>PRESC </sub>used for data setup and hold counters (refer to I2C timings) and for SCL high and low level counters (refer to I2C master initialization). t<sub>PRESC </sub>= (PRESC + 1) x t<sub>I2CCLK</sub>
-0x40005414 B  REGISTER I2C_TIMEOUTR: I2C timeout register
+0x40005414 B  REGISTER TIMEOUTR: I2C timeout register
 0x40005414 C   FIELD 00w12 TIMEOUTA (rw): Bus timeout A This field is used to configure: The SCL low timeout condition t<sub>TIMEOUT</sub> when TIDLE = 0 t<sub>TIMEOUT</sub>= (TIMEOUTA + 1) x 2048 x t<sub>I2CCLK</sub> The bus idle condition (both SCL and SDA high) when TIDLE = 1 t<sub>IDLE</sub>= (TIMEOUTA + 1) x 4 x t<sub>I2CCLK</sub> Note: These bits can be written only when TIMOUTEN = 0.
 0x40005414 C   FIELD 12w01 TIDLE (rw): Idle clock timeout detection Note: This bit can be written only when TIMOUTEN = 0.
 0x40005414 C   FIELD 15w01 TIMOUTEN (rw): Clock timeout enable
 0x40005414 C   FIELD 16w12 TIMEOUTB (rw): Bus timeout B This field is used to configure the cumulative clock extension timeout: In master mode, the master cumulative clock low extend time (t<sub>LOW:MEXT</sub>) is detected In slave mode, the slave cumulative clock low extend time (t<sub>LOW:SEXT</sub>) is detected t<sub>LOW:EXT </sub>= (TIMEOUTB + TIDLE = 01) x 2048 x t<sub>I2CCLK</sub> Note: These bits can be written only when TEXTEN = 0.
 0x40005414 C   FIELD 31w01 TEXTEN (rw): Extended clock timeout enable
-0x40005418 B  REGISTER I2C_ISR: I2C interrupt and status register
+0x40005418 B  REGISTER ISR: I2C interrupt and status register
 0x40005418 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters) This bit is set by hardware when the I2C_TXDR register is empty. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software in order to flush the transmit data register I2C_TXDR. Note: This bit is set by hardware when PE = 0.
 0x40005418 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters) This bit is set by hardware when the I2C_TXDR register is empty and the data to be transmitted must be written in the I2C_TXDR register. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software only when NOSTRETCH = 1, to generate a TXIS event (interrupt if TXIE = 1 or DMA request if TXDMAEN = 1). Note: This bit is cleared by hardware when PE = 0.
 0x40005418 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers) This bit is set by hardware when the received data is copied into the I2C_RXDR register, and is ready to be read. It is cleared when I2C_RXDR is read. Note: This bit is cleared by hardware when PE = 0.
@@ -1112,21 +1112,21 @@
 0x40005418 C   FIELD 15w01 BUSY (ro): Bus busy This flag indicates that a communication is in progress on the bus. It is set by hardware when a START condition is detected, and cleared by hardware when a STOP condition is detected, or when PE = 0.
 0x40005418 C   FIELD 16w01 DIR (ro): Transfer direction (slave mode) This flag is updated when an address match event occurs (ADDR = 1).
 0x40005418 C   FIELD 17w07 ADDCODE (ro): Address match code (slave mode) These bits are updated with the received address when an address match event occurs (ADDR = 1). In the case of a 10-bit address, ADDCODE provides the 10-bit header followed by the two MSBs of the address.
-0x4000541C B  REGISTER I2C_ICR: I2C interrupt clear register
+0x4000541C B  REGISTER ICR: I2C interrupt clear register
 0x4000541C C   FIELD 03w01 ADDRCF (wo): Address matched flag clear Writing 1 to this bit clears the ADDR flag in the I2C_ISR register. Writing 1 to this bit also clears the START bit in the I2C_CR2 register.
 0x4000541C C   FIELD 04w01 NACKCF (wo): Not Acknowledge flag clear Writing 1 to this bit clears the NACKF flag in I2C_ISR register.
 0x4000541C C   FIELD 05w01 STOPCF (wo): STOP detection flag clear Writing 1 to this bit clears the STOPF flag in the I2C_ISR register.
 0x4000541C C   FIELD 08w01 BERRCF (wo): Bus error flag clear Writing 1 to this bit clears the BERRF flag in the I2C_ISR register.
 0x4000541C C   FIELD 09w01 ARLOCF (wo): Arbitration lost flag clear Writing 1 to this bit clears the ARLO flag in the I2C_ISR register.
 0x4000541C C   FIELD 10w01 OVRCF (wo): Overrun/Underrun flag clear Writing 1 to this bit clears the OVR flag in the I2C_ISR register.
-0x40005420 B  REGISTER I2C_PECR: I2C PEC register
+0x40005420 B  REGISTER PECR: I2C PEC register
 0x40005420 C   FIELD 00w08 PEC (ro): Packet error checking register This field contains the internal PEC when PECEN=1. The PEC is cleared by hardware when PE = 0.
-0x40005424 B  REGISTER I2C_RXDR: I2C receive data register
+0x40005424 B  REGISTER RXDR: I2C receive data register
 0x40005424 C   FIELD 00w08 RXDATA (ro): 8-bit receive data Data byte received from the I<sup>2</sup>C bus
-0x40005428 B  REGISTER I2C_TXDR: I2C transmit data register
+0x40005428 B  REGISTER TXDR: I2C transmit data register
 0x40005428 C   FIELD 00w08 TXDATA (rw): 8-bit transmit data Data byte to be transmitted to the I<sup>2</sup>C bus Note: These bits can be written only when TXE = 1.
 0x40005800 A PERIPHERAL I2C2
-0x40005800 B  REGISTER I2C_CR1: I2C control register 1
+0x40005800 B  REGISTER CR1: I2C control register 1
 0x40005800 C   FIELD 00w01 PE (rw): Peripheral enable Note: When PE = 0, the I2C SCL and SDA lines are released. Internal state machines and status bits are put back to their reset value. When cleared, PE must be kept low for at least three APB clock cycles.
 0x40005800 C   FIELD 01w01 TXIE (rw): TX interrupt enable
 0x40005800 C   FIELD 02w01 RXIE (rw): RX interrupt enable
@@ -1146,7 +1146,7 @@
 0x40005800 C   FIELD 24w01 FMP (rw): Fast-mode Plus 20 mA drive enable
 0x40005800 C   FIELD 30w01 ADDRACLR (rw): Address match flag (ADDR) automatic clear
 0x40005800 C   FIELD 31w01 STOPFACLR (rw): STOP detection flag (STOPF) automatic clear
-0x40005804 B  REGISTER I2C_CR2: I2C control register 2
+0x40005804 B  REGISTER CR2: I2C control register 2
 0x40005804 C   FIELD 00w10 SADD (rw): Slave address (master mode) In 7-bit addressing mode (ADD10 = 0): SADD[7:1] must be written with the 7-bit slave address to be sent. Bits SADD[9], SADD[8] and SADD[0] are don't care. In 10-bit addressing mode (ADD10 = 1): SADD[9:0] must be written with the 10-bit slave address to be sent. Note: Changing these bits when the START bit is set is not allowed.
 0x40005804 C   FIELD 10w01 RD_WRN (rw): Transfer direction (master mode) Note: Changing this bit when the START bit is set is not allowed.
 0x40005804 C   FIELD 11w01 ADD10 (rw): 10-bit addressing mode (master mode) Note: Changing this bit when the START bit is set is not allowed.
@@ -1157,27 +1157,27 @@
 0x40005804 C   FIELD 16w08 NBYTES (rw): Number of bytes
 0x40005804 C   FIELD 24w01 RELOAD (rw): NBYTES reload mode This bit is set and cleared by software.
 0x40005804 C   FIELD 25w01 AUTOEND (rw): Automatic end mode (master mode) This bit is set and cleared by software. Note: This bit has no effect in slave mode or when the RELOAD bit is set.
-0x40005808 B  REGISTER I2C_OAR1: I2C own address 1 register
+0x40005808 B  REGISTER OAR1: I2C own address 1 register
 0x40005808 C   FIELD 00w10 OA1 (rw): Interface own slave address 7-bit addressing mode: OA1[7:1] contains the 7-bit own slave address. Bits OA1[9], OA1[8] and OA1[0] are don't care. 10-bit addressing mode: OA1[9:0] contains the 10-bit own slave address. Note: These bits can be written only when OA1EN = 0.
 0x40005808 C   FIELD 10w01 OA1MODE (rw): Own address 1 10-bit mode Note: This bit can be written only when OA1EN = 0.
 0x40005808 C   FIELD 15w01 OA1EN (rw): Own address 1 enable
-0x4000580C B  REGISTER I2C_OAR2: I2C own address 2 register
+0x4000580C B  REGISTER OAR2: I2C own address 2 register
 0x4000580C C   FIELD 01w07 OA2 (rw): Interface address 7-bit addressing mode: 7-bit address Note: These bits can be written only when OA2EN = 0.
 0x4000580C C   FIELD 08w03 OA2MSK (rw): Own address 2 masks Note: These bits can be written only when OA2EN = 0. Note: As soon as OA2MSK is not equal to 0, the reserved I2C addresses (0b0000xxx and 0b1111xxx) are not acknowledged even if the comparison matches.
 0x4000580C C   FIELD 15w01 OA2EN (rw): Own address 2 enable
-0x40005810 B  REGISTER I2C_TIMINGR: I2C timing register
+0x40005810 B  REGISTER TIMINGR: I2C timing register
 0x40005810 C   FIELD 00w08 SCLL (rw): SCL low period (master mode) This field is used to generate the SCL low period in master mode. t<sub>SCLL </sub>= (SCLL + 1) x t<sub>PRESC</sub> Note: SCLL is also used to generate t<sub>BUF </sub>and t<sub>SU:STA </sub>timings.
 0x40005810 C   FIELD 08w08 SCLH (rw): SCL high period (master mode) This field is used to generate the SCL high period in master mode. t<sub>SCLH </sub>= (SCLH + 1) x t<sub>PRESC</sub> Note: SCLH is also used to generate t<sub>SU:STO </sub>and t<sub>HD:STA </sub>timing.
 0x40005810 C   FIELD 16w04 SDADEL (rw): Data hold time This field is used to generate the delay t<sub>SDADEL </sub>between SCL falling edge and SDA edge. In master and in slave modes with NOSTRETCH = 0, the SCL line is stretched low during t<sub>SDADEL</sub>. t<sub>SDADEL</sub>= SDADEL x t<sub>PRESC</sub> Note: SDADEL is used to generate t<sub>HD:DAT </sub>timing.
 0x40005810 C   FIELD 20w04 SCLDEL (rw): Data setup time This field is used to generate a delay t<sub>SCLDEL </sub>between SDA edge and SCL rising edge. In master and in slave modes with NOSTRETCH = 0, the SCL line is stretched low during t<sub>SCLDEL</sub>. t<sub>SCLDEL </sub>= (SCLDEL + 1) x t<sub>PRESC</sub> Note: t<sub>SCLDEL</sub> is used to generate t<sub>SU:DAT </sub>timing.
 0x40005810 C   FIELD 28w04 PRESC (rw): Timing prescaler This field is used to prescale I2CCLK to generate the clock period t<sub>PRESC </sub>used for data setup and hold counters (refer to I2C timings) and for SCL high and low level counters (refer to I2C master initialization). t<sub>PRESC </sub>= (PRESC + 1) x t<sub>I2CCLK</sub>
-0x40005814 B  REGISTER I2C_TIMEOUTR: I2C timeout register
+0x40005814 B  REGISTER TIMEOUTR: I2C timeout register
 0x40005814 C   FIELD 00w12 TIMEOUTA (rw): Bus timeout A This field is used to configure: The SCL low timeout condition t<sub>TIMEOUT</sub> when TIDLE = 0 t<sub>TIMEOUT</sub>= (TIMEOUTA + 1) x 2048 x t<sub>I2CCLK</sub> The bus idle condition (both SCL and SDA high) when TIDLE = 1 t<sub>IDLE</sub>= (TIMEOUTA + 1) x 4 x t<sub>I2CCLK</sub> Note: These bits can be written only when TIMOUTEN = 0.
 0x40005814 C   FIELD 12w01 TIDLE (rw): Idle clock timeout detection Note: This bit can be written only when TIMOUTEN = 0.
 0x40005814 C   FIELD 15w01 TIMOUTEN (rw): Clock timeout enable
 0x40005814 C   FIELD 16w12 TIMEOUTB (rw): Bus timeout B This field is used to configure the cumulative clock extension timeout: In master mode, the master cumulative clock low extend time (t<sub>LOW:MEXT</sub>) is detected In slave mode, the slave cumulative clock low extend time (t<sub>LOW:SEXT</sub>) is detected t<sub>LOW:EXT </sub>= (TIMEOUTB + TIDLE = 01) x 2048 x t<sub>I2CCLK</sub> Note: These bits can be written only when TEXTEN = 0.
 0x40005814 C   FIELD 31w01 TEXTEN (rw): Extended clock timeout enable
-0x40005818 B  REGISTER I2C_ISR: I2C interrupt and status register
+0x40005818 B  REGISTER ISR: I2C interrupt and status register
 0x40005818 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters) This bit is set by hardware when the I2C_TXDR register is empty. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software in order to flush the transmit data register I2C_TXDR. Note: This bit is set by hardware when PE = 0.
 0x40005818 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters) This bit is set by hardware when the I2C_TXDR register is empty and the data to be transmitted must be written in the I2C_TXDR register. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software only when NOSTRETCH = 1, to generate a TXIS event (interrupt if TXIE = 1 or DMA request if TXDMAEN = 1). Note: This bit is cleared by hardware when PE = 0.
 0x40005818 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers) This bit is set by hardware when the received data is copied into the I2C_RXDR register, and is ready to be read. It is cleared when I2C_RXDR is read. Note: This bit is cleared by hardware when PE = 0.
@@ -1192,18 +1192,18 @@
 0x40005818 C   FIELD 15w01 BUSY (ro): Bus busy This flag indicates that a communication is in progress on the bus. It is set by hardware when a START condition is detected, and cleared by hardware when a STOP condition is detected, or when PE = 0.
 0x40005818 C   FIELD 16w01 DIR (ro): Transfer direction (slave mode) This flag is updated when an address match event occurs (ADDR = 1).
 0x40005818 C   FIELD 17w07 ADDCODE (ro): Address match code (slave mode) These bits are updated with the received address when an address match event occurs (ADDR = 1). In the case of a 10-bit address, ADDCODE provides the 10-bit header followed by the two MSBs of the address.
-0x4000581C B  REGISTER I2C_ICR: I2C interrupt clear register
+0x4000581C B  REGISTER ICR: I2C interrupt clear register
 0x4000581C C   FIELD 03w01 ADDRCF (wo): Address matched flag clear Writing 1 to this bit clears the ADDR flag in the I2C_ISR register. Writing 1 to this bit also clears the START bit in the I2C_CR2 register.
 0x4000581C C   FIELD 04w01 NACKCF (wo): Not Acknowledge flag clear Writing 1 to this bit clears the NACKF flag in I2C_ISR register.
 0x4000581C C   FIELD 05w01 STOPCF (wo): STOP detection flag clear Writing 1 to this bit clears the STOPF flag in the I2C_ISR register.
 0x4000581C C   FIELD 08w01 BERRCF (wo): Bus error flag clear Writing 1 to this bit clears the BERRF flag in the I2C_ISR register.
 0x4000581C C   FIELD 09w01 ARLOCF (wo): Arbitration lost flag clear Writing 1 to this bit clears the ARLO flag in the I2C_ISR register.
 0x4000581C C   FIELD 10w01 OVRCF (wo): Overrun/Underrun flag clear Writing 1 to this bit clears the OVR flag in the I2C_ISR register.
-0x40005820 B  REGISTER I2C_PECR: I2C PEC register
+0x40005820 B  REGISTER PECR: I2C PEC register
 0x40005820 C   FIELD 00w08 PEC (ro): Packet error checking register This field contains the internal PEC when PECEN=1. The PEC is cleared by hardware when PE = 0.
-0x40005824 B  REGISTER I2C_RXDR: I2C receive data register
+0x40005824 B  REGISTER RXDR: I2C receive data register
 0x40005824 C   FIELD 00w08 RXDATA (ro): 8-bit receive data Data byte received from the I<sup>2</sup>C bus
-0x40005828 B  REGISTER I2C_TXDR: I2C transmit data register
+0x40005828 B  REGISTER TXDR: I2C transmit data register
 0x40005828 C   FIELD 00w08 TXDATA (rw): 8-bit transmit data Data byte to be transmitted to the I<sup>2</sup>C bus Note: These bits can be written only when TXE = 1.
 0x40005C00 A PERIPHERAL USB
 0x40005C00 B  REGISTER CHEP0R: USB endpoint/channel 0 register
@@ -2064,7 +2064,7 @@
 0x4000842C B  REGISTER PRESC: LPUART prescaler register
 0x4000842C C   FIELD 00w04 PRESCALER (rw): Clock prescaler The LPUART input clock can be divided by a prescaler: Remaining combinations: Reserved. Note: When PRESCALER is programmed with a value different of the allowed ones, programmed prescaler value is equal to 1011 i.e. input clock divided by 256.
 0x40008800 A PERIPHERAL I2C3
-0x40008800 B  REGISTER I2C_CR1: I2C control register 1
+0x40008800 B  REGISTER CR1: I2C control register 1
 0x40008800 C   FIELD 00w01 PE (rw): Peripheral enable Note: When PE = 0, the I2C SCL and SDA lines are released. Internal state machines and status bits are put back to their reset value. When cleared, PE must be kept low for at least three APB clock cycles.
 0x40008800 C   FIELD 01w01 TXIE (rw): TX interrupt enable
 0x40008800 C   FIELD 02w01 RXIE (rw): RX interrupt enable
@@ -2084,7 +2084,7 @@
 0x40008800 C   FIELD 24w01 FMP (rw): Fast-mode Plus 20 mA drive enable
 0x40008800 C   FIELD 30w01 ADDRACLR (rw): Address match flag (ADDR) automatic clear
 0x40008800 C   FIELD 31w01 STOPFACLR (rw): STOP detection flag (STOPF) automatic clear
-0x40008804 B  REGISTER I2C_CR2: I2C control register 2
+0x40008804 B  REGISTER CR2: I2C control register 2
 0x40008804 C   FIELD 00w10 SADD (rw): Slave address (master mode) In 7-bit addressing mode (ADD10 = 0): SADD[7:1] must be written with the 7-bit slave address to be sent. Bits SADD[9], SADD[8] and SADD[0] are don't care. In 10-bit addressing mode (ADD10 = 1): SADD[9:0] must be written with the 10-bit slave address to be sent. Note: Changing these bits when the START bit is set is not allowed.
 0x40008804 C   FIELD 10w01 RD_WRN (rw): Transfer direction (master mode) Note: Changing this bit when the START bit is set is not allowed.
 0x40008804 C   FIELD 11w01 ADD10 (rw): 10-bit addressing mode (master mode) Note: Changing this bit when the START bit is set is not allowed.
@@ -2095,27 +2095,27 @@
 0x40008804 C   FIELD 16w08 NBYTES (rw): Number of bytes
 0x40008804 C   FIELD 24w01 RELOAD (rw): NBYTES reload mode This bit is set and cleared by software.
 0x40008804 C   FIELD 25w01 AUTOEND (rw): Automatic end mode (master mode) This bit is set and cleared by software. Note: This bit has no effect in slave mode or when the RELOAD bit is set.
-0x40008808 B  REGISTER I2C_OAR1: I2C own address 1 register
+0x40008808 B  REGISTER OAR1: I2C own address 1 register
 0x40008808 C   FIELD 00w10 OA1 (rw): Interface own slave address 7-bit addressing mode: OA1[7:1] contains the 7-bit own slave address. Bits OA1[9], OA1[8] and OA1[0] are don't care. 10-bit addressing mode: OA1[9:0] contains the 10-bit own slave address. Note: These bits can be written only when OA1EN = 0.
 0x40008808 C   FIELD 10w01 OA1MODE (rw): Own address 1 10-bit mode Note: This bit can be written only when OA1EN = 0.
 0x40008808 C   FIELD 15w01 OA1EN (rw): Own address 1 enable
-0x4000880C B  REGISTER I2C_OAR2: I2C own address 2 register
+0x4000880C B  REGISTER OAR2: I2C own address 2 register
 0x4000880C C   FIELD 01w07 OA2 (rw): Interface address 7-bit addressing mode: 7-bit address Note: These bits can be written only when OA2EN = 0.
 0x4000880C C   FIELD 08w03 OA2MSK (rw): Own address 2 masks Note: These bits can be written only when OA2EN = 0. Note: As soon as OA2MSK is not equal to 0, the reserved I2C addresses (0b0000xxx and 0b1111xxx) are not acknowledged even if the comparison matches.
 0x4000880C C   FIELD 15w01 OA2EN (rw): Own address 2 enable
-0x40008810 B  REGISTER I2C_TIMINGR: I2C timing register
+0x40008810 B  REGISTER TIMINGR: I2C timing register
 0x40008810 C   FIELD 00w08 SCLL (rw): SCL low period (master mode) This field is used to generate the SCL low period in master mode. t<sub>SCLL </sub>= (SCLL + 1) x t<sub>PRESC</sub> Note: SCLL is also used to generate t<sub>BUF </sub>and t<sub>SU:STA </sub>timings.
 0x40008810 C   FIELD 08w08 SCLH (rw): SCL high period (master mode) This field is used to generate the SCL high period in master mode. t<sub>SCLH </sub>= (SCLH + 1) x t<sub>PRESC</sub> Note: SCLH is also used to generate t<sub>SU:STO </sub>and t<sub>HD:STA </sub>timing.
 0x40008810 C   FIELD 16w04 SDADEL (rw): Data hold time This field is used to generate the delay t<sub>SDADEL </sub>between SCL falling edge and SDA edge. In master and in slave modes with NOSTRETCH = 0, the SCL line is stretched low during t<sub>SDADEL</sub>. t<sub>SDADEL</sub>= SDADEL x t<sub>PRESC</sub> Note: SDADEL is used to generate t<sub>HD:DAT </sub>timing.
 0x40008810 C   FIELD 20w04 SCLDEL (rw): Data setup time This field is used to generate a delay t<sub>SCLDEL </sub>between SDA edge and SCL rising edge. In master and in slave modes with NOSTRETCH = 0, the SCL line is stretched low during t<sub>SCLDEL</sub>. t<sub>SCLDEL </sub>= (SCLDEL + 1) x t<sub>PRESC</sub> Note: t<sub>SCLDEL</sub> is used to generate t<sub>SU:DAT </sub>timing.
 0x40008810 C   FIELD 28w04 PRESC (rw): Timing prescaler This field is used to prescale I2CCLK to generate the clock period t<sub>PRESC </sub>used for data setup and hold counters (refer to I2C timings) and for SCL high and low level counters (refer to I2C master initialization). t<sub>PRESC </sub>= (PRESC + 1) x t<sub>I2CCLK</sub>
-0x40008814 B  REGISTER I2C_TIMEOUTR: I2C timeout register
+0x40008814 B  REGISTER TIMEOUTR: I2C timeout register
 0x40008814 C   FIELD 00w12 TIMEOUTA (rw): Bus timeout A This field is used to configure: The SCL low timeout condition t<sub>TIMEOUT</sub> when TIDLE = 0 t<sub>TIMEOUT</sub>= (TIMEOUTA + 1) x 2048 x t<sub>I2CCLK</sub> The bus idle condition (both SCL and SDA high) when TIDLE = 1 t<sub>IDLE</sub>= (TIMEOUTA + 1) x 4 x t<sub>I2CCLK</sub> Note: These bits can be written only when TIMOUTEN = 0.
 0x40008814 C   FIELD 12w01 TIDLE (rw): Idle clock timeout detection Note: This bit can be written only when TIMOUTEN = 0.
 0x40008814 C   FIELD 15w01 TIMOUTEN (rw): Clock timeout enable
 0x40008814 C   FIELD 16w12 TIMEOUTB (rw): Bus timeout B This field is used to configure the cumulative clock extension timeout: In master mode, the master cumulative clock low extend time (t<sub>LOW:MEXT</sub>) is detected In slave mode, the slave cumulative clock low extend time (t<sub>LOW:SEXT</sub>) is detected t<sub>LOW:EXT </sub>= (TIMEOUTB + TIDLE = 01) x 2048 x t<sub>I2CCLK</sub> Note: These bits can be written only when TEXTEN = 0.
 0x40008814 C   FIELD 31w01 TEXTEN (rw): Extended clock timeout enable
-0x40008818 B  REGISTER I2C_ISR: I2C interrupt and status register
+0x40008818 B  REGISTER ISR: I2C interrupt and status register
 0x40008818 C   FIELD 00w01 TXE (rw): Transmit data register empty (transmitters) This bit is set by hardware when the I2C_TXDR register is empty. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software in order to flush the transmit data register I2C_TXDR. Note: This bit is set by hardware when PE = 0.
 0x40008818 C   FIELD 01w01 TXIS (rw): Transmit interrupt status (transmitters) This bit is set by hardware when the I2C_TXDR register is empty and the data to be transmitted must be written in the I2C_TXDR register. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software only when NOSTRETCH = 1, to generate a TXIS event (interrupt if TXIE = 1 or DMA request if TXDMAEN = 1). Note: This bit is cleared by hardware when PE = 0.
 0x40008818 C   FIELD 02w01 RXNE (ro): Receive data register not empty (receivers) This bit is set by hardware when the received data is copied into the I2C_RXDR register, and is ready to be read. It is cleared when I2C_RXDR is read. Note: This bit is cleared by hardware when PE = 0.
@@ -2130,18 +2130,18 @@
 0x40008818 C   FIELD 15w01 BUSY (ro): Bus busy This flag indicates that a communication is in progress on the bus. It is set by hardware when a START condition is detected, and cleared by hardware when a STOP condition is detected, or when PE = 0.
 0x40008818 C   FIELD 16w01 DIR (ro): Transfer direction (slave mode) This flag is updated when an address match event occurs (ADDR = 1).
 0x40008818 C   FIELD 17w07 ADDCODE (ro): Address match code (slave mode) These bits are updated with the received address when an address match event occurs (ADDR = 1). In the case of a 10-bit address, ADDCODE provides the 10-bit header followed by the two MSBs of the address.
-0x4000881C B  REGISTER I2C_ICR: I2C interrupt clear register
+0x4000881C B  REGISTER ICR: I2C interrupt clear register
 0x4000881C C   FIELD 03w01 ADDRCF (wo): Address matched flag clear Writing 1 to this bit clears the ADDR flag in the I2C_ISR register. Writing 1 to this bit also clears the START bit in the I2C_CR2 register.
 0x4000881C C   FIELD 04w01 NACKCF (wo): Not Acknowledge flag clear Writing 1 to this bit clears the NACKF flag in I2C_ISR register.
 0x4000881C C   FIELD 05w01 STOPCF (wo): STOP detection flag clear Writing 1 to this bit clears the STOPF flag in the I2C_ISR register.
 0x4000881C C   FIELD 08w01 BERRCF (wo): Bus error flag clear Writing 1 to this bit clears the BERRF flag in the I2C_ISR register.
 0x4000881C C   FIELD 09w01 ARLOCF (wo): Arbitration lost flag clear Writing 1 to this bit clears the ARLO flag in the I2C_ISR register.
 0x4000881C C   FIELD 10w01 OVRCF (wo): Overrun/Underrun flag clear Writing 1 to this bit clears the OVR flag in the I2C_ISR register.
-0x40008820 B  REGISTER I2C_PECR: I2C PEC register
+0x40008820 B  REGISTER PECR: I2C PEC register
 0x40008820 C   FIELD 00w08 PEC (ro): Packet error checking register This field contains the internal PEC when PECEN=1. The PEC is cleared by hardware when PE = 0.
-0x40008824 B  REGISTER I2C_RXDR: I2C receive data register
+0x40008824 B  REGISTER RXDR: I2C receive data register
 0x40008824 C   FIELD 00w08 RXDATA (ro): 8-bit receive data Data byte received from the I<sup>2</sup>C bus
-0x40008828 B  REGISTER I2C_TXDR: I2C transmit data register
+0x40008828 B  REGISTER TXDR: I2C transmit data register
 0x40008828 C   FIELD 00w08 TXDATA (rw): 8-bit transmit data Data byte to be transmitted to the I<sup>2</sup>C bus Note: These bits can be written only when TXE = 1.
 0x40008C00 A PERIPHERAL LPUART3
 0x40008C00 B  REGISTER CR1: LPUART control register 1
@@ -3236,7 +3236,7 @@
 0x40012C68 C   FIELD 16w04 TI3SEL (rw): selects TI3[0] to TI3[15] input Others: Reserved
 0x40012C68 C   FIELD 24w04 TI4SEL (rw): selects TI4[0] to TI4[15] input Others: Reserved
 0x40013000 A PERIPHERAL SPI1
-0x40013000 B  REGISTER SPI_CR1: SPI control register 1
+0x40013000 B  REGISTER CR1: SPI control register 1
 0x40013000 C   FIELD 00w01 CPHA (rw): Clock phase Note: This bit should not be changed when communication is ongoing. Note: This bit is not used in SPI TI mode except the case when CRC is applied at TI mode.
 0x40013000 C   FIELD 01w01 CPOL (rw): Clock polarity Note: This bit should not be changed when communication is ongoing. Note: This bit is not used in SPI TI mode except the case when CRC is applied at TI mode.
 0x40013000 C   FIELD 02w01 MSTR (rw): Master selection Note: This bit should not be changed when communication is ongoing.
@@ -3251,7 +3251,7 @@
 0x40013000 C   FIELD 13w01 CRCEN (rw): Hardware CRC calculation enable Note: This bit should be written only when SPI is disabled (SPE = 0) for correct operation.
 0x40013000 C   FIELD 14w01 BIDIOE (rw): Output enable in bidirectional mode This bit combined with the BIDIMODE bit selects the direction of transfer in bidirectional mode. Note: In master mode, the MOSI pin is used and in slave mode, the MISO pin is used.
 0x40013000 C   FIELD 15w01 BIDIMODE (rw): Bidirectional data mode enable. This bit enables half-duplex communication using common single bidirectional data line. Keep RXONLY bit clear when bidirectional mode is active.
-0x40013004 B  REGISTER SPI_CR2: SPI control register 2
+0x40013004 B  REGISTER CR2: SPI control register 2
 0x40013004 C   FIELD 00w01 RXDMAEN (rw): Rx buffer DMA enable When this bit is set, a DMA request is generated whenever the RXNE flag is set.
 0x40013004 C   FIELD 01w01 TXDMAEN (rw): Tx buffer DMA enable When this bit is set, a DMA request is generated whenever the TXE flag is set.
 0x40013004 C   FIELD 02w01 SSOE (rw): SS output enable Note: This bit is not used in SPI TI mode.
@@ -3264,7 +3264,7 @@
 0x40013004 C   FIELD 12w01 FRXTH (rw): FIFO reception threshold This bit is used to set the threshold of the RXFIFO that triggers an RXNE event
 0x40013004 C   FIELD 13w01 LDMA_RX (rw): Last DMA transfer for reception This bit is used in data packing mode, to define if the total number of data to receive by DMA is odd or even. It has significance only if the RXDMAEN bit in the SPI_CR2 register is set and if packing mode is used (data length =< 8-bit and write access to SPI_DR is 16-bit wide). It has to be written when the SPI is disabled (SPE = 0 in the SPI_CR1 register). Note: Refer to Procedure for disabling the SPI on page1954 if the CRCEN bit is set.
 0x40013004 C   FIELD 14w01 LDMA_TX (rw): Last DMA transfer for transmission This bit is used in data packing mode, to define if the total number of data to transmit by DMA is odd or even. It has significance only if the TXDMAEN bit in the SPI_CR2 register is set and if packing mode is used (data length =< 8-bit and write access to SPI_DR is 16-bit wide). It has to be written when the SPI is disabled (SPE = 0 in the SPI_CR1 register). Note: Refer to Procedure for disabling the SPI on page1954 if the CRCEN bit is set.
-0x40013008 B  REGISTER SPI_SR: SPI status register
+0x40013008 B  REGISTER SR: SPI status register
 0x40013008 C   FIELD 00w01 RXNE (ro): Receive buffer not empty
 0x40013008 C   FIELD 01w01 TXE (ro): Transmit buffer empty
 0x40013008 C   FIELD 04w01 CRCERR (rw): CRC error flag Note: This flag is set by hardware and cleared by software writing 0.
@@ -3274,13 +3274,13 @@
 0x40013008 C   FIELD 08w01 FRE (ro): Frame format error This flag is used for SPI in TI slave mode. Refer to Section133.4.11: SPI error flags. This flag is set by hardware and reset when SPI_SR is read by software.
 0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level These bits are set and cleared by hardware. Note: These bits are not used in SPI receive-only mode while CRC calculation is enabled.
 0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level These bits are set and cleared by hardware.
-0x4001300C B  REGISTER SPI_DR: SPI data register
+0x4001300C B  REGISTER DR: SPI data register
 0x4001300C C   FIELD 00w16 DR (rw): Data register Data received or to be transmitted The data register serves as an interface between the Rx and Tx FIFOs. When the data register is read, RxFIFO is accessed while the write to data register accesses TxFIFO (See Section133.4.9: Data transmission and reception procedures). Note: Data is always right-aligned. Unused bits are ignored when writing to the register, and read as zero when the register is read. The Rx threshold setting must always correspond with the read access currently used.
-0x40013010 B  REGISTER SPI_CRCPR: SPI CRC polynomial register
+0x40013010 B  REGISTER CRCPR: SPI CRC polynomial register
 0x40013010 C   FIELD 00w16 CRCPOLY (rw): CRC polynomial register This register contains the polynomial for the CRC calculation. The CRC polynomial (0x0007) is the reset value of this register. Another polynomial can be configured as required.
-0x40013014 B  REGISTER SPI_RXCRCR: SPI Rx CRC register
+0x40013014 B  REGISTER RXCRCR: SPI Rx CRC register
 0x40013014 C   FIELD 00w16 RXCRC (ro): Rx CRC register When CRC calculation is enabled, the RXCRC[15:0] bits contain the computed CRC value of the subsequently received bytes. This register is reset when the CRCEN bit in SPI_CR1 register is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY Flag is set could return an incorrect value.
-0x40013018 B  REGISTER SPI_TXCRCR: SPI Tx CRC register
+0x40013018 B  REGISTER TXCRCR: SPI Tx CRC register
 0x40013018 C   FIELD 00w16 TXCRC (ro): Tx CRC register When CRC calculation is enabled, the TXCRC[7:0] bits contain the computed CRC value of the subsequently transmitted bytes. This register is reset when the CRCEN bit of SPI_CR1 is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY flag is set could return an incorrect value.
 0x40013800 A PERIPHERAL USART1
 0x40013800 B  REGISTER CR1: USART control register 1
@@ -3681,7 +3681,7 @@
 0x400167FC B  REGISTER CIDR3: DBGMCU CoreSight component identity register 3
 0x400167FC C   FIELD 00w08 PREAMBLE (ro): component identification bits [31:24]
 0x40020000 A PERIPHERAL DMA1
-0x40020000 B  REGISTER DMA_ISR: DMA interrupt status register
+0x40020000 B  REGISTER ISR: DMA interrupt status register
 0x40020000 C   FIELD 00w01 GIF1 (ro): Global interrupt flag for channel 1
 0x40020000 C   FIELD 01w01 TCIF1 (ro): Transfer complete (TC) flag for channel 1
 0x40020000 C   FIELD 02w01 HTIF1 (ro): Half transfer (HT) flag for channel 1
@@ -3710,7 +3710,7 @@
 0x40020000 C   FIELD 25w01 TCIF7 (ro): Transfer complete (TC) flag for channel 7
 0x40020000 C   FIELD 26w01 HTIF7 (ro): Half transfer (HT) flag for channel 7
 0x40020000 C   FIELD 27w01 TEIF7 (ro): Transfer error (TE) flag for channel 7
-0x40020004 B  REGISTER DMA_IFCR: DMA interrupt flag clear register
+0x40020004 B  REGISTER IFCR: DMA interrupt flag clear register
 0x40020004 C   FIELD 00w01 CGIF1 (wo): Global interrupt flag clear for channel 1
 0x40020004 C   FIELD 01w01 CTCIF1 (wo): Transfer complete flag clear for channel 1
 0x40020004 C   FIELD 02w01 CHTIF1 (wo): Half transfer flag clear for channel 1
@@ -3739,7 +3739,7 @@
 0x40020004 C   FIELD 25w01 CTCIF7 (wo): Transfer complete flag clear for channel 7
 0x40020004 C   FIELD 26w01 CHTIF7 (wo): Half transfer flag clear for channel 7
 0x40020004 C   FIELD 27w01 CTEIF7 (wo): Transfer error flag clear for channel 7
-0x40020008 B  REGISTER DMA_CCR1: DMA channel 1 configuration register
+0x40020008 B  REGISTER CCR1: DMA channel 1 configuration register
 0x40020008 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020008 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020008 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3752,13 +3752,13 @@
 0x40020008 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020008 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020008 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x4002000C B  REGISTER DMA_CNDTR1: DMA channel 1 number of data to transfer register
+0x4002000C B  REGISTER CNDTR1: DMA channel 1 number of data to transfer register
 0x4002000C C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020010 B  REGISTER DMA_CPAR1: DMA channel 1 peripheral address register
+0x40020010 B  REGISTER CPAR1: DMA channel 1 peripheral address register
 0x40020010 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020014 B  REGISTER DMA_CMAR1: DMA channel 1 memory address register
+0x40020014 B  REGISTER CMAR1: DMA channel 1 memory address register
 0x40020014 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002001C B  REGISTER DMA_CCR2: DMA channel 2 configuration register
+0x4002001C B  REGISTER CCR2: DMA channel 2 configuration register
 0x4002001C C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x4002001C C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x4002001C C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3771,13 +3771,13 @@
 0x4002001C C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002001C C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002001C C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020020 B  REGISTER DMA_CNDTR2: DMA channel 2 number of data to transfer register
+0x40020020 B  REGISTER CNDTR2: DMA channel 2 number of data to transfer register
 0x40020020 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020024 B  REGISTER DMA_CPAR2: DMA channel 2 peripheral address register
+0x40020024 B  REGISTER CPAR2: DMA channel 2 peripheral address register
 0x40020024 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020028 B  REGISTER DMA_CMAR2: DMA channel 2 memory address register
+0x40020028 B  REGISTER CMAR2: DMA channel 2 memory address register
 0x40020028 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020030 B  REGISTER DMA_CCR3: DMA channel 3 configuration register
+0x40020030 B  REGISTER CCR3: DMA channel 3 configuration register
 0x40020030 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020030 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020030 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3790,13 +3790,13 @@
 0x40020030 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020030 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020030 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020034 B  REGISTER DMA_CNDTR3: DMA channel 3 number of data to transfer register
+0x40020034 B  REGISTER CNDTR3: DMA channel 3 number of data to transfer register
 0x40020034 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020038 B  REGISTER DMA_CPAR3: DMA channel 3 peripheral address register
+0x40020038 B  REGISTER CPAR3: DMA channel 3 peripheral address register
 0x40020038 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002003C B  REGISTER DMA_CMAR3: DMA channel 3 memory address register
+0x4002003C B  REGISTER CMAR3: DMA channel 3 memory address register
 0x4002003C C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020044 B  REGISTER DMA_CCR4: DMA channel 4 configuration register
+0x40020044 B  REGISTER CCR4: DMA channel 4 configuration register
 0x40020044 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020044 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020044 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3809,13 +3809,13 @@
 0x40020044 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020044 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020044 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020048 B  REGISTER DMA_CNDTR4: DMA channel 4 number of data to transfer register
+0x40020048 B  REGISTER CNDTR4: DMA channel 4 number of data to transfer register
 0x40020048 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x4002004C B  REGISTER DMA_CPAR4: DMA channel 4 peripheral address register
+0x4002004C B  REGISTER CPAR4: DMA channel 4 peripheral address register
 0x4002004C C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020050 B  REGISTER DMA_CMAR4: DMA channel 4 memory address register
+0x40020050 B  REGISTER CMAR4: DMA channel 4 memory address register
 0x40020050 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020058 B  REGISTER DMA_CCR5: DMA channel 5 configuration register
+0x40020058 B  REGISTER CCR5: DMA channel 5 configuration register
 0x40020058 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020058 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020058 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3828,13 +3828,13 @@
 0x40020058 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020058 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020058 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x4002005C B  REGISTER DMA_CNDTR5: DMA channel 5 number of data to transfer register
+0x4002005C B  REGISTER CNDTR5: DMA channel 5 number of data to transfer register
 0x4002005C C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020060 B  REGISTER DMA_CPAR5: DMA channel 5 peripheral address register
+0x40020060 B  REGISTER CPAR5: DMA channel 5 peripheral address register
 0x40020060 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020064 B  REGISTER DMA_CMAR5: DMA channel 5 memory address register
+0x40020064 B  REGISTER CMAR5: DMA channel 5 memory address register
 0x40020064 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002006C B  REGISTER DMA_CCR6: DMA channel 6 configuration register
+0x4002006C B  REGISTER CCR6: DMA channel 6 configuration register
 0x4002006C C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x4002006C C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x4002006C C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3847,13 +3847,13 @@
 0x4002006C C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002006C C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002006C C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020070 B  REGISTER DMA_CNDTR6: DMA channel 6 number of data to transfer register
+0x40020070 B  REGISTER CNDTR6: DMA channel 6 number of data to transfer register
 0x40020070 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020074 B  REGISTER DMA_CPAR6: DMA channel 6 peripheral address register
+0x40020074 B  REGISTER CPAR6: DMA channel 6 peripheral address register
 0x40020074 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020078 B  REGISTER DMA_CMAR6: DMA channel 6 memory address register
+0x40020078 B  REGISTER CMAR6: DMA channel 6 memory address register
 0x40020078 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020080 B  REGISTER DMA_CCR7: DMA channel 7 configuration register
+0x40020080 B  REGISTER CCR7: DMA channel 7 configuration register
 0x40020080 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020080 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020080 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3866,14 +3866,14 @@
 0x40020080 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020080 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020080 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020084 B  REGISTER DMA_CNDTR7: DMA channel 7 number of data to transfer register
+0x40020084 B  REGISTER CNDTR7: DMA channel 7 number of data to transfer register
 0x40020084 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020088 B  REGISTER DMA_CPAR7: DMA channel 7 peripheral address register
+0x40020088 B  REGISTER CPAR7: DMA channel 7 peripheral address register
 0x40020088 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002008C B  REGISTER DMA_CMAR7: DMA channel 7 memory address register
+0x4002008C B  REGISTER CMAR7: DMA channel 7 memory address register
 0x4002008C C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020400 A PERIPHERAL DMA2
-0x40020400 B  REGISTER DMA_ISR: DMA interrupt status register
+0x40020400 B  REGISTER ISR: DMA interrupt status register
 0x40020400 C   FIELD 00w01 GIF1 (ro): Global interrupt flag for channel 1
 0x40020400 C   FIELD 01w01 TCIF1 (ro): Transfer complete (TC) flag for channel 1
 0x40020400 C   FIELD 02w01 HTIF1 (ro): Half transfer (HT) flag for channel 1
@@ -3902,7 +3902,7 @@
 0x40020400 C   FIELD 25w01 TCIF7 (ro): Transfer complete (TC) flag for channel 7
 0x40020400 C   FIELD 26w01 HTIF7 (ro): Half transfer (HT) flag for channel 7
 0x40020400 C   FIELD 27w01 TEIF7 (ro): Transfer error (TE) flag for channel 7
-0x40020404 B  REGISTER DMA_IFCR: DMA interrupt flag clear register
+0x40020404 B  REGISTER IFCR: DMA interrupt flag clear register
 0x40020404 C   FIELD 00w01 CGIF1 (wo): Global interrupt flag clear for channel 1
 0x40020404 C   FIELD 01w01 CTCIF1 (wo): Transfer complete flag clear for channel 1
 0x40020404 C   FIELD 02w01 CHTIF1 (wo): Half transfer flag clear for channel 1
@@ -3931,7 +3931,7 @@
 0x40020404 C   FIELD 25w01 CTCIF7 (wo): Transfer complete flag clear for channel 7
 0x40020404 C   FIELD 26w01 CHTIF7 (wo): Half transfer flag clear for channel 7
 0x40020404 C   FIELD 27w01 CTEIF7 (wo): Transfer error flag clear for channel 7
-0x40020408 B  REGISTER DMA_CCR1: DMA channel 1 configuration register
+0x40020408 B  REGISTER CCR1: DMA channel 1 configuration register
 0x40020408 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020408 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020408 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3944,13 +3944,13 @@
 0x40020408 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020408 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020408 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x4002040C B  REGISTER DMA_CNDTR1: DMA channel 1 number of data to transfer register
+0x4002040C B  REGISTER CNDTR1: DMA channel 1 number of data to transfer register
 0x4002040C C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020410 B  REGISTER DMA_CPAR1: DMA channel 1 peripheral address register
+0x40020410 B  REGISTER CPAR1: DMA channel 1 peripheral address register
 0x40020410 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020414 B  REGISTER DMA_CMAR1: DMA channel 1 memory address register
+0x40020414 B  REGISTER CMAR1: DMA channel 1 memory address register
 0x40020414 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002041C B  REGISTER DMA_CCR2: DMA channel 2 configuration register
+0x4002041C B  REGISTER CCR2: DMA channel 2 configuration register
 0x4002041C C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x4002041C C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x4002041C C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3963,13 +3963,13 @@
 0x4002041C C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002041C C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002041C C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020420 B  REGISTER DMA_CNDTR2: DMA channel 2 number of data to transfer register
+0x40020420 B  REGISTER CNDTR2: DMA channel 2 number of data to transfer register
 0x40020420 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020424 B  REGISTER DMA_CPAR2: DMA channel 2 peripheral address register
+0x40020424 B  REGISTER CPAR2: DMA channel 2 peripheral address register
 0x40020424 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020428 B  REGISTER DMA_CMAR2: DMA channel 2 memory address register
+0x40020428 B  REGISTER CMAR2: DMA channel 2 memory address register
 0x40020428 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020430 B  REGISTER DMA_CCR3: DMA channel 3 configuration register
+0x40020430 B  REGISTER CCR3: DMA channel 3 configuration register
 0x40020430 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020430 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020430 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -3982,13 +3982,13 @@
 0x40020430 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020430 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020430 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020434 B  REGISTER DMA_CNDTR3: DMA channel 3 number of data to transfer register
+0x40020434 B  REGISTER CNDTR3: DMA channel 3 number of data to transfer register
 0x40020434 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020438 B  REGISTER DMA_CPAR3: DMA channel 3 peripheral address register
+0x40020438 B  REGISTER CPAR3: DMA channel 3 peripheral address register
 0x40020438 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002043C B  REGISTER DMA_CMAR3: DMA channel 3 memory address register
+0x4002043C B  REGISTER CMAR3: DMA channel 3 memory address register
 0x4002043C C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020444 B  REGISTER DMA_CCR4: DMA channel 4 configuration register
+0x40020444 B  REGISTER CCR4: DMA channel 4 configuration register
 0x40020444 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020444 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020444 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -4001,13 +4001,13 @@
 0x40020444 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020444 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020444 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020448 B  REGISTER DMA_CNDTR4: DMA channel 4 number of data to transfer register
+0x40020448 B  REGISTER CNDTR4: DMA channel 4 number of data to transfer register
 0x40020448 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x4002044C B  REGISTER DMA_CPAR4: DMA channel 4 peripheral address register
+0x4002044C B  REGISTER CPAR4: DMA channel 4 peripheral address register
 0x4002044C C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020450 B  REGISTER DMA_CMAR4: DMA channel 4 memory address register
+0x40020450 B  REGISTER CMAR4: DMA channel 4 memory address register
 0x40020450 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020458 B  REGISTER DMA_CCR5: DMA channel 5 configuration register
+0x40020458 B  REGISTER CCR5: DMA channel 5 configuration register
 0x40020458 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020458 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020458 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -4020,13 +4020,13 @@
 0x40020458 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020458 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020458 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x4002045C B  REGISTER DMA_CNDTR5: DMA channel 5 number of data to transfer register
+0x4002045C B  REGISTER CNDTR5: DMA channel 5 number of data to transfer register
 0x4002045C C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020460 B  REGISTER DMA_CPAR5: DMA channel 5 peripheral address register
+0x40020460 B  REGISTER CPAR5: DMA channel 5 peripheral address register
 0x40020460 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020464 B  REGISTER DMA_CMAR5: DMA channel 5 memory address register
+0x40020464 B  REGISTER CMAR5: DMA channel 5 memory address register
 0x40020464 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002046C B  REGISTER DMA_CCR6: DMA channel 6 configuration register
+0x4002046C B  REGISTER CCR6: DMA channel 6 configuration register
 0x4002046C C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x4002046C C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x4002046C C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -4039,13 +4039,13 @@
 0x4002046C C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002046C C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002046C C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020470 B  REGISTER DMA_CNDTR6: DMA channel 6 number of data to transfer register
+0x40020470 B  REGISTER CNDTR6: DMA channel 6 number of data to transfer register
 0x40020470 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020474 B  REGISTER DMA_CPAR6: DMA channel 6 peripheral address register
+0x40020474 B  REGISTER CPAR6: DMA channel 6 peripheral address register
 0x40020474 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020478 B  REGISTER DMA_CMAR6: DMA channel 6 memory address register
+0x40020478 B  REGISTER CMAR6: DMA channel 6 memory address register
 0x40020478 C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020480 B  REGISTER DMA_CCR7: DMA channel 7 configuration register
+0x40020480 B  REGISTER CCR7: DMA channel 7 configuration register
 0x40020480 C   FIELD 00w01 EN (rw): Channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by1setting the CTEIFx bit of the DMA_IFCR register). Note: This bit is set and cleared by software.
 0x40020480 C   FIELD 01w01 TCIE (rw): Transfer complete interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020480 C   FIELD 02w01 HTIE (rw): Half transfer interrupt enable Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -4058,11 +4058,11 @@
 0x40020480 C   FIELD 10w02 MSIZE (rw): Memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this bitfield identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020480 C   FIELD 12w02 PL (rw): Priority level Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020480 C   FIELD 14w01 MEM2MEM (rw): Memory-to-memory mode Note: This bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020484 B  REGISTER DMA_CNDTR7: DMA channel 7 number of data to transfer register
+0x40020484 B  REGISTER CNDTR7: DMA channel 7 number of data to transfer register
 0x40020484 C   FIELD 00w16 NDT (rw): Number of data to transfer
-0x40020488 B  REGISTER DMA_CPAR7: DMA channel 7 peripheral address register
+0x40020488 B  REGISTER CPAR7: DMA channel 7 peripheral address register
 0x40020488 C   FIELD 00w32 PA (rw): Peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE[1:0] = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this bitfield identifies the peripheral destination address if DIR1= 1 and the peripheral source address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002048C B  REGISTER DMA_CMAR7: DMA channel 7 memory address register
+0x4002048C B  REGISTER CMAR7: DMA channel 7 memory address register
 0x4002048C C   FIELD 00w32 MA (rw): Peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE[1:0] = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this bitfield identifies the memory source address if DIR = 1 and the memory destination address if DIR1=10. In peripheral-to-peripheral mode, this bitfield identifies the peripheral source address if DIR1=11 and the peripheral destination address if DIR = 0. Note: This bitfield is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020800 A PERIPHERAL DMAMUX
 0x40020800 B  REGISTER C0CR: DMAMUX request line multiplexer channel 0 configuration register

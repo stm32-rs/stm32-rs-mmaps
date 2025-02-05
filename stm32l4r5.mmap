@@ -4649,7 +4649,7 @@
 0x400160F0 C   FIELD 16w16 INDAT1: INDAT1
 0x400160F4 B  REGISTER CH7DLYR (rw): channel y delay register
 0x400160F4 C   FIELD 00w06 PLSSKP: PLSSKP
-0x40016100 B  REGISTER DFSDM_FLT0CR1 (rw): control register 1
+0x40016100 B  REGISTER FLT0CR1 (rw): control register 1
 0x40016100 C   FIELD 00w01 DFEN: DFSDM enable
 0x40016100 C   FIELD 01w01 JSWSTART: Start a conversion of the injected group of channels
 0x40016100 C   FIELD 03w01 JSYNC: Launch an injected conversion synchronously with the DFSDM0 JSWSTART trigger
@@ -4664,7 +4664,7 @@
 0x40016100 C   FIELD 24w03 RCH: Regular channel selection
 0x40016100 C   FIELD 29w01 FAST: Fast conversion mode selection for regular conversions
 0x40016100 C   FIELD 30w01 AWFSEL: Analog watchdog fast mode select
-0x40016104 B  REGISTER DFSDM_FLT0CR2 (rw): control register 2
+0x40016104 B  REGISTER FLT0CR2 (rw): control register 2
 0x40016104 C   FIELD 00w01 JEOCIE: Injected end of conversion interrupt enable
 0x40016104 C   FIELD 01w01 REOCIE: Regular end of conversion interrupt enable
 0x40016104 C   FIELD 02w01 JOVRIE: Injected data overrun interrupt enable
@@ -4674,7 +4674,7 @@
 0x40016104 C   FIELD 06w01 CKABIE: Clock absence interrupt enable
 0x40016104 C   FIELD 08w08 EXCH: Extremes detector channel selection
 0x40016104 C   FIELD 16w08 AWDCH: Analog watchdog channel selection
-0x40016108 B  REGISTER DFSDM_FLT0ISR (ro): interrupt and status register
+0x40016108 B  REGISTER FLT0ISR (ro): interrupt and status register
 0x40016108 C   FIELD 00w01 JEOCF: End of injected conversion flag
 0x40016108 C   FIELD 01w01 REOCF: End of regular conversion flag
 0x40016108 C   FIELD 02w01 JOVRF: Injected conversion overrun flag
@@ -4684,45 +4684,45 @@
 0x40016108 C   FIELD 14w01 RCIP: Regular conversion in progress status
 0x40016108 C   FIELD 16w08 CKABF: Clock absence flag
 0x40016108 C   FIELD 24w08 SCDF: short-circuit detector flag
-0x4001610C B  REGISTER DFSDM_FLT0ICR (rw): interrupt flag clear register
+0x4001610C B  REGISTER FLT0ICR (rw): interrupt flag clear register
 0x4001610C C   FIELD 02w01 CLRJOVRF: Clear the injected conversion overrun flag
 0x4001610C C   FIELD 03w01 CLRROVRF: Clear the regular conversion overrun flag
 0x4001610C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001610C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
-0x40016110 B  REGISTER DFSDM_FLT0JCHGR (rw): injected channel group selection register
+0x40016110 B  REGISTER FLT0JCHGR (rw): injected channel group selection register
 0x40016110 C   FIELD 00w08 JCHG: Injected channel group selection
-0x40016114 B  REGISTER DFSDM_FLT0FCR (rw): filter control register
+0x40016114 B  REGISTER FLT0FCR (rw): filter control register
 0x40016114 C   FIELD 00w08 IOSR: Integrator oversampling ratio (averaging length)
 0x40016114 C   FIELD 16w10 FOSR: Sinc filter oversampling ratio (decimation rate)
 0x40016114 C   FIELD 29w03 FORD: Sinc filter order
-0x40016118 B  REGISTER DFSDM_FLT0JDATAR (ro): data register for injected group
+0x40016118 B  REGISTER FLT0JDATAR (ro): data register for injected group
 0x40016118 C   FIELD 00w03 JDATACH: Injected channel most recently converted
 0x40016118 C   FIELD 08w24 JDATA: Injected group conversion data
-0x4001611C B  REGISTER DFSDM_FLT0RDATAR (ro): data register for the regular channel
+0x4001611C B  REGISTER FLT0RDATAR (ro): data register for the regular channel
 0x4001611C C   FIELD 00w03 RDATACH: Regular channel most recently converted
 0x4001611C C   FIELD 04w01 RPEND: Regular channel pending data
 0x4001611C C   FIELD 08w24 RDATA: Regular channel conversion data
-0x40016120 B  REGISTER DFSDM_FLT0AWHTR (rw): analog watchdog high threshold register
+0x40016120 B  REGISTER FLT0AWHTR (rw): analog watchdog high threshold register
 0x40016120 C   FIELD 00w04 BKAWH: Break signal assignment to analog watchdog high threshold event
 0x40016120 C   FIELD 08w24 AWHT: Analog watchdog high threshold
-0x40016124 B  REGISTER DFSDM_FLT0AWLTR (rw): analog watchdog low threshold register
+0x40016124 B  REGISTER FLT0AWLTR (rw): analog watchdog low threshold register
 0x40016124 C   FIELD 00w04 BKAWL: Break signal assignment to analog watchdog low threshold event
 0x40016124 C   FIELD 08w24 AWLT: Analog watchdog low threshold
-0x40016128 B  REGISTER DFSDM_FLT0AWSR (ro): analog watchdog status register
+0x40016128 B  REGISTER FLT0AWSR (ro): analog watchdog status register
 0x40016128 C   FIELD 00w08 AWLTF: Analog watchdog low threshold flag
 0x40016128 C   FIELD 08w08 AWHTF: Analog watchdog high threshold flag
-0x4001612C B  REGISTER DFSDM_FLT0AWCFR (rw): analog watchdog clear flag register
+0x4001612C B  REGISTER FLT0AWCFR (rw): analog watchdog clear flag register
 0x4001612C C   FIELD 00w08 CLRAWLTF: Clear the analog watchdog low threshold flag
 0x4001612C C   FIELD 08w08 CLRAWHTF: Clear the analog watchdog high threshold flag
-0x40016130 B  REGISTER DFSDM_FLT0EXMAX (ro): Extremes detector maximum register
+0x40016130 B  REGISTER FLT0EXMAX (ro): Extremes detector maximum register
 0x40016130 C   FIELD 00w03 EXMAXCH: Extremes detector maximum data channel
 0x40016130 C   FIELD 08w24 EXMAX: Extremes detector maximum value
-0x40016134 B  REGISTER DFSDM_FLT0EXMIN (ro): Extremes detector minimum register
+0x40016134 B  REGISTER FLT0EXMIN (ro): Extremes detector minimum register
 0x40016134 C   FIELD 00w03 EXMINCH: Extremes detector minimum data channel
 0x40016134 C   FIELD 08w24 EXMIN: EXMIN
-0x40016138 B  REGISTER DFSDM_FLT0CNVTIMR (ro): conversion timer register
+0x40016138 B  REGISTER FLT0CNVTIMR (ro): conversion timer register
 0x40016138 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDM_CKIN
-0x40016180 B  REGISTER DFSDM_FLT1CR1 (rw): control register 1
+0x40016180 B  REGISTER FLT1CR1 (rw): control register 1
 0x40016180 C   FIELD 00w01 DFEN: DFSDM enable
 0x40016180 C   FIELD 01w01 JSWSTART: Start a conversion of the injected group of channels
 0x40016180 C   FIELD 03w01 JSYNC: Launch an injected conversion synchronously with the DFSDM0 JSWSTART trigger
@@ -4737,7 +4737,7 @@
 0x40016180 C   FIELD 24w03 RCH: Regular channel selection
 0x40016180 C   FIELD 29w01 FAST: Fast conversion mode selection for regular conversions
 0x40016180 C   FIELD 30w01 AWFSEL: Analog watchdog fast mode select
-0x40016184 B  REGISTER DFSDM_FLT1CR2 (rw): control register 2
+0x40016184 B  REGISTER FLT1CR2 (rw): control register 2
 0x40016184 C   FIELD 00w01 JEOCIE: Injected end of conversion interrupt enable
 0x40016184 C   FIELD 01w01 REOCIE: Regular end of conversion interrupt enable
 0x40016184 C   FIELD 02w01 JOVRIE: Injected data overrun interrupt enable
@@ -4747,7 +4747,7 @@
 0x40016184 C   FIELD 06w01 CKABIE: Clock absence interrupt enable
 0x40016184 C   FIELD 08w08 EXCH: Extremes detector channel selection
 0x40016184 C   FIELD 16w08 AWDCH: Analog watchdog channel selection
-0x40016188 B  REGISTER DFSDM_FLT1ISR (ro): interrupt and status register
+0x40016188 B  REGISTER FLT1ISR (ro): interrupt and status register
 0x40016188 C   FIELD 00w01 JEOCF: End of injected conversion flag
 0x40016188 C   FIELD 01w01 REOCF: End of regular conversion flag
 0x40016188 C   FIELD 02w01 JOVRF: Injected conversion overrun flag
@@ -4757,45 +4757,45 @@
 0x40016188 C   FIELD 14w01 RCIP: Regular conversion in progress status
 0x40016188 C   FIELD 16w08 CKABF: Clock absence flag
 0x40016188 C   FIELD 24w08 SCDF: short-circuit detector flag
-0x4001618C B  REGISTER DFSDM_FLT1ICR (rw): interrupt flag clear register
+0x4001618C B  REGISTER FLT1ICR (rw): interrupt flag clear register
 0x4001618C C   FIELD 02w01 CLRJOVRF: Clear the injected conversion overrun flag
 0x4001618C C   FIELD 03w01 CLRROVRF: Clear the regular conversion overrun flag
 0x4001618C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001618C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
-0x40016190 B  REGISTER DFSDM_FLT1CHGR (rw): injected channel group selection register
+0x40016190 B  REGISTER FLT1CHGR (rw): injected channel group selection register
 0x40016190 C   FIELD 00w08 JCHG: Injected channel group selection
-0x40016194 B  REGISTER DFSDM_FLT1FCR (rw): filter control register
+0x40016194 B  REGISTER FLT1FCR (rw): filter control register
 0x40016194 C   FIELD 00w08 IOSR: Integrator oversampling ratio (averaging length)
 0x40016194 C   FIELD 16w10 FOSR: Sinc filter oversampling ratio (decimation rate)
 0x40016194 C   FIELD 29w03 FORD: Sinc filter order
-0x40016198 B  REGISTER DFSDM_FLT1JDATAR (ro): data register for injected group
+0x40016198 B  REGISTER FLT1JDATAR (ro): data register for injected group
 0x40016198 C   FIELD 00w03 JDATACH: Injected channel most recently converted
 0x40016198 C   FIELD 08w24 JDATA: Injected group conversion data
-0x4001619C B  REGISTER DFSDM_FLT1RDATAR (ro): data register for the regular channel
+0x4001619C B  REGISTER FLT1RDATAR (ro): data register for the regular channel
 0x4001619C C   FIELD 00w03 RDATACH: Regular channel most recently converted
 0x4001619C C   FIELD 04w01 RPEND: Regular channel pending data
 0x4001619C C   FIELD 08w24 RDATA: Regular channel conversion data
-0x400161A0 B  REGISTER DFSDM_FLT1AWHTR (rw): analog watchdog high threshold register
+0x400161A0 B  REGISTER FLT1AWHTR (rw): analog watchdog high threshold register
 0x400161A0 C   FIELD 00w04 BKAWH: Break signal assignment to analog watchdog high threshold event
 0x400161A0 C   FIELD 08w24 AWHT: Analog watchdog high threshold
-0x400161A4 B  REGISTER DFSDM_FLT1AWLTR (rw): analog watchdog low threshold register
+0x400161A4 B  REGISTER FLT1AWLTR (rw): analog watchdog low threshold register
 0x400161A4 C   FIELD 00w04 BKAWL: Break signal assignment to analog watchdog low threshold event
 0x400161A4 C   FIELD 08w24 AWLT: Analog watchdog low threshold
-0x400161A8 B  REGISTER DFSDM_FLT1AWSR (ro): analog watchdog status register
+0x400161A8 B  REGISTER FLT1AWSR (ro): analog watchdog status register
 0x400161A8 C   FIELD 00w08 AWLTF: Analog watchdog low threshold flag
 0x400161A8 C   FIELD 08w08 AWHTF: Analog watchdog high threshold flag
-0x400161AC B  REGISTER DFSDM_FLT1AWCFR (rw): analog watchdog clear flag register
+0x400161AC B  REGISTER FLT1AWCFR (rw): analog watchdog clear flag register
 0x400161AC C   FIELD 00w08 CLRAWLTF: Clear the analog watchdog low threshold flag
 0x400161AC C   FIELD 08w08 CLRAWHTF: Clear the analog watchdog high threshold flag
-0x400161B0 B  REGISTER DFSDM_FLT1EXMAX (ro): Extremes detector maximum register
+0x400161B0 B  REGISTER FLT1EXMAX (ro): Extremes detector maximum register
 0x400161B0 C   FIELD 00w03 EXMAXCH: Extremes detector maximum data channel
 0x400161B0 C   FIELD 08w24 EXMAX: Extremes detector maximum value
-0x400161B4 B  REGISTER DFSDM_FLT1EXMIN (ro): Extremes detector minimum register
+0x400161B4 B  REGISTER FLT1EXMIN (ro): Extremes detector minimum register
 0x400161B4 C   FIELD 00w03 EXMINCH: Extremes detector minimum data channel
 0x400161B4 C   FIELD 08w24 EXMIN: EXMIN
-0x400161B8 B  REGISTER DFSDM_FLT1CNVTIMR (ro): conversion timer register
+0x400161B8 B  REGISTER FLT1CNVTIMR (ro): conversion timer register
 0x400161B8 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDM_CKIN
-0x40016200 B  REGISTER DFSDM_FLT2CR1 (rw): control register 1
+0x40016200 B  REGISTER FLT2CR1 (rw): control register 1
 0x40016200 C   FIELD 00w01 DFEN: DFSDM enable
 0x40016200 C   FIELD 01w01 JSWSTART: Start a conversion of the injected group of channels
 0x40016200 C   FIELD 03w01 JSYNC: Launch an injected conversion synchronously with the DFSDM0 JSWSTART trigger
@@ -4810,7 +4810,7 @@
 0x40016200 C   FIELD 24w03 RCH: Regular channel selection
 0x40016200 C   FIELD 29w01 FAST: Fast conversion mode selection for regular conversions
 0x40016200 C   FIELD 30w01 AWFSEL: Analog watchdog fast mode select
-0x40016204 B  REGISTER DFSDM_FLT2CR2 (rw): control register 2
+0x40016204 B  REGISTER FLT2CR2 (rw): control register 2
 0x40016204 C   FIELD 00w01 JEOCIE: Injected end of conversion interrupt enable
 0x40016204 C   FIELD 01w01 REOCIE: Regular end of conversion interrupt enable
 0x40016204 C   FIELD 02w01 JOVRIE: Injected data overrun interrupt enable
@@ -4820,7 +4820,7 @@
 0x40016204 C   FIELD 06w01 CKABIE: Clock absence interrupt enable
 0x40016204 C   FIELD 08w08 EXCH: Extremes detector channel selection
 0x40016204 C   FIELD 16w08 AWDCH: Analog watchdog channel selection
-0x40016208 B  REGISTER DFSDM_FLT2ISR (ro): interrupt and status register
+0x40016208 B  REGISTER FLT2ISR (ro): interrupt and status register
 0x40016208 C   FIELD 00w01 JEOCF: End of injected conversion flag
 0x40016208 C   FIELD 01w01 REOCF: End of regular conversion flag
 0x40016208 C   FIELD 02w01 JOVRF: Injected conversion overrun flag
@@ -4830,45 +4830,45 @@
 0x40016208 C   FIELD 14w01 RCIP: Regular conversion in progress status
 0x40016208 C   FIELD 16w08 CKABF: Clock absence flag
 0x40016208 C   FIELD 24w08 SCDF: short-circuit detector flag
-0x4001620C B  REGISTER DFSDM_FLT2ICR (rw): interrupt flag clear register
+0x4001620C B  REGISTER FLT2ICR (rw): interrupt flag clear register
 0x4001620C C   FIELD 02w01 CLRJOVRF: Clear the injected conversion overrun flag
 0x4001620C C   FIELD 03w01 CLRROVRF: Clear the regular conversion overrun flag
 0x4001620C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001620C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
-0x40016210 B  REGISTER DFSDM_FLT2JCHGR (rw): injected channel group selection register
+0x40016210 B  REGISTER FLT2JCHGR (rw): injected channel group selection register
 0x40016210 C   FIELD 00w08 JCHG: Injected channel group selection
-0x40016214 B  REGISTER DFSDM_FLT2FCR (rw): filter control register
+0x40016214 B  REGISTER FLT2FCR (rw): filter control register
 0x40016214 C   FIELD 00w08 IOSR: Integrator oversampling ratio (averaging length)
 0x40016214 C   FIELD 16w10 FOSR: Sinc filter oversampling ratio (decimation rate)
 0x40016214 C   FIELD 29w03 FORD: Sinc filter order
-0x40016218 B  REGISTER DFSDM_FLT2JDATAR (ro): data register for injected group
+0x40016218 B  REGISTER FLT2JDATAR (ro): data register for injected group
 0x40016218 C   FIELD 00w03 JDATACH: Injected channel most recently converted
 0x40016218 C   FIELD 08w24 JDATA: Injected group conversion data
-0x4001621C B  REGISTER DFSDM_FLT2RDATAR (ro): data register for the regular channel
+0x4001621C B  REGISTER FLT2RDATAR (ro): data register for the regular channel
 0x4001621C C   FIELD 00w03 RDATACH: Regular channel most recently converted
 0x4001621C C   FIELD 04w01 RPEND: Regular channel pending data
 0x4001621C C   FIELD 08w24 RDATA: Regular channel conversion data
-0x40016220 B  REGISTER DFSDM_FLT2AWHTR (rw): analog watchdog high threshold register
+0x40016220 B  REGISTER FLT2AWHTR (rw): analog watchdog high threshold register
 0x40016220 C   FIELD 00w04 BKAWH: Break signal assignment to analog watchdog high threshold event
 0x40016220 C   FIELD 08w24 AWHT: Analog watchdog high threshold
-0x40016224 B  REGISTER DFSDM_FLT2AWLTR (rw): analog watchdog low threshold register
+0x40016224 B  REGISTER FLT2AWLTR (rw): analog watchdog low threshold register
 0x40016224 C   FIELD 00w04 BKAWL: Break signal assignment to analog watchdog low threshold event
 0x40016224 C   FIELD 08w24 AWLT: Analog watchdog low threshold
-0x40016228 B  REGISTER DFSDM_FLT2AWSR (ro): analog watchdog status register
+0x40016228 B  REGISTER FLT2AWSR (ro): analog watchdog status register
 0x40016228 C   FIELD 00w08 AWLTF: Analog watchdog low threshold flag
 0x40016228 C   FIELD 08w08 AWHTF: Analog watchdog high threshold flag
-0x4001622C B  REGISTER DFSDM_FLT2AWCFR (rw): analog watchdog clear flag register
+0x4001622C B  REGISTER FLT2AWCFR (rw): analog watchdog clear flag register
 0x4001622C C   FIELD 00w08 CLRAWLTF: Clear the analog watchdog low threshold flag
 0x4001622C C   FIELD 08w08 CLRAWHTF: Clear the analog watchdog high threshold flag
-0x40016230 B  REGISTER DFSDM_FLT2EXMAX (ro): Extremes detector maximum register
+0x40016230 B  REGISTER FLT2EXMAX (ro): Extremes detector maximum register
 0x40016230 C   FIELD 00w03 EXMAXCH: Extremes detector maximum data channel
 0x40016230 C   FIELD 08w24 EXMAX: Extremes detector maximum value
-0x40016234 B  REGISTER DFSDM_FLT2EXMIN (ro): Extremes detector minimum register
+0x40016234 B  REGISTER FLT2EXMIN (ro): Extremes detector minimum register
 0x40016234 C   FIELD 00w03 EXMINCH: Extremes detector minimum data channel
 0x40016234 C   FIELD 08w24 EXMIN: EXMIN
-0x40016238 B  REGISTER DFSDM_FLT2CNVTIMR (ro): conversion timer register
+0x40016238 B  REGISTER FLT2CNVTIMR (ro): conversion timer register
 0x40016238 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDM_CKIN
-0x40016280 B  REGISTER DFSDM_FLT3CR1 (rw): control register 1
+0x40016280 B  REGISTER FLT3CR1 (rw): control register 1
 0x40016280 C   FIELD 00w01 DFEN: DFSDM enable
 0x40016280 C   FIELD 01w01 JSWSTART: Start a conversion of the injected group of channels
 0x40016280 C   FIELD 03w01 JSYNC: Launch an injected conversion synchronously with the DFSDM0 JSWSTART trigger
@@ -4883,7 +4883,7 @@
 0x40016280 C   FIELD 24w03 RCH: Regular channel selection
 0x40016280 C   FIELD 29w01 FAST: Fast conversion mode selection for regular conversions
 0x40016280 C   FIELD 30w01 AWFSEL: Analog watchdog fast mode select
-0x40016284 B  REGISTER DFSDM_FLT3CR2 (rw): control register 2
+0x40016284 B  REGISTER FLT3CR2 (rw): control register 2
 0x40016284 C   FIELD 00w01 JEOCIE: Injected end of conversion interrupt enable
 0x40016284 C   FIELD 01w01 REOCIE: Regular end of conversion interrupt enable
 0x40016284 C   FIELD 02w01 JOVRIE: Injected data overrun interrupt enable
@@ -4893,7 +4893,7 @@
 0x40016284 C   FIELD 06w01 CKABIE: Clock absence interrupt enable
 0x40016284 C   FIELD 08w08 EXCH: Extremes detector channel selection
 0x40016284 C   FIELD 16w08 AWDCH: Analog watchdog channel selection
-0x40016288 B  REGISTER DFSDM_FLT3ISR (ro): interrupt and status register
+0x40016288 B  REGISTER FLT3ISR (ro): interrupt and status register
 0x40016288 C   FIELD 00w01 JEOCF: End of injected conversion flag
 0x40016288 C   FIELD 01w01 REOCF: End of regular conversion flag
 0x40016288 C   FIELD 02w01 JOVRF: Injected conversion overrun flag
@@ -4903,43 +4903,43 @@
 0x40016288 C   FIELD 14w01 RCIP: Regular conversion in progress status
 0x40016288 C   FIELD 16w08 CKABF: Clock absence flag
 0x40016288 C   FIELD 24w08 SCDF: short-circuit detector flag
-0x4001628C B  REGISTER DFSDM_FLT3ICR (rw): interrupt flag clear register
+0x4001628C B  REGISTER FLT3ICR (rw): interrupt flag clear register
 0x4001628C C   FIELD 02w01 CLRJOVRF: Clear the injected conversion overrun flag
 0x4001628C C   FIELD 03w01 CLRROVRF: Clear the regular conversion overrun flag
 0x4001628C C   FIELD 16w08 CLRCKABF: Clear the clock absence flag
 0x4001628C C   FIELD 24w08 CLRSCDF: Clear the short-circuit detector flag
-0x40016290 B  REGISTER DFSDM_FLT3JCHGR (rw): injected channel group selection register
+0x40016290 B  REGISTER FLT3JCHGR (rw): injected channel group selection register
 0x40016290 C   FIELD 00w08 JCHG: Injected channel group selection
-0x40016294 B  REGISTER DFSDM_FLT3FCR (rw): filter control register
+0x40016294 B  REGISTER FLT3FCR (rw): filter control register
 0x40016294 C   FIELD 00w08 IOSR: Integrator oversampling ratio (averaging length)
 0x40016294 C   FIELD 16w10 FOSR: Sinc filter oversampling ratio (decimation rate)
 0x40016294 C   FIELD 29w03 FORD: Sinc filter order
-0x40016298 B  REGISTER DFSDM_FLT3JDATAR (ro): data register for injected group
+0x40016298 B  REGISTER FLT3JDATAR (ro): data register for injected group
 0x40016298 C   FIELD 00w03 JDATACH: Injected channel most recently converted
 0x40016298 C   FIELD 08w24 JDATA: Injected group conversion data
-0x4001629C B  REGISTER DFSDM_FLT3RDATAR (ro): data register for the regular channel
+0x4001629C B  REGISTER FLT3RDATAR (ro): data register for the regular channel
 0x4001629C C   FIELD 00w03 RDATACH: Regular channel most recently converted
 0x4001629C C   FIELD 04w01 RPEND: Regular channel pending data
 0x4001629C C   FIELD 08w24 RDATA: Regular channel conversion data
-0x400162A0 B  REGISTER DFSDM_FLT3AWHTR (rw): analog watchdog high threshold register
+0x400162A0 B  REGISTER FLT3AWHTR (rw): analog watchdog high threshold register
 0x400162A0 C   FIELD 00w04 BKAWH: Break signal assignment to analog watchdog high threshold event
 0x400162A0 C   FIELD 08w24 AWHT: Analog watchdog high threshold
-0x400162A4 B  REGISTER DFSDM_FLT3AWLTR (rw): analog watchdog low threshold register
+0x400162A4 B  REGISTER FLT3AWLTR (rw): analog watchdog low threshold register
 0x400162A4 C   FIELD 00w04 BKAWL: Break signal assignment to analog watchdog low threshold event
 0x400162A4 C   FIELD 08w24 AWLT: Analog watchdog low threshold
-0x400162A8 B  REGISTER DFSDM_FLT3AWSR (ro): analog watchdog status register
+0x400162A8 B  REGISTER FLT3AWSR (ro): analog watchdog status register
 0x400162A8 C   FIELD 00w08 AWLTF: Analog watchdog low threshold flag
 0x400162A8 C   FIELD 08w08 AWHTF: Analog watchdog high threshold flag
-0x400162AC B  REGISTER DFSDM_FLT3AWCFR (rw): analog watchdog clear flag register
+0x400162AC B  REGISTER FLT3AWCFR (rw): analog watchdog clear flag register
 0x400162AC C   FIELD 00w08 CLRAWLTF: Clear the analog watchdog low threshold flag
 0x400162AC C   FIELD 08w08 CLRAWHTF: Clear the analog watchdog high threshold flag
-0x400162B0 B  REGISTER DFSDM_FLT3EXMAX (ro): Extremes detector maximum register
+0x400162B0 B  REGISTER FLT3EXMAX (ro): Extremes detector maximum register
 0x400162B0 C   FIELD 00w03 EXMAXCH: Extremes detector maximum data channel
 0x400162B0 C   FIELD 08w24 EXMAX: Extremes detector maximum value
-0x400162B4 B  REGISTER DFSDM_FLT3EXMIN (ro): Extremes detector minimum register
+0x400162B4 B  REGISTER FLT3EXMIN (ro): Extremes detector minimum register
 0x400162B4 C   FIELD 00w03 EXMINCH: Extremes detector minimum data channel
 0x400162B4 C   FIELD 08w24 EXMIN: EXMIN
-0x400162B8 B  REGISTER DFSDM_FLT3CNVTIMR (ro): conversion timer register
+0x400162B8 B  REGISTER FLT3CNVTIMR (ro): conversion timer register
 0x400162B8 C   FIELD 04w28 CNVCNT: 28-bit timer counting conversion time t = CNVCNT[27:0] / fDFSDM_CKIN
 0x40016800 A PERIPHERAL LTCD
 0x40016808 B  REGISTER SSCR (rw): LTDC Synchronization Size Configuration Register

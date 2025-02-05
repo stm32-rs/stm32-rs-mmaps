@@ -14529,212 +14529,212 @@
 0x5200B408 C   FIELD 24w01 IOHEN: IOHEN
 0x5200B408 C   FIELD 25w02 IOHSRC: IOHSRC
 0x5200B800 A PERIPHERAL OTFDEC1
-0x5200B820 B  REGISTER OTFDEC_R1CFGR: OTFDEC region 1 configuration register
+0x5200B820 B  REGISTER R1CFGR: OTFDEC region 1 configuration register
 0x5200B820 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200B820 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200B820 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200B820 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200B820 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B820 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200B824 B  REGISTER OTFDEC_R1STARTADDR: OTFDEC region 1 start address register
+0x5200B824 B  REGISTER R1STARTADDR: OTFDEC region 1 start address register
 0x5200B824 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200B828 B  REGISTER OTFDEC_R1ENDADDR: OTFDEC region 1 end address register
+0x5200B828 B  REGISTER R1ENDADDR: OTFDEC region 1 end address register
 0x5200B828 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200B82C B  REGISTER OTFDEC_R1NONCER0: OTFDEC region 1 nonce register 0
+0x5200B82C B  REGISTER R1NONCER0: OTFDEC region 1 nonce register 0
 0x5200B82C C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200B830 B  REGISTER OTFDEC_R1NONCER1: OTFDEC region 1 nonce register 1
+0x5200B830 B  REGISTER R1NONCER1: OTFDEC region 1 nonce register 1
 0x5200B830 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200B834 B  REGISTER OTFDEC_R1KEYR0: OTFDEC region 1 key register 0
+0x5200B834 B  REGISTER R1KEYR0: OTFDEC region 1 key register 0
 0x5200B834 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200B838 B  REGISTER OTFDEC_R1KEYR1: OTFDEC region 1 key register 1
+0x5200B838 B  REGISTER R1KEYR1: OTFDEC region 1 key register 1
 0x5200B838 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B83C B  REGISTER OTFDEC_R1KEYR2: OTFDEC region 1 key register 2
+0x5200B83C B  REGISTER R1KEYR2: OTFDEC region 1 key register 2
 0x5200B83C C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B840 B  REGISTER OTFDEC_R1KEYR3: OTFDEC region 1 key register 3
+0x5200B840 B  REGISTER R1KEYR3: OTFDEC region 1 key register 3
 0x5200B840 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B850 B  REGISTER OTFDEC_R2CFGR: OTFDEC region 2 configuration register
+0x5200B850 B  REGISTER R2CFGR: OTFDEC region 2 configuration register
 0x5200B850 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200B850 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200B850 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200B850 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200B850 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B850 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200B854 B  REGISTER OTFDEC_R2STARTADDR: OTFDEC region 2 start address register
+0x5200B854 B  REGISTER R2STARTADDR: OTFDEC region 2 start address register
 0x5200B854 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200B858 B  REGISTER OTFDEC_R2ENDADDR: OTFDEC region 2 end address register
+0x5200B858 B  REGISTER R2ENDADDR: OTFDEC region 2 end address register
 0x5200B858 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200B85C B  REGISTER OTFDEC_R2NONCER0: OTFDEC region 2 nonce register 0
+0x5200B85C B  REGISTER R2NONCER0: OTFDEC region 2 nonce register 0
 0x5200B85C C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200B860 B  REGISTER OTFDEC_R2NONCER1: OTFDEC region 2 nonce register 1
+0x5200B860 B  REGISTER R2NONCER1: OTFDEC region 2 nonce register 1
 0x5200B860 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200B864 B  REGISTER OTFDEC_R2KEYR0: OTFDEC region 2 key register 0
+0x5200B864 B  REGISTER R2KEYR0: OTFDEC region 2 key register 0
 0x5200B864 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200B868 B  REGISTER OTFDEC_R2KEYR1: OTFDEC region 2 key register 1
+0x5200B868 B  REGISTER R2KEYR1: OTFDEC region 2 key register 1
 0x5200B868 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B86C B  REGISTER OTFDEC_R2KEYR2: OTFDEC region 2 key register 2
+0x5200B86C B  REGISTER R2KEYR2: OTFDEC region 2 key register 2
 0x5200B86C C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B870 B  REGISTER OTFDEC_R2KEYR3: OTFDEC region 2 key register 3
+0x5200B870 B  REGISTER R2KEYR3: OTFDEC region 2 key register 3
 0x5200B870 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B880 B  REGISTER OTFDEC_R3CFGR: OTFDEC region 3 configuration register
+0x5200B880 B  REGISTER R3CFGR: OTFDEC region 3 configuration register
 0x5200B880 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200B880 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200B880 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200B880 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200B880 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B880 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200B884 B  REGISTER OTFDEC_R3STARTADDR: OTFDEC region 3 start address register
+0x5200B884 B  REGISTER R3STARTADDR: OTFDEC region 3 start address register
 0x5200B884 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200B888 B  REGISTER OTFDEC_R3ENDADDR: OTFDEC region 3 end address register
+0x5200B888 B  REGISTER R3ENDADDR: OTFDEC region 3 end address register
 0x5200B888 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200B88C B  REGISTER OTFDEC_R3NONCER0: OTFDEC region 3 nonce register 0
+0x5200B88C B  REGISTER R3NONCER0: OTFDEC region 3 nonce register 0
 0x5200B88C C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200B890 B  REGISTER OTFDEC_R3NONCER1: OTFDEC region 3 nonce register 1
+0x5200B890 B  REGISTER R3NONCER1: OTFDEC region 3 nonce register 1
 0x5200B890 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200B894 B  REGISTER OTFDEC_R3KEYR0: OTFDEC region 3 key register 0
+0x5200B894 B  REGISTER R3KEYR0: OTFDEC region 3 key register 0
 0x5200B894 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200B898 B  REGISTER OTFDEC_R3KEYR1: OTFDEC region 3 key register 1
+0x5200B898 B  REGISTER R3KEYR1: OTFDEC region 3 key register 1
 0x5200B898 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B89C B  REGISTER OTFDEC_R3KEYR2: OTFDEC region 3 key register 2
+0x5200B89C B  REGISTER R3KEYR2: OTFDEC region 3 key register 2
 0x5200B89C C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B8A0 B  REGISTER OTFDEC_R3KEYR3: OTFDEC region 3 key register 3
+0x5200B8A0 B  REGISTER R3KEYR3: OTFDEC region 3 key register 3
 0x5200B8A0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B8B0 B  REGISTER OTFDEC_R4CFGR: OTFDEC region 4 configuration register
+0x5200B8B0 B  REGISTER R4CFGR: OTFDEC region 4 configuration register
 0x5200B8B0 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200B8B0 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200B8B0 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200B8B0 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200B8B0 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B8B0 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200B8B4 B  REGISTER OTFDEC_R4STARTADDR: OTFDEC region 4 start address register
+0x5200B8B4 B  REGISTER R4STARTADDR: OTFDEC region 4 start address register
 0x5200B8B4 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200B8B8 B  REGISTER OTFDEC_R4ENDADDR: OTFDEC region 4 end address register
+0x5200B8B8 B  REGISTER R4ENDADDR: OTFDEC region 4 end address register
 0x5200B8B8 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200B8BC B  REGISTER OTFDEC_R4NONCER0: OTFDEC region 4 nonce register 0
+0x5200B8BC B  REGISTER R4NONCER0: OTFDEC region 4 nonce register 0
 0x5200B8BC C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200B8C0 B  REGISTER OTFDEC_R4NONCER1: OTFDEC region 4 nonce register 1
+0x5200B8C0 B  REGISTER R4NONCER1: OTFDEC region 4 nonce register 1
 0x5200B8C0 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200B8C4 B  REGISTER OTFDEC_R4KEYR0: OTFDEC region 4 key register 0
+0x5200B8C4 B  REGISTER R4KEYR0: OTFDEC region 4 key register 0
 0x5200B8C4 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200B8C8 B  REGISTER OTFDEC_R4KEYR1: OTFDEC region 4 key register 1
+0x5200B8C8 B  REGISTER R4KEYR1: OTFDEC region 4 key register 1
 0x5200B8C8 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B8CC B  REGISTER OTFDEC_R4KEYR2: OTFDEC region 4 key register 2
+0x5200B8CC B  REGISTER R4KEYR2: OTFDEC region 4 key register 2
 0x5200B8CC C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200B8D0 B  REGISTER OTFDEC_R4KEYR3: OTFDEC region 4 key register 3
+0x5200B8D0 B  REGISTER R4KEYR3: OTFDEC region 4 key register 3
 0x5200B8D0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BB00 B  REGISTER OTFDEC_ISR: OTFDEC interrupt status register
+0x5200BB00 B  REGISTER ISR: OTFDEC interrupt status register
 0x5200BB00 C   FIELD 00w01 SEIF (ro): Security Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when at least one security error has been detected (illegal access to keys, illegal write on locked configuration). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
 0x5200BB00 C   FIELD 01w01 XONEIF (ro): Execute-only execute-Never Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access and not an instruction fetch is detected on any encrypted region with MODE bits set to 00 or 11. It is also set when an instruction fetch and not a read access is detected on any encrypted region with MODE bits set to 01. Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
 0x5200BB00 C   FIELD 02w01 KEIF (ro): Key Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access occurs on any encrypted region following the reset of the key registers by an abort event (tamper detection, unauthorized debugger connection, untrusted boot, RDP level regression). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”. After KEIF is set any subsequent read to any enabled encrypted region returns a zeroed value. This state remains until OTFDEC keys are initialized again.
-0x5200BB04 B  REGISTER OTFDEC_ICR: OTFDEC interrupt clear register
+0x5200BB04 B  REGISTER ICR: OTFDEC interrupt clear register
 0x5200BB04 C   FIELD 00w01 SEIF (wo): Security Error Interrupt Flag clear This bit is written by application, and always reads as 0.
 0x5200BB04 C   FIELD 01w01 XONEIF (wo): Execute-only execute-Never Error Interrupt Flag clear This bit is written by application, and always reads as 0.
 0x5200BB04 C   FIELD 02w01 KEIF (wo): Key Error Interrupt Flag clear This bit is written by application, and always reads as 0. Note: Clearing KEIF does not solve the source of the problem (bad key registers). To be able to read or execute again any encrypted region, OTFDEC key registers must properly initialized, again.
-0x5200BB08 B  REGISTER OTFDEC_IER: OTFDEC interrupt enable register
+0x5200BB08 B  REGISTER IER: OTFDEC interrupt enable register
 0x5200BB08 C   FIELD 00w01 SEIE (rw): Security Error Interrupt Enable This bit is read and written by application. It controls the OTFDEC interrupt generation when SEIF flag status is set.
 0x5200BB08 C   FIELD 01w01 XONEIE (rw): Execute-only execute-Never Error Interrupt Enable This bit is read and written by application. It controls the OTFDEC interrupt generation when XONEIF flag status is set.
 0x5200BB08 C   FIELD 02w01 KEIE (rw): Key Error Interrupt Enable This bit is read and written by application. It controls the OTFDEC interrupt generation when KEIF flag status is set.
 0x5200BC00 A PERIPHERAL OTFDEC2
-0x5200BC20 B  REGISTER OTFDEC_R1CFGR: OTFDEC region 1 configuration register
+0x5200BC20 B  REGISTER R1CFGR: OTFDEC region 1 configuration register
 0x5200BC20 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200BC20 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200BC20 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200BC20 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200BC20 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BC20 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200BC24 B  REGISTER OTFDEC_R1STARTADDR: OTFDEC region 1 start address register
+0x5200BC24 B  REGISTER R1STARTADDR: OTFDEC region 1 start address register
 0x5200BC24 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200BC28 B  REGISTER OTFDEC_R1ENDADDR: OTFDEC region 1 end address register
+0x5200BC28 B  REGISTER R1ENDADDR: OTFDEC region 1 end address register
 0x5200BC28 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200BC2C B  REGISTER OTFDEC_R1NONCER0: OTFDEC region 1 nonce register 0
+0x5200BC2C B  REGISTER R1NONCER0: OTFDEC region 1 nonce register 0
 0x5200BC2C C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200BC30 B  REGISTER OTFDEC_R1NONCER1: OTFDEC region 1 nonce register 1
+0x5200BC30 B  REGISTER R1NONCER1: OTFDEC region 1 nonce register 1
 0x5200BC30 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200BC34 B  REGISTER OTFDEC_R1KEYR0: OTFDEC region 1 key register 0
+0x5200BC34 B  REGISTER R1KEYR0: OTFDEC region 1 key register 0
 0x5200BC34 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200BC38 B  REGISTER OTFDEC_R1KEYR1: OTFDEC region 1 key register 1
+0x5200BC38 B  REGISTER R1KEYR1: OTFDEC region 1 key register 1
 0x5200BC38 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC3C B  REGISTER OTFDEC_R1KEYR2: OTFDEC region 1 key register 2
+0x5200BC3C B  REGISTER R1KEYR2: OTFDEC region 1 key register 2
 0x5200BC3C C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC40 B  REGISTER OTFDEC_R1KEYR3: OTFDEC region 1 key register 3
+0x5200BC40 B  REGISTER R1KEYR3: OTFDEC region 1 key register 3
 0x5200BC40 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC50 B  REGISTER OTFDEC_R2CFGR: OTFDEC region 2 configuration register
+0x5200BC50 B  REGISTER R2CFGR: OTFDEC region 2 configuration register
 0x5200BC50 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200BC50 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200BC50 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200BC50 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200BC50 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BC50 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200BC54 B  REGISTER OTFDEC_R2STARTADDR: OTFDEC region 2 start address register
+0x5200BC54 B  REGISTER R2STARTADDR: OTFDEC region 2 start address register
 0x5200BC54 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200BC58 B  REGISTER OTFDEC_R2ENDADDR: OTFDEC region 2 end address register
+0x5200BC58 B  REGISTER R2ENDADDR: OTFDEC region 2 end address register
 0x5200BC58 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200BC5C B  REGISTER OTFDEC_R2NONCER0: OTFDEC region 2 nonce register 0
+0x5200BC5C B  REGISTER R2NONCER0: OTFDEC region 2 nonce register 0
 0x5200BC5C C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200BC60 B  REGISTER OTFDEC_R2NONCER1: OTFDEC region 2 nonce register 1
+0x5200BC60 B  REGISTER R2NONCER1: OTFDEC region 2 nonce register 1
 0x5200BC60 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200BC64 B  REGISTER OTFDEC_R2KEYR0: OTFDEC region 2 key register 0
+0x5200BC64 B  REGISTER R2KEYR0: OTFDEC region 2 key register 0
 0x5200BC64 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200BC68 B  REGISTER OTFDEC_R2KEYR1: OTFDEC region 2 key register 1
+0x5200BC68 B  REGISTER R2KEYR1: OTFDEC region 2 key register 1
 0x5200BC68 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC6C B  REGISTER OTFDEC_R2KEYR2: OTFDEC region 2 key register 2
+0x5200BC6C B  REGISTER R2KEYR2: OTFDEC region 2 key register 2
 0x5200BC6C C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC70 B  REGISTER OTFDEC_R2KEYR3: OTFDEC region 2 key register 3
+0x5200BC70 B  REGISTER R2KEYR3: OTFDEC region 2 key register 3
 0x5200BC70 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC80 B  REGISTER OTFDEC_R3CFGR: OTFDEC region 3 configuration register
+0x5200BC80 B  REGISTER R3CFGR: OTFDEC region 3 configuration register
 0x5200BC80 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200BC80 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200BC80 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200BC80 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200BC80 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BC80 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200BC84 B  REGISTER OTFDEC_R3STARTADDR: OTFDEC region 3 start address register
+0x5200BC84 B  REGISTER R3STARTADDR: OTFDEC region 3 start address register
 0x5200BC84 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200BC88 B  REGISTER OTFDEC_R3ENDADDR: OTFDEC region 3 end address register
+0x5200BC88 B  REGISTER R3ENDADDR: OTFDEC region 3 end address register
 0x5200BC88 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200BC8C B  REGISTER OTFDEC_R3NONCER0: OTFDEC region 3 nonce register 0
+0x5200BC8C B  REGISTER R3NONCER0: OTFDEC region 3 nonce register 0
 0x5200BC8C C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200BC90 B  REGISTER OTFDEC_R3NONCER1: OTFDEC region 3 nonce register 1
+0x5200BC90 B  REGISTER R3NONCER1: OTFDEC region 3 nonce register 1
 0x5200BC90 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200BC94 B  REGISTER OTFDEC_R3KEYR0: OTFDEC region 3 key register 0
+0x5200BC94 B  REGISTER R3KEYR0: OTFDEC region 3 key register 0
 0x5200BC94 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200BC98 B  REGISTER OTFDEC_R3KEYR1: OTFDEC region 3 key register 1
+0x5200BC98 B  REGISTER R3KEYR1: OTFDEC region 3 key register 1
 0x5200BC98 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BC9C B  REGISTER OTFDEC_R3KEYR2: OTFDEC region 3 key register 2
+0x5200BC9C B  REGISTER R3KEYR2: OTFDEC region 3 key register 2
 0x5200BC9C C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BCA0 B  REGISTER OTFDEC_R3KEYR3: OTFDEC region 3 key register 3
+0x5200BCA0 B  REGISTER R3KEYR3: OTFDEC region 3 key register 3
 0x5200BCA0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BCB0 B  REGISTER OTFDEC_R4CFGR: OTFDEC region 4 configuration register
+0x5200BCB0 B  REGISTER R4CFGR: OTFDEC region 4 configuration register
 0x5200BCB0 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
 0x5200BCB0 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
 0x5200BCB0 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
 0x5200BCB0 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
 0x5200BCB0 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BCB0 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
-0x5200BCB4 B  REGISTER OTFDEC_R4STARTADDR: OTFDEC region 4 start address register
+0x5200BCB4 B  REGISTER R4STARTADDR: OTFDEC region 4 start address register
 0x5200BCB4 C   FIELD 00w32 REGx_START_ADDR (rw): Region AXI start address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits and the 12 LSB bits return zero.
-0x5200BCB8 B  REGISTER OTFDEC_R4ENDADDR: OTFDEC region 4 end address register
+0x5200BCB8 B  REGISTER R4ENDADDR: OTFDEC region 4 end address register
 0x5200BCB8 C   FIELD 00w32 REGx_END_ADDR (rw): Region AXI end address This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set, and RxENDADDR must be strictly greater than RxSTARTADDR to be valid. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded. Note: When determining the region the first 12 bits (LSB) and the last 4 bits (MSB) are ignored. When this register is accessed in read the 4 MSB bits returns zeros and the 12 LSB bits return ones.
-0x5200BCBC B  REGISTER OTFDEC_R4NONCER0: OTFDEC region 4 nonce register 0
+0x5200BCBC B  REGISTER R4NONCER0: OTFDEC region 4 nonce register 0
 0x5200BCBC C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Writing this register while the region CONFIGLOCK bit in the RxCFGR register is set will be discarded.
-0x5200BCC0 B  REGISTER OTFDEC_R4NONCER1: OTFDEC region 4 nonce register 1
+0x5200BCC0 B  REGISTER R4NONCER1: OTFDEC region 4 nonce register 1
 0x5200BCC0 C   FIELD 00w32 REGx_NONCE (rw): Region nonce, bits [63:32] Refer to the OTFDEC_RxNONCER0 register for description of the NONCE[63:0] bitfield.
-0x5200BCC4 B  REGISTER OTFDEC_R4KEYR0: OTFDEC region 4 key register 0
+0x5200BCC4 B  REGISTER R4KEYR0: OTFDEC region 4 key register 0
 0x5200BCC4 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [31:0] This register must be written before the region corresponding REG_EN bit in the RxCFGR register is set. Reading this register returns a zero value. Writing this register while the region CONFIGLOCK or KEYLOCK bit is set in the RxCFGR register will be discarded. Note: When application successfully changes MODE bits in RxCFGR register RxKEYR registers and associated KEYCRC are erased.
-0x5200BCC8 B  REGISTER OTFDEC_R4KEYR1: OTFDEC region 4 key register 1
+0x5200BCC8 B  REGISTER R4KEYR1: OTFDEC region 4 key register 1
 0x5200BCC8 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [63:32] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BCCC B  REGISTER OTFDEC_R4KEYR2: OTFDEC region 4 key register 2
+0x5200BCCC B  REGISTER R4KEYR2: OTFDEC region 4 key register 2
 0x5200BCCC C   FIELD 00w32 REGx_KEY (wo): Region key, bits [95:64] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BCD0 B  REGISTER OTFDEC_R4KEYR3: OTFDEC region 4 key register 3
+0x5200BCD0 B  REGISTER R4KEYR3: OTFDEC region 4 key register 3
 0x5200BCD0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
-0x5200BF00 B  REGISTER OTFDEC_ISR: OTFDEC interrupt status register
+0x5200BF00 B  REGISTER ISR: OTFDEC interrupt status register
 0x5200BF00 C   FIELD 00w01 SEIF (ro): Security Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when at least one security error has been detected (illegal access to keys, illegal write on locked configuration). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
 0x5200BF00 C   FIELD 01w01 XONEIF (ro): Execute-only execute-Never Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access and not an instruction fetch is detected on any encrypted region with MODE bits set to 00 or 11. It is also set when an instruction fetch and not a read access is detected on any encrypted region with MODE bits set to 01. Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
 0x5200BF00 C   FIELD 02w01 KEIF (ro): Key Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access occurs on any encrypted region following the reset of the key registers by an abort event (tamper detection, unauthorized debugger connection, untrusted boot, RDP level regression). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”. After KEIF is set any subsequent read to any enabled encrypted region returns a zeroed value. This state remains until OTFDEC keys are initialized again.
-0x5200BF04 B  REGISTER OTFDEC_ICR: OTFDEC interrupt clear register
+0x5200BF04 B  REGISTER ICR: OTFDEC interrupt clear register
 0x5200BF04 C   FIELD 00w01 SEIF (wo): Security Error Interrupt Flag clear This bit is written by application, and always reads as 0.
 0x5200BF04 C   FIELD 01w01 XONEIF (wo): Execute-only execute-Never Error Interrupt Flag clear This bit is written by application, and always reads as 0.
 0x5200BF04 C   FIELD 02w01 KEIF (wo): Key Error Interrupt Flag clear This bit is written by application, and always reads as 0. Note: Clearing KEIF does not solve the source of the problem (bad key registers). To be able to read or execute again any encrypted region, OTFDEC key registers must properly initialized, again.
-0x5200BF08 B  REGISTER OTFDEC_IER: OTFDEC interrupt enable register
+0x5200BF08 B  REGISTER IER: OTFDEC interrupt enable register
 0x5200BF08 C   FIELD 00w01 SEIE (rw): Security Error Interrupt Enable This bit is read and written by application. It controls the OTFDEC interrupt generation when SEIF flag status is set.
 0x5200BF08 C   FIELD 01w01 XONEIE (rw): Execute-only execute-Never Error Interrupt Enable This bit is read and written by application. It controls the OTFDEC interrupt generation when XONEIF flag status is set.
 0x5200BF08 C   FIELD 02w01 KEIE (rw): Key Error Interrupt Enable This bit is read and written by application. It controls the OTFDEC interrupt generation when KEIF flag status is set.
