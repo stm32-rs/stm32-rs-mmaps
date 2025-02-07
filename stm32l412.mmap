@@ -379,16 +379,8 @@
 0x40004400 C   FIELD 13w01 MME: Mute mode enable
 0x40004400 C   FIELD 14w01 CMIE: Character match interrupt enable
 0x40004400 C   FIELD 15w01 OVER8: Oversampling mode
-0x40004400 C   FIELD 16w01 DEDT0: DEDT0
-0x40004400 C   FIELD 17w01 DEDT1: DEDT1
-0x40004400 C   FIELD 18w01 DEDT2: DEDT2
-0x40004400 C   FIELD 19w01 DEDT3: DEDT3
-0x40004400 C   FIELD 20w01 DEDT4: Driver Enable de-assertion time
-0x40004400 C   FIELD 21w01 DEAT0: DEAT0
-0x40004400 C   FIELD 22w01 DEAT1: DEAT1
-0x40004400 C   FIELD 23w01 DEAT2: DEAT2
-0x40004400 C   FIELD 24w01 DEAT3: DEAT3
-0x40004400 C   FIELD 25w01 DEAT4: Driver Enable assertion time
+0x40004400 C   FIELD 16w05 DEDT: Driver Enable de-assertion time
+0x40004400 C   FIELD 21w05 DEAT: Driver Enable assertion time
 0x40004400 C   FIELD 26w01 RTOIE: Receiver timeout interrupt enable
 0x40004400 C   FIELD 27w01 EOBIE: End of Block interrupt enable
 0x40004400 C   FIELD 28w01 M1: Word length
@@ -405,14 +397,12 @@
 0x40004404 C   FIELD 15w01 SWAP: Swap TX/RX pins
 0x40004404 C   FIELD 16w01 RXINV: RX pin active level inversion
 0x40004404 C   FIELD 17w01 TXINV: TX pin active level inversion
-0x40004404 C   FIELD 18w01 TAINV: Binary data inversion
+0x40004404 C   FIELD 18w01 DATAINV: Binary data inversion
 0x40004404 C   FIELD 19w01 MSBFIRST: Most significant bit first
 0x40004404 C   FIELD 20w01 ABREN: Auto baud rate enable
-0x40004404 C   FIELD 21w01 ABRMOD0: ABRMOD0
-0x40004404 C   FIELD 22w01 ABRMOD1: Auto baud rate mode
+0x40004404 C   FIELD 21w02 ABRMOD: Auto baud rate mode
 0x40004404 C   FIELD 23w01 RTOEN: Receiver timeout enable
-0x40004404 C   FIELD 24w04 ADD0_3: Address of the USART node
-0x40004404 C   FIELD 28w04 ADD4_7: Address of the USART node
+0x40004404 C   FIELD 24w08 ADD: Address of the USART node
 0x40004408 B  REGISTER CR3 (rw): Control register 3
 0x40004408 C   FIELD 00w01 EIE: Error interrupt enable
 0x40004408 C   FIELD 01w01 IREN: Ir mode enable
@@ -436,8 +426,7 @@
 0x40004408 C   FIELD 23w01 UCESM: USART Clock Enable in Stop mode
 0x40004408 C   FIELD 24w01 TCBGTIE: Transmission complete before guard time interrupt enable
 0x4000440C B  REGISTER BRR (rw): Baud rate register
-0x4000440C C   FIELD 00w04 DIV_Fraction: DIV_Fraction
-0x4000440C C   FIELD 04w12 DIV_Mantissa: DIV_Mantissa
+0x4000440C C   FIELD 00w16 BRR: DIV_Mantissa
 0x40004410 B  REGISTER GTPR (rw): Guard time and prescaler register
 0x40004410 C   FIELD 00w08 PSC: Prescaler value
 0x40004410 C   FIELD 08w08 GT: Guard time value
