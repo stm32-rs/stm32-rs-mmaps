@@ -5833,9 +5833,39 @@
 0x4002083C C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x4002083C C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x40020880 B  REGISTER CSR (ro): DMAMUX request line multiplexer interrupt channel status register
-0x40020880 C   FIELD 00w16 SOF: Synchronization overrun event flag
+0x40020880 C   FIELD 00w01 SOF0: Synchronization Overrun Flag 0
+0x40020880 C   FIELD 01w01 SOF1: Synchronization Overrun Flag 1
+0x40020880 C   FIELD 02w01 SOF2: Synchronization Overrun Flag 2
+0x40020880 C   FIELD 03w01 SOF3: Synchronization Overrun Flag 3
+0x40020880 C   FIELD 04w01 SOF4: Synchronization Overrun Flag 4
+0x40020880 C   FIELD 05w01 SOF5: Synchronization Overrun Flag 5
+0x40020880 C   FIELD 06w01 SOF6: Synchronization Overrun Flag 6
+0x40020880 C   FIELD 07w01 SOF7: Synchronization Overrun Flag 7
+0x40020880 C   FIELD 08w01 SOF8: Synchronization Overrun Flag 8
+0x40020880 C   FIELD 09w01 SOF9: Synchronization Overrun Flag 9
+0x40020880 C   FIELD 10w01 SOF10: Synchronization Overrun Flag 10
+0x40020880 C   FIELD 11w01 SOF11: Synchronization Overrun Flag 11
+0x40020880 C   FIELD 12w01 SOF12: Synchronization Overrun Flag 12
+0x40020880 C   FIELD 13w01 SOF13: Synchronization Overrun Flag 13
+0x40020880 C   FIELD 14w01 SOF14: Synchronization Overrun Flag 14
+0x40020880 C   FIELD 15w01 SOF15: Synchronization Overrun Flag 15
 0x40020884 B  REGISTER CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
-0x40020884 C   FIELD 00w16 CSOF: Clear synchronization overrun event flag
+0x40020884 C   FIELD 00w01 CSOF0: Synchronization Clear Overrun Flag 0
+0x40020884 C   FIELD 01w01 CSOF1: Synchronization Clear Overrun Flag 1
+0x40020884 C   FIELD 02w01 CSOF2: Synchronization Clear Overrun Flag 2
+0x40020884 C   FIELD 03w01 CSOF3: Synchronization Clear Overrun Flag 3
+0x40020884 C   FIELD 04w01 CSOF4: Synchronization Clear Overrun Flag 4
+0x40020884 C   FIELD 05w01 CSOF5: Synchronization Clear Overrun Flag 5
+0x40020884 C   FIELD 06w01 CSOF6: Synchronization Clear Overrun Flag 6
+0x40020884 C   FIELD 07w01 CSOF7: Synchronization Clear Overrun Flag 7
+0x40020884 C   FIELD 08w01 CSOF8: Synchronization Clear Overrun Flag 8
+0x40020884 C   FIELD 09w01 CSOF9: Synchronization Clear Overrun Flag 9
+0x40020884 C   FIELD 10w01 CSOF10: Synchronization Clear Overrun Flag 10
+0x40020884 C   FIELD 11w01 CSOF11: Synchronization Clear Overrun Flag 11
+0x40020884 C   FIELD 12w01 CSOF12: Synchronization Clear Overrun Flag 12
+0x40020884 C   FIELD 13w01 CSOF13: Synchronization Clear Overrun Flag 13
+0x40020884 C   FIELD 14w01 CSOF14: Synchronization Clear Overrun Flag 14
+0x40020884 C   FIELD 15w01 CSOF15: Synchronization Clear Overrun Flag 15
 0x40020900 B  REGISTER RGCR0 (rw): DMAMux - DMA request generator channel x control register
 0x40020900 C   FIELD 00w05 SIG_ID: DMA request trigger input selected
 0x40020900 C   FIELD 08w01 OIE: Interrupt enable at trigger event overrun
@@ -5861,9 +5891,15 @@
 0x4002090C C   FIELD 17w02 GPOL: DMA request generator trigger event type selection Defines the trigger event on the selected DMA request trigger input
 0x4002090C C   FIELD 19w05 GNBREQ: Number of DMA requests to generate Defines the number of DMA requests generated after a trigger event, then stop generating. The actual number of generated DMA requests is GNBREQ+1. Note: This field can only be written when GE bit is reset.
 0x40020940 B  REGISTER RGSR (ro): DMAMux - DMA request generator status register
-0x40020940 C   FIELD 00w04 OF: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
+0x40020940 C   FIELD 00w01 OF0: Generator Overrun Flag 0
+0x40020940 C   FIELD 01w01 OF1: Generator Overrun Flag 1
+0x40020940 C   FIELD 02w01 OF2: Generator Overrun Flag 2
+0x40020940 C   FIELD 03w01 OF3: Generator Overrun Flag 3
 0x40020944 B  REGISTER RGCFR (wo): DMAMux - DMA request generator clear flag register
-0x40020944 C   FIELD 00w04 COF: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
+0x40020944 C   FIELD 00w01 COF0: Generator Clear Overrun Flag 0
+0x40020944 C   FIELD 01w01 COF1: Generator Clear Overrun Flag 1
+0x40020944 C   FIELD 02w01 COF2: Generator Clear Overrun Flag 2
+0x40020944 C   FIELD 03w01 COF3: Generator Clear Overrun Flag 3
 0x40020C00 A PERIPHERAL CORDIC
 0x40020C00 B  REGISTER CSR (rw): CORDIC Control Status register
 0x40020C00 C   FIELD 00w04 FUNC: FUNC

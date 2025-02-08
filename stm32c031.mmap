@@ -1509,32 +1509,33 @@
 0x4001580C C   FIELD 18w01 DBG_TIM17_STOP (rw): Clocking of TIM17 counter when the core is halted This bit enables/disables the clock to the counter of TIM17 when the core is halted:
 0x40020000 A PERIPHERAL DMA
 0x40020000 B  REGISTER ISR: DMA interrupt status register
-0x40020000 C   FIELD 00w01 GIF1 (ro): global interrupt flag for channel 1
-0x40020000 C   FIELD 01w01 TCIF1 (ro): transfer complete (TC) flag for channel 1
-0x40020000 C   FIELD 02w01 HTIF1 (ro): half transfer (HT) flag for channel 1
-0x40020000 C   FIELD 03w01 TEIF1 (ro): transfer error (TE) flag for channel 1
-0x40020000 C   FIELD 04w01 GIF2 (ro): global interrupt flag for channel 2
-0x40020000 C   FIELD 05w01 TCIF2 (ro): transfer complete (TC) flag for channel 2
-0x40020000 C   FIELD 06w01 HTIF2 (ro): half transfer (HT) flag for channel 2
-0x40020000 C   FIELD 07w01 TEIF2 (ro): transfer error (TE) flag for channel 2
-0x40020000 C   FIELD 08w01 GIF3 (ro): global interrupt flag for channel 3
-0x40020000 C   FIELD 09w01 TCIF3 (ro): transfer complete (TC) flag for channel 3
-0x40020000 C   FIELD 10w01 HTIF3 (ro): half transfer (HT) flag for channel 3
-0x40020000 C   FIELD 11w01 TEIF3 (ro): transfer error (TE) flag for channel 3
+0x40020000 C   FIELD 00w01 GIF1 (ro): Channel 1 Global interrupt flag
+0x40020000 C   FIELD 01w01 TCIF1 (ro): Channel 1 Transfer Complete flag
+0x40020000 C   FIELD 02w01 HTIF1 (ro): Channel 1 Half Transfer Complete flag
+0x40020000 C   FIELD 03w01 TEIF1 (ro): Channel 1 Transfer Error flag
+0x40020000 C   FIELD 04w01 GIF2 (ro): Channel 2 Global interrupt flag
+0x40020000 C   FIELD 05w01 TCIF2 (ro): Channel 2 Transfer Complete flag
+0x40020000 C   FIELD 06w01 HTIF2 (ro): Channel 2 Half Transfer Complete flag
+0x40020000 C   FIELD 07w01 TEIF2 (ro): Channel 2 Transfer Error flag
+0x40020000 C   FIELD 08w01 GIF3 (ro): Channel 3 Global interrupt flag
+0x40020000 C   FIELD 09w01 TCIF3 (ro): Channel 3 Transfer Complete flag
+0x40020000 C   FIELD 10w01 HTIF3 (ro): Channel 3 Half Transfer Complete flag
+0x40020000 C   FIELD 11w01 TEIF3 (ro): Channel 3 Transfer Error flag
 0x40020004 B  REGISTER IFCR: DMA interrupt flag clear register
-0x40020004 C   FIELD 00w01 CGIF1 (wo): global interrupt flag clear for channel 1
-0x40020004 C   FIELD 01w01 CTCIF1 (wo): transfer complete flag clear for channel 1
-0x40020004 C   FIELD 02w01 CHTIF1 (wo): half transfer flag clear for channel 1
-0x40020004 C   FIELD 03w01 CTEIF1 (wo): transfer error flag clear for channel 1
-0x40020004 C   FIELD 04w01 CGIF2 (wo): global interrupt flag clear for channel 2
-0x40020004 C   FIELD 05w01 CTCIF2 (wo): transfer complete flag clear for channel 2
-0x40020004 C   FIELD 06w01 CHTIF2 (wo): half transfer flag clear for channel 2
-0x40020004 C   FIELD 07w01 CTEIF2 (wo): transfer error flag clear for channel 2
-0x40020004 C   FIELD 08w01 CGIF3 (wo): global interrupt flag clear for channel 3
-0x40020004 C   FIELD 09w01 CTCIF3 (wo): transfer complete flag clear for channel 3
-0x40020004 C   FIELD 10w01 CHTIF3 (wo): half transfer flag clear for channel 3
-0x40020004 C   FIELD 11w01 CTEIF3 (wo): transfer error flag clear for channel 3
-0x40020008 B  REGISTER CCR1: DMA channel 1 configuration register
+0x40020004 C   FIELD 00w01 CGIF1 (wo): Channel 1 Global interrupt clear
+0x40020004 C   FIELD 01w01 CTCIF1 (wo): Channel 1 Transfer Complete clear
+0x40020004 C   FIELD 02w01 CHTIF1 (wo): Channel 1 Half Transfer clear
+0x40020004 C   FIELD 03w01 CTEIF1 (wo): Channel 1 Transfer Error clear
+0x40020004 C   FIELD 04w01 CGIF2 (wo): Channel 2 Global interrupt clear
+0x40020004 C   FIELD 05w01 CTCIF2 (wo): Channel 2 Transfer Complete clear
+0x40020004 C   FIELD 06w01 CHTIF2 (wo): Channel 2 Half Transfer clear
+0x40020004 C   FIELD 07w01 CTEIF2 (wo): Channel 2 Transfer Error clear
+0x40020004 C   FIELD 08w01 CGIF3 (wo): Channel 3 Global interrupt clear
+0x40020004 C   FIELD 09w01 CTCIF3 (wo): Channel 3 Transfer Complete clear
+0x40020004 C   FIELD 10w01 CHTIF3 (wo): Channel 3 Half Transfer clear
+0x40020004 C   FIELD 11w01 CTEIF3 (wo): Channel 3 Transfer Error clear
+0x40020008 B  CLUSTER CH1: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020008 B  REGISTER CR1: DMA channel 1 configuration register
 0x40020008 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
 0x40020008 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020008 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -1547,13 +1548,14 @@
 0x40020008 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020008 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020008 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x4002000C B  REGISTER CNDTR1: DMA channel 1 number of data to transfer register
+0x4002000C B  REGISTER NDTR1: DMA channel 1 number of data to transfer register
 0x4002000C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020010 B  REGISTER CPAR1: DMA channel 1 peripheral address register
+0x40020010 B  REGISTER PAR1: DMA channel 1 peripheral address register
 0x40020010 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020014 B  REGISTER CMAR1: DMA channel 1 memory address register
+0x40020014 B  REGISTER MAR1: DMA channel 1 memory address register
 0x40020014 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002001C B  REGISTER CCR2: DMA channel 2 configuration register
+0x4002001C B  CLUSTER CH2: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x4002001C B  REGISTER CR2: DMA channel 1 configuration register
 0x4002001C C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
 0x4002001C C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x4002001C C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -1566,13 +1568,14 @@
 0x4002001C C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002001C C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x4002001C C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020020 B  REGISTER CNDTR2: DMA channel 2 number of data to transfer register
+0x40020020 B  REGISTER NDTR2: DMA channel 1 number of data to transfer register
 0x40020020 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020024 B  REGISTER CPAR2: DMA channel 2 peripheral address register
+0x40020024 B  REGISTER PAR2: DMA channel 1 peripheral address register
 0x40020024 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020028 B  REGISTER CMAR2: DMA channel 2 memory address register
+0x40020028 B  REGISTER MAR2: DMA channel 1 memory address register
 0x40020028 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x40020030 B  REGISTER CCR3: DMA channel 3 configuration register
+0x40020030 B  CLUSTER CH3: Channel cluster: CCR?, CNDTR?, CPAR?, and CMAR? registers
+0x40020030 B  REGISTER CR3: DMA channel 1 configuration register
 0x40020030 C   FIELD 00w01 EN (rw): channel enable When a channel transfer error occurs, this bit is cleared by hardware. It can not be set again by software (channel x re-activated) until the TEIFx bit of the DMA_ISR register is cleared (by setting the CTEIFx bit of the DMA_IFCR register). Note: this bit is set and cleared by software.
 0x40020030 C   FIELD 01w01 TCIE (rw): transfer complete interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020030 C   FIELD 02w01 HTIE (rw): half transfer interrupt enable Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
@@ -1585,11 +1588,11 @@
 0x40020030 C   FIELD 10w02 MSIZE (rw): memory size Defines the data size of each DMA transfer to the identified memory. In memory-to-memory mode, this field identifies the memory source if DIR = 1 and the memory destination if DIR = 0. In peripheral-to-peripheral mode, this field identifies the peripheral source if DIR = 1 and the peripheral destination if DIR = 0. Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020030 C   FIELD 12w02 PL (rw): priority level Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x40020030 C   FIELD 14w01 MEM2MEM (rw): memory-to-memory mode Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020034 B  REGISTER CNDTR3: DMA channel 3 number of data to transfer register
+0x40020034 B  REGISTER NDTR3: DMA channel 1 number of data to transfer register
 0x40020034 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single DMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the DMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
-0x40020038 B  REGISTER CPAR3: DMA channel 3 peripheral address register
+0x40020038 B  REGISTER PAR3: DMA channel 1 peripheral address register
 0x40020038 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data will be read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
-0x4002003C B  REGISTER CMAR3: DMA channel 3 memory address register
+0x4002003C B  REGISTER MAR3: DMA channel 1 memory address register
 0x4002003C C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data will be read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x40020800 A PERIPHERAL DMAMUX
 0x40020800 B  REGISTER CCR0: DMA Multiplexer Channel 0 Control register
@@ -1617,13 +1620,13 @@
 0x40020808 C   FIELD 19w05 NBREQ (rw): Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
 0x40020808 C   FIELD 24w05 SYNC_ID (rw): Synchronization identification Selects the synchronization input (see inputs to resources).
 0x40020880 B  REGISTER CSR: DMAMUX request line multiplexer interrupt channel status register
-0x40020880 C   FIELD 00w01 SOF0 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
-0x40020880 C   FIELD 01w01 SOF1 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
-0x40020880 C   FIELD 02w01 SOF2 (ro): Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
+0x40020880 C   FIELD 00w01 SOF0 (ro): Synchronization Overrun Flag 0
+0x40020880 C   FIELD 01w01 SOF1 (ro): Synchronization Overrun Flag 1
+0x40020880 C   FIELD 02w01 SOF2 (ro): Synchronization Overrun Flag 2
 0x40020884 B  REGISTER CFR: DMAMUX request line multiplexer interrupt clear flag register
-0x40020884 C   FIELD 00w01 CSOF0 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
-0x40020884 C   FIELD 01w01 CSOF1 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
-0x40020884 C   FIELD 02w01 CSOF2 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x40020884 C   FIELD 00w01 CSOF0 (wo): Synchronization Clear Overrun Flag 0
+0x40020884 C   FIELD 01w01 CSOF1 (wo): Synchronization Clear Overrun Flag 1
+0x40020884 C   FIELD 02w01 CSOF2 (wo): Synchronization Clear Overrun Flag 2
 0x40020900 B  REGISTER RGCR0: DMAMUX request generator channel 0 configuration register
 0x40020900 C   FIELD 00w05 SIG_ID (rw): Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
 0x40020900 C   FIELD 08w01 OIE (rw): Trigger overrun interrupt enable
@@ -1649,15 +1652,15 @@
 0x4002090C C   FIELD 17w02 GPOL (rw): DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
 0x4002090C C   FIELD 19w05 GNBREQ (rw): Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field must be written only when GE bit is disabled.
 0x40020940 B  REGISTER RGSR: DMAMUX request generator interrupt status register
-0x40020940 C   FIELD 00w01 OF0 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
-0x40020940 C   FIELD 01w01 OF1 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
-0x40020940 C   FIELD 02w01 OF2 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
-0x40020940 C   FIELD 03w01 OF3 (ro): Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
+0x40020940 C   FIELD 00w01 OF0 (ro): Generator Overrun Flag 0
+0x40020940 C   FIELD 01w01 OF1 (ro): Generator Overrun Flag 1
+0x40020940 C   FIELD 02w01 OF2 (ro): Generator Overrun Flag 2
+0x40020940 C   FIELD 03w01 OF3 (ro): Generator Overrun Flag 3
 0x40020944 B  REGISTER RGCFR: DMAMUX request generator interrupt clear flag register
-0x40020944 C   FIELD 00w01 COF0 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
-0x40020944 C   FIELD 01w01 COF1 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
-0x40020944 C   FIELD 02w01 COF2 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
-0x40020944 C   FIELD 03w01 COF3 (wo): Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
+0x40020944 C   FIELD 00w01 COF0 (wo): Generator Clear Overrun Flag 0
+0x40020944 C   FIELD 01w01 COF1 (wo): Generator Clear Overrun Flag 1
+0x40020944 C   FIELD 02w01 COF2 (wo): Generator Clear Overrun Flag 2
+0x40020944 C   FIELD 03w01 COF3 (wo): Generator Clear Overrun Flag 3
 0x40021000 A PERIPHERAL RCC
 0x40021000 B  REGISTER CR: RCC clock control register
 0x40021000 C   FIELD 02w03 SYSDIV (rw): System clock division factor This bitfield controlled by software sets the division factor of the system clock divider to produce SYSCLK clock:
