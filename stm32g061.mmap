@@ -522,6 +522,7 @@
 0x4000300C C   FIELD 02w01 WVU (ro): Watchdog counter window value update This bit is set by hardware to indicate that an update of the window value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Window value can be updated only when WVU bit is reset.
 0x40003010 B  REGISTER WINR (rw): Window register
 0x40003010 C   FIELD 00w12 WIN: Watchdog counter window value
+0x40003800 A PERIPHERAL SPI2
 0x40004400 A PERIPHERAL USART2
 0x40004400 B  REGISTER CR1 (rw): Control register 1
 0x40004400 C   FIELD 00w01 UE (rw): USART enable When this bit is cleared, the USART prescalers and outputs are stopped immediately, and all current operations are discarded. The USART configuration is kept, but all the USART_ISR status flags are reset. This bit is set and cleared by software. Note: To enter low-power mode without generating errors on the line, the TE bit must be previously reset and the software must wait for the TC bit in the USART_ISR to be set before resetting the UE bit. The DMA requests are also reset when UE = 0 so the DMA channel must be disabled before resetting the UE bit. In Smartcard mode, (SCEN = 1), the SCLK is always available when CLKEN = 1, regardless of the UE bit value.
@@ -2006,6 +2007,71 @@
 0x40012C68 C   FIELD 08w04 TI2SEL (rw): selects TI2[0] to TI2[15] input Others: Reserved
 0x40012C68 C   FIELD 16w04 TI3SEL (rw): selects TI3[0] to TI3[15] input Others: Reserved
 0x40012C68 C   FIELD 24w04 TI4SEL (rw): selects TI4[0] to TI4[15] input Others: Reserved
+0x40013000 A PERIPHERAL SPI1
+0x40013000 B  REGISTER CR1: SPI control register 1
+0x40013000 C   FIELD 00w01 CPHA (rw): Clock phase Note: This bit should not be changed when communication is ongoing. This bit is not used in I2S mode and SPI TI mode except the case when CRC is applied at TI mode.
+0x40013000 C   FIELD 01w01 CPOL (rw): Clock polarity Note: This bit should not be changed when communication is ongoing. This bit is not used in I2S mode and SPI TI mode except the case when CRC is applied at TI mode.
+0x40013000 C   FIELD 02w01 MSTR (rw): Master selection Note: This bit should not be changed when communication is ongoing. This bit is not used in I2S mode.
+0x40013000 C   FIELD 03w03 BR (rw): Baud rate control Note: These bits should not be changed when communication is ongoing. These bits are not used in I2S mode.
+0x40013000 C   FIELD 06w01 SPE (rw): SPI enable Note: When disabling the SPI, follow the procedure described in SPI on page1021. This bit is not used in I2S mode.
+0x40013000 C   FIELD 07w01 LSBFIRST (rw): Frame format Note: 1. This bit should not be changed when communication is ongoing. 2. This bit is not used in I2S mode and SPI TI mode.
+0x40013000 C   FIELD 08w01 SSI (rw): Internal slave select This bit has an effect only when the SSM bit is set. The value of this bit is forced onto the NSS pin and the I/O value of the NSS pin is ignored. Note: This bit is not used in I2S mode and SPI TI mode.
+0x40013000 C   FIELD 09w01 SSM (rw): Software slave management When the SSM bit is set, the NSS pin input is replaced with the value from the SSI bit. Note: This bit is not used in I2S mode and SPI TI mode.
+0x40013000 C   FIELD 10w01 RXONLY (rw): Receive only mode enabled. This bit enables simplex communication using a single unidirectional line to receive data exclusively. Keep BIDIMODE bit clear when receive only mode is active.This bit is also useful in a multislave system in which this particular slave is not accessed, the output from the accessed slave is not corrupted. Note: This bit is not used in I2S mode.
+0x40013000 C   FIELD 11w01 CRCL (rw): CRC length This bit is set and cleared by software to select the CRC length. Note: This bit should be written only when SPI is disabled (SPE = '0') for correct operation. This bit is not used in I2S mode.
+0x40013000 C   FIELD 12w01 CRCNEXT (rw): Transmit CRC next Note: This bit has to be written as soon as the last data is written in the SPI_DR register. This bit is not used in I2S mode.
+0x40013000 C   FIELD 13w01 CRCEN (rw): Hardware CRC calculation enable Note: This bit should be written only when SPI is disabled (SPE = '0') for correct operation. This bit is not used in I2S mode.
+0x40013000 C   FIELD 14w01 BIDIOE (rw): Output enable in bidirectional mode This bit combined with the BIDIMODE bit selects the direction of transfer in bidirectional mode. Note: In master mode, the MOSI pin is used and in slave mode, the MISO pin is used. This bit is not used in I2S mode.
+0x40013000 C   FIELD 15w01 BIDIMODE (rw): Bidirectional data mode enable. This bit enables half-duplex communication using common single bidirectional data line. Keep RXONLY bit clear when bidirectional mode is active. Note: This bit is not used in I2S mode.
+0x40013004 B  REGISTER CR2: SPI control register 2
+0x40013004 C   FIELD 00w01 RXDMAEN (rw): Rx buffer DMA enable When this bit is set, a DMA request is generated whenever the RXNE flag is set.
+0x40013004 C   FIELD 01w01 TXDMAEN (rw): Tx buffer DMA enable When this bit is set, a DMA request is generated whenever the TXE flag is set.
+0x40013004 C   FIELD 02w01 SSOE (rw): SS output enable Note: This bit is not used in I2S mode and SPI TI mode.
+0x40013004 C   FIELD 03w01 NSSP (rw): NSS pulse management This bit is used in master mode only. it allows the SPI to generate an NSS pulse between two consecutive data when doing continuous transfers. In the case of a single data transfer, it forces the NSS pin high level after the transfer. It has no meaning if CPHA = '1', or FRF = '1'. Note: 1. This bit must be written only when the SPI is disabled (SPE=0). 2. This bit is not used in I2S mode and SPI TI mode.
+0x40013004 C   FIELD 04w01 FRF (rw): Frame format 1 SPI TI mode Note: This bit must be written only when the SPI is disabled (SPE=0). This bit is not used in I2S mode.
+0x40013004 C   FIELD 05w01 ERRIE (rw): Error interrupt enable This bit controls the generation of an interrupt when an error condition occurs (CRCERR, OVR, MODF in SPI mode, FRE at TI mode and UDR, OVR, and FRE in I2S mode).
+0x40013004 C   FIELD 06w01 RXNEIE (rw): RX buffer not empty interrupt enable
+0x40013004 C   FIELD 07w01 TXEIE (rw): Tx buffer empty interrupt enable
+0x40013004 C   FIELD 08w04 DS (rw): Data size These bits configure the data length for SPI transfers. If software attempts to write one of the 'Not used' values, they are forced to the value '0111' (8-bit) Note: These bits are not used in I2S mode.
+0x40013004 C   FIELD 12w01 FRXTH (rw): FIFO reception threshold This bit is used to set the threshold of the RXFIFO that triggers an RXNE event Note: This bit is not used in I2S mode.
+0x40013004 C   FIELD 13w01 LDMA_RX (rw): Last DMA transfer for reception
+0x40013004 C   FIELD 14w01 LDMA_TX (rw): Last DMA transfer for transmission
+0x40013008 B  REGISTER SR: SPI status register
+0x40013008 C   FIELD 00w01 RXNE (ro): Receive buffer not empty
+0x40013008 C   FIELD 01w01 TXE (ro): Transmit buffer empty
+0x40013008 C   FIELD 02w01 CHSIDE (ro): Channel side Note: This bit is not used in SPI mode. It has no significance in PCM mode.
+0x40013008 C   FIELD 03w01 UDR (ro): Underrun flag This flag is set by hardware and reset by a software sequence. Refer to page1057 for the software sequence. Note: This bit is not used in SPI mode.
+0x40013008 C   FIELD 04w01 CRCERR (rw): CRC error flag Note: This flag is set by hardware and cleared by software writing 0. This bit is not used in I2S mode.
+0x40013008 C   FIELD 05w01 MODF (ro): Mode fault This flag is set by hardware and reset by a software sequence. Refer to (MODF) on page1031 for the software sequence. Note: This bit is not used in I2S mode.
+0x40013008 C   FIELD 06w01 OVR (ro): Overrun flag This flag is set by hardware and reset by a software sequence. Refer to page1057 for the software sequence.
+0x40013008 C   FIELD 07w01 BSY (ro): Busy flag This flag is set and cleared by hardware. Note: The BSY flag must be used with caution: refer to and .
+0x40013008 C   FIELD 08w01 FRE (ro): Frame format error This flag is used for SPI in TI slave mode and I2S slave mode. Refer to error flags and . This flag is set by hardware and reset when SPI_SR is read by software.
+0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level
+0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level These bits are set and cleared by hardware. Note: This bit is not used in I2S mode.
+0x4001300C B  REGISTER DR8 (rw): Direct 8-bit access to data register
+0x4001300C B  REGISTER DR: SPI data register
+0x4001300C C   FIELD 00w08 DR: Data register
+0x4001300C C   FIELD 00w16 DR (rw): Data register Data received or to be transmitted The data register serves as an interface between the Rx and Tx FIFOs. When the data register is read, RxFIFO is accessed while the write to data register accesses TxFIFO (See ). Note: Data is always right-aligned. Unused bits are ignored when writing to the register, and read as zero when the register is read. The Rx threshold setting must always correspond with the read access currently used.
+0x40013010 B  REGISTER CRCPR: SPI CRC polynomial register
+0x40013010 C   FIELD 00w16 CRCPOLY (rw): CRC polynomial register This register contains the polynomial for the CRC calculation. The CRC polynomial (0x0007) is the reset value of this register. Another polynomial can be configured as required.
+0x40013014 B  REGISTER RXCRCR: SPI Rx CRC register
+0x40013014 C   FIELD 00w16 RXCRC (ro): Rx CRC register When CRC calculation is enabled, the RXCRC[15:0] bits contain the computed CRC value of the subsequently received bytes. This register is reset when the CRCEN bit in SPI_CR1 register is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY Flag is set could return an incorrect value. These bits are not used in I2S mode.
+0x40013018 B  REGISTER TXCRCR: SPI Tx CRC register
+0x40013018 C   FIELD 00w16 TXCRC (ro): Tx CRC register When CRC calculation is enabled, the TXCRC[7:0] bits contain the computed CRC value of the subsequently transmitted bytes. This register is reset when the CRCEN bit of SPI_CR1 is written to 1. The CRC is calculated serially using the polynomial programmed in the SPI_CRCPR register. Only the 8 LSB bits are considered when the CRC frame format is set to be 8-bit length (CRCL bit in the SPI_CR1 is cleared). CRC calculation is done based on any CRC8 standard. The entire 16-bits of this register are considered when a 16-bit CRC frame format is selected (CRCL bit in the SPI_CR1 register is set). CRC calculation is done based on any CRC16 standard. Note: A read to this register when the BSY flag is set could return an incorrect value. These bits are not used in I2S mode.
+0x4001301C B  REGISTER I2SCFGR: SPI_I2S configuration register
+0x4001301C C   FIELD 00w01 CHLEN (rw): Channel length (number of bits per audio channel) The bit write operation has a meaning only if DATLEN = 00 otherwise the channel length is fixed to 32-bit by hardware whatever the value filled in. Note: For correct operation, this bit should be configured when the I2S is disabled. It is not used in SPI mode.
+0x4001301C C   FIELD 01w02 DATLEN (rw): Data length to be transferred Note: For correct operation, these bits should be configured when the I2S is disabled. They are not used in SPI mode.
+0x4001301C C   FIELD 03w01 CKPOL (rw): Inactive state clock polarity Note: For correct operation, this bit should be configured when the I2S is disabled. It is not used in SPI mode. The bit CKPOL does not affect the CK edge sensitivity used to receive or transmit the SD and WS signals.
+0x4001301C C   FIELD 04w02 I2SSTD (rw): I2S standard selection For more details on I2S standards, refer to Note: For correct operation, these bits should be configured when the I2S is disabled. They are not used in SPI mode.
+0x4001301C C   FIELD 07w01 PCMSYNC (rw): PCM frame synchronization Note: This bit has a meaning only if I2SSTD = 11 (PCM standard is used). It is not used in SPI mode.
+0x4001301C C   FIELD 08w02 I2SCFG (rw): I2S configuration mode Note: These bits should be configured when the I2S is disabled. They are not used in SPI mode.
+0x4001301C C   FIELD 10w01 I2SE (rw): I2S enable Note: This bit is not used in SPI mode.
+0x4001301C C   FIELD 11w01 I2SMOD (rw): I2S mode selection Note: This bit should be configured when the SPI is disabled.
+0x4001301C C   FIELD 12w01 ASTRTEN (rw): Asynchronous start enable. When the I2S is enabled in slave mode, the hardware starts the transfer when the I2S clock is received and an appropriate transition is detected on the WS signal. When the I2S is enabled in slave mode, the hardware starts the transfer when the I2S clock is received and the appropriate level is detected on the WS signal. Note: The appropriate transition is a falling edge on WS signal when I2S Philips Standard is used, or a rising edge for other standards. The appropriate level is a low level on WS signal when I2S Philips Standard is used, or a high level for other standards. Please refer to for additional information.
+0x40013020 B  REGISTER I2SPR: SPI_I2S prescaler register
+0x40013020 C   FIELD 00w08 I2SDIV (rw): I2S linear prescaler I2SDIV [7:0] = 0 or I2SDIV [7:0] = 1 are forbidden values. Refer to . Note: These bits should be configured when the I2S is disabled. They are used only when the I2S is in master mode. They are not used in SPI mode.
+0x40013020 C   FIELD 08w01 ODD (rw): Odd factor for the prescaler Refer to . Note: This bit should be configured when the I2S is disabled. It is used only when the I2S is in master mode. It is not used in SPI mode.
+0x40013020 C   FIELD 09w01 MCKOE (rw): Master clock output enable Note: This bit should be configured when the I2S is disabled. It is used only when the I2S is in master mode. It is not used in SPI mode.
 0x40013800 A PERIPHERAL USART1
 0x40013800 B  REGISTER CR1 (rw): Control register 1
 0x40013800 C   FIELD 00w01 UE (rw): USART enable When this bit is cleared, the USART prescalers and outputs are stopped immediately, and all current operations are discarded. The USART configuration is kept, but all the USART_ISR status flags are reset. This bit is set and cleared by software. Note: To enter low-power mode without generating errors on the line, the TE bit must be previously reset and the software must wait for the TC bit in the USART_ISR to be set before resetting the UE bit. The DMA requests are also reset when UE = 0 so the DMA channel must be disabled before resetting the UE bit. In Smartcard mode, (SCEN = 1), the SCLK is always available when CLKEN = 1, regardless of the UE bit value.
@@ -3835,6 +3901,8 @@ INTERRUPT 021: TIM16 (TIM16): TIM16 global interrupt
 INTERRUPT 022: TIM17 (TIM17): TIM17 global interrupt
 INTERRUPT 023: I2C1 (I2C1): I2C1 global interrupt
 INTERRUPT 024: I2C2 (I2C2): I2C2 global interrupt
+INTERRUPT 025: SPI1 (SPI1): SPI1 gloabl interrupt
+INTERRUPT 026: SPI2_SPI3 (SPI2): SPI2 gloabl interrupt
 INTERRUPT 027: USART1 (USART1): USART1 global interrupt
 INTERRUPT 028: USART2 (USART2): USART2 global interrupt
 INTERRUPT 030: CEC (HDMI_CEC): CEC global interrupt

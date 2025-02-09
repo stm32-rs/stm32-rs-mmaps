@@ -478,7 +478,7 @@
 0x40002C04 B  REGISTER CFR: WWDG configuration register
 0x40002C04 C   FIELD 00w07 W (rw): 7-bit window value These bits contain the window value to be compared with the down-counter.
 0x40002C04 C   FIELD 09w01 EWI (rw): Early wake-up interrupt enable Set by software and cleared by hardware after a reset. When set, an interrupt occurs whenever the counter reaches the value 0x40.
-0x40002C04 C   FIELD 11w03 WDGTB (rw): Timer base The timebase of the prescaler can be modified as follows:
+0x40002C04 C   FIELD 11w03 WDGTB: Timer base The timebase of the prescaler can be modified as follows:
 0x40002C08 B  REGISTER SR: WWDG status register
 0x40002C08 C   FIELD 00w01 EWIF (rw): Early wake-up interrupt flag This bit is set by hardware when the counter has reached the value 0x40. It must be cleared by software by writing 0. Writing 1 has no effect. This bit is also set if the interrupt is not enabled.
 0x40003000 A PERIPHERAL IWDG
@@ -540,7 +540,9 @@
 0x40003808 C   FIELD 08w01 FRE (ro): Frame format error This flag is used for SPI in TI slave mode. Refer to Section133.4.11: SPI error flags. This flag is set by hardware and reset when SPI_SR is read by software.
 0x40003808 C   FIELD 09w02 FRLVL (ro): FIFO reception level These bits are set and cleared by hardware. Note: These bits are not used in SPI receive-only mode while CRC calculation is enabled.
 0x40003808 C   FIELD 11w02 FTLVL (ro): FIFO transmission level These bits are set and cleared by hardware.
+0x4000380C B  REGISTER DR8 (rw): Direct 8-bit access to data register
 0x4000380C B  REGISTER DR: SPI data register
+0x4000380C C   FIELD 00w08 DR: Data register
 0x4000380C C   FIELD 00w16 DR (rw): Data register Data received or to be transmitted The data register serves as an interface between the Rx and Tx FIFOs. When the data register is read, RxFIFO is accessed while the write to data register accesses TxFIFO (See Section133.4.9: Data transmission and reception procedures). Note: Data is always right-aligned. Unused bits are ignored when writing to the register, and read as zero when the register is read. The Rx threshold setting must always correspond with the read access currently used.
 0x40003810 B  REGISTER CRCPR: SPI CRC polynomial register
 0x40003810 C   FIELD 00w16 CRCPOLY (rw): CRC polynomial register This register contains the polynomial for the CRC calculation. The CRC polynomial (0x0007) is the reset value of this register. Another polynomial can be configured as required.
@@ -2685,7 +2687,9 @@
 0x40013008 C   FIELD 08w01 FRE (ro): Frame format error This flag is used for SPI in TI slave mode. Refer to Section133.4.11: SPI error flags. This flag is set by hardware and reset when SPI_SR is read by software.
 0x40013008 C   FIELD 09w02 FRLVL (ro): FIFO reception level These bits are set and cleared by hardware. Note: These bits are not used in SPI receive-only mode while CRC calculation is enabled.
 0x40013008 C   FIELD 11w02 FTLVL (ro): FIFO transmission level These bits are set and cleared by hardware.
+0x4001300C B  REGISTER DR8 (rw): Direct 8-bit access to data register
 0x4001300C B  REGISTER DR: SPI data register
+0x4001300C C   FIELD 00w08 DR: Data register
 0x4001300C C   FIELD 00w16 DR (rw): Data register Data received or to be transmitted The data register serves as an interface between the Rx and Tx FIFOs. When the data register is read, RxFIFO is accessed while the write to data register accesses TxFIFO (See Section133.4.9: Data transmission and reception procedures). Note: Data is always right-aligned. Unused bits are ignored when writing to the register, and read as zero when the register is read. The Rx threshold setting must always correspond with the read access currently used.
 0x40013010 B  REGISTER CRCPR: SPI CRC polynomial register
 0x40013010 C   FIELD 00w16 CRCPOLY (rw): CRC polynomial register This register contains the polynomial for the CRC calculation. The CRC polynomial (0x0007) is the reset value of this register. Another polynomial can be configured as required.
