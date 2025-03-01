@@ -107,6 +107,8 @@
 0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
+0x40000024 B  REGISTER CNT32 (rw): 32-bit counter register
+0x40000024 C   FIELD 00w32 CNT (rw): counter value
 0x40000024 C   FIELD 00w32 CNT: Counter value
 0x40000028 B  REGISTER PSC (rw): prescaler
 0x40000028 C   FIELD 00w16 PSC: Prescaler value
@@ -240,6 +242,8 @@
 0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
+0x40000424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000424 C   FIELD 00w16 CNT (rw): counter value
 0x40000424 C   FIELD 00w16 CNT: Counter value
 0x40000424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000428 B  REGISTER PSC (rw): prescaler
@@ -372,6 +376,8 @@
 0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
+0x40000824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000824 C   FIELD 00w16 CNT (rw): counter value
 0x40000824 C   FIELD 00w16 CNT: Counter value
 0x40000824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x40000828 B  REGISTER PSC (rw): prescaler
@@ -500,6 +506,8 @@
 0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000C24 B  REGISTER CNT (rw): counter
+0x40000C24 B  REGISTER CNT32 (rw): 32-bit counter register
+0x40000C24 C   FIELD 00w32 CNT (rw): counter value
 0x40000C24 C   FIELD 00w32 CNT: Counter value
 0x40000C28 B  REGISTER PSC (rw): prescaler
 0x40000C28 C   FIELD 00w16 PSC: Prescaler value
@@ -542,6 +550,8 @@
 0x40001014 B  REGISTER EGR (wo): event generation register
 0x40001014 C   FIELD 00w01 UG: Update generation
 0x40001024 B  REGISTER CNT (rw): counter
+0x40001024 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40001024 C   FIELD 00w16 CNT (rw): counter value
 0x40001024 C   FIELD 00w16 CNT: CNT
 0x40001024 C   FIELD 31w01 UIFCPY: UIFCPY or Res
 0x40001028 B  REGISTER PSC (rw): prescaler
@@ -566,6 +576,8 @@
 0x40001414 B  REGISTER EGR (wo): event generation register
 0x40001414 C   FIELD 00w01 UG: Update generation
 0x40001424 B  REGISTER CNT (rw): counter
+0x40001424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40001424 C   FIELD 00w16 CNT (rw): counter value
 0x40001424 C   FIELD 00w16 CNT: CNT
 0x40001424 C   FIELD 31w01 UIFCPY: UIFCPY or Res
 0x40001428 B  REGISTER PSC (rw): prescaler
@@ -3477,7 +3489,9 @@
 0x40012C20 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40012C20 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x40012C20 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x40012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40012C24 B  REGISTER CNT: counter
+0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x40012C28 B  REGISTER PSC (rw): prescaler
@@ -3741,7 +3755,9 @@
 0x40013420 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40013420 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x40013420 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x40013424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40013424 B  REGISTER CNT: counter
+0x40013424 C   FIELD 00w16 CNT (rw): counter value
 0x40013424 C   FIELD 00w16 CNT (rw): counter value
 0x40013424 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x40013428 B  REGISTER PSC (rw): prescaler
@@ -4030,7 +4046,9 @@
 0x40014020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
 0x40014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
 0x40014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x40014024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014024 B  REGISTER CNT: counter
+0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014028 B  REGISTER CCR2 (rw): capture/compare register
@@ -4119,7 +4137,9 @@
 0x40014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014420 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014420 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014424 B  REGISTER CNT: counter
+0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014428 B  REGISTER PSC (rw): prescaler
@@ -4205,7 +4225,9 @@
 0x40014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014820 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014820 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40014824 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014824 B  REGISTER CNT: counter
+0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014828 B  REGISTER PSC (rw): prescaler
@@ -13646,6 +13668,8 @@
 0x50000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x50000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000024 B  REGISTER CNT (rw): counter
+0x50000024 B  REGISTER CNT32 (rw): 32-bit counter register
+0x50000024 C   FIELD 00w32 CNT (rw): counter value
 0x50000024 C   FIELD 00w32 CNT: Counter value
 0x50000028 B  REGISTER PSC (rw): prescaler
 0x50000028 C   FIELD 00w16 PSC: Prescaler value
@@ -13779,6 +13803,8 @@
 0x50000420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x50000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000424 B  REGISTER CNT (rw): counter
+0x50000424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x50000424 C   FIELD 00w16 CNT (rw): counter value
 0x50000424 C   FIELD 00w16 CNT: Counter value
 0x50000424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x50000428 B  REGISTER PSC (rw): prescaler
@@ -13911,6 +13937,8 @@
 0x50000820 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x50000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000824 B  REGISTER CNT (rw): counter
+0x50000824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x50000824 C   FIELD 00w16 CNT (rw): counter value
 0x50000824 C   FIELD 00w16 CNT: Counter value
 0x50000824 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
 0x50000828 B  REGISTER PSC (rw): prescaler
@@ -14039,6 +14067,8 @@
 0x50000C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x50000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x50000C24 B  REGISTER CNT (rw): counter
+0x50000C24 B  REGISTER CNT32 (rw): 32-bit counter register
+0x50000C24 C   FIELD 00w32 CNT (rw): counter value
 0x50000C24 C   FIELD 00w32 CNT: Counter value
 0x50000C28 B  REGISTER PSC (rw): prescaler
 0x50000C28 C   FIELD 00w16 PSC: Prescaler value
@@ -14081,6 +14111,8 @@
 0x50001014 B  REGISTER EGR (wo): event generation register
 0x50001014 C   FIELD 00w01 UG: Update generation
 0x50001024 B  REGISTER CNT (rw): counter
+0x50001024 B  REGISTER CNT16 (rw): 16-bit counter register
+0x50001024 C   FIELD 00w16 CNT (rw): counter value
 0x50001024 C   FIELD 00w16 CNT: CNT
 0x50001024 C   FIELD 31w01 UIFCPY: UIFCPY or Res
 0x50001028 B  REGISTER PSC (rw): prescaler
@@ -14105,6 +14137,8 @@
 0x50001414 B  REGISTER EGR (wo): event generation register
 0x50001414 C   FIELD 00w01 UG: Update generation
 0x50001424 B  REGISTER CNT (rw): counter
+0x50001424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x50001424 C   FIELD 00w16 CNT (rw): counter value
 0x50001424 C   FIELD 00w16 CNT: CNT
 0x50001424 C   FIELD 31w01 UIFCPY: UIFCPY or Res
 0x50001428 B  REGISTER PSC (rw): prescaler
@@ -17016,7 +17050,9 @@
 0x50012C20 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x50012C20 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x50012C20 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x50012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50012C24 B  REGISTER CNT: counter
+0x50012C24 C   FIELD 00w16 CNT (rw): counter value
 0x50012C24 C   FIELD 00w16 CNT (rw): counter value
 0x50012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x50012C28 B  REGISTER PSC (rw): prescaler
@@ -17280,7 +17316,9 @@
 0x50013420 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x50013420 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x50013420 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x50013424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50013424 B  REGISTER CNT: counter
+0x50013424 C   FIELD 00w16 CNT (rw): counter value
 0x50013424 C   FIELD 00w16 CNT (rw): counter value
 0x50013424 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x50013428 B  REGISTER PSC (rw): prescaler
@@ -17569,7 +17607,9 @@
 0x50014020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
 0x50014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
 0x50014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x50014024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50014024 B  REGISTER CNT: counter
+0x50014024 C   FIELD 00w16 CNT (rw): counter value
 0x50014024 C   FIELD 00w16 CNT (rw): counter value
 0x50014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x50014028 B  REGISTER CCR2 (rw): capture/compare register
@@ -17658,7 +17698,9 @@
 0x50014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x50014420 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x50014420 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x50014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50014424 B  REGISTER CNT: counter
+0x50014424 C   FIELD 00w16 CNT (rw): counter value
 0x50014424 C   FIELD 00w16 CNT (rw): counter value
 0x50014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x50014428 B  REGISTER PSC (rw): prescaler
@@ -17744,7 +17786,9 @@
 0x50014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x50014820 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x50014820 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x50014824 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50014824 B  REGISTER CNT: counter
+0x50014824 C   FIELD 00w16 CNT (rw): counter value
 0x50014824 C   FIELD 00w16 CNT (rw): counter value
 0x50014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x50014828 B  REGISTER PSC (rw): prescaler

@@ -108,6 +108,8 @@
 0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): counter
+0x40000024 B  REGISTER CNT32 (rw): 32-bit counter register
+0x40000024 C   FIELD 00w32 CNT (rw): counter value
 0x40000024 C   FIELD 00w32 CNT: low counter value
 0x40000028 B  REGISTER PSC (rw): prescaler
 0x40000028 C   FIELD 00w16 PSC: Prescaler value
@@ -243,6 +245,8 @@
 0x40000420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): counter
+0x40000424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000424 C   FIELD 00w16 CNT (rw): counter value
 0x40000424 C   FIELD 00w16 CNT: Counter value
 0x40000428 B  REGISTER PSC (rw): prescaler
 0x40000428 C   FIELD 00w16 PSC: Prescaler value
@@ -346,24 +350,24 @@
 0x40000818 C   FIELD 24w01 OC2M_3: Output compare 2 mode, bit 3
 0x4000081C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000081C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
-0x4000081C C   FIELD 00w02 CC3S (=TIM4.CCMR1_Output.CC%sS): Capture/Compare 3 selection
+0x4000081C C   FIELD 00w02 CC3S (=TIM3.CCMR1_Output.CC%sS): Capture/Compare 3 selection
 0x4000081C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x4000081C C   FIELD 02w01 OC3FE (=TIM4.CCMR1_Output.OC%sFE): Output compare 3 fast enable
-0x4000081C C   FIELD 02w02 IC3PSC (=TIM4.CCMR1_Input.IC%sPSC): Input capture 3 prescaler
-0x4000081C C   FIELD 03w01 OC3PE (=TIM4.CCMR1_Output.OC%sPE): Output compare 3 preload enable
-0x4000081C C   FIELD 04w03 OC3M (=TIM4.CCMR1_Output.OC%sM): Output compare 3 mode
-0x4000081C C   FIELD 04w04 IC3F (=TIM4.CCMR1_Input.IC%sF): Input capture 3 filter
-0x4000081C C   FIELD 07w01 OC3CE (=TIM4.CCMR1_Output.OC%sCE): Output compare 3 clear enable
-0x4000081C C   FIELD 08w02 CC4S (=TIM4.CCMR1_Output.CC%sS): Capture/Compare 4 selection
+0x4000081C C   FIELD 02w01 OC3FE (=TIM3.CCMR1_Output.OC%sFE): Output compare 3 fast enable
+0x4000081C C   FIELD 02w02 IC3PSC (=TIM3.CCMR1_Input.IC%sPSC): Input capture 3 prescaler
+0x4000081C C   FIELD 03w01 OC3PE (=TIM3.CCMR1_Output.OC%sPE): Output compare 3 preload enable
+0x4000081C C   FIELD 04w03 OC3M (=TIM3.CCMR1_Output.OC%sM): Output compare 3 mode
+0x4000081C C   FIELD 04w04 IC3F (=TIM3.CCMR1_Input.IC%sF): Input capture 3 filter
+0x4000081C C   FIELD 07w01 OC3CE (=TIM3.CCMR1_Output.OC%sCE): Output compare 3 clear enable
+0x4000081C C   FIELD 08w02 CC4S (=TIM3.CCMR1_Output.CC%sS): Capture/Compare 4 selection
 0x4000081C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x4000081C C   FIELD 10w01 OC4FE (=TIM4.CCMR1_Output.OC%sFE): Output compare 4 fast enable
-0x4000081C C   FIELD 10w02 IC4PSC (=TIM4.CCMR1_Input.IC%sPSC): Input capture 4 prescaler
-0x4000081C C   FIELD 11w01 OC4PE (=TIM4.CCMR1_Output.OC%sPE): Output compare 4 preload enable
-0x4000081C C   FIELD 12w03 OC4M (=TIM4.CCMR1_Output.OC%sM): Output compare 4 mode
-0x4000081C C   FIELD 12w04 IC4F (=TIM4.CCMR1_Input.IC%sF): Input capture 4 filter
-0x4000081C C   FIELD 15w01 OC4CE (=TIM4.CCMR1_Output.OC%sCE): Output compare 4 clear enable
-0x4000081C C   FIELD 16w01 OC3M_3 (=TIM4.CCMR1_Output.OC%sM_3): Output compare 3 mode, bit 3
-0x4000081C C   FIELD 24w01 OC4M_3 (=TIM4.CCMR1_Output.OC%sM_3): Output compare 4 mode, bit 3
+0x4000081C C   FIELD 10w01 OC4FE (=TIM3.CCMR1_Output.OC%sFE): Output compare 4 fast enable
+0x4000081C C   FIELD 10w02 IC4PSC (=TIM3.CCMR1_Input.IC%sPSC): Input capture 4 prescaler
+0x4000081C C   FIELD 11w01 OC4PE (=TIM3.CCMR1_Output.OC%sPE): Output compare 4 preload enable
+0x4000081C C   FIELD 12w03 OC4M (=TIM3.CCMR1_Output.OC%sM): Output compare 4 mode
+0x4000081C C   FIELD 12w04 IC4F (=TIM3.CCMR1_Input.IC%sF): Input capture 4 filter
+0x4000081C C   FIELD 15w01 OC4CE (=TIM3.CCMR1_Output.OC%sCE): Output compare 4 clear enable
+0x4000081C C   FIELD 16w01 OC3M_3 (=TIM3.CCMR1_Output.OC%sM_3): Output compare 3 mode, bit 3
+0x4000081C C   FIELD 24w01 OC4M_3 (=TIM3.CCMR1_Output.OC%sM_3): Output compare 4 mode, bit 3
 0x40000820 B  REGISTER CCER (rw): capture/compare enable register
 0x40000820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40000820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -378,6 +382,8 @@
 0x40000820 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000824 B  REGISTER CNT (rw): counter
+0x40000824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000824 C   FIELD 00w16 CNT (rw): counter value
 0x40000824 C   FIELD 00w16 CNT: Counter value
 0x40000828 B  REGISTER PSC (rw): prescaler
 0x40000828 C   FIELD 00w16 PSC: Prescaler value
@@ -513,6 +519,8 @@
 0x40000C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40000C24 B  REGISTER CNT (rw): counter
+0x40000C24 B  REGISTER CNT32 (rw): 32-bit counter register
+0x40000C24 C   FIELD 00w32 CNT (rw): counter value
 0x40000C24 C   FIELD 00w32 CNT: low counter value
 0x40000C28 B  REGISTER PSC (rw): prescaler
 0x40000C28 C   FIELD 00w16 PSC: Prescaler value
@@ -556,6 +564,8 @@
 0x40001014 B  REGISTER EGR (wo): event generation register
 0x40001014 C   FIELD 00w01 UG: Update generation
 0x40001024 B  REGISTER CNT (rw): counter
+0x40001024 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40001024 C   FIELD 00w16 CNT (rw): counter value
 0x40001024 C   FIELD 00w16 CNT: Low counter value
 0x40001024 C   FIELD 31w01 UIFCPY: UIF Copy
 0x40001028 B  REGISTER PSC (rw): prescaler
@@ -580,6 +590,8 @@
 0x40001414 B  REGISTER EGR (wo): event generation register
 0x40001414 C   FIELD 00w01 UG: Update generation
 0x40001424 B  REGISTER CNT (rw): counter
+0x40001424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40001424 C   FIELD 00w16 CNT (rw): counter value
 0x40001424 C   FIELD 00w16 CNT: Low counter value
 0x40001424 C   FIELD 31w01 UIFCPY: UIF Copy
 0x40001428 B  REGISTER PSC (rw): prescaler
@@ -696,6 +708,8 @@
 0x40001820 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40001820 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40001824 B  REGISTER CNT (rw): counter
+0x40001824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40001824 C   FIELD 00w16 CNT (rw): counter value
 0x40001824 C   FIELD 00w16 CNT: Counter value
 0x40001828 B  REGISTER PSC (rw): prescaler
 0x40001828 C   FIELD 00w16 PSC: Prescaler value
@@ -827,6 +841,8 @@
 0x40001C20 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40001C20 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40001C24 B  REGISTER CNT (rw): counter
+0x40001C24 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40001C24 C   FIELD 00w16 CNT (rw): counter value
 0x40001C24 C   FIELD 00w16 CNT: Counter value
 0x40001C28 B  REGISTER PSC (rw): prescaler
 0x40001C28 C   FIELD 00w16 PSC: Prescaler value
@@ -924,24 +940,24 @@
 0x40002018 C   FIELD 24w01 OC2M_3: Output compare 2 mode, bit 3
 0x4000201C B  REGISTER CCMR2_Input (rw): capture/compare mode register 2 (input mode)
 0x4000201C B  REGISTER CCMR2_Output (rw): capture/compare mode register 2 (output mode)
-0x4000201C C   FIELD 00w02 CC3S (=TIM14.CCMR1_Output.CC%sS): Capture/Compare 3 selection
+0x4000201C C   FIELD 00w02 CC3S (=TIM13.CCMR1_Output.CC%sS): Capture/Compare 3 selection
 0x4000201C C   FIELD 00w02 CC3S: Capture/compare 3 selection
-0x4000201C C   FIELD 02w01 OC3FE (=TIM14.CCMR1_Output.OC%sFE): Output compare 3 fast enable
-0x4000201C C   FIELD 02w02 IC3PSC (=TIM14.CCMR1_Input.IC%sPSC): Input capture 3 prescaler
-0x4000201C C   FIELD 03w01 OC3PE (=TIM14.CCMR1_Output.OC%sPE): Output compare 3 preload enable
-0x4000201C C   FIELD 04w03 OC3M (=TIM14.CCMR1_Output.OC%sM): Output compare 3 mode
-0x4000201C C   FIELD 04w04 IC3F (=TIM14.CCMR1_Input.IC%sF): Input capture 3 filter
-0x4000201C C   FIELD 07w01 OC3CE (=TIM14.CCMR1_Output.OC%sCE): Output compare 3 clear enable
-0x4000201C C   FIELD 08w02 CC4S (=TIM14.CCMR1_Output.CC%sS): Capture/Compare 4 selection
+0x4000201C C   FIELD 02w01 OC3FE (=TIM13.CCMR1_Output.OC%sFE): Output compare 3 fast enable
+0x4000201C C   FIELD 02w02 IC3PSC (=TIM13.CCMR1_Input.IC%sPSC): Input capture 3 prescaler
+0x4000201C C   FIELD 03w01 OC3PE (=TIM13.CCMR1_Output.OC%sPE): Output compare 3 preload enable
+0x4000201C C   FIELD 04w03 OC3M (=TIM13.CCMR1_Output.OC%sM): Output compare 3 mode
+0x4000201C C   FIELD 04w04 IC3F (=TIM13.CCMR1_Input.IC%sF): Input capture 3 filter
+0x4000201C C   FIELD 07w01 OC3CE (=TIM13.CCMR1_Output.OC%sCE): Output compare 3 clear enable
+0x4000201C C   FIELD 08w02 CC4S (=TIM13.CCMR1_Output.CC%sS): Capture/Compare 4 selection
 0x4000201C C   FIELD 08w02 CC4S: Capture/Compare 4 selection
-0x4000201C C   FIELD 10w01 OC4FE (=TIM14.CCMR1_Output.OC%sFE): Output compare 4 fast enable
-0x4000201C C   FIELD 10w02 IC4PSC (=TIM14.CCMR1_Input.IC%sPSC): Input capture 4 prescaler
-0x4000201C C   FIELD 11w01 OC4PE (=TIM14.CCMR1_Output.OC%sPE): Output compare 4 preload enable
-0x4000201C C   FIELD 12w03 OC4M (=TIM14.CCMR1_Output.OC%sM): Output compare 4 mode
-0x4000201C C   FIELD 12w04 IC4F (=TIM14.CCMR1_Input.IC%sF): Input capture 4 filter
-0x4000201C C   FIELD 15w01 OC4CE (=TIM14.CCMR1_Output.OC%sCE): Output compare 4 clear enable
-0x4000201C C   FIELD 16w01 OC3M_3 (=TIM14.CCMR1_Output.OC%sM_3): Output compare 3 mode, bit 3
-0x4000201C C   FIELD 24w01 OC4M_3 (=TIM14.CCMR1_Output.OC%sM_3): Output compare 4 mode, bit 3
+0x4000201C C   FIELD 10w01 OC4FE (=TIM13.CCMR1_Output.OC%sFE): Output compare 4 fast enable
+0x4000201C C   FIELD 10w02 IC4PSC (=TIM13.CCMR1_Input.IC%sPSC): Input capture 4 prescaler
+0x4000201C C   FIELD 11w01 OC4PE (=TIM13.CCMR1_Output.OC%sPE): Output compare 4 preload enable
+0x4000201C C   FIELD 12w03 OC4M (=TIM13.CCMR1_Output.OC%sM): Output compare 4 mode
+0x4000201C C   FIELD 12w04 IC4F (=TIM13.CCMR1_Input.IC%sF): Input capture 4 filter
+0x4000201C C   FIELD 15w01 OC4CE (=TIM13.CCMR1_Output.OC%sCE): Output compare 4 clear enable
+0x4000201C C   FIELD 16w01 OC3M_3 (=TIM13.CCMR1_Output.OC%sM_3): Output compare 3 mode, bit 3
+0x4000201C C   FIELD 24w01 OC4M_3 (=TIM13.CCMR1_Output.OC%sM_3): Output compare 4 mode, bit 3
 0x40002020 B  REGISTER CCER (rw): capture/compare enable register
 0x40002020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
 0x40002020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
@@ -956,6 +972,8 @@
 0x40002020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40002020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x40002024 B  REGISTER CNT (rw): counter
+0x40002024 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40002024 C   FIELD 00w16 CNT (rw): counter value
 0x40002024 C   FIELD 00w16 CNT: Counter value
 0x40002028 B  REGISTER PSC (rw): prescaler
 0x40002028 C   FIELD 00w16 PSC: Prescaler value
@@ -4397,6 +4415,8 @@
 0x4000E020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x4000E020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x4000E024 B  REGISTER CNT (rw): counter
+0x4000E024 B  REGISTER CNT32 (rw): 32-bit counter register
+0x4000E024 C   FIELD 00w32 CNT (rw): counter value
 0x4000E024 C   FIELD 00w32 CNT: low counter value
 0x4000E028 B  REGISTER PSC (rw): prescaler
 0x4000E028 C   FIELD 00w16 PSC: Prescaler value
@@ -4532,6 +4552,8 @@
 0x4000E420 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x4000E420 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
 0x4000E424 B  REGISTER CNT (rw): counter
+0x4000E424 B  REGISTER CNT32 (rw): 32-bit counter register
+0x4000E424 C   FIELD 00w32 CNT (rw): counter value
 0x4000E424 C   FIELD 00w32 CNT: low counter value
 0x4000E428 B  REGISTER PSC (rw): prescaler
 0x4000E428 C   FIELD 00w16 PSC: Prescaler value
@@ -4697,7 +4719,9 @@
 0x40010020 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40010020 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x40010020 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x40010024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40010024 B  REGISTER CNT: counter
+0x40010024 C   FIELD 00w16 CNT (rw): counter value
 0x40010024 C   FIELD 00w16 CNT (rw): counter value
 0x40010024 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x40010028 B  REGISTER PSC (rw): prescaler
@@ -4912,7 +4936,9 @@
 0x40010420 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40010420 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x40010420 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x40010424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40010424 B  REGISTER CNT: counter
+0x40010424 C   FIELD 00w16 CNT (rw): counter value
 0x40010424 C   FIELD 00w16 CNT (rw): counter value
 0x40010424 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x40010428 B  REGISTER PSC (rw): prescaler
@@ -5839,7 +5865,9 @@
 0x40014020 C   FIELD 04w01 CC2E: Capture/Compare 2 output enable
 0x40014020 C   FIELD 05w01 CC2P: Capture/Compare 2 output Polarity
 0x40014020 C   FIELD 07w01 CC2NP: Capture/Compare 2 output Polarity
+0x40014024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014024 B  REGISTER CNT: counter
+0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x40014028 B  REGISTER PSC (rw): prescaler
@@ -5927,7 +5955,9 @@
 0x40014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014420 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014420 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014424 B  REGISTER CNT: counter
+0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014428 B  REGISTER PSC (rw): prescaler
@@ -6012,7 +6042,9 @@
 0x40014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014820 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014820 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40014824 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014824 B  REGISTER CNT: counter
+0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014828 B  REGISTER PSC (rw): prescaler
