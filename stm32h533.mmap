@@ -4975,76 +4975,21 @@
 0x4002034C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
 0x4002034C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
 0x40020350 B  CLUSTER CH2D6: 2D-addressing channel cluster
-0x40020350 B  REGISTER LBAR6 (rw): GPDMA channel 6 linked-list base address register
-0x40020350 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x4002035C B  REGISTER FCR6 (wo): GPDMA channel 6 flag clear register
-0x4002035C C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x4002035C C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x4002035C C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x4002035C C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x4002035C C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x4002035C C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x4002035C C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x40020360 B  REGISTER SR6 (ro): GPDMA channel 6 status register
-0x40020360 C   FIELD 00w01 IDLEF (ro): idle flag
-0x40020360 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x40020360 C   FIELD 09w01 HTF (ro): half transfer flag
-0x40020360 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x40020360 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x40020360 C   FIELD 12w01 USEF (ro): user setting error flag
-0x40020360 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x40020360 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x40020360 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x40020364 B  REGISTER CR6 (rw): GPDMA channel 6 control register
-0x40020364 C   FIELD 00w01 EN (rw): enable
-0x40020364 C   FIELD 01w01 RESET (wo): reset
-0x40020364 C   FIELD 02w01 SUSP (rw): suspend
-0x40020364 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x40020364 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x40020364 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x40020364 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x40020364 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x40020364 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x40020364 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x40020364 C   FIELD 16w01 LSM (rw): Link step mode
-0x40020364 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x40020364 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x40020390 B  REGISTER TR16 (rw): GPDMA channel 6 transfer register 1
-0x40020390 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x40020390 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x40020390 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x40020390 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x40020390 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x40020390 C   FIELD 14w01 SAP (rw): source allocated port
-0x40020390 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x40020390 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x40020390 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x40020390 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x40020390 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x40020390 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x40020390 C   FIELD 30w01 DAP (rw): destination allocated port
-0x40020390 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x40020394 B  REGISTER TR26 (rw): GPDMA channel 6 transfer register 2
-0x40020394 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x40020394 C   FIELD 09w01 SWREQ (rw): software request
-0x40020394 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x40020394 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x40020394 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x40020394 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x40020394 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x40020394 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x40020394 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x40020350 B  REGISTER LBAR6 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x4002035C B  REGISTER FCR6 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x40020360 B  REGISTER SR6 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x40020364 B  REGISTER CR6 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x40020390 B  REGISTER TR16 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x40020394 B  REGISTER TR26 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x40020398 B  REGISTER BR16 (rw): GPDMA channel 6 alternate block register 1
-0x40020398 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x40020398 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x40020398 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x40020398 C   FIELD 28w01 SDEC (rw): source address decrement
 0x40020398 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x40020398 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x40020398 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x4002039C B  REGISTER SAR6 (rw): GPDMA channel 6 source address register
-0x4002039C C   FIELD 00w32 SA (rw): source address
-0x400203A0 B  REGISTER DAR6 (rw): GPDMA channel 6 destination address register
-0x400203A0 C   FIELD 00w32 DA (rw): destination address
+0x4002039C B  REGISTER SAR6 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x400203A0 B  REGISTER DAR6 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x400203A4 B  REGISTER TR36 (rw): GPDMA channel 6 transfer register 3
 0x400203A4 C   FIELD 00w13 SAO (rw): source address offset increment
 0x400203A4 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -5052,86 +4997,31 @@
 0x400203A8 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x400203A8 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x400203CC B  REGISTER LLR6 (rw): GPDMA channel 6 alternate linked-list address register
-0x400203CC C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x400203CC C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x400203CC C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x400203CC C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x400203CC C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x400203CC C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x400203CC C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x400203CC C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x400203CC C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x400203CC C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x400203CC C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x400203CC C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x400203CC C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x400203CC C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x400203CC C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x400203CC C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x400203D0 B  CLUSTER CH2D7: 2D-addressing channel cluster
-0x400203D0 B  REGISTER LBAR7 (rw): GPDMA channel 6 linked-list base address register
-0x400203D0 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x400203DC B  REGISTER FCR7 (wo): GPDMA channel 6 flag clear register
-0x400203DC C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x400203DC C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x400203DC C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x400203DC C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x400203DC C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x400203DC C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x400203DC C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x400203E0 B  REGISTER SR7 (ro): GPDMA channel 6 status register
-0x400203E0 C   FIELD 00w01 IDLEF (ro): idle flag
-0x400203E0 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x400203E0 C   FIELD 09w01 HTF (ro): half transfer flag
-0x400203E0 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x400203E0 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x400203E0 C   FIELD 12w01 USEF (ro): user setting error flag
-0x400203E0 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x400203E0 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x400203E0 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x400203E4 B  REGISTER CR7 (rw): GPDMA channel 6 control register
-0x400203E4 C   FIELD 00w01 EN (rw): enable
-0x400203E4 C   FIELD 01w01 RESET (wo): reset
-0x400203E4 C   FIELD 02w01 SUSP (rw): suspend
-0x400203E4 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x400203E4 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x400203E4 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x400203E4 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x400203E4 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x400203E4 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x400203E4 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x400203E4 C   FIELD 16w01 LSM (rw): Link step mode
-0x400203E4 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x400203E4 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x40020410 B  REGISTER TR17 (rw): GPDMA channel 6 transfer register 1
-0x40020410 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x40020410 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x40020410 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x40020410 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x40020410 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x40020410 C   FIELD 14w01 SAP (rw): source allocated port
-0x40020410 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x40020410 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x40020410 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x40020410 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x40020410 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x40020410 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x40020410 C   FIELD 30w01 DAP (rw): destination allocated port
-0x40020410 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x40020414 B  REGISTER TR27 (rw): GPDMA channel 6 transfer register 2
-0x40020414 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x40020414 C   FIELD 09w01 SWREQ (rw): software request
-0x40020414 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x40020414 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x40020414 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x40020414 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x40020414 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x40020414 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x40020414 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x400203D0 B  REGISTER LBAR7 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x400203DC B  REGISTER FCR7 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x400203E0 B  REGISTER SR7 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x400203E4 B  REGISTER CR7 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x40020410 B  REGISTER TR17 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x40020414 B  REGISTER TR27 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x40020418 B  REGISTER BR17 (rw): GPDMA channel 6 alternate block register 1
-0x40020418 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x40020418 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x40020418 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x40020418 C   FIELD 28w01 SDEC (rw): source address decrement
 0x40020418 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x40020418 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x40020418 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x4002041C B  REGISTER SAR7 (rw): GPDMA channel 6 source address register
-0x4002041C C   FIELD 00w32 SA (rw): source address
-0x40020420 B  REGISTER DAR7 (rw): GPDMA channel 6 destination address register
-0x40020420 C   FIELD 00w32 DA (rw): destination address
+0x4002041C B  REGISTER SAR7 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x40020420 B  REGISTER DAR7 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x40020424 B  REGISTER TR37 (rw): GPDMA channel 6 transfer register 3
 0x40020424 C   FIELD 00w13 SAO (rw): source address offset increment
 0x40020424 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -5139,15 +5029,15 @@
 0x40020428 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x40020428 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x4002044C B  REGISTER LLR7 (rw): GPDMA channel 6 alternate linked-list address register
-0x4002044C C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x4002044C C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x4002044C C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x4002044C C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x4002044C C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x4002044C C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x4002044C C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x4002044C C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x4002044C C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x4002044C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x4002044C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x4002044C C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x4002044C C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x4002044C C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x4002044C C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x4002044C C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x40021000 A PERIPHERAL GPDMA2
 0x40021000 B  REGISTER SECCFGR (rw): GPDMA secure configuration register
 0x40021000 C   FIELD 00w01 SEC0 (rw): secure state of channel x
@@ -5639,76 +5529,21 @@
 0x4002134C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
 0x4002134C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
 0x40021350 B  CLUSTER CH2D6: 2D-addressing channel cluster
-0x40021350 B  REGISTER LBAR6 (rw): GPDMA channel 6 linked-list base address register
-0x40021350 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x4002135C B  REGISTER FCR6 (wo): GPDMA channel 6 flag clear register
-0x4002135C C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x4002135C C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x4002135C C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x4002135C C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x4002135C C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x4002135C C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x4002135C C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x40021360 B  REGISTER SR6 (ro): GPDMA channel 6 status register
-0x40021360 C   FIELD 00w01 IDLEF (ro): idle flag
-0x40021360 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x40021360 C   FIELD 09w01 HTF (ro): half transfer flag
-0x40021360 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x40021360 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x40021360 C   FIELD 12w01 USEF (ro): user setting error flag
-0x40021360 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x40021360 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x40021360 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x40021364 B  REGISTER CR6 (rw): GPDMA channel 6 control register
-0x40021364 C   FIELD 00w01 EN (rw): enable
-0x40021364 C   FIELD 01w01 RESET (wo): reset
-0x40021364 C   FIELD 02w01 SUSP (rw): suspend
-0x40021364 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x40021364 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x40021364 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x40021364 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x40021364 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x40021364 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x40021364 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x40021364 C   FIELD 16w01 LSM (rw): Link step mode
-0x40021364 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x40021364 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x40021390 B  REGISTER TR16 (rw): GPDMA channel 6 transfer register 1
-0x40021390 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x40021390 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x40021390 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x40021390 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x40021390 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x40021390 C   FIELD 14w01 SAP (rw): source allocated port
-0x40021390 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x40021390 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x40021390 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x40021390 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x40021390 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x40021390 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x40021390 C   FIELD 30w01 DAP (rw): destination allocated port
-0x40021390 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x40021394 B  REGISTER TR26 (rw): GPDMA channel 6 transfer register 2
-0x40021394 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x40021394 C   FIELD 09w01 SWREQ (rw): software request
-0x40021394 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x40021394 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x40021394 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x40021394 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x40021394 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x40021394 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x40021394 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x40021350 B  REGISTER LBAR6 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x4002135C B  REGISTER FCR6 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x40021360 B  REGISTER SR6 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x40021364 B  REGISTER CR6 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x40021390 B  REGISTER TR16 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x40021394 B  REGISTER TR26 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x40021398 B  REGISTER BR16 (rw): GPDMA channel 6 alternate block register 1
-0x40021398 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x40021398 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x40021398 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x40021398 C   FIELD 28w01 SDEC (rw): source address decrement
 0x40021398 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x40021398 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x40021398 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x4002139C B  REGISTER SAR6 (rw): GPDMA channel 6 source address register
-0x4002139C C   FIELD 00w32 SA (rw): source address
-0x400213A0 B  REGISTER DAR6 (rw): GPDMA channel 6 destination address register
-0x400213A0 C   FIELD 00w32 DA (rw): destination address
+0x4002139C B  REGISTER SAR6 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x400213A0 B  REGISTER DAR6 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x400213A4 B  REGISTER TR36 (rw): GPDMA channel 6 transfer register 3
 0x400213A4 C   FIELD 00w13 SAO (rw): source address offset increment
 0x400213A4 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -5716,86 +5551,31 @@
 0x400213A8 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x400213A8 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x400213CC B  REGISTER LLR6 (rw): GPDMA channel 6 alternate linked-list address register
-0x400213CC C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x400213CC C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x400213CC C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x400213CC C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x400213CC C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x400213CC C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x400213CC C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x400213CC C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x400213CC C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x400213CC C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x400213CC C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x400213CC C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x400213CC C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x400213CC C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x400213CC C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x400213CC C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x400213D0 B  CLUSTER CH2D7: 2D-addressing channel cluster
-0x400213D0 B  REGISTER LBAR7 (rw): GPDMA channel 6 linked-list base address register
-0x400213D0 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x400213DC B  REGISTER FCR7 (wo): GPDMA channel 6 flag clear register
-0x400213DC C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x400213DC C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x400213DC C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x400213DC C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x400213DC C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x400213DC C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x400213DC C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x400213E0 B  REGISTER SR7 (ro): GPDMA channel 6 status register
-0x400213E0 C   FIELD 00w01 IDLEF (ro): idle flag
-0x400213E0 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x400213E0 C   FIELD 09w01 HTF (ro): half transfer flag
-0x400213E0 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x400213E0 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x400213E0 C   FIELD 12w01 USEF (ro): user setting error flag
-0x400213E0 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x400213E0 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x400213E0 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x400213E4 B  REGISTER CR7 (rw): GPDMA channel 6 control register
-0x400213E4 C   FIELD 00w01 EN (rw): enable
-0x400213E4 C   FIELD 01w01 RESET (wo): reset
-0x400213E4 C   FIELD 02w01 SUSP (rw): suspend
-0x400213E4 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x400213E4 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x400213E4 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x400213E4 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x400213E4 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x400213E4 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x400213E4 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x400213E4 C   FIELD 16w01 LSM (rw): Link step mode
-0x400213E4 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x400213E4 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x40021410 B  REGISTER TR17 (rw): GPDMA channel 6 transfer register 1
-0x40021410 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x40021410 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x40021410 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x40021410 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x40021410 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x40021410 C   FIELD 14w01 SAP (rw): source allocated port
-0x40021410 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x40021410 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x40021410 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x40021410 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x40021410 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x40021410 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x40021410 C   FIELD 30w01 DAP (rw): destination allocated port
-0x40021410 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x40021414 B  REGISTER TR27 (rw): GPDMA channel 6 transfer register 2
-0x40021414 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x40021414 C   FIELD 09w01 SWREQ (rw): software request
-0x40021414 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x40021414 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x40021414 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x40021414 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x40021414 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x40021414 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x40021414 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x400213D0 B  REGISTER LBAR7 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x400213DC B  REGISTER FCR7 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x400213E0 B  REGISTER SR7 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x400213E4 B  REGISTER CR7 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x40021410 B  REGISTER TR17 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x40021414 B  REGISTER TR27 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x40021418 B  REGISTER BR17 (rw): GPDMA channel 6 alternate block register 1
-0x40021418 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x40021418 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x40021418 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x40021418 C   FIELD 28w01 SDEC (rw): source address decrement
 0x40021418 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x40021418 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x40021418 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x4002141C B  REGISTER SAR7 (rw): GPDMA channel 6 source address register
-0x4002141C C   FIELD 00w32 SA (rw): source address
-0x40021420 B  REGISTER DAR7 (rw): GPDMA channel 6 destination address register
-0x40021420 C   FIELD 00w32 DA (rw): destination address
+0x4002141C B  REGISTER SAR7 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x40021420 B  REGISTER DAR7 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x40021424 B  REGISTER TR37 (rw): GPDMA channel 6 transfer register 3
 0x40021424 C   FIELD 00w13 SAO (rw): source address offset increment
 0x40021424 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -5803,15 +5583,15 @@
 0x40021428 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x40021428 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x4002144C B  REGISTER LLR7 (rw): GPDMA channel 6 alternate linked-list address register
-0x4002144C C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x4002144C C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x4002144C C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x4002144C C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x4002144C C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x4002144C C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x4002144C C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x4002144C C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x4002144C C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x4002144C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x4002144C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x4002144C C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x4002144C C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x4002144C C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x4002144C C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x4002144C C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x40022000 A PERIPHERAL FLASH
 0x40022000 B  REGISTER ACR (rw): FLASH access control register
 0x40022000 C   FIELD 00w04 LATENCY (rw): Read latency
@@ -16473,76 +16253,21 @@
 0x5002034C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
 0x5002034C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
 0x50020350 B  CLUSTER CH2D6: 2D-addressing channel cluster
-0x50020350 B  REGISTER LBAR6 (rw): GPDMA channel 6 linked-list base address register
-0x50020350 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x5002035C B  REGISTER FCR6 (wo): GPDMA channel 6 flag clear register
-0x5002035C C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x5002035C C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x5002035C C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x5002035C C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x5002035C C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x5002035C C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x5002035C C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x50020360 B  REGISTER SR6 (ro): GPDMA channel 6 status register
-0x50020360 C   FIELD 00w01 IDLEF (ro): idle flag
-0x50020360 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x50020360 C   FIELD 09w01 HTF (ro): half transfer flag
-0x50020360 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x50020360 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x50020360 C   FIELD 12w01 USEF (ro): user setting error flag
-0x50020360 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x50020360 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x50020360 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x50020364 B  REGISTER CR6 (rw): GPDMA channel 6 control register
-0x50020364 C   FIELD 00w01 EN (rw): enable
-0x50020364 C   FIELD 01w01 RESET (wo): reset
-0x50020364 C   FIELD 02w01 SUSP (rw): suspend
-0x50020364 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x50020364 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x50020364 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x50020364 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x50020364 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x50020364 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x50020364 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x50020364 C   FIELD 16w01 LSM (rw): Link step mode
-0x50020364 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x50020364 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x50020390 B  REGISTER TR16 (rw): GPDMA channel 6 transfer register 1
-0x50020390 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x50020390 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x50020390 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x50020390 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x50020390 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x50020390 C   FIELD 14w01 SAP (rw): source allocated port
-0x50020390 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x50020390 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x50020390 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x50020390 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x50020390 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x50020390 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x50020390 C   FIELD 30w01 DAP (rw): destination allocated port
-0x50020390 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x50020394 B  REGISTER TR26 (rw): GPDMA channel 6 transfer register 2
-0x50020394 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x50020394 C   FIELD 09w01 SWREQ (rw): software request
-0x50020394 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x50020394 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x50020394 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x50020394 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x50020394 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x50020394 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x50020394 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x50020350 B  REGISTER LBAR6 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x5002035C B  REGISTER FCR6 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x50020360 B  REGISTER SR6 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x50020364 B  REGISTER CR6 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x50020390 B  REGISTER TR16 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x50020394 B  REGISTER TR26 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x50020398 B  REGISTER BR16 (rw): GPDMA channel 6 alternate block register 1
-0x50020398 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x50020398 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x50020398 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x50020398 C   FIELD 28w01 SDEC (rw): source address decrement
 0x50020398 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x50020398 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x50020398 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x5002039C B  REGISTER SAR6 (rw): GPDMA channel 6 source address register
-0x5002039C C   FIELD 00w32 SA (rw): source address
-0x500203A0 B  REGISTER DAR6 (rw): GPDMA channel 6 destination address register
-0x500203A0 C   FIELD 00w32 DA (rw): destination address
+0x5002039C B  REGISTER SAR6 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x500203A0 B  REGISTER DAR6 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x500203A4 B  REGISTER TR36 (rw): GPDMA channel 6 transfer register 3
 0x500203A4 C   FIELD 00w13 SAO (rw): source address offset increment
 0x500203A4 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -16550,86 +16275,31 @@
 0x500203A8 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x500203A8 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x500203CC B  REGISTER LLR6 (rw): GPDMA channel 6 alternate linked-list address register
-0x500203CC C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x500203CC C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x500203CC C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x500203CC C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x500203CC C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x500203CC C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x500203CC C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x500203CC C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x500203CC C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x500203CC C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x500203CC C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x500203CC C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x500203CC C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x500203CC C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x500203CC C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x500203CC C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x500203D0 B  CLUSTER CH2D7: 2D-addressing channel cluster
-0x500203D0 B  REGISTER LBAR7 (rw): GPDMA channel 6 linked-list base address register
-0x500203D0 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x500203DC B  REGISTER FCR7 (wo): GPDMA channel 6 flag clear register
-0x500203DC C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x500203DC C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x500203DC C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x500203DC C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x500203DC C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x500203DC C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x500203DC C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x500203E0 B  REGISTER SR7 (ro): GPDMA channel 6 status register
-0x500203E0 C   FIELD 00w01 IDLEF (ro): idle flag
-0x500203E0 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x500203E0 C   FIELD 09w01 HTF (ro): half transfer flag
-0x500203E0 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x500203E0 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x500203E0 C   FIELD 12w01 USEF (ro): user setting error flag
-0x500203E0 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x500203E0 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x500203E0 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x500203E4 B  REGISTER CR7 (rw): GPDMA channel 6 control register
-0x500203E4 C   FIELD 00w01 EN (rw): enable
-0x500203E4 C   FIELD 01w01 RESET (wo): reset
-0x500203E4 C   FIELD 02w01 SUSP (rw): suspend
-0x500203E4 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x500203E4 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x500203E4 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x500203E4 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x500203E4 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x500203E4 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x500203E4 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x500203E4 C   FIELD 16w01 LSM (rw): Link step mode
-0x500203E4 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x500203E4 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x50020410 B  REGISTER TR17 (rw): GPDMA channel 6 transfer register 1
-0x50020410 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x50020410 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x50020410 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x50020410 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x50020410 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x50020410 C   FIELD 14w01 SAP (rw): source allocated port
-0x50020410 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x50020410 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x50020410 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x50020410 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x50020410 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x50020410 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x50020410 C   FIELD 30w01 DAP (rw): destination allocated port
-0x50020410 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x50020414 B  REGISTER TR27 (rw): GPDMA channel 6 transfer register 2
-0x50020414 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x50020414 C   FIELD 09w01 SWREQ (rw): software request
-0x50020414 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x50020414 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x50020414 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x50020414 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x50020414 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x50020414 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x50020414 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x500203D0 B  REGISTER LBAR7 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x500203DC B  REGISTER FCR7 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x500203E0 B  REGISTER SR7 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x500203E4 B  REGISTER CR7 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x50020410 B  REGISTER TR17 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x50020414 B  REGISTER TR27 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x50020418 B  REGISTER BR17 (rw): GPDMA channel 6 alternate block register 1
-0x50020418 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x50020418 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x50020418 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x50020418 C   FIELD 28w01 SDEC (rw): source address decrement
 0x50020418 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x50020418 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x50020418 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x5002041C B  REGISTER SAR7 (rw): GPDMA channel 6 source address register
-0x5002041C C   FIELD 00w32 SA (rw): source address
-0x50020420 B  REGISTER DAR7 (rw): GPDMA channel 6 destination address register
-0x50020420 C   FIELD 00w32 DA (rw): destination address
+0x5002041C B  REGISTER SAR7 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x50020420 B  REGISTER DAR7 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x50020424 B  REGISTER TR37 (rw): GPDMA channel 6 transfer register 3
 0x50020424 C   FIELD 00w13 SAO (rw): source address offset increment
 0x50020424 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -16637,15 +16307,15 @@
 0x50020428 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x50020428 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x5002044C B  REGISTER LLR7 (rw): GPDMA channel 6 alternate linked-list address register
-0x5002044C C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x5002044C C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x5002044C C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x5002044C C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x5002044C C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x5002044C C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x5002044C C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x5002044C C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x5002044C C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x5002044C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x5002044C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x5002044C C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x5002044C C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x5002044C C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x5002044C C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x5002044C C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x50021000 A PERIPHERAL GPDMA2_S
 0x50021000 B  REGISTER SECCFGR (rw): GPDMA secure configuration register
 0x50021000 C   FIELD 00w01 SEC0 (rw): secure state of channel x
@@ -17137,76 +16807,21 @@
 0x5002134C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
 0x5002134C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
 0x50021350 B  CLUSTER CH2D6: 2D-addressing channel cluster
-0x50021350 B  REGISTER LBAR6 (rw): GPDMA channel 6 linked-list base address register
-0x50021350 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x5002135C B  REGISTER FCR6 (wo): GPDMA channel 6 flag clear register
-0x5002135C C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x5002135C C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x5002135C C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x5002135C C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x5002135C C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x5002135C C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x5002135C C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x50021360 B  REGISTER SR6 (ro): GPDMA channel 6 status register
-0x50021360 C   FIELD 00w01 IDLEF (ro): idle flag
-0x50021360 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x50021360 C   FIELD 09w01 HTF (ro): half transfer flag
-0x50021360 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x50021360 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x50021360 C   FIELD 12w01 USEF (ro): user setting error flag
-0x50021360 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x50021360 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x50021360 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x50021364 B  REGISTER CR6 (rw): GPDMA channel 6 control register
-0x50021364 C   FIELD 00w01 EN (rw): enable
-0x50021364 C   FIELD 01w01 RESET (wo): reset
-0x50021364 C   FIELD 02w01 SUSP (rw): suspend
-0x50021364 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x50021364 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x50021364 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x50021364 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x50021364 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x50021364 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x50021364 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x50021364 C   FIELD 16w01 LSM (rw): Link step mode
-0x50021364 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x50021364 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x50021390 B  REGISTER TR16 (rw): GPDMA channel 6 transfer register 1
-0x50021390 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x50021390 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x50021390 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x50021390 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x50021390 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x50021390 C   FIELD 14w01 SAP (rw): source allocated port
-0x50021390 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x50021390 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x50021390 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x50021390 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x50021390 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x50021390 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x50021390 C   FIELD 30w01 DAP (rw): destination allocated port
-0x50021390 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x50021394 B  REGISTER TR26 (rw): GPDMA channel 6 transfer register 2
-0x50021394 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x50021394 C   FIELD 09w01 SWREQ (rw): software request
-0x50021394 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x50021394 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x50021394 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x50021394 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x50021394 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x50021394 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x50021394 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x50021350 B  REGISTER LBAR6 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x5002135C B  REGISTER FCR6 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x50021360 B  REGISTER SR6 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x50021364 B  REGISTER CR6 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x50021390 B  REGISTER TR16 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x50021394 B  REGISTER TR26 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x50021398 B  REGISTER BR16 (rw): GPDMA channel 6 alternate block register 1
-0x50021398 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x50021398 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x50021398 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x50021398 C   FIELD 28w01 SDEC (rw): source address decrement
 0x50021398 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x50021398 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x50021398 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x5002139C B  REGISTER SAR6 (rw): GPDMA channel 6 source address register
-0x5002139C C   FIELD 00w32 SA (rw): source address
-0x500213A0 B  REGISTER DAR6 (rw): GPDMA channel 6 destination address register
-0x500213A0 C   FIELD 00w32 DA (rw): destination address
+0x5002139C B  REGISTER SAR6 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x500213A0 B  REGISTER DAR6 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x500213A4 B  REGISTER TR36 (rw): GPDMA channel 6 transfer register 3
 0x500213A4 C   FIELD 00w13 SAO (rw): source address offset increment
 0x500213A4 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -17214,86 +16829,31 @@
 0x500213A8 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x500213A8 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x500213CC B  REGISTER LLR6 (rw): GPDMA channel 6 alternate linked-list address register
-0x500213CC C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x500213CC C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x500213CC C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x500213CC C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x500213CC C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x500213CC C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x500213CC C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x500213CC C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x500213CC C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x500213CC C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x500213CC C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x500213CC C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x500213CC C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x500213CC C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x500213CC C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x500213CC C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x500213D0 B  CLUSTER CH2D7: 2D-addressing channel cluster
-0x500213D0 B  REGISTER LBAR7 (rw): GPDMA channel 6 linked-list base address register
-0x500213D0 C   FIELD 16w16 LBA (rw): linked-list base address of GPDMA channel x
-0x500213DC B  REGISTER FCR7 (wo): GPDMA channel 6 flag clear register
-0x500213DC C   FIELD 08w01 TCF (wo): transfer complete flag clear
-0x500213DC C   FIELD 09w01 HTF (wo): half transfer flag clear
-0x500213DC C   FIELD 10w01 DTEF (wo): data transfer error flag clear
-0x500213DC C   FIELD 11w01 ULEF (wo): update link transfer error flag clear
-0x500213DC C   FIELD 12w01 USEF (wo): user setting error flag clear
-0x500213DC C   FIELD 13w01 SUSPF (wo): completed suspension flag clear
-0x500213DC C   FIELD 14w01 TOF (wo): trigger overrun flag clear
-0x500213E0 B  REGISTER SR7 (ro): GPDMA channel 6 status register
-0x500213E0 C   FIELD 00w01 IDLEF (ro): idle flag
-0x500213E0 C   FIELD 08w01 TCF (ro): transfer complete flag
-0x500213E0 C   FIELD 09w01 HTF (ro): half transfer flag
-0x500213E0 C   FIELD 10w01 DTEF (ro): data transfer error flag
-0x500213E0 C   FIELD 11w01 ULEF (ro): update link transfer error flag
-0x500213E0 C   FIELD 12w01 USEF (ro): user setting error flag
-0x500213E0 C   FIELD 13w01 SUSPF (ro): completed suspension flag
-0x500213E0 C   FIELD 14w01 TOF (ro): trigger overrun flag
-0x500213E0 C   FIELD 16w08 FIFOL (ro): monitored FIFO level
-0x500213E4 B  REGISTER CR7 (rw): GPDMA channel 6 control register
-0x500213E4 C   FIELD 00w01 EN (rw): enable
-0x500213E4 C   FIELD 01w01 RESET (wo): reset
-0x500213E4 C   FIELD 02w01 SUSP (rw): suspend
-0x500213E4 C   FIELD 08w01 TCIE (rw): transfer complete interrupt enable
-0x500213E4 C   FIELD 09w01 HTIE (rw): half transfer complete interrupt enable
-0x500213E4 C   FIELD 10w01 DTEIE (rw): data transfer error interrupt enable
-0x500213E4 C   FIELD 11w01 ULEIE (rw): update link transfer error interrupt enable
-0x500213E4 C   FIELD 12w01 USEIE (rw): user setting error interrupt enable
-0x500213E4 C   FIELD 13w01 SUSPIE (rw): completed suspension interrupt enable
-0x500213E4 C   FIELD 14w01 TOIE (rw): trigger overrun interrupt enable
-0x500213E4 C   FIELD 16w01 LSM (rw): Link step mode
-0x500213E4 C   FIELD 17w01 LAP (rw): linked-list allocated port
-0x500213E4 C   FIELD 22w02 PRIO (rw): priority level of the channel x GPDMA transfer versus others
-0x50021410 B  REGISTER TR17 (rw): GPDMA channel 6 transfer register 1
-0x50021410 C   FIELD 00w02 SDW_LOG2 (rw): binary logarithm of the source data width of a burst in bytes
-0x50021410 C   FIELD 03w01 SINC (rw): source incrementing burst
-0x50021410 C   FIELD 04w06 SBL_1 (rw): source burst length minus 1, between 0 and 63
-0x50021410 C   FIELD 11w02 PAM (rw): padding/alignment mode
-0x50021410 C   FIELD 13w01 SBX (rw): source byte exchange within the unaligned half-word of each source word
-0x50021410 C   FIELD 14w01 SAP (rw): source allocated port
-0x50021410 C   FIELD 15w01 SSEC (rw): security attribute of the GPDMA transfer from the source
-0x50021410 C   FIELD 16w02 DDW_LOG2 (rw): binary logarithm of the destination data width of a burst, in bytes
-0x50021410 C   FIELD 19w01 DINC (rw): destination incrementing burst
-0x50021410 C   FIELD 20w06 DBL_1 (rw): destination burst length minus 1, between 0 and 63
-0x50021410 C   FIELD 26w01 DBX (rw): destination byte exchange
-0x50021410 C   FIELD 27w01 DHX (rw): destination half-word exchange
-0x50021410 C   FIELD 30w01 DAP (rw): destination allocated port
-0x50021410 C   FIELD 31w01 DSEC (rw): security attribute of the GPDMA transfer to the destination
-0x50021414 B  REGISTER TR27 (rw): GPDMA channel 6 transfer register 2
-0x50021414 C   FIELD 00w08 REQSEL (rw): GPDMA hardware request selection
-0x50021414 C   FIELD 09w01 SWREQ (rw): software request
-0x50021414 C   FIELD 10w01 DREQ (rw): destination hardware request
-0x50021414 C   FIELD 11w01 BREQ (rw): Block hardware request
-0x50021414 C   FIELD 12w01 PFREQ (rw): Hardware request in peripheral flow control mode
-0x50021414 C   FIELD 14w02 TRIGM (rw): trigger mode
-0x50021414 C   FIELD 16w06 TRIGSEL (rw): trigger event input selection
-0x50021414 C   FIELD 24w02 TRIGPOL (rw): trigger event polarity
-0x50021414 C   FIELD 30w02 TCEM (rw): transfer complete event mode
+0x500213D0 B  REGISTER LBAR7 (=GPDMA1.CH%s.LBAR): GPDMA channel 6 linked-list base address register
+0x500213DC B  REGISTER FCR7 (=GPDMA1.CH%s.FCR): GPDMA channel 6 flag clear register
+0x500213E0 B  REGISTER SR7 (=GPDMA1.CH%s.SR): GPDMA channel 6 status register
+0x500213E4 B  REGISTER CR7 (=GPDMA1.CH%s.CR): GPDMA channel 6 control register
+0x50021410 B  REGISTER TR17 (=GPDMA1.CH%s.TR1): GPDMA channel 6 transfer register 1
+0x50021414 B  REGISTER TR27 (=GPDMA1.CH%s.TR2): GPDMA channel 6 transfer register 2
 0x50021418 B  REGISTER BR17 (rw): GPDMA channel 6 alternate block register 1
-0x50021418 C   FIELD 00w16 BNDT (rw): block number of data bytes to transfer from the source
+0x50021418 C   FIELD 00w16 BNDT (=GPDMA1.CH%s.BR1.BNDT) (rw): block number of data bytes to transfer from the source
 0x50021418 C   FIELD 16w11 BRC (rw): Block repeat counter
 0x50021418 C   FIELD 28w01 SDEC (rw): source address decrement
 0x50021418 C   FIELD 29w01 DDEC (rw): destination address decrement
 0x50021418 C   FIELD 30w01 BRSDEC (rw): Block repeat source address decrement
 0x50021418 C   FIELD 31w01 BRDDEC (rw): Block repeat destination address decrement
-0x5002141C B  REGISTER SAR7 (rw): GPDMA channel 6 source address register
-0x5002141C C   FIELD 00w32 SA (rw): source address
-0x50021420 B  REGISTER DAR7 (rw): GPDMA channel 6 destination address register
-0x50021420 C   FIELD 00w32 DA (rw): destination address
+0x5002141C B  REGISTER SAR7 (=GPDMA1.CH%s.SAR): GPDMA channel 6 source address register
+0x50021420 B  REGISTER DAR7 (=GPDMA1.CH%s.DAR): GPDMA channel 6 destination address register
 0x50021424 B  REGISTER TR37 (rw): GPDMA channel 6 transfer register 3
 0x50021424 C   FIELD 00w13 SAO (rw): source address offset increment
 0x50021424 C   FIELD 16w13 DAO (rw): destination address offset increment
@@ -17301,15 +16861,15 @@
 0x50021428 C   FIELD 00w16 BRSAO (rw): Block repeated source address offset
 0x50021428 C   FIELD 16w16 BRDAO (rw): Block repeated destination address offset
 0x5002144C B  REGISTER LLR7 (rw): GPDMA channel 6 alternate linked-list address register
-0x5002144C C   FIELD 02w14 LA (rw): pointer (16-bit low-significant address) to the next linked-list data structure
-0x5002144C C   FIELD 16w01 ULL (rw): Update GPDMA_CxLLR register from memory
+0x5002144C C   FIELD 02w14 LA (=GPDMA1.CH%s.LLR.LA) (rw): pointer (16-bit low-significant address) to the next linked-list data structure
+0x5002144C C   FIELD 16w01 ULL (=GPDMA1.CH%s.LLR.ULL) (rw): Update GPDMA_CxLLR register from memory
 0x5002144C C   FIELD 25w01 UB2 (rw): Update GPDMA_CxBR2 from memory
 0x5002144C C   FIELD 26w01 UT3 (rw): Update GPDMA_CxTR3 from memory
-0x5002144C C   FIELD 27w01 UDA (rw): Update GPDMA_CxDAR register from memory
-0x5002144C C   FIELD 28w01 USA (rw): update GPDMA_CxSAR from memory
-0x5002144C C   FIELD 29w01 UB1 (rw): Update GPDMA_CxBR1 from memory
-0x5002144C C   FIELD 30w01 UT2 (rw): Update GPDMA_CxTR2 from memory
-0x5002144C C   FIELD 31w01 UT1 (rw): Update GPDMA_CxTR1 from memory
+0x5002144C C   FIELD 27w01 UDA (=GPDMA1.CH%s.LLR.UDA) (rw): Update GPDMA_CxDAR register from memory
+0x5002144C C   FIELD 28w01 USA (=GPDMA1.CH%s.LLR.USA) (rw): update GPDMA_CxSAR from memory
+0x5002144C C   FIELD 29w01 UB1 (=GPDMA1.CH%s.LLR.UB1) (rw): Update GPDMA_CxBR1 from memory
+0x5002144C C   FIELD 30w01 UT2 (=GPDMA1.CH%s.LLR.UT2) (rw): Update GPDMA_CxTR2 from memory
+0x5002144C C   FIELD 31w01 UT1 (=GPDMA1.CH%s.LLR.UT1) (rw): Update GPDMA_CxTR1 from memory
 0x50022000 A PERIPHERAL FLASH_S
 0x50022000 B  REGISTER ACR (rw): FLASH access control register
 0x50022000 C   FIELD 00w04 LATENCY (rw): Read latency
