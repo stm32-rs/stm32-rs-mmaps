@@ -900,92 +900,62 @@
 0x40004818 C   FIELD 08w08 GT: Guard time value
 0x40004C00 A PERIPHERAL UART4
 0x40004C00 B  REGISTER SR: Status register
-0x40004C00 C   FIELD 00w01 PE (ro): Parity error
-0x40004C00 C   FIELD 01w01 FE (ro): Framing error
-0x40004C00 C   FIELD 02w01 NE (ro): Noise error flag
-0x40004C00 C   FIELD 03w01 ORE (ro): Overrun error
-0x40004C00 C   FIELD 04w01 IDLE (ro): IDLE line detected
-0x40004C00 C   FIELD 05w01 RXNE (rw): Read data register not empty
-0x40004C00 C   FIELD 06w01 TC (rw): Transmission complete
-0x40004C00 C   FIELD 07w01 TXE (ro): Transmit data register empty
-0x40004C00 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40004C04 B  REGISTER DR (rw): Data register
-0x40004C04 C   FIELD 00w09 DR: DR
-0x40004C08 B  REGISTER BRR (rw): Baud rate register
-0x40004C08 C   FIELD 00w04 DIV_Fraction: DIV_Fraction
-0x40004C08 C   FIELD 04w12 DIV_Mantissa: DIV_Mantissa
-0x40004C0C B  REGISTER CR1 (rw): Control register 1
-0x40004C0C C   FIELD 00w01 SBK: Send break
-0x40004C0C C   FIELD 01w01 RWU: Receiver wakeup
-0x40004C0C C   FIELD 02w01 RE: Receiver enable
-0x40004C0C C   FIELD 03w01 TE: Transmitter enable
-0x40004C0C C   FIELD 04w01 IDLEIE: IDLE interrupt enable
-0x40004C0C C   FIELD 05w01 RXNEIE: RXNE interrupt enable
-0x40004C0C C   FIELD 06w01 TCIE: Transmission complete interrupt enable
-0x40004C0C C   FIELD 07w01 TXEIE: TXE interrupt enable
-0x40004C0C C   FIELD 08w01 PEIE: PE interrupt enable
-0x40004C0C C   FIELD 09w01 PS: Parity selection
-0x40004C0C C   FIELD 10w01 PCE: Parity control enable
-0x40004C0C C   FIELD 11w01 WAKE: Wakeup method
-0x40004C0C C   FIELD 12w01 M: Word length
-0x40004C0C C   FIELD 13w01 UE: USART enable
+0x40004C00 C   FIELD 00w01 PE (=USART1.SR.PE) (ro): Parity error
+0x40004C00 C   FIELD 01w01 FE (=USART1.SR.FE) (ro): Framing error
+0x40004C00 C   FIELD 02w01 NE (=USART1.SR.NE) (ro): Noise error flag
+0x40004C00 C   FIELD 03w01 ORE (=USART1.SR.ORE) (ro): Overrun error
+0x40004C00 C   FIELD 04w01 IDLE (=USART1.SR.IDLE) (ro): IDLE line detected
+0x40004C00 C   FIELD 05w01 RXNE (=USART1.SR.RXNE) (rw): Read data register not empty
+0x40004C00 C   FIELD 06w01 TC (=USART1.SR.TC) (rw): Transmission complete
+0x40004C00 C   FIELD 07w01 TXE (=USART1.SR.TXE) (ro): Transmit data register empty
+0x40004C00 C   FIELD 08w01 LBD (=USART1.SR.LBD) (rw): LIN break detection flag
+0x40004C04 B  REGISTER DR (=USART1.DR): Data register
+0x40004C08 B  REGISTER BRR (=USART1.BRR): Baud rate register
+0x40004C0C B  REGISTER CR1 (=USART1.CR1): Control register 1
 0x40004C10 B  REGISTER CR2 (rw): Control register 2
-0x40004C10 C   FIELD 00w04 ADD: Address of the USART node
-0x40004C10 C   FIELD 05w01 LBDL: lin break detection length
-0x40004C10 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
+0x40004C10 C   FIELD 00w04 ADD (=USART1.CR2.ADD): Address of the USART node
+0x40004C10 C   FIELD 05w01 LBDL (=USART1.CR2.LBDL): lin break detection length
+0x40004C10 C   FIELD 06w01 LBDIE (=USART1.CR2.LBDIE): LIN break detection interrupt enable
 0x40004C10 C   FIELD 12w02 STOP: STOP bits
-0x40004C10 C   FIELD 14w01 LINEN: LIN mode enable
+0x40004C10 C   FIELD 14w01 LINEN (=USART1.CR2.LINEN): LIN mode enable
 0x40004C14 B  REGISTER CR3 (rw): Control register 3
-0x40004C14 C   FIELD 00w01 EIE: Error interrupt enable
-0x40004C14 C   FIELD 01w01 IREN: IrDA mode enable
-0x40004C14 C   FIELD 02w01 IRLP: IrDA low-power
-0x40004C14 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40004C14 C   FIELD 06w01 DMAR: DMA enable receiver
-0x40004C14 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40004C14 C   FIELD 00w01 EIE (=USART1.CR3.EIE): Error interrupt enable
+0x40004C14 C   FIELD 01w01 IREN (=USART1.CR3.IREN): IrDA mode enable
+0x40004C14 C   FIELD 02w01 IRLP (=USART1.CR3.IRLP): IrDA low-power
+0x40004C14 C   FIELD 03w01 HDSEL (=USART1.CR3.HDSEL): Half-duplex selection
+0x40004C14 C   FIELD 06w01 DMAR (=USART1.CR3.DMAR): DMA enable receiver
+0x40004C14 C   FIELD 07w01 DMAT (=USART1.CR3.DMAT): DMA enable transmitter
+0x40004C18 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40004C18 C   FIELD 00w08 PSC (=USART1.GTPR.PSC): IrDA Low-Power pulse width peripheral clock prescaler
 0x40005000 A PERIPHERAL UART5
 0x40005000 B  REGISTER SR: Status register
-0x40005000 C   FIELD 00w01 PE (ro): Parity error
-0x40005000 C   FIELD 01w01 FE (ro): Framing error
-0x40005000 C   FIELD 02w01 NE (ro): Noise error flag
-0x40005000 C   FIELD 03w01 ORE (ro): Overrun error
-0x40005000 C   FIELD 04w01 IDLE (ro): IDLE line detected
-0x40005000 C   FIELD 05w01 RXNE (rw): Read data register not empty
-0x40005000 C   FIELD 06w01 TC (rw): Transmission complete
-0x40005000 C   FIELD 07w01 TXE (ro): Transmit data register empty
-0x40005000 C   FIELD 08w01 LBD (rw): LIN break detection flag
-0x40005004 B  REGISTER DR (rw): Data register
-0x40005004 C   FIELD 00w09 DR: DR
-0x40005008 B  REGISTER BRR (rw): Baud rate register
-0x40005008 C   FIELD 00w04 DIV_Fraction: DIV_Fraction
-0x40005008 C   FIELD 04w12 DIV_Mantissa: DIV_Mantissa
-0x4000500C B  REGISTER CR1 (rw): Control register 1
-0x4000500C C   FIELD 00w01 SBK: Send break
-0x4000500C C   FIELD 01w01 RWU: Receiver wakeup
-0x4000500C C   FIELD 02w01 RE: Receiver enable
-0x4000500C C   FIELD 03w01 TE: Transmitter enable
-0x4000500C C   FIELD 04w01 IDLEIE: IDLE interrupt enable
-0x4000500C C   FIELD 05w01 RXNEIE: RXNE interrupt enable
-0x4000500C C   FIELD 06w01 TCIE: Transmission complete interrupt enable
-0x4000500C C   FIELD 07w01 TXEIE: TXE interrupt enable
-0x4000500C C   FIELD 08w01 PEIE: PE interrupt enable
-0x4000500C C   FIELD 09w01 PS: Parity selection
-0x4000500C C   FIELD 10w01 PCE: Parity control enable
-0x4000500C C   FIELD 11w01 WAKE: Wakeup method
-0x4000500C C   FIELD 12w01 M: Word length
-0x4000500C C   FIELD 13w01 UE: USART enable
+0x40005000 C   FIELD 00w01 PE (=USART1.SR.PE) (ro): Parity error
+0x40005000 C   FIELD 01w01 FE (=USART1.SR.FE) (ro): Framing error
+0x40005000 C   FIELD 02w01 NE (=USART1.SR.NE) (ro): Noise error flag
+0x40005000 C   FIELD 03w01 ORE (=USART1.SR.ORE) (ro): Overrun error
+0x40005000 C   FIELD 04w01 IDLE (=USART1.SR.IDLE) (ro): IDLE line detected
+0x40005000 C   FIELD 05w01 RXNE (=USART1.SR.RXNE) (rw): Read data register not empty
+0x40005000 C   FIELD 06w01 TC (=USART1.SR.TC) (rw): Transmission complete
+0x40005000 C   FIELD 07w01 TXE (=USART1.SR.TXE) (ro): Transmit data register empty
+0x40005000 C   FIELD 08w01 LBD (=USART1.SR.LBD) (rw): LIN break detection flag
+0x40005004 B  REGISTER DR (=USART1.DR): Data register
+0x40005008 B  REGISTER BRR (=USART1.BRR): Baud rate register
+0x4000500C B  REGISTER CR1 (=USART1.CR1): Control register 1
 0x40005010 B  REGISTER CR2 (rw): Control register 2
-0x40005010 C   FIELD 00w04 ADD: Address of the USART node
-0x40005010 C   FIELD 05w01 LBDL: lin break detection length
-0x40005010 C   FIELD 06w01 LBDIE: LIN break detection interrupt enable
+0x40005010 C   FIELD 00w04 ADD (=USART1.CR2.ADD): Address of the USART node
+0x40005010 C   FIELD 05w01 LBDL (=USART1.CR2.LBDL): lin break detection length
+0x40005010 C   FIELD 06w01 LBDIE (=USART1.CR2.LBDIE): LIN break detection interrupt enable
 0x40005010 C   FIELD 12w02 STOP: STOP bits
-0x40005010 C   FIELD 14w01 LINEN: LIN mode enable
+0x40005010 C   FIELD 14w01 LINEN (=USART1.CR2.LINEN): LIN mode enable
 0x40005014 B  REGISTER CR3 (rw): Control register 3
-0x40005014 C   FIELD 00w01 EIE: Error interrupt enable
-0x40005014 C   FIELD 01w01 IREN: IrDA mode enable
-0x40005014 C   FIELD 02w01 IRLP: IrDA low-power
-0x40005014 C   FIELD 03w01 HDSEL: Half-duplex selection
-0x40005014 C   FIELD 06w01 DMAR: DMA enable receiver
-0x40005014 C   FIELD 07w01 DMAT: DMA enable transmitter
+0x40005014 C   FIELD 00w01 EIE (=USART1.CR3.EIE): Error interrupt enable
+0x40005014 C   FIELD 01w01 IREN (=USART1.CR3.IREN): IrDA mode enable
+0x40005014 C   FIELD 02w01 IRLP (=USART1.CR3.IRLP): IrDA low-power
+0x40005014 C   FIELD 03w01 HDSEL (=USART1.CR3.HDSEL): Half-duplex selection
+0x40005014 C   FIELD 06w01 DMAR (=USART1.CR3.DMAR): DMA enable receiver
+0x40005014 C   FIELD 07w01 DMAT (=USART1.CR3.DMAT): DMA enable transmitter
+0x40005018 B  REGISTER GTPR (rw): Guard Time and Prescaler Register
+0x40005018 C   FIELD 00w08 PSC (=USART1.GTPR.PSC): IrDA Low-Power pulse width peripheral clock prescaler
 0x40005400 A PERIPHERAL I2C1
 0x40005400 B  REGISTER CR1 (rw): Control register 1
 0x40005400 C   FIELD 00w01 PE: Peripheral enable
