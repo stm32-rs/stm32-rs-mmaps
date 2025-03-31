@@ -344,7 +344,7 @@
 0x4000102C B  REGISTER ARR: TIM6 auto-reload register
 0x4000102C C   FIELD 00w20 ARR (rw): Auto-reload value ARR is the value to be loaded into the actual auto-reload register. Refer to for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null. Non-dithering mode (DITHEN = 0) The register holds the auto-reload value in ARR[15:0]. The ARR[19:16] bits are reserved. Dithering mode (DITHEN = 1) The register holds the integer part in ARR[19:4]. The ARR[3:0] bitfield contains the dithered part.
 0x40001400 A PERIPHERAL TIM7
-0x40001400 B  REGISTER CR1: TIM7 control register 1
+0x40001400 B  REGISTER CR1: TIM6 control register 1
 0x40001400 C   FIELD 00w01 CEN (rw): Counter enable CEN is cleared automatically in one-pulse mode, when an update event occurs.
 0x40001400 C   FIELD 01w01 UDIS (rw): Update disable This bit is set and cleared by software to enable/disable UEV event generation. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller Buffered registers are then loaded with their preload values.
 0x40001400 C   FIELD 02w01 URS (rw): Update request source This bit is set and cleared by software to select the UEV event sources. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller
@@ -352,21 +352,21 @@
 0x40001400 C   FIELD 07w01 ARPE (rw): Auto-reload preload enable
 0x40001400 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
 0x40001400 C   FIELD 12w01 DITHEN (rw): Dithering enable Note: The DITHEN bit can only be modified when CEN bit is reset.
-0x40001404 B  REGISTER CR2: TIM7 control register 2
+0x40001404 B  REGISTER CR2: TIM6 control register 2
 0x40001404 C   FIELD 04w03 MMS (rw): Master mode selection These bits are used to select the information to be sent in master mode to slave timers for synchronization (TRGO). The combination is as follows: Note: The clock of the slave timer or he peripheral receiving the tim_trgo must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
-0x4000140C B  REGISTER DIER: TIM7 DMA/Interrupt enable register
+0x4000140C B  REGISTER DIER: TIM6 DMA/Interrupt enable register
 0x4000140C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000140C C   FIELD 08w01 UDE (rw): Update DMA request enable
-0x40001410 B  REGISTER SR: TIM7 status register
+0x40001410 B  REGISTER SR: TIM6 status register
 0x40001410 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. On counter overflow if UDIS = 0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in the TIMx_EGR register, if URS = 0 and UDIS = 0 in the TIMx_CR1 register.
-0x40001414 B  REGISTER EGR: TIM7 event generation register
+0x40001414 B  REGISTER EGR: TIM6 event generation register
 0x40001414 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
-0x40001424 B  REGISTER CNT: TIM7 counter
+0x40001424 B  REGISTER CNT: TIM6 counter
 0x40001424 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
 0x40001424 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
-0x40001428 B  REGISTER PSC: TIM7 prescaler
+0x40001428 B  REGISTER PSC: TIM6 prescaler
 0x40001428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency ftim_cnt_ck is equal to ftim_psc_ck / (PSC[15:0] + 1). PSC contains the value to be loaded into the active prescaler register at each update event. (including when the counter is cleared through UG bit of TIMx_EGR register.
-0x4000142C B  REGISTER ARR: TIM7 auto-reload register
+0x4000142C B  REGISTER ARR: TIM6 auto-reload register
 0x4000142C C   FIELD 00w20 ARR (rw): Auto-reload value ARR is the value to be loaded into the actual auto-reload register. Refer to for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null. Non-dithering mode (DITHEN = 0) The register holds the auto-reload value in ARR[15:0]. The ARR[19:16] bits are reserved. Dithering mode (DITHEN = 1) The register holds the integer part in ARR[19:4]. The ARR[3:0] bitfield contains the dithered part.
 0x40002C00 A PERIPHERAL WWDG
 0x40002C00 B  REGISTER CR: WWDG control register
@@ -1962,17 +1962,17 @@
 0x40012C48 C   FIELD 31w01 GC5C3 (rw): Group channel 5 and channel 3 Distortion on channel 3 output: This bit can either have immediate effect or be preloaded and taken into account after an update event (if preload feature is selected in TIMxCCMR2). Note: it is also possible to apply this distortion on combined PWM signals.
 0x40012C4C B  REGISTER CCR6: capture/compare register
 0x40012C4C C   FIELD 00w20 CCR (rw): Capture/Compare value
-0x40012C50 B  REGISTER CCMR3: TIM1 capture/compare mode register 3
-0x40012C50 C   FIELD 02w01 OC5FE (rw): Output compare 5 fast enable
-0x40012C50 C   FIELD 03w01 OC5PE (rw): Output compare 5 preload enable
-0x40012C50 C   FIELD 04w03 OC5M (rw): OC5M[2:0]: Output compare 5 mode
-0x40012C50 C   FIELD 07w01 OC5CE (rw): Output compare 5 clear enable
-0x40012C50 C   FIELD 10w01 OC6FE (rw): Output compare 6 fast enable
-0x40012C50 C   FIELD 11w01 OC6PE (rw): Output compare 6 preload enable
-0x40012C50 C   FIELD 12w03 OC6M (rw): OC6M[2:0]: Output compare 6 mode
-0x40012C50 C   FIELD 15w01 OC6CE (rw): Output compare 6 clear enable
-0x40012C50 C   FIELD 16w01 OC5M_1 (rw): OC5M[3]
-0x40012C50 C   FIELD 24w01 OC6M_1 (rw): OC6M[3]
+0x40012C50 B  REGISTER CCMR3_Output: TIM1 capture/compare mode register 3
+0x40012C50 C   FIELD 02w01 OC5FE (=TIM1.CCMR1_Output.OC%sFE) (rw): Output compare 5 fast enable
+0x40012C50 C   FIELD 03w01 OC5PE (=TIM1.CCMR1_Output.OC%sPE) (rw): Output compare 5 preload enable
+0x40012C50 C   FIELD 04w03 OC5M (=TIM1.CCMR1_Output.OC%sM) (rw): Output compare 5 mode
+0x40012C50 C   FIELD 07w01 OC5CE (=TIM1.CCMR1_Output.OC%sCE) (rw): Output compare 5 clear enable
+0x40012C50 C   FIELD 10w01 OC6FE (=TIM1.CCMR1_Output.OC%sFE) (rw): Output compare 6 fast enable
+0x40012C50 C   FIELD 11w01 OC6PE (=TIM1.CCMR1_Output.OC%sPE) (rw): Output compare 6 preload enable
+0x40012C50 C   FIELD 12w03 OC6M (=TIM1.CCMR1_Output.OC%sM) (rw): Output compare 6 mode
+0x40012C50 C   FIELD 15w01 OC6CE (=TIM1.CCMR1_Output.OC%sCE) (rw): Output compare 6 clear enable
+0x40012C50 C   FIELD 16w01 OC5M_3 (=TIM1.CCMR1_Output.OC%sM_3) (rw): Output compare 5 mode, bit 3
+0x40012C50 C   FIELD 24w01 OC6M_3 (=TIM1.CCMR1_Output.OC%sM_3) (rw): Output compare 6 mode, bit 3
 0x40012C54 B  REGISTER DTR2: TIM1 timer deadtime register 2
 0x40012C54 C   FIELD 00w08 DTGF (rw): Dead-time falling edge generator setup This bit-field defines the duration of the dead-time inserted between the complementary outputs, on the falling edge. DTGF[7:5]=0xx = DTF=DTGF[7:0]x t dtg with t dtg =t DTS . DTGF[7:5]=10x = DTF=(64+DTGF[5:0])xt dtg with T dtg =2xt DTS . DTGF[7:5]=110 = DTF=(32+DTGF[4:0])xt dtg with T dtg =8xt DTS . DTGF[7:5]=111 = DTF=(32+DTGF[4:0])xt dtg with T dtg =16xt DTS . Example if T DTS =125ns (8MHz), dead-time possible values are: 0 to 15875 ns by 125 ns steps, 16 us to 31750 ns by 250 ns steps, 32 us to 63us by 1 us steps, 64 us to 126 us by 2 us steps Note: This bit-field can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40012C54 C   FIELD 16w01 DTAE (rw): Deadtime asymmetric enable Note: This bit can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).

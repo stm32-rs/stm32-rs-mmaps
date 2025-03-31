@@ -4897,80 +4897,23 @@
 0x40014468 B  REGISTER TIM16_TISEL (rw): TIM16 input selection register
 0x40014468 C   FIELD 00w04 TI1SEL: selects TI1[0] to TI1[15] input
 0x40014800 A PERIPHERAL TIM17
-0x40014800 B  REGISTER CR1 (rw): control register 1
-0x40014800 C   FIELD 00w01 CEN: Counter enable
-0x40014800 C   FIELD 01w01 UDIS: Update disable
-0x40014800 C   FIELD 02w01 URS: Update request source
-0x40014800 C   FIELD 03w01 OPM: One-pulse mode
-0x40014800 C   FIELD 07w01 ARPE: Auto-reload preload enable
-0x40014800 C   FIELD 08w02 CKD: Clock division
-0x40014800 C   FIELD 11w01 UIFREMAP: UIF status bit remapping
-0x40014804 B  REGISTER CR2 (rw): control register 2
-0x40014804 C   FIELD 00w01 CCPC: Capture/compare preloaded control
-0x40014804 C   FIELD 02w01 CCUS: Capture/compare control update selection
-0x40014804 C   FIELD 03w01 CCDS: Capture/compare DMA selection
-0x40014804 C   FIELD 08w01 OIS1: Output Idle state (OC1 output)
-0x40014804 C   FIELD 09w01 OIS1N: Output Idle state (OC1N output)
-0x4001480C B  REGISTER DIER (rw): DMA/Interrupt enable register
-0x4001480C C   FIELD 00w01 UIE: Update interrupt enable
-0x4001480C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
-0x4001480C C   FIELD 05w01 COMIE: COM interrupt enable
-0x4001480C C   FIELD 07w01 BIE: Break interrupt enable
-0x4001480C C   FIELD 08w01 UDE: Update DMA request enable
-0x4001480C C   FIELD 09w01 CC1DE: Capture/Compare 1 DMA request enable
-0x4001480C C   FIELD 13w01 COMDE: COM DMA request enable
-0x40014810 B  REGISTER SR (rw): status register
-0x40014810 C   FIELD 00w01 UIF: Update interrupt flag
-0x40014810 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
-0x40014810 C   FIELD 05w01 COMIF: COM interrupt flag
-0x40014810 C   FIELD 07w01 BIF: Break interrupt flag
-0x40014810 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
-0x40014814 B  REGISTER EGR (wo): event generation register
-0x40014814 C   FIELD 00w01 UG: Update generation
-0x40014814 C   FIELD 01w01 CC1G: Capture/compare 1 generation
-0x40014814 C   FIELD 05w01 COMG: Capture/Compare control update generation
-0x40014814 C   FIELD 07w01 BG: Break generation
-0x40014818 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
-0x40014818 B  REGISTER CCMR1_Output (rw): capture/compare mode register (output mode)
-0x40014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014818 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40014818 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
-0x40014818 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40014818 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
-0x40014818 C   FIELD 04w03 OC1M: Output compare 1 mode
-0x40014818 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40014818 C   FIELD 16w01 OC1M_3: Output compare 1 mode, bit 3
-0x40014820 B  REGISTER CCER (rw): capture/compare enable register
-0x40014820 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
-0x40014820 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
-0x40014820 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
-0x40014820 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
-0x40014824 B  REGISTER CNT: counter
-0x40014824 C   FIELD 00w16 CNT (rw): counter value
-0x40014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy
-0x40014828 B  REGISTER PSC (rw): prescaler
-0x40014828 C   FIELD 00w16 PSC: Prescaler value
-0x4001482C B  REGISTER ARR (rw): auto-reload register
-0x4001482C C   FIELD 00w16 ARR: Auto-reload value
-0x40014830 B  REGISTER RCR (rw): repetition counter register
-0x40014830 C   FIELD 00w08 REP: Repetition counter value
+0x40014800 B  REGISTER CR1 (=TIM16.CR1): control register 1
+0x40014804 B  REGISTER CR2 (=TIM16.CR2): control register 2
+0x4001480C B  REGISTER DIER (=TIM16.DIER): DMA/Interrupt enable register
+0x40014810 B  REGISTER SR (=TIM16.SR): status register
+0x40014814 B  REGISTER EGR (=TIM16.EGR): event generation register
+0x40014818 B  REGISTER CCMR1_Input (=TIM16.CCMR1_Input): capture/compare mode register 1 (input mode)
+0x40014818 B  REGISTER CCMR1_Output (=TIM16.CCMR1_Output): capture/compare mode register (output mode)
+0x40014820 B  REGISTER CCER (=TIM16.CCER): capture/compare enable register
+0x40014824 B  REGISTER CNT (=TIM16.CNT): counter
+0x40014828 B  REGISTER PSC (=TIM16.PSC): prescaler
+0x4001482C B  REGISTER ARR (=TIM16.ARR): auto-reload register
+0x40014830 B  REGISTER RCR (=TIM16.RCR): repetition counter register
 0x40014834 B  REGISTER CCR1 (rw): capture/compare register
 0x40014834 C   FIELD 00w16 CCR: Capture/Compare value
-0x40014844 B  REGISTER BDTR (rw): break and dead-time register
-0x40014844 C   FIELD 00w08 DTG: Dead-time generator setup
-0x40014844 C   FIELD 08w02 LOCK: Lock configuration
-0x40014844 C   FIELD 10w01 OSSI: Off-state selection for Idle mode
-0x40014844 C   FIELD 11w01 OSSR: Off-state selection for Run mode
-0x40014844 C   FIELD 12w01 BKE: Break enable
-0x40014844 C   FIELD 13w01 BKP: Break polarity
-0x40014844 C   FIELD 14w01 AOE: Automatic output enable
-0x40014844 C   FIELD 15w01 MOE: Main output enable
-0x40014844 C   FIELD 16w04 BKF: Break filter
-0x40014848 B  REGISTER DCR (rw): DMA control register
-0x40014848 C   FIELD 00w05 DBA: DMA base address
-0x40014848 C   FIELD 08w05 DBL: DMA burst length
-0x4001484C B  REGISTER DMAR (rw): DMA address for full transfer
-0x4001484C C   FIELD 00w16 DMAB: DMA register for burst accesses
+0x40014844 B  REGISTER BDTR (=TIM16.BDTR): break and dead-time register
+0x40014848 B  REGISTER DCR (=TIM16.DCR): DMA control register
+0x4001484C B  REGISTER DMAR (=TIM16.DMAR): DMA address for full transfer
 0x40014860 B  REGISTER TIM17_AF1 (rw): TIM17 alternate function register 1
 0x40014860 C   FIELD 00w01 BKINE: BRK BKIN input enable
 0x40014860 C   FIELD 01w01 BKCMP1E: BRK COMP1 enable
