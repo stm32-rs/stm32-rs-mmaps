@@ -1682,17 +1682,17 @@
 0x40012C48 C   FIELD 08w05 DBL (rw): DMA burst length This 5-bit vector defines the length of DMA transfers (the timer recognizes a burst transfer when a read or a write access is done to the TIMx_DMAR address), i.e. the number of transfers. Transfers can be in half-words or in bytes (see example below). ... Example: Let us consider the following transfer: DBL = 7 bytes & DBA = TIMx_CR1. If DBL = 7 bytes and DBA = TIMx_CR1 represents the address of the byte to be transferred, the address of the transfer should be given by the following equation: (TIMx_CR1 address) + DBA + (DMA index), where DMA index = DBL In this example, 7 bytes are added to (TIMx_CR1 address) + DBA, which gives us the address from/to which the data is copied. In this case, the transfer is done to 7 registers starting from the following address: (TIMx_CR1 address) + DBA According to the configuration of the DMA Data Size, several cases may occur: If the DMA Data Size is configured in half-words, 16-bit data is transferred to each of the 7 registers. If the DMA Data Size is configured in bytes, the data is also transferred to 7 registers: the first register contains the first MSB byte, the second register, the first LSB byte and so on. So with the transfer Timer, one also has to specify the size of data transferred by DMA.
 0x40012C4C B  REGISTER DMAR (rw): TIM1 DMA address for full transfer
 0x40012C4C C   FIELD 00w32 DMAB (rw): DMA register for burst accesses A read or write operation to the DMAR register accesses the register located at the address (TIMx_CR1 address) + (DBA + DMA index) x 4 where TIMx_CR1 address is the address of the control register 1, DBA is the DMA base address configured in TIMx_DCR register, DMA index is automatically controlled by the DMA transfer, and ranges from 0 to DBL (DBL configured in TIMx_DCR).
-0x40012C54 B  REGISTER CCMR3 (rw): TIM1 capture/compare mode register 3
-0x40012C54 C   FIELD 02w01 OC5FE (rw): Output compare 5 fast enable Refer to OC1FE description.
-0x40012C54 C   FIELD 03w01 OC5PE (rw): Output compare 5 preload enable Refer to OC1PE description.
-0x40012C54 C   FIELD 04w03 OC5M (rw): OC5M[2:0]: Output compare 5 mode Refer to OC1M description.
-0x40012C54 C   FIELD 07w01 OC5CE (rw): Output compare 5 clear enable Refer to OC1CE description.
-0x40012C54 C   FIELD 10w01 OC6FE (rw): Output compare 6 fast enable Refer to OC1FE description.
-0x40012C54 C   FIELD 11w01 OC6PE (rw): Output compare 6 preload enable Refer to OC1PE description.
-0x40012C54 C   FIELD 12w03 OC6M (rw): OC6M[2:0]: Output compare 6 mode Refer to OC1M description.
-0x40012C54 C   FIELD 15w01 OC6CE (rw): Output compare 6 clear enable Refer to OC1CE description.
-0x40012C54 C   FIELD 16w01 OC5M_1 (rw): OC5M[3]
-0x40012C54 C   FIELD 24w01 OC6M_1 (rw): OC6M[3]
+0x40012C54 B  REGISTER CCMR3_Output (rw): TIM1 capture/compare mode register 3
+0x40012C54 C   FIELD 02w01 OC5FE (=TIM1.CCMR1_Output.OC%sFE) (rw): Output compare 5 fast enable
+0x40012C54 C   FIELD 03w01 OC5PE (=TIM1.CCMR1_Output.OC%sPE) (rw): Output compare 5 preload enable
+0x40012C54 C   FIELD 04w03 OC5M (=TIM1.CCMR1_Output.OC%sM) (rw): Output compare 5 mode
+0x40012C54 C   FIELD 07w01 OC5CE (=TIM1.CCMR1_Output.OC%sCE) (rw): Output compare 5 clear enable
+0x40012C54 C   FIELD 10w01 OC6FE (=TIM1.CCMR1_Output.OC%sFE) (rw): Output compare 6 fast enable
+0x40012C54 C   FIELD 11w01 OC6PE (=TIM1.CCMR1_Output.OC%sPE) (rw): Output compare 6 preload enable
+0x40012C54 C   FIELD 12w03 OC6M (=TIM1.CCMR1_Output.OC%sM) (rw): Output compare 6 mode
+0x40012C54 C   FIELD 15w01 OC6CE (=TIM1.CCMR1_Output.OC%sCE) (rw): Output compare 6 clear enable
+0x40012C54 C   FIELD 16w01 OC5M_3 (=TIM1.CCMR1_Output.OC%sM_3) (rw): Output compare 5 mode, bit 3
+0x40012C54 C   FIELD 24w01 OC6M_3 (=TIM1.CCMR1_Output.OC%sM_3) (rw): Output compare 6 mode, bit 3
 0x40012C58 B  REGISTER CCR5 (rw): capture/compare register
 0x40012C58 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40012C58 C   FIELD 29w01 GC5C1 (rw): Group Channel 5 and Channel 1 Distortion on Channel 1 output: This bit can either have immediate effect or be preloaded and taken into account after an update event (if preload feature is selected in TIMxCCMR1). Note: it is also possible to apply this distortion on combined PWM signals.
@@ -1996,81 +1996,23 @@
 0x40014468 B  REGISTER TISEL (rw): TIM16 input selection register
 0x40014468 C   FIELD 00w04 TI1SEL (rw): selects TI1[0] to TI1[15] input Others: Reserved
 0x40014800 A PERIPHERAL TIM17
-0x40014800 B  REGISTER CR1 (rw): TIM17 control register 1
-0x40014800 C   FIELD 00w01 CEN (rw): Counter enable Note: External clock and gated mode can work only if the CEN bit has been previously set by software. However trigger mode can set the CEN bit automatically by hardware.
-0x40014800 C   FIELD 01w01 UDIS (rw): Update disable This bit is set and cleared by software to enable/disable UEV event generation. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller Buffered registers are then loaded with their preload values.
-0x40014800 C   FIELD 02w01 URS (rw): Update request source This bit is set and cleared by software to select the UEV event sources. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller
-0x40014800 C   FIELD 03w01 OPM (rw): One pulse mode
-0x40014800 C   FIELD 07w01 ARPE (rw): Auto-reload preload enable
-0x40014800 C   FIELD 08w02 CKD (rw): Clock division This bit-field indicates the division ratio between the timer clock (CK_INT) frequency and the dead-time and sampling clock (t<sub>DTS</sub>)used by the dead-time generators and the digital filters (TIx),
-0x40014800 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
-0x40014804 B  REGISTER CR2 (rw): TIM17 control register 2
-0x40014804 C   FIELD 00w01 CCPC (rw): Capture/compare preloaded control Note: This bit acts only on channels that have a complementary output.
-0x40014804 C   FIELD 02w01 CCUS (rw): Capture/compare control update selection Note: This bit acts only on channels that have a complementary output.
-0x40014804 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x40014804 C   FIELD 08w01 OIS1 (rw): Output Idle state (OC1 output)
-0x40014804 C   FIELD 09w01 OIS1N (rw): Output Idle state (OC1N output)
-0x4001480C B  REGISTER DIER (rw): TIM17 DMA/interrupt enable register
-0x4001480C C   FIELD 00w01 UIE (rw): Update interrupt enable
-0x4001480C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
-0x4001480C C   FIELD 05w01 COMIE (rw): COM interrupt enable
-0x4001480C C   FIELD 07w01 BIE (rw): Break interrupt enable
-0x4001480C C   FIELD 08w01 UDE (rw): Update DMA request enable
-0x4001480C C   FIELD 09w01 CC1DE (rw): Capture/Compare 1 DMA request enable
-0x40014810 B  REGISTER SR (rw): TIM17 status register
-0x40014810 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow regarding the repetition counter value (update if repetition counter = 0) and if the UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in TIMx_EGR register, if URS=0 and UDIS=0 in the TIMx_CR1 register.
-0x40014810 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
-0x40014810 C   FIELD 05w01 COMIF (rw): COM interrupt flag
-0x40014810 C   FIELD 07w01 BIF (rw): Break interrupt flag This flag is set by hardware as soon as the break input goes active. It can be cleared by software if the break input is not active.
-0x40014810 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
-0x40014814 B  REGISTER EGR (wo): TIM17 event generation register
-0x40014814 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
-0x40014814 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
-0x40014814 C   FIELD 05w01 COMG (wo): Capture/Compare control update generation This bit can be set by software, it is automatically cleared by hardware. Note: This bit acts only on channels that have a complementary output.
-0x40014814 C   FIELD 07w01 BG (wo): Break generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
-0x40014818 B  REGISTER CCMR1_Input (rw): TIM17 capture/compare mode register 1
-0x40014818 B  REGISTER CCMR1_Output (rw): TIM17 capture/compare mode register 1
-0x40014818 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 Selection This bit-field defines the direction of the channel (input/output) as well as the used input. Others: Reserved Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
-0x40014818 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
-0x40014818 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
-0x40014818 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
-0x40014818 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40014818 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
-0x40014818 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
-0x40014818 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
-0x40014820 B  REGISTER CCER (rw): TIM17 capture/compare enable register
-0x40014820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
-0x40014820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
-0x40014820 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
-0x40014820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
-0x40014824 B  REGISTER CNT (rw): TIM17 counter
-0x40014824 C   FIELD 00w16 CNT (rw): Counter value
-0x40014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
-0x40014828 B  REGISTER PSC (rw): TIM17 prescaler
-0x40014828 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (CK_CNT) is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
-0x4001482C B  REGISTER ARR (rw): TIM17 auto-reload register
-0x4001482C C   FIELD 00w16 ARR (rw): Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the Section 20.3.1: Time-base unit on page 526 for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
-0x40014830 B  REGISTER RCR (rw): TIM17 repetition counter register
-0x40014830 C   FIELD 00w08 REP (rw): Repetition counter value These bits allow the user to set-up the update rate of the compare registers (i.e. periodic transfers from preload to active registers) when preload registers are enable, as well as the update interrupt generation rate, if this interrupt is enable. Each time the REP_CNT related downcounter reaches zero, an update event is generated and it restarts counting from REP value. As REP_CNT is reloaded with REP value only at the repetition update event U_RC, any write to the TIMx_RCR register is not taken in account until the next repetition update event. It means in PWM mode (REP+1) corresponds to the number of PWM periods in edge-aligned mode.
+0x40014800 B  REGISTER CR1 (=TIM16.CR1): TIM17 control register 1
+0x40014804 B  REGISTER CR2 (=TIM16.CR2): TIM17 control register 2
+0x4001480C B  REGISTER DIER (=TIM16.DIER): TIM17 DMA/interrupt enable register
+0x40014810 B  REGISTER SR (=TIM16.SR): TIM17 status register
+0x40014814 B  REGISTER EGR (=TIM16.EGR): TIM17 event generation register
+0x40014818 B  REGISTER CCMR1_Input (=TIM16.CCMR1_Input): TIM17 capture/compare mode register 1
+0x40014818 B  REGISTER CCMR1_Output (=TIM16.CCMR1_Output): TIM17 capture/compare mode register 1
+0x40014820 B  REGISTER CCER (=TIM16.CCER): TIM17 capture/compare enable register
+0x40014824 B  REGISTER CNT (=TIM16.CNT): TIM17 counter
+0x40014828 B  REGISTER PSC (=TIM16.PSC): TIM17 prescaler
+0x4001482C B  REGISTER ARR (=TIM16.ARR): TIM17 auto-reload register
+0x40014830 B  REGISTER RCR (=TIM16.RCR): TIM17 repetition counter register
 0x40014834 B  REGISTER CCR1 (rw): capture/compare register
 0x40014834 C   FIELD 00w16 CCR (rw): Capture/Compare value
-0x40014844 B  REGISTER BDTR (rw): TIM17 break and dead-time register
-0x40014844 C   FIELD 00w08 DTG (rw): Dead-time generator setup This bit-field defines the duration of the dead-time inserted between the complementary outputs. DT correspond to this duration. DTG[7:5] = 0xx => DT = DTG[7:0] x t<sub>dtg</sub> with t <sub>dtg</sub>= t<sub>DTS</sub> DTG[7:5] = 10x => DT = (64 + DTG[5:0]) x t<sub>dtg</sub> with t <sub>dtg</sub>= 2 x t<sub>DTS</sub> DTG[7:5] = 110 => DT = (32 + DTG[4:0]) x t<sub>dtg</sub> with t <sub>dtg</sub>= 8 x t<sub>DTS</sub> DTG[7:5] = 111 => DT = (32 + DTG[4:0]) x t<sub>dtg</sub> with t <sub>dtg</sub>= 16 x t<sub>DTS</sub> Example if t <sub>DTS</sub>= 125 ns (8 MHz), dead-time possible values are: 0 to 15875 ns by 125 ns steps, 16 s to 31750 ns by 250 ns steps, 32 s to 63 s by 1 s steps, 64 s to 126 s by 2 s steps Note: This bit-field can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40014844 C   FIELD 08w02 LOCK (rw): Lock configuration These bits offer a write protection against software errors. Note: The LOCK bits can be written only once after the reset. Once the TIMx_BDTR register has been written, their content is frozen until the next reset.
-0x40014844 C   FIELD 10w01 OSSI (rw): Off-state selection for Idle mode This bit is used when MOE=0 on channels configured as outputs. See OC/OCN enable description for more details (Section 20.4.8: TIMx capture/compare enable register (TIMx_CCER)(x = 16 to 17) on page 563). Note: This bit can not be modified as soon as the LOCK level 2 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40014844 C   FIELD 11w01 OSSR (rw): Off-state selection for Run mode This bit is used when MOE=1 on channels that have a complementary output which are configured as outputs. OSSR is not implemented if no complementary output is implemented in the timer. See OC/OCN enable description for more details (Section 20.4.8: TIMx capture/compare enable register (TIMx_CCER)(x = 16 to 17) on page 563). Note: This bit can not be modified as soon as the LOCK level 2 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40014844 C   FIELD 12w01 BKE (rw): Break enable 1; Break inputs (BRK and CCS clock failure event) enabled Note: This bit cannot be modified when LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register). Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
-0x40014844 C   FIELD 13w01 BKP (rw): Break polarity Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register). Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
-0x40014844 C   FIELD 14w01 AOE (rw): Automatic output enable Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40014844 C   FIELD 15w01 MOE (rw): Main output enable This bit is cleared asynchronously by hardware as soon as the break input is active. It is set by software or automatically depending on the AOE bit. It is acting only on the channels which are configured in output. See OC/OCN enable description for more details (Section 20.4.8: TIMx capture/compare enable register (TIMx_CCER)(x = 16 to 17) on page 563).
-0x40014844 C   FIELD 16w04 BKF (rw): Break filter This bit-field defines the frequency used to sample BRK input and the length of the digital filter applied to BRK. The digital filter is made of an event counter in which N events are needed to validate a transition on the output: This bit cannot be modified when LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
-0x40014844 C   FIELD 26w01 BKDSRM (rw): Break Disarm This bit is cleared by hardware when no break source is active. The BKDSRM bit must be set by software to release the bidirectional output control (open-drain output in Hi-Z state) and then be polled it until it is reset by hardware, indicating that the fault condition has disappeared. Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
-0x40014844 C   FIELD 28w01 BKBID (rw): Break Bidirectional In the bidirectional mode (BKBID bit set to 1), the break input is configured both in input mode and in open drain output mode. Any active break event asserts a low logic level on the Break input to indicate an internal break event to external devices. Note: This bit cannot be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register). Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
-0x40014848 B  REGISTER DCR (rw): TIM17 DMA control register
-0x40014848 C   FIELD 00w05 DBA (rw): DMA base address This 5-bit field defines the base-address for DMA transfers (when read/write access are done through the TIMx_DMAR address). DBA is defined as an offset starting from the address of the TIMx_CR1 register. Example: ... Example: Let us consider the following transfer: DBL = 7 transfers and DBA = TIMx_CR1. In this case the transfer is done to/from 7 registers starting from the TIMx_CR1 address.
-0x40014848 C   FIELD 08w05 DBL (rw): DMA burst length This 5-bit field defines the length of DMA transfers (the timer recognizes a burst transfer when a read or a write access is done to the TIMx_DMAR address), i.e. the number of transfers. Transfers can be in half-words or in bytes (see example below). ...
-0x4001484C B  REGISTER DMAR (rw): TIM17 DMA address for full transfer
-0x4001484C C   FIELD 00w16 DMAB (rw): DMA register for burst accesses A read or write operation to the DMAR register accesses the register located at the address (TIMx_CR1 address) + (DBA + DMA index) x 4 where TIMx_CR1 address is the address of the control register 1, DBA is the DMA base address configured in TIMx_DCR register, DMA index is automatically controlled by the DMA transfer, and ranges from 0 to DBL (DBL configured in TIMx_DCR).
+0x40014844 B  REGISTER BDTR (=TIM16.BDTR): TIM17 break and dead-time register
+0x40014848 B  REGISTER DCR (=TIM16.DCR): TIM17 DMA control register
+0x4001484C B  REGISTER DMAR (=TIM16.DMAR): TIM17 DMA address for full transfer
 0x40014860 B  REGISTER AF1 (rw): TIM17 alternate function register 1
 0x40014860 C   FIELD 00w01 BKINE (rw): BRK BKIN input enable This bit enables the BKIN alternate function input for the timer s BRK input. BKIN input is ORed with the other BRK sources. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
 0x40014860 C   FIELD 09w01 BKINP (rw): BRK BKIN input polarity This bit selects the BKIN alternate function input sensitivity. It must be programmed together with the BKP polarity bit. Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).

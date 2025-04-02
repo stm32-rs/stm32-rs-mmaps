@@ -1999,8 +1999,6 @@
 0x40010C00 C   FIELD 03w01 OPM: One-pulse mode
 0x40010C00 C   FIELD 07w01 ARPE: Auto-reload preload enable
 0x40010C00 C   FIELD 08w02 CKD: Clock division
-0x40010C04 B  REGISTER CR2 (rw): TIM10 control register 2
-0x40010C04 C   FIELD 04w03 MMS: Master mode selection
 0x40010C08 B  REGISTER SMCR (rw): TIM10 slave mode control register
 0x40010C08 C   FIELD 08w04 ETF: External trigger filter
 0x40010C08 C   FIELD 12w02 ETPS: External trigger prescaler
@@ -2038,55 +2036,26 @@
 0x40010C2C C   FIELD 00w16 ARR: Auto-reload value
 0x40010C34 B  REGISTER CCR1 (rw): capture/compare register
 0x40010C34 C   FIELD 00w16 CCR: Capture/Compare value
-0x40010C38 B  REGISTER CCR2 (rw): capture/compare register
-0x40010C38 C   FIELD 00w16 CCR: Capture/Compare value
 0x40010C50 B  REGISTER OR (rw): option register
 0x40010C50 C   FIELD 00w02 TI1_RMP: Timer 10 input 1 remap
 0x40010C50 C   FIELD 02w01 ETR_RMP: Timer10 ETR remap
 0x40010C50 C   FIELD 03w01 TI1_RMP_RI: Timer10 Input 1 remap for Routing Interface (RI)
 0x40011000 A PERIPHERAL TIM11
-0x40011000 B  REGISTER CR1 (rw): control register 1
-0x40011000 C   FIELD 00w01 CEN: Counter enable
-0x40011000 C   FIELD 01w01 UDIS: Update disable
-0x40011000 C   FIELD 02w01 URS: Update request source
-0x40011000 C   FIELD 03w01 OPM: One-pulse mode
-0x40011000 C   FIELD 07w01 ARPE: Auto-reload preload enable
-0x40011000 C   FIELD 08w02 CKD: Clock division
+0x40011000 B  REGISTER CR1 (=TIM10.CR1): control register 1
 0x40011008 B  REGISTER SMCR (rw): TIM 11 slave mode control register 1
 0x40011008 C   FIELD 08w04 ETF: External trigger filter
 0x40011008 C   FIELD 12w02 ETPS: External trigger prescaler
 0x40011008 C   FIELD 14w01 ECE: External clock enable
 0x40011008 C   FIELD 15w01 ETP: External trigger polarity
-0x4001100C B  REGISTER DIER (rw): Interrupt enable register
-0x4001100C C   FIELD 00w01 UIE: Update interrupt enable
-0x4001100C C   FIELD 01w01 CC1IE: Capture/Compare 1 interrupt enable
-0x40011010 B  REGISTER SR (rw): status register
-0x40011010 C   FIELD 00w01 UIF: Update interrupt flag
-0x40011010 C   FIELD 01w01 CC1IF: Capture/compare 1 interrupt flag
-0x40011010 C   FIELD 09w01 CC1OF: Capture/Compare 1 overcapture flag
-0x40011014 B  REGISTER EGR (wo): event generation register
-0x40011014 C   FIELD 00w01 UG: Update generation
-0x40011014 C   FIELD 01w01 CC1G: Capture/compare 1 generation
-0x40011018 B  REGISTER CCMR1_Input (rw): capture/compare mode register 1 (input mode)
-0x40011018 B  REGISTER CCMR1_Output (rw): capture/compare mode register
-0x40011018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40011018 C   FIELD 00w02 CC1S: Capture/Compare 1 selection
-0x40011018 C   FIELD 02w01 OC1FE: Output compare 1 fast enable
-0x40011018 C   FIELD 02w02 IC1PSC: Input capture 1 prescaler
-0x40011018 C   FIELD 03w01 OC1PE: Output compare 1 preload enable
-0x40011018 C   FIELD 04w03 OC1M: Output compare 1 mode
-0x40011018 C   FIELD 04w04 IC1F: Input capture 1 filter
-0x40011018 C   FIELD 07w01 OC1CE: Output compare 1 clear enable
-0x40011020 B  REGISTER CCER (rw): capture/compare enable register
-0x40011020 C   FIELD 00w01 CC1E: Capture/Compare 1 output enable
-0x40011020 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
-0x40011020 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
-0x40011024 B  REGISTER CNT (rw): counter
-0x40011024 C   FIELD 00w16 CNT: TIM10 counter
-0x40011028 B  REGISTER PSC (rw): prescaler
-0x40011028 C   FIELD 00w16 PSC: TIM9 prescaler
-0x4001102C B  REGISTER ARR (rw): auto-reload register
-0x4001102C C   FIELD 00w16 ARR: Auto-reload value
+0x4001100C B  REGISTER DIER (=TIM10.DIER): Interrupt enable register
+0x40011010 B  REGISTER SR (=TIM10.SR): status register
+0x40011014 B  REGISTER EGR (=TIM10.EGR): event generation register
+0x40011018 B  REGISTER CCMR1_Input (=TIM10.CCMR1_Input): capture/compare mode register 1 (input mode)
+0x40011018 B  REGISTER CCMR1_Output (=TIM10.CCMR1_Output): capture/compare mode register
+0x40011020 B  REGISTER CCER (=TIM10.CCER): capture/compare enable register
+0x40011024 B  REGISTER CNT (=TIM10.CNT): counter
+0x40011028 B  REGISTER PSC (=TIM10.PSC): prescaler
+0x4001102C B  REGISTER ARR (=TIM10.ARR): auto-reload register
 0x40011034 B  REGISTER CCR1 (rw): capture/compare register
 0x40011034 C   FIELD 00w16 CCR: Capture/Compare value
 0x40011050 B  REGISTER OR (rw): option register
