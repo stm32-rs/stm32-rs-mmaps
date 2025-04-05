@@ -21,8 +21,8 @@
 0x40000008 C   FIELD 12w02 ETPS (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
 0x40000008 C   FIELD 14w01 ECE (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). Note: It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
 0x40000008 C   FIELD 15w01 ETP (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
-0x40000008 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40000008 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40000008 C   FIELD 16w01 SMS_3 (rw): SMS[3]
+0x40000008 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x4000000C B  REGISTER DIER: TIM2 DMA/Interrupt enable register
 0x4000000C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000000C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
@@ -159,8 +159,8 @@
 0x40000408 C   FIELD 12w02 ETPS (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
 0x40000408 C   FIELD 14w01 ECE (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). Note: It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
 0x40000408 C   FIELD 15w01 ETP (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
-0x40000408 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40000408 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40000408 C   FIELD 16w01 SMS_3 (rw): SMS[3]
+0x40000408 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x4000040C B  REGISTER DIER: TIM2 DMA/Interrupt enable register
 0x4000040C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000040C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
@@ -297,8 +297,8 @@
 0x40000808 C   FIELD 12w02 ETPS (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
 0x40000808 C   FIELD 14w01 ECE (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). Note: It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
 0x40000808 C   FIELD 15w01 ETP (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
-0x40000808 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40000808 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40000808 C   FIELD 16w01 SMS_3 (rw): SMS[3]
+0x40000808 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x4000080C B  REGISTER DIER: TIM2 DMA/Interrupt enable register
 0x4000080C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000080C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
@@ -416,15 +416,15 @@
 0x40000C00 B  REGISTER CR1 (=TIM2.CR1): TIM5 control register 1
 0x40000C04 B  REGISTER CR2 (=TIM2.CR2): TIM5 control register 2
 0x40000C08 B  REGISTER SMCR: TIM5 slave mode control register
-0x40000C08 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. reinitializes the counter, generates an update of the registers and starts the counter. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000C08 C   FIELD 00w03 SMS (=TIM2.SMCR.SMS) (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. reinitializes the counter, generates an update of the registers and starts the counter. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
 0x40000C08 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 179: TIMx internal trigger connection on page 846 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000C08 C   FIELD 07w01 MSM (=TIM2.SMCR.MSM) (rw): Master/Slave mode
 0x40000C08 C   FIELD 08w04 ETF (=TIM2.SMCR.ETF) (rw): External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
 0x40000C08 C   FIELD 12w02 ETPS (=TIM2.SMCR.ETPS) (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
 0x40000C08 C   FIELD 14w01 ECE (=TIM2.SMCR.ECE) (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). Note: It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
 0x40000C08 C   FIELD 15w01 ETP (=TIM2.SMCR.ETP) (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
-0x40000C08 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40000C08 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40000C08 C   FIELD 16w01 SMS_3 (=TIM2.SMCR.SMS_3) (rw): SMS[3]
+0x40000C08 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x40000C0C B  REGISTER DIER (=TIM2.DIER): TIM5 DMA/Interrupt enable register
 0x40000C10 B  REGISTER SR (=TIM2.SR): TIM5 status register
 0x40000C14 B  REGISTER EGR (=TIM2.EGR): TIM5 event generation register
@@ -3248,8 +3248,8 @@
 0x40012C08 C   FIELD 12w02 ETPS (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of f<sub>CK_INT</sub> frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
 0x40012C08 C   FIELD 14w01 ECE (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
 0x40012C08 C   FIELD 15w01 ETP (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
-0x40012C08 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40012C08 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40012C08 C   FIELD 16w01 SMS_3 (rw): SMS[3]
+0x40012C08 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x40012C0C B  REGISTER DIER: TIM1 DMA/interrupt enable register
 0x40012C0C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x40012C0C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
@@ -3481,15 +3481,15 @@
 0x40013400 B  REGISTER CR1 (=TIM1.CR1): TIM8 control register 1
 0x40013404 B  REGISTER CR2 (=TIM1.CR2): TIM8 control register 2
 0x40013408 B  REGISTER SMCR: TIM8 slave mode control register
-0x40013408 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Codes above 1000: Reserved. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40013408 C   FIELD 00w03 SMS (=TIM1.SMCR.SMS) (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Codes above 1000: Reserved. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
 0x40013408 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 167: TIMxTIM1 internal trigger connection on page 777 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40013408 C   FIELD 07w01 MSM (=TIM1.SMCR.MSM) (rw): Master/slave mode
 0x40013408 C   FIELD 08w04 ETF (=TIM1.SMCR.ETF) (rw): External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
 0x40013408 C   FIELD 12w02 ETPS (=TIM1.SMCR.ETPS) (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of f<sub>CK_INT</sub> frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
 0x40013408 C   FIELD 14w01 ECE (=TIM1.SMCR.ECE) (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
 0x40013408 C   FIELD 15w01 ETP (=TIM1.SMCR.ETP) (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
-0x40013408 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40013408 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40013408 C   FIELD 16w01 SMS_3 (=TIM1.SMCR.SMS_3) (rw): SMS[3]
+0x40013408 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x4001340C B  REGISTER DIER (=TIM1.DIER): TIM8 DMA/interrupt enable register
 0x40013410 B  REGISTER SR (=TIM1.SR): TIM8 status register
 0x40013414 B  REGISTER EGR (=TIM1.EGR): TIM8 event generation register
@@ -3693,8 +3693,8 @@
 0x40014008 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control register description. Other codes: reserved. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS= 00100 ). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
 0x40014008 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit field selects the trigger input to be used to synchronize the counter. Other: Reserved See Table 181: TIMx Internal trigger connection on page 910 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40014008 C   FIELD 07w01 MSM (rw): Master/slave mode
-0x40014008 C   FIELD 16w01 SMS_1 (rw): SMS[3]
-0x40014008 C   FIELD 20w02 TS_1 (rw): TS[4:3]
+0x40014008 C   FIELD 16w01 SMS_3 (rw): SMS[3]
+0x40014008 C   FIELD 20w02 TS2 (rw): TS[4:3]
 0x4001400C B  REGISTER DIER: TIM15 DMA/interrupt enable register
 0x4001400C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4001400C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable

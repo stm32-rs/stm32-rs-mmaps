@@ -166,20 +166,20 @@
 0x40000000 C   FIELD 12w01 DITHEN (rw): Dithering Enable
 0x40000004 B  REGISTER CR2 (rw): TIM2 control register 2
 0x40000004 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x40000004 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection
+0x40000004 C   FIELD 04w03 MMS (rw): MMS[2:0]: Master mode selection
 0x40000004 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
-0x40000004 C   FIELD 25w01 MMS_H (rw): MMS[3]
+0x40000004 C   FIELD 25w01 MMS_3 (rw): MMS[3]
 0x40000008 B  REGISTER SMCR (rw): TIM2 slave mode control register
-0x40000008 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x40000008 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x40000008 C   FIELD 03w01 OCCS (rw): OCREF clear selection
-0x40000008 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x40000008 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40000008 C   FIELD 07w01 MSM (rw): Master/Slave mode
 0x40000008 C   FIELD 08w04 ETF (rw): External trigger filter
 0x40000008 C   FIELD 12w02 ETPS (rw): External trigger prescaler
 0x40000008 C   FIELD 14w01 ECE (rw): External clock enable
 0x40000008 C   FIELD 15w01 ETP (rw): External trigger polarity
-0x40000008 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40000008 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40000008 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000008 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000008 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x40000008 C   FIELD 25w01 SMSPS (rw): SMS preload source
 0x4000000C B  REGISTER DIER (rw): TIM2 DMA/Interrupt enable register
@@ -327,20 +327,20 @@
 0x40000400 C   FIELD 12w01 DITHEN (rw): Dithering Enable
 0x40000404 B  REGISTER CR2 (rw): TIM3 control register 2
 0x40000404 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x40000404 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection
+0x40000404 C   FIELD 04w03 MMS (rw): MMS[2:0]: Master mode selection
 0x40000404 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
-0x40000404 C   FIELD 25w01 MMS_H (rw): MMS[3]
+0x40000404 C   FIELD 25w01 MMS_3 (rw): MMS[3]
 0x40000408 B  REGISTER SMCR (rw): TIM3 slave mode control register
-0x40000408 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x40000408 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x40000408 C   FIELD 03w01 OCCS (rw): OCREF clear selection
-0x40000408 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x40000408 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40000408 C   FIELD 07w01 MSM (rw): Master/Slave mode
 0x40000408 C   FIELD 08w04 ETF (rw): External trigger filter
 0x40000408 C   FIELD 12w02 ETPS (rw): External trigger prescaler
 0x40000408 C   FIELD 14w01 ECE (rw): External clock enable
 0x40000408 C   FIELD 15w01 ETP (rw): External trigger polarity
-0x40000408 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40000408 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40000408 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000408 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000408 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x40000408 C   FIELD 25w01 SMSPS (rw): SMS preload source
 0x4000040C B  REGISTER DIER (rw): TIM3 DMA/Interrupt enable register
@@ -477,16 +477,16 @@
 0x40000800 B  REGISTER CR1 (=TIM3.CR1): TIM4 control register 1
 0x40000804 B  REGISTER CR2 (=TIM3.CR2): TIM4 control register 2
 0x40000808 B  REGISTER SMCR (rw): TIM4 slave mode control register
-0x40000808 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x40000808 C   FIELD 00w03 SMS (=TIM3.SMCR.SMS) (rw): SMS[2:0]: Slave mode selection
 0x40000808 C   FIELD 03w01 OCCS (=TIM3.SMCR.OCCS) (rw): OCREF clear selection
-0x40000808 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x40000808 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40000808 C   FIELD 07w01 MSM (=TIM3.SMCR.MSM) (rw): Master/Slave mode
 0x40000808 C   FIELD 08w04 ETF (=TIM3.SMCR.ETF) (rw): External trigger filter
 0x40000808 C   FIELD 12w02 ETPS (=TIM3.SMCR.ETPS) (rw): External trigger prescaler
 0x40000808 C   FIELD 14w01 ECE (=TIM3.SMCR.ECE) (rw): External clock enable
 0x40000808 C   FIELD 15w01 ETP (=TIM3.SMCR.ETP) (rw): External trigger polarity
-0x40000808 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40000808 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40000808 C   FIELD 16w01 SMS_3 (=TIM3.SMCR.SMS_3) (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000808 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000808 C   FIELD 24w01 SMSPE (=TIM3.SMCR.SMSPE) (rw): SMS preload enable
 0x40000808 C   FIELD 25w01 SMSPS (=TIM3.SMCR.SMSPS) (rw): SMS preload source
 0x4000080C B  REGISTER DIER (=TIM3.DIER): TIM4 DMA/Interrupt enable register
@@ -520,16 +520,16 @@
 0x40000C00 B  REGISTER CR1 (=TIM2.CR1): TIM5 control register 1
 0x40000C04 B  REGISTER CR2 (=TIM2.CR2): TIM5 control register 2
 0x40000C08 B  REGISTER SMCR (rw): TIM5 slave mode control register
-0x40000C08 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x40000C08 C   FIELD 00w03 SMS (=TIM2.SMCR.SMS) (rw): SMS[2:0]: Slave mode selection
 0x40000C08 C   FIELD 03w01 OCCS (=TIM2.SMCR.OCCS) (rw): OCREF clear selection
-0x40000C08 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x40000C08 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40000C08 C   FIELD 07w01 MSM (=TIM2.SMCR.MSM) (rw): Master/Slave mode
 0x40000C08 C   FIELD 08w04 ETF (=TIM2.SMCR.ETF) (rw): External trigger filter
 0x40000C08 C   FIELD 12w02 ETPS (=TIM2.SMCR.ETPS) (rw): External trigger prescaler
 0x40000C08 C   FIELD 14w01 ECE (=TIM2.SMCR.ECE) (rw): External clock enable
 0x40000C08 C   FIELD 15w01 ETP (=TIM2.SMCR.ETP) (rw): External trigger polarity
-0x40000C08 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40000C08 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40000C08 C   FIELD 16w01 SMS_3 (=TIM2.SMCR.SMS_3) (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000C08 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000C08 C   FIELD 24w01 SMSPE (=TIM2.SMCR.SMSPE) (rw): SMS preload enable
 0x40000C08 C   FIELD 25w01 SMSPS (=TIM2.SMCR.SMSPS) (rw): SMS preload source
 0x40000C0C B  REGISTER DIER (=TIM2.DIER): TIM5 DMA/Interrupt enable register
@@ -620,14 +620,14 @@
 0x40001800 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
 0x40001800 C   FIELD 12w01 DITHEN (rw): Dithering Enable
 0x40001804 B  REGISTER CR2: TIM12 control register 2
-0x40001804 C   FIELD 04w03 MMS1 (rw): Master mode selection
+0x40001804 C   FIELD 04w03 MMS (rw): Master mode selection
 0x40001804 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
 0x40001808 B  REGISTER SMCR: TIM12 slave mode control register
 0x40001808 C   FIELD 00w03 SMS (rw): Slave mode selection
 0x40001808 C   FIELD 04w03 TS (rw): Trigger selection (see bits 21:20 for TS[4:3])
 0x40001808 C   FIELD 07w01 MSM (rw): Master/Slave mode
-0x40001808 C   FIELD 16w01 SMS_2 (rw): Slave mode selection
-0x40001808 C   FIELD 20w02 TS_2 (rw): Trigger selection (see bits 21:20 for TS[4:3])
+0x40001808 C   FIELD 16w01 SMS_3 (rw): Slave mode selection
+0x40001808 C   FIELD 20w02 TS2 (rw): Trigger selection (see bits 21:20 for TS[4:3])
 0x4000180C B  REGISTER DIER: TIM12 DMA/Interrupt enable register
 0x4000180C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000180C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
@@ -636,10 +636,10 @@
 0x40001810 B  REGISTER SR: TIM12 status register
 0x40001810 C   FIELD 00w01 UIF (rw): Update interrupt flag
 0x40001810 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
-0x40001810 C   FIELD 02w01 CC2IF (rw): Capture/Compare 2 interrupt flag
+0x40001810 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
 0x40001810 C   FIELD 06w01 TIF (rw): Trigger interrupt flag
 0x40001810 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
-0x40001810 C   FIELD 10w01 CC2OF (rw): Capture/compare 2 overcapture flag
+0x40001810 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
 0x40001814 B  REGISTER EGR: TIM12 event generation register
 0x40001814 C   FIELD 00w01 UG (wo): Update generation
 0x40001814 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
@@ -652,24 +652,24 @@
 0x40001818 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
 0x40001818 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
 0x40001818 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x40001818 C   FIELD 04w03 OC1M1 (rw): Output compare 1 mode
+0x40001818 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
 0x40001818 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
 0x40001818 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
 0x40001818 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection
 0x40001818 C   FIELD 10w01 OC2FE (rw): Output compare 2 fast enable
 0x40001818 C   FIELD 10w02 IC2PSC (rw): Input capture 2 prescaler
 0x40001818 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x40001818 C   FIELD 12w03 OC2M1 (rw): Output compare 2 mode
+0x40001818 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x40001818 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
-0x40001818 C   FIELD 16w01 OC1M2 (rw): Output compare 1 mode
-0x40001818 C   FIELD 24w01 OC2M2 (rw): Output compare 2 mode
+0x40001818 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
+0x40001818 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x40001820 B  REGISTER CCER: TIM12 capture/compare enable register
-0x40001820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable.
-0x40001820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity.
-0x40001820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity.
-0x40001820 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable.
-0x40001820 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity.
-0x40001820 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity.
+0x40001820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
+0x40001820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
+0x40001820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x40001820 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
+0x40001820 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
+0x40001820 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
 0x40001824 B  REGISTER CNT: TIM12 counter
 0x40001824 C   FIELD 00w16 CNT (rw): or UIFCPY: Value depends on IUFREMAP in TIMx_CR1.
 0x40001824 C   FIELD 31w01 UIFCPY (rw): UIF Copy
@@ -677,10 +677,10 @@
 0x40001828 C   FIELD 00w16 PSC (rw): Prescaler value
 0x4000182C B  REGISTER ARR: TIM12 auto-reload register
 0x4000182C C   FIELD 00w20 ARR (rw): Auto-reload value
-0x40001834 B  REGISTER CCR1: TIM12 capture/compare register 1
-0x40001834 C   FIELD 00w20 CCR1 (rw): Capture/compare 1 value
-0x40001838 B  REGISTER CCR2: TIM12 capture/compare register 2
-0x40001838 C   FIELD 00w20 CCR2 (rw): Capture/compare 2 value
+0x40001834 B  REGISTER CCR1: capture/compare register
+0x40001834 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40001838 B  REGISTER CCR2: capture/compare register
+0x40001838 C   FIELD 00w20 CCR (rw): Capture/Compare value
 0x4000185C B  REGISTER TISEL: TIM12 timer input selection register
 0x4000185C C   FIELD 00w04 TI1SEL (rw): Selects tim_ti1[0..15] input
 0x4000185C C   FIELD 08w04 TI2SEL (rw): Selects tim_ti2[0..15] input
@@ -2891,7 +2891,7 @@
 0x40012C04 C   FIELD 00w01 CCPC (rw): Capture/compare preloaded control
 0x40012C04 C   FIELD 02w01 CCUS (rw): Capture/compare control update selection
 0x40012C04 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x40012C04 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection
+0x40012C04 C   FIELD 04w03 MMS (rw): MMS[2:0]: Master mode selection
 0x40012C04 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
 0x40012C04 C   FIELD 08w01 OIS1 (rw): Output Idle state (OC1 output)
 0x40012C04 C   FIELD 09w01 OIS1N (rw): Output Idle state (OC1N output)
@@ -2904,18 +2904,18 @@
 0x40012C04 C   FIELD 16w01 OIS5 (rw): Output Idle state (OC5 output)
 0x40012C04 C   FIELD 18w01 OIS6 (rw): Output Idle state (OC6 output)
 0x40012C04 C   FIELD 20w04 MMS2 (rw): Master mode selection 2
-0x40012C04 C   FIELD 25w01 MMS_H (rw): MMS[3]
+0x40012C04 C   FIELD 25w01 MMS_3 (rw): MMS[3]
 0x40012C08 B  REGISTER SMCR (rw): TIM1 slave mode control register
-0x40012C08 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x40012C08 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x40012C08 C   FIELD 03w01 OCCS (rw): OCREF clear selection
-0x40012C08 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x40012C08 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40012C08 C   FIELD 07w01 MSM (rw): Master/slave mode
 0x40012C08 C   FIELD 08w04 ETF (rw): External trigger filter
 0x40012C08 C   FIELD 12w02 ETPS (rw): External trigger prescaler
 0x40012C08 C   FIELD 14w01 ECE (rw): External clock enable
 0x40012C08 C   FIELD 15w01 ETP (rw): External trigger polarity
-0x40012C08 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40012C08 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40012C08 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40012C08 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40012C08 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x40012C08 C   FIELD 25w01 SMSPS (rw): SMS preload source
 0x40012C0C B  REGISTER DIER (rw): TIM1 DMA/interrupt enable register
@@ -3252,16 +3252,16 @@
 0x40013400 B  REGISTER CR1 (=TIM1.CR1): TIM8 control register 1
 0x40013404 B  REGISTER CR2 (=TIM1.CR2): TIM8 control register 2
 0x40013408 B  REGISTER SMCR (rw): TIM8 slave mode control register
-0x40013408 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x40013408 C   FIELD 00w03 SMS (=TIM1.SMCR.SMS) (rw): SMS[2:0]: Slave mode selection
 0x40013408 C   FIELD 03w01 OCCS (=TIM1.SMCR.OCCS) (rw): OCREF clear selection
-0x40013408 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x40013408 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40013408 C   FIELD 07w01 MSM (=TIM1.SMCR.MSM) (rw): Master/slave mode
 0x40013408 C   FIELD 08w04 ETF (=TIM1.SMCR.ETF) (rw): External trigger filter
 0x40013408 C   FIELD 12w02 ETPS (=TIM1.SMCR.ETPS) (rw): External trigger prescaler
 0x40013408 C   FIELD 14w01 ECE (=TIM1.SMCR.ECE) (rw): External clock enable
 0x40013408 C   FIELD 15w01 ETP (=TIM1.SMCR.ETP) (rw): External trigger polarity
-0x40013408 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40013408 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40013408 C   FIELD 16w01 SMS_3 (=TIM1.SMCR.SMS_3) (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40013408 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40013408 C   FIELD 24w01 SMSPE (=TIM1.SMCR.SMSPE) (rw): SMS preload enable
 0x40013408 C   FIELD 25w01 SMSPS (=TIM1.SMCR.SMSPS) (rw): SMS preload source
 0x4001340C B  REGISTER DIER (=TIM1.DIER): TIM8 DMA/interrupt enable register
@@ -3507,8 +3507,8 @@
 0x40014008 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x40014008 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x40014008 C   FIELD 07w01 MSM (rw): Master/slave mode
-0x40014008 C   FIELD 16w01 SMS_1 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x40014008 C   FIELD 20w02 TS_1 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40014008 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40014008 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40014008 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x4001400C B  REGISTER DIER (rw): TIM15 DMA/interrupt enable register
 0x4001400C C   FIELD 00w01 UIE (rw): Update interrupt enable
@@ -11024,20 +11024,20 @@
 0x50000000 C   FIELD 12w01 DITHEN (rw): Dithering Enable
 0x50000004 B  REGISTER CR2 (rw): TIM2 control register 2
 0x50000004 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x50000004 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection
+0x50000004 C   FIELD 04w03 MMS (rw): MMS[2:0]: Master mode selection
 0x50000004 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
-0x50000004 C   FIELD 25w01 MMS_H (rw): MMS[3]
+0x50000004 C   FIELD 25w01 MMS_3 (rw): MMS[3]
 0x50000008 B  REGISTER SMCR (rw): TIM2 slave mode control register
-0x50000008 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x50000008 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x50000008 C   FIELD 03w01 OCCS (rw): OCREF clear selection
-0x50000008 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x50000008 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50000008 C   FIELD 07w01 MSM (rw): Master/Slave mode
 0x50000008 C   FIELD 08w04 ETF (rw): External trigger filter
 0x50000008 C   FIELD 12w02 ETPS (rw): External trigger prescaler
 0x50000008 C   FIELD 14w01 ECE (rw): External clock enable
 0x50000008 C   FIELD 15w01 ETP (rw): External trigger polarity
-0x50000008 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50000008 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50000008 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50000008 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50000008 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x50000008 C   FIELD 25w01 SMSPS (rw): SMS preload source
 0x5000000C B  REGISTER DIER (rw): TIM2 DMA/Interrupt enable register
@@ -11185,20 +11185,20 @@
 0x50000400 C   FIELD 12w01 DITHEN (rw): Dithering Enable
 0x50000404 B  REGISTER CR2 (rw): TIM3 control register 2
 0x50000404 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x50000404 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection
+0x50000404 C   FIELD 04w03 MMS (rw): MMS[2:0]: Master mode selection
 0x50000404 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
-0x50000404 C   FIELD 25w01 MMS_H (rw): MMS[3]
+0x50000404 C   FIELD 25w01 MMS_3 (rw): MMS[3]
 0x50000408 B  REGISTER SMCR (rw): TIM3 slave mode control register
-0x50000408 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x50000408 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x50000408 C   FIELD 03w01 OCCS (rw): OCREF clear selection
-0x50000408 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x50000408 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50000408 C   FIELD 07w01 MSM (rw): Master/Slave mode
 0x50000408 C   FIELD 08w04 ETF (rw): External trigger filter
 0x50000408 C   FIELD 12w02 ETPS (rw): External trigger prescaler
 0x50000408 C   FIELD 14w01 ECE (rw): External clock enable
 0x50000408 C   FIELD 15w01 ETP (rw): External trigger polarity
-0x50000408 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50000408 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50000408 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50000408 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50000408 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x50000408 C   FIELD 25w01 SMSPS (rw): SMS preload source
 0x5000040C B  REGISTER DIER (rw): TIM3 DMA/Interrupt enable register
@@ -11335,16 +11335,16 @@
 0x50000800 B  REGISTER CR1 (=TIM3.CR1): TIM4 control register 1
 0x50000804 B  REGISTER CR2 (=TIM3.CR2): TIM4 control register 2
 0x50000808 B  REGISTER SMCR (rw): TIM4 slave mode control register
-0x50000808 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x50000808 C   FIELD 00w03 SMS (=TIM3.SMCR.SMS) (rw): SMS[2:0]: Slave mode selection
 0x50000808 C   FIELD 03w01 OCCS (=TIM3.SMCR.OCCS) (rw): OCREF clear selection
-0x50000808 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x50000808 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50000808 C   FIELD 07w01 MSM (=TIM3.SMCR.MSM) (rw): Master/Slave mode
 0x50000808 C   FIELD 08w04 ETF (=TIM3.SMCR.ETF) (rw): External trigger filter
 0x50000808 C   FIELD 12w02 ETPS (=TIM3.SMCR.ETPS) (rw): External trigger prescaler
 0x50000808 C   FIELD 14w01 ECE (=TIM3.SMCR.ECE) (rw): External clock enable
 0x50000808 C   FIELD 15w01 ETP (=TIM3.SMCR.ETP) (rw): External trigger polarity
-0x50000808 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50000808 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50000808 C   FIELD 16w01 SMS_3 (=TIM3.SMCR.SMS_3) (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50000808 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50000808 C   FIELD 24w01 SMSPE (=TIM3.SMCR.SMSPE) (rw): SMS preload enable
 0x50000808 C   FIELD 25w01 SMSPS (=TIM3.SMCR.SMSPS) (rw): SMS preload source
 0x5000080C B  REGISTER DIER (=TIM3.DIER): TIM4 DMA/Interrupt enable register
@@ -11378,16 +11378,16 @@
 0x50000C00 B  REGISTER CR1 (=TIM2.CR1): TIM5 control register 1
 0x50000C04 B  REGISTER CR2 (=TIM2.CR2): TIM5 control register 2
 0x50000C08 B  REGISTER SMCR (rw): TIM5 slave mode control register
-0x50000C08 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x50000C08 C   FIELD 00w03 SMS (=TIM2.SMCR.SMS) (rw): SMS[2:0]: Slave mode selection
 0x50000C08 C   FIELD 03w01 OCCS (=TIM2.SMCR.OCCS) (rw): OCREF clear selection
-0x50000C08 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x50000C08 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50000C08 C   FIELD 07w01 MSM (=TIM2.SMCR.MSM) (rw): Master/Slave mode
 0x50000C08 C   FIELD 08w04 ETF (=TIM2.SMCR.ETF) (rw): External trigger filter
 0x50000C08 C   FIELD 12w02 ETPS (=TIM2.SMCR.ETPS) (rw): External trigger prescaler
 0x50000C08 C   FIELD 14w01 ECE (=TIM2.SMCR.ECE) (rw): External clock enable
 0x50000C08 C   FIELD 15w01 ETP (=TIM2.SMCR.ETP) (rw): External trigger polarity
-0x50000C08 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50000C08 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50000C08 C   FIELD 16w01 SMS_3 (=TIM2.SMCR.SMS_3) (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50000C08 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50000C08 C   FIELD 24w01 SMSPE (=TIM2.SMCR.SMSPE) (rw): SMS preload enable
 0x50000C08 C   FIELD 25w01 SMSPS (=TIM2.SMCR.SMSPS) (rw): SMS preload source
 0x50000C0C B  REGISTER DIER (=TIM2.DIER): TIM5 DMA/Interrupt enable register
@@ -11478,14 +11478,14 @@
 0x50001800 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
 0x50001800 C   FIELD 12w01 DITHEN (rw): Dithering Enable
 0x50001804 B  REGISTER CR2: TIM12 control register 2
-0x50001804 C   FIELD 04w03 MMS1 (rw): Master mode selection
+0x50001804 C   FIELD 04w03 MMS (rw): Master mode selection
 0x50001804 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
 0x50001808 B  REGISTER SMCR: TIM12 slave mode control register
 0x50001808 C   FIELD 00w03 SMS (rw): Slave mode selection
 0x50001808 C   FIELD 04w03 TS (rw): Trigger selection (see bits 21:20 for TS[4:3])
 0x50001808 C   FIELD 07w01 MSM (rw): Master/Slave mode
-0x50001808 C   FIELD 16w01 SMS_2 (rw): Slave mode selection
-0x50001808 C   FIELD 20w02 TS_2 (rw): Trigger selection (see bits 21:20 for TS[4:3])
+0x50001808 C   FIELD 16w01 SMS_3 (rw): Slave mode selection
+0x50001808 C   FIELD 20w02 TS2 (rw): Trigger selection (see bits 21:20 for TS[4:3])
 0x5000180C B  REGISTER DIER: TIM12 DMA/Interrupt enable register
 0x5000180C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x5000180C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
@@ -11494,10 +11494,10 @@
 0x50001810 B  REGISTER SR: TIM12 status register
 0x50001810 C   FIELD 00w01 UIF (rw): Update interrupt flag
 0x50001810 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
-0x50001810 C   FIELD 02w01 CC2IF (rw): Capture/Compare 2 interrupt flag
+0x50001810 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
 0x50001810 C   FIELD 06w01 TIF (rw): Trigger interrupt flag
 0x50001810 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
-0x50001810 C   FIELD 10w01 CC2OF (rw): Capture/compare 2 overcapture flag
+0x50001810 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
 0x50001814 B  REGISTER EGR: TIM12 event generation register
 0x50001814 C   FIELD 00w01 UG (wo): Update generation
 0x50001814 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
@@ -11510,24 +11510,24 @@
 0x50001818 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
 0x50001818 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
 0x50001818 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
-0x50001818 C   FIELD 04w03 OC1M1 (rw): Output compare 1 mode
+0x50001818 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
 0x50001818 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
 0x50001818 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
 0x50001818 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection
 0x50001818 C   FIELD 10w01 OC2FE (rw): Output compare 2 fast enable
 0x50001818 C   FIELD 10w02 IC2PSC (rw): Input capture 2 prescaler
 0x50001818 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
-0x50001818 C   FIELD 12w03 OC2M1 (rw): Output compare 2 mode
+0x50001818 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
 0x50001818 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
-0x50001818 C   FIELD 16w01 OC1M2 (rw): Output compare 1 mode
-0x50001818 C   FIELD 24w01 OC2M2 (rw): Output compare 2 mode
+0x50001818 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
+0x50001818 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
 0x50001820 B  REGISTER CCER: TIM12 capture/compare enable register
-0x50001820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable.
-0x50001820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity.
-0x50001820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity.
-0x50001820 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable.
-0x50001820 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity.
-0x50001820 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity.
+0x50001820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
+0x50001820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
+0x50001820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x50001820 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
+0x50001820 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
+0x50001820 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
 0x50001824 B  REGISTER CNT: TIM12 counter
 0x50001824 C   FIELD 00w16 CNT (rw): or UIFCPY: Value depends on IUFREMAP in TIMx_CR1.
 0x50001824 C   FIELD 31w01 UIFCPY (rw): UIF Copy
@@ -11535,10 +11535,10 @@
 0x50001828 C   FIELD 00w16 PSC (rw): Prescaler value
 0x5000182C B  REGISTER ARR: TIM12 auto-reload register
 0x5000182C C   FIELD 00w20 ARR (rw): Auto-reload value
-0x50001834 B  REGISTER CCR1: TIM12 capture/compare register 1
-0x50001834 C   FIELD 00w20 CCR1 (rw): Capture/compare 1 value
-0x50001838 B  REGISTER CCR2: TIM12 capture/compare register 2
-0x50001838 C   FIELD 00w20 CCR2 (rw): Capture/compare 2 value
+0x50001834 B  REGISTER CCR1: capture/compare register
+0x50001834 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x50001838 B  REGISTER CCR2: capture/compare register
+0x50001838 C   FIELD 00w20 CCR (rw): Capture/Compare value
 0x5000185C B  REGISTER TISEL: TIM12 timer input selection register
 0x5000185C C   FIELD 00w04 TI1SEL (rw): Selects tim_ti1[0..15] input
 0x5000185C C   FIELD 08w04 TI2SEL (rw): Selects tim_ti2[0..15] input
@@ -13749,7 +13749,7 @@
 0x50012C04 C   FIELD 00w01 CCPC (rw): Capture/compare preloaded control
 0x50012C04 C   FIELD 02w01 CCUS (rw): Capture/compare control update selection
 0x50012C04 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
-0x50012C04 C   FIELD 04w03 MMS_L (rw): MMS[2:0]: Master mode selection
+0x50012C04 C   FIELD 04w03 MMS (rw): MMS[2:0]: Master mode selection
 0x50012C04 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
 0x50012C04 C   FIELD 08w01 OIS1 (rw): Output Idle state (OC1 output)
 0x50012C04 C   FIELD 09w01 OIS1N (rw): Output Idle state (OC1N output)
@@ -13762,18 +13762,18 @@
 0x50012C04 C   FIELD 16w01 OIS5 (rw): Output Idle state (OC5 output)
 0x50012C04 C   FIELD 18w01 OIS6 (rw): Output Idle state (OC6 output)
 0x50012C04 C   FIELD 20w04 MMS2 (rw): Master mode selection 2
-0x50012C04 C   FIELD 25w01 MMS_H (rw): MMS[3]
+0x50012C04 C   FIELD 25w01 MMS_3 (rw): MMS[3]
 0x50012C08 B  REGISTER SMCR (rw): TIM1 slave mode control register
-0x50012C08 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x50012C08 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x50012C08 C   FIELD 03w01 OCCS (rw): OCREF clear selection
-0x50012C08 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x50012C08 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50012C08 C   FIELD 07w01 MSM (rw): Master/slave mode
 0x50012C08 C   FIELD 08w04 ETF (rw): External trigger filter
 0x50012C08 C   FIELD 12w02 ETPS (rw): External trigger prescaler
 0x50012C08 C   FIELD 14w01 ECE (rw): External clock enable
 0x50012C08 C   FIELD 15w01 ETP (rw): External trigger polarity
-0x50012C08 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50012C08 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50012C08 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50012C08 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50012C08 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x50012C08 C   FIELD 25w01 SMSPS (rw): SMS preload source
 0x50012C0C B  REGISTER DIER (rw): TIM1 DMA/interrupt enable register
@@ -14110,16 +14110,16 @@
 0x50013400 B  REGISTER CR1 (=TIM1.CR1): TIM8 control register 1
 0x50013404 B  REGISTER CR2 (=TIM1.CR2): TIM8 control register 2
 0x50013408 B  REGISTER SMCR (rw): TIM8 slave mode control register
-0x50013408 C   FIELD 00w03 SMS_L (rw): SMS[2:0]: Slave mode selection
+0x50013408 C   FIELD 00w03 SMS (=TIM1.SMCR.SMS) (rw): SMS[2:0]: Slave mode selection
 0x50013408 C   FIELD 03w01 OCCS (=TIM1.SMCR.OCCS) (rw): OCREF clear selection
-0x50013408 C   FIELD 04w03 TS_L (rw): TS[2:0]: Trigger selection
+0x50013408 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50013408 C   FIELD 07w01 MSM (=TIM1.SMCR.MSM) (rw): Master/slave mode
 0x50013408 C   FIELD 08w04 ETF (=TIM1.SMCR.ETF) (rw): External trigger filter
 0x50013408 C   FIELD 12w02 ETPS (=TIM1.SMCR.ETPS) (rw): External trigger prescaler
 0x50013408 C   FIELD 14w01 ECE (=TIM1.SMCR.ECE) (rw): External clock enable
 0x50013408 C   FIELD 15w01 ETP (=TIM1.SMCR.ETP) (rw): External trigger polarity
-0x50013408 C   FIELD 16w01 SMS_H (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50013408 C   FIELD 20w02 TS_H (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50013408 C   FIELD 16w01 SMS_3 (=TIM1.SMCR.SMS_3) (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50013408 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50013408 C   FIELD 24w01 SMSPE (=TIM1.SMCR.SMSPE) (rw): SMS preload enable
 0x50013408 C   FIELD 25w01 SMSPS (=TIM1.SMCR.SMSPS) (rw): SMS preload source
 0x5001340C B  REGISTER DIER (=TIM1.DIER): TIM8 DMA/interrupt enable register
@@ -14365,8 +14365,8 @@
 0x50014008 C   FIELD 00w03 SMS (rw): SMS[2:0]: Slave mode selection
 0x50014008 C   FIELD 04w03 TS (rw): TS[2:0]: Trigger selection
 0x50014008 C   FIELD 07w01 MSM (rw): Master/slave mode
-0x50014008 C   FIELD 16w01 SMS_1 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
-0x50014008 C   FIELD 20w02 TS_1 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x50014008 C   FIELD 16w01 SMS_3 (rw): Slave mode selection When external signals are selected the active edge of the trigger signal (tim_trgi) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Note: The gated mode must not be used if tim_ti1f_ed is selected as the trigger input (TS=00100). Indeed, tim_ti1f_ed outputs 1 pulse for each transition on tim_ti1f, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the tim_trgo signal must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x50014008 C   FIELD 20w02 TS2 (rw): Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See for product specific implementation details. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x50014008 C   FIELD 24w01 SMSPE (rw): SMS preload enable
 0x5001400C B  REGISTER DIER (rw): TIM15 DMA/interrupt enable register
 0x5001400C C   FIELD 00w01 UIE (rw): Update interrupt enable
