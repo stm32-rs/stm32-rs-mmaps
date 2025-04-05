@@ -3972,7 +3972,16 @@
 0x40010400 A PERIPHERAL TIM8
 0x40010400 B  REGISTER CR1 (=TIM1.CR1): control register 1
 0x40010404 B  REGISTER CR2 (=TIM1.CR2): control register 2
-0x40010408 B  REGISTER SMCR (=TIM1.SMCR): slave mode control register
+0x40010408 B  REGISTER SMCR (rw): slave mode control register
+0x40010408 C   FIELD 00w03 SMS: Slave mode selection
+0x40010408 C   FIELD 04w03 TS: Trigger selection
+0x40010408 C   FIELD 07w01 MSM (=TIM1.SMCR.MSM): Master/Slave mode
+0x40010408 C   FIELD 08w04 ETF (=TIM1.SMCR.ETF): External trigger filter
+0x40010408 C   FIELD 12w02 ETPS (=TIM1.SMCR.ETPS): External trigger prescaler
+0x40010408 C   FIELD 14w01 ECE (=TIM1.SMCR.ECE): External clock enable
+0x40010408 C   FIELD 15w01 ETP (=TIM1.SMCR.ETP): External trigger polarity
+0x40010408 C   FIELD 16w01 SMS_3: Slave mode selection - bit 3
+0x40010408 C   FIELD 20w02 TS_4_3: Trigger selection - bit 4:3
 0x4001040C B  REGISTER DIER (=TIM1.DIER): DMA/Interrupt enable register
 0x40010410 B  REGISTER SR (=TIM1.SR): status register
 0x40010414 B  REGISTER EGR (=TIM1.EGR): event generation register
@@ -3985,14 +3994,10 @@
 0x40010428 B  REGISTER PSC (=TIM1.PSC): prescaler
 0x4001042C B  REGISTER ARR (=TIM1.ARR): auto-reload register
 0x40010430 B  REGISTER RCR (=TIM1.RCR): repetition counter register
-0x40010434 B  REGISTER CCR1 (rw): capture/compare register
-0x40010434 C   FIELD 00w16 CCR: Capture/Compare value
-0x40010438 B  REGISTER CCR2 (rw): capture/compare register
-0x40010438 C   FIELD 00w16 CCR: Capture/Compare value
-0x4001043C B  REGISTER CCR3 (rw): capture/compare register
-0x4001043C C   FIELD 00w16 CCR: Capture/Compare value
-0x40010440 B  REGISTER CCR4 (rw): capture/compare register
-0x40010440 C   FIELD 00w16 CCR: Capture/Compare value
+0x40010434 B  REGISTER CCR1 (=TIM1.CCR%s): capture/compare register
+0x40010438 B  REGISTER CCR2 (=TIM1.CCR%s): capture/compare register
+0x4001043C B  REGISTER CCR3 (=TIM1.CCR%s): capture/compare register
+0x40010440 B  REGISTER CCR4 (=TIM1.CCR%s): capture/compare register
 0x40010444 B  REGISTER BDTR (=TIM1.BDTR): break and dead-time register
 0x40010448 B  REGISTER DCR (=TIM1.DCR): DMA control register
 0x4001044C B  REGISTER DMAR (=TIM1.DMAR): DMA address for full transfer
@@ -5010,8 +5015,7 @@
 0x40014828 B  REGISTER PSC (=TIM16.PSC): prescaler
 0x4001482C B  REGISTER ARR (=TIM16.ARR): auto-reload register
 0x40014830 B  REGISTER RCR (=TIM16.RCR): repetition counter register
-0x40014834 B  REGISTER CCR1 (rw): capture/compare register
-0x40014834 C   FIELD 00w16 CCR: Capture/Compare value
+0x40014834 B  REGISTER CCR1 (=TIM16.CCR%s): capture/compare register
 0x40014844 B  REGISTER BDTR (=TIM16.BDTR): break and dead-time register
 0x40014848 B  REGISTER DCR (=TIM16.DCR): DMA control register
 0x4001484C B  REGISTER DMAR (=TIM16.DMAR): DMA address for full transfer

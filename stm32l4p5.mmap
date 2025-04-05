@@ -277,7 +277,16 @@
 0x40000800 A PERIPHERAL TIM4
 0x40000800 B  REGISTER CR1 (=TIM3.CR1): TIM4 control register 1
 0x40000804 B  REGISTER CR2 (=TIM3.CR2): TIM4 control register 2
-0x40000808 B  REGISTER SMCR (=TIM3.SMCR): TIM4 slave mode control register
+0x40000808 B  REGISTER SMCR: TIM4 slave mode control register
+0x40000808 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. reinitializes the counter, generates an update of the registers and starts the counter. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000808 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 179: TIMx internal trigger connection on page 846 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40000808 C   FIELD 07w01 MSM (=TIM3.SMCR.MSM) (rw): Master/Slave mode
+0x40000808 C   FIELD 08w04 ETF (=TIM3.SMCR.ETF) (rw): External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
+0x40000808 C   FIELD 12w02 ETPS (=TIM3.SMCR.ETPS) (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
+0x40000808 C   FIELD 14w01 ECE (=TIM3.SMCR.ECE) (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). Note: It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
+0x40000808 C   FIELD 15w01 ETP (=TIM3.SMCR.ETP) (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
+0x40000808 C   FIELD 16w01 SMS_1 (rw): SMS[3]
+0x40000808 C   FIELD 20w02 TS_1 (rw): TS[4:3]
 0x4000080C B  REGISTER DIER (=TIM3.DIER): TIM4 DMA/Interrupt enable register
 0x40000810 B  REGISTER SR (=TIM3.SR): TIM4 status register
 0x40000814 B  REGISTER EGR (=TIM3.EGR): TIM4 event generation register
@@ -292,14 +301,10 @@
 0x40000824 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
 0x40000828 B  REGISTER PSC (=TIM3.PSC): TIM4 prescaler
 0x4000082C B  REGISTER ARR (=TIM3.ARR): TIM4 auto-reload register
-0x40000834 B  REGISTER CCR1: capture/compare register
-0x40000834 C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000838 B  REGISTER CCR2: capture/compare register
-0x40000838 C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x4000083C B  REGISTER CCR3: capture/compare register
-0x4000083C C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000840 B  REGISTER CCR4: capture/compare register
-0x40000840 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000834 B  REGISTER CCR1 (=TIM3.CCR%s): capture/compare register
+0x40000838 B  REGISTER CCR2 (=TIM3.CCR%s): capture/compare register
+0x4000083C B  REGISTER CCR3 (=TIM3.CCR%s): capture/compare register
+0x40000840 B  REGISTER CCR4 (=TIM3.CCR%s): capture/compare register
 0x40000848 B  REGISTER DCR (=TIM3.DCR): TIM4 DMA control register
 0x4000084C B  REGISTER DMAR (=TIM3.DMAR): TIM4 DMA address for full transfer
 0x40000860 B  REGISTER AF1: TIM4 alternate function option register 1
@@ -312,7 +317,16 @@
 0x40000C00 A PERIPHERAL TIM5
 0x40000C00 B  REGISTER CR1 (=TIM2.CR1): TIM5 control register 1
 0x40000C04 B  REGISTER CR2 (=TIM2.CR2): TIM5 control register 2
-0x40000C08 B  REGISTER SMCR (=TIM2.SMCR): TIM5 slave mode control register
+0x40000C08 B  REGISTER SMCR: TIM5 slave mode control register
+0x40000C08 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. reinitializes the counter, generates an update of the registers and starts the counter. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40000C08 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 179: TIMx internal trigger connection on page 846 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40000C08 C   FIELD 07w01 MSM (=TIM2.SMCR.MSM) (rw): Master/Slave mode
+0x40000C08 C   FIELD 08w04 ETF (=TIM2.SMCR.ETF) (rw): External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
+0x40000C08 C   FIELD 12w02 ETPS (=TIM2.SMCR.ETPS) (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of CK_INT frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
+0x40000C08 C   FIELD 14w01 ECE (=TIM2.SMCR.ECE) (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). Note: It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
+0x40000C08 C   FIELD 15w01 ETP (=TIM2.SMCR.ETP) (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
+0x40000C08 C   FIELD 16w01 SMS_1 (rw): SMS[3]
+0x40000C08 C   FIELD 20w02 TS_1 (rw): TS[4:3]
 0x40000C0C B  REGISTER DIER (=TIM2.DIER): TIM5 DMA/Interrupt enable register
 0x40000C10 B  REGISTER SR (=TIM2.SR): TIM5 status register
 0x40000C14 B  REGISTER EGR (=TIM2.EGR): TIM5 event generation register
@@ -327,14 +341,10 @@
 0x40000C24 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
 0x40000C28 B  REGISTER PSC (=TIM2.PSC): TIM5 prescaler
 0x40000C2C B  REGISTER ARR (=TIM2.ARR): TIM5 auto-reload register
-0x40000C34 B  REGISTER CCR1: capture/compare register
-0x40000C34 C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000C38 B  REGISTER CCR2: capture/compare register
-0x40000C38 C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000C3C B  REGISTER CCR3: capture/compare register
-0x40000C3C C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000C40 B  REGISTER CCR4: capture/compare register
-0x40000C40 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000C34 B  REGISTER CCR1 (=TIM2.CCR%s): capture/compare register
+0x40000C38 B  REGISTER CCR2 (=TIM2.CCR%s): capture/compare register
+0x40000C3C B  REGISTER CCR3 (=TIM2.CCR%s): capture/compare register
+0x40000C40 B  REGISTER CCR4 (=TIM2.CCR%s): capture/compare register
 0x40000C48 B  REGISTER DCR (=TIM2.DCR): TIM5 DMA control register
 0x40000C4C B  REGISTER DMAR (=TIM2.DMAR): TIM5 DMA address for full transfer
 0x40000C60 B  REGISTER AF1: TIM5 alternate function option register 1
@@ -3317,7 +3327,16 @@
 0x40013400 A PERIPHERAL TIM8
 0x40013400 B  REGISTER CR1 (=TIM1.CR1): TIM8 control register 1
 0x40013404 B  REGISTER CR2 (=TIM1.CR2): TIM8 control register 2
-0x40013408 B  REGISTER SMCR (=TIM1.SMCR): TIM8 slave mode control register
+0x40013408 B  REGISTER SMCR: TIM8 slave mode control register
+0x40013408 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. Codes above 1000: Reserved. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
+0x40013408 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 167: TIMxTIM1 internal trigger connection on page 777 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
+0x40013408 C   FIELD 07w01 MSM (=TIM1.SMCR.MSM) (rw): Master/slave mode
+0x40013408 C   FIELD 08w04 ETF (=TIM1.SMCR.ETF) (rw): External trigger filter This bit-field then defines the frequency used to sample ETRP signal and the length of the digital filter applied to ETRP. The digital filter is made of an event counter in which N consecutive events are needed to validate a transition on the output:
+0x40013408 C   FIELD 12w02 ETPS (=TIM1.SMCR.ETPS) (rw): External trigger prescaler External trigger signal ETRP frequency must be at most 1/4 of f<sub>CK_INT</sub> frequency. A prescaler can be enabled to reduce ETRP frequency. It is useful when inputting fast external clocks.
+0x40013408 C   FIELD 14w01 ECE (=TIM1.SMCR.ECE) (rw): External clock enable This bit enables External clock mode 2. Note: Setting the ECE bit has the same effect as selecting external clock mode 1 with TRGI connected to ETRF (SMS=111 and TS=00111). It is possible to simultaneously use external clock mode 2 with the following slave modes: reset mode, gated mode and trigger mode. Nevertheless, TRGI must not be connected to ETRF in this case (TS bits must not be 00111). Note: If external clock mode 1 and external clock mode 2 are enabled at the same time, the external clock input is ETRF.
+0x40013408 C   FIELD 15w01 ETP (=TIM1.SMCR.ETP) (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
+0x40013408 C   FIELD 16w01 SMS_1 (rw): SMS[3]
+0x40013408 C   FIELD 20w02 TS_1 (rw): TS[4:3]
 0x4001340C B  REGISTER DIER (=TIM1.DIER): TIM8 DMA/interrupt enable register
 0x40013410 B  REGISTER SR (=TIM1.SR): TIM8 status register
 0x40013414 B  REGISTER EGR (=TIM1.EGR): TIM8 event generation register
@@ -3330,14 +3349,10 @@
 0x40013428 B  REGISTER PSC (=TIM1.PSC): TIM8 prescaler
 0x4001342C B  REGISTER ARR (=TIM1.ARR): TIM8 auto-reload register
 0x40013430 B  REGISTER RCR (=TIM1.RCR): TIM8 repetition counter register
-0x40013434 B  REGISTER CCR1: capture/compare register
-0x40013434 C   FIELD 00w16 CCR (rw): Capture/Compare value
-0x40013438 B  REGISTER CCR2: capture/compare register
-0x40013438 C   FIELD 00w16 CCR (rw): Capture/Compare value
-0x4001343C B  REGISTER CCR3: capture/compare register
-0x4001343C C   FIELD 00w16 CCR (rw): Capture/Compare value
-0x40013440 B  REGISTER CCR4: capture/compare register
-0x40013440 C   FIELD 00w16 CCR (rw): Capture/Compare value
+0x40013434 B  REGISTER CCR1 (=TIM1.CCR%s): capture/compare register
+0x40013438 B  REGISTER CCR2 (=TIM1.CCR%s): capture/compare register
+0x4001343C B  REGISTER CCR3 (=TIM1.CCR%s): capture/compare register
+0x40013440 B  REGISTER CCR4 (=TIM1.CCR%s): capture/compare register
 0x40013444 B  REGISTER BDTR (=TIM1.BDTR): TIM8 break and dead-time register
 0x40013448 B  REGISTER DCR (=TIM1.DCR): TIM8 DMA control register
 0x4001344C B  REGISTER DMAR (=TIM1.DMAR): TIM8 DMA address for full transfer
@@ -3716,8 +3731,7 @@
 0x40014828 B  REGISTER PSC (=TIM16.PSC): TIM17 prescaler
 0x4001482C B  REGISTER ARR (=TIM16.ARR): TIM17 auto-reload register
 0x40014830 B  REGISTER RCR (=TIM16.RCR): TIM17 repetition counter register
-0x40014834 B  REGISTER CCR1: capture/compare register
-0x40014834 C   FIELD 00w16 CCR (rw): Capture/Compare value
+0x40014834 B  REGISTER CCR1 (=TIM16.CCR%s): capture/compare register
 0x40014844 B  REGISTER BDTR (=TIM16.BDTR): TIM17 break and dead-time register
 0x40014848 B  REGISTER DCR (=TIM16.DCR): TIM17 DMA control register
 0x4001484C B  REGISTER DMAR (=TIM16.DMAR): TIM17 DMA address for full transfer

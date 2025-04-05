@@ -1575,7 +1575,14 @@
 0x40011400 A PERIPHERAL TIM22
 0x40011400 B  REGISTER CR1 (=TIM21.CR1): control register 1
 0x40011404 B  REGISTER CR2 (=TIM21.CR2): control register 2
-0x40011408 B  REGISTER SMCR (=TIM21.SMCR): slave mode control register
+0x40011408 B  REGISTER SMCR (rw): slave mode control register
+0x40011408 C   FIELD 00w03 SMS (=TIM21.SMCR.SMS): Slave mode selection
+0x40011408 C   FIELD 04w03 TS: Trigger selection
+0x40011408 C   FIELD 07w01 MSM (=TIM21.SMCR.MSM): Master/Slave mode
+0x40011408 C   FIELD 08w04 ETF (=TIM21.SMCR.ETF): External trigger filter
+0x40011408 C   FIELD 12w02 ETPS (=TIM21.SMCR.ETPS): External trigger prescaler
+0x40011408 C   FIELD 14w01 ECE (=TIM21.SMCR.ECE): External clock enable
+0x40011408 C   FIELD 15w01 ETP (=TIM21.SMCR.ETP): External trigger polarity
 0x4001140C B  REGISTER DIER (=TIM21.DIER): DMA/Interrupt enable register
 0x40011410 B  REGISTER SR (=TIM21.SR): status register
 0x40011414 B  REGISTER EGR (=TIM21.EGR): event generation register
@@ -1585,10 +1592,8 @@
 0x40011424 B  REGISTER CNT (=TIM21.CNT): counter
 0x40011428 B  REGISTER PSC (=TIM21.PSC): prescaler
 0x4001142C B  REGISTER ARR (=TIM21.ARR): auto-reload register
-0x40011434 B  REGISTER CCR1 (rw): capture/compare register
-0x40011434 C   FIELD 00w16 CCR: Capture/Compare value
-0x40011438 B  REGISTER CCR2 (rw): capture/compare register
-0x40011438 C   FIELD 00w16 CCR: Capture/Compare value
+0x40011434 B  REGISTER CCR1 (=TIM21.CCR%s): capture/compare register
+0x40011438 B  REGISTER CCR2 (=TIM21.CCR%s): capture/compare register
 0x40011450 B  REGISTER OR (rw): TIM22 option register
 0x40011450 C   FIELD 00w02 ETR_RMP: Timer22 ETR remap
 0x40011450 C   FIELD 02w02 TI1_RMP: Timer22 TI1

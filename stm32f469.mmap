@@ -366,7 +366,14 @@
 0x40000C00 A PERIPHERAL TIM5
 0x40000C00 B  REGISTER CR1 (=TIM2.CR1): control register 1
 0x40000C04 B  REGISTER CR2 (=TIM2.CR2): control register 2
-0x40000C08 B  REGISTER SMCR (=TIM2.SMCR): slave mode control register
+0x40000C08 B  REGISTER SMCR (rw): slave mode control register
+0x40000C08 C   FIELD 00w03 SMS: Slave mode selection
+0x40000C08 C   FIELD 04w03 TS: Trigger selection
+0x40000C08 C   FIELD 07w01 MSM (=TIM2.SMCR.MSM): Master/Slave mode
+0x40000C08 C   FIELD 08w04 ETF (=TIM2.SMCR.ETF): External trigger filter
+0x40000C08 C   FIELD 12w02 ETPS (=TIM2.SMCR.ETPS): External trigger prescaler
+0x40000C08 C   FIELD 14w01 ECE (=TIM2.SMCR.ECE): External clock enable
+0x40000C08 C   FIELD 15w01 ETP (=TIM2.SMCR.ETP): External trigger polarity
 0x40000C0C B  REGISTER DIER (=TIM2.DIER): DMA/Interrupt enable register
 0x40000C10 B  REGISTER SR (=TIM2.SR): status register
 0x40000C14 B  REGISTER EGR (=TIM2.EGR): event generation register
@@ -378,14 +385,10 @@
 0x40000C24 B  REGISTER CNT (=TIM2.CNT): counter
 0x40000C28 B  REGISTER PSC (=TIM2.PSC): prescaler
 0x40000C2C B  REGISTER ARR (=TIM2.ARR): auto-reload register
-0x40000C34 B  REGISTER CCR1 (rw): capture/compare register
-0x40000C34 C   FIELD 00w32 CCR: Capture/Compare value
-0x40000C38 B  REGISTER CCR2 (rw): capture/compare register
-0x40000C38 C   FIELD 00w32 CCR: Capture/Compare value
-0x40000C3C B  REGISTER CCR3 (rw): capture/compare register
-0x40000C3C C   FIELD 00w32 CCR: Capture/Compare value
-0x40000C40 B  REGISTER CCR4 (rw): capture/compare register
-0x40000C40 C   FIELD 00w32 CCR: Capture/Compare value
+0x40000C34 B  REGISTER CCR1 (=TIM2.CCR%s): capture/compare register
+0x40000C38 B  REGISTER CCR2 (=TIM2.CCR%s): capture/compare register
+0x40000C3C B  REGISTER CCR3 (=TIM2.CCR%s): capture/compare register
+0x40000C40 B  REGISTER CCR4 (=TIM2.CCR%s): capture/compare register
 0x40000C48 B  REGISTER DCR (=TIM2.DCR): DMA control register
 0x40000C4C B  REGISTER DMAR (=TIM2.DMAR): DMA address for full transfer
 0x40000C50 B  REGISTER OR (rw): TIM5 option register
@@ -3670,8 +3673,7 @@
 0x40014824 B  REGISTER CNT (=TIM10.CNT): counter
 0x40014828 B  REGISTER PSC (=TIM10.PSC): prescaler
 0x4001482C B  REGISTER ARR (=TIM10.ARR): auto-reload register
-0x40014834 B  REGISTER CCR1 (rw): capture/compare register
-0x40014834 C   FIELD 00w16 CCR: Capture/Compare value
+0x40014834 B  REGISTER CCR1 (=TIM10.CCR%s): capture/compare register
 0x40014850 B  REGISTER OR (rw): option register
 0x40014850 C   FIELD 00w02 RMP: Input 1 remapping capability
 0x40015000 A PERIPHERAL SPI5
