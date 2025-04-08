@@ -3918,15 +3918,15 @@
 0x50040014 C   FIELD 27w03 SMP9 (rw): Channel 9 sample time selection
 0x50040014 C   FIELD 31w01 SMPPLUS (rw): Addition of one clock cycle to the sampling time To make sure no conversion is ongoing, the software is allowed to write this bit only when ADSTART= 0 and JADSTART= 0.
 0x50040018 B  REGISTER SMPR2: ADC sample time register 2
-0x50040018 C   FIELD 00w03 SMP10 (rw): Channel 10 sample time selection
-0x50040018 C   FIELD 03w03 SMP11 (rw): Channel 11 sample time selection
-0x50040018 C   FIELD 06w03 SMP12 (rw): Channel 12 sample time selection
-0x50040018 C   FIELD 09w03 SMP13 (rw): Channel 13 sample time selection
-0x50040018 C   FIELD 12w03 SMP14 (rw): Channel 14 sample time selection
-0x50040018 C   FIELD 15w03 SMP15 (rw): Channel 15 sample time selection
-0x50040018 C   FIELD 18w03 SMP16 (rw): Channel 16 sample time selection
-0x50040018 C   FIELD 21w03 SMP17 (rw): Channel 17 sample time selection
-0x50040018 C   FIELD 24w03 SMP18 (rw): Channel 18 sample time selection
+0x50040018 C   FIELD 00w03 SMP10 (=ADC1.SMPR1.SMP%s) (rw): Channel 10 sample time selection
+0x50040018 C   FIELD 03w03 SMP11 (=ADC1.SMPR1.SMP%s) (rw): Channel 11 sample time selection
+0x50040018 C   FIELD 06w03 SMP12 (=ADC1.SMPR1.SMP%s) (rw): Channel 12 sample time selection
+0x50040018 C   FIELD 09w03 SMP13 (=ADC1.SMPR1.SMP%s) (rw): Channel 13 sample time selection
+0x50040018 C   FIELD 12w03 SMP14 (=ADC1.SMPR1.SMP%s) (rw): Channel 14 sample time selection
+0x50040018 C   FIELD 15w03 SMP15 (=ADC1.SMPR1.SMP%s) (rw): Channel 15 sample time selection
+0x50040018 C   FIELD 18w03 SMP16 (=ADC1.SMPR1.SMP%s) (rw): Channel 16 sample time selection
+0x50040018 C   FIELD 21w03 SMP17 (=ADC1.SMPR1.SMP%s) (rw): Channel 17 sample time selection
+0x50040018 C   FIELD 24w03 SMP18 (=ADC1.SMPR1.SMP%s) (rw): Channel 18 sample time selection
 0x50040020 B  REGISTER TR1: ADC watchdog threshold register 1
 0x50040020 C   FIELD 00w12 LT1 (rw): Analog watchdog 1 lower threshold These bits are written by software to define the lower threshold for the analog watchdog 1. Refer to Section 16.4.28: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH, AWD2CH, AWD3CH, AWD_HTx, AWD_LTx, AWDx) Note: The software is allowed to write these bits only when ADSTART = 0 and JADSTART = 0 (which ensures that no conversion is ongoing).
 0x50040020 C   FIELD 16w12 HT1 (rw): Analog watchdog 1 higher threshold These bits are written by software to define the higher threshold for the analog watchdog 1. Refer to Section 16.4.28: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH, AWD2CH, AWD3CH, AWD_HTx, AWD_LTx, AWDx) Note: The software is allowed to write these bits only when ADSTART = 0 and JADSTART = 0 (which ensures that no conversion is ongoing).
@@ -3943,20 +3943,20 @@
 0x50040030 C   FIELD 18w05 SQ3 (rw): 3 conversion in regular sequence
 0x50040030 C   FIELD 24w05 SQ4 (rw): 4 conversion in regular sequence
 0x50040034 B  REGISTER SQR2: ADC regular sequence register 2
-0x50040034 C   FIELD 00w05 SQ5 (rw): 5 conversion in regular sequence
-0x50040034 C   FIELD 06w05 SQ6 (rw): 6 conversion in regular sequence
-0x50040034 C   FIELD 12w05 SQ7 (rw): 7 conversion in regular sequence
-0x50040034 C   FIELD 18w05 SQ8 (rw): 8 conversion in regular sequence
-0x50040034 C   FIELD 24w05 SQ9 (rw): 9 conversion in regular sequence
+0x50040034 C   FIELD 00w05 SQ5 (=ADC1.SQR1.SQ%s) (rw): 5 conversion in regular sequence
+0x50040034 C   FIELD 06w05 SQ6 (=ADC1.SQR1.SQ%s) (rw): 6 conversion in regular sequence
+0x50040034 C   FIELD 12w05 SQ7 (=ADC1.SQR1.SQ%s) (rw): 7 conversion in regular sequence
+0x50040034 C   FIELD 18w05 SQ8 (=ADC1.SQR1.SQ%s) (rw): 8 conversion in regular sequence
+0x50040034 C   FIELD 24w05 SQ9 (=ADC1.SQR1.SQ%s) (rw): 9 conversion in regular sequence
 0x50040038 B  REGISTER SQR3: ADC regular sequence register 3
-0x50040038 C   FIELD 00w05 SQ10 (rw): 10 conversion in regular sequence
-0x50040038 C   FIELD 06w05 SQ11 (rw): 11 conversion in regular sequence
-0x50040038 C   FIELD 12w05 SQ12 (rw): 12 conversion in regular sequence
-0x50040038 C   FIELD 18w05 SQ13 (rw): 13 conversion in regular sequence
-0x50040038 C   FIELD 24w05 SQ14 (rw): 14 conversion in regular sequence
+0x50040038 C   FIELD 00w05 SQ10 (=ADC1.SQR1.SQ%s) (rw): 10 conversion in regular sequence
+0x50040038 C   FIELD 06w05 SQ11 (=ADC1.SQR1.SQ%s) (rw): 11 conversion in regular sequence
+0x50040038 C   FIELD 12w05 SQ12 (=ADC1.SQR1.SQ%s) (rw): 12 conversion in regular sequence
+0x50040038 C   FIELD 18w05 SQ13 (=ADC1.SQR1.SQ%s) (rw): 13 conversion in regular sequence
+0x50040038 C   FIELD 24w05 SQ14 (=ADC1.SQR1.SQ%s) (rw): 14 conversion in regular sequence
 0x5004003C B  REGISTER SQR4: ADC regular sequence register 4
-0x5004003C C   FIELD 00w05 SQ15 (rw): 15 conversion in regular sequence
-0x5004003C C   FIELD 06w05 SQ16 (rw): 16 conversion in regular sequence
+0x5004003C C   FIELD 00w05 SQ15 (=ADC1.SQR1.SQ%s) (rw): 15 conversion in regular sequence
+0x5004003C C   FIELD 06w05 SQ16 (=ADC1.SQR1.SQ%s) (rw): 16 conversion in regular sequence
 0x50040040 B  REGISTER DR: ADC regular data register
 0x50040040 C   FIELD 00w16 RDATA (ro): Regular data converted These bits are read-only. They contain the conversion result from the last converted regular channel. The data are left- or right-aligned as described in Section 16.4.26: Data management.
 0x5004004C B  REGISTER JSQR: ADC injected sequence register
@@ -4131,15 +4131,15 @@
 0x50040114 C   FIELD 27w03 SMP9 (rw): Channel 9 sample time selection
 0x50040114 C   FIELD 31w01 SMPPLUS (rw): Addition of one clock cycle to the sampling time To make sure no conversion is ongoing, the software is allowed to write this bit only when ADSTART= 0 and JADSTART= 0.
 0x50040118 B  REGISTER SMPR2: ADC sample time register 2
-0x50040118 C   FIELD 00w03 SMP10 (rw): Channel 10 sample time selection
-0x50040118 C   FIELD 03w03 SMP11 (rw): Channel 11 sample time selection
-0x50040118 C   FIELD 06w03 SMP12 (rw): Channel 12 sample time selection
-0x50040118 C   FIELD 09w03 SMP13 (rw): Channel 13 sample time selection
-0x50040118 C   FIELD 12w03 SMP14 (rw): Channel 14 sample time selection
-0x50040118 C   FIELD 15w03 SMP15 (rw): Channel 15 sample time selection
-0x50040118 C   FIELD 18w03 SMP16 (rw): Channel 16 sample time selection
-0x50040118 C   FIELD 21w03 SMP17 (rw): Channel 17 sample time selection
-0x50040118 C   FIELD 24w03 SMP18 (rw): Channel 18 sample time selection
+0x50040118 C   FIELD 00w03 SMP10 (=ADC1.SMPR1.SMP%s) (rw): Channel 10 sample time selection
+0x50040118 C   FIELD 03w03 SMP11 (=ADC1.SMPR1.SMP%s) (rw): Channel 11 sample time selection
+0x50040118 C   FIELD 06w03 SMP12 (=ADC1.SMPR1.SMP%s) (rw): Channel 12 sample time selection
+0x50040118 C   FIELD 09w03 SMP13 (=ADC1.SMPR1.SMP%s) (rw): Channel 13 sample time selection
+0x50040118 C   FIELD 12w03 SMP14 (=ADC1.SMPR1.SMP%s) (rw): Channel 14 sample time selection
+0x50040118 C   FIELD 15w03 SMP15 (=ADC1.SMPR1.SMP%s) (rw): Channel 15 sample time selection
+0x50040118 C   FIELD 18w03 SMP16 (=ADC1.SMPR1.SMP%s) (rw): Channel 16 sample time selection
+0x50040118 C   FIELD 21w03 SMP17 (=ADC1.SMPR1.SMP%s) (rw): Channel 17 sample time selection
+0x50040118 C   FIELD 24w03 SMP18 (=ADC1.SMPR1.SMP%s) (rw): Channel 18 sample time selection
 0x50040120 B  REGISTER TR1: ADC watchdog threshold register 1
 0x50040120 C   FIELD 00w12 LT1 (rw): Analog watchdog 1 lower threshold These bits are written by software to define the lower threshold for the analog watchdog 1. Refer to Section 16.4.28: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH, AWD2CH, AWD3CH, AWD_HTx, AWD_LTx, AWDx) Note: The software is allowed to write these bits only when ADSTART = 0 and JADSTART = 0 (which ensures that no conversion is ongoing).
 0x50040120 C   FIELD 16w12 HT1 (rw): Analog watchdog 1 higher threshold These bits are written by software to define the higher threshold for the analog watchdog 1. Refer to Section 16.4.28: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH, AWD2CH, AWD3CH, AWD_HTx, AWD_LTx, AWDx) Note: The software is allowed to write these bits only when ADSTART = 0 and JADSTART = 0 (which ensures that no conversion is ongoing).
@@ -4156,20 +4156,20 @@
 0x50040130 C   FIELD 18w05 SQ3 (rw): 3 conversion in regular sequence
 0x50040130 C   FIELD 24w05 SQ4 (rw): 4 conversion in regular sequence
 0x50040134 B  REGISTER SQR2: ADC regular sequence register 2
-0x50040134 C   FIELD 00w05 SQ5 (rw): 5 conversion in regular sequence
-0x50040134 C   FIELD 06w05 SQ6 (rw): 6 conversion in regular sequence
-0x50040134 C   FIELD 12w05 SQ7 (rw): 7 conversion in regular sequence
-0x50040134 C   FIELD 18w05 SQ8 (rw): 8 conversion in regular sequence
-0x50040134 C   FIELD 24w05 SQ9 (rw): 9 conversion in regular sequence
+0x50040134 C   FIELD 00w05 SQ5 (=ADC1.SQR1.SQ%s) (rw): 5 conversion in regular sequence
+0x50040134 C   FIELD 06w05 SQ6 (=ADC1.SQR1.SQ%s) (rw): 6 conversion in regular sequence
+0x50040134 C   FIELD 12w05 SQ7 (=ADC1.SQR1.SQ%s) (rw): 7 conversion in regular sequence
+0x50040134 C   FIELD 18w05 SQ8 (=ADC1.SQR1.SQ%s) (rw): 8 conversion in regular sequence
+0x50040134 C   FIELD 24w05 SQ9 (=ADC1.SQR1.SQ%s) (rw): 9 conversion in regular sequence
 0x50040138 B  REGISTER SQR3: ADC regular sequence register 3
-0x50040138 C   FIELD 00w05 SQ10 (rw): 10 conversion in regular sequence
-0x50040138 C   FIELD 06w05 SQ11 (rw): 11 conversion in regular sequence
-0x50040138 C   FIELD 12w05 SQ12 (rw): 12 conversion in regular sequence
-0x50040138 C   FIELD 18w05 SQ13 (rw): 13 conversion in regular sequence
-0x50040138 C   FIELD 24w05 SQ14 (rw): 14 conversion in regular sequence
+0x50040138 C   FIELD 00w05 SQ10 (=ADC1.SQR1.SQ%s) (rw): 10 conversion in regular sequence
+0x50040138 C   FIELD 06w05 SQ11 (=ADC1.SQR1.SQ%s) (rw): 11 conversion in regular sequence
+0x50040138 C   FIELD 12w05 SQ12 (=ADC1.SQR1.SQ%s) (rw): 12 conversion in regular sequence
+0x50040138 C   FIELD 18w05 SQ13 (=ADC1.SQR1.SQ%s) (rw): 13 conversion in regular sequence
+0x50040138 C   FIELD 24w05 SQ14 (=ADC1.SQR1.SQ%s) (rw): 14 conversion in regular sequence
 0x5004013C B  REGISTER SQR4: ADC regular sequence register 4
-0x5004013C C   FIELD 00w05 SQ15 (rw): 15 conversion in regular sequence
-0x5004013C C   FIELD 06w05 SQ16 (rw): 16 conversion in regular sequence
+0x5004013C C   FIELD 00w05 SQ15 (=ADC1.SQR1.SQ%s) (rw): 15 conversion in regular sequence
+0x5004013C C   FIELD 06w05 SQ16 (=ADC1.SQR1.SQ%s) (rw): 16 conversion in regular sequence
 0x50040140 B  REGISTER DR: ADC regular data register
 0x50040140 C   FIELD 00w16 RDATA (ro): Regular data converted These bits are read-only. They contain the conversion result from the last converted regular channel. The data are left- or right-aligned as described in Section 16.4.26: Data management.
 0x5004014C B  REGISTER JSQR: ADC injected sequence register
