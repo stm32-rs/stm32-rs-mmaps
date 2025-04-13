@@ -2908,30 +2908,30 @@
 0x40007400 C   FIELD 08w04 MAMP1: DAC channel1 mask/amplitude selector
 0x40007400 C   FIELD 12w01 DMAEN1: DAC channel1 DMA enable
 0x40007400 C   FIELD 13w01 DMAUDRIE1: DAC channel1 DMA Underrun Interrupt enable
-0x40007400 C   FIELD 14w01 CEN1: DAC Channel 1 calibration enable
+0x40007400 C   FIELD 14w01 CEN1: DAC channel1 calibration enable
 0x40007400 C   FIELD 16w01 EN2: DAC channel2 enable
 0x40007400 C   FIELD 18w01 TEN2: DAC channel2 trigger enable
 0x40007400 C   FIELD 19w03 TSEL2: DAC channel2 trigger selection
 0x40007400 C   FIELD 22w02 WAVE2: DAC channel2 noise/triangle wave generation enable
 0x40007400 C   FIELD 24w04 MAMP2: DAC channel2 mask/amplitude selector
 0x40007400 C   FIELD 28w01 DMAEN2: DAC channel2 DMA enable
-0x40007400 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable
-0x40007400 C   FIELD 30w01 CEN2: DAC Channel 2 calibration enable
+0x40007400 C   FIELD 29w01 DMAUDRIE2: DAC channel2 DMA Underrun Interrupt enable
+0x40007400 C   FIELD 30w01 CEN2: DAC channel2 calibration enable
 0x40007404 B  REGISTER SWTRIGR (wo): software trigger register
 0x40007404 C   FIELD 00w01 SWTRIG1: DAC channel1 software trigger
 0x40007404 C   FIELD 01w01 SWTRIG2: DAC channel2 software trigger
 0x40007408 B  REGISTER DHR12R1 (rw): channel1 12-bit right-aligned data holding register
-0x40007408 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data
-0x4000740C B  REGISTER DHR12L1 (rw): channel1 12-bit left-aligned data holding register
-0x4000740C C   FIELD 04w12 DACC1DHR: DAC channel1 12-bit left-aligned data
-0x40007410 B  REGISTER DHR8R1 (rw): channel1 8-bit right-aligned data holding register
-0x40007410 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data
-0x40007414 B  REGISTER DHR12R2 (rw): channel2 12-bit right aligned data holding register
-0x40007414 C   FIELD 00w12 DACC2DHR: DAC channel2 12-bit right-aligned data
+0x40007408 C   FIELD 00w12 DACCDHR: DAC channel1 12-bit right-aligned data
+0x4000740C B  REGISTER DHR12L1 (rw): channel1 12-bit left aligned data holding register
+0x4000740C C   FIELD 04w12 DACCDHR: DAC channel1 12-bit left-aligned data
+0x40007410 B  REGISTER DHR8R1 (rw): channel1 8-bit right aligned data holding register
+0x40007410 C   FIELD 00w08 DACCDHR: DAC channel1 8-bit right-aligned data
+0x40007414 B  REGISTER DHR12R2 (rw): channel2 12-bit right-aligned data holding register
+0x40007414 C   FIELD 00w12 DACCDHR: DAC channel1 12-bit right-aligned data
 0x40007418 B  REGISTER DHR12L2 (rw): channel2 12-bit left aligned data holding register
-0x40007418 C   FIELD 04w12 DACC2DHR: DAC channel2 12-bit left-aligned data
-0x4000741C B  REGISTER DHR8R2 (rw): channel2 8-bit right-aligned data holding register
-0x4000741C C   FIELD 00w08 DACC2DHR: DAC channel2 8-bit right-aligned data
+0x40007418 C   FIELD 04w12 DACCDHR: DAC channel1 12-bit left-aligned data
+0x4000741C B  REGISTER DHR8R2 (rw): channel2 8-bit right aligned data holding register
+0x4000741C C   FIELD 00w08 DACCDHR: DAC channel1 8-bit right-aligned data
 0x40007420 B  REGISTER DHR12RD (rw): Dual DAC 12-bit right-aligned data holding register
 0x40007420 C   FIELD 00w12 DACC1DHR: DAC channel1 12-bit right-aligned data
 0x40007420 C   FIELD 16w12 DACC2DHR: DAC channel2 12-bit right-aligned data
@@ -2942,32 +2942,32 @@
 0x40007428 C   FIELD 00w08 DACC1DHR: DAC channel1 8-bit right-aligned data
 0x40007428 C   FIELD 08w08 DACC2DHR: DAC channel2 8-bit right-aligned data
 0x4000742C B  REGISTER DOR1 (ro): channel1 data output register
-0x4000742C C   FIELD 00w12 DACC1DOR: DAC channel1 data output
+0x4000742C C   FIELD 00w12 DACCDOR: DAC channel1 data output
 0x40007430 B  REGISTER DOR2 (ro): channel2 data output register
-0x40007430 C   FIELD 00w12 DACC2DOR: DAC channel2 data output
+0x40007430 C   FIELD 00w12 DACCDOR: DAC channel1 data output
 0x40007434 B  REGISTER SR: status register
 0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag
-0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC Channel 1 calibration offset status
-0x40007434 C   FIELD 15w01 BWST1 (ro): DAC Channel 1 busy writing sample time flag
+0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC channel1 calibration offset status
+0x40007434 C   FIELD 15w01 BWST1 (ro): DAC channel1 busy writing sample time flag
 0x40007434 C   FIELD 29w01 DMAUDR2 (rw): DAC channel2 DMA underrun flag
-0x40007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC Channel 2 calibration offset status
-0x40007434 C   FIELD 31w01 BWST2 (ro): DAC Channel 2 busy writing sample time flag
+0x40007434 C   FIELD 30w01 CAL_FLAG2 (ro): DAC channel2 calibration offset status
+0x40007434 C   FIELD 31w01 BWST2 (ro): DAC channel2 busy writing sample time flag
 0x40007438 B  REGISTER CCR (rw): calibration control register
-0x40007438 C   FIELD 00w05 OTRIM1: DAC Channel 1 offset trimming value
-0x40007438 C   FIELD 16w05 OTRIM2: DAC Channel 2 offset trimming value
+0x40007438 C   FIELD 00w05 OTRIM1: DAC channel1 offset trimming value
+0x40007438 C   FIELD 16w05 OTRIM2: DAC channel2 offset trimming value
 0x4000743C B  REGISTER MCR (rw): mode control register
-0x4000743C C   FIELD 00w03 MODE1: DAC Channel 1 mode
-0x4000743C C   FIELD 16w03 MODE2: DAC Channel 2 mode
-0x40007440 B  REGISTER SHSR1 (rw): Sample and Hold sample time register 1
-0x40007440 C   FIELD 00w10 TSAMPLE1: DAC Channel 1 sample Time
-0x40007444 B  REGISTER SHSR2 (rw): Sample and Hold sample time register 2
-0x40007444 C   FIELD 00w10 TSAMPLE2: DAC Channel 2 sample Time
+0x4000743C C   FIELD 00w03 MODE1: DAC channel1 mode
+0x4000743C C   FIELD 16w03 MODE2: DAC channel2 mode
+0x40007440 B  REGISTER SHSR1 (rw): DAC channel1 sample and hold sample time register
+0x40007440 C   FIELD 00w10 TSAMPLE: DAC Channel 1 sample Time
+0x40007444 B  REGISTER SHSR2 (rw): DAC channel2 sample and hold sample time register
+0x40007444 C   FIELD 00w10 TSAMPLE: DAC Channel 1 sample Time
 0x40007448 B  REGISTER SHHR (rw): Sample and Hold hold time register
-0x40007448 C   FIELD 00w10 THOLD1: DAC Channel 1 hold Time
-0x40007448 C   FIELD 16w10 THOLD2: DAC Channel 2 hold time
+0x40007448 C   FIELD 00w10 THOLD1: DAC channel1 hold time (only valid in Sample and hold mode)
+0x40007448 C   FIELD 16w10 THOLD2: DAC channel2 hold time (only valid in Sample and hold mode)
 0x4000744C B  REGISTER SHRR (rw): Sample and Hold refresh time register
-0x4000744C C   FIELD 00w08 TREFRESH1: DAC Channel 1 refresh Time
-0x4000744C C   FIELD 16w08 TREFRESH2: DAC Channel 2 refresh Time
+0x4000744C C   FIELD 00w08 TREFRESH1: DAC channel1 refresh time (only valid in Sample and hold mode)
+0x4000744C C   FIELD 16w08 TREFRESH2: DAC channel2 refresh time (only valid in Sample and hold mode)
 0x40007800 A PERIPHERAL OPAMP
 0x40007800 B  REGISTER OPAMP1_CSR (rw): OPAMP1 control/status register
 0x40007800 C   FIELD 00w01 OPAEN: Operational amplifier Enable
