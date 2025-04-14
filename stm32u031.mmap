@@ -1336,38 +1336,38 @@
 0x4000704C C   FIELD 03w01 PD3 (rw): Port F pull-down bit y When set, this bit activates the pull-down on PH[y] when APC bit is set in PWR_CR3 register.
 0x40007400 A PERIPHERAL DAC
 0x40007400 B  REGISTER CR: DAC control register
-0x40007400 C   FIELD 00w01 EN1 (rw): DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
-0x40007400 C   FIELD 01w01 TEN1 (rw): DAC channel1 trigger enable This bit is set and cleared by software to enable/disable DAC channel1 trigger. Note: When software trigger is selected, the transfer from the DAC_DHR1 register to the DAC_DOR1 register takes only one dac_pclk clock cycle.
+0x40007400 C   FIELD 00w01 EN1 (rw): DAC channel1 enable
+0x40007400 C   FIELD 01w01 TEN1 (rw): DAC channel1 trigger enable
 0x40007400 C   FIELD 02w04 TSEL1 (rw): DAC channel1 trigger selection These bits select the external event used to trigger DAC channel1 ... Refer to the trigger selection tables in Section114.4.2: DAC pins and internal signals for details on trigger configuration and mapping. Note: Only used if bit TEN11=11 (DAC channel1 trigger enabled).
-0x40007400 C   FIELD 06w02 WAVE1 (rw): DAC channel1 noise/triangle wave generation enable These bits are set and cleared by software. 1x: Triangle wave generation enabled Only used if bit TEN11=11 (DAC channel1 trigger enabled).
+0x40007400 C   FIELD 06w02 WAVE1 (rw): DAC channel1 noise/triangle wave generation enable
 0x40007400 C   FIELD 08w04 MAMP1 (rw): DAC channel1 mask/amplitude selector
-0x40007400 C   FIELD 12w01 DMAEN1 (rw): DAC channel1 DMA enable This bit is set and cleared by software.
-0x40007400 C   FIELD 13w01 DMAUDRIE1 (rw): DAC channel1 DMA Underrun Interrupt enable This bit is set and cleared by software.
-0x40007400 C   FIELD 14w01 CEN1 (rw): DAC channel1 calibration enable This bit is set and cleared by software to enable/disable DAC channel1 calibration, it can be written only if bit EN11=10 into DAC_CR (the calibration mode can be entered/exit only when the DAC channel is disabled) Otherwise, the write operation is ignored.
+0x40007400 C   FIELD 12w01 DMAEN1 (rw): DAC channel1 DMA enable
+0x40007400 C   FIELD 13w01 DMAUDRIE1 (rw): DAC channel1 DMA Underrun Interrupt enable
+0x40007400 C   FIELD 14w01 CEN1 (rw): DAC channel1 calibration enable
 0x40007404 B  REGISTER SWTRGR: DAC software trigger register
-0x40007404 C   FIELD 00w01 SWTRIG1 (wo): DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
-0x40007408 B  REGISTER DHR12R1: DAC channel1 12-bit right-aligned data holding register
-0x40007408 C   FIELD 00w12 DACC1DHR (rw): DAC channel1 12-bit right-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
-0x4000740C B  REGISTER DHR12L1: DAC channel1 12-bit left aligned data holding register
-0x4000740C C   FIELD 04w12 DACC1DHR (rw): DAC channel1 12-bit left-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
-0x40007410 B  REGISTER DHR8R1: DAC channel1 8-bit right aligned data holding register
-0x40007410 C   FIELD 00w08 DACC1DHR (rw): DAC channel1 8-bit right-aligned data These bits are written by software. They specify 8-bit data for DAC channel1.
-0x4000742C B  REGISTER DOR1: DAC channel1 data output register
-0x4000742C C   FIELD 00w12 DACC1DOR (ro): DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
+0x40007404 C   FIELD 00w01 SWTRIG1 (wo): DAC channel1 software trigger
+0x40007408 B  REGISTER DHR12R1: channel1 12-bit right-aligned data holding register
+0x40007408 C   FIELD 00w12 DACCDHR (rw): DAC channel1 12-bit right-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
+0x4000740C B  REGISTER DHR12L1: channel1 12-bit left aligned data holding register
+0x4000740C C   FIELD 04w12 DACCDHR (rw): DAC channel1 12-bit left-aligned data These bits are written by software. They specify 12-bit data for DAC channel1.
+0x40007410 B  REGISTER DHR8R1: channel1 8-bit right aligned data holding register
+0x40007410 C   FIELD 00w08 DACCDHR (rw): DAC channel1 8-bit right-aligned data These bits are written by software. They specify 8-bit data for DAC channel1.
+0x4000742C B  REGISTER DOR1: channel1 data output register
+0x4000742C C   FIELD 00w12 DACCDOR (ro): DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
 0x40007434 B  REGISTER SR: DAC status register
-0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
-0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC channel1 calibration offset status This bit is set and cleared by hardware
-0x40007434 C   FIELD 15w01 BWST1 (ro): DAC channel1 busy writing sample time flag This bit is systematically set just after Sample and hold mode enable and is set each time the software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of DAC_SHSR1 is complete. (It takes about 3 LSI periods of synchronization).
+0x40007434 C   FIELD 13w01 DMAUDR1 (rw): DAC channel1 DMA underrun flag
+0x40007434 C   FIELD 14w01 CAL_FLAG1 (ro): DAC channel1 calibration offset status
+0x40007434 C   FIELD 15w01 BWST1 (ro): DAC channel1 busy writing sample time flag
 0x40007438 B  REGISTER CCR: DAC calibration control register
 0x40007438 C   FIELD 00w05 OTRIM1 (rw): DAC channel1 offset trimming value
 0x4000743C B  REGISTER MCR: DAC mode control register
-0x4000743C C   FIELD 00w03 MODE1 (rw): DAC channel1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN11=10 and bit CEN11=10 in the DAC_CR register). If EN11=11 or CEN11=11 the write operation is ignored. They can be set and cleared by software to select the DAC channel1 mode: DAC channel1 in Normal mode DAC channel1 in sample & hold mode Note: This register can be modified only when EN11=10.
+0x4000743C C   FIELD 00w03 MODE1 (rw): DAC channel1 mode
 0x40007440 B  REGISTER SHSR1: DAC channel1 sample and hold sample time register
-0x40007440 C   FIELD 00w10 TSAMPLE1 (rw): DAC channel1 sample time (only valid in Sample and hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWST1 of DAC_SR register is low, If BWST11=11, the write operation is ignored.
+0x40007440 C   FIELD 00w10 TSAMPLE (rw): DAC channel1 sample time (only valid in Sample and hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWST1 of DAC_SR register is low, If BWST11=11, the write operation is ignored.
 0x40007448 B  REGISTER SHHR: DAC sample and hold time register
-0x40007448 C   FIELD 00w10 THOLD1 (rw): DAC channel1 hold time (only valid in Sample and hold mode) Hold time1=1(THOLD[9:0]) x LSI clock period Note: This register can be modified only when EN11=10.
+0x40007448 C   FIELD 00w10 THOLD1 (rw): DAC channel1 hold time (only valid in Sample and hold mode)
 0x4000744C B  REGISTER SHRR: DAC sample and hold refresh time register
-0x4000744C C   FIELD 00w08 TREFRESH1 (rw): DAC channel1 refresh time (only valid in Sample and hold mode) Refresh time1=1(TREFRESH[7:0]) x LSI clock period Note: This register can be modified only when EN11=10.
+0x4000744C C   FIELD 00w08 TREFRESH1 (rw): DAC channel1 refresh time (only valid in Sample and hold mode)
 0x40007800 A PERIPHERAL OPAMP
 0x40007800 B  REGISTER OPAMP_CSR: OPAMP control/status register
 0x40007800 C   FIELD 00w01 OPAEN (rw): Operational amplifier Enable
