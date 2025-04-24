@@ -728,7 +728,8 @@
 0x40003804 B  REGISTER CR2 (rw): control register 2
 0x40003804 C   FIELD 00w16 TSIZE: TSIZE
 0x40003808 B  REGISTER CFG1 (rw): configuration register 1
-0x40003808 C   FIELD 05w04 FTHVL: threshold level
+0x40003808 C   FIELD 00w05 DSIZE (rw): Number of bits in at single SPI data frame
+0x40003808 C   FIELD 05w04 FTHLV: threshold level
 0x40003808 C   FIELD 09w01 UDRCFG: Behavior of slave transmitter at underrun condition
 0x40003808 C   FIELD 14w01 RXDMAEN: Rx DMA stream enable
 0x40003808 C   FIELD 15w01 TXDMAEN: Tx DMA stream enable
@@ -739,7 +740,7 @@
 0x4000380C B  REGISTER CFG2 (rw): configuration register 2
 0x4000380C C   FIELD 00w04 MSSI: Master SS Idleness
 0x4000380C C   FIELD 04w04 MIDI: Master Inter-Data Idleness
-0x4000380C C   FIELD 13w01 RDIMM: RDIMM
+0x4000380C C   FIELD 13w01 RDIOM: RDIMM
 0x4000380C C   FIELD 14w01 RDIOP: RDIOP
 0x4000380C C   FIELD 15w01 IOSWP: Swap functionality of MISO and MOSI pins
 0x4000380C C   FIELD 17w02 COMM: SPI Communication Mode
@@ -756,7 +757,7 @@
 0x40003810 B  REGISTER IER: Interrupt Enable Register
 0x40003810 C   FIELD 00w01 RXPIE (rw): RXP Interrupt Enable
 0x40003810 C   FIELD 01w01 TXPIE (rw): TXP interrupt enable
-0x40003810 C   FIELD 02w01 DPXPIE (rw): DXP interrupt enabled
+0x40003810 C   FIELD 02w01 DXPIE (rw): DXP interrupt enabled
 0x40003810 C   FIELD 03w01 EOTIE (rw): EOT, SUSP and TXC interrupt enable
 0x40003810 C   FIELD 04w01 TXTFIE (rw): TXTFIE interrupt enable
 0x40003810 C   FIELD 05w01 UDRIE (rw): UDR interrupt enable
@@ -2352,7 +2353,8 @@
 0x40013004 B  REGISTER CR2 (rw): control register 2
 0x40013004 C   FIELD 00w16 TSIZE: TSIZE
 0x40013008 B  REGISTER CFG1 (rw): configuration register 1
-0x40013008 C   FIELD 05w04 FTHVL: threshold level
+0x40013008 C   FIELD 00w05 DSIZE (rw): Number of bits in at single SPI data frame
+0x40013008 C   FIELD 05w04 FTHLV: threshold level
 0x40013008 C   FIELD 09w01 UDRCFG: Behavior of slave transmitter at underrun condition
 0x40013008 C   FIELD 14w01 RXDMAEN: Rx DMA stream enable
 0x40013008 C   FIELD 15w01 TXDMAEN: Tx DMA stream enable
@@ -2363,7 +2365,7 @@
 0x4001300C B  REGISTER CFG2 (rw): configuration register 2
 0x4001300C C   FIELD 00w04 MSSI: Master SS Idleness
 0x4001300C C   FIELD 04w04 MIDI: Master Inter-Data Idleness
-0x4001300C C   FIELD 13w01 RDIMM: RDIMM
+0x4001300C C   FIELD 13w01 RDIOM: RDIMM
 0x4001300C C   FIELD 14w01 RDIOP: RDIOP
 0x4001300C C   FIELD 15w01 IOSWP: Swap functionality of MISO and MOSI pins
 0x4001300C C   FIELD 17w02 COMM: SPI Communication Mode
@@ -2380,7 +2382,7 @@
 0x40013010 B  REGISTER IER: Interrupt Enable Register
 0x40013010 C   FIELD 00w01 RXPIE (rw): RXP Interrupt Enable
 0x40013010 C   FIELD 01w01 TXPIE (rw): TXP interrupt enable
-0x40013010 C   FIELD 02w01 DPXPIE (rw): DXP interrupt enabled
+0x40013010 C   FIELD 02w01 DXPIE (rw): DXP interrupt enabled
 0x40013010 C   FIELD 03w01 EOTIE (rw): EOT, SUSP and TXC interrupt enable
 0x40013010 C   FIELD 04w01 TXTFIE (rw): TXTFIE interrupt enable
 0x40013010 C   FIELD 05w01 UDRIE (rw): UDR interrupt enable
@@ -15902,7 +15904,8 @@
 0x46002004 B  REGISTER CR2 (rw): control register 2
 0x46002004 C   FIELD 00w16 TSIZE: TSIZE
 0x46002008 B  REGISTER CFG1 (rw): configuration register 1
-0x46002008 C   FIELD 05w04 FTHVL: threshold level
+0x46002008 C   FIELD 00w05 DSIZE (rw): Number of bits in at single SPI data frame
+0x46002008 C   FIELD 05w04 FTHLV: threshold level
 0x46002008 C   FIELD 09w01 UDRCFG: Behavior of slave transmitter at underrun condition
 0x46002008 C   FIELD 14w01 RXDMAEN: Rx DMA stream enable
 0x46002008 C   FIELD 15w01 TXDMAEN: Tx DMA stream enable
@@ -15913,7 +15916,7 @@
 0x4600200C B  REGISTER CFG2 (rw): configuration register 2
 0x4600200C C   FIELD 00w04 MSSI: Master SS Idleness
 0x4600200C C   FIELD 04w04 MIDI: Master Inter-Data Idleness
-0x4600200C C   FIELD 13w01 RDIMM: RDIMM
+0x4600200C C   FIELD 13w01 RDIOM: RDIMM
 0x4600200C C   FIELD 14w01 RDIOP: RDIOP
 0x4600200C C   FIELD 15w01 IOSWP: Swap functionality of MISO and MOSI pins
 0x4600200C C   FIELD 17w02 COMM: SPI Communication Mode
@@ -15930,7 +15933,7 @@
 0x46002010 B  REGISTER IER: Interrupt Enable Register
 0x46002010 C   FIELD 00w01 RXPIE (rw): RXP Interrupt Enable
 0x46002010 C   FIELD 01w01 TXPIE (rw): TXP interrupt enable
-0x46002010 C   FIELD 02w01 DPXPIE (rw): DXP interrupt enabled
+0x46002010 C   FIELD 02w01 DXPIE (rw): DXP interrupt enabled
 0x46002010 C   FIELD 03w01 EOTIE (rw): EOT, SUSP and TXC interrupt enable
 0x46002010 C   FIELD 04w01 TXTFIE (rw): TXTFIE interrupt enable
 0x46002010 C   FIELD 05w01 UDRIE (rw): UDR interrupt enable
@@ -19962,7 +19965,8 @@
 0x50003804 B  REGISTER CR2 (rw): control register 2
 0x50003804 C   FIELD 00w16 TSIZE: TSIZE
 0x50003808 B  REGISTER CFG1 (rw): configuration register 1
-0x50003808 C   FIELD 05w04 FTHVL: threshold level
+0x50003808 C   FIELD 00w05 DSIZE (rw): Number of bits in at single SPI data frame
+0x50003808 C   FIELD 05w04 FTHLV: threshold level
 0x50003808 C   FIELD 09w01 UDRCFG: Behavior of slave transmitter at underrun condition
 0x50003808 C   FIELD 14w01 RXDMAEN: Rx DMA stream enable
 0x50003808 C   FIELD 15w01 TXDMAEN: Tx DMA stream enable
@@ -19973,7 +19977,7 @@
 0x5000380C B  REGISTER CFG2 (rw): configuration register 2
 0x5000380C C   FIELD 00w04 MSSI: Master SS Idleness
 0x5000380C C   FIELD 04w04 MIDI: Master Inter-Data Idleness
-0x5000380C C   FIELD 13w01 RDIMM: RDIMM
+0x5000380C C   FIELD 13w01 RDIOM: RDIMM
 0x5000380C C   FIELD 14w01 RDIOP: RDIOP
 0x5000380C C   FIELD 15w01 IOSWP: Swap functionality of MISO and MOSI pins
 0x5000380C C   FIELD 17w02 COMM: SPI Communication Mode
@@ -19990,7 +19994,7 @@
 0x50003810 B  REGISTER IER: Interrupt Enable Register
 0x50003810 C   FIELD 00w01 RXPIE (rw): RXP Interrupt Enable
 0x50003810 C   FIELD 01w01 TXPIE (rw): TXP interrupt enable
-0x50003810 C   FIELD 02w01 DPXPIE (rw): DXP interrupt enabled
+0x50003810 C   FIELD 02w01 DXPIE (rw): DXP interrupt enabled
 0x50003810 C   FIELD 03w01 EOTIE (rw): EOT, SUSP and TXC interrupt enable
 0x50003810 C   FIELD 04w01 TXTFIE (rw): TXTFIE interrupt enable
 0x50003810 C   FIELD 05w01 UDRIE (rw): UDR interrupt enable
@@ -21586,7 +21590,8 @@
 0x50013004 B  REGISTER CR2 (rw): control register 2
 0x50013004 C   FIELD 00w16 TSIZE: TSIZE
 0x50013008 B  REGISTER CFG1 (rw): configuration register 1
-0x50013008 C   FIELD 05w04 FTHVL: threshold level
+0x50013008 C   FIELD 00w05 DSIZE (rw): Number of bits in at single SPI data frame
+0x50013008 C   FIELD 05w04 FTHLV: threshold level
 0x50013008 C   FIELD 09w01 UDRCFG: Behavior of slave transmitter at underrun condition
 0x50013008 C   FIELD 14w01 RXDMAEN: Rx DMA stream enable
 0x50013008 C   FIELD 15w01 TXDMAEN: Tx DMA stream enable
@@ -21597,7 +21602,7 @@
 0x5001300C B  REGISTER CFG2 (rw): configuration register 2
 0x5001300C C   FIELD 00w04 MSSI: Master SS Idleness
 0x5001300C C   FIELD 04w04 MIDI: Master Inter-Data Idleness
-0x5001300C C   FIELD 13w01 RDIMM: RDIMM
+0x5001300C C   FIELD 13w01 RDIOM: RDIMM
 0x5001300C C   FIELD 14w01 RDIOP: RDIOP
 0x5001300C C   FIELD 15w01 IOSWP: Swap functionality of MISO and MOSI pins
 0x5001300C C   FIELD 17w02 COMM: SPI Communication Mode
@@ -21614,7 +21619,7 @@
 0x50013010 B  REGISTER IER: Interrupt Enable Register
 0x50013010 C   FIELD 00w01 RXPIE (rw): RXP Interrupt Enable
 0x50013010 C   FIELD 01w01 TXPIE (rw): TXP interrupt enable
-0x50013010 C   FIELD 02w01 DPXPIE (rw): DXP interrupt enabled
+0x50013010 C   FIELD 02w01 DXPIE (rw): DXP interrupt enabled
 0x50013010 C   FIELD 03w01 EOTIE (rw): EOT, SUSP and TXC interrupt enable
 0x50013010 C   FIELD 04w01 TXTFIE (rw): TXTFIE interrupt enable
 0x50013010 C   FIELD 05w01 UDRIE (rw): UDR interrupt enable
@@ -35136,7 +35141,8 @@
 0x56002004 B  REGISTER CR2 (rw): control register 2
 0x56002004 C   FIELD 00w16 TSIZE: TSIZE
 0x56002008 B  REGISTER CFG1 (rw): configuration register 1
-0x56002008 C   FIELD 05w04 FTHVL: threshold level
+0x56002008 C   FIELD 00w05 DSIZE (rw): Number of bits in at single SPI data frame
+0x56002008 C   FIELD 05w04 FTHLV: threshold level
 0x56002008 C   FIELD 09w01 UDRCFG: Behavior of slave transmitter at underrun condition
 0x56002008 C   FIELD 14w01 RXDMAEN: Rx DMA stream enable
 0x56002008 C   FIELD 15w01 TXDMAEN: Tx DMA stream enable
@@ -35147,7 +35153,7 @@
 0x5600200C B  REGISTER CFG2 (rw): configuration register 2
 0x5600200C C   FIELD 00w04 MSSI: Master SS Idleness
 0x5600200C C   FIELD 04w04 MIDI: Master Inter-Data Idleness
-0x5600200C C   FIELD 13w01 RDIMM: RDIMM
+0x5600200C C   FIELD 13w01 RDIOM: RDIMM
 0x5600200C C   FIELD 14w01 RDIOP: RDIOP
 0x5600200C C   FIELD 15w01 IOSWP: Swap functionality of MISO and MOSI pins
 0x5600200C C   FIELD 17w02 COMM: SPI Communication Mode
@@ -35164,7 +35170,7 @@
 0x56002010 B  REGISTER IER: Interrupt Enable Register
 0x56002010 C   FIELD 00w01 RXPIE (rw): RXP Interrupt Enable
 0x56002010 C   FIELD 01w01 TXPIE (rw): TXP interrupt enable
-0x56002010 C   FIELD 02w01 DPXPIE (rw): DXP interrupt enabled
+0x56002010 C   FIELD 02w01 DXPIE (rw): DXP interrupt enabled
 0x56002010 C   FIELD 03w01 EOTIE (rw): EOT, SUSP and TXC interrupt enable
 0x56002010 C   FIELD 04w01 TXTFIE (rw): TXTFIE interrupt enable
 0x56002010 C   FIELD 05w01 UDRIE (rw): UDR interrupt enable
