@@ -15982,54 +15982,61 @@
 0x50061C08 C   FIELD 25w02 IOHSRC: Source for Port
 0x50062400 A PERIPHERAL SDMMC1
 0x50062400 B  REGISTER POWER (rw): power control register
-0x50062400 C   FIELD 00w02 PWRCTRL: PWRCTRL
+0x50062400 C   FIELD 00w02 PWRCTRL: SDMMC state control bits
+0x50062400 C   FIELD 02w01 VSWITCH: Voltage switch sequence start
+0x50062400 C   FIELD 03w01 VSWITCHEN: Voltage switch procedure enable
+0x50062400 C   FIELD 04w01 DIRPOL: Data and command direction signals polarity selection
 0x50062404 B  REGISTER CLKCR (rw): SDI clock control register
-0x50062404 C   FIELD 00w08 CLKDIV: Clock divide factor
-0x50062404 C   FIELD 08w01 CLKEN: Clock enable bit
-0x50062404 C   FIELD 09w01 PWRSAV: Power saving configuration bit
-0x50062404 C   FIELD 10w01 BYPASS: Clock divider bypass enable bit
-0x50062404 C   FIELD 11w02 WIDBUS: Wide bus mode enable bit
-0x50062404 C   FIELD 13w01 NEGEDGE: SDIO_CK dephasing selection bit
-0x50062404 C   FIELD 14w01 HWFC_EN: HW Flow Control enable
-0x50062408 B  REGISTER ARG (rw): argument register
+0x50062404 C   FIELD 00w10 CLKDIV: Clock divide factor
+0x50062404 C   FIELD 12w01 PWRSAV: Power saving configuration bit
+0x50062404 C   FIELD 14w02 WIDBUS: Wide bus mode enable bit
+0x50062404 C   FIELD 16w01 NEGEDGE: SDMMC_CK dephasing selection bit for data and command
+0x50062404 C   FIELD 17w01 HWFC_EN: Hardware flow control enable
+0x50062404 C   FIELD 18w01 DDR: Data rate signaling selection
+0x50062404 C   FIELD 19w01 BUSSPEED: Bus speed mode selection between DS, HS, SDR12, SDR25 and SDR50,DDR50
+0x50062404 C   FIELD 20w02 SELCLKRX: Receive clock selection
+0x50062408 B  REGISTER ARGR (rw): argument register
 0x50062408 C   FIELD 00w32 CMDARG: Command argument
-0x5006240C B  REGISTER CMD (rw): command register
+0x5006240C B  REGISTER CMDR (rw): command register
 0x5006240C C   FIELD 00w06 CMDINDEX: Command index
-0x5006240C C   FIELD 06w02 WAITRESP: Wait for response bits
-0x5006240C C   FIELD 08w01 WAITINT: CPSM waits for interrupt request
-0x5006240C C   FIELD 09w01 WAITPEND: CPSM Waits for ends of data transfer (CmdPend internal signal)
-0x5006240C C   FIELD 10w01 CPSMEN: Command path state machine (CPSM) Enable bit
-0x5006240C C   FIELD 11w01 SDIOSuspend: SD I/O suspend command
-0x5006240C C   FIELD 12w01 ENCMDcompl: Enable CMD completion
-0x5006240C C   FIELD 13w01 nIEN: not Interrupt Enable
-0x5006240C C   FIELD 14w01 CE_ATACMD: CE-ATA command
-0x50062410 B  REGISTER RESPCMD (ro): command response register
+0x5006240C C   FIELD 06w01 CMDTRANS: The CPSM treats the command as a data transfer command, stops the interrupt period, and signals DataEnable to the DPSM
+0x5006240C C   FIELD 07w01 CMDSTOP: The CPSM treats the command as a Stop Transmission command and signals Abort to the DPSM
+0x5006240C C   FIELD 08w02 WAITRESP: Wait for response bits
+0x5006240C C   FIELD 10w01 WAITINT: CPSM waits for interrupt request
+0x5006240C C   FIELD 11w01 WAITPEND: CPSM Waits for ends of data transfer (CmdPend internal signal)
+0x5006240C C   FIELD 12w01 CPSMEN: Command path state machine (CPSM) Enable bit
+0x5006240C C   FIELD 13w01 DTHOLD: Hold new data block transmission and reception in the DPSM
+0x5006240C C   FIELD 14w01 BOOTMODE: Select the boot mode procedure to be used
+0x5006240C C   FIELD 15w01 BOOTEN: Enable boot mode procedure
+0x5006240C C   FIELD 16w01 CMDSUSPEND: The CPSM treats the command as a Suspend or Resume command and signals interrupt period start/end
+0x50062410 B  REGISTER RESPCMDR (ro): command response register
 0x50062410 C   FIELD 00w06 RESPCMD: Response command index
-0x50062414 B  REGISTER RESP1 (ro): response 1..4 register
-0x50062414 C   FIELD 00w32 CARDSTATUS1: see Table 132
-0x50062418 B  REGISTER RESP2 (ro): response 1..4 register
-0x50062418 C   FIELD 00w32 CARDSTATUS2: see Table 132
-0x5006241C B  REGISTER RESP3 (ro): response 1..4 register
-0x5006241C C   FIELD 00w32 CARDSTATUS3: see Table 132
-0x50062420 B  REGISTER RESP4 (ro): response 1..4 register
-0x50062420 C   FIELD 00w32 CARDSTATUS4: see Table 132
+0x50062414 B  REGISTER RESP1R (ro): SDMMC response 1 register
+0x50062414 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x50062418 B  REGISTER RESP2R (ro): SDMMC response 2 register
+0x50062418 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x5006241C B  REGISTER RESP3R (ro): SDMMC response 3 register
+0x5006241C C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x50062420 B  REGISTER RESP4R (ro): SDMMC response 4 register
+0x50062420 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
 0x50062424 B  REGISTER DTIMER (rw): data timer register
 0x50062424 C   FIELD 00w32 DATATIME: Data timeout period
-0x50062428 B  REGISTER DLEN (rw): data length register
+0x50062428 B  REGISTER DLENR (rw): data length register
 0x50062428 C   FIELD 00w25 DATALENGTH: Data length value
 0x5006242C B  REGISTER DCTRL (rw): data control register
 0x5006242C C   FIELD 00w01 DTEN: DTEN
 0x5006242C C   FIELD 01w01 DTDIR: Data transfer direction selection
-0x5006242C C   FIELD 02w01 DTMODE: Data transfer mode selection 1: Stream or SDIO multibyte data transfer
-0x5006242C C   FIELD 03w01 DMAEN: DMA enable bit
+0x5006242C C   FIELD 02w02 DTMODE: Data transfer mode selection 1: Stream or SDIO multibyte data transfer
 0x5006242C C   FIELD 04w04 DBLOCKSIZE: Data block size
 0x5006242C C   FIELD 08w01 RWSTART: Read wait start
 0x5006242C C   FIELD 09w01 RWSTOP: Read wait stop
 0x5006242C C   FIELD 10w01 RWMOD: Read wait mode
 0x5006242C C   FIELD 11w01 SDIOEN: SD I/O enable functions
-0x50062430 B  REGISTER DCOUNT (ro): data counter register
+0x5006242C C   FIELD 12w01 BOOTACKEN: Enable the reception of the boot acknowledgment
+0x5006242C C   FIELD 13w01 FIFORST: FIFO reset, will flush any remaining data
+0x50062430 B  REGISTER DCNTR (ro): data counter register
 0x50062430 C   FIELD 00w25 DATACOUNT: Data count value
-0x50062434 B  REGISTER STA (ro): status register
+0x50062434 B  REGISTER STAR (ro): status register
 0x50062434 C   FIELD 00w01 CCRCFAIL: Command response received (CRC check failed)
 0x50062434 C   FIELD 01w01 DCRCFAIL: Data block sent/received (CRC check failed)
 0x50062434 C   FIELD 02w01 CTIMEOUT: Command response timeout
@@ -16039,21 +16046,26 @@
 0x50062434 C   FIELD 06w01 CMDREND: Command response received (CRC check passed)
 0x50062434 C   FIELD 07w01 CMDSENT: Command sent (no response required)
 0x50062434 C   FIELD 08w01 DATAEND: Data end (data counter, SDIDCOUNT, is zero)
-0x50062434 C   FIELD 09w01 STBITERR: Start bit not detected on all data signals in wide bus mode
-0x50062434 C   FIELD 10w01 DBCKEND: Data block sent/received (CRC check passed)
-0x50062434 C   FIELD 11w01 CMDACT: Command transfer in progress
-0x50062434 C   FIELD 12w01 TXACT: Data transmit in progress
-0x50062434 C   FIELD 13w01 RXACT: Data receive in progress
+0x50062434 C   FIELD 09w01 DHOLD: Data transfer Hold
+0x50062434 C   FIELD 10w01 DBCKEND: Data block sent/received
+0x50062434 C   FIELD 11w01 DABORT: Data transfer aborted by CMD12
+0x50062434 C   FIELD 12w01 DPSMACT: Data path state machine active, i.e. not in Idle state
+0x50062434 C   FIELD 13w01 CPSMACT: Command path state machine active, i.e. not in Idle state
 0x50062434 C   FIELD 14w01 TXFIFOHE: Transmit FIFO half empty: at least 8 words can be written into the FIFO
 0x50062434 C   FIELD 15w01 RXFIFOHF: Receive FIFO half full: there are at least 8 words in the FIFO
 0x50062434 C   FIELD 16w01 TXFIFOF: Transmit FIFO full
 0x50062434 C   FIELD 17w01 RXFIFOF: Receive FIFO full
 0x50062434 C   FIELD 18w01 TXFIFOE: Transmit FIFO empty
 0x50062434 C   FIELD 19w01 RXFIFOE: Receive FIFO empty
-0x50062434 C   FIELD 20w01 TXDAVL: Data available in transmit FIFO
-0x50062434 C   FIELD 21w01 RXDAVL: Data available in receive FIFO
+0x50062434 C   FIELD 20w01 BUSYD0: Inverted value of SDMMC_D0 line (Busy), sampled at the end of a CMD response and a second time 2 SDMMC_CK cycles after the CMD response
+0x50062434 C   FIELD 21w01 BUSYD0END: end of SDMMC_D0 Busy following a CMD response detected
 0x50062434 C   FIELD 22w01 SDIOIT: SDIO interrupt received
-0x50062434 C   FIELD 23w01 CEATAEND: CE-ATA command completion signal received for CMD61
+0x50062434 C   FIELD 23w01 ACKFAIL: Boot acknowledgment received (boot acknowledgment check fail)
+0x50062434 C   FIELD 24w01 ACKTIMEOUT: Boot acknowledgment timeout
+0x50062434 C   FIELD 25w01 VSWEND: Voltage switch critical timing section completion
+0x50062434 C   FIELD 26w01 CKSTOP: SDMMC_CK stopped in Voltage switch procedure
+0x50062434 C   FIELD 27w01 IDMATE: IDMA transfer error
+0x50062434 C   FIELD 28w01 IDMABTC: IDMA buffer transfer complete
 0x50062438 B  REGISTER ICR (rw): interrupt clear register
 0x50062438 C   FIELD 00w01 CCRCFAILC: CCRCFAIL flag clear bit
 0x50062438 C   FIELD 01w01 DCRCFAILC: DCRCFAIL flag clear bit
@@ -16064,11 +16076,18 @@
 0x50062438 C   FIELD 06w01 CMDRENDC: CMDREND flag clear bit
 0x50062438 C   FIELD 07w01 CMDSENTC: CMDSENT flag clear bit
 0x50062438 C   FIELD 08w01 DATAENDC: DATAEND flag clear bit
-0x50062438 C   FIELD 09w01 STBITERRC: STBITERR flag clear bit
+0x50062438 C   FIELD 09w01 DHOLDC: DHOLD flag clear bit
 0x50062438 C   FIELD 10w01 DBCKENDC: DBCKEND flag clear bit
+0x50062438 C   FIELD 11w01 DABORTC: DABORT flag clear bit
+0x50062438 C   FIELD 21w01 BUSYD0ENDC: BUSYD0END flag clear bit
 0x50062438 C   FIELD 22w01 SDIOITC: SDIOIT flag clear bit
-0x50062438 C   FIELD 23w01 CEATAENDC: CEATAEND flag clear bit
-0x5006243C B  REGISTER MASK (rw): mask register
+0x50062438 C   FIELD 23w01 ACKFAILC: ACKFAIL flag clear bit
+0x50062438 C   FIELD 24w01 ACKTIMEOUTC: ACKTIMEOUT flag clear bit
+0x50062438 C   FIELD 25w01 VSWENDC: VSWEND flag clear bit
+0x50062438 C   FIELD 26w01 CKSTOPC: CKSTOP flag clear bit
+0x50062438 C   FIELD 27w01 IDMATEC: IDMA transfer error clear bit
+0x50062438 C   FIELD 28w01 IDMABTCC: IDMA buffer transfer complete clear bit
+0x5006243C B  REGISTER MASKR (rw): mask register
 0x5006243C C   FIELD 00w01 CCRCFAILIE: Command CRC fail interrupt enable
 0x5006243C C   FIELD 01w01 DCRCFAILIE: Data CRC fail interrupt enable
 0x5006243C C   FIELD 02w01 CTIMEOUTIE: Command timeout interrupt enable
@@ -16078,25 +16097,64 @@
 0x5006243C C   FIELD 06w01 CMDRENDIE: Command response received interrupt enable
 0x5006243C C   FIELD 07w01 CMDSENTIE: Command sent interrupt enable
 0x5006243C C   FIELD 08w01 DATAENDIE: Data end interrupt enable
-0x5006243C C   FIELD 09w01 STBITERRIE: Start bit error interrupt enable
+0x5006243C C   FIELD 09w01 DHOLDIE: Data hold interrupt enable
 0x5006243C C   FIELD 10w01 DBCKENDIE: Data block end interrupt enable
-0x5006243C C   FIELD 11w01 CMDACTIE: Command acting interrupt enable
-0x5006243C C   FIELD 12w01 TXACTIE: Data transmit acting interrupt enable
-0x5006243C C   FIELD 13w01 RXACTIE: Data receive acting interrupt enable
+0x5006243C C   FIELD 11w01 DABORTIE: Data transfer aborted interrupt enable
 0x5006243C C   FIELD 14w01 TXFIFOHEIE: Tx FIFO half empty interrupt enable
 0x5006243C C   FIELD 15w01 RXFIFOHFIE: Rx FIFO half full interrupt enable
-0x5006243C C   FIELD 16w01 TXFIFOFIE: Tx FIFO full interrupt enable
 0x5006243C C   FIELD 17w01 RXFIFOFIE: Rx FIFO full interrupt enable
 0x5006243C C   FIELD 18w01 TXFIFOEIE: Tx FIFO empty interrupt enable
-0x5006243C C   FIELD 19w01 RXFIFOEIE: Rx FIFO empty interrupt enable
-0x5006243C C   FIELD 20w01 TXDAVLIE: Data available in Tx FIFO interrupt enable
-0x5006243C C   FIELD 21w01 RXDAVLIE: Data available in Rx FIFO interrupt enable
+0x5006243C C   FIELD 21w01 BUSYD0ENDIE: BUSYD0END interrupt enable
 0x5006243C C   FIELD 22w01 SDIOITIE: SDIO mode interrupt received interrupt enable
-0x5006243C C   FIELD 23w01 CEATAENDIE: CE-ATA command completion signal received interrupt enable
-0x50062448 B  REGISTER FIFOCNT (ro): FIFO counter register
-0x50062448 C   FIELD 00w24 FIFOCOUNT: Remaining number of words to be written to or read from the FIFO
-0x50062480 B  REGISTER FIFO (rw): data FIFO register
-0x50062480 C   FIELD 00w32 FIFOData: Receive and transmit FIFO data
+0x5006243C C   FIELD 23w01 ACKFAILIE: Acknowledgment Fail interrupt enable
+0x5006243C C   FIELD 24w01 ACKTIMEOUTIE: Acknowledgment timeout interrupt enable
+0x5006243C C   FIELD 25w01 VSWENDIE: Voltage switch critical timing section completion interrupt enable
+0x5006243C C   FIELD 26w01 CKSTOPIE: CKSTOPIE
+0x5006243C C   FIELD 28w01 IDMABTCIE: IDMABTCIE
+0x50062440 B  REGISTER ACKTIMER (rw): acknowledgment timer register
+0x50062440 C   FIELD 00w25 ACKTIME: Boot acknowledgment timeout period
+0x50062450 B  REGISTER IDMACTRLR (rw): DMA control register
+0x50062450 C   FIELD 00w01 IDMAEN: IDMA enable
+0x50062450 C   FIELD 01w01 IDMABMODE: Buffer mode selection
+0x50062450 C   FIELD 02w01 IDMABACT: Double buffer mode active buffer indication
+0x50062454 B  REGISTER IDMABSIZER (rw): IDMA buffer size register
+0x50062454 C   FIELD 05w08 IDMABNDT: Number of bytes per buffer
+0x50062458 B  REGISTER IDMABASE0R (rw): IDMA buffer 0 base address register
+0x50062458 C   FIELD 00w32 IDMABASE0: Buffer 0 memory base address bits [31:2], shall be word aligned (bit [1:0] are always 0 and read only)
+0x5006245C B  REGISTER IDMABASE1R (rw): IDMA buffer 0 base address register
+0x5006245C C   FIELD 00w32 IDMABASE1: Buffer 1 memory base address, shall be word aligned (bit [1:0] are always 0 and read only)
+0x50062480 B  REGISTER FIFOR0 (rw): data FIFO register 0
+0x50062480 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x50062484 B  REGISTER FIFOR1 (rw): data FIFO register 1
+0x50062484 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x50062488 B  REGISTER FIFOR2 (rw): data FIFO register 2
+0x50062488 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x5006248C B  REGISTER FIFOR3 (rw): data FIFO register 3
+0x5006248C C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x50062490 B  REGISTER FIFOR4 (rw): data FIFO register 4
+0x50062490 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x50062494 B  REGISTER FIFOR5 (rw): data FIFO register 5
+0x50062494 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x50062498 B  REGISTER FIFOR6 (rw): data FIFO register 6
+0x50062498 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x5006249C B  REGISTER FIFOR7 (rw): data FIFO register 7
+0x5006249C C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624A0 B  REGISTER FIFOR8 (rw): data FIFO register 8
+0x500624A0 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624A4 B  REGISTER FIFOR9 (rw): data FIFO register 9
+0x500624A4 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624A8 B  REGISTER FIFOR10 (rw): data FIFO register 10
+0x500624A8 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624AC B  REGISTER FIFOR11 (rw): data FIFO register 11
+0x500624AC C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624B0 B  REGISTER FIFOR12 (rw): data FIFO register 12
+0x500624B0 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624B4 B  REGISTER FIFOR13 (rw): data FIFO register 13
+0x500624B4 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624B8 B  REGISTER FIFOR14 (rw): data FIFO register 14
+0x500624B8 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
+0x500624BC B  REGISTER FIFOR15 (rw): data FIFO register 15
+0x500624BC C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data
 0xA0000000 A PERIPHERAL FMC
 0xA0000000 B  REGISTER BCR1 (rw): SRAM/NOR-Flash chip-select control register 1
 0xA0000000 C   FIELD 00w01 MBKEN: MBKEN

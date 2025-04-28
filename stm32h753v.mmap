@@ -12423,14 +12423,14 @@
 0x4802240C C   FIELD 16w01 CMDSUSPEND: The CPSM treats the command as a Suspend or Resume command and signals interrupt period start/end. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). CMDSUSPEND = 1 and CMDTRANS = 0 Suspend command, start interrupt period when response bit BS=0. CMDSUSPEND = 1 and CMDTRANS = 1 Resume command with data, end interrupt period when response bit DF=1.
 0x48022410 B  REGISTER RESPCMDR (ro): SDMMC command response register
 0x48022410 C   FIELD 00w06 RESPCMD: Response command index
-0x48022414 B  REGISTER RESP1R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x48022414 C   FIELD 00w32 CARDSTATUS1: see Table 432
-0x48022418 B  REGISTER RESP2R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x48022418 C   FIELD 00w32 CARDSTATUS2: see Table404.
-0x4802241C B  REGISTER RESP3R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x4802241C C   FIELD 00w32 CARDSTATUS3: see Table404.
-0x48022420 B  REGISTER RESP4R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x48022420 C   FIELD 00w32 CARDSTATUS4: see Table404.
+0x48022414 B  REGISTER RESP1R (ro): SDMMC response 1 register
+0x48022414 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x48022418 B  REGISTER RESP2R (ro): SDMMC response 2 register
+0x48022418 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x4802241C B  REGISTER RESP3R (ro): SDMMC response 3 register
+0x4802241C C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x48022420 B  REGISTER RESP4R (ro): SDMMC response 4 register
+0x48022420 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
 0x48022424 B  REGISTER DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
 0x48022424 C   FIELD 00w32 DATATIME: Data and R1b busy timeout period This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). Data and R1b busy timeout period expressed in card bus clock periods.
 0x48022428 B  REGISTER DLENR (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
@@ -12537,11 +12537,6 @@
 0x4802245C C   FIELD 00w32 IDMABASE1: Buffer 1 memory base address, shall be word aligned (bit [1:0] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 1 is inactive (IDMABACT = 0).
 0x48022480 B  REGISTER FIFOR (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
 0x48022480 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data This register can only be read or written by firmware when the DPSM is active (DPSMACT=1). The FIFO data occupies 16 entries of 32-bit words.
-0x480227F4 B  REGISTER VER (ro): SDMMC IP version register
-0x480227F4 C   FIELD 00w04 MINREV: IP minor revision number.
-0x480227F4 C   FIELD 04w04 MAJREV: IP major revision number.
-0x480227F8 B  REGISTER ID (ro): SDMMC IP identification register
-0x480227F8 C   FIELD 00w32 IP_ID: SDMMC IP identification.
 0x48022800 A PERIPHERAL DELAY_Block_SDMMC2
 0x48022800 B  REGISTER CR (rw): DLYB control register
 0x48022800 C   FIELD 00w01 DEN: Delay block enable bit
@@ -14776,14 +14771,14 @@
 0x5200700C C   FIELD 16w01 CMDSUSPEND: The CPSM treats the command as a Suspend or Resume command and signals interrupt period start/end. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). CMDSUSPEND = 1 and CMDTRANS = 0 Suspend command, start interrupt period when response bit BS=0. CMDSUSPEND = 1 and CMDTRANS = 1 Resume command with data, end interrupt period when response bit DF=1.
 0x52007010 B  REGISTER RESPCMDR (ro): SDMMC command response register
 0x52007010 C   FIELD 00w06 RESPCMD: Response command index
-0x52007014 B  REGISTER RESP1R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x52007014 C   FIELD 00w32 CARDSTATUS1: see Table 432
-0x52007018 B  REGISTER RESP2R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x52007018 C   FIELD 00w32 CARDSTATUS2: see Table404.
-0x5200701C B  REGISTER RESP3R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x5200701C C   FIELD 00w32 CARDSTATUS3: see Table404.
-0x52007020 B  REGISTER RESP4R (ro): The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-0x52007020 C   FIELD 00w32 CARDSTATUS4: see Table404.
+0x52007014 B  REGISTER RESP1R (ro): SDMMC response 1 register
+0x52007014 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x52007018 B  REGISTER RESP2R (ro): SDMMC response 2 register
+0x52007018 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x5200701C B  REGISTER RESP3R (ro): SDMMC response 3 register
+0x5200701C C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
+0x52007020 B  REGISTER RESP4R (ro): SDMMC response 4 register
+0x52007020 C   FIELD 00w32 CARDSTATUS: Status of a card, which is part of the received response
 0x52007024 B  REGISTER DTIMER (rw): The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
 0x52007024 C   FIELD 00w32 DATATIME: Data and R1b busy timeout period This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). Data and R1b busy timeout period expressed in card bus clock periods.
 0x52007028 B  REGISTER DLENR (rw): The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
@@ -14890,11 +14885,6 @@
 0x5200705C C   FIELD 00w32 IDMABASE1: Buffer 1 memory base address, shall be word aligned (bit [1:0] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 1 is inactive (IDMABACT = 0).
 0x52007080 B  REGISTER FIFOR (rw): The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
 0x52007080 C   FIELD 00w32 FIFODATA: Receive and transmit FIFO data This register can only be read or written by firmware when the DPSM is active (DPSMACT=1). The FIFO data occupies 16 entries of 32-bit words.
-0x520073F4 B  REGISTER VER (ro): SDMMC IP version register
-0x520073F4 C   FIELD 00w04 MINREV: IP minor revision number.
-0x520073F4 C   FIELD 04w04 MAJREV: IP major revision number.
-0x520073F8 B  REGISTER ID (ro): SDMMC IP identification register
-0x520073F8 C   FIELD 00w32 IP_ID: SDMMC IP identification.
 0x52008000 A PERIPHERAL DELAY_Block_SDMMC1
 0x52008000 B  REGISTER CR (rw): DLYB control register
 0x52008000 C   FIELD 00w01 DEN: Delay block enable bit
