@@ -4879,10 +4879,10 @@
 0x40015444 B  REGISTER PDMCR (rw): PDM control register
 0x40015444 C   FIELD 00w01 PDMEN: PDMEN
 0x40015444 C   FIELD 04w02 MICNBR: MICNBR
-0x40015444 C   FIELD 08w01 CKEN1: CKEN1
-0x40015444 C   FIELD 09w01 CKEN2: CKEN2
-0x40015444 C   FIELD 10w01 CKEN3: CKEN3
-0x40015444 C   FIELD 11w01 CKEN4: CKEN4
+0x40015444 C   FIELD 08w01 CKEN1: Clock enable of bitstream clock number 1
+0x40015444 C   FIELD 09w01 CKEN2: Clock enable of bitstream clock number 2
+0x40015444 C   FIELD 10w01 CKEN3: Clock enable of bitstream clock number 3
+0x40015444 C   FIELD 11w01 CKEN4: Clock enable of bitstream clock number 4
 0x40015448 B  REGISTER PDMDLY (rw): PDM delay register
 0x40015448 C   FIELD 00w03 DLYM1L: Delay line adjust for first microphone of pair 1
 0x40015448 C   FIELD 04w03 DLYM1R: Delay line adjust for second microphone of pair 1
@@ -5993,6 +5993,10 @@
 0x40022070 C   FIELD 16w01 BOOT_LOCK: BOOT_LOCK
 0x40023000 A PERIPHERAL CRC
 0x40023000 B  REGISTER DR (rw): Data register
+0x40023000 B  REGISTER DR16 (rw): Data register - half-word sized
+0x40023000 B  REGISTER DR8 (rw): Data register - byte sized
+0x40023000 C   FIELD 00w08 DR8: Data register bits
+0x40023000 C   FIELD 00w16 DR16: Data register bits
 0x40023000 C   FIELD 00w32 DR: Data register bits
 0x40023004 B  REGISTER IDR (rw): Independent data register
 0x40023004 C   FIELD 00w32 IDR: General-purpose 8-bit data register bits
@@ -6002,7 +6006,7 @@
 0x40023008 C   FIELD 05w02 REV_IN (rw): Reverse input data
 0x40023008 C   FIELD 07w01 REV_OUT (rw): Reverse output data
 0x40023010 B  REGISTER INIT (rw): Initial CRC value
-0x40023010 C   FIELD 00w32 CRC_INIT: Programmable initial CRC value
+0x40023010 C   FIELD 00w32 INIT: Programmable initial CRC value
 0x40023014 B  REGISTER POL (rw): polynomial
 0x40023014 C   FIELD 00w32 POL: Programmable polynomial
 0x48000000 A PERIPHERAL GPIOA
