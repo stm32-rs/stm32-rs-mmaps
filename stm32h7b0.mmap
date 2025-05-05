@@ -11330,6 +11330,13 @@
 0x48021800 C   FIELD 02w01 RNGEN: Random number generator enable
 0x48021800 C   FIELD 03w01 IE: Interrupt enable
 0x48021800 C   FIELD 05w01 CED: Clock error detection Note: The clock error detection can be used only when ck_rc48 or ck_pll1_q (ck_pll1_q = 48MHz) source is selected otherwise, CED bit must be equal to 1. The clock error detection cannot be enabled nor disabled on the fly when RNG peripheral is enabled, to enable or disable CED the RNG must be disabled.
+0x48021800 C   FIELD 08w04 RNG_CONFIG3: RNG configuration 3
+0x48021800 C   FIELD 12w01 NISTC: Non NIST compliant
+0x48021800 C   FIELD 13w03 RNG_CONFIG2: RNG configuration 2
+0x48021800 C   FIELD 16w04 CLKDIV: Clock divider factor
+0x48021800 C   FIELD 20w06 RNG_CONFIG1: RNG configuration 1
+0x48021800 C   FIELD 30w01 CONDRST: Conditioning soft reset
+0x48021800 C   FIELD 31w01 CONFIGLOCK: RNG Config lock
 0x48021804 B  REGISTER SR: RNG status register
 0x48021804 C   FIELD 00w01 DRDY (ro): Data ready Note: If IE=1 in RNG_CR, an interrupt is generated when DRDY=1. It can rise when the peripheral is disabled. When the output buffer becomes empty (after reading RNG_DR), this bit returns to 0 until a new random value is generated.
 0x48021804 C   FIELD 01w01 CECS (ro): Clock error current status Note: This bit is meaningless if CED (Clock error detection) bit in RNG_CR is equal to 1.
@@ -11338,6 +11345,8 @@
 0x48021804 C   FIELD 06w01 SEIS (rw): Seed error interrupt status This bit is set at the same time as SECS. It is cleared by writing it to 0. ** More than 64 consecutive bits at the same value (0 or 1) ** More than 32 consecutive alternances of 0 and 1 (0101010101...01) An interrupt is pending if IE = 1 in the RNG_CR register.
 0x48021808 B  REGISTER DR (ro): The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
 0x48021808 C   FIELD 00w32 RNDATA: Random data 32-bit random data which are valid when DRDY=1.
+0x48021810 B  REGISTER HTCR: health test control register
+0x48021810 C   FIELD 00w32 HTCFG: health test configuration
 0x48022400 A PERIPHERAL SDMMC2
 0x48022400 B  REGISTER POWER (rw): SDMMC power control register
 0x48022400 C   FIELD 00w02 PWRCTRL: SDMMC state control bits. These bits can only be written when the SDMMC is not in the power-on state (PWRCTRL?11). These bits are used to define the functional state of the SDMMC signals: Any further write will be ignored, PWRCTRL value will keep 11.
