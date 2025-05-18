@@ -2889,11 +2889,11 @@
 0x40010000 A PERIPHERAL SYSCFG
 0x40010000 B  REGISTER MEMRMP (rw): memory remap register
 0x40010000 C   FIELD 00w03 MEM_MODE: Memory mapping selection
-0x40010000 C   FIELD 03w01 QFS: QUADSPI memory mapping swap
 0x40010000 C   FIELD 08w01 FB_MODE: Flash Bank mode selection
 0x40010004 B  REGISTER CFGR1 (rw): configuration register 1
 0x40010004 C   FIELD 00w01 FWDIS: Firewall disable
 0x40010004 C   FIELD 08w01 BOOSTEN: I/O analog switch voltage booster enable
+0x40010004 C   FIELD 09w01 ANASWVDD: GPIO analog switch control voltage selection when at least one analog peripheral supplied by VDDA is enabled (COMP, OPAMP, VREFBUF, ADC,...)
 0x40010004 C   FIELD 16w01 I2C_PB6_FMP: Fast-mode Plus (Fm+) driving capability activation on PB6
 0x40010004 C   FIELD 17w01 I2C_PB7_FMP: Fast-mode Plus (Fm+) driving capability activation on PB7
 0x40010004 C   FIELD 18w01 I2C_PB8_FMP: Fast-mode Plus (Fm+) driving capability activation on PB8
@@ -2901,30 +2901,36 @@
 0x40010004 C   FIELD 20w01 I2C1_FMP: I2C1 Fast-mode Plus driving capability activation
 0x40010004 C   FIELD 21w01 I2C2_FMP: I2C2 Fast-mode Plus driving capability activation
 0x40010004 C   FIELD 22w01 I2C3_FMP: I2C3 Fast-mode Plus driving capability activation
-0x40010004 C   FIELD 26w06 FPU_IE: Floating Point Unit interrupts enable bits
+0x40010004 C   FIELD 23w01 I2C4_FMP: I2C3 Fast-mode Plus driving capability activation
+0x40010004 C   FIELD 26w01 FPU_IE0: Invalid operation interrupt enable
+0x40010004 C   FIELD 27w01 FPU_IE1: Divide-by-zero interrupt enable
+0x40010004 C   FIELD 28w01 FPU_IE2: Underflow interrupt enable
+0x40010004 C   FIELD 29w01 FPU_IE3: Overflow interrupt enable
+0x40010004 C   FIELD 30w01 FPU_IE4: Input denormal interrupt enable
+0x40010004 C   FIELD 31w01 FPU_IE5: Inexact interrupt enable
 0x40010008 B  REGISTER EXTICR1 (rw): external interrupt configuration register 1
-0x40010008 C   FIELD 00w03 EXTI0: EXTI 0 configuration bits
-0x40010008 C   FIELD 04w03 EXTI1: EXTI 1 configuration bits
-0x40010008 C   FIELD 08w03 EXTI2: EXTI 2 configuration bits
-0x40010008 C   FIELD 12w03 EXTI3: EXTI 3 configuration bits
+0x40010008 C   FIELD 00w04 EXTI0: EXTI 0 configuration bits
+0x40010008 C   FIELD 04w04 EXTI1 (=EXTI0): EXTI 1 configuration bits
+0x40010008 C   FIELD 08w04 EXTI2 (=EXTI0): EXTI 2 configuration bits
+0x40010008 C   FIELD 12w04 EXTI3 (=EXTI0): EXTI 3 configuration bits
 0x4001000C B  REGISTER EXTICR2 (rw): external interrupt configuration register 2
-0x4001000C C   FIELD 00w03 EXTI4: EXTI 4 configuration bits
-0x4001000C C   FIELD 04w03 EXTI5: EXTI 5 configuration bits
-0x4001000C C   FIELD 08w03 EXTI6: EXTI 6 configuration bits
-0x4001000C C   FIELD 12w03 EXTI7: EXTI 7 configuration bits
+0x4001000C C   FIELD 00w04 EXTI4 (=SYSCFG.EXTICR1.EXTI0): EXTI 4 configuration bits
+0x4001000C C   FIELD 04w04 EXTI5 (=SYSCFG.EXTICR1.EXTI0): EXTI 5 configuration bits
+0x4001000C C   FIELD 08w04 EXTI6 (=SYSCFG.EXTICR1.EXTI0): EXTI 6 configuration bits
+0x4001000C C   FIELD 12w04 EXTI7 (=SYSCFG.EXTICR1.EXTI0): EXTI 7 configuration bits
 0x40010010 B  REGISTER EXTICR3 (rw): external interrupt configuration register 3
-0x40010010 C   FIELD 00w03 EXTI8: EXTI 8 configuration bits
-0x40010010 C   FIELD 04w03 EXTI9: EXTI 9 configuration bits
-0x40010010 C   FIELD 08w03 EXTI10: EXTI 10 configuration bits
-0x40010010 C   FIELD 12w03 EXTI11: EXTI 11 configuration bits
+0x40010010 C   FIELD 00w04 EXTI8 (=SYSCFG.EXTICR1.EXTI0): EXTI 8 configuration bits
+0x40010010 C   FIELD 04w04 EXTI9 (=SYSCFG.EXTICR1.EXTI0): EXTI 9 configuration bits
+0x40010010 C   FIELD 08w04 EXTI10 (=SYSCFG.EXTICR1.EXTI0): EXTI 10 configuration bits
+0x40010010 C   FIELD 12w04 EXTI11 (=SYSCFG.EXTICR1.EXTI0): EXTI 11 configuration bits
 0x40010014 B  REGISTER EXTICR4 (rw): external interrupt configuration register 4
-0x40010014 C   FIELD 00w03 EXTI12: EXTI12 configuration bits
-0x40010014 C   FIELD 04w03 EXTI13: EXTI13 configuration bits
-0x40010014 C   FIELD 08w03 EXTI14: EXTI14 configuration bits
-0x40010014 C   FIELD 12w03 EXTI15: EXTI15 configuration bits
+0x40010014 C   FIELD 00w04 EXTI12: EXTI12 configuration bits
+0x40010014 C   FIELD 04w04 EXTI13 (=EXTI12): EXTI13 configuration bits
+0x40010014 C   FIELD 08w04 EXTI14 (=EXTI12): EXTI14 configuration bits
+0x40010014 C   FIELD 12w04 EXTI15 (=EXTI12): EXTI15 configuration bits
 0x40010018 B  REGISTER SCSR: SCSR
 0x40010018 C   FIELD 00w01 SRAM2ER (rw): SRAM2 Erase
-0x40010018 C   FIELD 01w01 SRAM2BSY (ro): SRAM2 busy by erase operation
+0x40010018 C   FIELD 01w01 SRAM2BS (ro): SRAM2 busy by erase operation
 0x4001001C B  REGISTER CFGR2: CFGR2
 0x4001001C C   FIELD 00w01 CLL (wo): Cortex-M4 LOCKUP (Hardfault) output enable bit
 0x4001001C C   FIELD 01w01 SPL (wo): SRAM2 parity lock bit
@@ -2966,6 +2972,39 @@
 0x40010020 C   FIELD 31w01 P31WP: SRAM2 page 31 write protection
 0x40010024 B  REGISTER SKR (wo): SKR
 0x40010024 C   FIELD 00w08 KEY: SRAM2 write protection key for software erase
+0x40010028 B  REGISTER SWPR2: write protection register 2
+0x40010028 C   FIELD 00w01 P32WP: SRAM2 page x write protection
+0x40010028 C   FIELD 01w01 P33WP: SRAM2 page x write protection
+0x40010028 C   FIELD 02w01 P34WP: SRAM2 page x write protection
+0x40010028 C   FIELD 03w01 P35WP: SRAM2 page x write protection
+0x40010028 C   FIELD 04w01 P36WP: SRAM2 page x write protection
+0x40010028 C   FIELD 05w01 P37WP: SRAM2 page x write protection
+0x40010028 C   FIELD 06w01 P38WP: SRAM2 page x write protection
+0x40010028 C   FIELD 07w01 P39WP: SRAM2 page x write protection
+0x40010028 C   FIELD 08w01 P40WP: SRAM2 page x write protection
+0x40010028 C   FIELD 09w01 P41WP: SRAM2 page x write protection
+0x40010028 C   FIELD 10w01 P42WP: SRAM2 page x write protection
+0x40010028 C   FIELD 11w01 P43WP: SRAM2 page x write protection
+0x40010028 C   FIELD 12w01 P44WP: SRAM2 page x write protection
+0x40010028 C   FIELD 13w01 P45WP: SRAM2 page x write protection
+0x40010028 C   FIELD 14w01 P46WP: SRAM2 page x write protection
+0x40010028 C   FIELD 15w01 P47WP: SRAM2 page x write protection
+0x40010028 C   FIELD 16w01 P48WP: SRAM2 page x write protection
+0x40010028 C   FIELD 17w01 P49WP: SRAM2 page x write protection
+0x40010028 C   FIELD 18w01 P50WP: SRAM2 page x write protection
+0x40010028 C   FIELD 19w01 P51WP: SRAM2 page x write protection
+0x40010028 C   FIELD 20w01 P52WP: SRAM2 page x write protection
+0x40010028 C   FIELD 21w01 P53WP: SRAM2 page x write protection
+0x40010028 C   FIELD 22w01 P54WP: SRAM2 page x write protection
+0x40010028 C   FIELD 23w01 P55WP: SRAM2 page x write protection
+0x40010028 C   FIELD 24w01 P56WP: SRAM2 page x write protection
+0x40010028 C   FIELD 25w01 P57WP: SRAM2 page x write protection
+0x40010028 C   FIELD 26w01 P58WP: SRAM2 page x write protection
+0x40010028 C   FIELD 27w01 P59WP: SRAM2 page x write protection
+0x40010028 C   FIELD 28w01 P60WP: SRAM2 page x write protection
+0x40010028 C   FIELD 29w01 P61WP: SRAM2 page x write protection
+0x40010028 C   FIELD 30w01 P62WP: SRAM2 page x write protection
+0x40010028 C   FIELD 31w01 P63WP: SRAM2 page x write protection
 0x40010030 A PERIPHERAL VREFBUF
 0x40010030 B  REGISTER CSR: VREF control and status register
 0x40010030 C   FIELD 00w01 ENVR (rw): Voltage reference buffer enable
@@ -3168,6 +3207,7 @@
 0x40010420 C   FIELD 05w01 MR37: Interrupt Mask on external/internal line 37
 0x40010420 C   FIELD 06w01 MR38: Interrupt Mask on external/internal line 38
 0x40010420 C   FIELD 07w01 MR39: Interrupt Mask on external/internal line 39
+0x40010420 C   FIELD 08w01 MR40: Interrupt Mask on external/internal line 40
 0x40010424 B  REGISTER EMR2 (rw): Event mask register
 0x40010424 C   FIELD 00w01 MR32: Event mask on external/internal line 32
 0x40010424 C   FIELD 01w01 MR33: Event mask on external/internal line 33
@@ -3177,6 +3217,7 @@
 0x40010424 C   FIELD 05w01 MR37: Event mask on external/internal line 37
 0x40010424 C   FIELD 06w01 MR38: Event mask on external/internal line 38
 0x40010424 C   FIELD 07w01 MR39: Event mask on external/internal line 39
+0x40010424 C   FIELD 08w01 MR40: Event mask on external/internal line 40
 0x40010428 B  REGISTER RTSR2 (rw): Rising Trigger selection register
 0x40010428 C   FIELD 03w01 RT35: Rising trigger event configuration bit of line 35
 0x40010428 C   FIELD 04w01 RT36: Rising trigger event configuration bit of line 36
@@ -3900,6 +3941,9 @@
 0x40014868 B  REGISTER TISEL: TIM17 input selection register
 0x40014868 C   FIELD 00w04 TI1SEL (rw): selects TI1[0] to TI1[15] input Others: Reserved
 0x40015400 A PERIPHERAL SAI1
+0x40015400 B  REGISTER GCR: Global configuration register
+0x40015400 C   FIELD 00w02 SYNCIN: Synchronization inputs
+0x40015400 C   FIELD 04w02 SYNCOUT: Synchronization outputs
 0x40015404 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015404 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015404 C   FIELD 00w02 MODE: Audio block mode
@@ -3912,8 +3956,9 @@
 0x40015404 C   FIELD 13w01 OUTDRIV: Output drive
 0x40015404 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015404 C   FIELD 17w01 DMAEN: DMA enable
-0x40015404 C   FIELD 19w01 NODIV: No divider
-0x40015404 C   FIELD 20w04 MCKDIV: Master clock divider
+0x40015404 C   FIELD 19w01 NOMCK: No divider
+0x40015404 C   FIELD 20w06 MCKDIV: Master clock divider
+0x40015404 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015408 B  REGISTER CR2A (rw): AConfiguration register 2
 0x40015408 C   FIELD 00w03 FTH (rw): FIFO threshold
 0x40015408 C   FIELD 03w01 FFLUSH (wo): FIFO flush
@@ -3972,8 +4017,9 @@
 0x40015424 C   FIELD 13w01 OUTDRIV: Output drive
 0x40015424 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015424 C   FIELD 17w01 DMAEN: DMA enable
-0x40015424 C   FIELD 19w01 NODIV: No divider
-0x40015424 C   FIELD 20w04 MCKDIV: Master clock divider
+0x40015424 C   FIELD 19w01 NOMCK: No divider
+0x40015424 C   FIELD 20w06 MCKDIV: Master clock divider
+0x40015424 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015428 B  REGISTER CR2B (rw): AConfiguration register 2
 0x40015428 C   FIELD 00w03 FTH (rw): FIFO threshold
 0x40015428 C   FIELD 03w01 FFLUSH (wo): FIFO flush
@@ -4021,6 +4067,9 @@
 0x40015440 B  REGISTER DRB (rw): AData register
 0x40015440 C   FIELD 00w32 DATA: Data
 0x40015800 A PERIPHERAL SAI2
+0x40015800 B  REGISTER GCR: Global configuration register
+0x40015800 C   FIELD 00w02 SYNCIN: Synchronization inputs
+0x40015800 C   FIELD 04w02 SYNCOUT: Synchronization outputs
 0x40015804 B  CLUSTER CHA: Cluster CHA, containing ?CR1, ?CR2, ?FRCR, ?SLOTR, ?IM, ?SR, ?CLRFR, ?DR
 0x40015804 B  REGISTER CR1A (rw): AConfiguration register 1
 0x40015804 C   FIELD 00w02 MODE: Audio block mode
@@ -4033,8 +4082,9 @@
 0x40015804 C   FIELD 13w01 OUTDRIV: Output drive
 0x40015804 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015804 C   FIELD 17w01 DMAEN: DMA enable
-0x40015804 C   FIELD 19w01 NODIV: No divider
-0x40015804 C   FIELD 20w04 MCKDIV: Master clock divider
+0x40015804 C   FIELD 19w01 NOMCK: No divider
+0x40015804 C   FIELD 20w06 MCKDIV: Master clock divider
+0x40015804 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015808 B  REGISTER CR2A (rw): AConfiguration register 2
 0x40015808 C   FIELD 00w03 FTH (rw): FIFO threshold
 0x40015808 C   FIELD 03w01 FFLUSH (wo): FIFO flush
@@ -4093,8 +4143,9 @@
 0x40015824 C   FIELD 13w01 OUTDRIV: Output drive
 0x40015824 C   FIELD 16w01 SAIEN: Audio block A enable
 0x40015824 C   FIELD 17w01 DMAEN: DMA enable
-0x40015824 C   FIELD 19w01 NODIV: No divider
-0x40015824 C   FIELD 20w04 MCKDIV: Master clock divider
+0x40015824 C   FIELD 19w01 NOMCK: No divider
+0x40015824 C   FIELD 20w06 MCKDIV: Master clock divider
+0x40015824 C   FIELD 26w01 OSR: Oversampling ratio for master clock
 0x40015828 B  REGISTER CR2B (rw): AConfiguration register 2
 0x40015828 C   FIELD 00w03 FTH (rw): FIFO threshold
 0x40015828 C   FIELD 03w01 FFLUSH (wo): FIFO flush
@@ -6258,7 +6309,7 @@
 0x4002109C C   FIELD 20w02 OSPISEL: Octospi clock source selection
 0x40022000 A PERIPHERAL FLASH
 0x40022000 B  REGISTER ACR (rw): Access control register
-0x40022000 C   FIELD 00w03 LATENCY: Latency
+0x40022000 C   FIELD 00w04 LATENCY: Latency
 0x40022000 C   FIELD 08w01 PRFTEN: Prefetch enable
 0x40022000 C   FIELD 09w01 ICEN: Instruction cache enable
 0x40022000 C   FIELD 10w01 DCEN: Data cache enable
@@ -6285,6 +6336,7 @@
 0x40022010 C   FIELD 14w01 RDERR (rw): PCROP read error
 0x40022010 C   FIELD 15w01 OPTVERR (rw): Option validity error
 0x40022010 C   FIELD 16w01 BSY (ro): Busy
+0x40022010 C   FIELD 17w01 PEMPTY: 
 0x40022014 B  REGISTER CR (rw): Flash control register
 0x40022014 C   FIELD 00w01 PG: Programming
 0x40022014 C   FIELD 01w01 PER: Page erase
@@ -6302,10 +6354,12 @@
 0x40022014 C   FIELD 30w01 OPTLOCK: Options Lock
 0x40022014 C   FIELD 31w01 LOCK: FLASH_CR Lock
 0x40022018 B  REGISTER ECCR: Flash ECC register
-0x40022018 C   FIELD 00w19 ADDR_ECC (ro): ECC fail address
+0x40022018 C   FIELD 00w21 ADDR_ECC (ro): ECC fail address
 0x40022018 C   FIELD 19w01 BK_ECC (ro): ECC fail bank
 0x40022018 C   FIELD 20w01 SYSF_ECC (ro): System Flash ECC fail
 0x40022018 C   FIELD 24w01 ECCIE (rw): ECC correction interrupt enable
+0x40022018 C   FIELD 28w01 ECCC2: ECC2 correction
+0x40022018 C   FIELD 29w01 ECCD2: ECC2 detection
 0x40022018 C   FIELD 30w01 ECCC (rw): ECC correction
 0x40022018 C   FIELD 31w01 ECCD (rw): ECC detection
 0x40022020 B  REGISTER OPTR (rw): Flash option register
@@ -6313,38 +6367,41 @@
 0x40022020 C   FIELD 08w03 BOR_LEV: BOR reset Level
 0x40022020 C   FIELD 12w01 nRST_STOP: nRST_STOP
 0x40022020 C   FIELD 13w01 nRST_STDBY: nRST_STDBY
-0x40022020 C   FIELD 16w01 IDWG_SW: Independent watchdog selection
+0x40022020 C   FIELD 16w01 IWDG_SW: Independent watchdog selection
 0x40022020 C   FIELD 17w01 IWDG_STOP: Independent watchdog counter freeze in Stop mode
 0x40022020 C   FIELD 18w01 IWDG_STDBY: Independent watchdog counter freeze in Standby mode
 0x40022020 C   FIELD 19w01 WWDG_SW: Window watchdog selection
 0x40022020 C   FIELD 20w01 BFB2: Dual-bank boot
-0x40022020 C   FIELD 21w01 DUALBANK: Dual-Bank on 512 KB or 256 KB Flash memory devices
+0x40022020 C   FIELD 21w01 DB1M: 
+0x40022020 C   FIELD 22w01 DBANK: 
 0x40022020 C   FIELD 23w01 nBOOT1: Boot configuration
 0x40022020 C   FIELD 24w01 SRAM2_PE: SRAM2 parity check enable
 0x40022020 C   FIELD 25w01 SRAM2_RST: SRAM2 Erase when system reset
 0x40022020 C   FIELD 26w01 nSWBOOT0: Software BOOT0
 0x40022020 C   FIELD 27w01 nBOOT0: nBOOT0 option bit
 0x40022024 B  REGISTER PCROP1SR (rw): Flash Bank 1 PCROP Start address register
-0x40022024 C   FIELD 00w16 PCROP1_STRT: Bank 1 PCROP area start offset
+0x40022024 C   FIELD 00w17 PCROP1_STRT: Bank 1 PCROP area start offset
 0x40022028 B  REGISTER PCROP1ER (rw): Flash Bank 1 PCROP End address register
-0x40022028 C   FIELD 00w16 PCROP1_END: Bank 1 PCROP area end offset
+0x40022028 C   FIELD 00w17 PCROP1_END: Bank 1 PCROP area end offset
 0x40022028 C   FIELD 31w01 PCROP_RDP: PCROP area preserved when RDP level decreased
 0x4002202C B  REGISTER WRP1AR (rw): Flash Bank 1 WRP area A address register
 0x4002202C C   FIELD 00w08 WRP1A_STRT: Bank 1 WRP first area start offset
 0x4002202C C   FIELD 16w08 WRP1A_END: Bank 1 WRP first area A end offset
-0x40022030 B  REGISTER WRP1BR (rw): Flash Bank 1 WRP area B address register
-0x40022030 C   FIELD 00w08 WRP1B_STRT: Bank 1 WRP second area B start offset
-0x40022030 C   FIELD 16w08 WRP1B_END: Bank 1 WRP second area B end offset
+0x40022030 B  REGISTER WRP2AR (rw): Flash Bank 2 WRP area A address register
+0x40022030 C   FIELD 00w08 WRP2A_STRT: Bank 2 WRP first area A start offset
+0x40022030 C   FIELD 16w08 WRP2A_END: Bank 2 WRP first area A end offset
 0x40022044 B  REGISTER PCROP2SR (rw): Flash Bank 2 PCROP Start address register
-0x40022044 C   FIELD 00w16 PCROP2_STRT: Bank 2 PCROP area start offset
+0x40022044 C   FIELD 00w17 PCROP2_STRT: Bank 2 PCROP area start offset
 0x40022048 B  REGISTER PCROP2ER (rw): Flash Bank 2 PCROP End address register
-0x40022048 C   FIELD 00w16 PCROP2_END: Bank 2 PCROP area end offset
-0x4002204C B  REGISTER WRP2AR (rw): Flash Bank 2 WRP area A address register
-0x4002204C C   FIELD 00w08 WRP2A_STRT: Bank 2 WRP first area A start offset
-0x4002204C C   FIELD 16w08 WRP2A_END: Bank 2 WRP first area A end offset
+0x40022048 C   FIELD 00w17 PCROP2_END: Bank 2 PCROP area end offset
+0x4002204C B  REGISTER WRP1BR (rw): Flash Bank 1 WRP area B address register
+0x4002204C C   FIELD 00w08 WRP1B_STRT: Bank 1 WRP second area B start offset
+0x4002204C C   FIELD 16w08 WRP1B_END: Bank 1 WRP second area B end offset
 0x40022050 B  REGISTER WRP2BR (rw): Flash Bank 2 WRP area B address register
 0x40022050 C   FIELD 00w08 WRP2B_STRT: Bank 2 WRP second area B start offset
 0x40022050 C   FIELD 16w08 WRP2B_END: Bank 2 WRP second area B end offset
+0x40022130 B  REGISTER CFGR: flash configuration register
+0x40022130 C   FIELD 00w01 LVEN: Low voltage enable
 0x40023000 A PERIPHERAL CRC
 0x40023000 B  REGISTER DR (rw): Data register
 0x40023000 B  REGISTER DR16 (rw): Data register - half-word sized
@@ -6556,13 +6613,14 @@
 0x4002B000 C   FIELD 00w01 START: Start
 0x4002B000 C   FIELD 01w01 SUSP: Suspend
 0x4002B000 C   FIELD 02w01 ABORT: Abort
+0x4002B000 C   FIELD 06w01 LOM: Line Offset Mode
 0x4002B000 C   FIELD 08w01 TEIE: Transfer error interrupt enable
 0x4002B000 C   FIELD 09w01 TCIE: Transfer complete interrupt enable
 0x4002B000 C   FIELD 10w01 TWIE: Transfer watermark interrupt enable
 0x4002B000 C   FIELD 11w01 CAEIE: CLUT access error interrupt enable
 0x4002B000 C   FIELD 12w01 CTCIE: CLUT transfer complete interrupt enable
 0x4002B000 C   FIELD 13w01 CEIE: Configuration Error Interrupt Enable
-0x4002B000 C   FIELD 16w02 MODE: DMA2D mode
+0x4002B000 C   FIELD 16w03 MODE: DMA2D mode
 0x4002B004 B  REGISTER ISR (ro): Interrupt Status Register
 0x4002B004 C   FIELD 00w01 TEIF: Transfer error interrupt flag
 0x4002B004 C   FIELD 01w01 TCIF: Transfer complete interrupt flag
@@ -6580,11 +6638,11 @@
 0x4002B00C B  REGISTER FGMAR (rw): foreground memory address register
 0x4002B00C C   FIELD 00w32 MA: Memory address
 0x4002B010 B  REGISTER FGOR (rw): foreground offset register
-0x4002B010 C   FIELD 00w14 LO: Line offset
+0x4002B010 C   FIELD 00w16 LO: Line offset
 0x4002B014 B  REGISTER BGMAR (rw): background memory address register
 0x4002B014 C   FIELD 00w32 MA: Memory address
 0x4002B018 B  REGISTER BGOR (rw): background offset register
-0x4002B018 C   FIELD 00w14 LO: Line offset
+0x4002B018 C   FIELD 00w16 LO: Line offset
 0x4002B01C B  REGISTER FGPFCCR (rw): foreground PFC control register
 0x4002B01C C   FIELD 00w04 CM: Color mode
 0x4002B01C C   FIELD 04w01 CCM: CLUT color mode
@@ -6617,6 +6675,7 @@
 0x4002B030 C   FIELD 00w32 MA: Memory address
 0x4002B034 B  REGISTER OPFCCR (rw): output PFC control register
 0x4002B034 C   FIELD 00w03 CM: Color mode
+0x4002B034 C   FIELD 09w01 SB: Swap Bytes
 0x4002B034 C   FIELD 20w01 AI: Alpha Inverted
 0x4002B034 C   FIELD 21w01 RBS: Red Blue Swap
 0x4002B038 B  REGISTER OCOLR (rw): output color register
@@ -14664,14 +14723,23 @@
 0x50000000 B  REGISTER GOTGCTL: OTG_FS control and status register (OTG_FS_GOTGCTL)
 0x50000000 C   FIELD 00w01 SRQSCS (ro): Session request success
 0x50000000 C   FIELD 01w01 SRQ (rw): Session request
+0x50000000 C   FIELD 02w01 VBVALOEN (rw): VBUS valid override enable
+0x50000000 C   FIELD 03w01 VBVALOVAL (rw): VBUS valid override value
+0x50000000 C   FIELD 04w01 AVALOEN (rw): A-peripheral session valid override enable
+0x50000000 C   FIELD 05w01 AVALOVAL (rw): A-peripheral session valid override value
+0x50000000 C   FIELD 06w01 BVALOEN (rw): B-peripheral session valid override enable
+0x50000000 C   FIELD 07w01 BVALOVAL (rw): B-peripheral session valid override value
 0x50000000 C   FIELD 08w01 HNGSCS (ro): Host negotiation success
 0x50000000 C   FIELD 09w01 HNPRQ (rw): HNP request
 0x50000000 C   FIELD 10w01 HSHNPEN (rw): Host set HNP enable
 0x50000000 C   FIELD 11w01 DHNPEN (rw): Device HNP enabled
+0x50000000 C   FIELD 12w01 EHEN (rw): Embedded host enable
 0x50000000 C   FIELD 16w01 CIDSTS (ro): Connector ID status
 0x50000000 C   FIELD 17w01 DBCT (ro): Long/short debounce time
 0x50000000 C   FIELD 18w01 ASVLD (ro): A-session valid
 0x50000000 C   FIELD 19w01 BSVLD (ro): B-session valid
+0x50000000 C   FIELD 20w01 OTGVER (rw): OTG version
+0x50000000 C   FIELD 21w01 CURMOD (ro): Current mode of operation
 0x50000004 B  REGISTER GOTGINT (rw): OTG_FS interrupt register (OTG_FS_GOTGINT)
 0x50000004 C   FIELD 02w01 SEDET: Session end detected
 0x50000004 C   FIELD 08w01 SRSSCHG: Session request success status change
@@ -14680,7 +14748,7 @@
 0x50000004 C   FIELD 18w01 ADTOCHG: A-device timeout change
 0x50000004 C   FIELD 19w01 DBCDNE: Debounce done
 0x50000008 B  REGISTER GAHBCFG (rw): OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-0x50000008 C   FIELD 00w01 GINT: Global interrupt mask
+0x50000008 C   FIELD 00w01 GINTMSK: Global interrupt mask
 0x50000008 C   FIELD 07w01 TXFELVL: TxFIFO empty level
 0x50000008 C   FIELD 08w01 PTXFELVL: Periodic TxFIFO empty level
 0x5000000C B  REGISTER GUSBCFG: OTG_FS USB configuration register (OTG_FS_GUSBCFG)
@@ -14691,7 +14759,6 @@
 0x5000000C C   FIELD 10w04 TRDT (rw): USB turnaround time
 0x5000000C C   FIELD 29w01 FHMOD (rw): Force host mode
 0x5000000C C   FIELD 30w01 FDMOD (rw): Force device mode
-0x5000000C C   FIELD 31w01 CTXPKT (rw): Corrupt Tx packet
 0x50000010 B  REGISTER GRSTCTL: OTG_FS reset register (OTG_FS_GRSTCTL)
 0x50000010 C   FIELD 00w01 CSRST (rw): Core soft reset
 0x50000010 C   FIELD 01w01 HSRST (rw): HCLK soft reset
@@ -14719,9 +14786,11 @@
 0x50000014 C   FIELD 19w01 OEPINT (ro): OUT endpoint interrupt
 0x50000014 C   FIELD 20w01 IISOIXFR (rw): Incomplete isochronous IN transfer
 0x50000014 C   FIELD 21w01 IPXFR_INCOMPISOOUT (rw): Incomplete periodic transfer(Host mode)/Incomplete isochronous OUT transfer(Device mode)
+0x50000014 C   FIELD 23w01 RSTDET: Reset detected interrupt
 0x50000014 C   FIELD 24w01 HPRTINT (ro): Host port interrupt
 0x50000014 C   FIELD 25w01 HCINT (ro): Host channels interrupt
 0x50000014 C   FIELD 26w01 PTXFE (ro): Periodic TxFIFO empty
+0x50000014 C   FIELD 27w01 LPMINT: LPM interrupt
 0x50000014 C   FIELD 28w01 CIDSCHG (rw): Connector ID status change
 0x50000014 C   FIELD 29w01 DISCINT (rw): Disconnect detected interrupt
 0x50000014 C   FIELD 30w01 SRQINT (rw): Session request/new session detected interrupt
@@ -14745,9 +14814,11 @@
 0x50000018 C   FIELD 19w01 OEPINT (rw): OUT endpoints interrupt mask
 0x50000018 C   FIELD 20w01 IISOIXFRM (rw): Incomplete isochronous IN transfer mask
 0x50000018 C   FIELD 21w01 IPXFRM_IISOOXFRM (rw): Incomplete periodic transfer mask(Host mode)/Incomplete isochronous OUT transfer mask(Device mode)
+0x50000018 C   FIELD 23w01 RSTDETM: Reset detected interrupt mask
 0x50000018 C   FIELD 24w01 PRTIM (rw): Host port interrupt mask
 0x50000018 C   FIELD 25w01 HCIM (rw): Host channels interrupt mask
 0x50000018 C   FIELD 26w01 PTXFEM (rw): Periodic TxFIFO empty mask
+0x50000018 C   FIELD 27w01 LPMINTM: LPM interrupt mask
 0x50000018 C   FIELD 28w01 CIDSCHGM (rw): Connector ID status change mask
 0x50000018 C   FIELD 29w01 DISCINT (rw): Disconnect detected interrupt mask
 0x50000018 C   FIELD 30w01 SRQIM (rw): Session request/new session detected interrupt mask
@@ -14763,6 +14834,7 @@
 0x5000001C C   FIELD 17w04 PKTSTS: Packet status
 0x5000001C C   FIELD 17w04 PKTSTS: Packet status
 0x5000001C C   FIELD 21w04 FRMNUM: Frame number
+0x5000001C C   FIELD 27w01 STSPHST: Status phase start
 0x50000020 B  REGISTER GRXSTSP_Device (ro): OTG status read and pop (device mode)
 0x50000020 B  REGISTER GRXSTSP_Host (ro): OTG status read and pop (host mode)
 0x50000020 C   FIELD 00w04 CHNUM: Channel number
@@ -14774,6 +14846,7 @@
 0x50000020 C   FIELD 17w04 PKTSTS: Packet status
 0x50000020 C   FIELD 17w04 PKTSTS: Packet status
 0x50000020 C   FIELD 21w04 FRMNUM: Frame number
+0x50000020 C   FIELD 27w01 STSPHST: ??
 0x50000024 B  REGISTER GRXFSIZ (rw): OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
 0x50000024 C   FIELD 00w16 RXFD: RxFIFO depth
 0x50000028 B  REGISTER DIEPTXF0 (rw): OTG_FS non-periodic transmit FIFO size register (Device mode)
@@ -14787,28 +14860,69 @@
 0x5000002C C   FIELD 16w08 NPTQXSAV: Non-periodic transmit request queue space available
 0x5000002C C   FIELD 24w07 NPTXQTOP: Top of the non-periodic transmit request queue
 0x50000038 B  REGISTER GCCFG (rw): OTG_FS general core configuration register (OTG_FS_GCCFG)
+0x50000038 C   FIELD 00w01 DCDET (ro): Data contact detection (DCD) status
+0x50000038 C   FIELD 01w01 PDET (ro): Primary detection (PD) status
+0x50000038 C   FIELD 02w01 SDET (ro): Secondary detection (SD) status
+0x50000038 C   FIELD 03w01 PS2DET (ro): DM pull-up detection status
 0x50000038 C   FIELD 16w01 PWRDWN: Power down
-0x50000038 C   FIELD 18w01 VBUSASEN: Enable the VBUS sensing device
-0x50000038 C   FIELD 19w01 VBUSBSEN: Enable the VBUS sensing device
-0x50000038 C   FIELD 20w01 SOFOUTEN: SOF output enable
+0x50000038 C   FIELD 17w01 BCDEN (rw): Battery charging detector (BCD) enable
+0x50000038 C   FIELD 18w01 DCDEN (rw): Data contact detection (DCD) mode enable
+0x50000038 C   FIELD 19w01 PDEN (rw): Primary detection (PD) mode enable
+0x50000038 C   FIELD 20w01 SDEN (rw): Secondary detection (SD) mode enable
+0x50000038 C   FIELD 21w01 VBDEN (rw): USB VBUS detection enable
 0x5000003C B  REGISTER CID (rw): core ID register
 0x5000003C C   FIELD 00w32 PRODUCT_ID: Product ID field
+0x50000054 B  REGISTER GLPMCFG: OTG core LPM configuration register
+0x50000054 C   FIELD 00w01 LPMEN (rw): LPM support enable
+0x50000054 C   FIELD 01w01 LPMACK (rw): LPM token acknowledge enable
+0x50000054 C   FIELD 02w04 BESL (rw): Best effort service latency
+0x50000054 C   FIELD 06w01 REMWAKE (rw): bRemoteWake value
+0x50000054 C   FIELD 07w01 L1SSEN (rw): L1 Shallow Sleep enable
+0x50000054 C   FIELD 08w04 BESLTHRS (rw): BESL threshold
+0x50000054 C   FIELD 12w01 L1DSEN (rw): L1 deep sleep enable
+0x50000054 C   FIELD 13w02 LPMRSP (ro): LPM response
+0x50000054 C   FIELD 15w01 SLPSTS (ro): Port sleep status
+0x50000054 C   FIELD 16w01 L1RSMOK (ro): Sleep state resume OK
+0x50000054 C   FIELD 17w04 LPMCHIDX (rw): LPM Channel Index
+0x50000054 C   FIELD 21w03 LPMRCNT: LPM retry count
+0x50000054 C   FIELD 24w01 SNDLPM (rw): Send LPM transaction
+0x50000054 C   FIELD 25w03 LPMRCNTSTS (ro): LPM retry count status
+0x50000054 C   FIELD 28w01 ENBESL (rw): Enable best effort service latency
+0x50000058 B  REGISTER GPWRDN (rw): OTG power down register
+0x50000058 C   FIELD 00w01 ADPMEN: ADP module enable
+0x50000058 C   FIELD 23w01 ADPIF: ADP interrupt flag
+0x50000060 B  REGISTER GADPCTL: OTG ADP timer, control and status register
+0x50000060 C   FIELD 00w02 PRBDSCHG (rw): Probe discharge
+0x50000060 C   FIELD 00w04 PRBPER (rw): Probe period
+0x50000060 C   FIELD 02w02 PRBDELTA (rw): Probe delta
+0x50000060 C   FIELD 06w11 RTIM (ro): Ramp time
+0x50000060 C   FIELD 17w01 ENAPRB (rw): Enable probe
+0x50000060 C   FIELD 18w01 ENASNS (rw): Enable sense
+0x50000060 C   FIELD 19w01 ADPRST (rw): ADP reset
+0x50000060 C   FIELD 20w01 ADPEN (rw): ADP enable
+0x50000060 C   FIELD 21w01 ADPPRBIF (rw): ADP probe interrupt flag
+0x50000060 C   FIELD 22w01 ADPSNSIF (rw): ADP sense interrupt flag
+0x50000060 C   FIELD 23w01 ADPTOIF (rw): ADP timeout interrupt flag
+0x50000060 C   FIELD 24w01 ADPPRBIM (rw): ADP probe interrupt mask
+0x50000060 C   FIELD 25w01 ADPSNSIM (rw): ADP sense interrupt mask
+0x50000060 C   FIELD 26w01 ADPTOIM (rw): ADP timeout interrupt mask
+0x50000060 C   FIELD 27w02 AR (rw): Access request
 0x50000100 B  REGISTER HPTXFSIZ (rw): OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
 0x50000100 C   FIELD 00w16 PTXSA: Host periodic TxFIFO start address
 0x50000100 C   FIELD 16w16 PTXFSIZ: Host periodic TxFIFO depth
-0x50000104 B  REGISTER DIEPTXF1 (rw): OTF_FS device IN endpoint transmit FIFO size register
+0x50000104 B  REGISTER DIEPTXF1 (rw): OTG_FS device IN endpoint transmit FIFO size register
 0x50000104 C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x50000104 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x50000108 B  REGISTER DIEPTXF2 (rw): OTF_FS device IN endpoint transmit FIFO size register
+0x50000108 B  REGISTER DIEPTXF2 (rw): OTG_FS device IN endpoint transmit FIFO size register
 0x50000108 C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x50000108 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x5000010C B  REGISTER DIEPTXF3 (rw): OTF_FS device IN endpoint transmit FIFO size register
+0x5000010C B  REGISTER DIEPTXF3 (rw): OTG_FS device IN endpoint transmit FIFO size register
 0x5000010C C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x5000010C C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x50000110 B  REGISTER DIEPTXF4 (rw): OTF_FS device IN endpoint transmit FIFO size register
+0x50000110 B  REGISTER DIEPTXF4 (rw): OTG_FS device IN endpoint transmit FIFO size register
 0x50000110 C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x50000110 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
-0x50000114 B  REGISTER DIEPTXF5 (rw): OTF_FS device IN endpoint transmit FIFO size register
+0x50000114 B  REGISTER DIEPTXF5 (rw): OTG_FS device IN endpoint transmit FIFO size register
 0x50000114 C   FIELD 00w16 INEPTXSA: IN endpoint FIFO2 transmit RAM start address
 0x50000114 C   FIELD 16w16 INEPTXFD: IN endpoint TxFIFO depth
 0x50000400 A PERIPHERAL OTG_FS_HOST
@@ -14817,6 +14931,7 @@
 0x50000400 C   FIELD 02w01 FSLSS (rw): FS- and LS-only support
 0x50000404 B  REGISTER HFIR (rw): OTG_FS Host frame interval register
 0x50000404 C   FIELD 00w16 FRIVL: Frame interval
+0x50000404 C   FIELD 16w01 RLDCTRL: Reload control
 0x50000408 B  REGISTER HFNUM (ro): OTG_FS host frame number/frame time remaining register (OTG_FS_HFNUM)
 0x50000408 C   FIELD 00w16 FRNUM: Frame number
 0x50000408 C   FIELD 16w16 FTREM: Frame time remaining
@@ -14870,7 +14985,6 @@
 0x5000050C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000050C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000050C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000050C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000050C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000050C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000050C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -14879,6 +14993,7 @@
 0x50000510 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000510 C   FIELD 19w10 PKTCNT: Packet count
 0x50000510 C   FIELD 29w02 DPID: Data PID
+0x50000510 C   FIELD 31w01 DOPNG: Do Ping
 0x50000520 B  CLUSTER HC1: Host channel
 0x50000520 B  REGISTER CHAR1 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000520 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -14907,7 +15022,6 @@
 0x5000052C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000052C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000052C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000052C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000052C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000052C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000052C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -14916,6 +15030,7 @@
 0x50000530 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000530 C   FIELD 19w10 PKTCNT: Packet count
 0x50000530 C   FIELD 29w02 DPID: Data PID
+0x50000530 C   FIELD 31w01 DOPNG: Do Ping
 0x50000540 B  CLUSTER HC2: Host channel
 0x50000540 B  REGISTER CHAR2 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000540 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -14944,7 +15059,6 @@
 0x5000054C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000054C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000054C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000054C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000054C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000054C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000054C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -14953,6 +15067,7 @@
 0x50000550 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000550 C   FIELD 19w10 PKTCNT: Packet count
 0x50000550 C   FIELD 29w02 DPID: Data PID
+0x50000550 C   FIELD 31w01 DOPNG: Do Ping
 0x50000560 B  CLUSTER HC3: Host channel
 0x50000560 B  REGISTER CHAR3 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000560 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -14981,7 +15096,6 @@
 0x5000056C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000056C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000056C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000056C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000056C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000056C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000056C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -14990,6 +15104,7 @@
 0x50000570 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000570 C   FIELD 19w10 PKTCNT: Packet count
 0x50000570 C   FIELD 29w02 DPID: Data PID
+0x50000570 C   FIELD 31w01 DOPNG: Do Ping
 0x50000580 B  CLUSTER HC4: Host channel
 0x50000580 B  REGISTER CHAR4 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000580 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15018,7 +15133,6 @@
 0x5000058C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000058C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000058C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000058C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000058C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000058C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000058C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15027,6 +15141,7 @@
 0x50000590 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000590 C   FIELD 19w10 PKTCNT: Packet count
 0x50000590 C   FIELD 29w02 DPID: Data PID
+0x50000590 C   FIELD 31w01 DOPNG: Do Ping
 0x500005A0 B  CLUSTER HC5: Host channel
 0x500005A0 B  REGISTER CHAR5 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x500005A0 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15055,7 +15170,6 @@
 0x500005AC C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x500005AC C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x500005AC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x500005AC C   FIELD 06w01 NYET: response received interrupt mask
 0x500005AC C   FIELD 07w01 TXERRM: Transaction error mask
 0x500005AC C   FIELD 08w01 BBERRM: Babble error mask
 0x500005AC C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15064,6 +15178,7 @@
 0x500005B0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x500005B0 C   FIELD 19w10 PKTCNT: Packet count
 0x500005B0 C   FIELD 29w02 DPID: Data PID
+0x500005B0 C   FIELD 31w01 DOPNG: Do Ping
 0x500005C0 B  CLUSTER HC6: Host channel
 0x500005C0 B  REGISTER CHAR6 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x500005C0 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15092,7 +15207,6 @@
 0x500005CC C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x500005CC C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x500005CC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x500005CC C   FIELD 06w01 NYET: response received interrupt mask
 0x500005CC C   FIELD 07w01 TXERRM: Transaction error mask
 0x500005CC C   FIELD 08w01 BBERRM: Babble error mask
 0x500005CC C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15101,6 +15215,7 @@
 0x500005D0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x500005D0 C   FIELD 19w10 PKTCNT: Packet count
 0x500005D0 C   FIELD 29w02 DPID: Data PID
+0x500005D0 C   FIELD 31w01 DOPNG: Do Ping
 0x500005E0 B  CLUSTER HC7: Host channel
 0x500005E0 B  REGISTER CHAR7 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x500005E0 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15129,7 +15244,6 @@
 0x500005EC C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x500005EC C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x500005EC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x500005EC C   FIELD 06w01 NYET: response received interrupt mask
 0x500005EC C   FIELD 07w01 TXERRM: Transaction error mask
 0x500005EC C   FIELD 08w01 BBERRM: Babble error mask
 0x500005EC C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15138,6 +15252,7 @@
 0x500005F0 C   FIELD 00w19 XFRSIZ: Transfer size
 0x500005F0 C   FIELD 19w10 PKTCNT: Packet count
 0x500005F0 C   FIELD 29w02 DPID: Data PID
+0x500005F0 C   FIELD 31w01 DOPNG: Do Ping
 0x50000600 B  CLUSTER HC8: Host channel
 0x50000600 B  REGISTER CHAR8 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000600 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15166,7 +15281,6 @@
 0x5000060C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000060C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000060C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000060C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000060C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000060C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000060C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15175,6 +15289,7 @@
 0x50000610 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000610 C   FIELD 19w10 PKTCNT: Packet count
 0x50000610 C   FIELD 29w02 DPID: Data PID
+0x50000610 C   FIELD 31w01 DOPNG: Do Ping
 0x50000620 B  CLUSTER HC9: Host channel
 0x50000620 B  REGISTER CHAR9 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000620 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15203,7 +15318,6 @@
 0x5000062C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000062C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000062C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000062C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000062C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000062C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000062C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15212,6 +15326,7 @@
 0x50000630 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000630 C   FIELD 19w10 PKTCNT: Packet count
 0x50000630 C   FIELD 29w02 DPID: Data PID
+0x50000630 C   FIELD 31w01 DOPNG: Do Ping
 0x50000640 B  CLUSTER HC10: Host channel
 0x50000640 B  REGISTER CHAR10 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000640 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15240,7 +15355,6 @@
 0x5000064C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000064C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000064C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000064C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000064C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000064C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000064C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15249,6 +15363,7 @@
 0x50000650 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000650 C   FIELD 19w10 PKTCNT: Packet count
 0x50000650 C   FIELD 29w02 DPID: Data PID
+0x50000650 C   FIELD 31w01 DOPNG: Do Ping
 0x50000660 B  CLUSTER HC11: Host channel
 0x50000660 B  REGISTER CHAR11 (rw): OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
 0x50000660 C   FIELD 00w11 MPSIZ: Maximum packet size
@@ -15277,7 +15392,6 @@
 0x5000066C C   FIELD 03w01 STALLM: STALL response received interrupt mask
 0x5000066C C   FIELD 04w01 NAKM: NAK response received interrupt mask
 0x5000066C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x5000066C C   FIELD 06w01 NYET: response received interrupt mask
 0x5000066C C   FIELD 07w01 TXERRM: Transaction error mask
 0x5000066C C   FIELD 08w01 BBERRM: Babble error mask
 0x5000066C C   FIELD 09w01 FRMORM: Frame overrun mask
@@ -15286,12 +15400,14 @@
 0x50000670 C   FIELD 00w19 XFRSIZ: Transfer size
 0x50000670 C   FIELD 19w10 PKTCNT: Packet count
 0x50000670 C   FIELD 29w02 DPID: Data PID
+0x50000670 C   FIELD 31w01 DOPNG: Do Ping
 0x50000800 A PERIPHERAL OTG_FS_DEVICE
 0x50000800 B  REGISTER DCFG (rw): OTG_FS device configuration register (OTG_FS_DCFG)
 0x50000800 C   FIELD 00w02 DSPD: Device speed
 0x50000800 C   FIELD 02w01 NZLSOHSK: Non-zero-length status OUT handshake
 0x50000800 C   FIELD 04w07 DAD: Device address
 0x50000800 C   FIELD 11w02 PFIVL: Periodic frame interval
+0x50000800 C   FIELD 15w01 ERRATIM: Erratic error interrupt mask
 0x50000804 B  REGISTER DCTL: OTG_FS device control register (OTG_FS_DCTL)
 0x50000804 C   FIELD 00w01 RWUSIG (rw): Remote wakeup signaling
 0x50000804 C   FIELD 01w01 SDIS (rw): Soft disconnect
@@ -15303,11 +15419,13 @@
 0x50000804 C   FIELD 09w01 SGONAK (rw): Set global OUT NAK
 0x50000804 C   FIELD 10w01 CGONAK (rw): Clear global OUT NAK
 0x50000804 C   FIELD 11w01 POPRGDNE (rw): Power-on programming done
+0x50000804 C   FIELD 18w01 DSBESLRJCT (rw): Deep sleep BESL reject
 0x50000808 B  REGISTER DSTS (ro): OTG_FS device status register (OTG_FS_DSTS)
 0x50000808 C   FIELD 00w01 SUSPSTS: Suspend status
 0x50000808 C   FIELD 01w02 ENUMSPD: Enumerated speed
 0x50000808 C   FIELD 03w01 EERR: Erratic error
 0x50000808 C   FIELD 08w14 FNSOF: Frame number of the received SOF
+0x50000808 C   FIELD 22w02 DEVLNSTS: Device line status
 0x50000810 B  REGISTER DIEPMSK (rw): OTG_FS device IN endpoint common interrupt mask register (OTG_FS_DIEPMSK)
 0x50000810 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
 0x50000810 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
@@ -15315,11 +15433,15 @@
 0x50000810 C   FIELD 04w01 ITTXFEMSK: IN token received when TxFIFO empty mask
 0x50000810 C   FIELD 05w01 INEPNMM: IN token received with EP mismatch mask
 0x50000810 C   FIELD 06w01 INEPNEM: IN endpoint NAK effective mask
+0x50000810 C   FIELD 13w01 NAKM: NAK interrupt mask
 0x50000814 B  REGISTER DOEPMSK (rw): OTG_FS device OUT endpoint common interrupt mask register (OTG_FS_DOEPMSK)
 0x50000814 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
 0x50000814 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
 0x50000814 C   FIELD 03w01 STUPM: SETUP phase done mask
 0x50000814 C   FIELD 04w01 OTEPDM: OUT token received when endpoint disabled mask
+0x50000814 C   FIELD 08w01 OUTPKTERRM: Out packet error mask
+0x50000814 C   FIELD 12w01 BERRM: Babble error interrupt mask
+0x50000814 C   FIELD 13w01 NAKMSK: NAK interrupt mask
 0x50000818 B  REGISTER DAINT (ro): OTG_FS device all endpoints interrupt register (OTG_FS_DAINT)
 0x50000818 C   FIELD 00w16 IEPINT: IN endpoint interrupt bits
 0x50000818 C   FIELD 16w16 OEPINT: OUT endpoint interrupt bits
@@ -15349,8 +15471,11 @@
 0x50000908 C   FIELD 01w01 EPDISD (rw): EPDISD
 0x50000908 C   FIELD 03w01 TOC (rw): TOC
 0x50000908 C   FIELD 04w01 ITTXFE (rw): ITTXFE
+0x50000908 C   FIELD 05w01 INEPNM (rw): IN token received with EP mismatch
 0x50000908 C   FIELD 06w01 INEPNE (rw): INEPNE
 0x50000908 C   FIELD 07w01 TXFE (ro): TXFE
+0x50000908 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
+0x50000908 C   FIELD 13w01 NAK (rw): NAK input
 0x50000910 B  REGISTER TSIZ (rw): device endpoint-0 transfer size register
 0x50000910 C   FIELD 00w07 XFRSIZ: Transfer size
 0x50000910 C   FIELD 19w02 PKTCNT: Packet count
@@ -15478,7 +15603,9 @@
 0x50000B08 C   FIELD 01w01 EPDISD: EPDISD
 0x50000B08 C   FIELD 03w01 STUP: STUP
 0x50000B08 C   FIELD 04w01 OTEPDIS: OTEPDIS
-0x50000B08 C   FIELD 06w01 B2BSTUP: B2BSTUP
+0x50000B08 C   FIELD 05w01 STSPHSRX: Status phase received for control write
+0x50000B08 C   FIELD 12w01 BERR: Babble error interrupt
+0x50000B08 C   FIELD 13w01 NAK: NAK input
 0x50000B10 B  REGISTER TSIZ (rw): device OUT endpoint-0 transfer size register
 0x50000B10 C   FIELD 00w07 XFRSIZ: Transfer size
 0x50000B10 C   FIELD 19w01 PKTCNT: Packet count
@@ -15982,8 +16109,16 @@
 0x50060408 B  REGISTER STR: start register
 0x50060408 C   FIELD 00w05 NBLW (rw): Number of valid bits in the last word of the message
 0x50060408 C   FIELD 08w01 DCAL (wo): Digest calculation
-0x5006040C B  REGISTER HR0 (ro): digest registers
+0x5006040C B  REGISTER HRA0 (ro): HASH digest register alias 0
 0x5006040C C   FIELD 00w32 H: H0
+0x50060410 B  REGISTER HRA1 (ro): HASH digest register alias 1
+0x50060410 C   FIELD 00w32 H: H0
+0x50060414 B  REGISTER HRA2 (ro): HASH digest register alias 2
+0x50060414 C   FIELD 00w32 H: H0
+0x50060418 B  REGISTER HRA3 (ro): HASH digest register alias 3
+0x50060418 C   FIELD 00w32 H: H0
+0x5006041C B  REGISTER HRA4 (ro): HASH digest register alias 4
+0x5006041C C   FIELD 00w32 H: H0
 0x50060420 B  REGISTER IMR (rw): interrupt enable register
 0x50060420 C   FIELD 00w01 DINIE: Data input interrupt enable
 0x50060420 C   FIELD 01w01 DCIE: Digest calculation completion interrupt enable
@@ -15992,129 +16127,129 @@
 0x50060424 C   FIELD 01w01 DCIS (rw): Digest calculation completion interrupt status
 0x50060424 C   FIELD 02w01 DMAS (ro): DMA Status
 0x50060424 C   FIELD 03w01 BUSY (ro): Busy bit
-0x500604F8 B  REGISTER CSR0 (rw): context swap registers
-0x500604F8 C   FIELD 00w32 CSR: CSR0
-0x500604FC B  REGISTER CSR1 (rw): context swap registers
-0x500604FC C   FIELD 00w32 CSR: CSR0
-0x50060500 B  REGISTER CSR2 (rw): context swap registers
-0x50060500 C   FIELD 00w32 CSR: CSR0
-0x50060504 B  REGISTER CSR3 (rw): context swap registers
-0x50060504 C   FIELD 00w32 CSR: CSR0
-0x50060508 B  REGISTER CSR4 (rw): context swap registers
-0x50060508 C   FIELD 00w32 CSR: CSR0
-0x5006050C B  REGISTER CSR5 (rw): context swap registers
-0x5006050C C   FIELD 00w32 CSR: CSR0
-0x50060510 B  REGISTER CSR6 (rw): context swap registers
-0x50060510 C   FIELD 00w32 CSR: CSR0
-0x50060514 B  REGISTER CSR7 (rw): context swap registers
-0x50060514 C   FIELD 00w32 CSR: CSR0
-0x50060518 B  REGISTER CSR8 (rw): context swap registers
-0x50060518 C   FIELD 00w32 CSR: CSR0
-0x5006051C B  REGISTER CSR9 (rw): context swap registers
-0x5006051C C   FIELD 00w32 CSR: CSR0
-0x50060520 B  REGISTER CSR10 (rw): context swap registers
-0x50060520 C   FIELD 00w32 CSR: CSR0
-0x50060524 B  REGISTER CSR11 (rw): context swap registers
-0x50060524 C   FIELD 00w32 CSR: CSR0
-0x50060528 B  REGISTER CSR12 (rw): context swap registers
-0x50060528 C   FIELD 00w32 CSR: CSR0
-0x5006052C B  REGISTER CSR13 (rw): context swap registers
-0x5006052C C   FIELD 00w32 CSR: CSR0
-0x50060530 B  REGISTER CSR14 (rw): context swap registers
-0x50060530 C   FIELD 00w32 CSR: CSR0
-0x50060534 B  REGISTER CSR15 (rw): context swap registers
-0x50060534 C   FIELD 00w32 CSR: CSR0
-0x50060538 B  REGISTER CSR16 (rw): context swap registers
-0x50060538 C   FIELD 00w32 CSR: CSR0
-0x5006053C B  REGISTER CSR17 (rw): context swap registers
-0x5006053C C   FIELD 00w32 CSR: CSR0
-0x50060540 B  REGISTER CSR18 (rw): context swap registers
-0x50060540 C   FIELD 00w32 CSR: CSR0
-0x50060544 B  REGISTER CSR19 (rw): context swap registers
-0x50060544 C   FIELD 00w32 CSR: CSR0
-0x50060548 B  REGISTER CSR20 (rw): context swap registers
-0x50060548 C   FIELD 00w32 CSR: CSR0
-0x5006054C B  REGISTER CSR21 (rw): context swap registers
-0x5006054C C   FIELD 00w32 CSR: CSR0
-0x50060550 B  REGISTER CSR22 (rw): context swap registers
-0x50060550 C   FIELD 00w32 CSR: CSR0
-0x50060554 B  REGISTER CSR23 (rw): context swap registers
-0x50060554 C   FIELD 00w32 CSR: CSR0
-0x50060558 B  REGISTER CSR24 (rw): context swap registers
-0x50060558 C   FIELD 00w32 CSR: CSR0
-0x5006055C B  REGISTER CSR25 (rw): context swap registers
-0x5006055C C   FIELD 00w32 CSR: CSR0
-0x50060560 B  REGISTER CSR26 (rw): context swap registers
-0x50060560 C   FIELD 00w32 CSR: CSR0
-0x50060564 B  REGISTER CSR27 (rw): context swap registers
-0x50060564 C   FIELD 00w32 CSR: CSR0
-0x50060568 B  REGISTER CSR28 (rw): context swap registers
-0x50060568 C   FIELD 00w32 CSR: CSR0
-0x5006056C B  REGISTER CSR29 (rw): context swap registers
-0x5006056C C   FIELD 00w32 CSR: CSR0
-0x50060570 B  REGISTER CSR30 (rw): context swap registers
-0x50060570 C   FIELD 00w32 CSR: CSR0
-0x50060574 B  REGISTER CSR31 (rw): context swap registers
-0x50060574 C   FIELD 00w32 CSR: CSR0
-0x50060578 B  REGISTER CSR32 (rw): context swap registers
-0x50060578 C   FIELD 00w32 CSR: CSR0
-0x5006057C B  REGISTER CSR33 (rw): context swap registers
-0x5006057C C   FIELD 00w32 CSR: CSR0
-0x50060580 B  REGISTER CSR34 (rw): context swap registers
-0x50060580 C   FIELD 00w32 CSR: CSR0
-0x50060584 B  REGISTER CSR35 (rw): context swap registers
-0x50060584 C   FIELD 00w32 CSR: CSR0
-0x50060588 B  REGISTER CSR36 (rw): context swap registers
-0x50060588 C   FIELD 00w32 CSR: CSR0
-0x5006058C B  REGISTER CSR37 (rw): context swap registers
-0x5006058C C   FIELD 00w32 CSR: CSR0
-0x50060590 B  REGISTER CSR38 (rw): context swap registers
-0x50060590 C   FIELD 00w32 CSR: CSR0
-0x50060594 B  REGISTER CSR39 (rw): context swap registers
-0x50060594 C   FIELD 00w32 CSR: CSR0
-0x50060598 B  REGISTER CSR40 (rw): context swap registers
-0x50060598 C   FIELD 00w32 CSR: CSR0
-0x5006059C B  REGISTER CSR41 (rw): context swap registers
-0x5006059C C   FIELD 00w32 CSR: CSR0
-0x500605A0 B  REGISTER CSR42 (rw): context swap registers
-0x500605A0 C   FIELD 00w32 CSR: CSR0
-0x500605A4 B  REGISTER CSR43 (rw): context swap registers
-0x500605A4 C   FIELD 00w32 CSR: CSR0
-0x500605A8 B  REGISTER CSR44 (rw): context swap registers
-0x500605A8 C   FIELD 00w32 CSR: CSR0
-0x500605AC B  REGISTER CSR45 (rw): context swap registers
-0x500605AC C   FIELD 00w32 CSR: CSR0
-0x500605B0 B  REGISTER CSR46 (rw): context swap registers
-0x500605B0 C   FIELD 00w32 CSR: CSR0
-0x500605B4 B  REGISTER CSR47 (rw): context swap registers
-0x500605B4 C   FIELD 00w32 CSR: CSR0
-0x500605B8 B  REGISTER CSR48 (rw): context swap registers
-0x500605B8 C   FIELD 00w32 CSR: CSR0
-0x500605BC B  REGISTER CSR49 (rw): context swap registers
-0x500605BC C   FIELD 00w32 CSR: CSR0
-0x500605C0 B  REGISTER CSR50 (rw): context swap registers
-0x500605C0 C   FIELD 00w32 CSR: CSR0
-0x500605C4 B  REGISTER CSR51 (rw): context swap registers
-0x500605C4 C   FIELD 00w32 CSR: CSR0
-0x500605C8 B  REGISTER CSR52 (rw): context swap registers
-0x500605C8 C   FIELD 00w32 CSR: CSR0
-0x500605CC B  REGISTER CSR53 (rw): context swap registers
-0x500605CC C   FIELD 00w32 CSR: CSR0
-0x50060710 B  REGISTER HASH_HR0 (ro): HASH digest register 0
+0x500604F8 B  REGISTER CSR0 (rw): HASH context swap register 0
+0x500604F8 C   FIELD 00w32 CS: CSR0
+0x500604FC B  REGISTER CSR1 (rw): HASH context swap register 1
+0x500604FC C   FIELD 00w32 CS: CSR0
+0x50060500 B  REGISTER CSR2 (rw): HASH context swap register 2
+0x50060500 C   FIELD 00w32 CS: CSR0
+0x50060504 B  REGISTER CSR3 (rw): HASH context swap register 3
+0x50060504 C   FIELD 00w32 CS: CSR0
+0x50060508 B  REGISTER CSR4 (rw): HASH context swap register 4
+0x50060508 C   FIELD 00w32 CS: CSR0
+0x5006050C B  REGISTER CSR5 (rw): HASH context swap register 5
+0x5006050C C   FIELD 00w32 CS: CSR0
+0x50060510 B  REGISTER CSR6 (rw): HASH context swap register 6
+0x50060510 C   FIELD 00w32 CS: CSR0
+0x50060514 B  REGISTER CSR7 (rw): HASH context swap register 7
+0x50060514 C   FIELD 00w32 CS: CSR0
+0x50060518 B  REGISTER CSR8 (rw): HASH context swap register 8
+0x50060518 C   FIELD 00w32 CS: CSR0
+0x5006051C B  REGISTER CSR9 (rw): HASH context swap register 9
+0x5006051C C   FIELD 00w32 CS: CSR0
+0x50060520 B  REGISTER CSR10 (rw): HASH context swap register 10
+0x50060520 C   FIELD 00w32 CS: CSR0
+0x50060524 B  REGISTER CSR11 (rw): HASH context swap register 11
+0x50060524 C   FIELD 00w32 CS: CSR0
+0x50060528 B  REGISTER CSR12 (rw): HASH context swap register 12
+0x50060528 C   FIELD 00w32 CS: CSR0
+0x5006052C B  REGISTER CSR13 (rw): HASH context swap register 13
+0x5006052C C   FIELD 00w32 CS: CSR0
+0x50060530 B  REGISTER CSR14 (rw): HASH context swap register 14
+0x50060530 C   FIELD 00w32 CS: CSR0
+0x50060534 B  REGISTER CSR15 (rw): HASH context swap register 15
+0x50060534 C   FIELD 00w32 CS: CSR0
+0x50060538 B  REGISTER CSR16 (rw): HASH context swap register 16
+0x50060538 C   FIELD 00w32 CS: CSR0
+0x5006053C B  REGISTER CSR17 (rw): HASH context swap register 17
+0x5006053C C   FIELD 00w32 CS: CSR0
+0x50060540 B  REGISTER CSR18 (rw): HASH context swap register 18
+0x50060540 C   FIELD 00w32 CS: CSR0
+0x50060544 B  REGISTER CSR19 (rw): HASH context swap register 19
+0x50060544 C   FIELD 00w32 CS: CSR0
+0x50060548 B  REGISTER CSR20 (rw): HASH context swap register 20
+0x50060548 C   FIELD 00w32 CS: CSR0
+0x5006054C B  REGISTER CSR21 (rw): HASH context swap register 21
+0x5006054C C   FIELD 00w32 CS: CSR0
+0x50060550 B  REGISTER CSR22 (rw): HASH context swap register 22
+0x50060550 C   FIELD 00w32 CS: CSR0
+0x50060554 B  REGISTER CSR23 (rw): HASH context swap register 23
+0x50060554 C   FIELD 00w32 CS: CSR0
+0x50060558 B  REGISTER CSR24 (rw): HASH context swap register 24
+0x50060558 C   FIELD 00w32 CS: CSR0
+0x5006055C B  REGISTER CSR25 (rw): HASH context swap register 25
+0x5006055C C   FIELD 00w32 CS: CSR0
+0x50060560 B  REGISTER CSR26 (rw): HASH context swap register 26
+0x50060560 C   FIELD 00w32 CS: CSR0
+0x50060564 B  REGISTER CSR27 (rw): HASH context swap register 27
+0x50060564 C   FIELD 00w32 CS: CSR0
+0x50060568 B  REGISTER CSR28 (rw): HASH context swap register 28
+0x50060568 C   FIELD 00w32 CS: CSR0
+0x5006056C B  REGISTER CSR29 (rw): HASH context swap register 29
+0x5006056C C   FIELD 00w32 CS: CSR0
+0x50060570 B  REGISTER CSR30 (rw): HASH context swap register 30
+0x50060570 C   FIELD 00w32 CS: CSR0
+0x50060574 B  REGISTER CSR31 (rw): HASH context swap register 31
+0x50060574 C   FIELD 00w32 CS: CSR0
+0x50060578 B  REGISTER CSR32 (rw): HASH context swap register 32
+0x50060578 C   FIELD 00w32 CS: CSR0
+0x5006057C B  REGISTER CSR33 (rw): HASH context swap register 33
+0x5006057C C   FIELD 00w32 CS: CSR0
+0x50060580 B  REGISTER CSR34 (rw): HASH context swap register 34
+0x50060580 C   FIELD 00w32 CS: CSR0
+0x50060584 B  REGISTER CSR35 (rw): HASH context swap register 35
+0x50060584 C   FIELD 00w32 CS: CSR0
+0x50060588 B  REGISTER CSR36 (rw): HASH context swap register 36
+0x50060588 C   FIELD 00w32 CS: CSR0
+0x5006058C B  REGISTER CSR37 (rw): HASH context swap register 37
+0x5006058C C   FIELD 00w32 CS: CSR0
+0x50060590 B  REGISTER CSR38 (rw): HASH context swap register 38
+0x50060590 C   FIELD 00w32 CS: CSR0
+0x50060594 B  REGISTER CSR39 (rw): HASH context swap register 39
+0x50060594 C   FIELD 00w32 CS: CSR0
+0x50060598 B  REGISTER CSR40 (rw): HASH context swap register 40
+0x50060598 C   FIELD 00w32 CS: CSR0
+0x5006059C B  REGISTER CSR41 (rw): HASH context swap register 41
+0x5006059C C   FIELD 00w32 CS: CSR0
+0x500605A0 B  REGISTER CSR42 (rw): HASH context swap register 42
+0x500605A0 C   FIELD 00w32 CS: CSR0
+0x500605A4 B  REGISTER CSR43 (rw): HASH context swap register 43
+0x500605A4 C   FIELD 00w32 CS: CSR0
+0x500605A8 B  REGISTER CSR44 (rw): HASH context swap register 44
+0x500605A8 C   FIELD 00w32 CS: CSR0
+0x500605AC B  REGISTER CSR45 (rw): HASH context swap register 45
+0x500605AC C   FIELD 00w32 CS: CSR0
+0x500605B0 B  REGISTER CSR46 (rw): HASH context swap register 46
+0x500605B0 C   FIELD 00w32 CS: CSR0
+0x500605B4 B  REGISTER CSR47 (rw): HASH context swap register 47
+0x500605B4 C   FIELD 00w32 CS: CSR0
+0x500605B8 B  REGISTER CSR48 (rw): HASH context swap register 48
+0x500605B8 C   FIELD 00w32 CS: CSR0
+0x500605BC B  REGISTER CSR49 (rw): HASH context swap register 49
+0x500605BC C   FIELD 00w32 CS: CSR0
+0x500605C0 B  REGISTER CSR50 (rw): HASH context swap register 50
+0x500605C0 C   FIELD 00w32 CS: CSR0
+0x500605C4 B  REGISTER CSR51 (rw): HASH context swap register 51
+0x500605C4 C   FIELD 00w32 CS: CSR0
+0x500605C8 B  REGISTER CSR52 (rw): HASH context swap register 52
+0x500605C8 C   FIELD 00w32 CS: CSR0
+0x500605CC B  REGISTER CSR53 (rw): HASH context swap register 53
+0x500605CC C   FIELD 00w32 CS: CSR0
+0x50060710 B  REGISTER HR0 (ro): HASH digest register 0
 0x50060710 C   FIELD 00w32 H: H0
-0x50060714 B  REGISTER HASH_HR1 (ro): HASH digest register 1
+0x50060714 B  REGISTER HR1 (ro): HASH digest register 1
 0x50060714 C   FIELD 00w32 H: H0
-0x50060718 B  REGISTER HASH_HR2 (ro): HASH digest register 2
+0x50060718 B  REGISTER HR2 (ro): HASH digest register 2
 0x50060718 C   FIELD 00w32 H: H0
-0x5006071C B  REGISTER HASH_HR3 (ro): HASH digest register 3
+0x5006071C B  REGISTER HR3 (ro): HASH digest register 3
 0x5006071C C   FIELD 00w32 H: H0
-0x50060720 B  REGISTER HASH_HR4 (ro): HASH digest register 4
+0x50060720 B  REGISTER HR4 (ro): HASH digest register 4
 0x50060720 C   FIELD 00w32 H: H0
-0x50060724 B  REGISTER HASH_HR5 (ro): HASH digest register 5
+0x50060724 B  REGISTER HR5 (ro): HASH digest register 5
 0x50060724 C   FIELD 00w32 H: H0
-0x50060728 B  REGISTER HASH_HR6 (ro): HASH digest register 6
+0x50060728 B  REGISTER HR6 (ro): HASH digest register 6
 0x50060728 C   FIELD 00w32 H: H0
-0x5006072C B  REGISTER HASH_HR7 (ro): HASH digest register 7
+0x5006072C B  REGISTER HR7 (ro): HASH digest register 7
 0x5006072C C   FIELD 00w32 H: H0
 0x50060800 A PERIPHERAL RNG
 0x50060800 B  REGISTER CR (rw): control register
@@ -16139,6 +16274,9 @@
 0x50060810 B  REGISTER HTCR: health test control register
 0x50060810 C   FIELD 00w32 HTCFG: health test configuration
 0x50061C00 A PERIPHERAL OCTOSPIM
+0x50061C00 B  REGISTER CR: configuration register
+0x50061C00 C   FIELD 00w01 MUXEN: Multiplexed mode enable
+0x50061C00 C   FIELD 16w08 REQ2ACK_TIME: REQ to ACK time
 0x50061C04 B  REGISTER P1CR (rw): OctoSPI IO Manager Port 1 Configuration Register
 0x50061C04 C   FIELD 00w01 CLKEN: CLK/CLK Enable for Port
 0x50061C04 C   FIELD 01w01 CLKSRC: CLK/CLK Source for Port
