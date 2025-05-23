@@ -6508,7 +6508,8 @@
 0x4002600C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
 0x4002600C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
 0x4002600C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
-0x40026010 B  REGISTER S0CR (rw): stream x configuration register
+0x40026010 B  CLUSTER ST0: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026010 B  REGISTER CR0 (rw): stream x configuration register
 0x40026010 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026010 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026010 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6528,20 +6529,21 @@
 0x40026010 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026010 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026010 C   FIELD 25w03 CHSEL: Channel selection
-0x40026014 B  REGISTER S0NDTR (rw): stream x number of data register
+0x40026014 B  REGISTER NDTR0 (rw): stream x number of data register
 0x40026014 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026018 B  REGISTER S0PAR (rw): stream x peripheral address register
+0x40026018 B  REGISTER PAR0 (rw): stream x peripheral address register
 0x40026018 C   FIELD 00w32 PA: Peripheral address
-0x4002601C B  REGISTER S0M0AR (rw): stream x memory 0 address register
+0x4002601C B  REGISTER M0AR0 (rw): stream x memory 0 address register
 0x4002601C C   FIELD 00w32 M0A: Memory 0 address
-0x40026020 B  REGISTER S0M1AR (rw): stream x memory 1 address register
+0x40026020 B  REGISTER M1AR0 (rw): stream x memory 1 address register
 0x40026020 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40026024 B  REGISTER S0FCR: stream x FIFO control register
+0x40026024 B  REGISTER FCR0: stream x FIFO control register
 0x40026024 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x40026024 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026024 C   FIELD 03w03 FS (ro): FIFO status
 0x40026024 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026028 B  REGISTER S1CR (rw): stream x configuration register
+0x40026028 B  CLUSTER ST1: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026028 B  REGISTER CR1 (rw): stream x configuration register
 0x40026028 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026028 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026028 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6558,24 +6560,24 @@
 0x40026028 C   FIELD 16w02 PL: Priority level
 0x40026028 C   FIELD 18w01 DBM: Double buffer mode
 0x40026028 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026028 C   FIELD 20w01 ACK: ACK
 0x40026028 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026028 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026028 C   FIELD 25w03 CHSEL: Channel selection
-0x4002602C B  REGISTER S1NDTR (rw): stream x number of data register
+0x4002602C B  REGISTER NDTR1 (rw): stream x number of data register
 0x4002602C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026030 B  REGISTER S1PAR (rw): stream x peripheral address register
+0x40026030 B  REGISTER PAR1 (rw): stream x peripheral address register
 0x40026030 C   FIELD 00w32 PA: Peripheral address
-0x40026034 B  REGISTER S1M0AR (rw): stream x memory 0 address register
+0x40026034 B  REGISTER M0AR1 (rw): stream x memory 0 address register
 0x40026034 C   FIELD 00w32 M0A: Memory 0 address
-0x40026038 B  REGISTER S1M1AR (rw): stream x memory 1 address register
+0x40026038 B  REGISTER M1AR1 (rw): stream x memory 1 address register
 0x40026038 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002603C B  REGISTER S1FCR: stream x FIFO control register
+0x4002603C B  REGISTER FCR1: stream x FIFO control register
 0x4002603C C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x4002603C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002603C C   FIELD 03w03 FS (ro): FIFO status
 0x4002603C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026040 B  REGISTER S2CR (rw): stream x configuration register
+0x40026040 B  CLUSTER ST2: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026040 B  REGISTER CR2 (rw): stream x configuration register
 0x40026040 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026040 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026040 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6592,24 +6594,24 @@
 0x40026040 C   FIELD 16w02 PL: Priority level
 0x40026040 C   FIELD 18w01 DBM: Double buffer mode
 0x40026040 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026040 C   FIELD 20w01 ACK: ACK
 0x40026040 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026040 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026040 C   FIELD 25w03 CHSEL: Channel selection
-0x40026044 B  REGISTER S2NDTR (rw): stream x number of data register
+0x40026044 B  REGISTER NDTR2 (rw): stream x number of data register
 0x40026044 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026048 B  REGISTER S2PAR (rw): stream x peripheral address register
+0x40026048 B  REGISTER PAR2 (rw): stream x peripheral address register
 0x40026048 C   FIELD 00w32 PA: Peripheral address
-0x4002604C B  REGISTER S2M0AR (rw): stream x memory 0 address register
+0x4002604C B  REGISTER M0AR2 (rw): stream x memory 0 address register
 0x4002604C C   FIELD 00w32 M0A: Memory 0 address
-0x40026050 B  REGISTER S2M1AR (rw): stream x memory 1 address register
+0x40026050 B  REGISTER M1AR2 (rw): stream x memory 1 address register
 0x40026050 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40026054 B  REGISTER S2FCR: stream x FIFO control register
+0x40026054 B  REGISTER FCR2: stream x FIFO control register
 0x40026054 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x40026054 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026054 C   FIELD 03w03 FS (ro): FIFO status
 0x40026054 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026058 B  REGISTER S3CR (rw): stream x configuration register
+0x40026058 B  CLUSTER ST3: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026058 B  REGISTER CR3 (rw): stream x configuration register
 0x40026058 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026058 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026058 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6626,24 +6628,24 @@
 0x40026058 C   FIELD 16w02 PL: Priority level
 0x40026058 C   FIELD 18w01 DBM: Double buffer mode
 0x40026058 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026058 C   FIELD 20w01 ACK: ACK
 0x40026058 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026058 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026058 C   FIELD 25w03 CHSEL: Channel selection
-0x4002605C B  REGISTER S3NDTR (rw): stream x number of data register
+0x4002605C B  REGISTER NDTR3 (rw): stream x number of data register
 0x4002605C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026060 B  REGISTER S3PAR (rw): stream x peripheral address register
+0x40026060 B  REGISTER PAR3 (rw): stream x peripheral address register
 0x40026060 C   FIELD 00w32 PA: Peripheral address
-0x40026064 B  REGISTER S3M0AR (rw): stream x memory 0 address register
+0x40026064 B  REGISTER M0AR3 (rw): stream x memory 0 address register
 0x40026064 C   FIELD 00w32 M0A: Memory 0 address
-0x40026068 B  REGISTER S3M1AR (rw): stream x memory 1 address register
+0x40026068 B  REGISTER M1AR3 (rw): stream x memory 1 address register
 0x40026068 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002606C B  REGISTER S3FCR: stream x FIFO control register
+0x4002606C B  REGISTER FCR3: stream x FIFO control register
 0x4002606C C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x4002606C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002606C C   FIELD 03w03 FS (ro): FIFO status
 0x4002606C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026070 B  REGISTER S4CR (rw): stream x configuration register
+0x40026070 B  CLUSTER ST4: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026070 B  REGISTER CR4 (rw): stream x configuration register
 0x40026070 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026070 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026070 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6660,24 +6662,24 @@
 0x40026070 C   FIELD 16w02 PL: Priority level
 0x40026070 C   FIELD 18w01 DBM: Double buffer mode
 0x40026070 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026070 C   FIELD 20w01 ACK: ACK
 0x40026070 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026070 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026070 C   FIELD 25w03 CHSEL: Channel selection
-0x40026074 B  REGISTER S4NDTR (rw): stream x number of data register
+0x40026074 B  REGISTER NDTR4 (rw): stream x number of data register
 0x40026074 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026078 B  REGISTER S4PAR (rw): stream x peripheral address register
+0x40026078 B  REGISTER PAR4 (rw): stream x peripheral address register
 0x40026078 C   FIELD 00w32 PA: Peripheral address
-0x4002607C B  REGISTER S4M0AR (rw): stream x memory 0 address register
+0x4002607C B  REGISTER M0AR4 (rw): stream x memory 0 address register
 0x4002607C C   FIELD 00w32 M0A: Memory 0 address
-0x40026080 B  REGISTER S4M1AR (rw): stream x memory 1 address register
+0x40026080 B  REGISTER M1AR4 (rw): stream x memory 1 address register
 0x40026080 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40026084 B  REGISTER S4FCR: stream x FIFO control register
+0x40026084 B  REGISTER FCR4: stream x FIFO control register
 0x40026084 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x40026084 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026084 C   FIELD 03w03 FS (ro): FIFO status
 0x40026084 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026088 B  REGISTER S5CR (rw): stream x configuration register
+0x40026088 B  CLUSTER ST5: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026088 B  REGISTER CR5 (rw): stream x configuration register
 0x40026088 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026088 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026088 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6694,24 +6696,24 @@
 0x40026088 C   FIELD 16w02 PL: Priority level
 0x40026088 C   FIELD 18w01 DBM: Double buffer mode
 0x40026088 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026088 C   FIELD 20w01 ACK: ACK
 0x40026088 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026088 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026088 C   FIELD 25w03 CHSEL: Channel selection
-0x4002608C B  REGISTER S5NDTR (rw): stream x number of data register
+0x4002608C B  REGISTER NDTR5 (rw): stream x number of data register
 0x4002608C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026090 B  REGISTER S5PAR (rw): stream x peripheral address register
+0x40026090 B  REGISTER PAR5 (rw): stream x peripheral address register
 0x40026090 C   FIELD 00w32 PA: Peripheral address
-0x40026094 B  REGISTER S5M0AR (rw): stream x memory 0 address register
+0x40026094 B  REGISTER M0AR5 (rw): stream x memory 0 address register
 0x40026094 C   FIELD 00w32 M0A: Memory 0 address
-0x40026098 B  REGISTER S5M1AR (rw): stream x memory 1 address register
+0x40026098 B  REGISTER M1AR5 (rw): stream x memory 1 address register
 0x40026098 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002609C B  REGISTER S5FCR: stream x FIFO control register
+0x4002609C B  REGISTER FCR5: stream x FIFO control register
 0x4002609C C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x4002609C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002609C C   FIELD 03w03 FS (ro): FIFO status
 0x4002609C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x400260A0 B  REGISTER S6CR (rw): stream x configuration register
+0x400260A0 B  CLUSTER ST6: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x400260A0 B  REGISTER CR6 (rw): stream x configuration register
 0x400260A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400260A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x400260A0 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6728,24 +6730,24 @@
 0x400260A0 C   FIELD 16w02 PL: Priority level
 0x400260A0 C   FIELD 18w01 DBM: Double buffer mode
 0x400260A0 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x400260A0 C   FIELD 20w01 ACK: ACK
 0x400260A0 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400260A0 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x400260A0 C   FIELD 25w03 CHSEL: Channel selection
-0x400260A4 B  REGISTER S6NDTR (rw): stream x number of data register
+0x400260A4 B  REGISTER NDTR6 (rw): stream x number of data register
 0x400260A4 C   FIELD 00w16 NDT: Number of data items to transfer
-0x400260A8 B  REGISTER S6PAR (rw): stream x peripheral address register
+0x400260A8 B  REGISTER PAR6 (rw): stream x peripheral address register
 0x400260A8 C   FIELD 00w32 PA: Peripheral address
-0x400260AC B  REGISTER S6M0AR (rw): stream x memory 0 address register
+0x400260AC B  REGISTER M0AR6 (rw): stream x memory 0 address register
 0x400260AC C   FIELD 00w32 M0A: Memory 0 address
-0x400260B0 B  REGISTER S6M1AR (rw): stream x memory 1 address register
+0x400260B0 B  REGISTER M1AR6 (rw): stream x memory 1 address register
 0x400260B0 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x400260B4 B  REGISTER S6FCR: stream x FIFO control register
+0x400260B4 B  REGISTER FCR6: stream x FIFO control register
 0x400260B4 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x400260B4 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400260B4 C   FIELD 03w03 FS (ro): FIFO status
 0x400260B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x400260B8 B  REGISTER S7CR (rw): stream x configuration register
+0x400260B8 B  CLUSTER ST7: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x400260B8 B  REGISTER CR7 (rw): stream x configuration register
 0x400260B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400260B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x400260B8 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6762,19 +6764,18 @@
 0x400260B8 C   FIELD 16w02 PL: Priority level
 0x400260B8 C   FIELD 18w01 DBM: Double buffer mode
 0x400260B8 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x400260B8 C   FIELD 20w01 ACK: ACK
 0x400260B8 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400260B8 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x400260B8 C   FIELD 25w03 CHSEL: Channel selection
-0x400260BC B  REGISTER S7NDTR (rw): stream x number of data register
+0x400260BC B  REGISTER NDTR7 (rw): stream x number of data register
 0x400260BC C   FIELD 00w16 NDT: Number of data items to transfer
-0x400260C0 B  REGISTER S7PAR (rw): stream x peripheral address register
+0x400260C0 B  REGISTER PAR7 (rw): stream x peripheral address register
 0x400260C0 C   FIELD 00w32 PA: Peripheral address
-0x400260C4 B  REGISTER S7M0AR (rw): stream x memory 0 address register
+0x400260C4 B  REGISTER M0AR7 (rw): stream x memory 0 address register
 0x400260C4 C   FIELD 00w32 M0A: Memory 0 address
-0x400260C8 B  REGISTER S7M1AR (rw): stream x memory 1 address register
+0x400260C8 B  REGISTER M1AR7 (rw): stream x memory 1 address register
 0x400260C8 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x400260CC B  REGISTER S7FCR: stream x FIFO control register
+0x400260CC B  REGISTER FCR7: stream x FIFO control register
 0x400260CC C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x400260CC C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400260CC C   FIELD 03w03 FS (ro): FIFO status
@@ -6864,7 +6865,8 @@
 0x4002640C C   FIELD 25w01 CTEIF7: Stream x clear transfer error interrupt flag (x = 7..4)
 0x4002640C C   FIELD 26w01 CHTIF7: Stream x clear half transfer interrupt flag (x = 7..4)
 0x4002640C C   FIELD 27w01 CTCIF7: Stream x clear transfer complete interrupt flag (x = 7..4)
-0x40026410 B  REGISTER S0CR (rw): stream x configuration register
+0x40026410 B  CLUSTER ST0: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026410 B  REGISTER CR0 (rw): stream x configuration register
 0x40026410 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026410 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026410 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6884,20 +6886,21 @@
 0x40026410 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026410 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026410 C   FIELD 25w03 CHSEL: Channel selection
-0x40026414 B  REGISTER S0NDTR (rw): stream x number of data register
+0x40026414 B  REGISTER NDTR0 (rw): stream x number of data register
 0x40026414 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026418 B  REGISTER S0PAR (rw): stream x peripheral address register
+0x40026418 B  REGISTER PAR0 (rw): stream x peripheral address register
 0x40026418 C   FIELD 00w32 PA: Peripheral address
-0x4002641C B  REGISTER S0M0AR (rw): stream x memory 0 address register
+0x4002641C B  REGISTER M0AR0 (rw): stream x memory 0 address register
 0x4002641C C   FIELD 00w32 M0A: Memory 0 address
-0x40026420 B  REGISTER S0M1AR (rw): stream x memory 1 address register
+0x40026420 B  REGISTER M1AR0 (rw): stream x memory 1 address register
 0x40026420 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40026424 B  REGISTER S0FCR: stream x FIFO control register
+0x40026424 B  REGISTER FCR0: stream x FIFO control register
 0x40026424 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x40026424 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026424 C   FIELD 03w03 FS (ro): FIFO status
 0x40026424 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026428 B  REGISTER S1CR (rw): stream x configuration register
+0x40026428 B  CLUSTER ST1: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026428 B  REGISTER CR1 (rw): stream x configuration register
 0x40026428 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026428 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026428 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6914,24 +6917,24 @@
 0x40026428 C   FIELD 16w02 PL: Priority level
 0x40026428 C   FIELD 18w01 DBM: Double buffer mode
 0x40026428 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026428 C   FIELD 20w01 ACK: ACK
 0x40026428 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026428 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026428 C   FIELD 25w03 CHSEL: Channel selection
-0x4002642C B  REGISTER S1NDTR (rw): stream x number of data register
+0x4002642C B  REGISTER NDTR1 (rw): stream x number of data register
 0x4002642C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026430 B  REGISTER S1PAR (rw): stream x peripheral address register
+0x40026430 B  REGISTER PAR1 (rw): stream x peripheral address register
 0x40026430 C   FIELD 00w32 PA: Peripheral address
-0x40026434 B  REGISTER S1M0AR (rw): stream x memory 0 address register
+0x40026434 B  REGISTER M0AR1 (rw): stream x memory 0 address register
 0x40026434 C   FIELD 00w32 M0A: Memory 0 address
-0x40026438 B  REGISTER S1M1AR (rw): stream x memory 1 address register
+0x40026438 B  REGISTER M1AR1 (rw): stream x memory 1 address register
 0x40026438 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002643C B  REGISTER S1FCR: stream x FIFO control register
+0x4002643C B  REGISTER FCR1: stream x FIFO control register
 0x4002643C C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x4002643C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002643C C   FIELD 03w03 FS (ro): FIFO status
 0x4002643C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026440 B  REGISTER S2CR (rw): stream x configuration register
+0x40026440 B  CLUSTER ST2: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026440 B  REGISTER CR2 (rw): stream x configuration register
 0x40026440 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026440 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026440 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6948,24 +6951,24 @@
 0x40026440 C   FIELD 16w02 PL: Priority level
 0x40026440 C   FIELD 18w01 DBM: Double buffer mode
 0x40026440 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026440 C   FIELD 20w01 ACK: ACK
 0x40026440 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026440 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026440 C   FIELD 25w03 CHSEL: Channel selection
-0x40026444 B  REGISTER S2NDTR (rw): stream x number of data register
+0x40026444 B  REGISTER NDTR2 (rw): stream x number of data register
 0x40026444 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026448 B  REGISTER S2PAR (rw): stream x peripheral address register
+0x40026448 B  REGISTER PAR2 (rw): stream x peripheral address register
 0x40026448 C   FIELD 00w32 PA: Peripheral address
-0x4002644C B  REGISTER S2M0AR (rw): stream x memory 0 address register
+0x4002644C B  REGISTER M0AR2 (rw): stream x memory 0 address register
 0x4002644C C   FIELD 00w32 M0A: Memory 0 address
-0x40026450 B  REGISTER S2M1AR (rw): stream x memory 1 address register
+0x40026450 B  REGISTER M1AR2 (rw): stream x memory 1 address register
 0x40026450 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40026454 B  REGISTER S2FCR: stream x FIFO control register
+0x40026454 B  REGISTER FCR2: stream x FIFO control register
 0x40026454 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x40026454 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026454 C   FIELD 03w03 FS (ro): FIFO status
 0x40026454 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026458 B  REGISTER S3CR (rw): stream x configuration register
+0x40026458 B  CLUSTER ST3: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026458 B  REGISTER CR3 (rw): stream x configuration register
 0x40026458 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026458 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026458 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -6982,24 +6985,24 @@
 0x40026458 C   FIELD 16w02 PL: Priority level
 0x40026458 C   FIELD 18w01 DBM: Double buffer mode
 0x40026458 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026458 C   FIELD 20w01 ACK: ACK
 0x40026458 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026458 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026458 C   FIELD 25w03 CHSEL: Channel selection
-0x4002645C B  REGISTER S3NDTR (rw): stream x number of data register
+0x4002645C B  REGISTER NDTR3 (rw): stream x number of data register
 0x4002645C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026460 B  REGISTER S3PAR (rw): stream x peripheral address register
+0x40026460 B  REGISTER PAR3 (rw): stream x peripheral address register
 0x40026460 C   FIELD 00w32 PA: Peripheral address
-0x40026464 B  REGISTER S3M0AR (rw): stream x memory 0 address register
+0x40026464 B  REGISTER M0AR3 (rw): stream x memory 0 address register
 0x40026464 C   FIELD 00w32 M0A: Memory 0 address
-0x40026468 B  REGISTER S3M1AR (rw): stream x memory 1 address register
+0x40026468 B  REGISTER M1AR3 (rw): stream x memory 1 address register
 0x40026468 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002646C B  REGISTER S3FCR: stream x FIFO control register
+0x4002646C B  REGISTER FCR3: stream x FIFO control register
 0x4002646C C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x4002646C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002646C C   FIELD 03w03 FS (ro): FIFO status
 0x4002646C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026470 B  REGISTER S4CR (rw): stream x configuration register
+0x40026470 B  CLUSTER ST4: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026470 B  REGISTER CR4 (rw): stream x configuration register
 0x40026470 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026470 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026470 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -7016,24 +7019,24 @@
 0x40026470 C   FIELD 16w02 PL: Priority level
 0x40026470 C   FIELD 18w01 DBM: Double buffer mode
 0x40026470 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026470 C   FIELD 20w01 ACK: ACK
 0x40026470 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026470 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026470 C   FIELD 25w03 CHSEL: Channel selection
-0x40026474 B  REGISTER S4NDTR (rw): stream x number of data register
+0x40026474 B  REGISTER NDTR4 (rw): stream x number of data register
 0x40026474 C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026478 B  REGISTER S4PAR (rw): stream x peripheral address register
+0x40026478 B  REGISTER PAR4 (rw): stream x peripheral address register
 0x40026478 C   FIELD 00w32 PA: Peripheral address
-0x4002647C B  REGISTER S4M0AR (rw): stream x memory 0 address register
+0x4002647C B  REGISTER M0AR4 (rw): stream x memory 0 address register
 0x4002647C C   FIELD 00w32 M0A: Memory 0 address
-0x40026480 B  REGISTER S4M1AR (rw): stream x memory 1 address register
+0x40026480 B  REGISTER M1AR4 (rw): stream x memory 1 address register
 0x40026480 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x40026484 B  REGISTER S4FCR: stream x FIFO control register
+0x40026484 B  REGISTER FCR4: stream x FIFO control register
 0x40026484 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x40026484 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x40026484 C   FIELD 03w03 FS (ro): FIFO status
 0x40026484 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x40026488 B  REGISTER S5CR (rw): stream x configuration register
+0x40026488 B  CLUSTER ST5: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x40026488 B  REGISTER CR5 (rw): stream x configuration register
 0x40026488 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x40026488 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x40026488 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -7050,24 +7053,24 @@
 0x40026488 C   FIELD 16w02 PL: Priority level
 0x40026488 C   FIELD 18w01 DBM: Double buffer mode
 0x40026488 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x40026488 C   FIELD 20w01 ACK: ACK
 0x40026488 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x40026488 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x40026488 C   FIELD 25w03 CHSEL: Channel selection
-0x4002648C B  REGISTER S5NDTR (rw): stream x number of data register
+0x4002648C B  REGISTER NDTR5 (rw): stream x number of data register
 0x4002648C C   FIELD 00w16 NDT: Number of data items to transfer
-0x40026490 B  REGISTER S5PAR (rw): stream x peripheral address register
+0x40026490 B  REGISTER PAR5 (rw): stream x peripheral address register
 0x40026490 C   FIELD 00w32 PA: Peripheral address
-0x40026494 B  REGISTER S5M0AR (rw): stream x memory 0 address register
+0x40026494 B  REGISTER M0AR5 (rw): stream x memory 0 address register
 0x40026494 C   FIELD 00w32 M0A: Memory 0 address
-0x40026498 B  REGISTER S5M1AR (rw): stream x memory 1 address register
+0x40026498 B  REGISTER M1AR5 (rw): stream x memory 1 address register
 0x40026498 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x4002649C B  REGISTER S5FCR: stream x FIFO control register
+0x4002649C B  REGISTER FCR5: stream x FIFO control register
 0x4002649C C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x4002649C C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x4002649C C   FIELD 03w03 FS (ro): FIFO status
 0x4002649C C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x400264A0 B  REGISTER S6CR (rw): stream x configuration register
+0x400264A0 B  CLUSTER ST6: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x400264A0 B  REGISTER CR6 (rw): stream x configuration register
 0x400264A0 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400264A0 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x400264A0 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -7084,24 +7087,24 @@
 0x400264A0 C   FIELD 16w02 PL: Priority level
 0x400264A0 C   FIELD 18w01 DBM: Double buffer mode
 0x400264A0 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x400264A0 C   FIELD 20w01 ACK: ACK
 0x400264A0 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400264A0 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x400264A0 C   FIELD 25w03 CHSEL: Channel selection
-0x400264A4 B  REGISTER S6NDTR (rw): stream x number of data register
+0x400264A4 B  REGISTER NDTR6 (rw): stream x number of data register
 0x400264A4 C   FIELD 00w16 NDT: Number of data items to transfer
-0x400264A8 B  REGISTER S6PAR (rw): stream x peripheral address register
+0x400264A8 B  REGISTER PAR6 (rw): stream x peripheral address register
 0x400264A8 C   FIELD 00w32 PA: Peripheral address
-0x400264AC B  REGISTER S6M0AR (rw): stream x memory 0 address register
+0x400264AC B  REGISTER M0AR6 (rw): stream x memory 0 address register
 0x400264AC C   FIELD 00w32 M0A: Memory 0 address
-0x400264B0 B  REGISTER S6M1AR (rw): stream x memory 1 address register
+0x400264B0 B  REGISTER M1AR6 (rw): stream x memory 1 address register
 0x400264B0 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x400264B4 B  REGISTER S6FCR: stream x FIFO control register
+0x400264B4 B  REGISTER FCR6: stream x FIFO control register
 0x400264B4 C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x400264B4 C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400264B4 C   FIELD 03w03 FS (ro): FIFO status
 0x400264B4 C   FIELD 07w01 FEIE (rw): FIFO error interrupt enable
-0x400264B8 B  REGISTER S7CR (rw): stream x configuration register
+0x400264B8 B  CLUSTER ST7: Stream cluster: S?CR, S?NDTR, S?M0AR, S?M1AR and S?FCR registers
+0x400264B8 B  REGISTER CR7 (rw): stream x configuration register
 0x400264B8 C   FIELD 00w01 EN: Stream enable / flag stream ready when read low
 0x400264B8 C   FIELD 01w01 DMEIE: Direct mode error interrupt enable
 0x400264B8 C   FIELD 02w01 TEIE: Transfer error interrupt enable
@@ -7118,19 +7121,18 @@
 0x400264B8 C   FIELD 16w02 PL: Priority level
 0x400264B8 C   FIELD 18w01 DBM: Double buffer mode
 0x400264B8 C   FIELD 19w01 CT: Current target (only in double buffer mode)
-0x400264B8 C   FIELD 20w01 ACK: ACK
 0x400264B8 C   FIELD 21w02 PBURST: Peripheral burst transfer configuration
 0x400264B8 C   FIELD 23w02 MBURST: Memory burst transfer configuration
 0x400264B8 C   FIELD 25w03 CHSEL: Channel selection
-0x400264BC B  REGISTER S7NDTR (rw): stream x number of data register
+0x400264BC B  REGISTER NDTR7 (rw): stream x number of data register
 0x400264BC C   FIELD 00w16 NDT: Number of data items to transfer
-0x400264C0 B  REGISTER S7PAR (rw): stream x peripheral address register
+0x400264C0 B  REGISTER PAR7 (rw): stream x peripheral address register
 0x400264C0 C   FIELD 00w32 PA: Peripheral address
-0x400264C4 B  REGISTER S7M0AR (rw): stream x memory 0 address register
+0x400264C4 B  REGISTER M0AR7 (rw): stream x memory 0 address register
 0x400264C4 C   FIELD 00w32 M0A: Memory 0 address
-0x400264C8 B  REGISTER S7M1AR (rw): stream x memory 1 address register
+0x400264C8 B  REGISTER M1AR7 (rw): stream x memory 1 address register
 0x400264C8 C   FIELD 00w32 M1A: Memory 1 address (used in case of Double buffer mode)
-0x400264CC B  REGISTER S7FCR: stream x FIFO control register
+0x400264CC B  REGISTER FCR7: stream x FIFO control register
 0x400264CC C   FIELD 00w02 FTH (rw): FIFO threshold selection
 0x400264CC C   FIELD 02w01 DMDIS (rw): Direct mode disable
 0x400264CC C   FIELD 03w03 FS (ro): FIFO status
