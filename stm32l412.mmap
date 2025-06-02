@@ -1362,16 +1362,16 @@
 0x40007808 C   FIELD 00w05 TRIMLPOFFSETN: Trim for NMOS differential pairs
 0x40007808 C   FIELD 08w05 TRIMLPOFFSETP: Trim for PMOS differential pairs
 0x40007810 B  REGISTER OPAMP2_CSR (rw): OPAMP2 control/status register
-0x40007810 C   FIELD 00w01 OPAEN: Operational amplifier Enable
-0x40007810 C   FIELD 01w01 OPALPM: Operational amplifier Low Power Mode
-0x40007810 C   FIELD 02w02 OPAMODE: Operational amplifier PGA mode
+0x40007810 C   FIELD 00w01 OPAEN (=OPAMP.OPAMP1_CSR.OPAEN): Operational amplifier Enable
+0x40007810 C   FIELD 01w01 OPALPM (=OPAMP.OPAMP1_CSR.OPALPM): Operational amplifier Low Power Mode
+0x40007810 C   FIELD 02w02 OPAMODE (=OPAMP.OPAMP1_CSR.OPAMODE): Operational amplifier PGA mode
 0x40007810 C   FIELD 04w02 PGA_GAIN: Operational amplifier Programmable amplifier gain value
-0x40007810 C   FIELD 08w02 VM_SEL: Inverting input selection
-0x40007810 C   FIELD 10w01 VP_SEL: Non inverted input selection
-0x40007810 C   FIELD 12w01 CALON: Calibration mode enabled
-0x40007810 C   FIELD 13w01 CALSEL: Calibration selection
-0x40007810 C   FIELD 14w01 USERTRIM: allows to switch from AOP offset trimmed values to AOP offset
-0x40007810 C   FIELD 15w01 CALOUT: Operational amplifier calibration output
+0x40007810 C   FIELD 08w02 VM_SEL (=OPAMP.OPAMP1_CSR.VM_SEL): Inverting input selection
+0x40007810 C   FIELD 10w01 VP_SEL (=OPAMP.OPAMP1_CSR.VP_SEL): Non inverted input selection
+0x40007810 C   FIELD 12w01 CALON (=OPAMP.OPAMP1_CSR.CALON): Calibration mode enabled
+0x40007810 C   FIELD 13w01 CALSEL (=OPAMP.OPAMP1_CSR.CALSEL): Calibration selection
+0x40007810 C   FIELD 14w01 USERTRIM (=OPAMP.OPAMP1_CSR.USERTRIM): allows to switch from AOP offset trimmed values to AOP offset
+0x40007810 C   FIELD 15w01 CALOUT (=OPAMP.OPAMP1_CSR.CALOUT): Operational amplifier calibration output
 0x40007814 B  REGISTER OPAMP2_OTR (rw): OPAMP2 offset trimming register in normal mode
 0x40007814 C   FIELD 00w05 TRIMOFFSETN: Trim for NMOS differential pairs
 0x40007814 C   FIELD 08w05 TRIMOFFSETP: Trim for PMOS differential pairs
@@ -1670,30 +1670,30 @@
 0x40010024 C   FIELD 00w08 KEY: SRAM2 write protection key for software erase
 0x40010200 A PERIPHERAL COMP
 0x40010200 B  REGISTER COMP1_CSR: Comparator 1 control and status register
-0x40010200 C   FIELD 00w01 COMP1_EN (rw): Comparator 1 enable bit
-0x40010200 C   FIELD 02w02 COMP1_PWRMODE (rw): Power Mode of the comparator 1
-0x40010200 C   FIELD 04w03 COMP1_INMSEL (rw): Comparator 1 Input Minus connection configuration bit
-0x40010200 C   FIELD 07w01 COMP1_INPSEL (rw): Comparator1 input plus selection bit
-0x40010200 C   FIELD 15w01 COMP1_POLARITY (rw): Comparator 1 polarity selection bit
-0x40010200 C   FIELD 16w02 COMP1_HYST (rw): Comparator 1 hysteresis selection bits
-0x40010200 C   FIELD 18w03 COMP1_BLANKING (rw): Comparator 1 blanking source selection bits
-0x40010200 C   FIELD 22w01 COMP1_BRGEN (rw): Scaler bridge enable
-0x40010200 C   FIELD 23w01 COMP1_SCALEN (rw): Voltage scaler enable bit
-0x40010200 C   FIELD 30w01 COMP1_VALUE (ro): Comparator 1 output status bit
-0x40010200 C   FIELD 31w01 COMP1_LOCK (wo): COMP1_CSR register lock bit
+0x40010200 C   FIELD 00w01 EN (rw): Comparator 1 enable bit
+0x40010200 C   FIELD 02w02 PWRMODE (rw): Power Mode of the comparator 1
+0x40010200 C   FIELD 04w03 INMSEL (rw): Comparator 1 Input Minus connection configuration bit
+0x40010200 C   FIELD 07w01 INPSEL (rw): Comparator1 input plus selection bit
+0x40010200 C   FIELD 15w01 POLARITY (rw): Comparator 1 polarity selection bit
+0x40010200 C   FIELD 16w02 HYST (rw): Comparator 1 hysteresis selection bits
+0x40010200 C   FIELD 18w03 BLANKING (rw): Comparator 1 blanking source selection bits
+0x40010200 C   FIELD 22w01 BRGEN (rw): Scaler bridge enable
+0x40010200 C   FIELD 23w01 SCALEN (rw): Voltage scaler enable bit
+0x40010200 C   FIELD 30w01 VALUE (ro): Comparator 1 output status bit
+0x40010200 C   FIELD 31w01 LOCK (wo): COMP1_CSR register lock bit
 0x40010204 B  REGISTER COMP2_CSR: Comparator 2 control and status register
-0x40010204 C   FIELD 00w01 COMP2_EN (rw): Comparator 2 enable bit
-0x40010204 C   FIELD 02w02 COMP2_PWRMODE (rw): Power Mode of the comparator 2
-0x40010204 C   FIELD 04w03 COMP2_INMSEL (rw): Comparator 2 Input Minus connection configuration bit
-0x40010204 C   FIELD 07w01 COMP2_INPSEL (rw): Comparator 2 Input Plus connection configuration bit
-0x40010204 C   FIELD 09w01 COMP2_WINMODE (rw): Windows mode selection bit
-0x40010204 C   FIELD 15w01 COMP2_POLARITY (rw): Comparator 2 polarity selection bit
-0x40010204 C   FIELD 16w02 COMP2_HYST (rw): Comparator 2 hysteresis selection bits
-0x40010204 C   FIELD 18w03 COMP2_BLANKING (rw): Comparator 2 blanking source selection bits
-0x40010204 C   FIELD 22w01 COMP2_BRGEN (rw): Scaler bridge enable
-0x40010204 C   FIELD 23w01 COMP2_SCALEN (rw): Voltage scaler enable bit
-0x40010204 C   FIELD 30w01 COMP2_VALUE (ro): Comparator 2 output status bit
-0x40010204 C   FIELD 31w01 COMP2_LOCK (wo): COMP2_CSR register lock bit
+0x40010204 C   FIELD 00w01 EN (rw): Comparator 2 enable bit
+0x40010204 C   FIELD 02w02 PWRMODE (rw): Power Mode of the comparator 2
+0x40010204 C   FIELD 04w03 INMSEL (rw): Comparator 2 Input Minus connection configuration bit
+0x40010204 C   FIELD 07w01 INPSEL (rw): Comparator 2 Input Plus connection configuration bit
+0x40010204 C   FIELD 09w01 WINMODE (rw): Windows mode selection bit
+0x40010204 C   FIELD 15w01 POLARITY (rw): Comparator 2 polarity selection bit
+0x40010204 C   FIELD 16w02 HYST (rw): Comparator 2 hysteresis selection bits
+0x40010204 C   FIELD 18w03 BLANKING (rw): Comparator 2 blanking source selection bits
+0x40010204 C   FIELD 22w01 BRGEN (rw): Scaler bridge enable
+0x40010204 C   FIELD 23w01 SCALEN (rw): Voltage scaler enable bit
+0x40010204 C   FIELD 30w01 VALUE (ro): Comparator 2 output status bit
+0x40010204 C   FIELD 31w01 LOCK (wo): COMP2_CSR register lock bit
 0x40010400 A PERIPHERAL EXTI
 0x40010400 B  REGISTER IMR1 (rw): Interrupt mask register
 0x40010400 C   FIELD 00w01 MR0: Interrupt Mask on line 0
