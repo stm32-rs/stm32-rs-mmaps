@@ -8780,7 +8780,7 @@
 0x40040014 C   FIELD 19w01 OEPINT (ro): OUT endpoint interrupt The core sets this bit to indicate that an interrupt is pending on one of the OUT endpoints of the core (in device mode). The application must read the OTG_DAINT register to determine the exact number of the OUT endpoint on which the interrupt occurred, and then read the corresponding OTG_DOEPINTx register to determine the exact cause of the interrupt. The application must clear the appropriate status bit in the corresponding OTG_DOEPINTx register to clear this bit. Note: Only accessible in device mode.
 0x40040014 C   FIELD 20w01 IISOIXFR (rw): Incomplete isochronous IN transfer The core sets this interrupt to indicate that there is at least one isochronous IN endpoint on which the transfer is not completed in the current frame. This interrupt is asserted along with the End of periodic frame interrupt (EOPF) bit in this register. Note: Only accessible in device mode.
 0x40040014 C   FIELD 21w01 IPXFR_INCOMPISOOUT (rw): 
-0x40040014 C   FIELD 22w01 DATAFSUSP (rw): Data fetch suspended This interrupt is valid only in DMA mode. This interrupt indicates that the core has stopped fetching data for IN endpoints due to the unavailability of TxFIFO space or request queue space. This interrupt is used by the application for an endpoint mismatch algorithm. For example, after detecting an endpoint mismatch, the application: Sets a global nonperiodic IN NAK handshake Disables IN endpoints Flushes the FIFO Determines the token sequence from the IN token sequence learning queue Re-enables the endpoints Clears the global nonperiodic IN NAK handshake If the global nonperiodic IN NAK is cleared, the core has not yet fetched data for the IN endpoint, and the IN token is received: the core generates an âIN token received when FIFO emptyâ interrupt. The OTG then sends a NAK response to the host. To avoid this scenario, the application can check the FetSusp interrupt in OTG_GINTSTS, which ensures that the FIFO is full before clearing a global NAK handshake. Alternatively, the application can mask the âIN token received when FIFO emptyâ interrupt when clearing a global IN NAK handshake.
+0x40040014 C   FIELD 22w01 DATAFSUSP (rw): Data fetch suspended This interrupt is valid only in DMA mode. This interrupt indicates that the core has stopped fetching data for IN endpoints due to the unavailability of TxFIFO space or request queue space. This interrupt is used by the application for an endpoint mismatch algorithm. For example, after detecting an endpoint mismatch, the application: Sets a global nonperiodic IN NAK handshake Disables IN endpoints Flushes the FIFO Determines the token sequence from the IN token sequence learning queue Re-enables the endpoints Clears the global nonperiodic IN NAK handshake If the global nonperiodic IN NAK is cleared, the core has not yet fetched data for the IN endpoint, and the IN token is received: the core generates an IN token received when FIFO empty interrupt. The OTG then sends a NAK response to the host. To avoid this scenario, the application can check the FetSusp interrupt in OTG_GINTSTS, which ensures that the FIFO is full before clearing a global NAK handshake. Alternatively, the application can mask the IN token received when FIFO empty interrupt when clearing a global IN NAK handshake.
 0x40040014 C   FIELD 23w01 RSTDET (rw): Reset detected interrupt In device mode, this interrupt is asserted when a reset is detected on the USB in partial power-down mode when the device is in suspend. Note: Only accessible in device mode.
 0x40040014 C   FIELD 24w01 HPRTINT (ro): Host port interrupt The core sets this bit to indicate a change in port status of one of the OTG_HS controller ports in host mode. The application must read the OTG_HPRT register to determine the exact event that caused this interrupt. The application must clear the appropriate status bit in the OTG_HPRT register to clear this bit. Note: Only accessible in host mode.
 0x40040014 C   FIELD 25w01 HCINT (ro): Host channels interrupt The core sets this bit to indicate that an interrupt is pending on one of the channels of the core (in host mode). The application must read the OTG_HAINT register to determine the exact number of the channel on which the interrupt occurred, and then read the corresponding OTG_HCINTx register to determine the exact cause of the interrupt. The application must clear the appropriate status bit in the OTG_HCINTx register to clear this bit. Note: Only accessible in host mode.
@@ -10204,1300 +10204,6 @@
 0x40040E00 C   FIELD 00w01 STPPCLK: Stop PHY clock
 0x40040E00 C   FIELD 01w01 GATEHCLK: Gate HCLK
 0x40040E00 C   FIELD 04w01 PHYSUSP: PHY suspended
-0x40080400 A PERIPHERAL OTG2_HS_HOST
-0x40080400 B  REGISTER HCFG: OTG_HS host configuration register
-0x40080400 C   FIELD 00w02 FSLSPCS (rw): FS/LS PHY clock select
-0x40080400 C   FIELD 02w01 FSLSS (ro): FS- and LS-only support
-0x40080404 B  REGISTER HFIR (rw): OTG_HS Host frame interval register
-0x40080404 C   FIELD 00w16 FRIVL: Frame interval
-0x40080408 B  REGISTER HFNUM (ro): OTG_HS host frame number/frame time remaining register
-0x40080408 C   FIELD 00w16 FRNUM: Frame number
-0x40080408 C   FIELD 16w16 FTREM: Frame time remaining
-0x40080410 B  REGISTER HPTXSTS: OTG_HS_Host periodic transmit FIFO/queue status register
-0x40080410 C   FIELD 00w16 PTXFSAVL (rw): Periodic transmit data FIFO space available
-0x40080410 C   FIELD 16w08 PTXQSAV (ro): Periodic transmit request queue space available
-0x40080410 C   FIELD 24w08 PTXQTOP (ro): Top of the periodic transmit request queue
-0x40080414 B  REGISTER HAINT (ro): OTG_HS Host all channels interrupt register
-0x40080414 C   FIELD 00w16 HAINT: Channel interrupts
-0x40080418 B  REGISTER HAINTMSK (rw): OTG_HS host all channels interrupt mask register
-0x40080418 C   FIELD 00w16 HAINTM: Channel interrupt mask
-0x40080440 B  REGISTER HPRT: OTG_HS host port control and status register
-0x40080440 C   FIELD 00w01 PCSTS (ro): Port connect status
-0x40080440 C   FIELD 01w01 PCDET (rw): Port connect detected
-0x40080440 C   FIELD 02w01 PENA (rw): Port enable
-0x40080440 C   FIELD 03w01 PENCHNG (rw): Port enable/disable change
-0x40080440 C   FIELD 04w01 POCA (ro): Port overcurrent active
-0x40080440 C   FIELD 05w01 POCCHNG (rw): Port overcurrent change
-0x40080440 C   FIELD 06w01 PRES (rw): Port resume
-0x40080440 C   FIELD 07w01 PSUSP (rw): Port suspend
-0x40080440 C   FIELD 08w01 PRST (rw): Port reset
-0x40080440 C   FIELD 10w02 PLSTS (ro): Port line status
-0x40080440 C   FIELD 12w01 PPWR (rw): Port power
-0x40080440 C   FIELD 13w04 PTCTL (rw): Port test control
-0x40080440 C   FIELD 17w02 PSPD (ro): Port speed
-0x40080500 B  CLUSTER HC0: Host channel
-0x40080500 B  REGISTER CHAR0 (rw): OTG_HS host channel-0 characteristics register
-0x40080500 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080500 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080500 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080500 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080500 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080500 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080500 C   FIELD 22w07 DAD: Device address
-0x40080500 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080500 C   FIELD 30w01 CHDIS: Channel disable
-0x40080500 C   FIELD 31w01 CHENA: Channel enable
-0x40080504 B  REGISTER SPLT0 (rw): OTG_HS host channel-0 split control register
-0x40080504 C   FIELD 00w07 PRTADDR: Port address
-0x40080504 C   FIELD 07w07 HUBADDR: Hub address
-0x40080504 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080504 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080504 C   FIELD 31w01 SPLITEN: Split enable
-0x40080508 B  REGISTER INT0 (rw): OTG_HS host channel-11 interrupt register
-0x40080508 C   FIELD 00w01 XFRC: Transfer completed
-0x40080508 C   FIELD 01w01 CHH: Channel halted
-0x40080508 C   FIELD 02w01 AHBERR: AHB error
-0x40080508 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080508 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080508 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080508 C   FIELD 06w01 NYET: Response received interrupt
-0x40080508 C   FIELD 07w01 TXERR: Transaction error
-0x40080508 C   FIELD 08w01 BBERR: Babble error
-0x40080508 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080508 C   FIELD 10w01 DTERR: Data toggle error
-0x4008050C B  REGISTER INTMSK0 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008050C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008050C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008050C C   FIELD 02w01 AHBERR: AHB error
-0x4008050C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008050C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008050C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008050C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008050C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008050C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008050C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008050C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080510 B  REGISTER TSIZ0 (rw): OTG_HS host channel-11 transfer size register
-0x40080510 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080510 C   FIELD 19w10 PKTCNT: Packet count
-0x40080510 C   FIELD 29w02 DPID: Data PID
-0x40080514 B  REGISTER DMA0 (rw): OTG_HS host channel-0 DMA address register
-0x40080514 C   FIELD 00w32 DMAADDR: DMA address
-0x40080520 B  CLUSTER HC1: Host channel
-0x40080520 B  REGISTER CHAR1 (rw): OTG_HS host channel-0 characteristics register
-0x40080520 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080520 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080520 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080520 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080520 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080520 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080520 C   FIELD 22w07 DAD: Device address
-0x40080520 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080520 C   FIELD 30w01 CHDIS: Channel disable
-0x40080520 C   FIELD 31w01 CHENA: Channel enable
-0x40080524 B  REGISTER SPLT1 (rw): OTG_HS host channel-0 split control register
-0x40080524 C   FIELD 00w07 PRTADDR: Port address
-0x40080524 C   FIELD 07w07 HUBADDR: Hub address
-0x40080524 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080524 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080524 C   FIELD 31w01 SPLITEN: Split enable
-0x40080528 B  REGISTER INT1 (rw): OTG_HS host channel-11 interrupt register
-0x40080528 C   FIELD 00w01 XFRC: Transfer completed
-0x40080528 C   FIELD 01w01 CHH: Channel halted
-0x40080528 C   FIELD 02w01 AHBERR: AHB error
-0x40080528 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080528 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080528 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080528 C   FIELD 06w01 NYET: Response received interrupt
-0x40080528 C   FIELD 07w01 TXERR: Transaction error
-0x40080528 C   FIELD 08w01 BBERR: Babble error
-0x40080528 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080528 C   FIELD 10w01 DTERR: Data toggle error
-0x4008052C B  REGISTER INTMSK1 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008052C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008052C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008052C C   FIELD 02w01 AHBERR: AHB error
-0x4008052C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008052C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008052C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008052C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008052C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008052C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008052C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008052C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080530 B  REGISTER TSIZ1 (rw): OTG_HS host channel-11 transfer size register
-0x40080530 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080530 C   FIELD 19w10 PKTCNT: Packet count
-0x40080530 C   FIELD 29w02 DPID: Data PID
-0x40080534 B  REGISTER DMA1 (rw): OTG_HS host channel-0 DMA address register
-0x40080534 C   FIELD 00w32 DMAADDR: DMA address
-0x40080540 B  CLUSTER HC2: Host channel
-0x40080540 B  REGISTER CHAR2 (rw): OTG_HS host channel-0 characteristics register
-0x40080540 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080540 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080540 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080540 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080540 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080540 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080540 C   FIELD 22w07 DAD: Device address
-0x40080540 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080540 C   FIELD 30w01 CHDIS: Channel disable
-0x40080540 C   FIELD 31w01 CHENA: Channel enable
-0x40080544 B  REGISTER SPLT2 (rw): OTG_HS host channel-0 split control register
-0x40080544 C   FIELD 00w07 PRTADDR: Port address
-0x40080544 C   FIELD 07w07 HUBADDR: Hub address
-0x40080544 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080544 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080544 C   FIELD 31w01 SPLITEN: Split enable
-0x40080548 B  REGISTER INT2 (rw): OTG_HS host channel-11 interrupt register
-0x40080548 C   FIELD 00w01 XFRC: Transfer completed
-0x40080548 C   FIELD 01w01 CHH: Channel halted
-0x40080548 C   FIELD 02w01 AHBERR: AHB error
-0x40080548 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080548 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080548 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080548 C   FIELD 06w01 NYET: Response received interrupt
-0x40080548 C   FIELD 07w01 TXERR: Transaction error
-0x40080548 C   FIELD 08w01 BBERR: Babble error
-0x40080548 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080548 C   FIELD 10w01 DTERR: Data toggle error
-0x4008054C B  REGISTER INTMSK2 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008054C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008054C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008054C C   FIELD 02w01 AHBERR: AHB error
-0x4008054C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008054C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008054C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008054C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008054C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008054C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008054C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008054C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080550 B  REGISTER TSIZ2 (rw): OTG_HS host channel-11 transfer size register
-0x40080550 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080550 C   FIELD 19w10 PKTCNT: Packet count
-0x40080550 C   FIELD 29w02 DPID: Data PID
-0x40080554 B  REGISTER DMA2 (rw): OTG_HS host channel-0 DMA address register
-0x40080554 C   FIELD 00w32 DMAADDR: DMA address
-0x40080560 B  CLUSTER HC3: Host channel
-0x40080560 B  REGISTER CHAR3 (rw): OTG_HS host channel-0 characteristics register
-0x40080560 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080560 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080560 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080560 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080560 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080560 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080560 C   FIELD 22w07 DAD: Device address
-0x40080560 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080560 C   FIELD 30w01 CHDIS: Channel disable
-0x40080560 C   FIELD 31w01 CHENA: Channel enable
-0x40080564 B  REGISTER SPLT3 (rw): OTG_HS host channel-0 split control register
-0x40080564 C   FIELD 00w07 PRTADDR: Port address
-0x40080564 C   FIELD 07w07 HUBADDR: Hub address
-0x40080564 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080564 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080564 C   FIELD 31w01 SPLITEN: Split enable
-0x40080568 B  REGISTER INT3 (rw): OTG_HS host channel-11 interrupt register
-0x40080568 C   FIELD 00w01 XFRC: Transfer completed
-0x40080568 C   FIELD 01w01 CHH: Channel halted
-0x40080568 C   FIELD 02w01 AHBERR: AHB error
-0x40080568 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080568 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080568 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080568 C   FIELD 06w01 NYET: Response received interrupt
-0x40080568 C   FIELD 07w01 TXERR: Transaction error
-0x40080568 C   FIELD 08w01 BBERR: Babble error
-0x40080568 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080568 C   FIELD 10w01 DTERR: Data toggle error
-0x4008056C B  REGISTER INTMSK3 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008056C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008056C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008056C C   FIELD 02w01 AHBERR: AHB error
-0x4008056C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008056C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008056C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008056C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008056C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008056C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008056C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008056C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080570 B  REGISTER TSIZ3 (rw): OTG_HS host channel-11 transfer size register
-0x40080570 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080570 C   FIELD 19w10 PKTCNT: Packet count
-0x40080570 C   FIELD 29w02 DPID: Data PID
-0x40080574 B  REGISTER DMA3 (rw): OTG_HS host channel-0 DMA address register
-0x40080574 C   FIELD 00w32 DMAADDR: DMA address
-0x40080580 B  CLUSTER HC4: Host channel
-0x40080580 B  REGISTER CHAR4 (rw): OTG_HS host channel-0 characteristics register
-0x40080580 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080580 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080580 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080580 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080580 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080580 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080580 C   FIELD 22w07 DAD: Device address
-0x40080580 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080580 C   FIELD 30w01 CHDIS: Channel disable
-0x40080580 C   FIELD 31w01 CHENA: Channel enable
-0x40080584 B  REGISTER SPLT4 (rw): OTG_HS host channel-0 split control register
-0x40080584 C   FIELD 00w07 PRTADDR: Port address
-0x40080584 C   FIELD 07w07 HUBADDR: Hub address
-0x40080584 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080584 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080584 C   FIELD 31w01 SPLITEN: Split enable
-0x40080588 B  REGISTER INT4 (rw): OTG_HS host channel-11 interrupt register
-0x40080588 C   FIELD 00w01 XFRC: Transfer completed
-0x40080588 C   FIELD 01w01 CHH: Channel halted
-0x40080588 C   FIELD 02w01 AHBERR: AHB error
-0x40080588 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080588 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080588 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080588 C   FIELD 06w01 NYET: Response received interrupt
-0x40080588 C   FIELD 07w01 TXERR: Transaction error
-0x40080588 C   FIELD 08w01 BBERR: Babble error
-0x40080588 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080588 C   FIELD 10w01 DTERR: Data toggle error
-0x4008058C B  REGISTER INTMSK4 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008058C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008058C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008058C C   FIELD 02w01 AHBERR: AHB error
-0x4008058C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008058C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008058C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008058C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008058C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008058C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008058C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008058C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080590 B  REGISTER TSIZ4 (rw): OTG_HS host channel-11 transfer size register
-0x40080590 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080590 C   FIELD 19w10 PKTCNT: Packet count
-0x40080590 C   FIELD 29w02 DPID: Data PID
-0x40080594 B  REGISTER DMA4 (rw): OTG_HS host channel-0 DMA address register
-0x40080594 C   FIELD 00w32 DMAADDR: DMA address
-0x400805A0 B  CLUSTER HC5: Host channel
-0x400805A0 B  REGISTER CHAR5 (rw): OTG_HS host channel-0 characteristics register
-0x400805A0 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400805A0 C   FIELD 11w04 EPNUM: Endpoint number
-0x400805A0 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400805A0 C   FIELD 17w01 LSDEV: Low-speed device
-0x400805A0 C   FIELD 18w02 EPTYP: Endpoint type
-0x400805A0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400805A0 C   FIELD 22w07 DAD: Device address
-0x400805A0 C   FIELD 29w01 ODDFRM: Odd frame
-0x400805A0 C   FIELD 30w01 CHDIS: Channel disable
-0x400805A0 C   FIELD 31w01 CHENA: Channel enable
-0x400805A4 B  REGISTER SPLT5 (rw): OTG_HS host channel-0 split control register
-0x400805A4 C   FIELD 00w07 PRTADDR: Port address
-0x400805A4 C   FIELD 07w07 HUBADDR: Hub address
-0x400805A4 C   FIELD 14w02 XACTPOS: XACTPOS
-0x400805A4 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400805A4 C   FIELD 31w01 SPLITEN: Split enable
-0x400805A8 B  REGISTER INT5 (rw): OTG_HS host channel-11 interrupt register
-0x400805A8 C   FIELD 00w01 XFRC: Transfer completed
-0x400805A8 C   FIELD 01w01 CHH: Channel halted
-0x400805A8 C   FIELD 02w01 AHBERR: AHB error
-0x400805A8 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400805A8 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400805A8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400805A8 C   FIELD 06w01 NYET: Response received interrupt
-0x400805A8 C   FIELD 07w01 TXERR: Transaction error
-0x400805A8 C   FIELD 08w01 BBERR: Babble error
-0x400805A8 C   FIELD 09w01 FRMOR: Frame overrun
-0x400805A8 C   FIELD 10w01 DTERR: Data toggle error
-0x400805AC B  REGISTER INTMSK5 (rw): OTG_HS host channel-11 interrupt mask register
-0x400805AC C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400805AC C   FIELD 01w01 CHHM: Channel halted mask
-0x400805AC C   FIELD 02w01 AHBERR: AHB error
-0x400805AC C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400805AC C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x400805AC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400805AC C   FIELD 06w01 NYET: response received interrupt mask
-0x400805AC C   FIELD 07w01 TXERRM: Transaction error mask
-0x400805AC C   FIELD 08w01 BBERRM: Babble error mask
-0x400805AC C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400805AC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400805B0 B  REGISTER TSIZ5 (rw): OTG_HS host channel-11 transfer size register
-0x400805B0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400805B0 C   FIELD 19w10 PKTCNT: Packet count
-0x400805B0 C   FIELD 29w02 DPID: Data PID
-0x400805B4 B  REGISTER DMA5 (rw): OTG_HS host channel-0 DMA address register
-0x400805B4 C   FIELD 00w32 DMAADDR: DMA address
-0x400805C0 B  CLUSTER HC6: Host channel
-0x400805C0 B  REGISTER CHAR6 (rw): OTG_HS host channel-0 characteristics register
-0x400805C0 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400805C0 C   FIELD 11w04 EPNUM: Endpoint number
-0x400805C0 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400805C0 C   FIELD 17w01 LSDEV: Low-speed device
-0x400805C0 C   FIELD 18w02 EPTYP: Endpoint type
-0x400805C0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400805C0 C   FIELD 22w07 DAD: Device address
-0x400805C0 C   FIELD 29w01 ODDFRM: Odd frame
-0x400805C0 C   FIELD 30w01 CHDIS: Channel disable
-0x400805C0 C   FIELD 31w01 CHENA: Channel enable
-0x400805C4 B  REGISTER SPLT6 (rw): OTG_HS host channel-0 split control register
-0x400805C4 C   FIELD 00w07 PRTADDR: Port address
-0x400805C4 C   FIELD 07w07 HUBADDR: Hub address
-0x400805C4 C   FIELD 14w02 XACTPOS: XACTPOS
-0x400805C4 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400805C4 C   FIELD 31w01 SPLITEN: Split enable
-0x400805C8 B  REGISTER INT6 (rw): OTG_HS host channel-11 interrupt register
-0x400805C8 C   FIELD 00w01 XFRC: Transfer completed
-0x400805C8 C   FIELD 01w01 CHH: Channel halted
-0x400805C8 C   FIELD 02w01 AHBERR: AHB error
-0x400805C8 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400805C8 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400805C8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400805C8 C   FIELD 06w01 NYET: Response received interrupt
-0x400805C8 C   FIELD 07w01 TXERR: Transaction error
-0x400805C8 C   FIELD 08w01 BBERR: Babble error
-0x400805C8 C   FIELD 09w01 FRMOR: Frame overrun
-0x400805C8 C   FIELD 10w01 DTERR: Data toggle error
-0x400805CC B  REGISTER INTMSK6 (rw): OTG_HS host channel-11 interrupt mask register
-0x400805CC C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400805CC C   FIELD 01w01 CHHM: Channel halted mask
-0x400805CC C   FIELD 02w01 AHBERR: AHB error
-0x400805CC C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400805CC C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x400805CC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400805CC C   FIELD 06w01 NYET: response received interrupt mask
-0x400805CC C   FIELD 07w01 TXERRM: Transaction error mask
-0x400805CC C   FIELD 08w01 BBERRM: Babble error mask
-0x400805CC C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400805CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400805D0 B  REGISTER TSIZ6 (rw): OTG_HS host channel-11 transfer size register
-0x400805D0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400805D0 C   FIELD 19w10 PKTCNT: Packet count
-0x400805D0 C   FIELD 29w02 DPID: Data PID
-0x400805D4 B  REGISTER DMA6 (rw): OTG_HS host channel-0 DMA address register
-0x400805D4 C   FIELD 00w32 DMAADDR: DMA address
-0x400805E0 B  CLUSTER HC7: Host channel
-0x400805E0 B  REGISTER CHAR7 (rw): OTG_HS host channel-0 characteristics register
-0x400805E0 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400805E0 C   FIELD 11w04 EPNUM: Endpoint number
-0x400805E0 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400805E0 C   FIELD 17w01 LSDEV: Low-speed device
-0x400805E0 C   FIELD 18w02 EPTYP: Endpoint type
-0x400805E0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400805E0 C   FIELD 22w07 DAD: Device address
-0x400805E0 C   FIELD 29w01 ODDFRM: Odd frame
-0x400805E0 C   FIELD 30w01 CHDIS: Channel disable
-0x400805E0 C   FIELD 31w01 CHENA: Channel enable
-0x400805E4 B  REGISTER SPLT7 (rw): OTG_HS host channel-0 split control register
-0x400805E4 C   FIELD 00w07 PRTADDR: Port address
-0x400805E4 C   FIELD 07w07 HUBADDR: Hub address
-0x400805E4 C   FIELD 14w02 XACTPOS: XACTPOS
-0x400805E4 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400805E4 C   FIELD 31w01 SPLITEN: Split enable
-0x400805E8 B  REGISTER INT7 (rw): OTG_HS host channel-11 interrupt register
-0x400805E8 C   FIELD 00w01 XFRC: Transfer completed
-0x400805E8 C   FIELD 01w01 CHH: Channel halted
-0x400805E8 C   FIELD 02w01 AHBERR: AHB error
-0x400805E8 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400805E8 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400805E8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400805E8 C   FIELD 06w01 NYET: Response received interrupt
-0x400805E8 C   FIELD 07w01 TXERR: Transaction error
-0x400805E8 C   FIELD 08w01 BBERR: Babble error
-0x400805E8 C   FIELD 09w01 FRMOR: Frame overrun
-0x400805E8 C   FIELD 10w01 DTERR: Data toggle error
-0x400805EC B  REGISTER INTMSK7 (rw): OTG_HS host channel-11 interrupt mask register
-0x400805EC C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400805EC C   FIELD 01w01 CHHM: Channel halted mask
-0x400805EC C   FIELD 02w01 AHBERR: AHB error
-0x400805EC C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400805EC C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x400805EC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400805EC C   FIELD 06w01 NYET: response received interrupt mask
-0x400805EC C   FIELD 07w01 TXERRM: Transaction error mask
-0x400805EC C   FIELD 08w01 BBERRM: Babble error mask
-0x400805EC C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400805EC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400805F0 B  REGISTER TSIZ7 (rw): OTG_HS host channel-11 transfer size register
-0x400805F0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400805F0 C   FIELD 19w10 PKTCNT: Packet count
-0x400805F0 C   FIELD 29w02 DPID: Data PID
-0x400805F4 B  REGISTER DMA7 (rw): OTG_HS host channel-0 DMA address register
-0x400805F4 C   FIELD 00w32 DMAADDR: DMA address
-0x40080600 B  CLUSTER HC8: Host channel
-0x40080600 B  REGISTER CHAR8 (rw): OTG_HS host channel-0 characteristics register
-0x40080600 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080600 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080600 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080600 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080600 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080600 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080600 C   FIELD 22w07 DAD: Device address
-0x40080600 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080600 C   FIELD 30w01 CHDIS: Channel disable
-0x40080600 C   FIELD 31w01 CHENA: Channel enable
-0x40080604 B  REGISTER SPLT8 (rw): OTG_HS host channel-0 split control register
-0x40080604 C   FIELD 00w07 PRTADDR: Port address
-0x40080604 C   FIELD 07w07 HUBADDR: Hub address
-0x40080604 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080604 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080604 C   FIELD 31w01 SPLITEN: Split enable
-0x40080608 B  REGISTER INT8 (rw): OTG_HS host channel-11 interrupt register
-0x40080608 C   FIELD 00w01 XFRC: Transfer completed
-0x40080608 C   FIELD 01w01 CHH: Channel halted
-0x40080608 C   FIELD 02w01 AHBERR: AHB error
-0x40080608 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080608 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080608 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080608 C   FIELD 06w01 NYET: Response received interrupt
-0x40080608 C   FIELD 07w01 TXERR: Transaction error
-0x40080608 C   FIELD 08w01 BBERR: Babble error
-0x40080608 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080608 C   FIELD 10w01 DTERR: Data toggle error
-0x4008060C B  REGISTER INTMSK8 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008060C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008060C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008060C C   FIELD 02w01 AHBERR: AHB error
-0x4008060C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008060C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008060C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008060C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008060C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008060C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008060C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008060C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080610 B  REGISTER TSIZ8 (rw): OTG_HS host channel-11 transfer size register
-0x40080610 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080610 C   FIELD 19w10 PKTCNT: Packet count
-0x40080610 C   FIELD 29w02 DPID: Data PID
-0x40080614 B  REGISTER DMA8 (rw): OTG_HS host channel-0 DMA address register
-0x40080614 C   FIELD 00w32 DMAADDR: DMA address
-0x40080620 B  CLUSTER HC9: Host channel
-0x40080620 B  REGISTER CHAR9 (rw): OTG_HS host channel-0 characteristics register
-0x40080620 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080620 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080620 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080620 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080620 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080620 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080620 C   FIELD 22w07 DAD: Device address
-0x40080620 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080620 C   FIELD 30w01 CHDIS: Channel disable
-0x40080620 C   FIELD 31w01 CHENA: Channel enable
-0x40080624 B  REGISTER SPLT9 (rw): OTG_HS host channel-0 split control register
-0x40080624 C   FIELD 00w07 PRTADDR: Port address
-0x40080624 C   FIELD 07w07 HUBADDR: Hub address
-0x40080624 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080624 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080624 C   FIELD 31w01 SPLITEN: Split enable
-0x40080628 B  REGISTER INT9 (rw): OTG_HS host channel-11 interrupt register
-0x40080628 C   FIELD 00w01 XFRC: Transfer completed
-0x40080628 C   FIELD 01w01 CHH: Channel halted
-0x40080628 C   FIELD 02w01 AHBERR: AHB error
-0x40080628 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080628 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080628 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080628 C   FIELD 06w01 NYET: Response received interrupt
-0x40080628 C   FIELD 07w01 TXERR: Transaction error
-0x40080628 C   FIELD 08w01 BBERR: Babble error
-0x40080628 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080628 C   FIELD 10w01 DTERR: Data toggle error
-0x4008062C B  REGISTER INTMSK9 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008062C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008062C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008062C C   FIELD 02w01 AHBERR: AHB error
-0x4008062C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008062C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008062C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008062C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008062C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008062C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008062C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008062C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080630 B  REGISTER TSIZ9 (rw): OTG_HS host channel-11 transfer size register
-0x40080630 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080630 C   FIELD 19w10 PKTCNT: Packet count
-0x40080630 C   FIELD 29w02 DPID: Data PID
-0x40080634 B  REGISTER DMA9 (rw): OTG_HS host channel-0 DMA address register
-0x40080634 C   FIELD 00w32 DMAADDR: DMA address
-0x40080640 B  CLUSTER HC10: Host channel
-0x40080640 B  REGISTER CHAR10 (rw): OTG_HS host channel-0 characteristics register
-0x40080640 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080640 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080640 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080640 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080640 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080640 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080640 C   FIELD 22w07 DAD: Device address
-0x40080640 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080640 C   FIELD 30w01 CHDIS: Channel disable
-0x40080640 C   FIELD 31w01 CHENA: Channel enable
-0x40080644 B  REGISTER SPLT10 (rw): OTG_HS host channel-0 split control register
-0x40080644 C   FIELD 00w07 PRTADDR: Port address
-0x40080644 C   FIELD 07w07 HUBADDR: Hub address
-0x40080644 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080644 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080644 C   FIELD 31w01 SPLITEN: Split enable
-0x40080648 B  REGISTER INT10 (rw): OTG_HS host channel-11 interrupt register
-0x40080648 C   FIELD 00w01 XFRC: Transfer completed
-0x40080648 C   FIELD 01w01 CHH: Channel halted
-0x40080648 C   FIELD 02w01 AHBERR: AHB error
-0x40080648 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080648 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080648 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080648 C   FIELD 06w01 NYET: Response received interrupt
-0x40080648 C   FIELD 07w01 TXERR: Transaction error
-0x40080648 C   FIELD 08w01 BBERR: Babble error
-0x40080648 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080648 C   FIELD 10w01 DTERR: Data toggle error
-0x4008064C B  REGISTER INTMSK10 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008064C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008064C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008064C C   FIELD 02w01 AHBERR: AHB error
-0x4008064C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008064C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008064C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008064C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008064C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008064C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008064C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008064C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080650 B  REGISTER TSIZ10 (rw): OTG_HS host channel-11 transfer size register
-0x40080650 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080650 C   FIELD 19w10 PKTCNT: Packet count
-0x40080650 C   FIELD 29w02 DPID: Data PID
-0x40080654 B  REGISTER DMA10 (rw): OTG_HS host channel-0 DMA address register
-0x40080654 C   FIELD 00w32 DMAADDR: DMA address
-0x40080660 B  CLUSTER HC11: Host channel
-0x40080660 B  REGISTER CHAR11 (rw): OTG_HS host channel-0 characteristics register
-0x40080660 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080660 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080660 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080660 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080660 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080660 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080660 C   FIELD 22w07 DAD: Device address
-0x40080660 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080660 C   FIELD 30w01 CHDIS: Channel disable
-0x40080660 C   FIELD 31w01 CHENA: Channel enable
-0x40080664 B  REGISTER SPLT11 (rw): OTG_HS host channel-0 split control register
-0x40080664 C   FIELD 00w07 PRTADDR: Port address
-0x40080664 C   FIELD 07w07 HUBADDR: Hub address
-0x40080664 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080664 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080664 C   FIELD 31w01 SPLITEN: Split enable
-0x40080668 B  REGISTER INT11 (rw): OTG_HS host channel-11 interrupt register
-0x40080668 C   FIELD 00w01 XFRC: Transfer completed
-0x40080668 C   FIELD 01w01 CHH: Channel halted
-0x40080668 C   FIELD 02w01 AHBERR: AHB error
-0x40080668 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080668 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080668 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080668 C   FIELD 06w01 NYET: Response received interrupt
-0x40080668 C   FIELD 07w01 TXERR: Transaction error
-0x40080668 C   FIELD 08w01 BBERR: Babble error
-0x40080668 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080668 C   FIELD 10w01 DTERR: Data toggle error
-0x4008066C B  REGISTER INTMSK11 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008066C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008066C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008066C C   FIELD 02w01 AHBERR: AHB error
-0x4008066C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008066C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008066C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008066C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008066C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008066C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008066C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008066C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080670 B  REGISTER TSIZ11 (rw): OTG_HS host channel-11 transfer size register
-0x40080670 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080670 C   FIELD 19w10 PKTCNT: Packet count
-0x40080670 C   FIELD 29w02 DPID: Data PID
-0x40080674 B  REGISTER DMA11 (rw): OTG_HS host channel-0 DMA address register
-0x40080674 C   FIELD 00w32 DMAADDR: DMA address
-0x40080680 B  CLUSTER HC12: Host channel
-0x40080680 B  REGISTER CHAR12 (rw): OTG_HS host channel-0 characteristics register
-0x40080680 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x40080680 C   FIELD 11w04 EPNUM: Endpoint number
-0x40080680 C   FIELD 15w01 EPDIR: Endpoint direction
-0x40080680 C   FIELD 17w01 LSDEV: Low-speed device
-0x40080680 C   FIELD 18w02 EPTYP: Endpoint type
-0x40080680 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x40080680 C   FIELD 22w07 DAD: Device address
-0x40080680 C   FIELD 29w01 ODDFRM: Odd frame
-0x40080680 C   FIELD 30w01 CHDIS: Channel disable
-0x40080680 C   FIELD 31w01 CHENA: Channel enable
-0x40080684 B  REGISTER SPLT12 (rw): OTG_HS host channel-0 split control register
-0x40080684 C   FIELD 00w07 PRTADDR: Port address
-0x40080684 C   FIELD 07w07 HUBADDR: Hub address
-0x40080684 C   FIELD 14w02 XACTPOS: XACTPOS
-0x40080684 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x40080684 C   FIELD 31w01 SPLITEN: Split enable
-0x40080688 B  REGISTER INT12 (rw): OTG_HS host channel-11 interrupt register
-0x40080688 C   FIELD 00w01 XFRC: Transfer completed
-0x40080688 C   FIELD 01w01 CHH: Channel halted
-0x40080688 C   FIELD 02w01 AHBERR: AHB error
-0x40080688 C   FIELD 03w01 STALL: STALL response received interrupt
-0x40080688 C   FIELD 04w01 NAK: NAK response received interrupt
-0x40080688 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x40080688 C   FIELD 06w01 NYET: Response received interrupt
-0x40080688 C   FIELD 07w01 TXERR: Transaction error
-0x40080688 C   FIELD 08w01 BBERR: Babble error
-0x40080688 C   FIELD 09w01 FRMOR: Frame overrun
-0x40080688 C   FIELD 10w01 DTERR: Data toggle error
-0x4008068C B  REGISTER INTMSK12 (rw): OTG_HS host channel-11 interrupt mask register
-0x4008068C C   FIELD 00w01 XFRCM: Transfer completed mask
-0x4008068C C   FIELD 01w01 CHHM: Channel halted mask
-0x4008068C C   FIELD 02w01 AHBERR: AHB error
-0x4008068C C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x4008068C C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x4008068C C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x4008068C C   FIELD 06w01 NYET: response received interrupt mask
-0x4008068C C   FIELD 07w01 TXERRM: Transaction error mask
-0x4008068C C   FIELD 08w01 BBERRM: Babble error mask
-0x4008068C C   FIELD 09w01 FRMORM: Frame overrun mask
-0x4008068C C   FIELD 10w01 DTERRM: Data toggle error mask
-0x40080690 B  REGISTER TSIZ12 (rw): OTG_HS host channel-11 transfer size register
-0x40080690 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080690 C   FIELD 19w10 PKTCNT: Packet count
-0x40080690 C   FIELD 29w02 DPID: Data PID
-0x40080694 B  REGISTER DMA12 (rw): OTG_HS host channel-0 DMA address register
-0x40080694 C   FIELD 00w32 DMAADDR: DMA address
-0x400806A0 B  CLUSTER HC13: Host channel
-0x400806A0 B  REGISTER CHAR13 (rw): OTG_HS host channel-0 characteristics register
-0x400806A0 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400806A0 C   FIELD 11w04 EPNUM: Endpoint number
-0x400806A0 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400806A0 C   FIELD 17w01 LSDEV: Low-speed device
-0x400806A0 C   FIELD 18w02 EPTYP: Endpoint type
-0x400806A0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400806A0 C   FIELD 22w07 DAD: Device address
-0x400806A0 C   FIELD 29w01 ODDFRM: Odd frame
-0x400806A0 C   FIELD 30w01 CHDIS: Channel disable
-0x400806A0 C   FIELD 31w01 CHENA: Channel enable
-0x400806A4 B  REGISTER SPLT13 (rw): OTG_HS host channel-0 split control register
-0x400806A4 C   FIELD 00w07 PRTADDR: Port address
-0x400806A4 C   FIELD 07w07 HUBADDR: Hub address
-0x400806A4 C   FIELD 14w02 XACTPOS: XACTPOS
-0x400806A4 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400806A4 C   FIELD 31w01 SPLITEN: Split enable
-0x400806A8 B  REGISTER INT13 (rw): OTG_HS host channel-11 interrupt register
-0x400806A8 C   FIELD 00w01 XFRC: Transfer completed
-0x400806A8 C   FIELD 01w01 CHH: Channel halted
-0x400806A8 C   FIELD 02w01 AHBERR: AHB error
-0x400806A8 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400806A8 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400806A8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400806A8 C   FIELD 06w01 NYET: Response received interrupt
-0x400806A8 C   FIELD 07w01 TXERR: Transaction error
-0x400806A8 C   FIELD 08w01 BBERR: Babble error
-0x400806A8 C   FIELD 09w01 FRMOR: Frame overrun
-0x400806A8 C   FIELD 10w01 DTERR: Data toggle error
-0x400806AC B  REGISTER INTMSK13 (rw): OTG_HS host channel-11 interrupt mask register
-0x400806AC C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400806AC C   FIELD 01w01 CHHM: Channel halted mask
-0x400806AC C   FIELD 02w01 AHBERR: AHB error
-0x400806AC C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400806AC C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x400806AC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400806AC C   FIELD 06w01 NYET: response received interrupt mask
-0x400806AC C   FIELD 07w01 TXERRM: Transaction error mask
-0x400806AC C   FIELD 08w01 BBERRM: Babble error mask
-0x400806AC C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400806AC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400806B0 B  REGISTER TSIZ13 (rw): OTG_HS host channel-11 transfer size register
-0x400806B0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400806B0 C   FIELD 19w10 PKTCNT: Packet count
-0x400806B0 C   FIELD 29w02 DPID: Data PID
-0x400806B4 B  REGISTER DMA13 (rw): OTG_HS host channel-0 DMA address register
-0x400806B4 C   FIELD 00w32 DMAADDR: DMA address
-0x400806C0 B  CLUSTER HC14: Host channel
-0x400806C0 B  REGISTER CHAR14 (rw): OTG_HS host channel-0 characteristics register
-0x400806C0 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400806C0 C   FIELD 11w04 EPNUM: Endpoint number
-0x400806C0 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400806C0 C   FIELD 17w01 LSDEV: Low-speed device
-0x400806C0 C   FIELD 18w02 EPTYP: Endpoint type
-0x400806C0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400806C0 C   FIELD 22w07 DAD: Device address
-0x400806C0 C   FIELD 29w01 ODDFRM: Odd frame
-0x400806C0 C   FIELD 30w01 CHDIS: Channel disable
-0x400806C0 C   FIELD 31w01 CHENA: Channel enable
-0x400806C4 B  REGISTER SPLT14 (rw): OTG_HS host channel-0 split control register
-0x400806C4 C   FIELD 00w07 PRTADDR: Port address
-0x400806C4 C   FIELD 07w07 HUBADDR: Hub address
-0x400806C4 C   FIELD 14w02 XACTPOS: XACTPOS
-0x400806C4 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400806C4 C   FIELD 31w01 SPLITEN: Split enable
-0x400806C8 B  REGISTER INT14 (rw): OTG_HS host channel-11 interrupt register
-0x400806C8 C   FIELD 00w01 XFRC: Transfer completed
-0x400806C8 C   FIELD 01w01 CHH: Channel halted
-0x400806C8 C   FIELD 02w01 AHBERR: AHB error
-0x400806C8 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400806C8 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400806C8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400806C8 C   FIELD 06w01 NYET: Response received interrupt
-0x400806C8 C   FIELD 07w01 TXERR: Transaction error
-0x400806C8 C   FIELD 08w01 BBERR: Babble error
-0x400806C8 C   FIELD 09w01 FRMOR: Frame overrun
-0x400806C8 C   FIELD 10w01 DTERR: Data toggle error
-0x400806CC B  REGISTER INTMSK14 (rw): OTG_HS host channel-11 interrupt mask register
-0x400806CC C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400806CC C   FIELD 01w01 CHHM: Channel halted mask
-0x400806CC C   FIELD 02w01 AHBERR: AHB error
-0x400806CC C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400806CC C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x400806CC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400806CC C   FIELD 06w01 NYET: response received interrupt mask
-0x400806CC C   FIELD 07w01 TXERRM: Transaction error mask
-0x400806CC C   FIELD 08w01 BBERRM: Babble error mask
-0x400806CC C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400806CC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400806D0 B  REGISTER TSIZ14 (rw): OTG_HS host channel-11 transfer size register
-0x400806D0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400806D0 C   FIELD 19w10 PKTCNT: Packet count
-0x400806D0 C   FIELD 29w02 DPID: Data PID
-0x400806D4 B  REGISTER DMA14 (rw): OTG_HS host channel-0 DMA address register
-0x400806D4 C   FIELD 00w32 DMAADDR: DMA address
-0x400806E0 B  CLUSTER HC15: Host channel
-0x400806E0 B  REGISTER CHAR15 (rw): OTG_HS host channel-0 characteristics register
-0x400806E0 C   FIELD 00w11 MPSIZ: Maximum packet size
-0x400806E0 C   FIELD 11w04 EPNUM: Endpoint number
-0x400806E0 C   FIELD 15w01 EPDIR: Endpoint direction
-0x400806E0 C   FIELD 17w01 LSDEV: Low-speed device
-0x400806E0 C   FIELD 18w02 EPTYP: Endpoint type
-0x400806E0 C   FIELD 20w02 MC: Multi Count (MC) / Error Count (EC)
-0x400806E0 C   FIELD 22w07 DAD: Device address
-0x400806E0 C   FIELD 29w01 ODDFRM: Odd frame
-0x400806E0 C   FIELD 30w01 CHDIS: Channel disable
-0x400806E0 C   FIELD 31w01 CHENA: Channel enable
-0x400806E4 B  REGISTER SPLT15 (rw): OTG_HS host channel-0 split control register
-0x400806E4 C   FIELD 00w07 PRTADDR: Port address
-0x400806E4 C   FIELD 07w07 HUBADDR: Hub address
-0x400806E4 C   FIELD 14w02 XACTPOS: XACTPOS
-0x400806E4 C   FIELD 16w01 COMPLSPLT: Do complete split
-0x400806E4 C   FIELD 31w01 SPLITEN: Split enable
-0x400806E8 B  REGISTER INT15 (rw): OTG_HS host channel-11 interrupt register
-0x400806E8 C   FIELD 00w01 XFRC: Transfer completed
-0x400806E8 C   FIELD 01w01 CHH: Channel halted
-0x400806E8 C   FIELD 02w01 AHBERR: AHB error
-0x400806E8 C   FIELD 03w01 STALL: STALL response received interrupt
-0x400806E8 C   FIELD 04w01 NAK: NAK response received interrupt
-0x400806E8 C   FIELD 05w01 ACK: ACK response received/transmitted interrupt
-0x400806E8 C   FIELD 06w01 NYET: Response received interrupt
-0x400806E8 C   FIELD 07w01 TXERR: Transaction error
-0x400806E8 C   FIELD 08w01 BBERR: Babble error
-0x400806E8 C   FIELD 09w01 FRMOR: Frame overrun
-0x400806E8 C   FIELD 10w01 DTERR: Data toggle error
-0x400806EC B  REGISTER INTMSK15 (rw): OTG_HS host channel-11 interrupt mask register
-0x400806EC C   FIELD 00w01 XFRCM: Transfer completed mask
-0x400806EC C   FIELD 01w01 CHHM: Channel halted mask
-0x400806EC C   FIELD 02w01 AHBERR: AHB error
-0x400806EC C   FIELD 03w01 STALLM: STALL response received interrupt mask
-0x400806EC C   FIELD 04w01 NAKM: NAK response received interrupt mask
-0x400806EC C   FIELD 05w01 ACKM: ACK response received/transmitted interrupt mask
-0x400806EC C   FIELD 06w01 NYET: response received interrupt mask
-0x400806EC C   FIELD 07w01 TXERRM: Transaction error mask
-0x400806EC C   FIELD 08w01 BBERRM: Babble error mask
-0x400806EC C   FIELD 09w01 FRMORM: Frame overrun mask
-0x400806EC C   FIELD 10w01 DTERRM: Data toggle error mask
-0x400806F0 B  REGISTER TSIZ15 (rw): OTG_HS host channel-11 transfer size register
-0x400806F0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400806F0 C   FIELD 19w10 PKTCNT: Packet count
-0x400806F0 C   FIELD 29w02 DPID: Data PID
-0x400806F4 B  REGISTER DMA15 (rw): OTG_HS host channel-0 DMA address register
-0x400806F4 C   FIELD 00w32 DMAADDR: DMA address
-0x40080800 A PERIPHERAL OTG2_HS_DEVICE
-0x40080800 B  REGISTER DCFG (rw): OTG_HS device configuration register
-0x40080800 C   FIELD 00w02 DSPD: Device speed
-0x40080800 C   FIELD 02w01 NZLSOHSK: Nonzero-length status OUT handshake
-0x40080800 C   FIELD 04w07 DAD: Device address
-0x40080800 C   FIELD 11w02 PFIVL: Periodic (micro)frame interval
-0x40080800 C   FIELD 24w02 PERSCHIVL: Periodic scheduling interval
-0x40080804 B  REGISTER DCTL: OTG_HS device control register
-0x40080804 C   FIELD 00w01 RWUSIG (rw): Remote wakeup signaling
-0x40080804 C   FIELD 01w01 SDIS (rw): Soft disconnect
-0x40080804 C   FIELD 02w01 GINSTS (ro): Global IN NAK status
-0x40080804 C   FIELD 03w01 GONSTS (ro): Global OUT NAK status
-0x40080804 C   FIELD 04w03 TCTL (rw): Test control
-0x40080804 C   FIELD 07w01 SGINAK (wo): Set global IN NAK
-0x40080804 C   FIELD 08w01 CGINAK (wo): Clear global IN NAK
-0x40080804 C   FIELD 09w01 SGONAK (wo): Set global OUT NAK
-0x40080804 C   FIELD 10w01 CGONAK (wo): Clear global OUT NAK
-0x40080804 C   FIELD 11w01 POPRGDNE (rw): Power-on programming done
-0x40080808 B  REGISTER DSTS (ro): OTG_HS device status register
-0x40080808 C   FIELD 00w01 SUSPSTS: Suspend status
-0x40080808 C   FIELD 01w02 ENUMSPD: Enumerated speed
-0x40080808 C   FIELD 03w01 EERR: Erratic error
-0x40080808 C   FIELD 08w14 FNSOF: Frame number of the received SOF
-0x40080810 B  REGISTER DIEPMSK (rw): OTG_HS device IN endpoint common interrupt mask register
-0x40080810 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
-0x40080810 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
-0x40080810 C   FIELD 03w01 TOM: Timeout condition mask (nonisochronous endpoints)
-0x40080810 C   FIELD 04w01 ITTXFEMSK: IN token received when TxFIFO empty mask
-0x40080810 C   FIELD 05w01 INEPNMM: IN token received with EP mismatch mask
-0x40080810 C   FIELD 06w01 INEPNEM: IN endpoint NAK effective mask
-0x40080810 C   FIELD 08w01 TXFURM: FIFO underrun mask
-0x40080810 C   FIELD 09w01 BIM: BNA interrupt mask
-0x40080814 B  REGISTER DOEPMSK (rw): OTG_HS device OUT endpoint common interrupt mask register
-0x40080814 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
-0x40080814 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
-0x40080814 C   FIELD 03w01 STUPM: SETUP phase done mask
-0x40080814 C   FIELD 04w01 OTEPDM: OUT token received when endpoint disabled mask
-0x40080814 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received mask
-0x40080814 C   FIELD 08w01 OPEM: OUT packet error mask
-0x40080814 C   FIELD 09w01 BOIM: BNA interrupt mask
-0x40080818 B  REGISTER DAINT (ro): OTG_HS device all endpoints interrupt register
-0x40080818 C   FIELD 00w16 IEPINT: IN endpoint interrupt bits
-0x40080818 C   FIELD 16w16 OEPINT: OUT endpoint interrupt bits
-0x4008081C B  REGISTER DAINTMSK (rw): OTG_HS all endpoints interrupt mask register
-0x4008081C C   FIELD 00w16 IEPM: IN EP interrupt mask bits
-0x4008081C C   FIELD 16w16 OEPM: OUT EP interrupt mask bits
-0x40080828 B  REGISTER DVBUSDIS (rw): OTG_HS device VBUS discharge time register
-0x40080828 C   FIELD 00w16 VBUSDT: Device VBUS discharge time
-0x4008082C B  REGISTER DVBUSPULSE (rw): OTG_HS device VBUS pulsing time register
-0x4008082C C   FIELD 00w12 DVBUSP: Device VBUS pulsing time
-0x40080830 B  REGISTER DTHRCTL (rw): OTG_HS Device threshold control register
-0x40080830 C   FIELD 00w01 NONISOTHREN: Nonisochronous IN endpoints threshold enable
-0x40080830 C   FIELD 01w01 ISOTHREN: ISO IN endpoint threshold enable
-0x40080830 C   FIELD 02w09 TXTHRLEN: Transmit threshold length
-0x40080830 C   FIELD 16w01 RXTHREN: Receive threshold enable
-0x40080830 C   FIELD 17w09 RXTHRLEN: Receive threshold length
-0x40080830 C   FIELD 27w01 ARPEN: Arbiter parking enable
-0x40080834 B  REGISTER DIEPEMPMSK (rw): OTG_HS device IN endpoint FIFO empty interrupt mask register
-0x40080834 C   FIELD 00w16 INEPTXFEM: IN EP Tx FIFO empty interrupt mask bits
-0x40080838 B  REGISTER DEACHINT (rw): OTG_HS device each endpoint interrupt register
-0x40080838 C   FIELD 01w01 IEP1INT: IN endpoint 1interrupt bit
-0x40080838 C   FIELD 17w01 OEP1INT: OUT endpoint 1 interrupt bit
-0x4008083C B  REGISTER DEACHINTMSK (rw): OTG_HS device each endpoint interrupt register mask
-0x4008083C C   FIELD 01w01 IEP1INTM: IN Endpoint 1 interrupt mask bit
-0x4008083C C   FIELD 17w01 OEP1INTM: OUT Endpoint 1 interrupt mask bit
-0x40080844 B  REGISTER DIEPEACHMSK1 (rw): 
-0x40080844 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
-0x40080844 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
-0x40080844 C   FIELD 02w01 AHBERRM: AHB error mask
-0x40080844 C   FIELD 03w01 TOM: Timeout condition mask (Non-isochronous endpoints)
-0x40080844 C   FIELD 04w01 ITTXFEMSK: IN token received when TxFIFO empty mask
-0x40080844 C   FIELD 06w01 INEPNEM: IN endpoint NAK effective mask
-0x40080844 C   FIELD 08w01 TXFURM: FIFO underrun mask
-0x40080844 C   FIELD 09w01 BNAM: BNA interrupt mask
-0x40080844 C   FIELD 13w01 NAKM: NAK interrupt mask
-0x40080884 B  REGISTER DOEPEACHMSK1 (rw): 
-0x40080884 C   FIELD 00w01 XFRCM: Transfer completed interrupt mask
-0x40080884 C   FIELD 01w01 EPDM: Endpoint disabled interrupt mask
-0x40080884 C   FIELD 02w01 AHBERRM: AHB error mask
-0x40080884 C   FIELD 03w01 STUPM: SETUP phase done mask
-0x40080884 C   FIELD 04w01 OTEPDM: OUT token received when endpoint disabled mask
-0x40080884 C   FIELD 06w01 B2BSTUPM: Back-to-back SETUP packets received mask
-0x40080884 C   FIELD 08w01 OUTPKTERRM: Out packet error mask
-0x40080884 C   FIELD 09w01 BNAM: BNA interrupt mask
-0x40080884 C   FIELD 12w01 BERRM: Babble error interrupt mask
-0x40080884 C   FIELD 13w01 NAKMSK: NAK interrupt mask
-0x40080884 C   FIELD 14w01 NYETMSK: NYET interrupt mask
-0x40080900 B  CLUSTER DIEP0: Device IN endpoint 0
-0x40080900 B  REGISTER CTL: OTG device endpoint-0 control register
-0x40080900 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080900 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080900 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x40080900 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080900 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080900 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080900 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x40080900 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080900 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080900 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x40080900 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080900 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080900 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080908 B  REGISTER INT: OTG device endpoint-0 interrupt register
-0x40080908 C   FIELD 00w01 XFRC (rw): Transfer completed interrupt
-0x40080908 C   FIELD 01w01 EPDISD (rw): Endpoint disabled interrupt
-0x40080908 C   FIELD 03w01 TOC (rw): Timeout condition
-0x40080908 C   FIELD 04w01 ITTXFE (rw): IN token received when TxFIFO is empty
-0x40080908 C   FIELD 06w01 INEPNE (rw): IN endpoint NAK effective
-0x40080908 C   FIELD 07w01 TXFE (ro): Transmit FIFO empty
-0x40080908 C   FIELD 08w01 TXFIFOUDRN (rw): Transmit Fifo Underrun
-0x40080908 C   FIELD 09w01 BNA (rw): Buffer not available interrupt
-0x40080908 C   FIELD 11w01 PKTDRPSTS (rw): Packet dropped status
-0x40080908 C   FIELD 12w01 BERR (rw): Babble error interrupt
-0x40080908 C   FIELD 13w01 NAK (rw): NAK interrupt
-0x40080910 B  REGISTER TSIZ (rw): OTG_HS device IN endpoint 0 transfer size register
-0x40080910 C   FIELD 00w07 XFRSIZ: Transfer size
-0x40080910 C   FIELD 19w02 PKTCNT: Packet count
-0x40080914 B  REGISTER DMA (rw): OTG_HS device endpoint-0 DMA address register
-0x40080914 C   FIELD 00w32 DMAADDR: DMA address
-0x40080918 B  REGISTER TXFSTS (ro): OTG_HS device IN endpoint transmit FIFO status register
-0x40080918 C   FIELD 00w16 INEPTFSAV: IN endpoint TxFIFO space avail
-0x40080920 B  CLUSTER DIEP1: Device IN endpoint X
-0x40080920 B  REGISTER CTL1: OTG device endpoint-1 control register
-0x40080920 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080920 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080920 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x40080920 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080920 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080920 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080920 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x40080920 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080920 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080920 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x40080920 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080920 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080920 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080928 B  REGISTER INT1 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x40080930 B  REGISTER TSIZ1 (rw): OTG_HS device endpoint transfer size register
-0x40080930 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080930 C   FIELD 19w10 PKTCNT: Packet count
-0x40080930 C   FIELD 29w02 MCNT: Multi count
-0x40080934 B  REGISTER DMA1 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080938 B  REGISTER TXFSTS1 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x40080940 B  CLUSTER DIEP2: Device IN endpoint X
-0x40080940 B  REGISTER CTL2: OTG device endpoint-1 control register
-0x40080940 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080940 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080940 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x40080940 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080940 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080940 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080940 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x40080940 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080940 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080940 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x40080940 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080940 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080940 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080948 B  REGISTER INT2 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x40080950 B  REGISTER TSIZ2 (rw): OTG_HS device endpoint transfer size register
-0x40080950 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080950 C   FIELD 19w10 PKTCNT: Packet count
-0x40080950 C   FIELD 29w02 MCNT: Multi count
-0x40080954 B  REGISTER DMA2 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080958 B  REGISTER TXFSTS2 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x40080960 B  CLUSTER DIEP3: Device IN endpoint X
-0x40080960 B  REGISTER CTL3: OTG device endpoint-1 control register
-0x40080960 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080960 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080960 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x40080960 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080960 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080960 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080960 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x40080960 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080960 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080960 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x40080960 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080960 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080960 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080968 B  REGISTER INT3 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x40080970 B  REGISTER TSIZ3 (rw): OTG_HS device endpoint transfer size register
-0x40080970 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080970 C   FIELD 19w10 PKTCNT: Packet count
-0x40080970 C   FIELD 29w02 MCNT: Multi count
-0x40080974 B  REGISTER DMA3 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080978 B  REGISTER TXFSTS3 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x40080980 B  CLUSTER DIEP4: Device IN endpoint X
-0x40080980 B  REGISTER CTL4: OTG device endpoint-1 control register
-0x40080980 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080980 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080980 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x40080980 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080980 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080980 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080980 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x40080980 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080980 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080980 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x40080980 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080980 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080980 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080988 B  REGISTER INT4 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x40080990 B  REGISTER TSIZ4 (rw): OTG_HS device endpoint transfer size register
-0x40080990 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080990 C   FIELD 19w10 PKTCNT: Packet count
-0x40080990 C   FIELD 29w02 MCNT: Multi count
-0x40080994 B  REGISTER DMA4 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080998 B  REGISTER TXFSTS4 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x400809A0 B  CLUSTER DIEP5: Device IN endpoint X
-0x400809A0 B  REGISTER CTL5: OTG device endpoint-1 control register
-0x400809A0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x400809A0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x400809A0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x400809A0 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x400809A0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400809A0 C   FIELD 21w01 STALL (rw): STALL handshake
-0x400809A0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x400809A0 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x400809A0 C   FIELD 27w01 SNAK (wo): Set NAK
-0x400809A0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x400809A0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x400809A0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x400809A0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400809A8 B  REGISTER INT5 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x400809B0 B  REGISTER TSIZ5 (rw): OTG_HS device endpoint transfer size register
-0x400809B0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400809B0 C   FIELD 19w10 PKTCNT: Packet count
-0x400809B0 C   FIELD 29w02 MCNT: Multi count
-0x400809B4 B  REGISTER DMA5 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x400809B8 B  REGISTER TXFSTS5 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x400809C0 B  CLUSTER DIEP6: Device IN endpoint X
-0x400809C0 B  REGISTER CTL6: OTG device endpoint-1 control register
-0x400809C0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x400809C0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x400809C0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x400809C0 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x400809C0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400809C0 C   FIELD 21w01 STALL (rw): STALL handshake
-0x400809C0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x400809C0 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x400809C0 C   FIELD 27w01 SNAK (wo): Set NAK
-0x400809C0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x400809C0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x400809C0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x400809C0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400809C8 B  REGISTER INT6 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x400809D0 B  REGISTER TSIZ6 (rw): OTG_HS device endpoint transfer size register
-0x400809D0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400809D0 C   FIELD 19w10 PKTCNT: Packet count
-0x400809D0 C   FIELD 29w02 MCNT: Multi count
-0x400809D4 B  REGISTER DMA6 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x400809D8 B  REGISTER TXFSTS6 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x400809E0 B  CLUSTER DIEP7: Device IN endpoint X
-0x400809E0 B  REGISTER CTL7: OTG device endpoint-1 control register
-0x400809E0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x400809E0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x400809E0 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x400809E0 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x400809E0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x400809E0 C   FIELD 21w01 STALL (rw): STALL handshake
-0x400809E0 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x400809E0 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x400809E0 C   FIELD 27w01 SNAK (wo): Set NAK
-0x400809E0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x400809E0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x400809E0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x400809E0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x400809E8 B  REGISTER INT7 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x400809F0 B  REGISTER TSIZ7 (rw): OTG_HS device endpoint transfer size register
-0x400809F0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x400809F0 C   FIELD 19w10 PKTCNT: Packet count
-0x400809F0 C   FIELD 29w02 MCNT: Multi count
-0x400809F4 B  REGISTER DMA7 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x400809F8 B  REGISTER TXFSTS7 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x40080A00 B  CLUSTER DIEP8: Device IN endpoint X
-0x40080A00 B  REGISTER CTL8: OTG device endpoint-1 control register
-0x40080A00 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080A00 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080A00 C   FIELD 16w01 EONUM_DPID (ro): Even/odd frame
-0x40080A00 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080A00 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080A00 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080A00 C   FIELD 22w04 TXFNUM (rw): TxFIFO number
-0x40080A00 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080A00 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080A00 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID
-0x40080A00 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080A00 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080A00 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080A08 B  REGISTER INT8 (=OTG1_HS_DEVICE.DIEP0.INT): OTG device endpoint-1 interrupt register
-0x40080A10 B  REGISTER TSIZ8 (rw): OTG_HS device endpoint transfer size register
-0x40080A10 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080A10 C   FIELD 19w10 PKTCNT: Packet count
-0x40080A10 C   FIELD 29w02 MCNT: Multi count
-0x40080A14 B  REGISTER DMA8 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080A18 B  REGISTER TXFSTS8 (=OTG1_HS_DEVICE.DIEP0.TXFSTS): OTG_HS device IN endpoint transmit FIFO status register
-0x40080B00 B  CLUSTER DOEP0: Device OUT endpoint 0
-0x40080B00 B  REGISTER CTL: OTG_HS device control OUT endpoint 0 control register
-0x40080B00 C   FIELD 00w02 MPSIZ (ro): Maximum packet size
-0x40080B00 C   FIELD 15w01 USBAEP (ro): USB active endpoint
-0x40080B00 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080B00 C   FIELD 18w02 EPTYP (ro): Endpoint type
-0x40080B00 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B00 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080B00 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080B00 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080B00 C   FIELD 30w01 EPDIS (ro): Endpoint disable
-0x40080B00 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B08 B  REGISTER INT (rw): OTG_HS device endpoint-0 interrupt register
-0x40080B08 C   FIELD 00w01 XFRC: Transfer completed interrupt
-0x40080B08 C   FIELD 01w01 EPDISD: Endpoint disabled interrupt
-0x40080B08 C   FIELD 03w01 STUP: SETUP phase done
-0x40080B08 C   FIELD 04w01 OTEPDIS: OUT token received when endpoint disabled
-0x40080B08 C   FIELD 06w01 B2BSTUP: Back-to-back SETUP packets received
-0x40080B08 C   FIELD 14w01 NYET: NYET interrupt
-0x40080B10 B  REGISTER TSIZ (rw): OTG_HS device endpoint-0 transfer size register
-0x40080B10 C   FIELD 00w07 XFRSIZ: Transfer size
-0x40080B10 C   FIELD 19w01 PKTCNT: Packet count
-0x40080B10 C   FIELD 29w02 STUPCNT: SETUP packet count
-0x40080B14 B  REGISTER DMA (rw): OTG_HS device endpoint-0 DMA address register
-0x40080B14 C   FIELD 00w32 DMAADDR: DMA address
-0x40080B20 B  CLUSTER DOEP1: Device IN endpoint X
-0x40080B20 B  REGISTER CTL1: OTG device endpoint-1 control register
-0x40080B20 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080B20 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080B20 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080B20 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080B20 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080B20 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B20 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080B20 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080B20 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080B20 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080B20 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080B20 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080B20 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B28 B  REGISTER INT1 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080B30 B  REGISTER TSIZ1 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080B30 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080B30 C   FIELD 19w10 PKTCNT: Packet count
-0x40080B30 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B34 B  REGISTER DMA1 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080B40 B  CLUSTER DOEP2: Device IN endpoint X
-0x40080B40 B  REGISTER CTL2: OTG device endpoint-1 control register
-0x40080B40 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080B40 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080B40 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080B40 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080B40 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080B40 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B40 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080B40 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080B40 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080B40 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080B40 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080B40 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080B40 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B48 B  REGISTER INT2 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080B50 B  REGISTER TSIZ2 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080B50 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080B50 C   FIELD 19w10 PKTCNT: Packet count
-0x40080B50 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B54 B  REGISTER DMA2 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080B60 B  CLUSTER DOEP3: Device IN endpoint X
-0x40080B60 B  REGISTER CTL3: OTG device endpoint-1 control register
-0x40080B60 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080B60 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080B60 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080B60 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080B60 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080B60 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B60 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080B60 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080B60 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080B60 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080B60 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080B60 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080B60 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B68 B  REGISTER INT3 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080B70 B  REGISTER TSIZ3 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080B70 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080B70 C   FIELD 19w10 PKTCNT: Packet count
-0x40080B70 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B74 B  REGISTER DMA3 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080B80 B  CLUSTER DOEP4: Device IN endpoint X
-0x40080B80 B  REGISTER CTL4: OTG device endpoint-1 control register
-0x40080B80 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080B80 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080B80 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080B80 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080B80 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080B80 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080B80 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080B80 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080B80 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080B80 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080B80 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080B80 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080B80 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080B88 B  REGISTER INT4 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080B90 B  REGISTER TSIZ4 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080B90 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080B90 C   FIELD 19w10 PKTCNT: Packet count
-0x40080B90 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080B94 B  REGISTER DMA4 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080BA0 B  CLUSTER DOEP5: Device IN endpoint X
-0x40080BA0 B  REGISTER CTL5: OTG device endpoint-1 control register
-0x40080BA0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080BA0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080BA0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080BA0 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080BA0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080BA0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080BA0 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080BA0 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080BA0 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080BA0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080BA0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080BA0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080BA0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080BA8 B  REGISTER INT5 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080BB0 B  REGISTER TSIZ5 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080BB0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080BB0 C   FIELD 19w10 PKTCNT: Packet count
-0x40080BB0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080BB4 B  REGISTER DMA5 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080BC0 B  CLUSTER DOEP6: Device IN endpoint X
-0x40080BC0 B  REGISTER CTL6: OTG device endpoint-1 control register
-0x40080BC0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080BC0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080BC0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080BC0 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080BC0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080BC0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080BC0 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080BC0 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080BC0 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080BC0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080BC0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080BC0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080BC0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080BC8 B  REGISTER INT6 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080BD0 B  REGISTER TSIZ6 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080BD0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080BD0 C   FIELD 19w10 PKTCNT: Packet count
-0x40080BD0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080BD4 B  REGISTER DMA6 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080BE0 B  CLUSTER DOEP7: Device IN endpoint X
-0x40080BE0 B  REGISTER CTL7: OTG device endpoint-1 control register
-0x40080BE0 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080BE0 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080BE0 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080BE0 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080BE0 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080BE0 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080BE0 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080BE0 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080BE0 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080BE0 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080BE0 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080BE0 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080BE0 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080BE8 B  REGISTER INT7 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080BF0 B  REGISTER TSIZ7 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080BF0 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080BF0 C   FIELD 19w10 PKTCNT: Packet count
-0x40080BF0 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080BF4 B  REGISTER DMA7 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080C00 B  CLUSTER DOEP8: Device IN endpoint X
-0x40080C00 B  REGISTER CTL8: OTG device endpoint-1 control register
-0x40080C00 C   FIELD 00w11 MPSIZ (rw): Maximum packet size
-0x40080C00 C   FIELD 15w01 USBAEP (rw): USB active endpoint
-0x40080C00 C   FIELD 16w01 EONUM_DPID (ro): Even odd frame/Endpoint data PID
-0x40080C00 C   FIELD 17w01 NAKSTS (ro): NAK status
-0x40080C00 C   FIELD 18w02 EPTYP (rw): Endpoint type
-0x40080C00 C   FIELD 20w01 SNPM (rw): Snoop mode
-0x40080C00 C   FIELD 21w01 STALL (rw): STALL handshake
-0x40080C00 C   FIELD 26w01 CNAK (wo): Clear NAK
-0x40080C00 C   FIELD 27w01 SNAK (wo): Set NAK
-0x40080C00 C   FIELD 28w01 SD0PID_SEVNFRM (wo): Set DATA0 PID/Set even frame
-0x40080C00 C   FIELD 29w01 SODDFRM (wo): Set odd frame
-0x40080C00 C   FIELD 30w01 EPDIS (rw): Endpoint disable
-0x40080C00 C   FIELD 31w01 EPENA (rw): Endpoint enable
-0x40080C08 B  REGISTER INT8 (=OTG1_HS_DEVICE.DIEP0.INT): OTG_HS device endpoint-1 interrupt register
-0x40080C10 B  REGISTER TSIZ8 (rw): OTG_HS device endpoint-1 transfer size register
-0x40080C10 C   FIELD 00w19 XFRSIZ: Transfer size
-0x40080C10 C   FIELD 19w10 PKTCNT: Packet count
-0x40080C10 C   FIELD 29w02 RXDPID_STUPCNT: Received data PID/SETUP packet count
-0x40080C14 B  REGISTER DMA8 (=OTG1_HS_DEVICE.DIEP0.DMA): OTG_HS device endpoint-1 DMA address register
-0x40080E00 A PERIPHERAL OTG2_HS_PWRCLK
-0x40080E00 B  REGISTER PCGCR (rw): Power and clock gating control register
-0x40080E00 C   FIELD 00w01 STPPCLK: Stop PHY clock
-0x40080E00 C   FIELD 01w01 GATEHCLK: Gate HCLK
-0x40080E00 C   FIELD 04w01 PHYSUSP: PHY suspended
 0x48020000 A PERIPHERAL DCMI
 0x48020000 B  REGISTER CR (rw): control register 1
 0x48020000 C   FIELD 00w01 CAPTURE: Capture enable
@@ -11826,42 +10532,6 @@
 0x48023070 C   FIELD 00w32 FDATAH: Failing data high (64-bit memory)
 0x48023074 B  REGISTER FECR3 (ro): RAMECC monitor x failing ECC error code register
 0x48023074 C   FIELD 00w32 FEC: Failing error code
-0x48023080 B  CLUSTER M4: Cluster M4, containing M?CR, M?SR, M?FAR, M?FDRL, M?FDRH, M?FECR
-0x48023080 B  REGISTER CR4 (rw): RAMECC monitor x configuration register
-0x48023080 C   FIELD 02w01 ECCSEIE: ECC single error interrupt enable
-0x48023080 C   FIELD 03w01 ECCDEIE: ECC double error interrupt enable
-0x48023080 C   FIELD 04w01 ECCDEBWIE: ECC double error on byte write (BW) interrupt enable
-0x48023080 C   FIELD 05w01 ECCELEN: ECC error latching enable
-0x48023084 B  REGISTER SR4 (rw): RAMECC monitor x status register
-0x48023084 C   FIELD 00w01 SEDCF: ECC single error detected and corrected flag
-0x48023084 C   FIELD 01w01 DEDF: ECC double error detected flag
-0x48023084 C   FIELD 02w01 DEBWDF: ECC double error on byte write (BW) detected flag
-0x48023088 B  REGISTER FAR4 (ro): RAMECC monitor x failing address register
-0x48023088 C   FIELD 00w32 FADD: ECC error failing address
-0x4802308C B  REGISTER FDRL4 (ro): RAMECC monitor x failing data low register
-0x4802308C C   FIELD 00w32 FDATAL: Failing data low
-0x48023090 B  REGISTER FDRH4 (ro): RAMECC monitor x failing data high register
-0x48023090 C   FIELD 00w32 FDATAH: Failing data high (64-bit memory)
-0x48023094 B  REGISTER FECR4 (ro): RAMECC monitor x failing ECC error code register
-0x48023094 C   FIELD 00w32 FEC: Failing error code
-0x480230A0 B  CLUSTER M5: Cluster M5, containing M?CR, M?SR, M?FAR, M?FDRL, M?FDRH, M?FECR
-0x480230A0 B  REGISTER CR5 (rw): RAMECC monitor x configuration register
-0x480230A0 C   FIELD 02w01 ECCSEIE: ECC single error interrupt enable
-0x480230A0 C   FIELD 03w01 ECCDEIE: ECC double error interrupt enable
-0x480230A0 C   FIELD 04w01 ECCDEBWIE: ECC double error on byte write (BW) interrupt enable
-0x480230A0 C   FIELD 05w01 ECCELEN: ECC error latching enable
-0x480230A4 B  REGISTER SR5 (rw): RAMECC monitor x status register
-0x480230A4 C   FIELD 00w01 SEDCF: ECC single error detected and corrected flag
-0x480230A4 C   FIELD 01w01 DEDF: ECC double error detected flag
-0x480230A4 C   FIELD 02w01 DEBWDF: ECC double error on byte write (BW) detected flag
-0x480230A8 B  REGISTER FAR5 (ro): RAMECC monitor x failing address register
-0x480230A8 C   FIELD 00w32 FADD: ECC error failing address
-0x480230AC B  REGISTER FDRL5 (ro): RAMECC monitor x failing data low register
-0x480230AC C   FIELD 00w32 FDATAL: Failing data low
-0x480230B0 B  REGISTER FDRH5 (ro): RAMECC monitor x failing data high register
-0x480230B0 C   FIELD 00w32 FDATAH: Failing data high (64-bit memory)
-0x480230B4 B  REGISTER FECR5 (ro): RAMECC monitor x failing ECC error code register
-0x480230B4 C   FIELD 00w32 FEC: Failing error code
 0x48024000 A PERIPHERAL FMAC
 0x48024000 B  REGISTER X1BUFCFG: FMAC X1 buffer configuration register
 0x48024000 C   FIELD 00w08 X1_BASE (rw): Base address of X1 buffer
@@ -14089,42 +12759,6 @@
 0x52009070 C   FIELD 00w32 FDATAH: Failing data high (64-bit memory)
 0x52009074 B  REGISTER FECR3 (ro): RAMECC monitor x failing ECC error code register
 0x52009074 C   FIELD 00w32 FEC: Failing error code
-0x52009080 B  CLUSTER M4: Cluster M4, containing M?CR, M?SR, M?FAR, M?FDRL, M?FDRH, M?FECR
-0x52009080 B  REGISTER CR4 (rw): RAMECC monitor x configuration register
-0x52009080 C   FIELD 02w01 ECCSEIE: ECC single error interrupt enable
-0x52009080 C   FIELD 03w01 ECCDEIE: ECC double error interrupt enable
-0x52009080 C   FIELD 04w01 ECCDEBWIE: ECC double error on byte write (BW) interrupt enable
-0x52009080 C   FIELD 05w01 ECCELEN: ECC error latching enable
-0x52009084 B  REGISTER SR4 (rw): RAMECC monitor x status register
-0x52009084 C   FIELD 00w01 SEDCF: ECC single error detected and corrected flag
-0x52009084 C   FIELD 01w01 DEDF: ECC double error detected flag
-0x52009084 C   FIELD 02w01 DEBWDF: ECC double error on byte write (BW) detected flag
-0x52009088 B  REGISTER FAR4 (ro): RAMECC monitor x failing address register
-0x52009088 C   FIELD 00w32 FADD: ECC error failing address
-0x5200908C B  REGISTER FDRL4 (ro): RAMECC monitor x failing data low register
-0x5200908C C   FIELD 00w32 FDATAL: Failing data low
-0x52009090 B  REGISTER FDRH4 (ro): RAMECC monitor x failing data high register
-0x52009090 C   FIELD 00w32 FDATAH: Failing data high (64-bit memory)
-0x52009094 B  REGISTER FECR4 (ro): RAMECC monitor x failing ECC error code register
-0x52009094 C   FIELD 00w32 FEC: Failing error code
-0x520090A0 B  CLUSTER M5: Cluster M5, containing M?CR, M?SR, M?FAR, M?FDRL, M?FDRH, M?FECR
-0x520090A0 B  REGISTER CR5 (rw): RAMECC monitor x configuration register
-0x520090A0 C   FIELD 02w01 ECCSEIE: ECC single error interrupt enable
-0x520090A0 C   FIELD 03w01 ECCDEIE: ECC double error interrupt enable
-0x520090A0 C   FIELD 04w01 ECCDEBWIE: ECC double error on byte write (BW) interrupt enable
-0x520090A0 C   FIELD 05w01 ECCELEN: ECC error latching enable
-0x520090A4 B  REGISTER SR5 (rw): RAMECC monitor x status register
-0x520090A4 C   FIELD 00w01 SEDCF: ECC single error detected and corrected flag
-0x520090A4 C   FIELD 01w01 DEDF: ECC double error detected flag
-0x520090A4 C   FIELD 02w01 DEBWDF: ECC double error on byte write (BW) detected flag
-0x520090A8 B  REGISTER FAR5 (ro): RAMECC monitor x failing address register
-0x520090A8 C   FIELD 00w32 FADD: ECC error failing address
-0x520090AC B  REGISTER FDRL5 (ro): RAMECC monitor x failing data low register
-0x520090AC C   FIELD 00w32 FDATAL: Failing data low
-0x520090B0 B  REGISTER FDRH5 (ro): RAMECC monitor x failing data high register
-0x520090B0 C   FIELD 00w32 FDATAH: Failing data high (64-bit memory)
-0x520090B4 B  REGISTER FECR5 (ro): RAMECC monitor x failing ECC error code register
-0x520090B4 C   FIELD 00w32 FEC: Failing error code
 0x5200A000 A PERIPHERAL OCTOSPI2
 0x5200A000 B  REGISTER CR (rw): control register
 0x5200A000 C   FIELD 00w01 EN: Enable
@@ -14289,9 +12923,9 @@
 0x5200B800 A PERIPHERAL OTFDEC1
 0x5200B820 B  REGISTER R1CFGR: OTFDEC region 1 configuration register
 0x5200B820 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200B820 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200B820 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200B820 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200B820 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200B820 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200B820 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200B820 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B820 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200B824 B  REGISTER R1STARTADDR: OTFDEC region 1 start address register
@@ -14312,9 +12946,9 @@
 0x5200B840 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200B850 B  REGISTER R2CFGR: OTFDEC region 2 configuration register
 0x5200B850 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200B850 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200B850 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200B850 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200B850 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200B850 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200B850 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200B850 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B850 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200B854 B  REGISTER R2STARTADDR: OTFDEC region 2 start address register
@@ -14335,9 +12969,9 @@
 0x5200B870 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200B880 B  REGISTER R3CFGR: OTFDEC region 3 configuration register
 0x5200B880 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200B880 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200B880 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200B880 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200B880 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200B880 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200B880 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200B880 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B880 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200B884 B  REGISTER R3STARTADDR: OTFDEC region 3 start address register
@@ -14358,9 +12992,9 @@
 0x5200B8A0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200B8B0 B  REGISTER R4CFGR: OTFDEC region 4 configuration register
 0x5200B8B0 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200B8B0 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200B8B0 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200B8B0 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200B8B0 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200B8B0 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200B8B0 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200B8B0 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200B8B0 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200B8B4 B  REGISTER R4STARTADDR: OTFDEC region 4 start address register
@@ -14380,9 +13014,9 @@
 0x5200B8D0 B  REGISTER R4KEYR3: OTFDEC region 4 key register 3
 0x5200B8D0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200BB00 B  REGISTER ISR: OTFDEC interrupt status register
-0x5200BB00 C   FIELD 00w01 SEIF (ro): Security Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when at least one security error has been detected (illegal access to keys, illegal write on locked configuration). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
-0x5200BB00 C   FIELD 01w01 XONEIF (ro): Execute-only execute-Never Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access and not an instruction fetch is detected on any encrypted region with MODE bits set to 00 or 11. It is also set when an instruction fetch and not a read access is detected on any encrypted region with MODE bits set to 01. Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
-0x5200BB00 C   FIELD 02w01 KEIF (ro): Key Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access occurs on any encrypted region following the reset of the key registers by an abort event (tamper detection, unauthorized debugger connection, untrusted boot, RDP level regression). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”. After KEIF is set any subsequent read to any enabled encrypted region returns a zeroed value. This state remains until OTFDEC keys are initialized again.
+0x5200BB00 C   FIELD 00w01 SEIF (ro): Security Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when at least one security error has been detected (illegal access to keys, illegal write on locked configuration). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to '1'.
+0x5200BB00 C   FIELD 01w01 XONEIF (ro): Execute-only execute-Never Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access and not an instruction fetch is detected on any encrypted region with MODE bits set to 00 or 11. It is also set when an instruction fetch and not a read access is detected on any encrypted region with MODE bits set to 01. Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to '1'.
+0x5200BB00 C   FIELD 02w01 KEIF (ro): Key Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access occurs on any encrypted region following the reset of the key registers by an abort event (tamper detection, unauthorized debugger connection, untrusted boot, RDP level regression). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to '1'. After KEIF is set any subsequent read to any enabled encrypted region returns a zeroed value. This state remains until OTFDEC keys are initialized again.
 0x5200BB04 B  REGISTER ICR: OTFDEC interrupt clear register
 0x5200BB04 C   FIELD 00w01 SEIF (wo): Security Error Interrupt Flag clear This bit is written by application, and always reads as 0.
 0x5200BB04 C   FIELD 01w01 XONEIF (wo): Execute-only execute-Never Error Interrupt Flag clear This bit is written by application, and always reads as 0.
@@ -14394,9 +13028,9 @@
 0x5200BC00 A PERIPHERAL OTFDEC2
 0x5200BC20 B  REGISTER R1CFGR: OTFDEC region 1 configuration register
 0x5200BC20 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200BC20 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200BC20 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200BC20 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200BC20 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200BC20 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200BC20 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200BC20 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BC20 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200BC24 B  REGISTER R1STARTADDR: OTFDEC region 1 start address register
@@ -14417,9 +13051,9 @@
 0x5200BC40 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200BC50 B  REGISTER R2CFGR: OTFDEC region 2 configuration register
 0x5200BC50 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200BC50 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200BC50 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200BC50 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200BC50 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200BC50 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200BC50 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200BC50 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BC50 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200BC54 B  REGISTER R2STARTADDR: OTFDEC region 2 start address register
@@ -14440,9 +13074,9 @@
 0x5200BC70 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200BC80 B  REGISTER R3CFGR: OTFDEC region 3 configuration register
 0x5200BC80 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200BC80 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200BC80 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200BC80 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200BC80 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200BC80 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200BC80 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200BC80 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BC80 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200BC84 B  REGISTER R3STARTADDR: OTFDEC region 3 start address register
@@ -14463,9 +13097,9 @@
 0x5200BCA0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200BCB0 B  REGISTER R4CFGR: OTFDEC region 4 configuration register
 0x5200BCB0 C   FIELD 00w01 REG_EN (rw): region on-the-fly decryption enable Note: When this bit is set region context (version, key, nonce) must be valid or garbage will be decrypted.
-0x5200BCB0 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to “0” if OTFDEC is reset. Setting this bit forces KEYLOCK bit to “1”.
-0x5200BCB0 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to “0” if the OTFDEC is reset.
-0x5200BCB0 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region’s key and associated CRC are zeroed.
+0x5200BCB0 C   FIELD 01w01 CONFIGLOCK (rw): region config lock This bit-field is set once, i.e. if this bit is set it can only be reset to '0' if OTFDEC is reset. Setting this bit forces KEYLOCK bit to '1'.
+0x5200BCB0 C   FIELD 02w01 KEYLOCK (rw): region key lock This bitfield is set once, i.e. if this bit is set it can only be reset to '0' if the OTFDEC is reset.
+0x5200BCB0 C   FIELD 04w02 MODE (rw): operating mode This bitfield selects the OTFDEC operating mode for this region: When MODE is not equal to 11 the standard AES encryption mode is activated. When either of the MODE bits are changed the region's key and associated CRC are zeroed.
 0x5200BCB0 C   FIELD 08w08 KEYCRC (ro): region key 8-bit CRC When KEYLOCK=0, KEYCRC bitfield is automatically computed by hardware while loading the key of this region in this exact sequence: KEYR0 then KEYR1 then KEYR2 then finally KEYR3 (all written once). A new computation starts as soon as a new valid sequence is initiated, and KEYCRC is read as zero until a valid sequence is completed. When KEYLOCK=1, KEYCRC remains unchanged until the next reset. CRC computation is an 8-bit checksum using the standard CRC-8-CCITT algorithm X8 + X2 + X + 1 (according the convention). Source code is available in this manual. This field is read only. Note: CRC information is updated only after the last bit of the key has been written.
 0x5200BCB0 C   FIELD 16w16 REGx_VERSION (rw): region firmware version This 16-bit bitfield must be correctly initialized before the region corresponding REG_EN bit is set in the RxCFGR register.
 0x5200BCB4 B  REGISTER R4STARTADDR: OTFDEC region 4 start address register
@@ -14485,9 +13119,9 @@
 0x5200BCD0 B  REGISTER R4KEYR3: OTFDEC region 4 key register 3
 0x5200BCD0 C   FIELD 00w32 REGx_KEY (wo): Region key, bits [127:96] Refer to the OTFDEC_RxKEYR0 register for description of the KEY[127:0] bitfield.
 0x5200BF00 B  REGISTER ISR: OTFDEC interrupt status register
-0x5200BF00 C   FIELD 00w01 SEIF (ro): Security Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when at least one security error has been detected (illegal access to keys, illegal write on locked configuration). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
-0x5200BF00 C   FIELD 01w01 XONEIF (ro): Execute-only execute-Never Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access and not an instruction fetch is detected on any encrypted region with MODE bits set to 00 or 11. It is also set when an instruction fetch and not a read access is detected on any encrypted region with MODE bits set to 01. Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”.
-0x5200BF00 C   FIELD 02w01 KEIF (ro): Key Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access occurs on any encrypted region following the reset of the key registers by an abort event (tamper detection, unauthorized debugger connection, untrusted boot, RDP level regression). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to “1”. After KEIF is set any subsequent read to any enabled encrypted region returns a zeroed value. This state remains until OTFDEC keys are initialized again.
+0x5200BF00 C   FIELD 00w01 SEIF (ro): Security Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when at least one security error has been detected (illegal access to keys, illegal write on locked configuration). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to '1'.
+0x5200BF00 C   FIELD 01w01 XONEIF (ro): Execute-only execute-Never Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access and not an instruction fetch is detected on any encrypted region with MODE bits set to 00 or 11. It is also set when an instruction fetch and not a read access is detected on any encrypted region with MODE bits set to 01. Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to '1'.
+0x5200BF00 C   FIELD 02w01 KEIF (ro): Key Error Interrupt Flag status This bit is set by hardware and read only by application. Bit is set when a read access occurs on any encrypted region following the reset of the key registers by an abort event (tamper detection, unauthorized debugger connection, untrusted boot, RDP level regression). Bit is cleared when application sets in OTFDEC_ICR the corresponding bit to '1'. After KEIF is set any subsequent read to any enabled encrypted region returns a zeroed value. This state remains until OTFDEC keys are initialized again.
 0x5200BF04 B  REGISTER ICR: OTFDEC interrupt clear register
 0x5200BF04 C   FIELD 00w01 SEIF (wo): Security Error Interrupt Flag clear This bit is written by application, and always reads as 0.
 0x5200BF04 C   FIELD 01w01 XONEIF (wo): Execute-only execute-Never Error Interrupt Flag clear This bit is written by application, and always reads as 0.
@@ -16620,14 +15254,14 @@
 0x58024400 C   FIELD 27w01 PLL2RDY: PLL2 clock ready flag
 0x58024400 C   FIELD 28w01 PLL3ON: PLL3 enable
 0x58024400 C   FIELD 29w01 PLL3RDY: PLL3 clock ready flag
-0x58024404 B  REGISTER HSICFGR: RCC HSI calibration register
+0x58024404 B  REGISTER HSICFGR: RCC HSI configuration register
 0x58024404 C   FIELD 00w12 HSICAL (ro): HSI clock calibration Set by hardware by option byte loading during system reset nreset. Adjusted by software through trimming bits HSITRIM. This field represents the sum of engineering option byte calibration value and HSITRIM bits value.
-0x58024404 C   FIELD 24w07 HSITRIM (rw): HSI clock trimming Set by software to adjust calibration. HSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_HSI_opt) in order to form the calibration trimming value. HSICALÂ =Â HSITRIMÂ +Â FLASH_HSI_opt. Note: The reset value of the field is 0x40.
+0x58024404 C   FIELD 24w07 HSITRIM (rw): HSI clock trimming Set by software to adjust calibration. HSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_HSI_opt) in order to form the calibration trimming value. HSICAL=HSITRIM+FLASH_HSI_opt. Note: The reset value of the field is 0x40.
 0x58024408 B  REGISTER CRRCR: RCC clock recovery RC register
 0x58024408 C   FIELD 00w10 HSI48CAL (ro): Internal RC 48 MHz clock calibration Set by hardware by option byte loading during system reset nreset. Read-only.
-0x5802440C B  REGISTER CSICFGR: RCC CSI calibration register
+0x5802440C B  REGISTER CSICFGR: RCC CSI configuration register
 0x5802440C C   FIELD 00w10 CSICAL (ro): CSI clock calibration Set by hardware by option byte loading during system reset nreset. Adjusted by software through trimming bits CSITRIM. This field represents the sum of engineering option byte calibration value and CSITRIM bits value.
-0x5802440C C   FIELD 24w06 CSITRIM (rw): CSI clock trimming Set by software to adjust calibration. CSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_CSI_opt) in order to form the calibration trimming value. CSICALÂ =Â CSITRIMÂ +Â FLASH_CSI_opt. Note: The reset value of the field is 0x20.
+0x5802440C C   FIELD 24w06 CSITRIM (rw): CSI clock trimming Set by software to adjust calibration. CSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_CSI_opt) in order to form the calibration trimming value. CSICAL=CSITRIM+FLASH_CSI_opt. Note: The reset value of the field is 0x20.
 0x58024410 B  REGISTER CFGR (rw): RCC Clock Configuration Register
 0x58024410 C   FIELD 00w03 SW: System clock switch
 0x58024410 C   FIELD 03w03 SWS: System clock switch status
@@ -17552,7 +16186,7 @@
 0x58025408 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025408 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802540C B  REGISTER NDTR0: 
-0x5802540C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x5802540C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025410 B  REGISTER PAR0: 
 0x58025410 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025414 B  REGISTER M0AR0: 
@@ -17576,7 +16210,7 @@
 0x5802541C C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802541C C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025420 B  REGISTER NDTR1: 
-0x58025420 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025420 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025424 B  REGISTER PAR1: 
 0x58025424 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025428 B  REGISTER M0AR1: 
@@ -17600,7 +16234,7 @@
 0x58025430 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025430 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025434 B  REGISTER NDTR2: 
-0x58025434 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025434 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025438 B  REGISTER PAR2: 
 0x58025438 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802543C B  REGISTER M0AR2: 
@@ -17624,7 +16258,7 @@
 0x58025444 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025444 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025448 B  REGISTER NDTR3: 
-0x58025448 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025448 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802544C B  REGISTER PAR3: 
 0x5802544C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025450 B  REGISTER M0AR3: 
@@ -17648,7 +16282,7 @@
 0x58025458 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025458 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802545C B  REGISTER NDTR4: 
-0x5802545C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x5802545C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025460 B  REGISTER PAR4: 
 0x58025460 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025464 B  REGISTER M0AR4: 
@@ -17672,7 +16306,7 @@
 0x5802546C C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802546C C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025470 B  REGISTER NDTR5: 
-0x58025470 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025470 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025474 B  REGISTER PAR5: 
 0x58025474 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025478 B  REGISTER M0AR5: 
@@ -17696,7 +16330,7 @@
 0x58025480 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025480 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025484 B  REGISTER NDTR6: 
-0x58025484 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025484 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025488 B  REGISTER PAR6: 
 0x58025488 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802548C B  REGISTER M0AR6: 
@@ -17720,7 +16354,7 @@
 0x58025494 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025494 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025498 B  REGISTER NDTR7: 
-0x58025498 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025498 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA 'read followed by write' transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802549C B  REGISTER PAR7: 
 0x5802549C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x580254A0 B  REGISTER M0AR7: 
@@ -17729,7 +16363,7 @@
 0x580254A4 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025800 A PERIPHERAL DMAMUX2
 0x58025800 B  REGISTER C0CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025800 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025800 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025800 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025800 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025800 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17737,7 +16371,7 @@
 0x58025800 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025800 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025804 B  REGISTER C1CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025804 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025804 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025804 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025804 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025804 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17745,7 +16379,7 @@
 0x58025804 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025804 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025808 B  REGISTER C2CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025808 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025808 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025808 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025808 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025808 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17753,7 +16387,7 @@
 0x58025808 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025808 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x5802580C B  REGISTER C3CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x5802580C C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x5802580C C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x5802580C C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x5802580C C   FIELD 09w01 EGE: Event generation enable/disable
 0x5802580C C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17761,7 +16395,7 @@
 0x5802580C C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x5802580C C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025810 B  REGISTER C4CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025810 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025810 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025810 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025810 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025810 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17769,7 +16403,7 @@
 0x58025810 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025810 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025814 B  REGISTER C5CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025814 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025814 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025814 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025814 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025814 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17777,7 +16411,7 @@
 0x58025814 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025814 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025818 B  REGISTER C6CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025818 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025818 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025818 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025818 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025818 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -17785,47 +16419,31 @@
 0x58025818 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025818 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x5802581C B  REGISTER C7CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x5802581C C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x5802581C C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x5802581C C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x5802581C C   FIELD 09w01 EGE: Event generation enable/disable
 0x5802581C C   FIELD 16w01 SE: Synchronous operating mode enable/disable
 0x5802581C C   FIELD 17w02 SPOL: Synchronization event type selector Defines the synchronization event on the selected synchronization input:
 0x5802581C C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x5802581C C   FIELD 24w05 SYNC_ID: Synchronization input selected
-0x58025880 B  REGISTER CSR (ro): DMAMUX request line multiplexer interrupt channel status register
-0x58025880 C   FIELD 00w01 SOF0: Synchronization overrun event flag
-0x58025880 C   FIELD 01w01 SOF1: Synchronization overrun event flag
-0x58025880 C   FIELD 02w01 SOF2: Synchronization overrun event flag
-0x58025880 C   FIELD 03w01 SOF3: Synchronization overrun event flag
-0x58025880 C   FIELD 04w01 SOF4: Synchronization overrun event flag
-0x58025880 C   FIELD 05w01 SOF5: Synchronization overrun event flag
-0x58025880 C   FIELD 06w01 SOF6: Synchronization overrun event flag
-0x58025880 C   FIELD 07w01 SOF7: Synchronization overrun event flag
-0x58025880 C   FIELD 08w01 SOF8: Synchronization overrun event flag
-0x58025880 C   FIELD 09w01 SOF9: Synchronization overrun event flag
-0x58025880 C   FIELD 10w01 SOF10: Synchronization overrun event flag
-0x58025880 C   FIELD 11w01 SOF11: Synchronization overrun event flag
-0x58025880 C   FIELD 12w01 SOF12: Synchronization overrun event flag
-0x58025880 C   FIELD 13w01 SOF13: Synchronization overrun event flag
-0x58025880 C   FIELD 14w01 SOF14: Synchronization overrun event flag
-0x58025880 C   FIELD 15w01 SOF15: Synchronization overrun event flag
-0x58025884 B  REGISTER CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
-0x58025884 C   FIELD 00w01 CSOF0: Clear synchronization overrun event flag
-0x58025884 C   FIELD 01w01 CSOF1: Clear synchronization overrun event flag
-0x58025884 C   FIELD 02w01 CSOF2: Clear synchronization overrun event flag
-0x58025884 C   FIELD 03w01 CSOF3: Clear synchronization overrun event flag
-0x58025884 C   FIELD 04w01 CSOF4: Clear synchronization overrun event flag
-0x58025884 C   FIELD 05w01 CSOF5: Clear synchronization overrun event flag
-0x58025884 C   FIELD 06w01 CSOF6: Clear synchronization overrun event flag
-0x58025884 C   FIELD 07w01 CSOF7: Clear synchronization overrun event flag
-0x58025884 C   FIELD 08w01 CSOF8: Clear synchronization overrun event flag
-0x58025884 C   FIELD 09w01 CSOF9: Clear synchronization overrun event flag
-0x58025884 C   FIELD 10w01 CSOF10: Clear synchronization overrun event flag
-0x58025884 C   FIELD 11w01 CSOF11: Clear synchronization overrun event flag
-0x58025884 C   FIELD 12w01 CSOF12: Clear synchronization overrun event flag
-0x58025884 C   FIELD 13w01 CSOF13: Clear synchronization overrun event flag
-0x58025884 C   FIELD 14w01 CSOF14: Clear synchronization overrun event flag
-0x58025884 C   FIELD 15w01 CSOF15: Clear synchronization overrun event flag
+0x58025880 B  REGISTER CSR (ro): 
+0x58025880 C   FIELD 00w01 SOF0 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 01w01 SOF1 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 02w01 SOF2 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 03w01 SOF3 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 04w01 SOF4 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 05w01 SOF5 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 06w01 SOF6 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 07w01 SOF7 (ro): Synchronization overrun event flag
+0x58025884 B  REGISTER CFR: 
+0x58025884 C   FIELD 00w01 CSOF0 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 01w01 CSOF1 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 02w01 CSOF2 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 03w01 CSOF3 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 04w01 CSOF4 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 05w01 CSOF5 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 06w01 CSOF6 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 07w01 CSOF7 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x58025900 B  REGISTER RG0CR (rw): DMAMux - DMA request generator channel x control register
 0x58025900 C   FIELD 00w05 SIG_ID: DMA request trigger input selected
 0x58025900 C   FIELD 08w01 OIE: Interrupt enable at trigger event overrun
@@ -17874,24 +16492,24 @@
 0x5802591C C   FIELD 16w01 GE: DMA request generator channel enable/disable
 0x5802591C C   FIELD 17w02 GPOL: DMA request generator trigger event type selection Defines the trigger event on the selected DMA request trigger input
 0x5802591C C   FIELD 19w05 GNBREQ: Number of DMA requests to generate Defines the number of DMA requests generated after a trigger event, then stop generating. The actual number of generated DMA requests is GNBREQ+1. Note: This field can only be written when GE bit is reset.
-0x58025940 B  REGISTER RGSR (ro): DMAMux - DMA request generator status register
-0x58025940 C   FIELD 00w01 OF0: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 01w01 OF1: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 02w01 OF2: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 03w01 OF3: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 04w01 OF4: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 05w01 OF5: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 06w01 OF6: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 07w01 OF7: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025944 B  REGISTER RGCFR (wo): DMAMux - DMA request generator clear flag register
-0x58025944 C   FIELD 00w01 COF0: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 01w01 COF1: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 02w01 COF2: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 03w01 COF3: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 04w01 COF4: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 05w01 COF5: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 06w01 COF6: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 07w01 COF7: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
+0x58025940 B  REGISTER RGSR (ro): 
+0x58025940 C   FIELD 00w01 OF0 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 01w01 OF1 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 02w01 OF2 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 03w01 OF3 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 04w01 OF4 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 05w01 OF5 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 06w01 OF6 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 07w01 OF7 (ro): Trigger overrun event flag
+0x58025944 B  REGISTER RGCFR (ro): 
+0x58025944 C   FIELD 00w01 COF0 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 01w01 COF1 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 02w01 COF2 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 03w01 COF3 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 04w01 COF4 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 05w01 COF5 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 06w01 COF6 (wo): Clear trigger overrun event flag
+0x58025944 C   FIELD 07w01 COF7 (wo): Clear trigger overrun event flag
 0x58026000 A PERIPHERAL ADC3
 0x58026000 B  REGISTER ISR: ADC interrupt and status register
 0x58026000 C   FIELD 00w01 ADRDY (rw): ADC ready This bit is set by hardware after the ADC has been enabled (ADEN = 1) and when the ADC reaches a state where it is ready to accept conversion requests. It is cleared by software writing 1 to it.
@@ -17933,7 +16551,7 @@
 0x5802600C C   FIELD 01w01 DMACFG (rw): Direct memory access configuration This bit is set and cleared by software to select between two DMA modes of operation and is effective only when DMAEN = 1. For more details, refer to Note: The software is allowed to write this bit only when ADSTART = 0 and JADSTART = 0 (which ensures that no conversion is ongoing).
 0x5802600C C   FIELD 02w01 DFSDMCFG (rw): DFSDM mode configuration This bit is set and cleared by software to enable the DFSDM mode. It is effective only when DMAEN = 0. Note: To make sure no conversion is ongoing, the software is allowed to write this bit only when ADSTART = 0 and JADSTART = 0.
 0x5802600C C   FIELD 03w02 RES (rw): Data resolution These bits are written by software to select the resolution of the conversion. Note: The software is allowed to write these bits only when ADSTART = 0 and JADSTART = 0 (which ensures that no conversion is ongoing).
-0x5802600C C   FIELD 05w05 EXTSEL: External trigger selection for regular group These bits select the external event used to trigger the start of conversion of a regular group: ... Note: The software is allowed to write these bits only when ADSTART = 0 (which ensures that no regular conversion is ongoing).
+0x5802600C C   FIELD 05w05 EXTSEL (rw): External trigger selection for regular group These bits select the external event used to trigger the start of conversion of a regular group: ... Note: The software is allowed to write these bits only when ADSTART = 0 (which ensures that no regular conversion is ongoing).
 0x5802600C C   FIELD 10w02 EXTEN (rw): External trigger enable and polarity selection for regular channels These bits are set and cleared by software to select the external trigger polarity and enable the trigger of a regular group. Note: The software is allowed to write these bits only when ADSTART = 0 (which ensures that no regular conversion is ongoing).
 0x5802600C C   FIELD 12w01 OVRMOD (rw): Overrun mode This bit is set and cleared by software and configure the way data overrun is managed. Note: The software is allowed to write this bit only when ADSTART = 0 (which ensures that no regular conversion is ongoing).
 0x5802600C C   FIELD 13w01 CONT (rw): Single / Continuous conversion mode for regular conversions This bit is set and cleared by software. If it is set, regular conversion takes place continuously until it is cleared. Note: It is not possible to have both Discontinuous mode and Continuous mode enabled: it is forbidden to set both DISCEN = 1 and CONT = 1. The software is allowed to write this bit only when ADSTART = 0 (which ensures that no regular conversion is ongoing).
@@ -18540,86 +17158,75 @@
 0x58027020 B  CLUSTER M1 (=RAMECC1.M%s): Cluster M1, containing M?CR, M?SR, M?FAR, M?FDRL, M?FDRH, M?FECR
 0x58027040 B  CLUSTER M2 (=RAMECC1.M%s): Cluster M2, containing M?CR, M?SR, M?FAR, M?FDRL, M?FDRH, M?FECR
 0x5C001000 A PERIPHERAL DBGMCU
-0x5C001000 B  REGISTER IDC (ro): DBGMCU Identity Code Register
-0x5C001000 C   FIELD 00w12 DEV_ID: Device ID
-0x5C001000 C   FIELD 16w16 REV_ID: Revision
-0x5C001004 B  REGISTER CR (rw): DBGMCU Configuration Register
-0x5C001004 C   FIELD 00w01 DBGSLEEP_D1: Allow D1 domain debug in Sleep mode
-0x5C001004 C   FIELD 01w01 DBGSTOP_D1: Allow D1 domain debug in Stop mode
-0x5C001004 C   FIELD 02w01 DBGSTBY_D1: Allow D1 domain debug in Standby mode
-0x5C001004 C   FIELD 03w01 DBGSLPD2: Allow D2 domain debug in Sleep mode
-0x5C001004 C   FIELD 04w01 DBGSTPD2: Allow D2 domain debug in Stop mode
-0x5C001004 C   FIELD 05w01 DBGSTBD2: Allow D2 domain debug in Standby mode
-0x5C001004 C   FIELD 07w01 DBGSTPD3: Allow debug in D3 Stop mode
-0x5C001004 C   FIELD 08w01 DBGSTBD3: Allow debug in D3 Standby mode
-0x5C001004 C   FIELD 20w01 TRACECLKEN: Trace port clock enable
-0x5C001004 C   FIELD 21w01 D1DBGCKEN: D1 debug clock enable
-0x5C001004 C   FIELD 22w01 D3DBGCKEN: D3 debug clock enable
-0x5C001004 C   FIELD 28w01 TRGOEN: External trigger output enable
-0x5C001034 B  REGISTER APB3FZ1 (rw): DBGMCU APB3 peripheral freeze register CPU1
-0x5C001034 C   FIELD 06w01 WWDG1: WWDG1 stop in debug
-0x5C001038 B  REGISTER APB3FZ2 (rw): DBGMCU APB3 peripheral freeze register CPU2
-0x5C001038 C   FIELD 06w01 WWDG1: WWDG1 stop in debug
-0x5C00103C B  REGISTER APB1LFZ1 (rw): DBGMCU APB1L peripheral freeze register
-0x5C00103C C   FIELD 00w01 DBG_TIM2: TIM2 stop in debug
-0x5C00103C C   FIELD 01w01 DBG_TIM3: TIM3 stop in debug
-0x5C00103C C   FIELD 02w01 DBG_TIM4: TIM4 stop in debug
-0x5C00103C C   FIELD 03w01 DBG_TIM5: TIM5 stop in debug
-0x5C00103C C   FIELD 04w01 DBG_TIM6: TIM6 stop in debug
-0x5C00103C C   FIELD 05w01 DBG_TIM7: TIM7 stop in debug
-0x5C00103C C   FIELD 06w01 DBG_TIM12: TIM12 stop in debug
-0x5C00103C C   FIELD 07w01 DBG_TIM13: TIM13 stop in debug
-0x5C00103C C   FIELD 08w01 DBG_TIM14: TIM14 stop in debug
-0x5C00103C C   FIELD 09w01 DBG_LPTIM1: LPTIM1 stop in debug
-0x5C00103C C   FIELD 11w01 DBG_WWDG2: WWDG2 stop in debug
-0x5C00103C C   FIELD 21w01 DBG_I2C1: I2C1 SMBUS timeout stop in debug
-0x5C00103C C   FIELD 22w01 DBG_I2C2: I2C2 SMBUS timeout stop in debug
-0x5C00103C C   FIELD 23w01 DBG_I2C3: I2C3 SMBUS timeout stop in debug
-0x5C001040 B  REGISTER APB1LFZ2 (rw): DBGMCU APB1L peripheral freeze register CPU2
-0x5C001040 C   FIELD 00w01 DBG_TIM2: TIM2 stop in debug
-0x5C001040 C   FIELD 01w01 DBG_TIM3: TIM3 stop in debug
-0x5C001040 C   FIELD 02w01 DBG_TIM4: TIM4 stop in debug
-0x5C001040 C   FIELD 03w01 DBG_TIM5: TIM5 stop in debug
-0x5C001040 C   FIELD 04w01 DBG_TIM6: TIM6 stop in debug
-0x5C001040 C   FIELD 05w01 DBG_TIM7: TIM4 stop in debug
-0x5C001040 C   FIELD 06w01 DBG_TIM12: TIM12 stop in debug
-0x5C001040 C   FIELD 07w01 DBG_TIM13: TIM13 stop in debug
-0x5C001040 C   FIELD 08w01 DBG_TIM14: TIM14 stop in debug
-0x5C001040 C   FIELD 09w01 DBG_LPTIM1: LPTIM1 stop in debug
-0x5C001040 C   FIELD 11w01 DBG_WWDG2: WWDG2 stop in debug
-0x5C001040 C   FIELD 21w01 DBG_I2C1: I2C1 SMBUS timeout stop in debug
-0x5C001040 C   FIELD 22w01 DBG_I2C2: I2C2 SMBUS timeout stop in debug
-0x5C001040 C   FIELD 23w01 DBG_I2C3: I2C3 SMBUS timeout stop in debug
-0x5C00104C B  REGISTER APB2FZ1 (rw): DBGMCU APB2 peripheral freeze register
-0x5C00104C C   FIELD 00w01 DBG_TIM1: TIM1 stop in debug
-0x5C00104C C   FIELD 01w01 DBG_TIM8: TIM8 stop in debug
-0x5C00104C C   FIELD 16w01 DBG_TIM15: TIM15 stop in debug
-0x5C00104C C   FIELD 17w01 DBG_TIM16: TIM16 stop in debug
-0x5C00104C C   FIELD 18w01 DBG_TIM17: TIM17 stop in debug
-0x5C001050 B  REGISTER APB2FZ2 (rw): DBGMCU APB2 peripheral freeze register CPU2
-0x5C001050 C   FIELD 00w01 DBG_TIM1: TIM1 stop in debug
-0x5C001050 C   FIELD 01w01 DBG_TIM8: TIM8 stop in debug
-0x5C001050 C   FIELD 16w01 DBG_TIM15: TIM15 stop in debug
-0x5C001050 C   FIELD 17w01 DBG_TIM16: TIM16 stop in debug
-0x5C001050 C   FIELD 18w01 DBG_TIM17: TIM17 stop in debug
-0x5C001054 B  REGISTER APB4FZ1 (rw): DBGMCU APB4 peripheral freeze register
-0x5C001054 C   FIELD 07w01 DBG_I2C4: I2C4 SMBUS timeout stop in debug
-0x5C001054 C   FIELD 09w01 DBG_LPTIM2: LPTIM2 stop in debug
-0x5C001054 C   FIELD 10w01 DBG_LPTIM3: LPTIM2 stop in debug
-0x5C001054 C   FIELD 11w01 DBG_LPTIM4: LPTIM4 stop in debug
-0x5C001054 C   FIELD 12w01 DBG_LPTIM5: LPTIM5 stop in debug
-0x5C001054 C   FIELD 16w01 DBG_RTC: RTC stop in debug
-0x5C001054 C   FIELD 18w01 DBG_WDGLSD1: Independent watchdog for D1 stop in debug
-0x5C001054 C   FIELD 19w01 DBG_WDGLSD2: Independent watchdog for D2 stop in debug
-0x5C001058 B  REGISTER APB4FZ2 (rw): DBGMCU APB4 peripheral freeze register CPU2
-0x5C001058 C   FIELD 07w01 DBG_I2C4: I2C4 SMBUS timeout stop in debug
-0x5C001058 C   FIELD 09w01 DBG_LPTIM2: LPTIM2 stop in debug
-0x5C001058 C   FIELD 10w01 DBG_LPTIM3: LPTIM2 stop in debug
-0x5C001058 C   FIELD 11w01 DBG_LPTIM4: LPTIM4 stop in debug
-0x5C001058 C   FIELD 12w01 DBG_LPTIM5: LPTIM5 stop in debug
-0x5C001058 C   FIELD 16w01 DBG_RTC: RTC stop in debug
-0x5C001058 C   FIELD 18w01 DBG_WDGLSD1: LS watchdog for D1 stop in debug
-0x5C001058 C   FIELD 19w01 DBG_WDGLSD2: LS watchdog for D2 stop in debug
+0x5C001000 B  REGISTER IDC (ro): 
+0x5C001000 C   FIELD 00w12 DEV_ID (ro): Device ID
+0x5C001000 C   FIELD 16w16 REV_ID (ro): Revision
+0x5C001004 B  REGISTER CR (rw): 
+0x5C001004 C   FIELD 00w01 DBGSLEEP_D1 (rw): D1 domain debug in Sleep mode enable
+0x5C001004 C   FIELD 01w01 DBGSTOP_D1 (rw): D1 domain debug in Stop mode enable
+0x5C001004 C   FIELD 02w01 DBGSTBY_D1 (rw): D1 domain debug in Standby mode enable
+0x5C001004 C   FIELD 20w01 TRACECLKEN (rw): Trace port clock enable
+0x5C001004 C   FIELD 21w01 D1DBGCKEN (rw): D1 debug clock enable
+0x5C001004 C   FIELD 22w01 D3DBGCKEN (rw): D3 debug clock enable
+0x5C001004 C   FIELD 28w01 TRGOEN (rw): External trigger output enable
+0x5C001034 B  REGISTER APB3FZ1 (rw): 
+0x5C001034 C   FIELD 06w01 WWDG1 (rw): WWDG1 stop in debug
+0x5C00103C B  REGISTER APB1LFZ1 (rw): 
+0x5C00103C C   FIELD 00w01 TIM2 (rw): TIM2 stop in debug
+0x5C00103C C   FIELD 01w01 TIM3 (rw): TIM3 stop in debug
+0x5C00103C C   FIELD 02w01 TIM4 (rw): TIM4 stop in debug
+0x5C00103C C   FIELD 03w01 TIM5 (rw): TIM5 stop in debug
+0x5C00103C C   FIELD 04w01 TIM6 (rw): TIM6 stop in debug
+0x5C00103C C   FIELD 05w01 TIM7 (rw): TIM7 stop in debug
+0x5C00103C C   FIELD 06w01 TIM12 (rw): TIM12 stop in debug
+0x5C00103C C   FIELD 07w01 TIM13 (rw): TIM13 stop in debug
+0x5C00103C C   FIELD 08w01 TIM14 (rw): TIM14 stop in debug
+0x5C00103C C   FIELD 09w01 LPTIM1 (rw): LPTIM1 stop in debug
+0x5C00103C C   FIELD 21w01 I2C1 (rw): I2C1 SMBUS timeout stop in debug
+0x5C00103C C   FIELD 22w01 I2C2 (rw): I2C2 SMBUS timeout stop in debug
+0x5C00103C C   FIELD 23w01 I2C3 (rw): I2C3 SMBUS timeout stop in debug
+0x5C00103C C   FIELD 25w01 I2C5 (rw): I2C5 SMBUS timeout stop in debug
+0x5C001044 B  REGISTER APB1HFZ1 (rw): 
+0x5C001044 C   FIELD 24w01 TIM23 (rw): TIM23 stop in debug
+0x5C001044 C   FIELD 25w01 TIM24 (rw): TIM24 stop in debug
+0x5C00104C B  REGISTER APB2FZ1 (rw): 
+0x5C00104C C   FIELD 00w01 TIM1 (rw): TIM1 stop in debug
+0x5C00104C C   FIELD 01w01 TIM8 (rw): TIM8 stop in debug
+0x5C00104C C   FIELD 16w01 TIM15 (rw): TIM15 stop in debug
+0x5C00104C C   FIELD 17w01 TIM16 (rw): TIM16 stop in debug
+0x5C00104C C   FIELD 18w01 TIM17 (rw): TIM17 stop in debug
+0x5C001054 B  REGISTER APB4FZ1 (rw): 
+0x5C001054 C   FIELD 07w01 I2C4 (rw): I2C4 SMBUS timeout stop in debug
+0x5C001054 C   FIELD 09w01 LPTIM2 (rw): LPTIM2 stop in debug
+0x5C001054 C   FIELD 10w01 LPTIM3 (rw): LPTIM2 stop in debug
+0x5C001054 C   FIELD 11w01 LPTIM4 (rw): LPTIM4 stop in debug
+0x5C001054 C   FIELD 12w01 LPTIM5 (rw): LPTIM5 stop in debug
+0x5C001054 C   FIELD 16w01 RTC (rw): RTC stop in debug
+0x5C001054 C   FIELD 18w01 IWDG1 (rw): Independent watchdog for D1 stop in debug
+0x5C001FD0 B  REGISTER PIDR4 (ro): 
+0x5C001FD0 C   FIELD 00w04 JEP106CON (ro): JEP106 continuation code
+0x5C001FD0 C   FIELD 04w04 KCOUNT4 (ro): Register file size
+0x5C001FE0 B  REGISTER PIDR0 (ro): 
+0x5C001FE0 C   FIELD 00w08 PARTNUM (ro): Part number field, bits [7:0]
+0x5C001FE4 B  REGISTER PIDR1 (ro): 
+0x5C001FE4 C   FIELD 00w04 PARTNUM (ro): Part number field, bits [11:8]
+0x5C001FE4 C   FIELD 04w04 JEP106ID (ro): JEP106 identity code field, bits [3:0]
+0x5C001FE8 B  REGISTER PIDR2 (ro): 
+0x5C001FE8 C   FIELD 00w03 JEP106ID (ro): JEP106 identity code field, bits [6:4]
+0x5C001FE8 C   FIELD 03w01 JEDEC (ro): JEDEC assigned value
+0x5C001FE8 C   FIELD 04w04 REVISION (ro): Component revision number
+0x5C001FEC B  REGISTER PIDR3 (ro): 
+0x5C001FEC C   FIELD 00w04 CMOD (ro): Customer modified
+0x5C001FEC C   FIELD 04w04 REVAND (ro): Metal fix version
+0x5C001FF0 B  REGISTER CIDR0 (ro): 
+0x5C001FF0 C   FIELD 00w08 PREAMBLE (ro): Component ID field, bits [7:0]
+0x5C001FF4 B  REGISTER CIDR1 (ro): 
+0x5C001FF4 C   FIELD 00w04 PREAMBLE (ro): Component ID field, bits [11:8]
+0x5C001FF4 C   FIELD 04w04 CLASS (ro): Component ID field, bits [15:12] - component class
+0x5C001FF8 B  REGISTER CIDR2 (ro): 
+0x5C001FF8 C   FIELD 00w08 PREAMBLE (ro): Component ID field, bits [23:16]
+0x5C001FFC B  REGISTER CIDR3 (ro): 
+0x5C001FFC C   FIELD 00w08 PREAMBLE (ro): Component ID field, bits [31:24]
 INTERRUPT 000: WWDG1 (WWDG1): Window Watchdog interrupt
 INTERRUPT 001: PVD_PVM (DELAY_Block_SDMMC1): PVD through EXTI line
 INTERRUPT 002: RTC_TAMP_STAMP_CSS_LSE (RTC): RTC tamper, timestamp
@@ -18746,7 +17353,7 @@ INTERRUPT 140: LPTIM4 (LPTIM4): LPTIM2 timer interrupt
 INTERRUPT 141: LPTIM5 (LPTIM5): LPTIM2 timer interrupt
 INTERRUPT 142: LPUART (LPUART1): LPUART global interrupt
 INTERRUPT 144: CRS (CRS): Clock Recovery System global interrupt
-INTERRUPT 145: ECC (EXTI): ECC diagnostic global interrupt
+INTERRUPT 145: ECC_DIAG_IT (RAMECC1): ECC diagnostic global interrup
 INTERRUPT 146: SAI4 (SAI4): SAI4 global interrupt
 INTERRUPT 147: TEMP_IT (EXTI): Temperature sensor global interrupt
 INTERRUPT 149: WKUP (EXTI): WKUP1 to WKUP6 pins
