@@ -8665,7 +8665,7 @@
 0x40028000 C   FIELD 01w01 TE (rw): Transmitter Enable When this bit is set, the Tx state machine of the MAC is enabled for transmission on the MII interface. When this bit is reset, the MAC Tx state machine is disabled after it completes the transmission of the current packet. The Tx state machine does not transmit any more packets.
 0x40028000 C   FIELD 02w02 PRELEN (rw): Preamble Length for Transmit packets These bits control the number of preamble bytes that are added to the beginning of every Tx packet. The preamble reduction occurs only when the MAC is operating in the full-duplex mode.
 0x40028000 C   FIELD 04w01 DC (rw): Deferral Check When this bit is set, the deferral check function is enabled in the MAC. The MAC issues a Packet Abort status, along with the excessive deferral error bit set in the Tx packet status, when the Tx state machine is deferred for more than 24,288 bit times in 10 or 100 Mbps mode. Deferral begins when the transmitter is ready to transmit, but it is prevented because of an active carrier sense signal (CRS) on MII. The defer time is not cumulative. For example, if the transmitter defers for 10,000 bit times because the CRS signal is active and the CRS signal becomes inactive, the transmitter transmits and collision happens. Because of collision, the transmitter needs to back off and then defer again after back off completion. In such a scenario, the deferral timer is reset to 0, and it is restarted. When this bit is reset, the deferral check function is disabled and the MAC defers until the CRS signal goes inactive. This bit is applicable only in the half-duplex mode.
-0x40028000 C   FIELD 05w02 BL (rw): Back-Off Limit The back-off limit determines the random integer number (r) of slot time delays (512 bit times for 10/100 Mbps) for which the MAC waits before rescheduling a transmission attempt during retries after a collision: where n = retransmission attempt The random integer r takes the value in the range 0 <= r < 2^k. This bit is applicable only in the half-duplex mode.
+0x40028000 C   FIELD 05w02 BL (rw): Back-Off Limit
 0x40028000 C   FIELD 08w01 DR (rw): Disable Retry When this bit is set, the MAC attempts only one transmission. When a collision occurs on the MII interface, the MAC ignores the current packet transmission and reports a Packet Abort with excessive collision error in the Tx packet status. When this bit is reset, the MAC retries based on the settings of the BL field. This bit is applicable only in the half-duplex mode.
 0x40028000 C   FIELD 09w01 DCRS (rw): Disable Carrier Sense During Transmission When this bit is set, the MAC transmitter ignores the (G)MII CRS signal during packet transmission in the half-duplex mode. As a result, no errors are generated because of Loss of Carrier or No Carrier during transmission. When this bit is reset, the MAC transmitter generates errors because of Carrier Sense. The MAC can even abort the transmission.
 0x40028000 C   FIELD 10w01 DO (rw): Disable Receive Own When this bit is set, the MAC disables the reception of packets when the ETH_TX_EN is asserted in the half-duplex mode. When this bit is reset, the MAC receives all packets given by the PHY. This bit is not applicable in the full-duplex mode. This bit is reserved and read-only (RO) with default value in the full-duplex-only configurations.
@@ -8812,7 +8812,7 @@
 0x400280D8 B  REGISTER MACLETR: LPI entry timer register
 0x400280D8 C   FIELD 00w20 LPIET (rw): LPI Entry Timer This field specifies the time in microseconds the MAC will wait to enter LPI mode, after it has transmitted all the frames. This field is valid and used only when LPITE and LPITXA are set to 1. Bits [2:0] are read-only so that the granularity of this timer is in steps of 8 micro-seconds.
 0x400280DC B  REGISTER MAC1USTCR: One-microsecond-tick counter register
-0x400280DC C   FIELD 00w12 TIC_1US_CNTR (rw): 1 �s tick Counter The application must program this counter so that the number of clock cycles of CSR clock is 1 �s (subtract 1 from the value before programming). For example if the CSR clock is 100 MHz then this field needs to be programmed to 100 - 1 = 99 (which is 0x63). This is required to generate the 1 �s events that are used to update some of the EEE related counters.
+0x400280DC C   FIELD 00w12 TIC_1US_CNTR (rw): 1 s tick Counter The application must program this counter so that the number of clock cycles of CSR clock is 1 s (subtract 1 from the value before programming). For example if the CSR clock is 100 MHz then this field needs to be programmed to 100 - 1 = 99 (which is 0x63). This is required to generate the 1 s events that are used to update some of the EEE related counters.
 0x40028110 B  REGISTER MACVR: Version register
 0x40028110 C   FIELD 00w08 SNPSVER (ro): IP version
 0x40028110 C   FIELD 08w08 USERVER (ro): ST-defined version
@@ -9041,7 +9041,7 @@
 0x40028B0C B  REGISTER MACSTNR: System time nanoseconds register
 0x40028B0C C   FIELD 00w31 TSSS (ro): Timestamp Sub-seconds The value in this field has the sub-second representation of time, with an accuracy of 0.46 ns. When TSCTRLSSR is set in , each bit represents 1 ns. The maximum value is 0x3B9A_C9FF after which it rolls-over to zero.
 0x40028B10 B  REGISTER MACSTSUR: System time seconds update register
-0x40028B10 C   FIELD 00w32 TSS (rw): Timestamp Seconds The value in this field is the sub-second part of the update. When ADDSUB is reset, this field must be programmed with the sub-second part of the update value, with an accuracy based on the TSCTRLSSR bit of the . When ADDSUB is set, then this field must be programmed with the complement of the sub-second part of the update value as described below. When TSCTRLSSR is set, then the programmed value must be 10^9 - <sub-second value>. When TSCTRLSSR is reset, then the programmed value must be 2^31 - <sub-second_value> For example, when TSCTRLSSR bit is set and if 2.000000001 seconds need to be subtracted from the system time, then the TSS field in the register (ETH_MACSTSUR) must be 0xFFFF_FFFE (that is, 2^32 - 2), ADDSUB bit in this register should be set, and the TSSS field must be 0x3B9A_C9FF (that is, 10^9 - 1).
+0x40028B10 C   FIELD 00w32 TSS (rw): Timestamp Seconds The value in this field is the sub-second part of the update. When ADDSUB is reset, this field must be programmed with the sub-second part of the update value, with an accuracy based on the TSCTRLSSR bit of the . When ADDSUB is set, then this field must be programmed with the complement of the sub-second part of the update value as described below. When TSCTRLSSR is set, then the programmed value must be 10^9 - sub-second value>. When TSCTRLSSR is reset, then the programmed value must be 2^31 - sub-second_value> For example, when TSCTRLSSR bit is set and if 2.000000001 seconds need to be subtracted from the system time, then the TSS field in the register (ETH_MACSTSUR) must be 0xFFFF_FFFE (that is, 2^32 - 2), ADDSUB bit in this register should be set, and the TSSS field must be 0x3B9A_C9FF (that is, 10^9 - 1).
 0x40028B14 B  REGISTER MACSTNUR: 
 0x40028B14 C   FIELD 00w31 TSSS (rw): Timestamp Sub-seconds The value in this field has the sub-second representation of time, with an accuracy of 0.46 ns. When the TSCTRLSSR bit is set in the , each bit represents 1 ns and the programmed value should not exceed 0x3B9A_C9FF.
 0x40028B14 C   FIELD 31w01 ADDSUB (rw): Add or Subtract Time When this bit is set, the time value is subtracted with the contents of the update register. When this bit is reset, the time value is added with the contents of the update register.
@@ -9081,7 +9081,7 @@
 0x40028B5C C   FIELD 00w32 TSEC (rw): Timestamp Egress Correction This field contains the nanoseconds part of the egress path correction value as defined by the Egress Correction expression.
 0x40028B70 B  REGISTER MACPPSCR: ETH_MACPPSCR
 0x40028B70 B  REGISTER MACPPSCRALTERNATE: ETH_MACPPSCRALTERNATE
-0x40028B70 C   FIELD 00w04 PPSCMD (rw): Flexible PPS Output (eth_ptp_pps_out) Control Programming these bits with a non-zero value instructs the MAC to initiate an event. When the command is transferred or synchronized to the PTP clock domain, these bits get cleared automatically. The software should ensure that these bits are programmed only when they are ‘all zero’. The following list describes the values of PPSCMD0: This command generates single pulse rising at the start point defined in Target Time Registers (register 455 and 456) and of a duration defined in the PPS Width Register. This command generates the train of pulses rising at the start point defined in the Target Time Registers and of a duration defined in the PPS Width Register and repeated at interval defined in the PPS Interval Register. By default, the PPS pulse train is free-running unless stopped by the 'Stop Pulse train at time' or 'Stop Pulse Train immediately' commands. This command cancels the START Single Pulse and START Pulse Train commands if the system time has not crossed the programmed start time. This command stops the train of pulses initiated by the START Pulse Train command (PPSCMD = 0010) after the time programmed in the Target Time registers elapses. This command immediately stops the train of pulses initiated by the START Pulse Train command (PPSCMD = 0010). This command cancels the STOP pulse train at time command if the programmed stop time has not elapsed. The PPS pulse train becomes free-running on the successful execution of this command.
+0x40028B70 C   FIELD 00w04 PPSCMD (rw): Flexible PPS Output (eth_ptp_pps_out) Control Programming these bits with a non-zero value instructs the MAC to initiate an event. When the command is transferred or synchronized to the PTP clock domain, these bits get cleared automatically. The software should ensure that these bits are programmed only when they are all zero. The following list describes the values of PPSCMD0: This command generates single pulse rising at the start point defined in Target Time Registers (register 455 and 456) and of a duration defined in the PPS Width Register. This command generates the train of pulses rising at the start point defined in the Target Time Registers and of a duration defined in the PPS Width Register and repeated at interval defined in the PPS Interval Register. By default, the PPS pulse train is free-running unless stopped by the 'Stop Pulse train at time' or 'Stop Pulse Train immediately' commands. This command cancels the START Single Pulse and START Pulse Train commands if the system time has not crossed the programmed start time. This command stops the train of pulses initiated by the START Pulse Train command (PPSCMD = 0010) after the time programmed in the Target Time registers elapses. This command immediately stops the train of pulses initiated by the START Pulse Train command (PPSCMD = 0010). This command cancels the STOP pulse train at time command if the programmed stop time has not elapsed. The PPS pulse train becomes free-running on the successful execution of this command.
 0x40028B70 C   FIELD 00w04 PPSCTRL (rw): PPS Output Frequency Control This field controls the frequency of the PPS output (eth_ptp_pps_out) signal. The default value of PPSCTRL is 0000, and the PPS output is 1 pulse (of width clk_ptp_i) every second. For other values of PPSCTRL, the PPS output becomes a generated clock of following frequencies: .. Note: In the binary rollover mode, the PPS output (eth_ptp_pps_out) has a duty cycle of 50 percent with these frequencies. In the digital rollover mode, the PPS output frequency is an average number. The actual clock is of different frequency that gets synchronized every second. For example: When PPSCTRL = 0001, the PPS (1 Hz) has a low period of 537 ms and a high period of 463 ms When PPSCTRL = 0010, the PPS (2 Hz) is a sequence of One clock of 50 percent duty cycle and 537 ms period Second clock of 463 ms period (268 ms low and 195 ms high) When PPSCTRL = 0011, the PPS (4 Hz) is a sequence of Three clocks of 50 percent duty cycle and 268 ms period Fourth clock of 195 ms period (134 ms low and 61 ms high) This behavior is because of the non-linear toggling of bits in the digital rollover mode in the ETH_MACSTNR register.
 0x40028B70 C   FIELD 04w01 PPSEN0 (rw): Flexible PPS Output Mode Enable When this bit is set, Bits[3:0] function as PPSCMD. When this bit is reset, Bits[3:0] function as PPSCTRL (Fixed PPS mode).
 0x40028B70 C   FIELD 04w01 PPSEN0 (rw): Flexible PPS Output Mode Enable When this bit is set, PPSCTRL[3:0] function as PPSCMD. When this bit is reset, PPSCTRL[3:0] function as PPSCTRL (Fixed PPS mode).
@@ -9241,7 +9241,7 @@
 0x40029160 C   FIELD 10w01 ETI (rw): Early Transmit Interrupt This bit indicates that the packet to be transmitted is fully transferred to the MTL Tx FIFO.
 0x40029160 C   FIELD 11w01 ERI (rw): Early Receive Interrupt This bit indicates that the DMA filled the first data buffer of the packet.The RI bit of this register automatically clears this bit.
 0x40029160 C   FIELD 12w01 FBE (rw): Fatal Bus Error This bit indicates that a bus error occurred (as described in the EB field). When this bit is set, the corresponding DMA channel engine disables all bus accesses.
-0x40029160 C   FIELD 13w01 CDE (rw): Context Descriptor Error This bit indicates that the DMA Tx/Rx engine received a descriptor error, which indicates invalid context in the middle of packet flow (intermediate descriptor) or all one‘s descriptor in Tx case and on Rx side it indicates DMA has read a descriptor with either of the buffer address as ones which is considered to be invalid.
+0x40029160 C   FIELD 13w01 CDE (rw): Context Descriptor Error This bit indicates that the DMA Tx/Rx engine received a descriptor error, which indicates invalid context in the middle of packet flow (intermediate descriptor) or all ones descriptor in Tx case and on Rx side it indicates DMA has read a descriptor with either of the buffer address as ones which is considered to be invalid.
 0x40029160 C   FIELD 14w01 AIS (rw): Abnormal Interrupt Summary Abnormal Interrupt Summary bit value is the logical OR of the following when the corresponding interrupt bits are enabled in the ETH_DMACIER register: Bit 1: Transmit Process Stopped Bit 7: Receive Buffer Unavailable Bit 8: Receive Process Stopped Bit 10: Early Transmit Interrupt Bit 12: Fatal Bus Error Bit 13: Context Descriptor Error Only unmasked bits affect the Abnormal Interrupt Summary bit. This is a sticky bit. You must clear this bit (by writing 1 to this bit) each time a corresponding bit, which causes AIS to be set, is cleared.
 0x40029160 C   FIELD 15w01 NIS (rw): Normal Interrupt Summary Normal Interrupt Summary bit value is the logical OR of the following bits when the corresponding interrupt bits are enabled in the ETH_DMACIER register: Bit 0: Transmit Interrupt Bit 2: Transmit Buffer Unavailable Bit 6: Receive Interrupt Bit 11: Early Receive Interrupt Only unmasked bits (interrupts for which interrupt enable is set in ETH_DMACIER register) affect the Normal Interrupt Summary bit. This is a sticky bit. You must clear this bit (by writing 1 to this bit) each time a corresponding bit which causes NIS to be set is cleared.
 0x40029160 C   FIELD 16w03 TEB (ro): Tx DMA Error Bits This field indicates the type of error that caused a Bus Error. For example, error response on the AHB interface. Bit[2]: Error during data transfer by Tx DMA when 1, no Error during data transfer by Tx DMA when 0 Bit[1]: Error during descriptor access when 1, Error during data buffer access when 0 Bit[0]: Error during read transfer when 1, Error during write transfer when 0 This field is valid only when the FBE bit is set. This field does not generate an interrupt.
@@ -17725,10 +17725,13 @@
 0x58024400 C   FIELD 27w01 PLL2RDY: PLL2 clock ready flag
 0x58024400 C   FIELD 28w01 PLL3ON: PLL3 enable
 0x58024400 C   FIELD 29w01 PLL3RDY: PLL3 clock ready flag
+0x58024404 B  REGISTER HSICFGR: RCC HSI configuration register
 0x58024404 B  REGISTER ICSCR: RCC Internal Clock Source Calibration Register
+0x58024404 C   FIELD 00w12 HSICAL (ro): HSI clock calibration
 0x58024404 C   FIELD 00w12 HSICAL (ro): HSI clock calibration
 0x58024404 C   FIELD 12w06 HSITRIM (rw): HSI clock trimming
 0x58024404 C   FIELD 18w08 CSICAL (ro): CSI clock calibration
+0x58024404 C   FIELD 24w07 HSITRIM (rw): HSI clock trimming
 0x58024404 C   FIELD 26w05 CSITRIM (rw): CSI clock trimming
 0x58024408 B  REGISTER CRRCR (ro): RCC Clock Recovery RC Register
 0x58024408 C   FIELD 00w10 HSI48CAL: Internal RC 48 MHz clock calibration
@@ -17937,7 +17940,7 @@
 0x58024490 C   FIELD 21w01 I2C1RST: I2C1 block reset
 0x58024490 C   FIELD 22w01 I2C2RST: I2C2 block reset
 0x58024490 C   FIELD 23w01 I2C3RST: I2C3 block reset
-0x58024490 C   FIELD 27w01 HDMICECRST: HDMI-CEC block reset
+0x58024490 C   FIELD 27w01 CECRST: HDMI-CEC block reset
 0x58024490 C   FIELD 29w01 DAC12RST: DAC1 and 2 Blocks Reset
 0x58024490 C   FIELD 30w01 UART7RST: UART7 block reset
 0x58024490 C   FIELD 31w01 UART8RST: UART8 block reset
@@ -17992,7 +17995,7 @@
 0x580244A8 C   FIELD 19w01 CRCAMEN: CRC Autonomous mode enable
 0x580244A8 C   FIELD 21w01 SAI4AMEN: SAI4 Autonomous mode enable
 0x580244A8 C   FIELD 24w01 ADC3AMEN: ADC3 Autonomous mode enable
-0x580244A8 C   FIELD 28w01 BKPSRAMAMEN: Backup RAM Autonomous mode enable
+0x580244A8 C   FIELD 28w01 BKPRAMAMEN: Backup RAM Autonomous mode enable
 0x580244A8 C   FIELD 29w01 SRAM4AMEN: SRAM4 Autonomous mode enable
 0x580244D0 B  REGISTER RSR (rw): RCC Reset Status Register
 0x580244D0 C   FIELD 16w01 RMVF: Remove reset flag
@@ -18020,12 +18023,12 @@
 0x580244D8 C   FIELD 15w01 ETH1MACEN: Ethernet MAC bus interface Clock Enable
 0x580244D8 C   FIELD 16w01 ETH1TXEN: Ethernet Transmission Clock Enable
 0x580244D8 C   FIELD 17w01 ETH1RXEN: Ethernet Reception Clock Enable
-0x580244D8 C   FIELD 25w01 USB1OTGEN: USB1OTG Peripheral Clocks Enable
+0x580244D8 C   FIELD 25w01 USB1OTGHSEN: USB1OTG (OTG_HS1) Peripheral Clocks Enable
 0x580244D8 C   FIELD 26w01 USB1OTGULPIEN: USB_PHY1 Clocks Enable
-0x580244D8 C   FIELD 27w01 USB2OTGEN: USB2OTG Peripheral Clocks Enable
-0x580244D8 C   FIELD 28w01 USB2ULPIEN: USB_PHY2 Clocks Enable
+0x580244D8 C   FIELD 27w01 USB2OTGHSEN: USB2OTG Peripheral Clocks Enable
+0x580244D8 C   FIELD 28w01 USB2OTGHSULPIEN: USB_PHY2 Clocks Enable
 0x580244DC B  REGISTER AHB2ENR (rw): RCC AHB2 Clock Register
-0x580244DC C   FIELD 00w01 DCMIEN: DCMI peripheral clock
+0x580244DC C   FIELD 00w01 DCMIEN: DCMI peripheral clock enable
 0x580244DC C   FIELD 04w01 CRYPTEN: CRYPT peripheral clock enable
 0x580244DC C   FIELD 05w01 HASHEN: HASH peripheral clock enable
 0x580244DC C   FIELD 06w01 RNGEN: RNG peripheral clocks enable
@@ -18074,7 +18077,7 @@
 0x580244E8 C   FIELD 21w01 I2C1EN: I2C1 Peripheral Clocks Enable
 0x580244E8 C   FIELD 22w01 I2C2EN: I2C2 Peripheral Clocks Enable
 0x580244E8 C   FIELD 23w01 I2C3EN: I2C3 Peripheral Clocks Enable
-0x580244E8 C   FIELD 27w01 HDMICECEN: HDMI-CEC peripheral clock enable
+0x580244E8 C   FIELD 27w01 CECEN: HDMI-CEC peripheral clock enable
 0x580244E8 C   FIELD 29w01 DAC12EN: DAC1&2 peripheral clock enable
 0x580244E8 C   FIELD 30w01 UART7EN: UART7 Peripheral Clocks Enable
 0x580244E8 C   FIELD 31w01 UART8EN: UART8 Peripheral Clocks Enable
@@ -18117,7 +18120,7 @@
 0x580244FC C   FIELD 00w01 MDMALPEN: MDMA Clock Enable During CSleep Mode
 0x580244FC C   FIELD 04w01 DMA2DLPEN: DMA2D Clock Enable During CSleep Mode
 0x580244FC C   FIELD 05w01 JPGDECLPEN: JPGDEC Clock Enable During CSleep Mode
-0x580244FC C   FIELD 08w01 FLITFLPEN: FLITF Clock Enable During CSleep Mode
+0x580244FC C   FIELD 08w01 FLASHLPEN: FLITF Clock Enable During CSleep Mode
 0x580244FC C   FIELD 12w01 FMCLPEN: FMC Peripheral Clocks Enable During CSleep Mode
 0x580244FC C   FIELD 14w01 QSPILPEN: QUADSPI and QUADSPI Delay Clock Enable During CSleep Mode
 0x580244FC C   FIELD 16w01 SDMMC1LPEN: SDMMC1 and SDMMC1 Delay Clock Enable During CSleep Mode
@@ -18134,8 +18137,8 @@
 0x58024500 C   FIELD 17w01 ETH1RXLPEN: Ethernet Reception Clock Enable During CSleep Mode
 0x58024500 C   FIELD 25w01 USB1OTGLPEN: USB1OTG peripheral clock enable during CSleep mode
 0x58024500 C   FIELD 26w01 USB1OTGULPILPEN: USB_PHY1 clock enable during CSleep mode
-0x58024500 C   FIELD 27w01 USB2OTGLPEN: USB2OTG peripheral clock enable during CSleep mode
-0x58024500 C   FIELD 28w01 USB2ULPILPEN: USB_PHY2 clocks enable during CSleep mode
+0x58024500 C   FIELD 27w01 USB2OTGHSLPEN: USB2OTG peripheral clock enable during CSleep mode
+0x58024500 C   FIELD 28w01 USB2OTGHSULPILPEN: USB_PHY2 clocks enable during CSleep mode
 0x58024504 B  REGISTER AHB2LPENR (rw): RCC AHB2 Sleep Clock Register
 0x58024504 C   FIELD 00w01 DCMILPEN: DCMI peripheral clock enable during csleep mode
 0x58024504 C   FIELD 04w01 CRYPTLPEN: CRYPT peripheral clock enable during CSleep mode
@@ -18251,12 +18254,12 @@
 0x58024538 C   FIELD 15w01 ETH1MACEN: Ethernet MAC bus interface Clock Enable
 0x58024538 C   FIELD 16w01 ETH1TXEN: Ethernet Transmission Clock Enable
 0x58024538 C   FIELD 17w01 ETH1RXEN: Ethernet Reception Clock Enable
-0x58024538 C   FIELD 25w01 USB1OTGEN: USB1OTG Peripheral Clocks Enable
+0x58024538 C   FIELD 25w01 USB1OTGHSEN: USB1OTG (OTG_HS1) Peripheral Clocks Enable
 0x58024538 C   FIELD 26w01 USB1OTGULPIEN: USB_PHY1 Clocks Enable
-0x58024538 C   FIELD 27w01 USB2OTGEN: USB2OTG Peripheral Clocks Enable
-0x58024538 C   FIELD 28w01 USB2ULPIEN: USB_PHY2 Clocks Enable
+0x58024538 C   FIELD 27w01 USB2OTGHSEN: USB2OTG Peripheral Clocks Enable
+0x58024538 C   FIELD 28w01 USB2OTGHSULPIEN: USB_PHY2 Clocks Enable
 0x5802453C B  REGISTER C1_AHB2ENR (rw): RCC AHB2 Clock Register
-0x5802453C C   FIELD 00w01 DCMIEN: DCMI peripheral clock
+0x5802453C C   FIELD 00w01 DCMIEN: DCMI peripheral clock enable
 0x5802453C C   FIELD 04w01 CRYPTEN: CRYPT peripheral clock enable
 0x5802453C C   FIELD 05w01 HASHEN: HASH peripheral clock enable
 0x5802453C C   FIELD 06w01 RNGEN: RNG peripheral clocks enable
@@ -18631,7 +18634,7 @@
 0x58025408 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025408 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802540C B  REGISTER NDTR0: 
-0x5802540C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x5802540C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025410 B  REGISTER PAR0: 
 0x58025410 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025414 B  REGISTER M0AR0: 
@@ -18655,7 +18658,7 @@
 0x5802541C C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802541C C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025420 B  REGISTER NDTR1: 
-0x58025420 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025420 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025424 B  REGISTER PAR1: 
 0x58025424 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025428 B  REGISTER M0AR1: 
@@ -18679,7 +18682,7 @@
 0x58025430 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025430 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025434 B  REGISTER NDTR2: 
-0x58025434 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025434 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025438 B  REGISTER PAR2: 
 0x58025438 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802543C B  REGISTER M0AR2: 
@@ -18703,7 +18706,7 @@
 0x58025444 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025444 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025448 B  REGISTER NDTR3: 
-0x58025448 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025448 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802544C B  REGISTER PAR3: 
 0x5802544C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025450 B  REGISTER M0AR3: 
@@ -18727,7 +18730,7 @@
 0x58025458 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025458 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802545C B  REGISTER NDTR4: 
-0x5802545C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x5802545C C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025460 B  REGISTER PAR4: 
 0x58025460 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025464 B  REGISTER M0AR4: 
@@ -18751,7 +18754,7 @@
 0x5802546C C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802546C C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025470 B  REGISTER NDTR5: 
-0x58025470 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025470 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025474 B  REGISTER PAR5: 
 0x58025474 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025478 B  REGISTER M0AR5: 
@@ -18775,7 +18778,7 @@
 0x58025480 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025480 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025484 B  REGISTER NDTR6: 
-0x58025484 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025484 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025488 B  REGISTER PAR6: 
 0x58025488 C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x5802548C B  REGISTER M0AR6: 
@@ -18799,7 +18802,7 @@
 0x58025494 C   FIELD 15w01 DBM (rw): double-buffer mode This bit must be set only in memory-to-peripheral and peripheral-to-memory transfers (MEM2MEM=0). The CIRC bit must also be set in double buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025494 C   FIELD 16w01 CT (rw): current target memory of DMA transfer in double-buffer mode This bit is toggled by hardware at the end of each channel transfer in double-buffer mode. Note: this bit is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x58025498 B  REGISTER NDTR7: 
-0x58025498 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA ‘read followed by write’ transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
+0x58025498 C   FIELD 00w16 NDT (rw): number of data to transfer (0 to 216 - 1) This field is updated by hardware when the channel is enabled: It is decremented after each single BDMA read followed by write transfer, indicating the remaining amount of data items to transfer. It is kept at zero when the programmed amount of data to transfer is reached, if the channel is not in circular mode (CIRC = 0 in the BDMA_CCRx register). It is reloaded automatically by the previously programmed value, when the transfer is complete, if the channel is in circular mode (CIRC = 1). If this field is zero, no transfer can be served whatever the channel status (enabled or not). Note: this field is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is read-only when the channel is enabled (EN = 1).
 0x5802549C B  REGISTER PAR7: 
 0x5802549C C   FIELD 00w32 PA (rw): peripheral address It contains the base address of the peripheral data register from/to which the data is read/written. When PSIZE[1:0] = 01 (16 bits), bit 0 of PA[31:0] is ignored. Access is automatically aligned to a half-word address. When PSIZE = 10 (32 bits), bits 1 and 0 of PA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory destination address if DIR = 1 and the memory source address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral destination address DIR = 1 and the peripheral source address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x580254A0 B  REGISTER M0AR7: 
@@ -18808,7 +18811,7 @@
 0x580254A4 C   FIELD 00w32 MA (rw): peripheral address It contains the base address of the memory from/to which the data is read/written. When MSIZE[1:0] = 01 (16 bits), bit 0 of MA[31:0] is ignored. Access is automatically aligned to a half-word address. When MSIZE = 10 (32 bits), bits 1 and 0 of MA[31:0] are ignored. Access is automatically aligned to a word address. In memory-to-memory mode, this register identifies the memory source address if DIR = 1 and the memory destination address if DIR = 0. In peripheral-to-peripheral mode, this register identifies the peripheral source address DIR = 1 and the peripheral destination address if DIR = 0. Note: this register is set and cleared by software. It must not be written when the channel is enabled (EN = 1). It is not read-only when the channel is enabled (EN = 1).
 0x58025800 A PERIPHERAL DMAMUX2
 0x58025800 B  REGISTER C0CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025800 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025800 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025800 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025800 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025800 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18816,7 +18819,7 @@
 0x58025800 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025800 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025804 B  REGISTER C1CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025804 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025804 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025804 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025804 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025804 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18824,7 +18827,7 @@
 0x58025804 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025804 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025808 B  REGISTER C2CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025808 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025808 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025808 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025808 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025808 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18832,7 +18835,7 @@
 0x58025808 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025808 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x5802580C B  REGISTER C3CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x5802580C C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x5802580C C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x5802580C C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x5802580C C   FIELD 09w01 EGE: Event generation enable/disable
 0x5802580C C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18840,7 +18843,7 @@
 0x5802580C C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x5802580C C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025810 B  REGISTER C4CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025810 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025810 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025810 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025810 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025810 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18848,7 +18851,7 @@
 0x58025810 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025810 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025814 B  REGISTER C5CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025814 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025814 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025814 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025814 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025814 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18856,7 +18859,7 @@
 0x58025814 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025814 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x58025818 B  REGISTER C6CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x58025818 C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x58025818 C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x58025818 C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x58025818 C   FIELD 09w01 EGE: Event generation enable/disable
 0x58025818 C   FIELD 16w01 SE: Synchronous operating mode enable/disable
@@ -18864,47 +18867,31 @@
 0x58025818 C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x58025818 C   FIELD 24w05 SYNC_ID: Synchronization input selected
 0x5802581C B  REGISTER C7CR (rw): DMAMux - DMA request line multiplexer channel x control register
-0x5802581C C   FIELD 00w08 DMAREQ_ID: Input DMA request line selected
+0x5802581C C   FIELD 00w05 DMAREQ_ID: Input DMA request line selected
 0x5802581C C   FIELD 08w01 SOIE: Interrupt enable at synchronization event overrun
 0x5802581C C   FIELD 09w01 EGE: Event generation enable/disable
 0x5802581C C   FIELD 16w01 SE: Synchronous operating mode enable/disable
 0x5802581C C   FIELD 17w02 SPOL: Synchronization event type selector Defines the synchronization event on the selected synchronization input:
 0x5802581C C   FIELD 19w05 NBREQ: Number of DMA requests to forward Defines the number of DMA requests forwarded before output event is generated. In synchronous mode, it also defines the number of DMA requests to forward after a synchronization event, then stop forwarding. The actual number of DMA requests forwarded is NBREQ+1. Note: This field can only be written when both SE and EGE bits are reset.
 0x5802581C C   FIELD 24w05 SYNC_ID: Synchronization input selected
-0x58025880 B  REGISTER CSR (ro): DMAMUX request line multiplexer interrupt channel status register
-0x58025880 C   FIELD 00w01 SOF0: Synchronization overrun event flag
-0x58025880 C   FIELD 01w01 SOF1: Synchronization overrun event flag
-0x58025880 C   FIELD 02w01 SOF2: Synchronization overrun event flag
-0x58025880 C   FIELD 03w01 SOF3: Synchronization overrun event flag
-0x58025880 C   FIELD 04w01 SOF4: Synchronization overrun event flag
-0x58025880 C   FIELD 05w01 SOF5: Synchronization overrun event flag
-0x58025880 C   FIELD 06w01 SOF6: Synchronization overrun event flag
-0x58025880 C   FIELD 07w01 SOF7: Synchronization overrun event flag
-0x58025880 C   FIELD 08w01 SOF8: Synchronization overrun event flag
-0x58025880 C   FIELD 09w01 SOF9: Synchronization overrun event flag
-0x58025880 C   FIELD 10w01 SOF10: Synchronization overrun event flag
-0x58025880 C   FIELD 11w01 SOF11: Synchronization overrun event flag
-0x58025880 C   FIELD 12w01 SOF12: Synchronization overrun event flag
-0x58025880 C   FIELD 13w01 SOF13: Synchronization overrun event flag
-0x58025880 C   FIELD 14w01 SOF14: Synchronization overrun event flag
-0x58025880 C   FIELD 15w01 SOF15: Synchronization overrun event flag
-0x58025884 B  REGISTER CFR (wo): DMAMUX request line multiplexer interrupt clear flag register
-0x58025884 C   FIELD 00w01 CSOF0: Clear synchronization overrun event flag
-0x58025884 C   FIELD 01w01 CSOF1: Clear synchronization overrun event flag
-0x58025884 C   FIELD 02w01 CSOF2: Clear synchronization overrun event flag
-0x58025884 C   FIELD 03w01 CSOF3: Clear synchronization overrun event flag
-0x58025884 C   FIELD 04w01 CSOF4: Clear synchronization overrun event flag
-0x58025884 C   FIELD 05w01 CSOF5: Clear synchronization overrun event flag
-0x58025884 C   FIELD 06w01 CSOF6: Clear synchronization overrun event flag
-0x58025884 C   FIELD 07w01 CSOF7: Clear synchronization overrun event flag
-0x58025884 C   FIELD 08w01 CSOF8: Clear synchronization overrun event flag
-0x58025884 C   FIELD 09w01 CSOF9: Clear synchronization overrun event flag
-0x58025884 C   FIELD 10w01 CSOF10: Clear synchronization overrun event flag
-0x58025884 C   FIELD 11w01 CSOF11: Clear synchronization overrun event flag
-0x58025884 C   FIELD 12w01 CSOF12: Clear synchronization overrun event flag
-0x58025884 C   FIELD 13w01 CSOF13: Clear synchronization overrun event flag
-0x58025884 C   FIELD 14w01 CSOF14: Clear synchronization overrun event flag
-0x58025884 C   FIELD 15w01 CSOF15: Clear synchronization overrun event flag
+0x58025880 B  REGISTER CSR (ro): 
+0x58025880 C   FIELD 00w01 SOF0 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 01w01 SOF1 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 02w01 SOF2 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 03w01 SOF3 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 04w01 SOF4 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 05w01 SOF5 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 06w01 SOF6 (ro): Synchronization overrun event flag
+0x58025880 C   FIELD 07w01 SOF7 (ro): Synchronization overrun event flag
+0x58025884 B  REGISTER CFR: 
+0x58025884 C   FIELD 00w01 CSOF0 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 01w01 CSOF1 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 02w01 CSOF2 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 03w01 CSOF3 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 04w01 CSOF4 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 05w01 CSOF5 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 06w01 CSOF6 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
+0x58025884 C   FIELD 07w01 CSOF7 (wo): Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
 0x58025900 B  REGISTER RG0CR (rw): DMAMux - DMA request generator channel x control register
 0x58025900 C   FIELD 00w05 SIG_ID: DMA request trigger input selected
 0x58025900 C   FIELD 08w01 OIE: Interrupt enable at trigger event overrun
@@ -18953,24 +18940,24 @@
 0x5802591C C   FIELD 16w01 GE: DMA request generator channel enable/disable
 0x5802591C C   FIELD 17w02 GPOL: DMA request generator trigger event type selection Defines the trigger event on the selected DMA request trigger input
 0x5802591C C   FIELD 19w05 GNBREQ: Number of DMA requests to generate Defines the number of DMA requests generated after a trigger event, then stop generating. The actual number of generated DMA requests is GNBREQ+1. Note: This field can only be written when GE bit is reset.
-0x58025940 B  REGISTER RGSR (ro): DMAMux - DMA request generator status register
-0x58025940 C   FIELD 00w01 OF0: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 01w01 OF1: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 02w01 OF2: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 03w01 OF3: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 04w01 OF4: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 05w01 OF5: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 06w01 OF6: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025940 C   FIELD 07w01 OF7: Trigger event overrun flag The flag is set when a trigger event occurs on DMA request generator channel x, while the DMA request generator counter value is lower than GNBREQ. The flag is cleared by writing 1 to the corresponding COFx bit in DMAMUX_RGCFR register.
-0x58025944 B  REGISTER RGCFR (wo): DMAMux - DMA request generator clear flag register
-0x58025944 C   FIELD 00w01 COF0: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 01w01 COF1: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 02w01 COF2: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 03w01 COF3: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 04w01 COF4: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 05w01 COF5: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 06w01 COF6: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
-0x58025944 C   FIELD 07w01 COF7: Clear trigger event overrun flag Upon setting, this bit clears the corresponding overrun flag OFx in the DMAMUX_RGCSR register.
+0x58025940 B  REGISTER RGSR (ro): 
+0x58025940 C   FIELD 00w01 OF0 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 01w01 OF1 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 02w01 OF2 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 03w01 OF3 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 04w01 OF4 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 05w01 OF5 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 06w01 OF6 (ro): Trigger overrun event flag
+0x58025940 C   FIELD 07w01 OF7 (ro): Trigger overrun event flag
+0x58025944 B  REGISTER RGCFR (wo): 
+0x58025944 C   FIELD 00w01 COF0: Clear trigger overrun event flag
+0x58025944 C   FIELD 01w01 COF1: Clear trigger overrun event flag
+0x58025944 C   FIELD 02w01 COF2: Clear trigger overrun event flag
+0x58025944 C   FIELD 03w01 COF3: Clear trigger overrun event flag
+0x58025944 C   FIELD 04w01 COF4: Clear trigger overrun event flag
+0x58025944 C   FIELD 05w01 COF5: Clear trigger overrun event flag
+0x58025944 C   FIELD 06w01 COF6: Clear trigger overrun event flag
+0x58025944 C   FIELD 07w01 COF7: Clear trigger overrun event flag
 0x58026000 A PERIPHERAL ADC3
 0x58026000 B  REGISTER ISR (rw): ADC interrupt and status register
 0x58026000 C   FIELD 00w01 ADRDY: ADC ready flag
