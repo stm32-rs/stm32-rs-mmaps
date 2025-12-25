@@ -1537,12 +1537,29 @@
 0x48500038 C   FIELD 05w01 WUF17 (rw): WUF17 WakeUp Flag 17 PB13 This bit is set when a wakeup is detected on wakeup line 17. It is cleared by a reset pad or by writing 1 in this bit field. writting this bit, clears the interrupt:
 0x48500038 C   FIELD 06w01 WUF18 (rw): WUF18 WakeUp Flag 18 PB14 This bit is set when a wakeup is detected on wakeup line 18. It is cleared by a reset pad or by writing 1 in this bit field. writting this bit, clears the interrupt:
 0x48500038 C   FIELD 07w01 WUF19 (rw): WUF19 WakeUp Flag 19 PB15 This bit is set when a wakeup is detected on wakeup line 19. It is cleared by a reset pad or by writing 1 in this bit field. writting this bit, clears the interrupt:
+0x4850003C B  REGISTER SDWN_WUEN (rw): Contains Shutdown wakeup enable fields for IO.
+0x4850003C C   FIELD 00w01 WUEN (rw): PB0 I/O wakeup from shutdown enable.
+0x48500040 B  REGISTER SDWN_WUPOL (rw): Contains Shutdown wakeup polarity fields for IO.
+0x48500040 C   FIELD 00w01 WUPOL (rw): PB0 I/O wakeup from shutdown polarity.
+0x48500044 B  REGISTER SDWN_WUF (rw): Contains Shutdown wakeup flags for IO. This register is reset on PORESETn.
+0x48500044 C   FIELD 00w01 WUF (rw): PB0 I/O wakeup from shutdown flag.
 0x48500084 B  REGISTER DBGR (rw): DBGR register
 0x48500084 C   FIELD 00w01 DEEPSTOP2 (rw): DEEPSTOP2: DEEPSTOP2 low power saving emulation enable. 0: normal DEEPSTOP will be applied 1: DEEPSTOP2 (debugger features not lost) will be applied instead of DEEPSTOP.
 0x48500084 C   FIELD 13w03 DIS_PRECH (rw): DIS_PRECH[2:0]: disable precharge during deepstop (debug) 111: precharge and SMPS monitoring are disabled (whatever CR5.SMPSLPOPEN) 101: precharge are activated only at deepstop exit (to be used only with CR5.SMPSLPOPEN=1) else: No effect (default 0x0)
 0x48500088 B  REGISTER EXTSRR (rw): EXTSRR register
 0x48500088 C   FIELD 09w01 DEEPSTOPF (rw): DEEPSTOPF System DeepStop Flag This bit is set by hardware and cleared only by a POR reset or by writing '1' in this bit field
 0x48500088 C   FIELD 10w01 RFPHASEF (rw): RFPHASEF RFPHASE Flag This bit is set by hardware after a Radio wake-up event (BLE activation); it is cleared either by software, writing '1' in this bit field, or by hardware when Ready2Sleep signal is asserted by the Radio IP.
+0x48500090 B  REGISTER TRIMR: This register provides the trimming values applied by hardware.
+0x48500090 C   FIELD 00w04 RFD_REG_TRIM: RF LDO trimming.
+0x48500090 C   FIELD 04w04 TRIM_MR: Main regulator voltage trimming.
+0x48500090 C   FIELD 08w03 SMPS_TRIM: SMPS output voltage trimming.
+0x48500094 B  REGISTER ENGTRIM (rw): This register allows the software to overwrite the hardware trimming values.
+0x48500094 C   FIELD 00w01 TRIMRFDREGEN (rw): RFD_REG_TRIM software overwrite enable.
+0x48500094 C   FIELD 01w04 RFD_REG_TRIM (rw): RF LDO trimming chosen by the software.
+0x48500094 C   FIELD 05w01 TRIMMREN (rw): TRIM_MR software overwrite enable.
+0x48500094 C   FIELD 06w04 TRIM_MR (rw): Main regulator voltage trimming chosen by the software.
+0x48500094 C   FIELD 10w01 SMPSTRIMEN (rw): SMPS_TRIM software overwrite enable.
+0x48500094 C   FIELD 11w03 SMPS_TRIM (rw): SMPS output voltage trimming chosen by the software.
 0x48600000 A PERIPHERAL TRNG
 0x48600000 B  REGISTER CR (rw): TRNG_CR register
 0x48600000 C   FIELD 00w01 DISABLE (rw): Disable Bit DISABLE can be used for reading or setting the state of the TRNG core. The value read is always the one available at the rng core clock domain. When changing the value, the change is effective when the value read is the same as the one written.
