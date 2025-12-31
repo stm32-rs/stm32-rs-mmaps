@@ -107,10 +107,10 @@
 0x40000020 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable
 0x40000020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
+0x40000024 B  REGISTER CNT32 (rw): 32-bit counter register
 0x40000024 B  REGISTER CNT: TIM2 counter
-0x40000024 B  REGISTER CNT_ALTERNATE: TIM2 counter
 0x40000024 C   FIELD 00w31 CNT (rw): Least significant part of counter value
-0x40000024 C   FIELD 00w32 CNT (rw): Least significant part of counter value
+0x40000024 C   FIELD 00w32 CNT (rw): counter value
 0x40000024 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
 0x40000028 B  REGISTER PSC: TIM2 prescaler
 0x40000028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
@@ -136,7 +136,7 @@
 0x40000060 B  REGISTER OR2: TIM2 option register 2
 0x40000060 C   FIELD 14w03 ETRSEL (rw): ETR source selection These bits select the ETR input source. Others: Reserved
 0x40000400 A PERIPHERAL TIM3
-0x40000400 B  REGISTER CR1: TIM2 control register 1
+0x40000400 B  REGISTER CR1: TIM3 control register 1
 0x40000400 C   FIELD 00w01 CEN (rw): Counter enable Note: External clock, gated mode and encoder mode can work only if the CEN bit has been previously set by software. However trigger mode can set the CEN bit automatically by hardware. CEN is cleared automatically in one-pulse mode, when an update event occurs.
 0x40000400 C   FIELD 01w01 UDIS (rw): Update disable This bit is set and cleared by software to enable/disable UEV event generation. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller Buffered registers are then loaded with their preload values.
 0x40000400 C   FIELD 02w01 URS (rw): Update request source This bit is set and cleared by software to select the UEV event sources. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller
@@ -146,11 +146,11 @@
 0x40000400 C   FIELD 07w01 ARPE (rw): Auto-reload preload enable
 0x40000400 C   FIELD 08w02 CKD (rw): Clock division This bit-field indicates the division ratio between the timer clock (CK_INT) frequency and sampling clock used by the digital filters (ETR, TIx),
 0x40000400 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
-0x40000404 B  REGISTER CR2: TIM2 control register 2
+0x40000404 B  REGISTER CR2: TIM3 control register 2
 0x40000404 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
 0x40000404 C   FIELD 04w03 MMS (rw): Master mode selection These bits permit to select the information to be sent in master mode to slave timers for synchronization (TRGO). The combination is as follows: When the Counter Enable signal is controlled by the trigger input, there is a delay on TRGO, except if the master/slave mode is selected (see the MSM bit description in TIMx_SMCR register). Note: The clock of the slave timer or ADC must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
 0x40000404 C   FIELD 07w01 TI1S (rw): TI1 selection
-0x40000408 B  REGISTER SMCR: TIM2 slave mode control register
+0x40000408 B  REGISTER SMCR: TIM3 slave mode control register
 0x40000408 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. reinitializes the counter, generates an update of the registers and starts the counter. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
 0x40000408 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 179: TIMx internal trigger connection on page 846 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000408 C   FIELD 07w01 MSM (rw): Master/Slave mode
@@ -160,7 +160,7 @@
 0x40000408 C   FIELD 15w01 ETP (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
 0x40000408 C   FIELD 16w01 SMS_3 (rw): SMS[3]
 0x40000408 C   FIELD 20w02 TS2 (rw): TS[4:3]
-0x4000040C B  REGISTER DIER: TIM2 DMA/Interrupt enable register
+0x4000040C B  REGISTER DIER: TIM3 DMA/Interrupt enable register
 0x4000040C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000040C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
 0x4000040C C   FIELD 02w01 CC2IE (rw): Capture/Compare 2 interrupt enable
@@ -173,7 +173,7 @@
 0x4000040C C   FIELD 11w01 CC3DE (rw): Capture/Compare 3 DMA request enable
 0x4000040C C   FIELD 12w01 CC4DE (rw): Capture/Compare 4 DMA request enable
 0x4000040C C   FIELD 14w01 TDE (rw): Trigger DMA request enable
-0x40000410 B  REGISTER SR: TIM2 status register
+0x40000410 B  REGISTER SR: TIM3 status register
 0x40000410 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow (for TIM2 to TIM4) and if UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in TIMx_EGR register, if URS=0 and UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by a trigger event (refer to the synchro control register description), if URS=0 and UDIS=0 in the TIMx_CR1 register.
 0x40000410 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
 0x40000410 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
@@ -184,15 +184,15 @@
 0x40000410 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
 0x40000410 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag
 0x40000410 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag
-0x40000414 B  REGISTER EGR: TIM2 event generation register
+0x40000414 B  REGISTER EGR: TIM3 event generation register
 0x40000414 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
 0x40000414 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
 0x40000414 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
 0x40000414 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation
 0x40000414 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation
 0x40000414 C   FIELD 06w01 TG (wo): Trigger generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
-0x40000418 B  REGISTER CCMR1_Input: TIM2 capture/compare mode register 1
-0x40000418 B  REGISTER CCMR1_Output: TIM2 capture/compare mode register 1
+0x40000418 B  REGISTER CCMR1_Input: TIM3 capture/compare mode register 1
+0x40000418 B  REGISTER CCMR1_Output: TIM3 capture/compare mode register 1
 0x40000418 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
 0x40000418 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
 0x40000418 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
@@ -211,8 +211,8 @@
 0x40000418 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
 0x40000418 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
 0x40000418 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
-0x4000041C B  REGISTER CCMR2_Input: TIM2 capture/compare mode register 2
-0x4000041C B  REGISTER CCMR2_Output: TIM2 capture/compare mode register 2
+0x4000041C B  REGISTER CCMR2_Input: TIM3 capture/compare mode register 2
+0x4000041C B  REGISTER CCMR2_Output: TIM3 capture/compare mode register 2
 0x4000041C C   FIELD 00w02 CC3S (=TIM3.CCMR1_Output.CC%sS) (rw): Capture/Compare 3 selection
 0x4000041C C   FIELD 00w02 CC3S (rw): Capture/Compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = 0 in TIMx_CCER).
 0x4000041C C   FIELD 02w01 OC3FE (=TIM3.CCMR1_Output.OC%sFE) (rw): Output compare 3 fast enable
@@ -231,7 +231,7 @@
 0x4000041C C   FIELD 15w01 OC4CE (=TIM3.CCMR1_Output.OC%sCE) (rw): Output compare 4 clear enable
 0x4000041C C   FIELD 16w01 OC3M_3 (=TIM3.CCMR1_Output.OC%sM_3) (rw): Output compare 3 mode, bit 3
 0x4000041C C   FIELD 24w01 OC4M_3 (=TIM3.CCMR1_Output.OC%sM_3) (rw): Output compare 4 mode, bit 3
-0x40000420 B  REGISTER CCER: TIM2 capture/compare enable register
+0x40000420 B  REGISTER CCER: TIM3 capture/compare enable register
 0x40000420 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
 0x40000420 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
 0x40000420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
@@ -244,36 +244,34 @@
 0x40000420 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable
 0x40000420 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
-0x40000424 B  REGISTER CNT: TIM2 counter
-0x40000424 B  REGISTER CNT_ALTERNATE: TIM2 counter
+0x40000424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000424 B  REGISTER CNT: TIM3 counter
 0x40000424 C   FIELD 00w16 CNT (rw): Least significant part of counter value
-0x40000424 C   FIELD 00w31 CNT (rw): Least significant part of counter value
+0x40000424 C   FIELD 00w16 CNT (rw): counter value
 0x40000424 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
-0x40000428 B  REGISTER PSC: TIM2 prescaler
+0x40000428 B  REGISTER PSC: TIM3 prescaler
 0x40000428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
-0x4000042C B  REGISTER ARR: TIM2 auto-reload register
+0x4000042C B  REGISTER ARR: TIM3 auto-reload register
 0x4000042C C   FIELD 00w16 ARR (rw): Low Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the Section 25.3.1: Time-base unit on page 786 for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40000434 B  REGISTER CCR1: capture/compare register
-0x40000434 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000434 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000438 B  REGISTER CCR2: capture/compare register
-0x40000438 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000438 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x4000043C B  REGISTER CCR3: capture/compare register
-0x4000043C C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x4000043C C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000440 B  REGISTER CCR4: capture/compare register
-0x40000440 C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000448 B  REGISTER DCR: TIM2 DMA control register
+0x40000440 C   FIELD 00w16 CCR (rw): Capture/Compare value
+0x40000448 B  REGISTER DCR: TIM3 DMA control register
 0x40000448 C   FIELD 00w05 DBA (rw): DMA base address This 5-bit vector defines the base-address for DMA transfers (when read/write access are done through the TIMx_DMAR address). DBA is defined as an offset starting from the address of the TIMx_CR1 register. Example: ... Example: Let us consider the following transfer: DBL = 7 transfers & DBA = TIMx_CR1. In this case the transfer is done to/from 7 registers starting from the TIMx_CR1 address.
 0x40000448 C   FIELD 08w05 DBL (rw): DMA burst length This 5-bit vector defines the number of DMA transfers (the timer recognizes a burst transfer when a read or a write access is done to the TIMx_DMAR address). ...
-0x4000044C B  REGISTER DMAR: TIM2 DMA address for full transfer
+0x4000044C B  REGISTER DMAR: TIM3 DMA address for full transfer
 0x4000044C C   FIELD 00w16 DMAB (rw): DMA register for burst accesses A read or write operation to the DMAR register accesses the register located at the address (TIMx_CR1 address) + (DBA + DMA index) x 4 where TIMx_CR1 address is the address of the control register 1, DBA is the DMA base address configured in TIMx_DCR register, DMA index is automatically controlled by the DMA transfer, and ranges from 0 to DBL (DBL configured in TIMx_DCR).
-0x40000450 B  REGISTER OR1: TIM2 option register 1
-0x40000450 C   FIELD 00w01 ITR1_RMP (rw): Internal trigger 1 remap
-0x40000450 C   FIELD 01w01 ETR_RMP (rw): External trigger remap
-0x40000450 C   FIELD 02w02 TI4_RMP (rw): Input Capture 4 remap
-0x40000460 B  REGISTER OR2: TIM2 option register 2
+0x40000450 B  REGISTER OR1: TIM3 option register 1
+0x40000450 C   FIELD 00w02 TI1_RMP (rw): Input Capture 1 remap.
+0x40000460 B  REGISTER OR2: TIM3 option register 2
 0x40000460 C   FIELD 14w03 ETRSEL (rw): ETR source selection These bits select the ETR input source. Others: Reserved
 0x40000800 A PERIPHERAL TIM4
-0x40000800 B  REGISTER CR1: TIM2 control register 1
+0x40000800 B  REGISTER CR1: TIM3 control register 1
 0x40000800 C   FIELD 00w01 CEN (rw): Counter enable Note: External clock, gated mode and encoder mode can work only if the CEN bit has been previously set by software. However trigger mode can set the CEN bit automatically by hardware. CEN is cleared automatically in one-pulse mode, when an update event occurs.
 0x40000800 C   FIELD 01w01 UDIS (rw): Update disable This bit is set and cleared by software to enable/disable UEV event generation. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller Buffered registers are then loaded with their preload values.
 0x40000800 C   FIELD 02w01 URS (rw): Update request source This bit is set and cleared by software to select the UEV event sources. Counter overflow/underflow Setting the UG bit Update generation through the slave mode controller
@@ -283,11 +281,11 @@
 0x40000800 C   FIELD 07w01 ARPE (rw): Auto-reload preload enable
 0x40000800 C   FIELD 08w02 CKD (rw): Clock division This bit-field indicates the division ratio between the timer clock (CK_INT) frequency and sampling clock used by the digital filters (ETR, TIx),
 0x40000800 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
-0x40000804 B  REGISTER CR2: TIM2 control register 2
+0x40000804 B  REGISTER CR2: TIM3 control register 2
 0x40000804 C   FIELD 03w01 CCDS (rw): Capture/compare DMA selection
 0x40000804 C   FIELD 04w03 MMS (rw): Master mode selection These bits permit to select the information to be sent in master mode to slave timers for synchronization (TRGO). The combination is as follows: When the Counter Enable signal is controlled by the trigger input, there is a delay on TRGO, except if the master/slave mode is selected (see the MSM bit description in TIMx_SMCR register). Note: The clock of the slave timer or ADC must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
 0x40000804 C   FIELD 07w01 TI1S (rw): TI1 selection
-0x40000808 B  REGISTER SMCR: TIM2 slave mode control register
+0x40000808 B  REGISTER SMCR: TIM3 slave mode control register
 0x40000808 C   FIELD 00w03 SMS (rw): SMS[0]: Slave mode selection When external signals are selected the active edge of the trigger signal (TRGI) is linked to the polarity selected on the external input (see Input Control register and Control Register description. reinitializes the counter, generates an update of the registers and starts the counter. Note: The gated mode must not be used if TI1F_ED is selected as the trigger input (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the gated mode checks the level of the trigger signal. Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2 signals must be enabled prior to receive events from the master timer, and the clock frequency (prescaler) must not be changed on-the-fly while triggers are received from the master timer.
 0x40000808 C   FIELD 04w03 TS (rw): TS[0]: Trigger selection This bit-field selects the trigger input to be used to synchronize the counter. Others: Reserved See Table 179: TIMx internal trigger connection on page 846 for more details on ITRx meaning for each Timer. Note: These bits must be changed only when they are not used (e.g. when SMS=000) to avoid wrong edge detections at the transition.
 0x40000808 C   FIELD 07w01 MSM (rw): Master/Slave mode
@@ -297,7 +295,7 @@
 0x40000808 C   FIELD 15w01 ETP (rw): External trigger polarity This bit selects whether ETR or ETR is used for trigger operations
 0x40000808 C   FIELD 16w01 SMS_3 (rw): SMS[3]
 0x40000808 C   FIELD 20w02 TS2 (rw): TS[4:3]
-0x4000080C B  REGISTER DIER: TIM2 DMA/Interrupt enable register
+0x4000080C B  REGISTER DIER: TIM3 DMA/Interrupt enable register
 0x4000080C C   FIELD 00w01 UIE (rw): Update interrupt enable
 0x4000080C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
 0x4000080C C   FIELD 02w01 CC2IE (rw): Capture/Compare 2 interrupt enable
@@ -310,7 +308,7 @@
 0x4000080C C   FIELD 11w01 CC3DE (rw): Capture/Compare 3 DMA request enable
 0x4000080C C   FIELD 12w01 CC4DE (rw): Capture/Compare 4 DMA request enable
 0x4000080C C   FIELD 14w01 TDE (rw): Trigger DMA request enable
-0x40000810 B  REGISTER SR: TIM2 status register
+0x40000810 B  REGISTER SR: TIM3 status register
 0x40000810 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow (for TIM2 to TIM4) and if UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in TIMx_EGR register, if URS=0 and UDIS=0 in the TIMx_CR1 register. When CNT is reinitialized by a trigger event (refer to the synchro control register description), if URS=0 and UDIS=0 in the TIMx_CR1 register.
 0x40000810 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
 0x40000810 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
@@ -321,15 +319,15 @@
 0x40000810 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
 0x40000810 C   FIELD 11w01 CC3OF (rw): Capture/Compare 3 overcapture flag
 0x40000810 C   FIELD 12w01 CC4OF (rw): Capture/Compare 4 overcapture flag
-0x40000814 B  REGISTER EGR: TIM2 event generation register
+0x40000814 B  REGISTER EGR: TIM3 event generation register
 0x40000814 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
 0x40000814 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
 0x40000814 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
 0x40000814 C   FIELD 03w01 CC3G (wo): Capture/compare 3 generation
 0x40000814 C   FIELD 04w01 CC4G (wo): Capture/compare 4 generation
 0x40000814 C   FIELD 06w01 TG (wo): Trigger generation This bit is set by software in order to generate an event, it is automatically cleared by hardware.
-0x40000818 B  REGISTER CCMR1_Input: TIM2 capture/compare mode register 1
-0x40000818 B  REGISTER CCMR1_Output: TIM2 capture/compare mode register 1
+0x40000818 B  REGISTER CCMR1_Input: TIM3 capture/compare mode register 1
+0x40000818 B  REGISTER CCMR1_Output: TIM3 capture/compare mode register 1
 0x40000818 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
 0x40000818 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC1S bits are writable only when the channel is OFF (CC1E = 0 in TIMx_CCER).
 0x40000818 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
@@ -348,8 +346,8 @@
 0x40000818 C   FIELD 15w01 OC2CE (rw): Output compare 2 clear enable
 0x40000818 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
 0x40000818 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
-0x4000081C B  REGISTER CCMR2_Input: TIM2 capture/compare mode register 2
-0x4000081C B  REGISTER CCMR2_Output: TIM2 capture/compare mode register 2
+0x4000081C B  REGISTER CCMR2_Input: TIM3 capture/compare mode register 2
+0x4000081C B  REGISTER CCMR2_Output: TIM3 capture/compare mode register 2
 0x4000081C C   FIELD 00w02 CC3S (=TIM3.CCMR1_Output.CC%sS) (rw): Capture/Compare 3 selection
 0x4000081C C   FIELD 00w02 CC3S (rw): Capture/Compare 3 selection This bit-field defines the direction of the channel (input/output) as well as the used input. Note: CC3S bits are writable only when the channel is OFF (CC3E = 0 in TIMx_CCER).
 0x4000081C C   FIELD 02w01 OC3FE (=TIM3.CCMR1_Output.OC%sFE) (rw): Output compare 3 fast enable
@@ -368,7 +366,7 @@
 0x4000081C C   FIELD 15w01 OC4CE (=TIM3.CCMR1_Output.OC%sCE) (rw): Output compare 4 clear enable
 0x4000081C C   FIELD 16w01 OC3M_3 (=TIM3.CCMR1_Output.OC%sM_3) (rw): Output compare 3 mode, bit 3
 0x4000081C C   FIELD 24w01 OC4M_3 (=TIM3.CCMR1_Output.OC%sM_3) (rw): Output compare 4 mode, bit 3
-0x40000820 B  REGISTER CCER: TIM2 capture/compare enable register
+0x40000820 B  REGISTER CCER: TIM3 capture/compare enable register
 0x40000820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
 0x40000820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
 0x40000820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
@@ -381,33 +379,31 @@
 0x40000820 C   FIELD 12w01 CC4E (rw): Capture/Compare 4 output enable
 0x40000820 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000820 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
-0x40000824 B  REGISTER CNT: TIM2 counter
-0x40000824 B  REGISTER CNT_ALTERNATE: TIM2 counter
+0x40000824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000824 B  REGISTER CNT: TIM3 counter
 0x40000824 C   FIELD 00w16 CNT (rw): Least significant part of counter value
-0x40000824 C   FIELD 00w31 CNT (rw): Least significant part of counter value
+0x40000824 C   FIELD 00w16 CNT (rw): counter value
 0x40000824 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
-0x40000828 B  REGISTER PSC: TIM2 prescaler
+0x40000828 B  REGISTER PSC: TIM3 prescaler
 0x40000828 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
-0x4000082C B  REGISTER ARR: TIM2 auto-reload register
+0x4000082C B  REGISTER ARR: TIM3 auto-reload register
 0x4000082C C   FIELD 00w16 ARR (rw): Low Auto-reload value ARR is the value to be loaded in the actual auto-reload register. Refer to the Section 25.3.1: Time-base unit on page 786 for more details about ARR update and behavior. The counter is blocked while the auto-reload value is null.
 0x40000834 B  REGISTER CCR1: capture/compare register
-0x40000834 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000834 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000838 B  REGISTER CCR2: capture/compare register
-0x40000838 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000838 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x4000083C B  REGISTER CCR3: capture/compare register
-0x4000083C C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x4000083C C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000840 B  REGISTER CCR4: capture/compare register
-0x40000840 C   FIELD 00w32 CCR (rw): Capture/Compare value
-0x40000848 B  REGISTER DCR: TIM2 DMA control register
+0x40000840 C   FIELD 00w16 CCR (rw): Capture/Compare value
+0x40000848 B  REGISTER DCR: TIM3 DMA control register
 0x40000848 C   FIELD 00w05 DBA (rw): DMA base address This 5-bit vector defines the base-address for DMA transfers (when read/write access are done through the TIMx_DMAR address). DBA is defined as an offset starting from the address of the TIMx_CR1 register. Example: ... Example: Let us consider the following transfer: DBL = 7 transfers & DBA = TIMx_CR1. In this case the transfer is done to/from 7 registers starting from the TIMx_CR1 address.
 0x40000848 C   FIELD 08w05 DBL (rw): DMA burst length This 5-bit vector defines the number of DMA transfers (the timer recognizes a burst transfer when a read or a write access is done to the TIMx_DMAR address). ...
-0x4000084C B  REGISTER DMAR: TIM2 DMA address for full transfer
+0x4000084C B  REGISTER DMAR: TIM3 DMA address for full transfer
 0x4000084C C   FIELD 00w16 DMAB (rw): DMA register for burst accesses A read or write operation to the DMAR register accesses the register located at the address (TIMx_CR1 address) + (DBA + DMA index) x 4 where TIMx_CR1 address is the address of the control register 1, DBA is the DMA base address configured in TIMx_DCR register, DMA index is automatically controlled by the DMA transfer, and ranges from 0 to DBL (DBL configured in TIMx_DCR).
-0x40000850 B  REGISTER OR1: TIM2 option register 1
-0x40000850 C   FIELD 00w01 ITR1_RMP (rw): Internal trigger 1 remap
-0x40000850 C   FIELD 01w01 ETR_RMP (rw): External trigger remap
-0x40000850 C   FIELD 02w02 TI4_RMP (rw): Input Capture 4 remap
-0x40000860 B  REGISTER OR2: TIM2 option register 2
+0x40000850 B  REGISTER OR1: TIM3 option register 1
+0x40000850 C   FIELD 00w02 TI1_RMP (rw): Input Capture 1 remap.
+0x40000860 B  REGISTER OR2: TIM3 option register 2
 0x40000860 C   FIELD 14w03 ETRSEL (rw): ETR source selection These bits select the ETR input source. Others: Reserved
 0x40000C00 A PERIPHERAL TIM5
 0x40000C00 B  REGISTER CR1 (=TIM2.CR1): TIM5 control register 1
@@ -431,9 +427,8 @@
 0x40000C1C B  REGISTER CCMR2_Output (=TIM2.CCMR2_Output): TIM5 capture/compare mode register 2
 0x40000C20 B  REGISTER CCER (=TIM2.CCER): TIM5 capture/compare enable register
 0x40000C24 B  REGISTER CNT (=TIM2.CNT): TIM5 counter
-0x40000C24 B  REGISTER CNT_ALTERNATE: TIM5 counter
-0x40000C24 C   FIELD 00w31 CNT (rw): Least significant part of counter value
-0x40000C24 C   FIELD 31w01 UIFCPY (rw): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register
+0x40000C24 B  REGISTER CNT32 (rw): 32-bit counter register
+0x40000C24 C   FIELD 00w32 CNT (rw): counter value
 0x40000C28 B  REGISTER PSC (=TIM2.PSC): TIM5 prescaler
 0x40000C2C B  REGISTER ARR (=TIM2.ARR): TIM5 auto-reload register
 0x40000C34 B  REGISTER CCR1 (=TIM2.CCR%s): capture/compare register
@@ -459,8 +454,10 @@
 0x40001010 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow regarding the repetition counter value and if UDIS = 0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in the TIMx_EGR register, if URS = 0 and UDIS = 0 in the TIMx_CR1 register.
 0x40001014 B  REGISTER EGR: TIM6 event generation register
 0x40001014 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
+0x40001024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40001024 B  REGISTER CNT: TIM6 counter
 0x40001024 C   FIELD 00w16 CNT (rw): Counter value
+0x40001024 C   FIELD 00w16 CNT (rw): counter value
 0x40001024 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40001028 B  REGISTER PSC: TIM6 prescaler
 0x40001028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded into the active prescaler register at each update event. (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
@@ -483,8 +480,10 @@
 0x40001410 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow regarding the repetition counter value and if UDIS = 0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in the TIMx_EGR register, if URS = 0 and UDIS = 0 in the TIMx_CR1 register.
 0x40001414 B  REGISTER EGR: TIM6 event generation register
 0x40001414 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
+0x40001424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40001424 B  REGISTER CNT: TIM6 counter
 0x40001424 C   FIELD 00w16 CNT (rw): Counter value
+0x40001424 C   FIELD 00w16 CNT (rw): counter value
 0x40001424 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40001428 B  REGISTER PSC: TIM6 prescaler
 0x40001428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded into the active prescaler register at each update event. (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
@@ -3385,8 +3384,10 @@
 0x40012C20 C   FIELD 17w01 CC5P (rw): Capture/Compare 5 output Polarity
 0x40012C20 C   FIELD 20w01 CC6E (rw): Capture/Compare 6 output enable
 0x40012C20 C   FIELD 21w01 CC6P (rw): Capture/Compare 6 output Polarity
+0x40012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40012C24 B  REGISTER CNT: TIM1 counter
 0x40012C24 C   FIELD 00w16 CNT (rw): Counter value
+0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0.
 0x40012C28 B  REGISTER PSC: TIM1 prescaler
 0x40012C28 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (CK_CNT) is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
@@ -3529,6 +3530,8 @@
 0x4001341C B  REGISTER CCMR2_Output (=TIM1.CCMR2_Output): TIM8 capture/compare mode register 2
 0x40013420 B  REGISTER CCER (=TIM1.CCER): TIM8 capture/compare enable register
 0x40013424 B  REGISTER CNT (=TIM1.CNT): TIM8 counter
+0x40013424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40013424 C   FIELD 00w16 CNT (rw): counter value
 0x40013428 B  REGISTER PSC (=TIM1.PSC): TIM8 prescaler
 0x4001342C B  REGISTER ARR (=TIM1.ARR): TIM8 auto-reload register
 0x40013430 B  REGISTER RCR (=TIM1.RCR): TIM8 repetition counter register
@@ -3776,8 +3779,10 @@
 0x40014020 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
 0x40014020 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
 0x40014020 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
+0x40014024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014024 B  REGISTER CNT: TIM15 counter
 0x40014024 C   FIELD 00w16 CNT (rw): Counter value
+0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit in the TIMx_ISR register.
 0x40014028 B  REGISTER PSC: TIM15 prescaler
 0x40014028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (CK_CNT) is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
@@ -3863,8 +3868,10 @@
 0x40014420 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
 0x40014420 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x40014420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x40014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014424 B  REGISTER CNT: TIM16 counter
 0x40014424 C   FIELD 00w16 CNT (rw): Counter value
+0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40014428 B  REGISTER PSC: TIM16 prescaler
 0x40014428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (CK_CNT) is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode ).
@@ -3909,6 +3916,8 @@
 0x40014818 B  REGISTER CCMR1_Output (=TIM16.CCMR1_Output): TIM17 capture/compare mode register 1
 0x40014820 B  REGISTER CCER (=TIM16.CCER): TIM17 capture/compare enable register
 0x40014824 B  REGISTER CNT (=TIM16.CNT): TIM17 counter
+0x40014824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014828 B  REGISTER PSC (=TIM16.PSC): TIM17 prescaler
 0x4001482C B  REGISTER ARR (=TIM16.ARR): TIM17 auto-reload register
 0x40014830 B  REGISTER RCR (=TIM16.RCR): TIM17 repetition counter register
