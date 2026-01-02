@@ -349,7 +349,9 @@
 0x40002020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40002020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40002024 B  REGISTER CNT (rw): CNT register
+0x40002024 B  REGISTER CNT32 (rw): 32-bit counter register
 0x40002024 C   FIELD 00w16 CNT (rw): CNT[15:0]: Counter value
+0x40002024 C   FIELD 00w32 CNT (rw): counter value
 0x40002024 C   FIELD 31w01 UIF_CPY (ro): UIFCPY: UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40002028 B  REGISTER PSC (rw): PSC register
 0x40002028 C   FIELD 00w16 PSC (rw): PSC[15:0]: Prescaler value The counter clock frequency (CK_CNT) is equal to fCK_PSC / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -522,7 +524,9 @@
 0x40005020 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x40005020 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
 0x40005024 B  REGISTER CNT (rw): CNT register
+0x40005024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40005024 C   FIELD 00w16 CNT (rw): CNT[15:0]: Counter value
+0x40005024 C   FIELD 00w16 CNT (rw): counter value
 0x40005024 C   FIELD 31w01 UIF_CPY (ro): UIFCPY: UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40005028 B  REGISTER PSC (rw): PSC register
 0x40005028 C   FIELD 00w16 PSC (rw): PSC[15:0]: Prescaler value The counter clock frequency (CK_CNT) is equal to fCK_PSC / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -569,6 +573,8 @@
 0x40006018 B  REGISTER CCMR1_Output (=TIM16.CCMR1_Output): CCMR1 register
 0x40006020 B  REGISTER CCER (=TIM16.CCER): CCER register
 0x40006024 B  REGISTER CNT (=TIM16.CNT): CNT register
+0x40006024 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40006024 C   FIELD 00w16 CNT (rw): counter value
 0x40006028 B  REGISTER PSC (=TIM16.PSC): PSC register
 0x4000602C B  REGISTER ARR (=TIM16.ARR): ARR register
 0x40006030 B  REGISTER RCR (=TIM16.RCR): RCR register
