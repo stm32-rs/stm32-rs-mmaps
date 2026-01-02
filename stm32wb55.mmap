@@ -106,8 +106,10 @@
 0x40000020 C   FIELD 12w01 CC4E: Capture/Compare 4 output enable
 0x40000020 C   FIELD 13w01 CC4P: Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP: Capture/Compare 4 output Polarity
+0x40000024 B  REGISTER CNT32 (rw): 32-bit counter register
 0x40000024 B  REGISTER CNT: counter
 0x40000024 C   FIELD 00w31 UIFREMAP_CNT: Counter value when CR1.UIFREMAP=1
+0x40000024 C   FIELD 00w32 CNT (rw): counter value
 0x40000024 C   FIELD 00w32 CNT: Counter value
 0x40000024 C   FIELD 31w01 UIFCPY (ro): Copy of ISR.UIF when CR1.UIFREMAP=1
 0x40000028 B  REGISTER PSC (rw): prescaler
@@ -1428,7 +1430,9 @@
 0x40012C20 C   FIELD 17w01 CC5P: Capture/Compare 5 output Polarity
 0x40012C20 C   FIELD 20w01 CC6E: Capture/Compare 6 output enable
 0x40012C20 C   FIELD 21w01 CC6P: Capture/Compare 6 output Polarity
+0x40012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40012C24 B  REGISTER CNT: counter
+0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy
 0x40012C28 B  REGISTER PSC (rw): prescaler
@@ -1734,7 +1738,9 @@
 0x40014420 C   FIELD 01w01 CC1P: Capture/Compare 1 output Polarity
 0x40014420 C   FIELD 02w01 CC1NE: Capture/Compare 1 complementary output enable
 0x40014420 C   FIELD 03w01 CC1NP: Capture/Compare 1 output Polarity
+0x40014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014424 B  REGISTER CNT: counter
+0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014428 B  REGISTER PSC (rw): prescaler
@@ -1782,6 +1788,8 @@
 0x40014818 B  REGISTER CCMR1_Output (=TIM16.CCMR1_Output): capture/compare mode register (output mode)
 0x40014820 B  REGISTER CCER (=TIM16.CCER): capture/compare enable register
 0x40014824 B  REGISTER CNT (=TIM16.CNT): counter
+0x40014824 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014828 B  REGISTER PSC (=TIM16.PSC): prescaler
 0x4001482C B  REGISTER ARR (=TIM16.ARR): auto-reload register
 0x40014830 B  REGISTER RCR (=TIM16.RCR): repetition counter register
