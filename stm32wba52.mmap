@@ -121,7 +121,9 @@
 0x40000020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): TIM counter
+0x40000024 B  REGISTER CNT32 (rw): 32-bit counter register
 0x40000024 C   FIELD 00w31 CNT (rw): Least significant part of counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register holds the non-dithered part in CNT[30:0]. The fractional part is not available.
+0x40000024 C   FIELD 00w32 CNT (rw): counter value
 0x40000024 C   FIELD 31w01 UIFCPY (rw): UIF copy or CNT bit 31 If TIMx_CR1.UIFREMAP = 0, thisbit means CNT[31], the most significant bit of counter value If TIMx_CRT1.UIFREMAP = 1, this bit means UIF Copy, and is a read-only copy of the UIF bit of the TIMx_ISR register
 0x40000028 B  REGISTER PSC (rw): TIM prescaler
 0x40000028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency tim_cnt_ck is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -281,7 +283,9 @@
 0x40000420 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): TIM counter
+0x40000424 B  REGISTER CNT32 (rw): 32-bit counter register
 0x40000424 C   FIELD 00w31 CNT (rw): Least significant part of counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register holds the non-dithered part in CNT[30:0]. The fractional part is not available.
+0x40000424 C   FIELD 00w32 CNT (rw): counter value
 0x40000424 C   FIELD 31w01 UIFCPY (rw): UIF copy or CNT bit 31 If TIMx_CR1.UIFREMAP = 0, thisbit means CNT[31], the most significant bit of counter value If TIMx_CRT1.UIFREMAP = 1, this bit means UIF Copy, and is a read-only copy of the UIF bit of the TIMx_ISR register
 0x40000428 B  REGISTER PSC (rw): TIM prescaler
 0x40000428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency tim_cnt_ck is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -821,7 +825,9 @@
 0x40012C20 C   FIELD 20w01 CC6E (rw): Capture/Compare 6 output enable
 0x40012C20 C   FIELD 21w01 CC6P (rw): Capture/Compare 6 output Polarity
 0x40012C24 B  REGISTER CNT (rw): TIM1 counter
+0x40012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40012C24 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
+0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0.
 0x40012C28 B  REGISTER PSC (rw): TIM1 prescaler
 0x40012C28 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (fsubtim_cnt_ck/sub) is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -1218,7 +1224,9 @@
 0x40014420 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x40014420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
 0x40014424 B  REGISTER CNT (rw): TIM counter
+0x40014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014424 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
+0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved.
 0x40014428 B  REGISTER PSC (rw): TIM prescaler
 0x40014428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (tim_cnt_ck) is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -1322,7 +1330,9 @@
 0x40014820 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x40014820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
 0x40014824 B  REGISTER CNT (rw): TIM counter
+0x40014824 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014824 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
+0x40014824 C   FIELD 00w16 CNT (rw): counter value
 0x40014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved.
 0x40014828 B  REGISTER PSC (rw): TIM prescaler
 0x40014828 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (tim_cnt_ck) is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -6302,7 +6312,9 @@
 0x50000020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x50000020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x50000024 B  REGISTER CNT (rw): TIM counter
+0x50000024 B  REGISTER CNT32 (rw): 32-bit counter register
 0x50000024 C   FIELD 00w31 CNT (rw): Least significant part of counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register holds the non-dithered part in CNT[30:0]. The fractional part is not available.
+0x50000024 C   FIELD 00w32 CNT (rw): counter value
 0x50000024 C   FIELD 31w01 UIFCPY (rw): UIF copy or CNT bit 31 If TIMx_CR1.UIFREMAP = 0, thisbit means CNT[31], the most significant bit of counter value If TIMx_CRT1.UIFREMAP = 1, this bit means UIF Copy, and is a read-only copy of the UIF bit of the TIMx_ISR register
 0x50000028 B  REGISTER PSC (rw): TIM prescaler
 0x50000028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency tim_cnt_ck is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -6462,7 +6474,9 @@
 0x50000420 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x50000420 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x50000424 B  REGISTER CNT (rw): TIM counter
+0x50000424 B  REGISTER CNT32 (rw): 32-bit counter register
 0x50000424 C   FIELD 00w31 CNT (rw): Least significant part of counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register holds the non-dithered part in CNT[30:0]. The fractional part is not available.
+0x50000424 C   FIELD 00w32 CNT (rw): counter value
 0x50000424 C   FIELD 31w01 UIFCPY (rw): UIF copy or CNT bit 31 If TIMx_CR1.UIFREMAP = 0, thisbit means CNT[31], the most significant bit of counter value If TIMx_CRT1.UIFREMAP = 1, this bit means UIF Copy, and is a read-only copy of the UIF bit of the TIMx_ISR register
 0x50000428 B  REGISTER PSC (rw): TIM prescaler
 0x50000428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency tim_cnt_ck is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -7002,7 +7016,9 @@
 0x50012C20 C   FIELD 20w01 CC6E (rw): Capture/Compare 6 output enable
 0x50012C20 C   FIELD 21w01 CC6P (rw): Capture/Compare 6 output Polarity
 0x50012C24 B  REGISTER CNT (rw): TIM1 counter
+0x50012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50012C24 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
+0x50012C24 C   FIELD 00w16 CNT (rw): counter value
 0x50012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0.
 0x50012C28 B  REGISTER PSC (rw): TIM1 prescaler
 0x50012C28 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (fsubtim_cnt_ck/sub) is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -7399,7 +7415,9 @@
 0x50014420 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x50014420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
 0x50014424 B  REGISTER CNT (rw): TIM counter
+0x50014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50014424 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
+0x50014424 C   FIELD 00w16 CNT (rw): counter value
 0x50014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved.
 0x50014428 B  REGISTER PSC (rw): TIM prescaler
 0x50014428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (tim_cnt_ck) is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
@@ -7503,7 +7521,9 @@
 0x50014820 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x50014820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
 0x50014824 B  REGISTER CNT (rw): TIM counter
+0x50014824 B  REGISTER CNT16 (rw): 16-bit counter register
 0x50014824 C   FIELD 00w16 CNT (rw): Counter value Non-dithering mode (DITHEN = 0) The register holds the counter value. Dithering mode (DITHEN = 1) The register only holds the non-dithered part in CNT[15:0]. The fractional part is not available.
+0x50014824 C   FIELD 00w16 CNT (rw): counter value
 0x50014824 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved.
 0x50014828 B  REGISTER PSC (rw): TIM prescaler
 0x50014828 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (tim_cnt_ck) is equal to fsubtim_psc_ck/sub / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in 'reset mode').
