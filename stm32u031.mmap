@@ -109,9 +109,9 @@
 0x40000020 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000020 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000024 B  REGISTER CNT (rw): TIM2 counter
-0x40000024 B  REGISTER CNT_ALTERNATE1 (rw): TIM2 counter
+0x40000024 B  REGISTER CNT32 (rw): 32-bit counter register
 0x40000024 C   FIELD 00w31 CNT (rw): Least significant part of counter value
-0x40000024 C   FIELD 00w32 CNT (rw): Least significant part of counter value
+0x40000024 C   FIELD 00w32 CNT (rw): counter value
 0x40000024 C   FIELD 31w01 UIFCPY (rw): UIF Copy
 0x40000028 B  REGISTER PSC (rw): TIM2 prescaler
 0x40000028 C   FIELD 00w16 PSC (rw): Prescaler value
@@ -249,22 +249,22 @@
 0x40000420 C   FIELD 13w01 CC4P (rw): Capture/Compare 4 output Polarity
 0x40000420 C   FIELD 15w01 CC4NP (rw): Capture/Compare 4 output Polarity
 0x40000424 B  REGISTER CNT (rw): TIM3 counter
-0x40000424 B  REGISTER CNT_ALTERNATE1 (rw): TIM3 counter
-0x40000424 C   FIELD 00w31 CNT (rw): Least significant part of counter value
-0x40000424 C   FIELD 00w32 CNT (rw): Least significant part of counter value
+0x40000424 B  REGISTER CNT16 (rw): 16-bit counter register
+0x40000424 C   FIELD 00w16 CNT (rw): Least significant part of counter value
+0x40000424 C   FIELD 00w16 CNT (rw): counter value
 0x40000424 C   FIELD 31w01 UIFCPY (rw): UIF Copy
 0x40000428 B  REGISTER PSC (rw): TIM3 prescaler
 0x40000428 C   FIELD 00w16 PSC (rw): Prescaler value
 0x4000042C B  REGISTER ARR (rw): TIM3 auto-reload register
-0x4000042C C   FIELD 00w32 ARR (rw): Low Auto-reload value
+0x4000042C C   FIELD 00w16 ARR (rw): Low Auto-reload value
 0x40000434 B  REGISTER CCR1 (rw): capture/compare register
-0x40000434 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000434 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000438 B  REGISTER CCR2 (rw): capture/compare register
-0x40000438 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000438 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x4000043C B  REGISTER CCR3 (rw): capture/compare register
-0x4000043C C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x4000043C C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000440 B  REGISTER CCR4 (rw): capture/compare register
-0x40000440 C   FIELD 00w32 CCR (rw): Capture/Compare value
+0x40000440 C   FIELD 00w16 CCR (rw): Capture/Compare value
 0x40000448 B  REGISTER DCR (rw): TIM3 DMA control register
 0x40000448 C   FIELD 00w05 DBA (rw): DMA base address
 0x40000448 C   FIELD 08w05 DBL (rw): DMA burst length
@@ -295,8 +295,10 @@
 0x40001010 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow regarding the repetition counter value and if UDIS = 0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in the TIMx_EGR register, if URS1=10 and UDIS1=10 in the TIMx_CR1 register.
 0x40001014 B  REGISTER EGR: TIM6 event generation register
 0x40001014 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
+0x40001024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40001024 B  REGISTER CNT: TIM6 counter
 0x40001024 C   FIELD 00w16 CNT (rw): Counter value
+0x40001024 C   FIELD 00w16 CNT (rw): counter value
 0x40001024 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40001028 B  REGISTER PSC: TIM6 prescaler
 0x40001028 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded into the active prescaler register at each update event. (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode).
@@ -319,8 +321,10 @@
 0x40001410 C   FIELD 00w01 UIF (rw): Update interrupt flag This bit is set by hardware on an update event. It is cleared by software. At overflow or underflow regarding the repetition counter value and if UDIS = 0 in the TIMx_CR1 register. When CNT is reinitialized by software using the UG bit in the TIMx_EGR register, if URS1=10 and UDIS1=10 in the TIMx_CR1 register.
 0x40001414 B  REGISTER EGR: TIM6 event generation register
 0x40001414 C   FIELD 00w01 UG (wo): Update generation This bit can be set by software, it is automatically cleared by hardware.
+0x40001424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40001424 B  REGISTER CNT: TIM6 counter
 0x40001424 C   FIELD 00w16 CNT (rw): Counter value
+0x40001424 C   FIELD 00w16 CNT (rw): counter value
 0x40001424 C   FIELD 31w01 UIFCPY (ro): UIF Copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in TIMx_CR1 is reset, bit 31 is reserved and read as 0.
 0x40001428 B  REGISTER PSC: TIM6 prescaler
 0x40001428 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency CK_CNT is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded into the active prescaler register at each update event. (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode).
@@ -2569,8 +2573,10 @@
 0x40012C20 C   FIELD 17w01 CC5P (rw): Capture/Compare 5 output Polarity
 0x40012C20 C   FIELD 20w01 CC6E (rw): Capture/Compare 6 output enable
 0x40012C20 C   FIELD 21w01 CC6P (rw): Capture/Compare 6 output Polarity
+0x40012C24 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40012C24 B  REGISTER CNT: TIM1 counter
 0x40012C24 C   FIELD 00w16 CNT (rw): Counter value
+0x40012C24 C   FIELD 00w16 CNT (rw): counter value
 0x40012C24 C   FIELD 31w01 UIFCPY (ro): UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0.
 0x40012C28 B  REGISTER PSC: TIM1 prescaler
 0x40012C28 C   FIELD 00w16 PSC (rw): Prescaler value The counter clock frequency (CK_CNT) is equal to f<sub>CK_PSC</sub> / (PSC[15:0] + 1). PSC contains the value to be loaded in the active prescaler register at each update event (including when the counter is cleared through UG bit of TIMx_EGR register or through trigger controller when configured in reset mode).
@@ -2912,7 +2918,9 @@
 0x40014020 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
 0x40014020 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
 0x40014024 B  REGISTER CNT (rw): TIM15 counter
+0x40014024 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014024 C   FIELD 00w16 CNT (rw): Counter value
+0x40014024 C   FIELD 00w16 CNT (rw): counter value
 0x40014024 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014028 B  REGISTER PSC (rw): TIM15 prescaler
 0x40014028 C   FIELD 00w16 PSC (rw): Prescaler value
@@ -3000,7 +3008,9 @@
 0x40014420 C   FIELD 02w01 CC1NE (rw): Capture/Compare 1 complementary output enable
 0x40014420 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
 0x40014424 B  REGISTER CNT (rw): TIM16 counter
+0x40014424 B  REGISTER CNT16 (rw): 16-bit counter register
 0x40014424 C   FIELD 00w16 CNT (rw): Counter value
+0x40014424 C   FIELD 00w16 CNT (rw): counter value
 0x40014424 C   FIELD 31w01 UIFCPY (ro): UIF Copy
 0x40014428 B  REGISTER PSC (rw): TIM16 prescaler
 0x40014428 C   FIELD 00w16 PSC (rw): Prescaler value
