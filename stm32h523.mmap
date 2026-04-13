@@ -455,6 +455,81 @@
 0x40001428 C   FIELD 00w16 PSC (rw): Prescaler value
 0x4000142C B  REGISTER ARR (rw): TIM6 auto-reload register
 0x4000142C C   FIELD 00w20 ARR (rw): Auto-reload value
+0x40001800 A PERIPHERAL TIM12
+0x40001800 B  REGISTER CR1: TIM12 control register 1
+0x40001800 C   FIELD 00w01 CEN (rw): Counter enable
+0x40001800 C   FIELD 01w01 UDIS (rw): Update disable
+0x40001800 C   FIELD 02w01 URS (rw): Update request source
+0x40001800 C   FIELD 03w01 OPM (rw): One-pulse mode
+0x40001800 C   FIELD 07w01 ARPE (rw): Auto-reload preload enable
+0x40001800 C   FIELD 08w02 CKD (rw): Clock division
+0x40001800 C   FIELD 11w01 UIFREMAP (rw): UIF status bit remapping
+0x40001800 C   FIELD 12w01 DITHEN (rw): Dithering Enable
+0x40001804 B  REGISTER CR2: TIM12 control register 2
+0x40001804 C   FIELD 04w03 MMS (rw): Master mode selection
+0x40001804 C   FIELD 07w01 TI1S (rw): tim_ti1 selection
+0x40001808 B  REGISTER SMCR: TIM12 slave mode control register
+0x40001808 C   FIELD 00w03 SMS (rw): Slave mode selection
+0x40001808 C   FIELD 04w03 TS (rw): Trigger selection (see bits 21:20 for TS[4:3])
+0x40001808 C   FIELD 07w01 MSM (rw): Master/Slave mode
+0x40001808 C   FIELD 16w01 SMS_3 (rw): Slave mode selection
+0x40001808 C   FIELD 20w02 TS2 (rw): Trigger selection (see bits 21:20 for TS[4:3])
+0x4000180C B  REGISTER DIER: TIM12 DMA/Interrupt enable register
+0x4000180C C   FIELD 00w01 UIE (rw): Update interrupt enable
+0x4000180C C   FIELD 01w01 CC1IE (rw): Capture/Compare 1 interrupt enable
+0x4000180C C   FIELD 02w01 CC2IE (rw): Capture/Compare 2 interrupt enable
+0x4000180C C   FIELD 06w01 TIE (rw): Trigger interrupt enable
+0x40001810 B  REGISTER SR: TIM12 status register
+0x40001810 C   FIELD 00w01 UIF (rw): Update interrupt flag
+0x40001810 C   FIELD 01w01 CC1IF (rw): Capture/compare 1 interrupt flag
+0x40001810 C   FIELD 02w01 CC2IF (rw): Capture/compare 2 interrupt flag
+0x40001810 C   FIELD 06w01 TIF (rw): Trigger interrupt flag
+0x40001810 C   FIELD 09w01 CC1OF (rw): Capture/Compare 1 overcapture flag
+0x40001810 C   FIELD 10w01 CC2OF (rw): Capture/Compare 2 overcapture flag
+0x40001814 B  REGISTER EGR: TIM12 event generation register
+0x40001814 C   FIELD 00w01 UG (wo): Update generation
+0x40001814 C   FIELD 01w01 CC1G (wo): Capture/compare 1 generation
+0x40001814 C   FIELD 02w01 CC2G (wo): Capture/compare 2 generation
+0x40001814 C   FIELD 06w01 TG (wo): Trigger generation
+0x40001818 B  REGISTER CCMR1_Input: TIM12 capture/compare mode register 1 [alternate]
+0x40001818 B  REGISTER CCMR1_Output: TIM12 capture/compare mode register 1 [alternate]
+0x40001818 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
+0x40001818 C   FIELD 00w02 CC1S (rw): Capture/Compare 1 selection
+0x40001818 C   FIELD 02w01 OC1FE (rw): Output compare 1 fast enable
+0x40001818 C   FIELD 02w02 IC1PSC (rw): Input capture 1 prescaler
+0x40001818 C   FIELD 03w01 OC1PE (rw): Output compare 1 preload enable
+0x40001818 C   FIELD 04w03 OC1M (rw): Output compare 1 mode
+0x40001818 C   FIELD 04w04 IC1F (rw): Input capture 1 filter
+0x40001818 C   FIELD 08w02 CC2S (rw): Capture/Compare 2 selection
+0x40001818 C   FIELD 08w02 CC2S (rw): Capture/compare 2 selection
+0x40001818 C   FIELD 10w01 OC2FE (rw): Output compare 2 fast enable
+0x40001818 C   FIELD 10w02 IC2PSC (rw): Input capture 2 prescaler
+0x40001818 C   FIELD 11w01 OC2PE (rw): Output compare 2 preload enable
+0x40001818 C   FIELD 12w03 OC2M (rw): Output compare 2 mode
+0x40001818 C   FIELD 12w04 IC2F (rw): Input capture 2 filter
+0x40001818 C   FIELD 16w01 OC1M_3 (rw): Output compare 1 mode, bit 3
+0x40001818 C   FIELD 24w01 OC2M_3 (rw): Output compare 2 mode, bit 3
+0x40001820 B  REGISTER CCER: TIM12 capture/compare enable register
+0x40001820 C   FIELD 00w01 CC1E (rw): Capture/Compare 1 output enable
+0x40001820 C   FIELD 01w01 CC1P (rw): Capture/Compare 1 output Polarity
+0x40001820 C   FIELD 03w01 CC1NP (rw): Capture/Compare 1 output Polarity
+0x40001820 C   FIELD 04w01 CC2E (rw): Capture/Compare 2 output enable
+0x40001820 C   FIELD 05w01 CC2P (rw): Capture/Compare 2 output Polarity
+0x40001820 C   FIELD 07w01 CC2NP (rw): Capture/Compare 2 output Polarity
+0x40001824 B  REGISTER CNT: TIM12 counter
+0x40001824 C   FIELD 00w16 CNT (rw): or UIFCPY: Value depends on IUFREMAP in TIMx_CR1.
+0x40001824 C   FIELD 31w01 UIFCPY (rw): UIF Copy
+0x40001828 B  REGISTER PSC: TIM12 prescaler
+0x40001828 C   FIELD 00w16 PSC (rw): Prescaler value
+0x4000182C B  REGISTER ARR: TIM12 auto-reload register
+0x4000182C C   FIELD 00w20 ARR (rw): Auto-reload value
+0x40001834 B  REGISTER CCR1: capture/compare register
+0x40001834 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x40001838 B  REGISTER CCR2: capture/compare register
+0x40001838 C   FIELD 00w20 CCR (rw): Capture/Compare value
+0x4000185C B  REGISTER TISEL: TIM12 timer input selection register
+0x4000185C C   FIELD 00w04 TI1SEL (rw): Selects tim_ti1[0..15] input
+0x4000185C C   FIELD 08w04 TI2SEL (rw): Selects tim_ti2[0..15] input
 0x40002C00 A PERIPHERAL WWDG
 0x40002C00 B  REGISTER CR (rw): WWDG control register
 0x40002C00 C   FIELD 00w07 T (rw): 7-bit counter (MSB to LSB)
@@ -21068,6 +21143,7 @@ INTERRUPT 113: DTS_OR_DTS_WKUP (DTS): DTS interrupt OR DTS AIT through EXTI line
 INTERRUPT 114: RNG (RNG): RNG global interrupt
 INTERRUPT 117: HASH (HASH): HASH interrupt
 INTERRUPT 119: CEC (EXTI): HDMI-CEC global interrupt
+INTERRUPT 120: TIM12 (TIM12): TIM12 global interrupt
 INTERRUPT 123: I3C1_EV (I3C1): I3C1 event interrupt
 INTERRUPT 124: I3C1_ERR (I3C1): I3C1 error interrupt
 INTERRUPT 131: I3C2_EV (I3C2): I3C2 event interrupt
